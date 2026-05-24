@@ -12,8 +12,8 @@ import { CaseStudy } from "@/components/lp/CaseStudy";
 import { Faq } from "@/components/lp/Faq";
 import { FinalCta } from "@/components/lp/FinalCta";
 
-const title = "Service Desk Terceirizado 24x7 | AlliedIT — 20 anos em TI corporativa";
-const description = "Operação de Service Desk para empresas que não podem errar. Cobertura 24x7, N1/N2/N3 integrados, custo previsível. Atende Louvre Hotels, Sephora, Apsen e outras.";
+const title = "AlliedIT — Service Desk terceirizado 24x7 com NOC e SOC integrados";
+const description = "Operação de TI para empresas que não podem errar: Service Desk 24x7, N1/N2/N3 na mesma equipe, NOC e SOC integrados, custo previsível e SLA real. +20 anos atendendo hotelaria, saúde, varejo, farma e logística.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -24,7 +24,13 @@ export const Route = createFileRoute("/")({
       { property: "og:description", content: description },
       { property: "og:url", content: "/" },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: "/og-image.png" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: title },
+      { name: "twitter:description", content: description },
+      { name: "twitter:image", content: "/og-image.png" },
     ],
     links: [{ rel: "canonical", href: "/" }],
     scripts: [
