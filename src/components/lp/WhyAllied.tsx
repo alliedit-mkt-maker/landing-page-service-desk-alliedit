@@ -15,7 +15,7 @@ export function WhyAllied() {
       <div className="max-w-7xl mx-auto">
         <div className="mb-16 max-w-3xl">
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-balance">
-            Por que empresas que não podem errar escolhem a AlliedIT.
+            Por que empresas que não podem errar escolhem a AlliedIT
           </h2>
           <p className="text-petrol/60 text-lg">
             O mercado está cheio de fornecedor genérico. A AlliedIT entrega especialização vertical e relação de longo prazo.

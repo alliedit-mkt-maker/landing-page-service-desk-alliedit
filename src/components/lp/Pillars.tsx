@@ -48,7 +48,7 @@ export function Pillars() {
       <div className="max-w-7xl mx-auto">
         <div className="mb-16 max-w-3xl">
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-balance">
-            O que muda quando o Service Desk é da AlliedIT.
+            O que muda quando o Service Desk é da AlliedIT
           </h2>
           <p className="text-petrol/60 text-lg">
             Não importa se você está terceirizando pela primeira vez ou trocando de fornecedor. A AlliedIT entrega quatro coisas em comum.
