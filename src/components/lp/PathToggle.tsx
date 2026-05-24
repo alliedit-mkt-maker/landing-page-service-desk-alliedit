@@ -36,10 +36,10 @@ export function PathToggle() {
 
         <div role="tablist" aria-label="Cenário de suporte atual" className="flex flex-col sm:flex-row justify-center gap-3 mb-12 sm:mb-16">
           <ScenarioBtn active={active === "internal"} onClick={() => setPath("internal")}>
-            Hoje meu suporte é interno
+            Tenho suporte interno
           </ScenarioBtn>
           <ScenarioBtn active={active === "external"} onClick={() => setPath("external")}>
-            Hoje já tenho um fornecedor
+            Tenho um fornecedor
           </ScenarioBtn>
         </div>
 
