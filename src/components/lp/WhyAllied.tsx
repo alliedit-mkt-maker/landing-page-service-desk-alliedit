@@ -5,7 +5,7 @@ const items = [
   { title: "20+ anos operando TI corporativa", body: "Operação madura, processos parametrizados, equipe que já viu de tudo." },
   { title: "Especialização vertical real", body: "Hotelaria, saúde, varejo multi-unidade, farma, logística. Sabemos a particularidade de cada setor." },
   { title: "Service Desk integrado com NOC e SOC", body: "Monitoramento ativo de infra e segurança no mesmo time que opera o atendimento. Sem retrabalho." },
-  { title: "Land and expand provado", body: "Mais de 10 unidades de Louvre Hotels Group, 7 de Body Tech, multi-CNPJ na Mundial. Crescemos com você." },
+  { title: "Crescemos com você", body: "Mais de 10 unidades de Louvre Hotels Group, 7 de Body Tech, multi-CNPJ na Mundial. Você expande, a gente acompanha." },
   { title: "Foco no que não é seu core", body: "Você cuida do que faz a empresa única. A gente cuida da operação técnica." },
 ];
 
