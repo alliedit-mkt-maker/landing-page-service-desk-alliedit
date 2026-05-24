@@ -15,7 +15,7 @@ const schema = z.object({
     (v) => !personalDomains.includes(v.split("@")[1]?.toLowerCase() ?? ""),
     "Use seu e-mail corporativo"
   ),
-  telefone: z.string().trim().min(10, "Telefone com DDD").max(20),
+  telefone: z.string().trim().min(10, "WhatsApp inválido").max(20),
   empresa: z.string().trim().min(2).max(120),
 });
 
