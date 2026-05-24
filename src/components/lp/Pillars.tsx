@@ -40,8 +40,7 @@ const pillars = [
 ];
 
 export function Pillars() {
-  const { selectedPath, openModal } = useLp();
-  const key: "internal" | "external" | "default" = selectedPath ?? "default";
+  const { openModal } = useLp();
 
   return (
     <section className="py-24 px-6 border-b border-border bg-petrol/[0.02]" id="pilares">
@@ -60,10 +59,7 @@ export function Pillars() {
             <article key={p.title} className="bg-surface p-8 flex flex-col">
               <span className="font-mono text-[11px] text-gold mb-4">{String(i + 1).padStart(2, "0")}</span>
               <h3 className="font-extrabold text-xl mb-4 leading-tight text-balance">{p.title}</h3>
-              <p className="text-petrol/80 text-sm leading-relaxed mb-6">{p.main}</p>
-              <div key={key} className="mt-auto pt-6 border-t border-border animate-fade-up">
-                <p className="font-mono text-[11px] leading-relaxed text-petrol/60 italic">"{p.micro[key]}"</p>
-              </div>
+              <p className="text-petrol/80 text-sm leading-relaxed">{p.main}</p>
             </article>
           ))}
         </div>
