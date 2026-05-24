@@ -1,4 +1,5 @@
 import { useLp } from "./LpProvider";
+import { Reveal } from "./Reveal";
 
 const testimonials = [
   { quote: "A AlliedIT entende o ritmo da nossa operação. Não é só atender chamado, é antecipar problema.", who: "Diretor de TI, rede hoteleira internacional" },
@@ -9,26 +10,27 @@ const testimonials = [
 export function CaseStudy() {
   const { openModal } = useLp();
   return (
-    <section className="py-24 px-6 border-b border-border bg-petrol/[0.02]" id="cases">
+    <section className="py-16 sm:py-24 px-4 sm:px-6 border-b border-border bg-petrol/[0.02]" id="cases">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-16 max-w-3xl">
-          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-balance">
+        <Reveal variant="fade-up" className="mb-12 sm:mb-16 max-w-3xl">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-balance">
             Vinte anos de operação. Centenas de unidades atendidas.
           </h2>
-          <p className="text-petrol/60 text-lg">
+          <p className="text-petrol/60 text-base sm:text-lg">
             O melhor termômetro não é o que falamos. É o tempo que cada cliente fica conosco.
           </p>
-        </div>
+        </Reveal>
 
-        <div className="bg-surface border border-border overflow-hidden mb-12">
+        <Reveal variant="scale-in" className="bg-surface border border-border overflow-hidden mb-12 hover-lift">
           <div className="grid md:grid-cols-2">
-            <div className="aspect-square md:aspect-auto bg-petrol relative grid place-items-center p-12">
+            <div className="aspect-square md:aspect-auto bg-petrol relative grid place-items-center p-8 sm:p-12 overflow-hidden">
+              <div aria-hidden className="pointer-events-none absolute -top-16 -right-16 size-60 rounded-full bg-gold/15 blur-3xl animate-float-slow" />
               <div className="text-center">
                 <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-6 block">Case em destaque</span>
-                <div className="text-white font-extrabold text-3xl md:text-4xl tracking-tight leading-none">
+                <div className="text-white font-extrabold text-2xl sm:text-3xl md:text-4xl tracking-tight leading-none">
                   Louvre Hotels<br />Group
                 </div>
-                <div className="mt-12 flex items-center justify-center gap-6 text-[11px] font-mono uppercase tracking-widest text-white/40">
+                <div className="mt-10 sm:mt-12 flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-[10px] sm:text-[11px] font-mono uppercase tracking-widest text-white/40">
                   <span>Tulip Inn</span>
                   <span>·</span>
                   <span>Golden Tulip</span>
@@ -37,8 +39,8 @@ export function CaseStudy() {
                 </div>
               </div>
             </div>
-            <div className="p-10 md:p-14 flex flex-col justify-center">
-              <h3 className="text-3xl font-extrabold tracking-tight mb-6 leading-tight text-balance">
+            <div className="p-8 sm:p-10 md:p-14 flex flex-col justify-center">
+              <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight mb-6 leading-tight text-balance">
                 Mais de 10 unidades atendidas de norte a sul do Brasil.
               </h3>
               <p className="text-petrol/70 mb-8 leading-relaxed">
@@ -57,17 +59,17 @@ export function CaseStudy() {
               </button>
             </div>
           </div>
-        </div>
+        </Reveal>
 
         <div className="grid md:grid-cols-3 gap-px bg-border border border-border">
-          {testimonials.map((t) => (
-            <blockquote key={t.who} className="bg-surface p-8 flex flex-col">
+          {testimonials.map((t, i) => (
+            <Reveal as="blockquote" key={t.who} variant="fade-up" delay={i * 120} className="bg-surface p-6 sm:p-8 flex flex-col">
               <div className="text-gold text-3xl leading-none mb-4 font-serif">"</div>
               <p className="text-petrol/90 text-sm leading-relaxed mb-6 flex-1">{t.quote}</p>
               <cite className="not-italic font-mono text-[11px] uppercase tracking-widest text-petrol/60 border-t border-border pt-4">
                 {t.who}
               </cite>
-            </blockquote>
+            </Reveal>
           ))}
         </div>
       </div>
