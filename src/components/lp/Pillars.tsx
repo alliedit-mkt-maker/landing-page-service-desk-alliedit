@@ -58,7 +58,7 @@ export function Pillars() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-border border border-border">
           {pillars.map((p, i) => (
             <article key={p.title} className="bg-surface p-8 flex flex-col">
-              <span className="font-mono text-[11px] text-gold mb-4">{String(i + 1).padStart(2, "0")} / Pilar</span>
+              <span className="font-mono text-[11px] text-gold mb-4">{String(i + 1).padStart(2, "0")}</span>
               <h3 className="font-extrabold text-xl mb-4 leading-tight text-balance">{p.title}</h3>
               <p className="text-petrol/80 text-sm leading-relaxed mb-6">{p.main}</p>
               <div key={key} className="mt-auto pt-6 border-t border-border animate-fade-up">
