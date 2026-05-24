@@ -43,7 +43,7 @@ export function ContactModal({ open, onOpenChange, source }: { open: boolean; on
     }
     setErrors({});
     setSubmitting(true);
-    pushEvent("form_submit", { source: source ?? "unknown", cargo: parsed.data.cargo, usuarios: parsed.data.usuarios });
+    pushEvent("form_submit", { source: source ?? "unknown" });
     // TODO: integrar com backend (Lovable Cloud) para persistir e enviar para o time comercial.
     setTimeout(() => {
       onOpenChange(false);
