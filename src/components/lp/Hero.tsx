@@ -20,13 +20,13 @@ export function Hero() {
           </Reveal>
           <Reveal variant="fade-up" delay={120}>
             <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[5.5rem] font-extrabold tracking-tight text-balance leading-[0.95] mb-8 sm:mb-10 text-petrol">
-              A operação de TI das empresas que não podem errar.
+              A operação de TI por trás das marcas que você conhece.
             </h1>
           </Reveal>
-          <ul className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-10 sm:mb-12 lg:max-w-none">
+          <ul className="flex flex-col gap-4 sm:gap-5 mb-10 sm:mb-12">
             {bullets.map((b, i) => (
-              <Reveal as="li" key={b} variant="fade-up" delay={240 + i * 100} className="flex items-start gap-3 lg:whitespace-nowrap">
-                <div aria-hidden className="size-5 rounded-full border-2 border-gold shrink-0 mt-0.5 animate-soft-pulse" />
+              <Reveal as="li" key={b} variant="fade-up" delay={240 + i * 100} className="flex items-start gap-3">
+                <div aria-hidden className="size-5 rounded-full border-2 border-gold shrink-1 mt-0.5 animate-soft-pulse" />
                 <p className="text-sm font-medium leading-snug text-petrol/90">{b}</p>
               </Reveal>
             ))}
