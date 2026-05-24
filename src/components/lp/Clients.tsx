@@ -21,14 +21,14 @@ const logos = [
 export function Clients() {
   const loop = [...logos, ...logos];
   return (
-    <section className="py-14 sm:py-20 border-b border-border bg-petrol/[0.02]" aria-labelledby="clientes-heading">
+    <section className="py-14 sm:py-20 border-b border-border bg-white" aria-labelledby="clientes-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <h2 id="clientes-heading" className="font-mono text-[10px] uppercase tracking-[0.25em] text-petrol/50 mb-8 sm:mb-12">
           Alguns dos nossos clientes
         </h2>
       </div>
       <div
-        className="relative overflow-hidden group bg-petrol/[0.02]"
+        className="relative overflow-hidden group bg-white"
         style={{
           maskImage: "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
           WebkitMaskImage: "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
@@ -45,7 +45,7 @@ export function Clients() {
                 src={logo.src}
                 alt={logo.name}
                 loading="lazy"
-                style={{ mixBlendMode: "darken" }}
+                style={{ mixBlendMode: "multiply" }}
                 className="h-[58px] md:h-[68px] w-auto object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
               />
             </div>
