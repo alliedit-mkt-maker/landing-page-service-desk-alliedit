@@ -30,10 +30,10 @@ export function WhyAllied() {
               <p className="text-petrol/70 text-sm leading-relaxed">{it.body}</p>
             </article>
           ))}
-          <div className="bg-petrol p-8 flex items-end">
+          <div className="bg-petrol p-8 flex items-center justify-center text-center">
             <button
               onClick={() => openModal("why_allied")}
-              className="text-white text-left font-extrabold text-xl leading-tight group"
+              className="text-white font-extrabold text-xl leading-tight group"
             >
               Falar com especialista
               <span className="block mt-3 font-mono text-[11px] text-gold uppercase tracking-widest group-hover:translate-x-1 transition-transform">→ Iniciar conversa</span>
