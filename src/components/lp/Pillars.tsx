@@ -40,8 +40,7 @@ const pillars = [
 ];
 
 export function Pillars() {
-  const { selectedPath, openModal } = useLp();
-  const key: "internal" | "external" | "default" = selectedPath ?? "default";
+  const { openModal } = useLp();
 
   return (
     <section className="py-24 px-6 border-b border-border bg-petrol/[0.02]" id="pilares">
