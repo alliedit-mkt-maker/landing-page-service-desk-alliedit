@@ -1,7 +1,7 @@
 import { useLp } from "./LpProvider";
 
 const bullets = [
-  "20 anos dando suporte a empresas que não podem parar",
+  "Mais de 20 anos de mercado",
   "Cobertura 24x7 sem precisar contratar ninguém",
   "Três níveis de suporte integrados (N1, N2 e N3)",
 ];
@@ -33,12 +33,6 @@ export function Hero() {
             >
               Falar com especialista
             </button>
-            <a
-              href="#pilares"
-              className="border border-petrol/20 px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-petrol/5 transition-colors text-petrol"
-            >
-              Ver como funciona
-            </a>
           </div>
         </div>
       </div>
