@@ -47,7 +47,6 @@ export function Pillars() {
     <section className="py-24 px-6 border-b border-border bg-petrol/[0.02]" id="pilares">
       <div className="max-w-7xl mx-auto">
         <div className="mb-16 max-w-3xl">
-          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-4 block">Dobra 4 — O que muda</span>
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-balance">
             O que muda quando o Service Desk é da AlliedIT.
           </h2>

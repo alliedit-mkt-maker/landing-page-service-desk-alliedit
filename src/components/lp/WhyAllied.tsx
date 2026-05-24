@@ -14,7 +14,6 @@ export function WhyAllied() {
     <section className="py-24 px-6 border-b border-border" id="por-que">
       <div className="max-w-7xl mx-auto">
         <div className="mb-16 max-w-3xl">
-          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-4 block">Dobra 6 — Por que AlliedIT</span>
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-balance">
             Por que empresas que não podem errar escolhem a AlliedIT.
           </h2>
