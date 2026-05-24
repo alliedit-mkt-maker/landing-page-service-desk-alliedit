@@ -21,9 +21,9 @@ const logos = [
 export function Clients() {
   const loop = [...logos, ...logos];
   return (
-    <section className="py-20 border-b border-border bg-petrol/[0.02]" aria-labelledby="clientes-heading">
-      <div className="max-w-7xl mx-auto px-6">
-        <h2 id="clientes-heading" className="font-mono text-[10px] uppercase tracking-[0.25em] text-petrol/50 mb-12">
+    <section className="py-14 sm:py-20 border-b border-border bg-petrol/[0.02]" aria-labelledby="clientes-heading">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <h2 id="clientes-heading" className="font-mono text-[10px] uppercase tracking-[0.25em] text-petrol/50 mb-8 sm:mb-12">
           Alguns dos nossos clientes
         </h2>
       </div>

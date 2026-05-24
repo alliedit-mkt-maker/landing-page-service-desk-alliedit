@@ -1,5 +1,6 @@
 import { useLp } from "./LpProvider";
 import { cn } from "@/lib/utils";
+import { Reveal } from "./Reveal";
 
 const painsInternal = [
   { title: "Equipe sênior presa no operacional", body: "Técnico bom atendendo chamado simples de cliente final. Enquanto isso, projeto estratégico fica esperando há meses." },
@@ -24,16 +25,16 @@ export function PathToggle() {
     : "A AlliedIT é o fornecedor que entrega o que você espera. Especialização vertical, governança real, SLA cumprido.";
 
   return (
-    <section className="py-24 px-6 border-b border-border" id="caminho">
+    <section className="py-16 sm:py-24 px-4 sm:px-6 border-b border-border" id="caminho">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center max-w-3xl mx-auto mb-10">
-          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-balance">
+        <Reveal variant="fade-up" className="text-center max-w-3xl mx-auto mb-10">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-balance">
             Como funciona o seu suporte hoje?
           </h2>
           <p className="text-petrol/60">Escolha o seu cenário pra ver o que costuma travar a operação.</p>
-        </div>
+        </Reveal>
 
-        <div role="tablist" aria-label="Cenário de suporte atual" className="flex flex-col sm:flex-row justify-center gap-3 mb-16">
+        <div role="tablist" aria-label="Cenário de suporte atual" className="flex flex-col sm:flex-row justify-center gap-3 mb-12 sm:mb-16">
           <ScenarioBtn active={active === "internal"} onClick={() => setPath("internal")}>
             Hoje meu suporte é interno
           </ScenarioBtn>
@@ -50,9 +51,9 @@ export function PathToggle() {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-border border border-border">
               {pains.map((p, i) => (
-                <article key={p.title} className="bg-surface p-8 group hover:bg-petrol hover:text-white transition-colors">
+                <article key={p.title} className="bg-surface p-6 sm:p-8 group hover:bg-petrol hover:text-white transition-colors" style={{ animation: `reveal-fade-up 0.7s ${i * 80}ms cubic-bezier(0.16,1,0.3,1) both` }}>
                   <span className="font-mono text-[11px] text-gold mb-4 block">{String(i + 1).padStart(2, "0")}</span>
-                  <h3 className="font-bold text-lg mb-3 leading-snug">{p.title}</h3>
+                  <h3 className="font-bold text-base sm:text-lg mb-3 leading-snug">{p.title}</h3>
                   <p className="text-sm leading-relaxed opacity-80">{p.body}</p>
                 </article>
               ))}
@@ -62,7 +63,7 @@ export function PathToggle() {
               <p className="font-mono text-sm text-petrol/80 max-w-2xl text-balance">{bridge}</p>
               <button
                 onClick={() => openModal("path_toggle")}
-                className="bg-petrol text-white px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-petrol-light transition-colors"
+                className="btn-sheen bg-petrol text-white px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-petrol-light transition-colors"
               >
                 Quero ver como a AlliedIT resolve isso
               </button>

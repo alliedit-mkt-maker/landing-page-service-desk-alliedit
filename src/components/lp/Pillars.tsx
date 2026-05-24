@@ -1,4 +1,5 @@
 import { useLp } from "./LpProvider";
+import { Reveal } from "./Reveal";
 
 const pillars = [
   {
@@ -43,35 +44,35 @@ export function Pillars() {
   const { openModal } = useLp();
 
   return (
-    <section className="py-24 px-6 border-b border-border bg-petrol/[0.02]" id="pilares">
+    <section className="py-16 sm:py-24 px-4 sm:px-6 border-b border-border bg-petrol/[0.02]" id="pilares">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-16 max-w-3xl">
-          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-balance">
+        <Reveal variant="fade-up" className="mb-12 sm:mb-16 max-w-3xl">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-balance">
             O que muda quando o Service Desk é da AlliedIT
           </h2>
-          <p className="text-petrol/60 text-lg">
+          <p className="text-petrol/60 text-base sm:text-lg">
             Não importa se você está terceirizando pela primeira vez ou trocando de fornecedor. A AlliedIT entrega quatro coisas em comum.
           </p>
-        </div>
+        </Reveal>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-border border border-border">
           {pillars.map((p, i) => (
-            <article key={p.title} className="bg-surface p-8 flex flex-col">
+            <Reveal as="article" key={p.title} variant="fade-up" delay={i * 120} className="bg-surface p-6 sm:p-8 flex flex-col group transition-colors hover:bg-petrol hover:text-white">
               <span className="font-mono text-[11px] text-gold mb-4">{String(i + 1).padStart(2, "0")}</span>
-              <h3 className="font-extrabold text-xl mb-4 leading-tight text-balance">{p.title}</h3>
-              <p className="text-petrol/80 text-sm leading-relaxed">{p.main}</p>
-            </article>
+              <h3 className="font-extrabold text-lg sm:text-xl mb-4 leading-tight text-balance">{p.title}</h3>
+              <p className="text-petrol/80 text-sm leading-relaxed group-hover:text-white/80 transition-colors">{p.main}</p>
+            </Reveal>
           ))}
         </div>
 
-        <div className="mt-12 flex justify-center">
+        <Reveal variant="fade-up" className="mt-12 flex justify-center">
           <button
             onClick={() => openModal("pillars")}
-            className="bg-petrol text-white px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-petrol-light transition-colors"
+            className="btn-sheen bg-petrol text-white px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-petrol-light transition-colors"
           >
             Falar com especialista
           </button>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

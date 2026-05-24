@@ -1,5 +1,6 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useLp } from "./LpProvider";
+import { Reveal } from "./Reveal";
 
 const items = [
   { q: "Já tenho time de TI interno. Por que terceirizar?", a: "Time interno é estratégico. Mantenha-o focado em projeto, integração de sistema, análise de dado. Service Desk é operação repetitiva que tira o seu time do que importa. Terceirizar é direcionar inteligência interna para o que gera valor." },
@@ -15,33 +16,35 @@ const items = [
 export function Faq() {
   const { openModal } = useLp();
   return (
-    <section className="py-24 px-6 border-b border-border" id="faq">
+    <section className="py-16 sm:py-24 px-4 sm:px-6 border-b border-border" id="faq">
       <div className="max-w-4xl mx-auto">
-        <div className="mb-12">
-          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-balance">
+        <Reveal variant="fade-up" className="mb-10 sm:mb-12">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-balance">
             Perguntas frequentes
           </h2>
-        </div>
-        <Accordion type="single" collapsible className="w-full border-t border-border">
-          {items.map((it, i) => (
-            <AccordionItem key={i} value={`q-${i}`} className="border-b border-border">
-              <AccordionTrigger className="text-left font-bold text-lg py-6 hover:no-underline hover:text-gold">
-                {it.q}
-              </AccordionTrigger>
-              <AccordionContent className="text-petrol/70 text-base leading-relaxed pb-6">
-                {it.a}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
-        <div className="mt-12 flex justify-center">
+        </Reveal>
+        <Reveal variant="fade-up" delay={120}>
+          <Accordion type="single" collapsible className="w-full border-t border-border">
+            {items.map((it, i) => (
+              <AccordionItem key={i} value={`q-${i}`} className="border-b border-border">
+                <AccordionTrigger className="text-left font-bold text-base sm:text-lg py-5 sm:py-6 hover:no-underline hover:text-gold">
+                  {it.q}
+                </AccordionTrigger>
+                <AccordionContent className="text-petrol/70 text-sm sm:text-base leading-relaxed pb-6">
+                  {it.a}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </Reveal>
+        <Reveal variant="fade-up" className="mt-12 flex justify-center">
           <button
             onClick={() => openModal("faq")}
-            className="border border-petrol/20 px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-petrol hover:text-white transition-colors text-petrol"
+            className="btn-sheen border border-petrol/20 px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-petrol hover:text-white transition-colors text-petrol"
           >
             Tirar dúvida com um especialista
           </button>
-        </div>
+        </Reveal>
       </div>
     </section>
   );
