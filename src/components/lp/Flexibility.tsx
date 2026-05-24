@@ -14,7 +14,7 @@ export function Flexibility() {
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 lg:gap-20">
         <div>
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-6 text-balance">
-            Cada operação é diferente. Seu contrato também é.
+            Cada operação é diferente. Seu contrato também é
           </h2>
           <p className="text-white/60 text-lg mb-10 max-w-md">
             Dedicado ou compartilhado. Time presencial, remoto ou híbrido. Equipamento seu ou nosso. Escopo modular. Você desenha a operação que faz sentido. A gente entrega.

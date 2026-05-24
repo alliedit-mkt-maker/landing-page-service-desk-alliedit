@@ -18,9 +18,6 @@ export function FinalCta() {
         >
           Falar com especialista
         </button>
-        <p className="text-white/50 text-sm mt-4">
-          Resposta em até <span className="text-gold font-semibold">4 horas úteis</span>. Atendimento direto pelo time comercial sênior. Sem robô, sem SDR cru.
-        </p>
       </div>
     </section>
   );

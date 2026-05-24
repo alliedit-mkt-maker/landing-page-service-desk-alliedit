@@ -19,7 +19,7 @@ export function Faq() {
       <div className="max-w-4xl mx-auto">
         <div className="mb-12">
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-balance">
-            Perguntas frequentes.
+            Perguntas frequentes
           </h2>
         </div>
         <Accordion type="single" collapsible className="w-full border-t border-border">
