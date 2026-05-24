@@ -64,7 +64,7 @@ export function ContactModal({ open, onOpenChange, source }: { open: boolean; on
             <Input id="email" name="email" type="email" required maxLength={255} autoComplete="email" />
           </Field>
           <div className="grid grid-cols-2 gap-4">
-            <Field id="telefone" label="Telefone (DDD)" error={errors.telefone}>
+            <Field id="telefone" label="WhatsApp" error={errors.telefone}>
               <Input id="telefone" name="telefone" required maxLength={20} autoComplete="tel" />
             </Field>
             <Field id="empresa" label="Empresa" error={errors.empresa}>
