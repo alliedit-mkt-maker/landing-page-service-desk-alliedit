@@ -1,4 +1,3 @@
-import { useLp } from "./LpProvider";
 import einstein from "@/assets/clients/einstein.webp";
 import semParar from "@/assets/clients/sem-parar.webp";
 import cacauShow from "@/assets/clients/cacau-show.webp";
@@ -20,7 +19,6 @@ const logos = [
 ];
 
 export function Clients() {
-  const { openModal } = useLp();
   const loop = [...logos, ...logos];
   return (
     <section className="py-20 border-b border-border bg-petrol/[0.02]" aria-labelledby="clientes-heading">
@@ -52,16 +50,6 @@ export function Clients() {
               />
             </div>
           ))}
-        </div>
-      </div>
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="mt-16 flex justify-center">
-          <button
-            onClick={() => openModal("clients")}
-            className="border border-petrol/20 px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-petrol hover:text-white transition-colors text-petrol"
-          >
-            Falar com um especialista
-          </button>
         </div>
       </div>
     </section>
