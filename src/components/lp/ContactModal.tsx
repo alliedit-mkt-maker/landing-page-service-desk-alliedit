@@ -5,7 +5,6 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { pushEvent } from "./LpProvider";
 
 const personalDomains = ["gmail.com", "hotmail.com", "outlook.com", "yahoo.com", "icloud.com", "live.com", "uol.com.br", "bol.com.br"];
@@ -18,9 +17,6 @@ const schema = z.object({
   ),
   telefone: z.string().trim().min(10, "Telefone com DDD").max(20),
   empresa: z.string().trim().min(2).max(120),
-  cargo: z.string().min(1, "Selecione um cargo"),
-  usuarios: z.string().min(1, "Selecione uma faixa"),
-  desafio: z.string().optional(),
 });
 
 type Errors = Partial<Record<keyof z.infer<typeof schema>, string>>;
@@ -75,46 +71,6 @@ export function ContactModal({ open, onOpenChange, source }: { open: boolean; on
               <Input id="empresa" name="empresa" required maxLength={120} autoComplete="organization" />
             </Field>
           </div>
-          <Field id="cargo" label="Cargo" error={errors.cargo}>
-            <Select name="cargo">
-              <SelectTrigger id="cargo"><SelectValue placeholder="Selecione" /></SelectTrigger>
-              <SelectContent>
-                <SelectItem value="diretor-ti">Diretor de TI</SelectItem>
-                <SelectItem value="gerente-ti">Gerente de TI</SelectItem>
-                <SelectItem value="coordenador-ti">Coordenador</SelectItem>
-                <SelectItem value="cio-cto">CIO / CTO</SelectItem>
-                <SelectItem value="cfo">CFO</SelectItem>
-                <SelectItem value="comprador">Comprador</SelectItem>
-                <SelectItem value="outro">Outro</SelectItem>
-              </SelectContent>
-            </Select>
-          </Field>
-          <Field id="usuarios" label="Usuários de TI" error={errors.usuarios}>
-            <Select name="usuarios">
-              <SelectTrigger id="usuarios"><SelectValue placeholder="Selecione faixa" /></SelectTrigger>
-              <SelectContent>
-                <SelectItem value="ate-25">até 25</SelectItem>
-                <SelectItem value="26-50">26 a 50</SelectItem>
-                <SelectItem value="51-100">51 a 100</SelectItem>
-                <SelectItem value="101-300">101 a 300</SelectItem>
-                <SelectItem value="301-500">301 a 500</SelectItem>
-                <SelectItem value="500+">500+</SelectItem>
-              </SelectContent>
-            </Select>
-          </Field>
-          <Field id="desafio" label="Maior desafio hoje (opcional)" error={errors.desafio}>
-            <Select name="desafio">
-              <SelectTrigger id="desafio"><SelectValue placeholder="Selecione" /></SelectTrigger>
-              <SelectContent>
-                <SelectItem value="cobertura-24x7">Cobertura 24x7</SelectItem>
-                <SelectItem value="reducao-custo">Redução de custo</SelectItem>
-                <SelectItem value="multi-unidades">Múltiplas unidades</SelectItem>
-                <SelectItem value="modernizacao">Modernização</SelectItem>
-                <SelectItem value="troca-fornecedor">Troca de fornecedor</SelectItem>
-                <SelectItem value="outro">Outro</SelectItem>
-              </SelectContent>
-            </Select>
-          </Field>
           <Button type="submit" disabled={submitting} className="w-full h-12 bg-petrol text-white hover:bg-petrol-light uppercase tracking-wider text-sm font-bold rounded-none">
             {submitting ? "Enviando..." : "Enviar e agendar conversa"}
           </Button>
