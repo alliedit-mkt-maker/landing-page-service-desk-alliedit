@@ -1,5 +1,6 @@
 import { useLp } from "./LpProvider";
 import { Reveal } from "./Reveal";
+import { MouseGlow } from "./MouseGlow";
 
 const bullets = [
   "Mais de 20 anos de mercado",
@@ -10,8 +11,9 @@ const bullets = [
 export function Hero() {
   const { openModal } = useLp();
   return (
-    <section className="relative pt-12 sm:pt-16 pb-16 sm:pb-24 px-4 sm:px-6 border-b border-border" id="hero">
-      <div className="max-w-7xl mx-auto">
+    <section className="relative overflow-hidden pt-12 sm:pt-16 pb-16 sm:pb-24 px-4 sm:px-6 border-b border-border" id="hero">
+      <MouseGlow size={560} opacity={0.12} />
+      <div className="max-w-7xl mx-auto relative">
         <div className="max-w-5xl relative">
           <Reveal variant="fade-up">
             <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.2em] text-gold font-semibold mb-4 sm:mb-6 block">
