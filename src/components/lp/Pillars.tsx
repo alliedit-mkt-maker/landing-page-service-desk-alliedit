@@ -41,7 +41,14 @@ const pillars = [
 ];
 
 export function Pillars() {
-  const { openModal } = useLp();
+  const { openModal, selectedPath } = useLp();
+
+  const subhead =
+    selectedPath === "internal"
+      ? "Você já tem time interno. A AlliedIT entra como extensão da operação, sem competir com quem já está dentro."
+      : selectedPath === "external"
+        ? "Você já terceiriza. A AlliedIT entra com governança madura e fim do retrabalho entre fornecedores."
+        : "Não importa se você está terceirizando pela primeira vez ou trocando de fornecedor. A AlliedIT entrega quatro coisas em comum.";
 
   return (
     <section className="py-16 sm:py-24 px-4 sm:px-6 border-b border-border bg-petrol/[0.02]" id="pilares">
@@ -50,19 +57,20 @@ export function Pillars() {
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-balance">
             O que muda quando o Service Desk é da AlliedIT
           </h2>
-          <p className="text-petrol/60 text-base sm:text-lg">
-            Não importa se você está terceirizando pela primeira vez ou trocando de fornecedor. A AlliedIT entrega quatro coisas em comum.
-          </p>
+          <p className="text-petrol/60 text-base sm:text-lg">{subhead}</p>
         </Reveal>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-border border border-border">
-          {pillars.map((p, i) => (
-            <Reveal as="article" key={p.title} variant="fade-up" delay={i * 120} className="bg-surface p-6 sm:p-8 flex flex-col group transition-colors hover:bg-petrol hover:text-white">
-              <span className="font-mono text-[11px] text-gold mb-4">{String(i + 1).padStart(2, "0")}</span>
-              <h3 className="font-extrabold text-lg sm:text-xl mb-4 leading-tight text-balance">{p.title}</h3>
-              <p className="text-petrol/80 text-sm leading-relaxed group-hover:text-white/80 transition-colors">{p.main}</p>
-            </Reveal>
-          ))}
+          {pillars.map((p, i) => {
+            const body = selectedPath ? p.micro[selectedPath] : p.main;
+            return (
+              <Reveal as="article" key={p.title} variant="fade-up" delay={i * 120} className="bg-surface p-6 sm:p-8 flex flex-col group transition-colors hover:bg-petrol hover:text-white">
+                <span className="font-mono text-[11px] text-gold mb-4">{String(i + 1).padStart(2, "0")}</span>
+                <h3 className="font-extrabold text-lg sm:text-xl mb-4 leading-tight text-balance">{p.title}</h3>
+                <p className="text-petrol/80 text-sm leading-relaxed group-hover:text-white/80 transition-colors">{body}</p>
+              </Reveal>
+            );
+          })}
         </div>
 
         <Reveal variant="fade-up" className="mt-12 flex justify-center">
