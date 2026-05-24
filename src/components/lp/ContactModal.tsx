@@ -15,7 +15,7 @@ const schema = z.object({
     (v) => !personalDomains.includes(v.split("@")[1]?.toLowerCase() ?? ""),
     "Use seu e-mail corporativo"
   ),
-  telefone: z.string().trim().min(10, "Telefone com DDD").max(20),
+  telefone: z.string().trim().min(10, "WhatsApp inválido").max(20),
   empresa: z.string().trim().min(2).max(120),
 });
 
@@ -64,7 +64,7 @@ export function ContactModal({ open, onOpenChange, source }: { open: boolean; on
             <Input id="email" name="email" type="email" required maxLength={255} autoComplete="email" />
           </Field>
           <div className="grid grid-cols-2 gap-4">
-            <Field id="telefone" label="Telefone (DDD)" error={errors.telefone}>
+            <Field id="telefone" label="WhatsApp" error={errors.telefone}>
               <Input id="telefone" name="telefone" required maxLength={20} autoComplete="tel" />
             </Field>
             <Field id="empresa" label="Empresa" error={errors.empresa}>
