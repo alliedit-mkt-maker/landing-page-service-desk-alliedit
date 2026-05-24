@@ -18,7 +18,6 @@ export function Faq() {
     <section className="py-24 px-6 border-b border-border" id="faq">
       <div className="max-w-4xl mx-auto">
         <div className="mb-12">
-          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-4 block">Dobra 8 — FAQ</span>
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-balance">
             Perguntas frequentes.
           </h2>

@@ -13,7 +13,6 @@ export function Flexibility() {
     <section className="py-24 px-6 bg-petrol text-white overflow-hidden" id="flexibilidade">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 lg:gap-20">
         <div>
-          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-4 block">Dobra 5 — Contrato</span>
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-6 text-balance">
             Cada operação é diferente. Seu contrato também é.
           </h2>
