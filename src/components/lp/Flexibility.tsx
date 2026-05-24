@@ -25,7 +25,7 @@ export function Flexibility() {
             onClick={() => openModal("flexibility")}
             className="btn-sheen bg-gold text-petrol px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-white transition-colors"
           >
-            Desenhar meu contrato com um especialista
+            Falar com especialista
           </button>
         </Reveal>
         <div className="grid sm:grid-cols-2 gap-px bg-white/10 border border-white/10">
