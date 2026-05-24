@@ -28,7 +28,7 @@ export function Clients() {
         </h2>
       </div>
       <div
-        className="relative overflow-hidden group"
+        className="relative overflow-hidden group bg-petrol/[0.02]"
         style={{
           maskImage: "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
           WebkitMaskImage: "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
@@ -45,7 +45,7 @@ export function Clients() {
                 src={logo.src}
                 alt={logo.name}
                 loading="lazy"
-                style={{ mixBlendMode: "multiply" }}
+                style={{ mixBlendMode: "darken" }}
                 className="h-[58px] md:h-[68px] w-auto object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
               />
             </div>
