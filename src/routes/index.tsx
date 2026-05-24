@@ -12,8 +12,8 @@ import { CaseStudy } from "@/components/lp/CaseStudy";
 import { Faq } from "@/components/lp/Faq";
 import { FinalCta } from "@/components/lp/FinalCta";
 
-const title = "AlliedIT — Service Desk terceirizado 24x7 com NOC e SOC integrados";
-const description = "Operação de TI para empresas que não podem errar: Service Desk 24x7, N1/N2/N3 na mesma equipe, NOC e SOC integrados, custo previsível e SLA real. +20 anos atendendo hotelaria, saúde, varejo, farma e logística.";
+const title = "AlliedIT | Service Desk terceirizado 24x7 com NOC e SOC integrados";
+const description = "A operação de TI por trás das marcas que você conhece. Service Desk 24x7, N1/N2/N3 na mesma equipe, NOC e SOC integrados, custo previsível e SLA real. +20 anos atendendo hotelaria, saúde, varejo, farma e logística.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
