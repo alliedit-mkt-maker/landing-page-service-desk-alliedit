@@ -17,8 +17,8 @@ const painsExternal = [
 
 export function PathToggle() {
   const { selectedPath, setPath, openModal } = useLp();
-  const active: "internal" | "external" = selectedPath ?? "internal";
-  const pains = active === "internal" ? painsInternal : painsExternal;
+  const active = selectedPath;
+  const pains = active === "external" ? painsExternal : painsInternal;
   const bridge = active === "internal"
     ? "A AlliedIT assume o suporte e a sua TI interna fica livre pra focar no estratégico."
     : "A AlliedIT é o fornecedor que entrega o que você espera. Especialização vertical, governança real, SLA cumprido.";
@@ -26,56 +26,65 @@ export function PathToggle() {
   return (
     <section className="py-24 px-6 border-b border-border" id="caminho">
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-12">
-          <div>
-            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-3 text-balance">
-              Como funciona o seu suporte hoje?
-            </h2>
-            <p className="text-petrol/60">Comece pelo seu cenário atual.</p>
+        <div className="text-center max-w-3xl mx-auto mb-10">
+          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-balance">
+            Como funciona o seu suporte hoje?
+          </h2>
+          <p className="text-petrol/60">Escolha o seu cenário pra ver o que costuma travar a operação.</p>
+        </div>
+
+        <div role="tablist" aria-label="Cenário de suporte atual" className="flex flex-col sm:flex-row justify-center gap-3 mb-16">
+          <ScenarioBtn active={active === "internal"} onClick={() => setPath("internal")}>
+            Hoje meu suporte é interno
+          </ScenarioBtn>
+          <ScenarioBtn active={active === "external"} onClick={() => setPath("external")}>
+            Hoje já tenho um fornecedor
+          </ScenarioBtn>
+        </div>
+
+        {active && (
+          <div key={active} className="animate-fade-up">
+            <p className="font-mono text-xs uppercase tracking-widest text-petrol/50 mb-6">
+              Você pode estar reconhecendo alguns destes sinais.
+            </p>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-border border border-border">
+              {pains.map((p, i) => (
+                <article key={p.title} className="bg-surface p-8 group hover:bg-petrol hover:text-white transition-colors">
+                  <span className="font-mono text-[11px] text-gold mb-4 block">{String(i + 1).padStart(2, "0")}</span>
+                  <h3 className="font-bold text-lg mb-3 leading-snug">{p.title}</h3>
+                  <p className="text-sm leading-relaxed opacity-80">{p.body}</p>
+                </article>
+              ))}
+            </div>
+
+            <div className="mt-12 flex flex-col items-center gap-6 text-center">
+              <p className="font-mono text-sm text-petrol/80 max-w-2xl text-balance">{bridge}</p>
+              <button
+                onClick={() => openModal("path_toggle")}
+                className="bg-petrol text-white px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-petrol-light transition-colors"
+              >
+                Quero ver como a AlliedIT resolve isso
+              </button>
+            </div>
           </div>
-          <div role="tablist" aria-label="Cenário de suporte atual" className="inline-flex p-1 bg-petrol/5 rounded-full self-start md:self-end">
-            <ToggleBtn active={active === "internal"} onClick={() => setPath("internal")}>Hoje meu suporte é interno</ToggleBtn>
-            <ToggleBtn active={active === "external"} onClick={() => setPath("external")}>Hoje já tenho um fornecedor</ToggleBtn>
-          </div>
-        </div>
-
-        <p className="font-mono text-xs uppercase tracking-widest text-petrol/50 mb-6">
-          Você pode estar reconhecendo alguns destes sinais.
-        </p>
-
-        <div key={active} className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-border border border-border animate-fade-up">
-          {pains.map((p, i) => (
-            <article key={p.title} className="bg-surface p-8 group hover:bg-petrol hover:text-white transition-colors">
-              <span className="font-mono text-[11px] text-gold mb-4 block">{String(i + 1).padStart(2, "0")}</span>
-              <h3 className="font-bold text-lg mb-3 leading-snug">{p.title}</h3>
-              <p className="text-sm leading-relaxed opacity-80">{p.body}</p>
-            </article>
-          ))}
-        </div>
-
-        <div className="mt-12 flex flex-col items-center gap-6 text-center">
-          <p className="font-mono text-sm text-petrol/80 max-w-2xl text-balance">{bridge}</p>
-          <button
-            onClick={() => openModal("path_toggle")}
-            className="bg-petrol text-white px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-petrol-light transition-colors"
-          >
-            Quero ver como a AlliedIT resolve isso
-          </button>
-        </div>
+        )}
       </div>
     </section>
   );
 }
 
-function ToggleBtn({ active, onClick, children }: { active: boolean; onClick: () => void; children: React.ReactNode }) {
+function ScenarioBtn({ active, onClick, children }: { active: boolean; onClick: () => void; children: React.ReactNode }) {
   return (
     <button
       role="tab"
       aria-selected={active}
       onClick={onClick}
       className={cn(
-        "px-5 py-2.5 rounded-full text-[11px] font-bold uppercase tracking-wider transition-all",
-        active ? "bg-petrol text-white shadow-sm" : "text-petrol/50 hover:text-petrol"
+        "px-6 py-4 text-xs font-bold uppercase tracking-widest border transition-all",
+        active
+          ? "bg-petrol text-white border-petrol"
+          : "bg-surface text-petrol border-petrol/20 hover:border-petrol hover:bg-petrol/5"
       )}
     >
       {children}

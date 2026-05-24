@@ -2,7 +2,7 @@ import { useLp } from "./LpProvider";
 
 const bullets = [
   "Mais de 20 anos de mercado",
-  "Cobertura 24x7 sem precisar contratar ninguém",
+  "Cobertura 24x7",
   "Três níveis de suporte integrados (N1, N2 e N3)",
 ];
 
@@ -18,9 +18,9 @@ export function Hero() {
           <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-extrabold tracking-tight text-balance leading-[0.95] mb-10 text-petrol">
             A operação de TI das empresas que não podem errar.
           </h1>
-          <ul className="grid md:grid-cols-3 gap-6 mb-12 max-w-4xl">
+          <ul className="grid md:grid-cols-3 gap-6 mb-12 lg:max-w-none">
             {bullets.map((b) => (
-              <li key={b} className="flex items-start gap-3">
+              <li key={b} className="flex items-start gap-3 lg:whitespace-nowrap">
                 <div aria-hidden className="size-5 rounded-full border-2 border-gold shrink-0 mt-0.5" />
                 <p className="text-sm font-medium leading-snug text-petrol/90">{b}</p>
               </li>
