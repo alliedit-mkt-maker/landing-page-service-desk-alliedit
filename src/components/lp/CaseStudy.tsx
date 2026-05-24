@@ -1,0 +1,86 @@
+import { useLp } from "./LpProvider";
+
+const testimonials = [
+  { quote: "A AlliedIT entende o ritmo da nossa operação. Não é só atender chamado, é antecipar problema.", who: "Diretor de TI, rede hoteleira internacional" },
+  { quote: "Reduzimos 40% do tempo médio de resolução de chamado depois que entregamos o Service Desk à AlliedIT.", who: "Gerente de TI, varejo multi-unidade" },
+  { quote: "Previsibilidade. Custo claro, SLA cumprido, time interno livre pra projeto estratégico.", who: "CFO, indústria farmacêutica" },
+];
+
+export function CaseStudy() {
+  const { openModal } = useLp();
+  return (
+    <section className="py-24 px-6 border-b border-border bg-petrol/[0.02]" id="cases">
+      <div className="max-w-7xl mx-auto">
+        <div className="mb-16 max-w-3xl">
+          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-4 block">Dobra 7 — Cases</span>
+          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-balance">
+            Vinte anos de operação. Centenas de unidades atendidas.
+          </h2>
+          <p className="text-petrol/60 text-lg">
+            O melhor termômetro não é o que falamos. É o tempo que cada cliente fica conosco.
+          </p>
+        </div>
+
+        <div className="bg-surface border border-border overflow-hidden mb-12">
+          <div className="grid md:grid-cols-2">
+            <div className="aspect-square md:aspect-auto bg-petrol relative grid place-items-center p-12">
+              <div className="text-center">
+                <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-6 block">Case em destaque</span>
+                <div className="text-white font-extrabold text-3xl md:text-4xl tracking-tight leading-none">
+                  Louvre Hotels<br />Group
+                </div>
+                <div className="mt-12 flex items-center justify-center gap-6 text-[11px] font-mono uppercase tracking-widest text-white/40">
+                  <span>Tulip Inn</span>
+                  <span>·</span>
+                  <span>Golden Tulip</span>
+                  <span>·</span>
+                  <span>Royal Tulip</span>
+                </div>
+              </div>
+            </div>
+            <div className="p-10 md:p-14 flex flex-col justify-center">
+              <h3 className="text-3xl font-extrabold tracking-tight mb-6 leading-tight text-balance">
+                Mais de 10 unidades atendidas de norte a sul do Brasil.
+              </h3>
+              <p className="text-petrol/70 mb-8 leading-relaxed">
+                Marcas Tulip Inn, Golden Tulip e Royal Tulip operam com a mesma estrutura de Service Desk, monitoramento e suporte presencial. Quando o grupo abre nova unidade, a TI já está pronta.
+              </p>
+              <div className="grid grid-cols-3 gap-6 mb-8 py-6 border-y border-border">
+                <Stat n="10+" label="Unidades ativas" />
+                <Stat n="3" label="Marcas atendidas" />
+                <Stat n="24x7" label="Cobertura" />
+              </div>
+              <button
+                onClick={() => openModal("case_louvre")}
+                className="self-start font-bold text-xs uppercase tracking-widest border-b-2 border-petrol pb-1 hover:border-gold hover:text-gold transition-colors"
+              >
+                Quero ser o próximo case
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-px bg-border border border-border">
+          {testimonials.map((t) => (
+            <blockquote key={t.who} className="bg-surface p-8 flex flex-col">
+              <div className="text-gold text-3xl leading-none mb-4 font-serif">"</div>
+              <p className="text-petrol/90 text-sm leading-relaxed mb-6 flex-1">{t.quote}</p>
+              <cite className="not-italic font-mono text-[11px] uppercase tracking-widest text-petrol/60 border-t border-border pt-4">
+                {t.who}
+              </cite>
+            </blockquote>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Stat({ n, label }: { n: string; label: string }) {
+  return (
+    <div>
+      <div className="text-3xl font-extrabold text-petrol leading-none">{n}</div>
+      <div className="mt-2 font-mono text-[10px] uppercase tracking-widest text-petrol/50">{label}</div>
+    </div>
+  );
+}
