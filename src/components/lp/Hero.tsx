@@ -10,9 +10,7 @@ const bullets = [
 export function Hero() {
   const { openModal } = useLp();
   return (
-    <section className="relative pt-12 sm:pt-16 pb-16 sm:pb-24 px-4 sm:px-6 border-b border-border overflow-hidden" id="hero">
-      <div aria-hidden className="pointer-events-none absolute -top-24 -right-24 size-[420px] rounded-full bg-gold/10 blur-3xl animate-float-slow" />
-      <div aria-hidden className="pointer-events-none absolute -bottom-32 -left-24 size-[380px] rounded-full bg-petrol/10 blur-3xl animate-float-slow" style={{ animationDelay: "1.5s" }} />
+    <section className="relative pt-12 sm:pt-16 pb-16 sm:pb-24 px-4 sm:px-6 border-b border-border" id="hero">
       <div className="max-w-7xl mx-auto">
         <div className="max-w-5xl relative">
           <Reveal variant="fade-up">
