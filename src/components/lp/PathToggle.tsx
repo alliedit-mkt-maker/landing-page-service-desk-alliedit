@@ -2,7 +2,7 @@ import { useLp } from "./LpProvider";
 import { cn } from "@/lib/utils";
 
 const painsInternal = [
-  { title: "Equipe sênior presa no operacional", body: "Técnico bom atendendo chamado de senha e impressora. Projeto estratégico esperando há meses." },
+  { title: "Equipe sênior presa no operacional", body: "Técnico bom atendendo chamado de cliente final — senha, impressora. Projeto estratégico esperando há meses." },
   { title: "Cobertura 24x7 custa caro", body: "Manter time próprio à noite e fim de semana explode hora extra. E na falha fora do horário, ninguém responde." },
   { title: "Turnover alto consome orçamento", body: "Treinar N1, perder em 8 meses, treinar de novo. Ciclo eterno que drena tempo e dinheiro." },
   { title: "Crescimento trava no operacional", body: "Cada nova unidade ou filial exige TI antes de qualquer coisa. Time interno não tem braço pra acompanhar o ritmo." },
