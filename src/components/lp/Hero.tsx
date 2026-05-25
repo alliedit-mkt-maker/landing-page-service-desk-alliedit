@@ -10,7 +10,14 @@ const bullets = [
 export function Hero() {
   const { openModal } = useLp();
   return (
-    <section className="relative overflow-hidden pt-12 sm:pt-16 pb-16 sm:pb-24 px-4 sm:px-6 border-b border-border" id="hero">
+    <section
+      className="relative overflow-hidden pt-20 sm:pt-28 pb-24 sm:pb-36 px-4 sm:px-6 border-b border-border"
+      id="hero"
+      style={{
+        backgroundImage:
+          "radial-gradient(60% 70% at 85% 0%, color-mix(in oklch, var(--gold) 18%, transparent), transparent 70%), radial-gradient(55% 65% at 0% 100%, color-mix(in oklch, var(--petrol) 12%, transparent), transparent 70%), linear-gradient(180deg, color-mix(in oklch, var(--gold) 6%, var(--surface)), var(--surface))",
+      }}
+    >
       <div className="max-w-7xl mx-auto relative">
         <div className="max-w-5xl relative">
           <Reveal variant="fade-up">
