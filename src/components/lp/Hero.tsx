@@ -26,7 +26,7 @@ export function Hero() {
             </span>
           </Reveal>
           <Reveal variant="fade-up" delay={120}>
-            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[5.5rem] font-extrabold tracking-tight text-balance leading-[0.95] mb-8 sm:mb-10 text-petrol">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[5.5rem] font-extrabold tracking-tight text-balance leading-[0.95] mb-8 sm:mb-10 text-ink">
               A operação de TI por trás das marcas que você conhece.
             </h1>
           </Reveal>
