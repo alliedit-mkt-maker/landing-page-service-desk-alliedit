@@ -10,7 +10,7 @@ const testimonials = [
 export function CaseStudy() {
   const { openModal } = useLp();
   return (
-    <section className="py-16 sm:py-24 px-4 sm:px-6 border-b border-border bg-petrol/[0.02]" id="cases">
+    <section className="py-16 sm:py-24 px-4 sm:px-6 bg-petrol/[0.02]" id="cases">
       <div className="max-w-7xl mx-auto">
         <Reveal variant="fade-up" className="mb-12 sm:mb-16 max-w-3xl">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-balance">
