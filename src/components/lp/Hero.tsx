@@ -4,7 +4,7 @@ import { Reveal } from "./Reveal";
 const bullets = [
   "Acordos sob medida (dedicado, compartilhado, on-site, remoto, com ou sem equipamento)",
   "Cobertura 24x7",
-  "Três níveis de suporte integrados (N1, N2 e N3)",
+  "Suporte ponta a ponta (N1, N2 e N3)",
 ];
 
 export function Hero() {
