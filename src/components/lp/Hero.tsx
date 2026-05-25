@@ -3,7 +3,7 @@ import { Reveal } from "./Reveal";
 
 const bullets = [
   "Service Desk medido por SLAs, processos e controle de qualidade",
-  "Presencial, remoto ou híbrido — modelo sob medida",
+  "Presencial, remoto ou híbrido | modelo sob medida",
   "Head dedicado na sua conta com acesso à diretoria",
 ];
 
