@@ -28,7 +28,7 @@ export function PathToggle() {
     <section className="py-16 sm:py-24 px-4 sm:px-6" id="caminho">
       <div className="max-w-7xl mx-auto">
         <Reveal variant="fade-up" className="text-center max-w-3xl mx-auto mb-10">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-balance">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-balance text-ink">
             Como funciona o seu suporte hoje?
           </h2>
           <p className="text-petrol/60">Escolha o seu cenário pra ver o que costuma travar a operação.</p>
@@ -60,7 +60,7 @@ export function PathToggle() {
             </div>
 
             <div className="mt-12 flex flex-col items-center gap-6 text-center">
-              <p className="font-mono text-sm text-petrol/80 max-w-2xl text-balance">{bridge}</p>
+              <p className="font-mono text-sm text-petrol/80 max-w-2xl text-balance text-ink">{bridge}</p>
               <button
                 onClick={() => openModal("path_toggle")}
                 className="btn-sheen bg-petrol text-white px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-petrol-light transition-colors"

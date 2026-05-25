@@ -14,7 +14,7 @@ export function Flexibility() {
     <section className="py-16 sm:py-24 px-4 sm:px-6 bg-petrol text-white overflow-hidden relative" id="flexibilidade">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 sm:gap-16 lg:gap-20 relative">
         <Reveal variant="slide-right">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-6 text-balance">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-6 text-balance text-ink">
             Cada operação é diferente. Seu contrato também é
           </h2>
           <p className="text-white/60 text-base sm:text-lg mb-8 sm:mb-10 max-w-md">
