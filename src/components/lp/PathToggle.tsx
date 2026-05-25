@@ -25,7 +25,7 @@ export function PathToggle() {
     : "A AlliedIT é o fornecedor que entrega o que você espera. Especialização vertical, governança real, SLA cumprido.";
 
   return (
-    <section className="py-16 sm:py-24 px-4 sm:px-6 border-b border-border" id="caminho">
+    <section className="py-16 sm:py-24 px-4 sm:px-6" id="caminho">
       <div className="max-w-7xl mx-auto">
         <Reveal variant="fade-up" className="text-center max-w-3xl mx-auto mb-10">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-balance">

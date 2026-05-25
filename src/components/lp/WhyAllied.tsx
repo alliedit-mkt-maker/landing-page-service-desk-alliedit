@@ -12,7 +12,7 @@ const items = [
 export function WhyAllied() {
   const { openModal } = useLp();
   return (
-    <section className="py-16 sm:py-24 px-4 sm:px-6 border-b border-border" id="por-que">
+    <section className="py-16 sm:py-24 px-4 sm:px-6" id="por-que">
       <div className="max-w-7xl mx-auto">
         <Reveal variant="fade-up" className="mb-12 sm:mb-16 max-w-3xl">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-balance">
