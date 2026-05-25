@@ -19,7 +19,7 @@ export function Faq() {
     <section className="py-16 sm:py-24 px-4 sm:px-6" id="faq">
       <div className="max-w-4xl mx-auto">
         <Reveal variant="fade-up" className="mb-10 sm:mb-12">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-balance">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-balance text-ink">
             Perguntas frequentes
           </h2>
         </Reveal>

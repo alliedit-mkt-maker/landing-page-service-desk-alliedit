@@ -54,7 +54,7 @@ export function Pillars() {
     <section className="py-16 sm:py-24 px-4 sm:px-6 bg-petrol/[0.02]" id="pilares">
       <div className="max-w-7xl mx-auto">
         <Reveal variant="fade-up" className="mb-12 sm:mb-16 max-w-3xl">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-balance">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-balance text-ink">
             O que muda quando o Service Desk é da AlliedIT
           </h2>
           <p className="text-petrol/60 text-base sm:text-lg">{subhead}</p>
@@ -66,7 +66,7 @@ export function Pillars() {
             return (
               <Reveal as="article" key={p.title} variant="fade-up" delay={i * 120} className="bg-surface p-6 sm:p-8 flex flex-col group transition-colors hover:bg-petrol hover:text-white">
                 <span className="font-mono text-[11px] text-gold mb-4">{String(i + 1).padStart(2, "0")}</span>
-                <h3 className="font-extrabold text-lg sm:text-xl mb-4 leading-tight text-balance">{p.title}</h3>
+                <h3 className="font-extrabold text-lg sm:text-xl mb-4 leading-tight text-balance text-ink">{p.title}</h3>
                 <p className="text-petrol/80 text-sm leading-relaxed group-hover:text-white/80 transition-colors">{body}</p>
               </Reveal>
             );
