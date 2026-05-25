@@ -13,7 +13,7 @@ export function CaseStudy() {
     <section className="py-16 sm:py-24 px-4 sm:px-6 bg-petrol/[0.02]" id="cases">
       <div className="max-w-7xl mx-auto">
         <Reveal variant="fade-up" className="mb-12 sm:mb-16 max-w-3xl">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-balance text-ink">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-balance text-ink-mid">
             Sete anos de operação. Centenas de unidades atendidas.
           </h2>
           <p className="text-petrol/60 text-base sm:text-lg">
@@ -40,7 +40,7 @@ export function CaseStudy() {
               </div>
             </div>
             <div className="p-8 sm:p-10 md:p-14 flex flex-col justify-center">
-              <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight mb-6 leading-tight text-balance text-ink">
+              <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight mb-6 leading-tight text-balance text-ink-mid">
                 Mais de 10 unidades atendidas de norte a sul do Brasil.
               </h3>
               <p className="text-petrol/70 mb-8 leading-relaxed">
@@ -80,7 +80,7 @@ export function CaseStudy() {
 function Stat({ n, label }: { n: string; label: string }) {
   return (
     <div>
-      <div className="text-3xl font-extrabold text-ink leading-none">{n}</div>
+      <div className="text-3xl font-extrabold text-ink-mid leading-none">{n}</div>
       <div className="mt-2 font-mono text-[10px] uppercase tracking-widest text-petrol/50">{label}</div>
     </div>
   );
