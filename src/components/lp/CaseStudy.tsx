@@ -14,7 +14,7 @@ export function CaseStudy() {
       <div className="max-w-7xl mx-auto">
         <Reveal variant="fade-up" className="mb-12 sm:mb-16 max-w-3xl">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-balance">
-            Vinte anos de operação. Centenas de unidades atendidas.
+            Sete anos de operação. Centenas de unidades atendidas.
           </h2>
           <p className="text-petrol/60 text-base sm:text-lg">
             O melhor termômetro não é o que falamos. É o tempo que cada cliente fica conosco.

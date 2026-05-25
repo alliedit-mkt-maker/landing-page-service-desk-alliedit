@@ -2,7 +2,7 @@ import { useLp } from "./LpProvider";
 import { Reveal } from "./Reveal";
 
 const bullets = [
-  "Mais de 20 anos de mercado",
+  "Acordos sob medida (dedicado, compartilhado, on-site, remoto, com ou sem equipamento)",
   "Cobertura 24x7",
   "Três níveis de suporte integrados (N1, N2 e N3)",
 ];
