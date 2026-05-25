@@ -2,9 +2,9 @@ import { useLp } from "./LpProvider";
 import { Reveal } from "./Reveal";
 
 const bullets = [
-  "Acordos sob medida (dedicado, compartilhado, on-site, remoto, com ou sem equipamento)",
-  "Cobertura 24x7",
-  "Suporte ponta a ponta (N1, N2 e N3)",
+  "Service Desk medido por SLAs, processos e controle de qualidade",
+  "Presencial, remoto ou híbrido — modelo sob medida",
+  "Head dedicado na sua conta com acesso à diretoria",
 ];
 
 export function Hero() {
