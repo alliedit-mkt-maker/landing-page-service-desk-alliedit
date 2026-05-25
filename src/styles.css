@@ -60,9 +60,10 @@
   --petrol: oklch(0.48 0.075 215);
   --petrol-light: oklch(0.58 0.085 212);
   --gold: oklch(0.82 0.16 82);
+  --ink: oklch(0.20 0.055 235);
   --surface: oklch(1 0 0);
   --background: oklch(1 0 0);
-  --foreground: oklch(0.26 0.025 220);
+  --foreground: oklch(0.22 0.05 230);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.26 0.025 220);
   --popover: oklch(1 0 0);
