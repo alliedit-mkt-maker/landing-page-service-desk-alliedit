@@ -80,7 +80,7 @@ export function CaseStudy() {
 function Stat({ n, label }: { n: string; label: string }) {
   return (
     <div>
-      <div className="text-3xl font-extrabold text-petrol leading-none">{n}</div>
+      <div className="text-3xl font-extrabold text-ink leading-none">{n}</div>
       <div className="mt-2 font-mono text-[10px] uppercase tracking-widest text-petrol/50">{label}</div>
     </div>
   );
