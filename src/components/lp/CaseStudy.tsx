@@ -31,7 +31,7 @@ export function CaseStudy() {
                 <img
                   src={ipanemaLogo}
                   alt="Queijos Ipanema"
-                  className="mx-auto h-24 sm:h-28 md:h-32 w-auto"
+                  className="mx-auto h-36 sm:h-44 md:h-48 w-auto"
                 />
                 <div className="mt-10 sm:mt-12 flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-[10px] sm:text-[11px] font-mono uppercase tracking-widest text-white/40">
                   <span>Indústria de alimentos</span>
@@ -44,13 +44,13 @@ export function CaseStudy() {
             </div>
             <div className="p-8 sm:p-10 md:p-14 flex flex-col justify-center">
               <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight mb-6 leading-tight text-balance text-ink-mid">
-                Operação integrada de Service Desk e Field Services com governança ITIL
+                Operação integrada de Service Support com governança ITIL
               </h3>
               <p className="text-petrol/70 mb-8 leading-relaxed">
-                A Ipanema Queijos, indústria de alimentos altamente dependente de TI, enfrentava incidentes recorrentes, custos elevados com equipe própria e SLA abaixo do esperado. A AlliedIT implantou uma operação integrada de Service Desk e Field Services, orientada por indicadores e baseada em ITIL, com célula dedicada, customização cultural e gestão centralizada.
+                A Ipanema Queijos, indústria de alimentos altamente dependente de TI, enfrentava incidentes recorrentes, custos elevados com equipe própria e SLA abaixo do esperado. A AlliedIT implantou uma operação integrada de Service Support, orientada por indicadores e baseada em ITIL, com célula dedicada, customização cultural e gestão centralizada.
               </p>
               <div className="grid grid-cols-3 gap-6 mb-8 py-6 border-y border-border">
-                <Stat n="-40%" label="Custo do Field Services" />
+                <Stat n="-40%" label="custo da equipe" />
                 <Stat n="94%" label="SLA de solução (era 85%)" />
                 <Stat n="98,4%" label="Satisfação dos usuários" />
               </div>
