@@ -1,5 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from "react";
 import { ContactModal } from "./ContactModal";
+import { captureUtms } from "@/lib/utm";
 
 type Path = "internal" | "external" | null;
 
@@ -36,10 +37,12 @@ export function LpProvider({ children }: { children: ReactNode }) {
   const openModal = useCallback((source?: string) => {
     setModalSource(source);
     setModalOpen(true);
-    pushEvent("modal_open", { source: source ?? "unknown" });
+    pushEvent("cta_click", { button_name: "primary_cta", source: source ?? "unknown" });
+    pushEvent("modal_open", { modal_name: "lead_form", source: source ?? "unknown" });
   }, []);
 
   useEffect(() => {
+    captureUtms();
     pushEvent("lp_view");
     let s50 = false, s90 = false;
     const onScroll = () => {
