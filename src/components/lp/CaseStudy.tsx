@@ -1,6 +1,6 @@
 import { useLp } from "./LpProvider";
 import { Reveal } from "./Reveal";
-import lojasMelLogo from "@/assets/clients/lojas-mel.webp";
+import ipanemaLogo from "@/assets/clients/queijos-ipanema.png";
 
 const testimonials = [
   { quote: "Notamos uma economia de mais de 30% e um aumento de 50% na qualidade percebida dos nossos serviços. Essas mudanças foram fundamentais para o crescimento e sucesso da nossa empresa.", who: "CIO, Apsen Farmacêutica" },
@@ -29,14 +29,14 @@ export function CaseStudy() {
               <div className="text-center">
                 <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-6 block">Case em destaque</span>
                 <img
-                  src={lojasMelLogo}
-                  alt="Lojas Mel"
-                  className="mx-auto h-20 sm:h-24 md:h-28 w-auto brightness-0 invert"
+                  src={ipanemaLogo}
+                  alt="Queijos Ipanema"
+                  className="mx-auto h-24 sm:h-28 md:h-32 w-auto"
                 />
                 <div className="mt-10 sm:mt-12 flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-[10px] sm:text-[11px] font-mono uppercase tracking-widest text-white/40">
-                  <span>Varejo</span>
+                  <span>Indústria de alimentos</span>
                   <span>·</span>
-                  <span>55 unidades</span>
+                  <span>Service Desk</span>
                   <span>·</span>
                   <span>Field Services</span>
                 </div>
@@ -44,18 +44,18 @@ export function CaseStudy() {
             </div>
             <div className="p-8 sm:p-10 md:p-14 flex flex-col justify-center">
               <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight mb-6 leading-tight text-balance text-ink-mid">
-                Service Support para mais de 55 lojas com eficiência e economia
+                Operação integrada de Service Desk e Field Services com governança ITIL
               </h3>
               <p className="text-petrol/70 mb-8 leading-relaxed">
-                O grupo Lojas Mel, com 55 unidades pelo Brasil, enfrentava altos custos com equipe própria, problemas frequentes em PDVs e dificuldade de padronizar atendimento em múltiplas localidades. A AlliedIT assumiu o Field Services completo com modelo flexível, escalável e de alta capilaridade.
+                A Ipanema Queijos, indústria de alimentos altamente dependente de TI, enfrentava incidentes recorrentes, custos elevados com equipe própria e SLA abaixo do esperado. A AlliedIT implantou uma operação integrada de Service Desk e Field Services, orientada por indicadores e baseada em ITIL, com célula dedicada, customização cultural e gestão centralizada.
               </p>
               <div className="grid grid-cols-3 gap-6 mb-8 py-6 border-y border-border">
-                <Stat n="-40%" label="Custos com suporte em campo" />
-                <Stat n="+5%" label="Acima da meta de SLA" />
-                <Stat n="96%" label="Satisfação dos usuários" />
+                <Stat n="-40%" label="Custo do Field Services" />
+                <Stat n="94%" label="SLA de solução (era 85%)" />
+                <Stat n="98,4%" label="Satisfação dos usuários" />
               </div>
               <button
-                onClick={() => openModal("case_lojas_mel")}
+                onClick={() => openModal("case_ipanema")}
                 className="self-start font-bold text-xs uppercase tracking-widest border-b-2 border-petrol pb-1 hover:border-gold hover:text-gold transition-colors"
               >
                 Quero ser o próximo case
