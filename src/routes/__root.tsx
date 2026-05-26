@@ -10,6 +10,8 @@ import {
 
 import appCss from "../styles.css?url";
 
+const GTM_ID = import.meta.env.VITE_GTM_ID as string | undefined;
+
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -73,19 +75,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "author", content: "AlliedIT" },
+      { name: "robots", content: "index, follow" },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "AlliedIT" },
       { name: "twitter:card", content: "summary_large_image" },
-      { title: "Lovable App" },
-      { property: "og:title", content: "Lovable App" },
-      { name: "twitter:title", content: "Lovable App" },
-      { name: "description", content: "AlliedIT Service Desk provides outsourced IT support, managing operations for businesses that require uninterrupted service." },
-      { property: "og:description", content: "AlliedIT Service Desk provides outsourced IT support, managing operations for businesses that require uninterrupted service." },
-      { name: "twitter:description", content: "AlliedIT Service Desk provides outsourced IT support, managing operations for businesses that require uninterrupted service." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/c71ebd2b-b266-4d2c-a6c3-2f3b32fddd6c/id-preview-a587de6a--a3461b32-8458-4e83-be13-751aaf0fe06d.lovable.app-1779654792157.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/c71ebd2b-b266-4d2c-a6c3-2f3b32fddd6c/id-preview-a587de6a--a3461b32-8458-4e83-be13-751aaf0fe06d.lovable.app-1779654792157.png" },
     ],
     links: [
+      { rel: "icon", type: "image/png", href: "/og-image.png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
@@ -97,6 +93,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: appCss,
       },
     ],
+    scripts: GTM_ID
+      ? [
+          {
+            children: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${GTM_ID}');`,
+          },
+        ]
+      : [],
   }),
   shellComponent: RootShell,
   component: RootComponent,
@@ -111,6 +114,16 @@ function RootShell({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body>
+        {GTM_ID ? (
+          <noscript>
+            <iframe
+              src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+              height="0"
+              width="0"
+              style={{ display: "none", visibility: "hidden" }}
+            />
+          </noscript>
+        ) : null}
         {children}
         <Scripts />
       </body>
