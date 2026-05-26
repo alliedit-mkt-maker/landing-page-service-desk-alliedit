@@ -3,9 +3,9 @@ import { Reveal } from "./Reveal";
 import lojasMelLogo from "@/assets/clients/lojas-mel.webp";
 
 const testimonials = [
-  { quote: "A AlliedIT entende o ritmo da nossa operação. Não é só atender chamado, é antecipar problema.", who: "Diretor de TI, rede hoteleira internacional" },
-  { quote: "Reduzimos 40% do tempo médio de resolução de chamado depois que entregamos o Service Desk à AlliedIT.", who: "Gerente de TI, varejo multi-unidade" },
-  { quote: "Previsibilidade. Custo claro, SLA cumprido, time interno livre pra projeto estratégico.", who: "CFO, indústria farmacêutica" },
+  { quote: "Notamos uma economia de mais de 30% e um aumento de 50% na qualidade percebida dos nossos serviços. Essas mudanças foram fundamentais para o crescimento e sucesso da nossa empresa.", who: "CIO, Apsen Farmacêutica" },
+  { quote: "A operação melhorou significativamente com constante aumento de chamados atendidos aos usuários e elevação no nível de satisfação. Tem sido uma empresa que não mede esforços em atender com agilidade e qualidade.", who: "Gerente de TI, HortiFruti Natural da Terra" },
+  { quote: "Sempre fui atendido com muita rapidez e comprometimento com o resultado. Hoje, posso afirmar que essa parceria foi de grande sucesso para nós. Profissionais gabaritados, que nos atendem com muita dedicação.", who: "Gerente de TI, Queijos Ipanema" },
 ];
 
 export function CaseStudy() {
