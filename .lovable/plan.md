@@ -1,25 +1,25 @@
-## Objetivo
-Substituir o placeholder CSS da logo no SiteHeader pela imagem real da AlliedIT, com fundo transparente, mantendo a identidade visual da marca.
+Trocar o case de destaque na seção `CaseStudy.tsx` de "Louvre Hotels Group" para "Lojas Mel", mantendo a estrutura visual existente (card grande à esquerda com fundo petrol + conteúdo à direita, seguido pelos 3 depoimentos).
 
-## Contexto atual
-O SiteHeader usa um placeholder CSS (quadrado azul com quadradinho dourado). A logo real foi fornecida via URL: imagem PNG com "Allied" em azul petróleo e "IT" em amarelo/dourado, com fundo branco.
+## Conteúdo novo
 
-## Tarefas
+**Card de destaque (lado esquerdo, fundo petrol):**
+- Eyebrow: "Case em destaque"
+- Título grande: "Lojas Mel"
+- Linha de tags inferior: "Varejo" · "55 unidades" · "Field Services"
 
-1. **Processar logo**
-   - Remover fundo branco da imagem original, gerando PNG transparente.
-   - Salvar em `public/logo-alliedit.png` (ou `src/assets/` se for importada pelo bundler).
-   - Gerar versão compacta para og:image/favicon se necessário.
+**Lado direito (conteúdo):**
+- Headline (h3): "Field Services para mais de 55 lojas com eficiência e economia"
+- Parágrafo de contexto: O grupo Lojas Mel, com 55 unidades pelo Brasil, enfrentava altos custos com equipe própria, problemas frequentes em PDVs e dificuldade de padronizar atendimento em múltiplas localidades. A AlliedIT assumiu o Field Services com modelo flexível, escalável e de alta capilaridade.
+- Stats (3 colunas, substituindo os atuais):
+  - `-40%` | Custos com suporte em campo
+  - `+5%` | Acima da meta de SLA contratual
+  - `96%` | Satisfação dos usuários
+- CTA mantido: "Quero ser o próximo case" → `openModal("case_lojas_mel")`
 
-2. **Atualizar SiteHeader**
-   - Substituir o bloco placeholder CSS pelo `<img>` com a logo processada.
-   - Ajustar altura/largura para manter proporção (~h-7 ou ~h-8).
-   - Preservar o link para `/` e acessibilidade (aria-label).
+**Depoimentos (3 cards inferiores):** manter os 3 existentes (genéricos de varejo/hotelaria/farma) sem alteração, pois reforçam diversidade de setores.
 
-3. **Revisar outros pontos de uso**
-   - Verificar se og:image pode usar a logo (caso não tenha outra imagem definida).
-   - Footer: se houver logo lá, atualizar também.
+## Arquivos alterados
+- `src/components/lp/CaseStudy.tsx` — substituir textos, marca, tags e stats; trocar identificador do modal.
 
-4. **Testar visual**
-   - Confirmar que a logo fica legível no fundo surface/branco do header.
-   - Verificar em mobile (header compacto).
+## Não alterado
+- Estrutura de layout, classes Tailwind, animações Reveal, blocos de depoimentos.
