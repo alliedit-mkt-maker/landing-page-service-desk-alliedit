@@ -28,31 +28,31 @@ export function CaseStudy() {
               <div className="text-center">
                 <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-6 block">Case em destaque</span>
                 <div className="text-white font-extrabold text-2xl sm:text-3xl md:text-4xl tracking-tight leading-none">
-                  Louvre Hotels<br />Group
+                  Lojas Mel
                 </div>
                 <div className="mt-10 sm:mt-12 flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-[10px] sm:text-[11px] font-mono uppercase tracking-widest text-white/40">
-                  <span>Tulip Inn</span>
+                  <span>Varejo</span>
                   <span>·</span>
-                  <span>Golden Tulip</span>
+                  <span>55 unidades</span>
                   <span>·</span>
-                  <span>Royal Tulip</span>
+                  <span>Field Services</span>
                 </div>
               </div>
             </div>
             <div className="p-8 sm:p-10 md:p-14 flex flex-col justify-center">
               <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight mb-6 leading-tight text-balance text-ink-mid">
-                Mais de 10 unidades atendidas de norte a sul do Brasil.
+                Field Services para mais de 55 lojas com eficiência e economia
               </h3>
               <p className="text-petrol/70 mb-8 leading-relaxed">
-                Marcas Tulip Inn, Golden Tulip e Royal Tulip operam com a mesma estrutura de Service Desk, monitoramento e suporte presencial. Quando o grupo abre nova unidade, a TI já está pronta.
+                O grupo Lojas Mel, com 55 unidades pelo Brasil, enfrentava altos custos com equipe própria, problemas frequentes em PDVs e dificuldade de padronizar atendimento em múltiplas localidades. A AlliedIT assumiu o Field Services completo com modelo flexível, escalável e de alta capilaridade.
               </p>
               <div className="grid grid-cols-3 gap-6 mb-8 py-6 border-y border-border">
-                <Stat n="10+" label="Unidades ativas" />
-                <Stat n="3" label="Marcas atendidas" />
-                <Stat n="24x7" label="Cobertura" />
+                <Stat n="-40%" label="Custos com suporte em campo" />
+                <Stat n="+5%" label="Acima da meta de SLA" />
+                <Stat n="96%" label="Satisfação dos usuários" />
               </div>
               <button
-                onClick={() => openModal("case_louvre")}
+                onClick={() => openModal("case_lojas_mel")}
                 className="self-start font-bold text-xs uppercase tracking-widest border-b-2 border-petrol pb-1 hover:border-gold hover:text-gold transition-colors"
               >
                 Quero ser o próximo case
