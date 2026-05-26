@@ -13,7 +13,6 @@ const logos = [
   { src: apsen, name: "Apsen" },
   { src: espacoLaser, name: "Espaço Laser" },
   { src: ipanema, name: "Ipanema" },
-  { src: cimed, name: "Cimed" },
   { src: bradesco, name: "Bradesco" },
 ];
 
