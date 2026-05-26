@@ -2,7 +2,7 @@ import { useLp } from "./LpProvider";
 import { Reveal } from "./Reveal";
 
 const items = [
-  { title: "20+ anos operando TI corporativa", body: "Operação madura, processos parametrizados, equipe que já viu de tudo." },
+  { title: "+7 anos operando TI corporativa", body: "Operação madura, processos parametrizados, equipe que já viu de tudo." },
   { title: "Especialização vertical real", body: "Hotelaria, saúde, varejo multi-unidade, farma, logística. Sabemos a particularidade de cada setor." },
   { title: "Service Desk integrado com NOC e SOC", body: "Monitoramento ativo de infra e segurança no mesmo time que opera o atendimento. Sem retrabalho." },
   { title: "Crescemos com você", body: "Mais de 10 unidades de Louvre Hotels Group, 7 de Body Tech, multi-CNPJ na Mundial. Você expande, a gente acompanha." },
@@ -16,7 +16,7 @@ export function WhyAllied() {
       <div className="max-w-7xl mx-auto">
         <Reveal variant="fade-up" className="mb-12 sm:mb-16 max-w-3xl">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-balance text-ink-mid">
-            Por que empresas que não podem errar escolhem a AlliedIT
+            +7 anos de mercado. Não 20. Operação que já provou que funciona
           </h2>
           <p className="text-petrol/60 text-base sm:text-lg">
             O mercado está cheio de fornecedor genérico. A AlliedIT entrega especialização vertical e relação de longo prazo.
