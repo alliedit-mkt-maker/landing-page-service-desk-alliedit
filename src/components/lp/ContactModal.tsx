@@ -4,8 +4,8 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { pushEvent } from "./LpProvider";
 import { getUtms, UTM_KEYS } from "@/lib/utm";
 
-const HS_PORTAL_ID = import.meta.env.VITE_HUBSPOT_PORTAL_ID as string;
-const HS_FORM_ID = import.meta.env.VITE_HUBSPOT_FORM_ID as string;
+const HS_PORTAL_ID = (import.meta.env.VITE_HUBSPOT_PORTAL_ID as string) || "47388409";
+const HS_FORM_ID = (import.meta.env.VITE_HUBSPOT_FORM_ID as string) || "087109f4-f093-404c-aec9-b4a3f6d763a4";
 const HS_REGION = (import.meta.env.VITE_HUBSPOT_REGION as string) || "na1";
 const HS_SCRIPT_SRC = "https://js.hsforms.net/forms/embed/v2.js";
 
