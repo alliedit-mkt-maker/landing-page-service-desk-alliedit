@@ -1,5 +1,6 @@
 import { useLp } from "./LpProvider";
 import { Reveal } from "./Reveal";
+import lojasMelLogo from "@/assets/clients/lojas-mel.webp";
 
 const testimonials = [
   { quote: "A AlliedIT entende o ritmo da nossa operação. Não é só atender chamado, é antecipar problema.", who: "Diretor de TI, rede hoteleira internacional" },
@@ -27,9 +28,11 @@ export function CaseStudy() {
               <div aria-hidden className="pointer-events-none absolute -top-16 -right-16 size-60 rounded-full bg-gold/15 blur-3xl animate-float-slow" />
               <div className="text-center">
                 <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-6 block">Case em destaque</span>
-                <div className="text-white font-extrabold text-2xl sm:text-3xl md:text-4xl tracking-tight leading-none">
-                  Lojas Mel
-                </div>
+                <img
+                  src={lojasMelLogo}
+                  alt="Lojas Mel"
+                  className="mx-auto h-20 sm:h-24 md:h-28 w-auto brightness-0 invert"
+                />
                 <div className="mt-10 sm:mt-12 flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-[10px] sm:text-[11px] font-mono uppercase tracking-widest text-white/40">
                   <span>Varejo</span>
                   <span>·</span>
@@ -41,7 +44,7 @@ export function CaseStudy() {
             </div>
             <div className="p-8 sm:p-10 md:p-14 flex flex-col justify-center">
               <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight mb-6 leading-tight text-balance text-ink-mid">
-                Field Services para mais de 55 lojas com eficiência e economia
+                Service Support para mais de 55 lojas com eficiência e economia
               </h3>
               <p className="text-petrol/70 mb-8 leading-relaxed">
                 O grupo Lojas Mel, com 55 unidades pelo Brasil, enfrentava altos custos com equipe própria, problemas frequentes em PDVs e dificuldade de padronizar atendimento em múltiplas localidades. A AlliedIT assumiu o Field Services completo com modelo flexível, escalável e de alta capilaridade.
