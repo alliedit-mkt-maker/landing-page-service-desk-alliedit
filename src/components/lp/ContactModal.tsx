@@ -1,51 +1,112 @@
-import { useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
-import { z } from "zod";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Button } from "@/components/ui/button";
 import { pushEvent } from "./LpProvider";
+import { getUtms, UTM_KEYS } from "@/lib/utm";
 
-const personalDomains = ["gmail.com", "hotmail.com", "outlook.com", "yahoo.com", "icloud.com", "live.com", "uol.com.br", "bol.com.br"];
+const HS_PORTAL_ID = import.meta.env.VITE_HUBSPOT_PORTAL_ID as string;
+const HS_FORM_ID = import.meta.env.VITE_HUBSPOT_FORM_ID as string;
+const HS_REGION = (import.meta.env.VITE_HUBSPOT_REGION as string) || "na1";
+const HS_SCRIPT_SRC = "https://js.hsforms.net/forms/embed/v2.js";
 
-const schema = z.object({
-  nome: z.string().trim().min(2, "Informe seu nome completo").max(120),
-  email: z.string().trim().email("E-mail inválido").max(255).refine(
-    (v) => !personalDomains.includes(v.split("@")[1]?.toLowerCase() ?? ""),
-    "Use seu e-mail corporativo"
-  ),
-  telefone: z.string().trim().min(10, "WhatsApp inválido").max(20),
-  empresa: z.string().trim().min(2).max(120),
-});
+declare global {
+  interface Window {
+    hbspt?: {
+      forms: {
+        create: (opts: Record<string, unknown>) => void;
+      };
+    };
+  }
+}
 
-type Errors = Partial<Record<keyof z.infer<typeof schema>, string>>;
+function loadHubspotScript(): Promise<void> {
+  return new Promise((resolve, reject) => {
+    if (typeof window === "undefined") return resolve();
+    if (window.hbspt) return resolve();
+    const existing = document.querySelector<HTMLScriptElement>(`script[src="${HS_SCRIPT_SRC}"]`);
+    if (existing) {
+      existing.addEventListener("load", () => resolve(), { once: true });
+      existing.addEventListener("error", () => reject(new Error("HubSpot script failed")), { once: true });
+      return;
+    }
+    const s = document.createElement("script");
+    s.src = HS_SCRIPT_SRC;
+    s.async = true;
+    s.defer = true;
+    s.onload = () => resolve();
+    s.onerror = () => reject(new Error("HubSpot script failed"));
+    document.head.appendChild(s);
+  });
+}
 
 export function ContactModal({ open, onOpenChange, source }: { open: boolean; onOpenChange: (v: boolean) => void; source?: string }) {
   const navigate = useNavigate();
-  const [errors, setErrors] = useState<Errors>({});
-  const [submitting, setSubmitting] = useState(false);
+  const targetId = useId().replace(/:/g, "_");
+  const containerRef = useRef<HTMLDivElement>(null);
+  const renderedRef = useRef(false);
+  const [error, setError] = useState<string | null>(null);
 
-  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const fd = new FormData(e.currentTarget);
-    const data = Object.fromEntries(fd.entries());
-    const parsed = schema.safeParse(data);
-    if (!parsed.success) {
-      const errs: Errors = {};
-      parsed.error.issues.forEach((i) => { errs[i.path[0] as keyof Errors] = i.message; });
-      setErrors(errs);
+  useEffect(() => {
+    if (!open) {
+      renderedRef.current = false;
+      if (containerRef.current) containerRef.current.innerHTML = "";
       return;
     }
-    setErrors({});
-    setSubmitting(true);
-    pushEvent("form_submit", { source: source ?? "unknown" });
-    // TODO: integrar com backend (Lovable Cloud) para persistir e enviar para o time comercial.
-    setTimeout(() => {
-      onOpenChange(false);
-      navigate({ to: "/obrigado" });
-    }, 200);
-  }
+    if (renderedRef.current) return;
+    if (!HS_PORTAL_ID || !HS_FORM_ID) {
+      setError("Formulário não configurado. Defina VITE_HUBSPOT_PORTAL_ID e VITE_HUBSPOT_FORM_ID.");
+      return;
+    }
+
+    let cancelled = false;
+    loadHubspotScript()
+      .then(() => {
+        if (cancelled || !window.hbspt) return;
+        renderedRef.current = true;
+        window.hbspt.forms.create({
+          portalId: HS_PORTAL_ID,
+          formId: HS_FORM_ID,
+          region: HS_REGION,
+          target: `#${targetId}`,
+          onFormReady: ($form: unknown) => {
+            try {
+              const utms = getUtms();
+              const root = containerRef.current;
+              if (!root) return;
+              UTM_KEYS.forEach((k) => {
+                const v = utms[k];
+                if (!v) return;
+                const input = root.querySelector<HTMLInputElement>(`input[name="${k}"]`);
+                if (input) {
+                  input.value = v;
+                  input.dispatchEvent(new Event("input", { bubbles: true }));
+                  input.dispatchEvent(new Event("change", { bubbles: true }));
+                }
+              });
+            } catch {
+              /* noop */
+            }
+            void $form;
+          },
+          onFormSubmitted: () => {
+            pushEvent("lead_form_submit", {
+              form_name: "landing_modal",
+              source: source ?? "unknown",
+              page_location: typeof window !== "undefined" ? window.location.href : "",
+            });
+            setTimeout(() => {
+              onOpenChange(false);
+              navigate({ to: "/obrigado" });
+            }, 600);
+          },
+        });
+      })
+      .catch(() => setError("Não foi possível carregar o formulário. Atualize a página."));
+
+    return () => {
+      cancelled = true;
+    };
+  }, [open, navigate, onOpenChange, source, targetId]);
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -56,39 +117,17 @@ export function ContactModal({ open, onOpenChange, source }: { open: boolean; on
             Preencha rapidamente e o nosso time entra em contato em até 4 horas úteis.
           </DialogDescription>
         </DialogHeader>
-        <form onSubmit={onSubmit} className="space-y-4 pt-2" noValidate>
-          <Field id="nome" label="Nome completo" error={errors.nome}>
-            <Input id="nome" name="nome" required maxLength={120} autoComplete="name" />
-          </Field>
-          <Field id="email" label="E-mail corporativo" error={errors.email}>
-            <Input id="email" name="email" type="email" required maxLength={255} autoComplete="email" />
-          </Field>
-          <div className="grid grid-cols-2 gap-4">
-            <Field id="telefone" label="WhatsApp" error={errors.telefone}>
-              <Input id="telefone" name="telefone" required maxLength={20} autoComplete="tel" />
-            </Field>
-            <Field id="empresa" label="Empresa" error={errors.empresa}>
-              <Input id="empresa" name="empresa" required maxLength={120} autoComplete="organization" />
-            </Field>
-          </div>
-          <Button type="submit" disabled={submitting} className="w-full h-12 bg-petrol text-white hover:bg-petrol-light uppercase tracking-wider text-sm font-bold rounded-none">
-            {submitting ? "Enviando..." : "Enviar e agendar conversa"}
-          </Button>
-          <p className="text-[11px] text-petrol/50 text-center font-mono">
+        <div className="pt-2 hubspot-form-wrapper">
+          {error ? (
+            <p className="text-sm text-destructive font-medium">{error}</p>
+          ) : (
+            <div ref={containerRef} id={targetId} />
+          )}
+          <p className="text-[11px] text-petrol/50 text-center font-mono mt-4">
             Seus dados são tratados conforme a LGPD.
           </p>
-        </form>
+        </div>
       </DialogContent>
     </Dialog>
-  );
-}
-
-function Field({ id, label, error, children }: { id: string; label: string; error?: string; children: React.ReactNode }) {
-  return (
-    <div className="space-y-1.5">
-      <Label htmlFor={id} className="font-mono text-[10px] uppercase tracking-widest text-petrol/70">{label}</Label>
-      {children}
-      {error && <p className="text-xs text-destructive font-medium">{error}</p>}
-    </div>
   );
 }
