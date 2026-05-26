@@ -4,7 +4,6 @@ import cacauShow from "@/assets/clients/cacau-show.webp";
 import apsen from "@/assets/clients/apsen.webp";
 import espacoLaser from "@/assets/clients/espaco-laser.webp";
 import ipanema from "@/assets/clients/ipanema.webp";
-import cimed from "@/assets/clients/cimed.webp";
 import bradesco from "@/assets/clients/bradesco.webp";
 
 const logos = [
