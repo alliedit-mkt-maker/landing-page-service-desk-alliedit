@@ -112,9 +112,9 @@ export function ContactModal({ open, onOpenChange, source }: { open: boolean; on
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-lg max-h-[90vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-extrabold tracking-tight">Vamos falar de Service Desk.</DialogTitle>
-          <DialogDescription className="text-petrol/60">
-            Preencha rapidamente e o nosso time entra em contato em até 4 horas úteis.
+          <DialogTitle className="text-2xl font-extrabold tracking-tight text-petrol">Vamos falar de Service Desk.</DialogTitle>
+          <DialogDescription className="sr-only">
+            Formulário de contato AlliedIT Service Desk
           </DialogDescription>
         </DialogHeader>
         <div className="pt-2 hubspot-form-wrapper">
@@ -124,7 +124,7 @@ export function ContactModal({ open, onOpenChange, source }: { open: boolean; on
             <div ref={containerRef} id={targetId} />
           )}
           <p className="text-[11px] text-petrol/50 text-center font-mono mt-4">
-            Seus dados são tratados conforme a LGPD.
+            Sem SPAM.
           </p>
         </div>
       </DialogContent>
