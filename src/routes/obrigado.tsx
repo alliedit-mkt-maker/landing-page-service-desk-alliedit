@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/lp/SiteHeader";
 import { SiteFooter } from "@/components/lp/SiteFooter";
 import { LpProvider, pushEvent } from "@/components/lp/LpProvider";
@@ -15,61 +15,45 @@ export const Route = createFileRoute("/obrigado")({
   component: ObrigadoPage,
 });
 
-const crossSell = [
-  { title: "NOC + SOC integrados", body: "Monitoramento 24x7 de infraestrutura e segurança no mesmo time." },
-  { title: "Field Service multi-unidade", body: "Atendimento presencial coordenado para empresas com várias filiais." },
-  { title: "Administração de Cloud com FinOps", body: "Governança e redução de custo em AWS, Azure e GCP." },
-];
-
 function ObrigadoPage() {
   return (
     <LpProvider>
       <div className="min-h-screen bg-surface text-petrol flex flex-col">
         <SiteHeader />
-        <main className="flex-1 px-6 py-24">
+        <main className="flex-1 px-6 py-20 sm:py-24">
           <div className="max-w-3xl mx-auto animate-fade-up">
-            <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-6 block">
-              Contato recebido
-            </span>
             <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight mb-6 text-balance leading-[0.95]">
-              Recebemos seu contato.
+              Recebemos seus detalhes!
             </h1>
-            <p className="text-petrol/70 text-lg mb-12 max-w-2xl">
-              Em até <strong className="text-petrol">4 horas úteis</strong> um especialista da AlliedIT retorna pelo canal informado. Enquanto isso, conheça outros serviços que podem fazer sentido pra sua operação.
+            <p className="text-petrol/70 text-lg max-w-2xl">
+              Em breve faremos contato por e-mail, telefone e WhatsApp.
             </p>
 
-            <div className="grid md:grid-cols-3 gap-px bg-border border border-border mb-12">
-              {crossSell.map((s) => (
-                <article key={s.title} className="bg-surface p-6">
-                  <h2 className="font-extrabold text-lg mb-3 leading-tight">{s.title}</h2>
-                  <p className="text-petrol/70 text-sm leading-relaxed">{s.body}</p>
-                </article>
-              ))}
-            </div>
-
-            <div className="border border-border p-8 bg-petrol/[0.02]">
-              <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-3 block">
+            <section className="mt-20 sm:mt-24">
+              <h3 className="text-2xl md:text-3xl font-extrabold tracking-tight mb-6">
                 Precisa falar agora?
-              </span>
-              <p className="text-petrol/80 mb-6">
-                Atendimento direto pelo nosso WhatsApp comercial.
-              </p>
+              </h3>
               <a
-                href="https://wa.me/551140005000?text=Ol%C3%A1%2C%20preenchi%20o%20formul%C3%A1rio%20no%20site"
+                href="https://wa.me/551140005000?text=Ol%C3%A1%21%20Me%20interessei%20pelo%20Service%20Desk%20da%20AlliedIT%20e%20gostaria%20de%20falar%20com%20um%20especialista."
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => pushEvent("whatsapp_click_thankyou")}
-                className="inline-flex items-center gap-3 bg-petrol text-white px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-petrol-light transition-colors"
+                className="btn-sheen inline-flex items-center justify-center gap-3 bg-petrol text-white px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-petrol-light transition-colors"
               >
-                Falar no WhatsApp
+                Chame no WhatsApp
               </a>
-            </div>
+            </section>
 
-            <div className="mt-12">
-              <Link to="/" className="font-mono text-xs uppercase tracking-widest text-petrol/60 hover:text-petrol border-b border-petrol/20 hover:border-petrol pb-0.5">
-                ← Voltar para o site
-              </Link>
-            </div>
+            <hr className="mt-20 sm:mt-24 border-t border-border" />
+
+            <section className="mt-12 sm:mt-16">
+              <a
+                href="/"
+                className="inline-flex items-center justify-center gap-2 border border-petrol/30 text-petrol px-6 py-3 text-xs font-bold uppercase tracking-widest hover:bg-petrol/5 transition-colors"
+              >
+                Explore nosso site
+              </a>
+            </section>
           </div>
         </main>
         <SiteFooter />
