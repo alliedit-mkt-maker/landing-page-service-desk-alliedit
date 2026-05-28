@@ -124,7 +124,7 @@ export function ContactModal({ open, onOpenChange, source }: { open: boolean; on
             <div ref={containerRef} id={targetId} />
           )}
           <p className="text-[11px] text-petrol/50 text-center font-mono mt-4">
-            Sem SPAM.
+            Seus dados são tratados conforme a LGPD. Sem SPAM.
           </p>
         </div>
       </DialogContent>
