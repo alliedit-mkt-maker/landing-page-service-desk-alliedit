@@ -1,11 +1,14 @@
 import { useLp } from "./LpProvider";
 import { Reveal } from "./Reveal";
 import ipanemaLogo from "@/assets/clients/queijos-ipanema.png";
+import apsenPhoto from "@/assets/testimonials/apsen.jpg.asset.json";
+import hortifrutiPhoto from "@/assets/testimonials/hortifruti.jpeg.asset.json";
+import ipanemaPhoto from "@/assets/testimonials/ipanema.jpg.asset.json";
 
 const testimonials = [
-  { quote: "Notamos uma economia de mais de 30% e um aumento de 50% na qualidade percebida dos nossos serviços. Essas mudanças foram fundamentais para o crescimento e sucesso da nossa empresa.", who: "CIO, Apsen Farmacêutica" },
-  { quote: "A operação melhorou significativamente com constante aumento de chamados atendidos aos usuários e elevação no nível de satisfação. Tem sido uma empresa que não mede esforços em atender com agilidade e qualidade.", who: "Gerente de TI, HortiFruti Natural da Terra" },
-  { quote: "Sempre fui atendido com muita rapidez e comprometimento com o resultado. Hoje, posso afirmar que essa parceria foi de grande sucesso para nós. Profissionais gabaritados, que nos atendem com muita dedicação.", who: "Gerente de TI, Queijos Ipanema" },
+  { quote: "Notamos uma economia de mais de 30% e um aumento de 50% na qualidade percebida dos nossos serviços. Essas mudanças foram fundamentais para o crescimento e sucesso da nossa empresa.", who: "CIO, Apsen Farmacêutica", photo: apsenPhoto.url },
+  { quote: "A operação melhorou significativamente com constante aumento de chamados atendidos aos usuários e elevação no nível de satisfação. Tem sido uma empresa que não mede esforços em atender com agilidade e qualidade.", who: "Gerente de TI, HortiFruti Natural da Terra", photo: hortifrutiPhoto.url },
+  { quote: "Sempre fui atendido com muita rapidez e comprometimento com o resultado. Hoje, posso afirmar que essa parceria foi de grande sucesso para nós. Profissionais gabaritados, que nos atendem com muita dedicação.", who: "Gerente de TI, Queijos Ipanema", photo: ipanemaPhoto.url },
 ];
 
 export function CaseStudy() {
@@ -69,8 +72,9 @@ export function CaseStudy() {
             <Reveal as="blockquote" key={t.who} variant="fade-up" delay={i * 120} className="bg-surface p-6 sm:p-8 flex flex-col">
               <div className="text-gold text-3xl leading-none mb-4 font-serif">"</div>
               <p className="text-petrol/90 text-sm leading-relaxed mb-6 flex-1">{t.quote}</p>
-              <cite className="not-italic font-mono text-[11px] uppercase tracking-widest text-petrol/60 border-t border-border pt-4">
-                {t.who}
+              <cite className="not-italic flex items-center gap-3 font-mono text-[11px] uppercase tracking-widest text-petrol/60 border-t border-border pt-4">
+                <img src={t.photo} alt={t.who} className="size-10 rounded-full object-cover" loading="lazy" />
+                <span>{t.who}</span>
               </cite>
             </Reveal>
           ))}

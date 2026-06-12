@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import ogImage from "@/assets/og-image.png.asset.json";
 import { LpProvider } from "@/components/lp/LpProvider";
 import { SiteHeader } from "@/components/lp/SiteHeader";
 import { SiteFooter } from "@/components/lp/SiteFooter";
@@ -24,13 +25,14 @@ export const Route = createFileRoute("/")({
       { property: "og:description", content: description },
       { property: "og:url", content: "/" },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: "/og-image.png" },
+      { property: "og:image", content: `https://service-desk.alliedit.com.br${ogImage.url}` },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "AlliedIT" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
-      { name: "twitter:image", content: "/og-image.png" },
+      { name: "twitter:image", content: `https://service-desk.alliedit.com.br${ogImage.url}` },
     ],
     links: [{ rel: "canonical", href: "/" }],
     scripts: [
