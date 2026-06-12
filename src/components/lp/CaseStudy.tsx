@@ -72,8 +72,9 @@ export function CaseStudy() {
             <Reveal as="blockquote" key={t.who} variant="fade-up" delay={i * 120} className="bg-surface p-6 sm:p-8 flex flex-col">
               <div className="text-gold text-3xl leading-none mb-4 font-serif">"</div>
               <p className="text-petrol/90 text-sm leading-relaxed mb-6 flex-1">{t.quote}</p>
-              <cite className="not-italic font-mono text-[11px] uppercase tracking-widest text-petrol/60 border-t border-border pt-4">
-                {t.who}
+              <cite className="not-italic flex items-center gap-3 font-mono text-[11px] uppercase tracking-widest text-petrol/60 border-t border-border pt-4">
+                <img src={t.photo} alt={t.who} className="size-10 rounded-full object-cover" loading="lazy" />
+                <span>{t.who}</span>
               </cite>
             </Reveal>
           ))}
