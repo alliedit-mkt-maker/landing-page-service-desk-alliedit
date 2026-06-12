@@ -1,11 +1,14 @@
 import { useLp } from "./LpProvider";
 import { Reveal } from "./Reveal";
 import ipanemaLogo from "@/assets/clients/queijos-ipanema.png";
+import apsenPhoto from "@/assets/testimonials/apsen.jpg.asset.json";
+import hortifrutiPhoto from "@/assets/testimonials/hortifruti.jpeg.asset.json";
+import ipanemaPhoto from "@/assets/testimonials/ipanema.jpg.asset.json";
 
 const testimonials = [
-  { quote: "Notamos uma economia de mais de 30% e um aumento de 50% na qualidade percebida dos nossos serviços. Essas mudanças foram fundamentais para o crescimento e sucesso da nossa empresa.", who: "CIO, Apsen Farmacêutica" },
-  { quote: "A operação melhorou significativamente com constante aumento de chamados atendidos aos usuários e elevação no nível de satisfação. Tem sido uma empresa que não mede esforços em atender com agilidade e qualidade.", who: "Gerente de TI, HortiFruti Natural da Terra" },
-  { quote: "Sempre fui atendido com muita rapidez e comprometimento com o resultado. Hoje, posso afirmar que essa parceria foi de grande sucesso para nós. Profissionais gabaritados, que nos atendem com muita dedicação.", who: "Gerente de TI, Queijos Ipanema" },
+  { quote: "Notamos uma economia de mais de 30% e um aumento de 50% na qualidade percebida dos nossos serviços. Essas mudanças foram fundamentais para o crescimento e sucesso da nossa empresa.", who: "CIO, Apsen Farmacêutica", photo: apsenPhoto.url },
+  { quote: "A operação melhorou significativamente com constante aumento de chamados atendidos aos usuários e elevação no nível de satisfação. Tem sido uma empresa que não mede esforços em atender com agilidade e qualidade.", who: "Gerente de TI, HortiFruti Natural da Terra", photo: hortifrutiPhoto.url },
+  { quote: "Sempre fui atendido com muita rapidez e comprometimento com o resultado. Hoje, posso afirmar que essa parceria foi de grande sucesso para nós. Profissionais gabaritados, que nos atendem com muita dedicação.", who: "Gerente de TI, Queijos Ipanema", photo: ipanemaPhoto.url },
 ];
 
 export function CaseStudy() {
