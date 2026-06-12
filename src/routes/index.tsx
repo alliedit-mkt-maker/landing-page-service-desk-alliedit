@@ -33,8 +33,6 @@ export const Route = createFileRoute("/")({
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
       { name: "twitter:image", content: `https://service-desk.alliedit.com.br${ogImage.url}` },
-      { name: "twitter:description", content: description },
-      { name: "twitter:image", content: "/og-image.png" },
     ],
     links: [{ rel: "canonical", href: "/" }],
     scripts: [
