@@ -9,8 +9,12 @@ import {
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import ogImage from "@/assets/og-image.png.asset.json";
+import favicon from "@/assets/favicon.svg.asset.json";
 
 const GTM_ID = import.meta.env.VITE_GTM_ID as string | undefined;
+const SITE_URL = "https://service-desk.alliedit.com.br";
+const OG_IMAGE_URL = `${SITE_URL}${ogImage.url}`;
 
 function NotFoundComponent() {
   return (
@@ -79,17 +83,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "AlliedIT" },
       { name: "twitter:card", content: "summary_large_image" },
-      { title: "Lovable App" },
-      { property: "og:title", content: "Lovable App" },
-      { name: "twitter:title", content: "Lovable App" },
-      { name: "description", content: "AlliedIT's Service Desk landing page offers outsourced IT support solutions." },
-      { property: "og:description", content: "AlliedIT's Service Desk landing page offers outsourced IT support solutions." },
-      { name: "twitter:description", content: "AlliedIT's Service Desk landing page offers outsourced IT support solutions." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/e32303b4-53be-471b-a355-572112cb92d3/id-preview-e272d5db--ebb4df05-e5a1-4bea-9ce1-f54a0673c3e5.lovable.app-1779895824882.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/e32303b4-53be-471b-a355-572112cb92d3/id-preview-e272d5db--ebb4df05-e5a1-4bea-9ce1-f54a0673c3e5.lovable.app-1779895824882.png" },
+      { property: "og:image:alt", content: "AlliedIT" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
     ],
     links: [
-      { rel: "icon", type: "image/png", href: "/og-image.png" },
+      { rel: "icon", type: "image/svg+xml", href: favicon.url },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
