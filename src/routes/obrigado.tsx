@@ -34,7 +34,7 @@ function ObrigadoPage() {
                 Precisa falar agora?
               </h3>
               <a
-                href="https://wa.me/551140005000?text=Ol%C3%A1%21%20Me%20interessei%20pelo%20Service%20Desk%20da%20AlliedIT%20e%20gostaria%20de%20falar%20com%20um%20especialista."
+                href="https://wa.me/5511918506992?text=Ol%C3%A1%21%20Me%20interessei%20pelo%20Service%20Desk%20da%20AlliedIT%20e%20gostaria%20de%20falar%20com%20um%20especialista."
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => pushEvent("whatsapp_click_thankyou")}
