@@ -72,7 +72,7 @@ function CabeamentoPage() {
 const heroBullets = [
   "Cada ponto testado e certificado, com laudo em mãos",
   "Documentação completa: planta, etiquetagem e as-built",
-  "Equipe que opera TI corporativa há +7 anos, não só instala",
+  "Máxima velocidade e estabilidade com rede blindada contra quedas constantes",
 ];
 
 function Hero() {
@@ -95,12 +95,12 @@ function Hero() {
           </Reveal>
           <Reveal variant="fade-up" delay={120}>
             <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[5.5rem] font-extrabold tracking-tight text-balance leading-[0.95] mb-8 sm:mb-10 text-ink-mid">
-              A rede só é boa até o último cabo.
+              A rede só é boa até o último cabo
             </h1>
           </Reveal>
           <Reveal variant="fade-up" delay={200}>
             <p className="text-petrol/70 text-base sm:text-lg max-w-3xl mb-8 sm:mb-10 leading-relaxed">
-              Projeto, instalação e certificação de cabeamento estruturado, fibra óptica e data center. A camada que ninguém vê — e que derruba tudo quando é mal feita.
+              Projeto, instalação e certificação de cabeamento estruturado, fibra óptica e data center. A camada que ninguém vê, e que derruba tudo quando é mal feita.
             </p>
           </Reveal>
           <ul className="flex flex-col gap-4 sm:gap-5 mb-10 sm:mb-12">
@@ -116,7 +116,7 @@ function Hero() {
               onClick={() => openModal("hero_primary")}
               className="btn-sheen bg-petrol text-white px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-petrol-light transition-colors"
             >
-              Pedir orçamento
+              Falar com especialista
             </button>
           </Reveal>
         </div>
@@ -151,7 +151,7 @@ function Services() {
         <Reveal variant="fade-up" className="mb-12 sm:mb-16 max-w-3xl">
           <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-4 block">O que fazemos</span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-balance text-ink-mid">
-            Três frentes. Uma infraestrutura que não te dá dor de cabeça.
+            Três frentes Uma infraestrutura que não te dá dor de cabeça
           </h2>
         </Reveal>
 
@@ -178,7 +178,7 @@ function Services() {
             onClick={() => openModal("services")}
             className="btn-sheen bg-petrol text-white px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-petrol-light transition-colors"
           >
-            Pedir orçamento
+            Falar com especialista
           </button>
         </Reveal>
       </div>
@@ -187,7 +187,7 @@ function Services() {
 }
 
 const whyItems = [
-  { title: "Certificação de verdade", body: "Todo ponto testado com certificadora e laudo entregue. Você sabe que funciona — não acredita que funciona." },
+  { title: "Certificação de verdade", body: "Todo ponto testado com certificadora e laudo entregue. Você sabe que funciona, não acredita que funciona." },
   { title: "Documentação que sobra", body: "Planta, etiquetagem e as-built. Quando alguém mexer na rede daqui a dois anos, vai entender o que foi feito." },
   { title: "Quem opera, instala", body: "Não somos só empreiteira de cabo. Operamos TI corporativa, então projetamos pensando em quem vai dar suporte depois." },
   { title: "Obra sem bagunça", body: "Cronograma, equipe identificada e cuidado com o ambiente. Funciona em obra nova ou com a operação rodando." },
@@ -200,7 +200,7 @@ function WhyAllied() {
       <div className="max-w-7xl mx-auto">
         <Reveal variant="fade-up" className="mb-12 sm:mb-16 max-w-3xl">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-balance text-ink-mid">
-            Cabo a gente passa. O que entregamos é uma rede que não te dá problema depois.
+            Cabo a gente passa O que entregamos é uma rede que não te dá problema depois
           </h2>
           <p className="text-petrol/60 text-base sm:text-lg">
             Tem muita gente que puxa cabo. Pouca que entrega documentado, certificado e pensado pra quem vai operar aquilo no dia seguinte.
@@ -217,7 +217,7 @@ function WhyAllied() {
           ))}
           <Reveal variant="scale-in" delay={whyItems.length * 90} className="bg-petrol p-6 sm:p-8 flex items-center justify-center text-center transition-colors hover:bg-petrol-light">
             <button onClick={() => openModal("why_allied")} className="text-white font-extrabold text-lg sm:text-xl leading-tight group">
-              Pedir orçamento
+              Falar com especialista
               <span className="block mt-3 font-mono text-[11px] text-gold uppercase tracking-widest group-hover:translate-x-1 transition-transform">→ Iniciar conversa</span>
             </button>
           </Reveal>
@@ -242,7 +242,7 @@ function Process() {
         <Reveal variant="slide-right">
           <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-4 block">Como funciona</span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-6 text-balance text-white">
-            Do site survey ao laudo na sua mão.
+            Do site survey ao laudo na sua mão
           </h2>
           <p className="text-white/60 text-base sm:text-lg mb-8 sm:mb-10 max-w-md">
             Quatro etapas claras. Sem cabo passado antes da hora, sem surpresa no orçamento, sem entrega sem documentação.
@@ -251,7 +251,7 @@ function Process() {
             onClick={() => openModal("process")}
             className="btn-sheen bg-gold text-petrol px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-white transition-colors"
           >
-            Pedir orçamento
+            Falar com especialista
           </button>
         </Reveal>
         <div className="grid sm:grid-cols-2 gap-px bg-white/10 border border-white/10">
@@ -275,7 +275,7 @@ function Proof() {
         <Reveal variant="fade-up" className="mb-12 sm:mb-16 max-w-3xl">
           <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-4 block">Quem não pode errar, escolhe a AlliedIT</span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-balance text-ink-mid">
-            +7 anos de operação. Infraestrutura que aguenta o negócio em cima.
+            +7 anos de operação Infraestrutura que aguenta o negócio em cima
           </h2>
         </Reveal>
         <div className="grid sm:grid-cols-3 gap-px bg-border border border-border">
@@ -309,7 +309,7 @@ function Testimonials() {
         <Reveal variant="fade-up" className="mb-12 sm:mb-16 max-w-3xl">
           <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-4 block">Na palavra de quem contratou</span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-balance text-ink-mid">
-            O melhor termômetro não é o que falamos.
+            O melhor termômetro não é o que falamos
           </h2>
         </Reveal>
         <div className="grid md:grid-cols-2 gap-px bg-border border border-border">
@@ -332,9 +332,9 @@ const faq = [
   { q: "Vocês atendem fora de São Paulo?", a: "Sim. Operamos projetos em múltiplas cidades e atendemos empresas com várias unidades. Conte onde estão os sites e a gente avalia a logística no levantamento." },
   { q: "Conseguem trabalhar com a operação rodando?", a: "Sim. Boa parte das obras acontece em ambiente que não pode parar. A gente planeja janelas, faz por etapas e identifica a equipe pra interferir o mínimo possível no dia a dia." },
   { q: "O que entra na certificação?", a: "Cada ponto é testado com equipamento certificador, e você recebe o laudo de todos eles. Em fibra, medimos com OTDR e power meter. A documentação as-built acompanha a entrega." },
-  { q: "Como é feito o orçamento?", a: "Começa com um levantamento no local pra entender o ambiente e o que a rede precisa suportar. A partir daí entregamos projeto e orçamento fechado — você aprova antes de qualquer execução." },
+  { q: "Como é feito o orçamento?", a: "Começa com um levantamento no local pra entender o ambiente e o que a rede precisa suportar. A partir daí entregamos projeto e orçamento fechado, você aprova antes de qualquer execução." },
   { q: "Fazem só cabeamento ou também a operação depois?", a: "Os dois. A AlliedIT opera Service Desk, NOC e SOC. Dá pra contratar só a infraestrutura física ou já deixar a operação de TI no mesmo time que conhece a sua rede de ponta a ponta." },
-  { q: "Trabalham com fibra monomodo e multimodo?", a: "Sim, os dois tipos, com fusão, conectorização e medição. Backbone entre prédios, interligação de data centers ou lançamento interno — avaliamos qual solução faz sentido no projeto." },
+  { q: "Trabalham com fibra monomodo e multimodo?", a: "Sim, os dois tipos, com fusão, conectorização e medição. Backbone entre prédios, interligação de data centers ou lançamento interno, avaliamos qual solução faz sentido no projeto." },
 ];
 
 function Faq() {
@@ -366,7 +366,7 @@ function Faq() {
             onClick={() => openModal("faq")}
             className="btn-sheen border border-petrol/20 px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-petrol hover:text-white transition-colors text-petrol"
           >
-            Pedir orçamento
+            Falar com especialista
           </button>
         </Reveal>
       </div>
@@ -390,7 +390,7 @@ function FinalCta() {
         </Reveal>
         <Reveal variant="fade-up" delay={220}>
           <p className="text-white/60 text-base sm:text-lg max-w-2xl mx-auto mb-10 sm:mb-12 leading-relaxed">
-            Conta o que você precisa — obra nova, reforma, ampliação ou só uma rede que vive caindo. A gente faz o levantamento e volta com projeto e orçamento fechado. Sem compromisso.
+            Conta o que você precisa: obra nova, reforma, ampliação ou só uma rede que vive caindo. A gente faz o levantamento e volta com projeto e orçamento fechado. Sem compromisso.
           </p>
         </Reveal>
         <Reveal variant="scale-in" delay={340}>
@@ -398,7 +398,7 @@ function FinalCta() {
             onClick={() => openModal("final_cta")}
             className="btn-sheen bg-white text-petrol px-10 sm:px-12 py-5 sm:py-6 text-sm font-bold uppercase tracking-widest hover:bg-gold transition-colors mb-6"
           >
-            Pedir orçamento
+            Falar com especialista
           </button>
         </Reveal>
       </div>
