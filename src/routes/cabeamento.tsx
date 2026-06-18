@@ -209,20 +209,21 @@ const whyItems = [
 ];
 
 function WhyAllied() {
-  const { openModal } = useLp();
   return (
     <section className="py-16 sm:py-24 px-4 sm:px-6" id="por-que">
       <div className="max-w-7xl mx-auto">
         <Reveal variant="fade-up" className="mb-12 sm:mb-16 max-w-3xl">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-balance text-ink-mid">
-            Cabo a gente passa O que entregamos é uma rede que não te dá problema depois
+            Cabo todo mundo passa
+            <br />
+            Nós entregamos uma rede que não te dá problema depois
           </h2>
           <p className="text-petrol/60 text-base sm:text-lg">
             Tem muita gente que puxa cabo. Pouca que entrega documentado, certificado e pensado pra quem vai operar aquilo no dia seguinte.
           </p>
         </Reveal>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-border border border-border">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-border border border-border">
           {whyItems.map((it, i) => (
             <Reveal as="article" key={it.title} variant="fade-up" delay={i * 90} className="bg-surface p-6 sm:p-8 group transition-colors hover:bg-petrol/[0.04]">
               <span className="font-mono text-[11px] text-gold mb-4 block">{String(i + 1).padStart(2, "0")}</span>
@@ -230,12 +231,6 @@ function WhyAllied() {
               <p className="text-petrol/70 text-sm leading-relaxed">{it.body}</p>
             </Reveal>
           ))}
-          <Reveal variant="scale-in" delay={whyItems.length * 90} className="bg-petrol p-6 sm:p-8 flex items-center justify-center text-center transition-colors hover:bg-petrol-light">
-            <button onClick={() => openModal("why_allied")} className="text-white font-extrabold text-lg sm:text-xl leading-tight group">
-              Falar com especialista
-              <span className="block mt-3 font-mono text-[11px] text-gold uppercase tracking-widest group-hover:translate-x-1 transition-transform">→ Iniciar conversa</span>
-            </button>
-          </Reveal>
         </div>
       </div>
     </section>
