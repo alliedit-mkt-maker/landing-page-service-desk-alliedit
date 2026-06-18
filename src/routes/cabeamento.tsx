@@ -1,0 +1,407 @@
+import { createFileRoute } from "@tanstack/react-router";
+import ogImage from "@/assets/og-image.png.asset.json";
+import { LpProvider, useLp } from "@/components/lp/LpProvider";
+import { SiteHeader } from "@/components/lp/SiteHeader";
+import { SiteFooter } from "@/components/lp/SiteFooter";
+import { Clients } from "@/components/lp/Clients";
+import { Reveal } from "@/components/lp/Reveal";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+
+const title = "AlliedIT | Cabeamento estruturado, fibra óptica e data center";
+const description =
+  "Projeto, instalação e certificação de cabeamento estruturado, fibra óptica e data center. Cada ponto testado, documentação as-built e equipe que opera TI corporativa há +7 anos.";
+
+export const Route = createFileRoute("/cabeamento")({
+  head: () => ({
+    meta: [
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+      { property: "og:url", content: "/cabeamento" },
+      { property: "og:type", content: "website" },
+      { property: "og:image", content: `https://service-desk.alliedit.com.br${ogImage.url}` },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "AlliedIT" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: title },
+      { name: "twitter:description", content: description },
+      { name: "twitter:image", content: `https://service-desk.alliedit.com.br${ogImage.url}` },
+    ],
+    links: [{ rel: "canonical", href: "/cabeamento" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Service",
+          serviceType: "Cabeamento estruturado, fibra óptica e data center",
+          provider: { "@type": "Organization", name: "AlliedIT", url: "https://www.alliedit.com.br" },
+          areaServed: "BR",
+          description,
+        }),
+      },
+    ],
+  }),
+  component: CabeamentoPage,
+});
+
+function CabeamentoPage() {
+  return (
+    <LpProvider>
+      <div className="min-h-screen bg-surface text-petrol font-sans">
+        <SiteHeader />
+        <main>
+          <Hero />
+          <Clients />
+          <Services />
+          <WhyAllied />
+          <Process />
+          <Proof />
+          <Testimonials />
+          <Faq />
+          <FinalCta />
+        </main>
+        <SiteFooter />
+      </div>
+    </LpProvider>
+  );
+}
+
+const heroBullets = [
+  "Cada ponto testado e certificado, com laudo em mãos",
+  "Documentação completa: planta, etiquetagem e as-built",
+  "Equipe que opera TI corporativa há +7 anos, não só instala",
+];
+
+function Hero() {
+  const { openModal } = useLp();
+  return (
+    <section
+      className="relative overflow-hidden pt-20 sm:pt-28 pb-24 sm:pb-36 px-4 sm:px-6"
+      id="hero"
+      style={{
+        backgroundImage:
+          "radial-gradient(60% 60% at 85% 0%, color-mix(in oklch, var(--gold) 18%, transparent), transparent 70%), radial-gradient(55% 55% at 0% 50%, color-mix(in oklch, var(--petrol) 10%, transparent), transparent 70%), linear-gradient(180deg, color-mix(in oklch, var(--gold) 8%, var(--surface)) 0%, color-mix(in oklch, var(--gold) 4%, var(--surface)) 55%, #ffffff 100%)",
+      }}
+    >
+      <div className="max-w-7xl mx-auto relative">
+        <div className="max-w-5xl relative">
+          <Reveal variant="fade-up">
+            <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.2em] text-gold font-semibold mb-4 sm:mb-6 block">
+              Infraestrutura física de TI
+            </span>
+          </Reveal>
+          <Reveal variant="fade-up" delay={120}>
+            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[5.5rem] font-extrabold tracking-tight text-balance leading-[0.95] mb-8 sm:mb-10 text-ink-mid">
+              A rede só é boa até o último cabo.
+            </h1>
+          </Reveal>
+          <Reveal variant="fade-up" delay={200}>
+            <p className="text-petrol/70 text-base sm:text-lg max-w-3xl mb-8 sm:mb-10 leading-relaxed">
+              Projeto, instalação e certificação de cabeamento estruturado, fibra óptica e data center. A camada que ninguém vê — e que derruba tudo quando é mal feita.
+            </p>
+          </Reveal>
+          <ul className="flex flex-col gap-4 sm:gap-5 mb-10 sm:mb-12">
+            {heroBullets.map((b, i) => (
+              <Reveal as="li" key={b} variant="fade-up" delay={300 + i * 100} className="flex items-start gap-3">
+                <div aria-hidden className="size-5 rounded-full border-2 border-gold shrink-1 mt-0.5 animate-soft-pulse" />
+                <p className="text-sm font-medium leading-snug text-petrol/90">{b}</p>
+              </Reveal>
+            ))}
+          </ul>
+          <Reveal variant="fade-up" delay={620}>
+            <button
+              onClick={() => openModal("hero_primary")}
+              className="btn-sheen bg-petrol text-white px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-petrol-light transition-colors"
+            >
+              Pedir orçamento
+            </button>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const services = [
+  {
+    title: "Cabeamento estruturado",
+    desc: "Rede de dados e voz pensada pra crescer com a empresa. Do ponto de trabalho ao rack, com padrão de norma e organização que facilita a manutenção.",
+    items: ["Cat5e, Cat6, Cat6A", "Patch panels e racks", "Etiquetagem e organização", "Certificação ponto a ponto"],
+  },
+  {
+    title: "Fibra óptica",
+    desc: "Backbone de alta capacidade entre prédios, andares e data centers. Fusão, terminação e medição com OTDR pra garantir baixa atenuação e link estável.",
+    items: ["Monomodo e multimodo", "Fusão e conectorização", "Medição OTDR e power meter", "Lançamento interno e externo"],
+  },
+  {
+    title: "Data center",
+    desc: "Infraestrutura de sala técnica feita pra disponibilidade: gestão de cabos, climatização adequada e energia redundante. Onde o erro custa caro, nada fica no improviso.",
+    items: ["Montagem e organização de racks", "Cable management estruturado", "Energia e redundância", "Documentação as-built"],
+  },
+];
+
+function Services() {
+  const { openModal } = useLp();
+  return (
+    <section className="py-16 sm:py-24 px-4 sm:px-6 bg-petrol/[0.02]" id="servicos">
+      <div className="max-w-7xl mx-auto">
+        <Reveal variant="fade-up" className="mb-12 sm:mb-16 max-w-3xl">
+          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-4 block">O que fazemos</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-balance text-ink-mid">
+            Três frentes. Uma infraestrutura que não te dá dor de cabeça.
+          </h2>
+        </Reveal>
+
+        <div className="grid md:grid-cols-3 gap-px bg-border border border-border">
+          {services.map((s, i) => (
+            <Reveal as="article" key={s.title} variant="fade-up" delay={i * 120} className="bg-surface p-6 sm:p-8 flex flex-col group transition-colors hover:bg-petrol hover:text-white">
+              <span className="font-mono text-[11px] text-gold mb-4">{String(i + 1).padStart(2, "0")}</span>
+              <h3 className="font-extrabold text-lg sm:text-xl mb-4 leading-tight text-balance text-ink-mid group-hover:text-white transition-colors">{s.title}</h3>
+              <p className="text-petrol/80 text-sm leading-relaxed mb-6 group-hover:text-white/80 transition-colors">{s.desc}</p>
+              <ul className="space-y-2 mt-auto border-t border-border group-hover:border-white/15 pt-4 transition-colors">
+                {s.items.map((it) => (
+                  <li key={it} className="flex items-start gap-2 text-sm text-petrol/80 group-hover:text-white/80 transition-colors">
+                    <span aria-hidden className="text-gold mt-0.5">→</span>
+                    <span>{it}</span>
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          ))}
+        </div>
+
+        <Reveal variant="fade-up" className="mt-12 flex justify-center">
+          <button
+            onClick={() => openModal("services")}
+            className="btn-sheen bg-petrol text-white px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-petrol-light transition-colors"
+          >
+            Pedir orçamento
+          </button>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+const whyItems = [
+  { title: "Certificação de verdade", body: "Todo ponto testado com certificadora e laudo entregue. Você sabe que funciona — não acredita que funciona." },
+  { title: "Documentação que sobra", body: "Planta, etiquetagem e as-built. Quando alguém mexer na rede daqui a dois anos, vai entender o que foi feito." },
+  { title: "Quem opera, instala", body: "Não somos só empreiteira de cabo. Operamos TI corporativa, então projetamos pensando em quem vai dar suporte depois." },
+  { title: "Obra sem bagunça", body: "Cronograma, equipe identificada e cuidado com o ambiente. Funciona em obra nova ou com a operação rodando." },
+];
+
+function WhyAllied() {
+  const { openModal } = useLp();
+  return (
+    <section className="py-16 sm:py-24 px-4 sm:px-6" id="por-que">
+      <div className="max-w-7xl mx-auto">
+        <Reveal variant="fade-up" className="mb-12 sm:mb-16 max-w-3xl">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-balance text-ink-mid">
+            Cabo a gente passa. O que entregamos é uma rede que não te dá problema depois.
+          </h2>
+          <p className="text-petrol/60 text-base sm:text-lg">
+            Tem muita gente que puxa cabo. Pouca que entrega documentado, certificado e pensado pra quem vai operar aquilo no dia seguinte.
+          </p>
+        </Reveal>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-border border border-border">
+          {whyItems.map((it, i) => (
+            <Reveal as="article" key={it.title} variant="fade-up" delay={i * 90} className="bg-surface p-6 sm:p-8 group transition-colors hover:bg-petrol/[0.04]">
+              <span className="font-mono text-[11px] text-gold mb-4 block">{String(i + 1).padStart(2, "0")}</span>
+              <h3 className="font-extrabold text-lg sm:text-xl mb-3 leading-tight text-balance text-ink-mid">{it.title}</h3>
+              <p className="text-petrol/70 text-sm leading-relaxed">{it.body}</p>
+            </Reveal>
+          ))}
+          <Reveal variant="scale-in" delay={whyItems.length * 90} className="bg-petrol p-6 sm:p-8 flex items-center justify-center text-center transition-colors hover:bg-petrol-light">
+            <button onClick={() => openModal("why_allied")} className="text-white font-extrabold text-lg sm:text-xl leading-tight group">
+              Pedir orçamento
+              <span className="block mt-3 font-mono text-[11px] text-gold uppercase tracking-widest group-hover:translate-x-1 transition-transform">→ Iniciar conversa</span>
+            </button>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const steps = [
+  { title: "Levantamento", body: "Visita ao local, entendimento da operação e do que a rede precisa suportar." },
+  { title: "Projeto", body: "Planta, dimensionamento e orçamento fechado. Você aprova antes de qualquer cabo." },
+  { title: "Execução", body: "Lançamento, terminação e organização com equipe própria e cronograma." },
+  { title: "Certificação", body: "Teste de cada ponto, laudo e documentação as-built entregues no fim." },
+];
+
+function Process() {
+  const { openModal } = useLp();
+  return (
+    <section className="py-16 sm:py-24 px-4 sm:px-6 bg-petrol text-white overflow-hidden relative" id="como-funciona">
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 sm:gap-16 lg:gap-20 relative">
+        <Reveal variant="slide-right">
+          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-4 block">Como funciona</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-6 text-balance text-white">
+            Do site survey ao laudo na sua mão.
+          </h2>
+          <p className="text-white/60 text-base sm:text-lg mb-8 sm:mb-10 max-w-md">
+            Quatro etapas claras. Sem cabo passado antes da hora, sem surpresa no orçamento, sem entrega sem documentação.
+          </p>
+          <button
+            onClick={() => openModal("process")}
+            className="btn-sheen bg-gold text-petrol px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-white transition-colors"
+          >
+            Pedir orçamento
+          </button>
+        </Reveal>
+        <div className="grid sm:grid-cols-2 gap-px bg-white/10 border border-white/10">
+          {steps.map((s, i) => (
+            <Reveal as="article" key={s.title} variant="scale-in" delay={i * 100} className="bg-petrol p-6 sm:p-8 transition-colors hover:bg-petrol-light">
+              <span className="font-mono text-[11px] text-gold mb-3 block">{String(i + 1).padStart(2, "0")}</span>
+              <h3 className="font-bold mb-3 text-lg">{s.title}</h3>
+              <p className="text-sm text-white/60 leading-relaxed">{s.body}</p>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Proof() {
+  return (
+    <section className="py-16 sm:py-24 px-4 sm:px-6 bg-petrol/[0.02]" id="prova">
+      <div className="max-w-7xl mx-auto">
+        <Reveal variant="fade-up" className="mb-12 sm:mb-16 max-w-3xl">
+          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-4 block">Quem não pode errar, escolhe a AlliedIT</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-balance text-ink-mid">
+            +7 anos de operação. Infraestrutura que aguenta o negócio em cima.
+          </h2>
+        </Reveal>
+        <div className="grid sm:grid-cols-3 gap-px bg-border border border-border">
+          <Stat n="+7" label="anos operando TI corporativa em setores que não param" />
+          <Stat n="100%" label="dos pontos certificados e documentados na entrega" />
+          <Stat n="5" label="setores atendidos: saúde, varejo, farma, logística e hotelaria" />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Stat({ n, label }: { n: string; label: string }) {
+  return (
+    <div className="bg-surface p-8 sm:p-10">
+      <div className="text-5xl sm:text-6xl font-extrabold text-ink-mid leading-none">{n}</div>
+      <div className="mt-4 font-mono text-[11px] uppercase tracking-widest text-petrol/60 leading-relaxed">{label}</div>
+    </div>
+  );
+}
+
+const testimonials = [
+  { quote: "[DEPOIMENTO 1 — placeholder, preencher depois]", who: "Nome, Cargo — Empresa" },
+  { quote: "[DEPOIMENTO 2 — placeholder, preencher depois]", who: "Nome, Cargo — Empresa" },
+];
+
+function Testimonials() {
+  return (
+    <section className="py-16 sm:py-24 px-4 sm:px-6" id="depoimentos">
+      <div className="max-w-7xl mx-auto">
+        <Reveal variant="fade-up" className="mb-12 sm:mb-16 max-w-3xl">
+          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-4 block">Na palavra de quem contratou</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-balance text-ink-mid">
+            O melhor termômetro não é o que falamos.
+          </h2>
+        </Reveal>
+        <div className="grid md:grid-cols-2 gap-px bg-border border border-border">
+          {testimonials.map((t, i) => (
+            <Reveal as="blockquote" key={i} variant="fade-up" delay={i * 120} className="bg-surface p-6 sm:p-8 flex flex-col">
+              <div className="text-gold text-3xl leading-none mb-4 font-serif">"</div>
+              <p className="text-petrol/90 text-sm leading-relaxed mb-6 flex-1">{t.quote}</p>
+              <cite className="not-italic font-mono text-[11px] uppercase tracking-widest text-petrol/60 border-t border-border pt-4">
+                {t.who}
+              </cite>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const faq = [
+  { q: "Vocês atendem fora de São Paulo?", a: "Sim. Operamos projetos em múltiplas cidades e atendemos empresas com várias unidades. Conte onde estão os sites e a gente avalia a logística no levantamento." },
+  { q: "Conseguem trabalhar com a operação rodando?", a: "Sim. Boa parte das obras acontece em ambiente que não pode parar. A gente planeja janelas, faz por etapas e identifica a equipe pra interferir o mínimo possível no dia a dia." },
+  { q: "O que entra na certificação?", a: "Cada ponto é testado com equipamento certificador, e você recebe o laudo de todos eles. Em fibra, medimos com OTDR e power meter. A documentação as-built acompanha a entrega." },
+  { q: "Como é feito o orçamento?", a: "Começa com um levantamento no local pra entender o ambiente e o que a rede precisa suportar. A partir daí entregamos projeto e orçamento fechado — você aprova antes de qualquer execução." },
+  { q: "Fazem só cabeamento ou também a operação depois?", a: "Os dois. A AlliedIT opera Service Desk, NOC e SOC. Dá pra contratar só a infraestrutura física ou já deixar a operação de TI no mesmo time que conhece a sua rede de ponta a ponta." },
+  { q: "Trabalham com fibra monomodo e multimodo?", a: "Sim, os dois tipos, com fusão, conectorização e medição. Backbone entre prédios, interligação de data centers ou lançamento interno — avaliamos qual solução faz sentido no projeto." },
+];
+
+function Faq() {
+  const { openModal } = useLp();
+  return (
+    <section className="py-16 sm:py-24 px-4 sm:px-6" id="faq">
+      <div className="max-w-4xl mx-auto">
+        <Reveal variant="fade-up" className="mb-10 sm:mb-12">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-balance text-ink-mid">
+            O que perguntam antes de fechar
+          </h2>
+        </Reveal>
+        <Reveal variant="fade-up" delay={120}>
+          <Accordion type="single" collapsible className="w-full border-t border-border">
+            {faq.map((it, i) => (
+              <AccordionItem key={i} value={`q-${i}`} className="border-b border-border">
+                <AccordionTrigger className="text-left font-bold text-base sm:text-lg py-5 sm:py-6 hover:no-underline hover:text-gold">
+                  {it.q}
+                </AccordionTrigger>
+                <AccordionContent className="text-petrol/70 text-sm sm:text-base leading-relaxed pb-6">
+                  {it.a}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </Reveal>
+        <Reveal variant="fade-up" className="mt-12 flex justify-center">
+          <button
+            onClick={() => openModal("faq")}
+            className="btn-sheen border border-petrol/20 px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-petrol hover:text-white transition-colors text-petrol"
+          >
+            Pedir orçamento
+          </button>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+function FinalCta() {
+  const { openModal } = useLp();
+  return (
+    <section className="py-20 sm:py-32 px-4 sm:px-6 bg-petrol text-white text-center relative overflow-hidden" id="contato">
+      <div aria-hidden className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 size-[520px] rounded-full bg-gold/10 blur-3xl animate-float-slow" />
+      <div className="max-w-4xl mx-auto relative">
+        <Reveal variant="fade-up">
+          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-6 block">Próximo passo</span>
+        </Reveal>
+        <Reveal variant="fade-up" delay={120}>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tighter mb-8 text-balance">
+            Vamos falar sobre a sua infraestrutura?
+          </h2>
+        </Reveal>
+        <Reveal variant="fade-up" delay={220}>
+          <p className="text-white/60 text-base sm:text-lg max-w-2xl mx-auto mb-10 sm:mb-12 leading-relaxed">
+            Conta o que você precisa — obra nova, reforma, ampliação ou só uma rede que vive caindo. A gente faz o levantamento e volta com projeto e orçamento fechado. Sem compromisso.
+          </p>
+        </Reveal>
+        <Reveal variant="scale-in" delay={340}>
+          <button
+            onClick={() => openModal("final_cta")}
+            className="btn-sheen bg-white text-petrol px-10 sm:px-12 py-5 sm:py-6 text-sm font-bold uppercase tracking-widest hover:bg-gold transition-colors mb-6"
+          >
+            Pedir orçamento
+          </button>
+        </Reveal>
+      </div>
+    </section>
+  );
+}

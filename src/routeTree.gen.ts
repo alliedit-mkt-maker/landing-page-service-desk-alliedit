@@ -10,11 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ObrigadoRouteImport } from './routes/obrigado'
+import { Route as CabeamentoRouteImport } from './routes/cabeamento'
 import { Route as IndexRouteImport } from './routes/index'
 
 const ObrigadoRoute = ObrigadoRouteImport.update({
   id: '/obrigado',
   path: '/obrigado',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CabeamentoRoute = CabeamentoRouteImport.update({
+  id: '/cabeamento',
+  path: '/cabeamento',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -25,27 +31,31 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/cabeamento': typeof CabeamentoRoute
   '/obrigado': typeof ObrigadoRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/cabeamento': typeof CabeamentoRoute
   '/obrigado': typeof ObrigadoRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/cabeamento': typeof CabeamentoRoute
   '/obrigado': typeof ObrigadoRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/obrigado'
+  fullPaths: '/' | '/cabeamento' | '/obrigado'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/obrigado'
-  id: '__root__' | '/' | '/obrigado'
+  to: '/' | '/cabeamento' | '/obrigado'
+  id: '__root__' | '/' | '/cabeamento' | '/obrigado'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CabeamentoRoute: typeof CabeamentoRoute
   ObrigadoRoute: typeof ObrigadoRoute
 }
 
@@ -56,6 +66,13 @@ declare module '@tanstack/react-router' {
       path: '/obrigado'
       fullPath: '/obrigado'
       preLoaderRoute: typeof ObrigadoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cabeamento': {
+      id: '/cabeamento'
+      path: '/cabeamento'
+      fullPath: '/cabeamento'
+      preLoaderRoute: typeof CabeamentoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -70,6 +87,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CabeamentoRoute: CabeamentoRoute,
   ObrigadoRoute: ObrigadoRoute,
 }
 export const routeTree = rootRouteImport
