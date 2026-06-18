@@ -60,6 +60,7 @@ function CabeamentoPage() {
           <WhyAllied />
           <Process />
           <Proof />
+          <CaseNestle />
           <Testimonials />
           <Faq />
           <FinalCta />
