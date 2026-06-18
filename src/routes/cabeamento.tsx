@@ -187,7 +187,7 @@ function Services() {
 }
 
 const whyItems = [
-  { title: "Certificação de verdade", body: "Todo ponto testado com certificadora e laudo entregue. Você sabe que funciona — não acredita que funciona." },
+  { title: "Certificação de verdade", body: "Todo ponto testado com certificadora e laudo entregue. Você sabe que funciona, não acredita que funciona." },
   { title: "Documentação que sobra", body: "Planta, etiquetagem e as-built. Quando alguém mexer na rede daqui a dois anos, vai entender o que foi feito." },
   { title: "Quem opera, instala", body: "Não somos só empreiteira de cabo. Operamos TI corporativa, então projetamos pensando em quem vai dar suporte depois." },
   { title: "Obra sem bagunça", body: "Cronograma, equipe identificada e cuidado com o ambiente. Funciona em obra nova ou com a operação rodando." },
@@ -390,7 +390,7 @@ function FinalCta() {
         </Reveal>
         <Reveal variant="fade-up" delay={220}>
           <p className="text-white/60 text-base sm:text-lg max-w-2xl mx-auto mb-10 sm:mb-12 leading-relaxed">
-            Conta o que você precisa — obra nova, reforma, ampliação ou só uma rede que vive caindo. A gente faz o levantamento e volta com projeto e orçamento fechado. Sem compromisso.
+            Conta o que você precisa: obra nova, reforma, ampliação ou só uma rede que vive caindo. A gente faz o levantamento e volta com projeto e orçamento fechado. Sem compromisso.
           </p>
         </Reveal>
         <Reveal variant="scale-in" delay={340}>
