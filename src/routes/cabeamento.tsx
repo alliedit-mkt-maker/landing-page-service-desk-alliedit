@@ -129,18 +129,28 @@ function Hero() {
 const services = [
   {
     title: "Cabeamento estruturado",
-    desc: "Rede de dados e voz pensada pra crescer com a empresa. Do ponto de trabalho ao rack, com padrão de norma e organização que facilita a manutenção.",
+    desc: "Uma gama completa de serviços de cabeamento de dados e voz, incluindo Cat 5e, Cat 6 e Cat 6A.",
     items: ["Cat5e, Cat6, Cat6A", "Patch panels e racks", "Etiquetagem e organização", "Certificação ponto a ponto"],
   },
   {
     title: "Fibra óptica",
-    desc: "Backbone de alta capacidade entre prédios, andares e data centers. Fusão, terminação e medição com OTDR pra garantir baixa atenuação e link estável.",
+    desc: "Projetos, instalação, emendas, testes e certificação. Backbone de alta capacidade entre prédios, andares e data centers.",
     items: ["Monomodo e multimodo", "Fusão e conectorização", "Medição OTDR e power meter", "Lançamento interno e externo"],
   },
   {
-    title: "Data center",
-    desc: "Infraestrutura de sala técnica feita pra disponibilidade: gestão de cabos, climatização adequada e energia redundante. Onde o erro custa caro, nada fica no improviso.",
-    items: ["Montagem e organização de racks", "Cable management estruturado", "Energia e redundância", "Documentação as-built"],
+    title: "Organização de rack",
+    desc: "Serviço de padronização de racks, com documentação, mapeamento e identificação de cada ponto.",
+    items: ["Montagem e padronização", "Cable management estruturado", "Mapeamento e identificação", "Documentação as-built"],
+  },
+  {
+    title: "CFTV IP alta definição",
+    desc: "Projetos de segurança eletrônica. Proteção para sua empresa, clientes e funcionários.",
+    items: ["Câmeras IP full HD e 4K", "Projeto e dimensionamento", "Gravação e armazenamento", "Acesso remoto seguro"],
+  },
+  {
+    title: "Certificação de rede",
+    desc: "Análise apurada do seu sistema de cabeamento, garantindo velocidade e performance da sua rede.",
+    items: ["Teste com certificadora", "Laudo ponto a ponto", "Diagnóstico de falhas", "Relatório final completo"],
   },
 ];
 
@@ -152,24 +162,28 @@ function Services() {
         <Reveal variant="fade-up" className="mb-12 sm:mb-16 max-w-3xl">
           <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-4 block">O que fazemos</span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-balance text-ink-mid">
-            Três frentes Uma infraestrutura que não te dá dor de cabeça
+            Cinco frentes
+            <br />
+            Uma infraestrutura que não te dá dor de cabeça
           </h2>
         </Reveal>
 
-        <div className="grid md:grid-cols-3 gap-px bg-border border border-border">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-border border border-border">
           {services.map((s, i) => (
-            <Reveal as="article" key={s.title} variant="fade-up" delay={i * 120} className="bg-surface p-6 sm:p-8 flex flex-col group transition-colors hover:bg-petrol hover:text-white">
+            <Reveal as="article" key={s.title} variant="fade-up" delay={i * 100} className="bg-surface p-6 sm:p-8 flex flex-col group transition-colors hover:bg-petrol hover:text-white relative overflow-hidden">
               <span className="font-mono text-[11px] text-gold mb-4">{String(i + 1).padStart(2, "0")}</span>
               <h3 className="font-extrabold text-lg sm:text-xl mb-4 leading-tight text-balance text-ink-mid group-hover:text-white transition-colors">{s.title}</h3>
-              <p className="text-petrol/80 text-sm leading-relaxed mb-6 group-hover:text-white/80 transition-colors">{s.desc}</p>
-              <ul className="space-y-2 mt-auto border-t border-border group-hover:border-white/15 pt-4 transition-colors">
-                {s.items.map((it) => (
-                  <li key={it} className="flex items-start gap-2 text-sm text-petrol/80 group-hover:text-white/80 transition-colors">
-                    <span aria-hidden className="text-gold mt-0.5">→</span>
-                    <span>{it}</span>
-                  </li>
-                ))}
-              </ul>
+              <p className="text-petrol/80 text-sm leading-relaxed group-hover:text-white/80 transition-colors">{s.desc}</p>
+              <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-out mt-0 group-hover:mt-6">
+                <ul className="overflow-hidden space-y-2 border-t border-white/0 group-hover:border-white/15 pt-0 group-hover:pt-4 transition-all">
+                  {s.items.map((it) => (
+                    <li key={it} className="flex items-start gap-2 text-sm text-white/80">
+                      <span aria-hidden className="text-gold mt-0.5">→</span>
+                      <span>{it}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </Reveal>
           ))}
         </div>
