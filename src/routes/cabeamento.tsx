@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import ogImage from "@/assets/og-image.png.asset.json";
+import nestleLogo from "@/assets/cases/nestle-puravida.jpg.asset.json";
 import { LpProvider, useLp } from "@/components/lp/LpProvider";
 import { SiteHeader } from "@/components/lp/SiteHeader";
 import { SiteFooter } from "@/components/lp/SiteFooter";
