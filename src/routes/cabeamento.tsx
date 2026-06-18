@@ -339,6 +339,65 @@ function Testimonials() {
   );
 }
 
+function CaseNestle() {
+  const { openModal } = useLp();
+  return (
+    <section className="py-16 sm:py-24 px-4 sm:px-6 bg-petrol text-white relative overflow-hidden" id="case-nestle">
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-16 items-center relative">
+        <Reveal variant="slide-right">
+          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-4 block">Case em destaque</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-6 text-balance text-white">
+            Nestlé Puravida
+            <br />
+            Infraestrutura de rede Wi-Fi em fábrica
+          </h2>
+          <div className="bg-white rounded-md p-6 sm:p-8 inline-flex items-center justify-center max-w-xs">
+            <img
+              src={nestleLogo.url}
+              alt="Logos Nestlé e Puravida"
+              className="w-full h-auto object-contain"
+              loading="lazy"
+            />
+          </div>
+        </Reveal>
+
+        <Reveal variant="fade-up" delay={120} className="space-y-6">
+          <p className="text-white/80 text-base sm:text-lg leading-relaxed">
+            Um dia com o nosso colaborador Daniel Nunes na linha de frente da tecnologia. Acompanhamos de perto um dia de implantação de infraestrutura de rede Wi-Fi com o time da AlliedIT na Nestlé Puravida.
+          </p>
+          <p className="text-white/80 text-base sm:text-lg leading-relaxed">
+            Entre cabos, pontos de acesso e muita dedicação, mostramos como é colocar em prática soluções que garantem conectividade de qualidade para nossos clientes. Mais que entrega técnica, é sobre compromisso e excelência em cada projeto.
+          </p>
+
+          <div className="grid sm:grid-cols-2 gap-px bg-white/10 border border-white/10 mt-2">
+            <div className="bg-petrol p-6 sm:p-7">
+              <span className="font-mono text-[11px] text-gold uppercase tracking-widest block mb-3">Em campo</span>
+              <p className="text-sm leading-relaxed text-white/85">
+                Nossa equipe esteve a todo vapor, garantindo que cada ponto de acesso e toda a infraestrutura de rede fossem <strong className="text-white">instalados com precisão e configurados para a melhor performance</strong>. Sabemos que uma conexão de qualidade faz toda a diferença no dia a dia.
+              </p>
+            </div>
+            <div className="bg-petrol p-6 sm:p-7">
+              <span className="font-mono text-[11px] text-gold uppercase tracking-widest block mb-3">Resultado</span>
+              <p className="text-sm leading-relaxed text-white/85">
+                Estamos comprometidos em levar <strong className="text-white">a melhor experiência</strong> em conectividade, e ver o resultado final de mais um projeto entregue com sucesso é a nossa maior <strong className="text-white">satisfação</strong>.
+              </p>
+            </div>
+          </div>
+
+          <button
+            onClick={() => openModal("case_nestle")}
+            className="btn-sheen bg-gold text-petrol px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-white transition-colors mt-2"
+          >
+            Falar com especialista
+          </button>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+
+
 const faq = [
   { q: "Vocês atendem fora de São Paulo?", a: "Sim. Operamos projetos em múltiplas cidades e atendemos empresas com várias unidades. Conte onde estão os sites e a gente avalia a logística no levantamento." },
   { q: "Conseguem trabalhar com a operação rodando?", a: "Sim. Boa parte das obras acontece em ambiente que não pode parar. A gente planeja janelas, faz por etapas e identifica a equipe pra interferir o mínimo possível no dia a dia." },
