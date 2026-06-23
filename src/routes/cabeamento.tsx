@@ -342,57 +342,70 @@ function Testimonials() {
 function CaseNestle() {
   const { openModal } = useLp();
   return (
-    <section className="py-16 sm:py-24 px-4 sm:px-6 bg-petrol text-white relative overflow-hidden" id="case-nestle">
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-16 items-center relative">
-        <Reveal variant="slide-right">
-          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-4 block">Case em destaque</span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-6 text-balance text-white">
-            Nestlé Puravida
-            <br />
-            Infraestrutura de rede Wi-Fi em fábrica
+    <section className="py-16 sm:py-24 px-4 sm:px-6 bg-petrol/[0.02]" id="case-nestle">
+      <div className="max-w-7xl mx-auto">
+        <Reveal variant="fade-up" className="mb-12 sm:mb-16 max-w-3xl">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-balance text-ink-mid">
+            Projetos que sustentam operações que não podem parar
           </h2>
-          <div className="bg-white rounded-md p-6 sm:p-8 inline-flex items-center justify-center max-w-xs">
-            <img
-              src={nestleLogo.url}
-              alt="Logos Nestlé e Puravida"
-              className="w-full h-auto object-contain"
-              loading="lazy"
-            />
-          </div>
+          <p className="text-petrol/60 text-base sm:text-lg">
+            Quando a fábrica depende da rede pra produzir, a infraestrutura precisa ser invisível, no bom sentido.
+          </p>
         </Reveal>
 
-        <Reveal variant="fade-up" delay={120} className="space-y-6">
-          <p className="text-white/80 text-base sm:text-lg leading-relaxed">
-            Um dia com o nosso colaborador Daniel Nunes na linha de frente da tecnologia. Acompanhamos de perto um dia de implantação de infraestrutura de rede Wi-Fi com o time da AlliedIT na Nestlé Puravida.
-          </p>
-          <p className="text-white/80 text-base sm:text-lg leading-relaxed">
-            Entre cabos, pontos de acesso e muita dedicação, mostramos como é colocar em prática soluções que garantem conectividade de qualidade para nossos clientes. Mais que entrega técnica, é sobre compromisso e excelência em cada projeto.
-          </p>
-
-          <div className="grid sm:grid-cols-2 gap-px bg-white/10 border border-white/10 mt-2">
-            <div className="bg-petrol p-6 sm:p-7">
-              <span className="font-mono text-[11px] text-gold uppercase tracking-widest block mb-3">Em campo</span>
-              <p className="text-sm leading-relaxed text-white/85">
-                Nossa equipe esteve a todo vapor, garantindo que cada ponto de acesso e toda a infraestrutura de rede fossem <strong className="text-white">instalados com precisão e configurados para a melhor performance</strong>. Sabemos que uma conexão de qualidade faz toda a diferença no dia a dia.
-              </p>
+        <Reveal variant="scale-in" className="bg-surface border border-border overflow-hidden hover-lift">
+          <div className="grid md:grid-cols-2">
+            <div className="aspect-square md:aspect-auto bg-petrol relative grid place-items-center p-8 sm:p-12 overflow-hidden">
+              <div aria-hidden className="pointer-events-none absolute -top-16 -right-16 size-60 rounded-full bg-gold/15 blur-3xl animate-float-slow" />
+              <div className="text-center">
+                <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-6 block">Case em destaque</span>
+                <img
+                  src={nestleLogo.url}
+                  alt="Nestlé Puravida"
+                  className="mx-auto h-36 sm:h-44 md:h-48 w-auto"
+                  style={{ filter: "brightness(0) invert(1)" }}
+                />
+                <div className="mt-10 sm:mt-12 flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-[10px] sm:text-[11px] font-mono uppercase tracking-widest text-white/40">
+                  <span>Indústria alimentícia</span>
+                  <span>·</span>
+                  <span>Wi-Fi corporativo</span>
+                  <span>·</span>
+                  <span>Infraestrutura</span>
+                </div>
+              </div>
             </div>
-            <div className="bg-petrol p-6 sm:p-7">
-              <span className="font-mono text-[11px] text-gold uppercase tracking-widest block mb-3">Resultado</span>
-              <p className="text-sm leading-relaxed text-white/85">
-                Estamos comprometidos em levar <strong className="text-white">a melhor experiência</strong> em conectividade, e ver o resultado final de mais um projeto entregue com sucesso é a nossa maior <strong className="text-white">satisfação</strong>.
+            <div className="p-8 sm:p-10 md:p-14 flex flex-col justify-center">
+              <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight mb-6 leading-tight text-balance text-ink-mid">
+                Infraestrutura de rede Wi-Fi com cobertura ponta a ponta em fábrica
+              </h3>
+              <p className="text-petrol/70 mb-8 leading-relaxed">
+                Acompanhamos de perto um dia de implantação de infraestrutura de rede Wi-Fi com o time da AlliedIT na Nestlé Puravida. Entre cabos, pontos de acesso e muita dedicação, cada ponto foi instalado com precisão e configurado para a melhor performance, garantindo conectividade de qualidade pra uma operação que não pode parar.
               </p>
+              <div className="grid grid-cols-3 gap-6 mb-8 py-6 border-y border-border">
+                <CaseStat n="100%" label="Pontos certificados na entrega" />
+                <CaseStat n="Wi-Fi" label="Cobertura ponta a ponta na planta" />
+                <CaseStat n="Zero" label="Parada de produção na obra" />
+              </div>
+              <button
+                onClick={() => openModal("case_nestle")}
+                className="self-start font-bold text-xs uppercase tracking-widest border-b-2 border-petrol pb-1 hover:border-gold hover:text-gold transition-colors"
+              >
+                Quero ser o próximo case
+              </button>
             </div>
           </div>
-
-          <button
-            onClick={() => openModal("case_nestle")}
-            className="btn-sheen bg-gold text-petrol px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-white transition-colors mt-2"
-          >
-            Falar com especialista
-          </button>
         </Reveal>
       </div>
     </section>
+  );
+}
+
+function CaseStat({ n, label }: { n: string; label: string }) {
+  return (
+    <div>
+      <div className="text-3xl font-extrabold text-ink-mid leading-none">{n}</div>
+      <div className="mt-2 font-mono text-[10px] uppercase tracking-widest text-petrol/50">{label}</div>
+    </div>
   );
 }
 
