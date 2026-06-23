@@ -187,6 +187,19 @@ function Services() {
               </div>
             </Reveal>
           ))}
+          <Reveal variant="fade-up" delay={services.length * 100} className="contents">
+            <button onClick={() => openModal("services_cta")} className="bg-petrol text-white p-6 sm:p-8 flex flex-col justify-between text-left group hover:bg-petrol-light transition-colors relative overflow-hidden">
+              <div aria-hidden className="pointer-events-none absolute -top-12 -right-12 size-48 rounded-full bg-gold/15 blur-3xl" />
+              <div className="relative">
+                <span className="font-mono text-[11px] text-gold mb-4 block">06</span>
+                <h3 className="font-extrabold text-lg sm:text-xl mb-4 leading-tight text-balance">Vamos falar sobre o seu projeto?</h3>
+                <p className="text-white/75 text-sm leading-relaxed">Conta o que você precisa. A gente faz o levantamento e volta com projeto e orçamento fechado.</p>
+              </div>
+              <span className="relative mt-6 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-widest text-gold">
+                Fale conosco <span aria-hidden className="transition-transform group-hover:translate-x-1">→</span>
+              </span>
+            </button>
+          </Reveal>
         </div>
 
         <Reveal variant="fade-up" className="mt-12 flex justify-center">
@@ -378,7 +391,7 @@ function CaseNestle() {
                 Cobertura Wi-Fi ponta a ponta em ambiente fabril crítico
               </h3>
               <p className="text-petrol/70 mb-8 leading-relaxed">
-                Projetamos e executamos a infraestrutura de cabeamento estruturado e Wi-Fi da planta da Nestlé Puravida, cobrindo áreas de produção, expedição e administrativo. O desafio era entregar uma rede capaz de sustentar uma operação 24/7, com interferência de maquinário pesado e zero tolerância a parada. Fizemos site survey, projeto de pontos de acesso, lançamento de fibra, certificação ponto a ponto e validação de cobertura — entregando uma rede pronta para a rotina industrial, sem improviso.
+                Projetamos e executamos a infraestrutura de cabeamento estruturado e Wi-Fi da planta da Nestlé Puravida, cobrindo áreas de produção, expedição e administrativo. O desafio era entregar uma rede capaz de sustentar uma operação 24/7, com interferência de maquinário pesado e zero tolerância a parada. Fizemos site survey, projeto de pontos de acesso, lançamento de fibra, certificação ponto a ponto e validação de cobertura, entregando uma rede pronta para a rotina industrial, sem improviso.
               </p>
               <div className="grid grid-cols-3 gap-6 mb-8 py-6 border-y border-border">
                 <CaseStat n="100%" label="Pontos certificados na entrega" />
