@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import ogImage from "@/assets/og-image.png.asset.json";
-import nestleLogo from "@/assets/cases/nestle-puravida.jpg.asset.json";
+import nestleLogo from "@/assets/cases/nestle-puravida-logo.png.asset.json";
 import { LpProvider, useLp } from "@/components/lp/LpProvider";
 import { SiteHeader } from "@/components/lp/SiteHeader";
 import { SiteFooter } from "@/components/lp/SiteFooter";
@@ -363,7 +363,6 @@ function CaseNestle() {
                   src={nestleLogo.url}
                   alt="Nestlé Puravida"
                   className="mx-auto h-36 sm:h-44 md:h-48 w-auto"
-                  style={{ filter: "brightness(0) invert(1)" }}
                 />
                 <div className="mt-10 sm:mt-12 flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-[10px] sm:text-[11px] font-mono uppercase tracking-widest text-white/40">
                   <span>Indústria alimentícia</span>
@@ -376,10 +375,10 @@ function CaseNestle() {
             </div>
             <div className="p-8 sm:p-10 md:p-14 flex flex-col justify-center">
               <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight mb-6 leading-tight text-balance text-ink-mid">
-                Infraestrutura de rede Wi-Fi com cobertura ponta a ponta em fábrica
+                Cobertura Wi-Fi ponta a ponta em ambiente fabril crítico
               </h3>
               <p className="text-petrol/70 mb-8 leading-relaxed">
-                Acompanhamos de perto um dia de implantação de infraestrutura de rede Wi-Fi com o time da AlliedIT na Nestlé Puravida. Entre cabos, pontos de acesso e muita dedicação, cada ponto foi instalado com precisão e configurado para a melhor performance, garantindo conectividade de qualidade pra uma operação que não pode parar.
+                Projetamos e executamos a infraestrutura de cabeamento estruturado e Wi-Fi da planta da Nestlé Puravida, cobrindo áreas de produção, expedição e administrativo. O desafio era entregar uma rede capaz de sustentar uma operação 24/7, com interferência de maquinário pesado e zero tolerância a parada. Fizemos site survey, projeto de pontos de acesso, lançamento de fibra, certificação ponto a ponto e validação de cobertura — entregando uma rede pronta para a rotina industrial, sem improviso.
               </p>
               <div className="grid grid-cols-3 gap-6 mb-8 py-6 border-y border-border">
                 <CaseStat n="100%" label="Pontos certificados na entrega" />
