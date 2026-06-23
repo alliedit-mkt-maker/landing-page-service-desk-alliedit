@@ -187,16 +187,18 @@ function Services() {
               </div>
             </Reveal>
           ))}
-          <Reveal as="button" onClick={() => openModal("services_cta")} variant="fade-up" delay={services.length * 100} className="bg-petrol text-white p-6 sm:p-8 flex flex-col justify-between text-left group hover:bg-petrol-light transition-colors relative overflow-hidden">
-            <div aria-hidden className="pointer-events-none absolute -top-12 -right-12 size-48 rounded-full bg-gold/15 blur-3xl" />
-            <div className="relative">
-              <span className="font-mono text-[11px] text-gold mb-4 block">06</span>
-              <h3 className="font-extrabold text-lg sm:text-xl mb-4 leading-tight text-balance">Vamos falar sobre o seu projeto?</h3>
-              <p className="text-white/75 text-sm leading-relaxed">Conta o que você precisa. A gente faz o levantamento e volta com projeto e orçamento fechado.</p>
-            </div>
-            <span className="relative mt-6 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-widest text-gold">
-              Fale conosco <span aria-hidden className="transition-transform group-hover:translate-x-1">→</span>
-            </span>
+          <Reveal variant="fade-up" delay={services.length * 100} className="contents">
+            <button onClick={() => openModal("services_cta")} className="bg-petrol text-white p-6 sm:p-8 flex flex-col justify-between text-left group hover:bg-petrol-light transition-colors relative overflow-hidden">
+              <div aria-hidden className="pointer-events-none absolute -top-12 -right-12 size-48 rounded-full bg-gold/15 blur-3xl" />
+              <div className="relative">
+                <span className="font-mono text-[11px] text-gold mb-4 block">06</span>
+                <h3 className="font-extrabold text-lg sm:text-xl mb-4 leading-tight text-balance">Vamos falar sobre o seu projeto?</h3>
+                <p className="text-white/75 text-sm leading-relaxed">Conta o que você precisa. A gente faz o levantamento e volta com projeto e orçamento fechado.</p>
+              </div>
+              <span className="relative mt-6 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-widest text-gold">
+                Fale conosco <span aria-hidden className="transition-transform group-hover:translate-x-1">→</span>
+              </span>
+            </button>
           </Reveal>
         </div>
 
