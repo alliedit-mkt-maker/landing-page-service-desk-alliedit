@@ -81,7 +81,7 @@ function Hero() {
   const { openModal } = useLp();
   return (
     <section
-      className="relative overflow-hidden min-h-screen flex items-center py-24 sm:py-32 px-4 sm:px-6"
+      className="relative overflow-hidden py-24 sm:py-32 px-4 sm:px-6"
       id="hero"
       style={{
         backgroundImage:
