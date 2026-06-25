@@ -8,9 +8,9 @@ import { Clients } from "@/components/lp/Clients";
 import { Reveal } from "@/components/lp/Reveal";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
-const title = "AlliedIT | Cabeamento estruturado, fibra óptica e data center";
+const title = "AlliedIT | Cabeamento estruturado certificado e documentado";
 const description =
-  "Projeto, instalação e certificação de cabeamento estruturado, fibra óptica e data center. Cada ponto testado, documentação as-built e equipe que opera TI corporativa há +7 anos.";
+  "Projeto, instalação e certificação de cabeamento estruturado, fibra óptica e data center. Cada ponto testado, laudo e as-built. +7 anos de operação.";
 
 export const Route = createFileRoute("/cabeamento")({
   head: () => ({
