@@ -1,5 +1,19 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, redirect } from "@tanstack/react-router";
+import { getRequestHost } from "@tanstack/react-start/server";
+import { createServerFn } from "@tanstack/react-start";
 import ogImage from "@/assets/og-image.png.asset.json";
+
+const getHost = createServerFn({ method: "GET" }).handler(async () => {
+  try {
+    return getRequestHost();
+  } catch {
+    return "";
+  }
+});
+
+const HOST_ROUTE_MAP: Record<string, string> = {
+  "cabeamento.alliedit.com.br": "/cabeamento",
+};
 import { LpProvider } from "@/components/lp/LpProvider";
 import { SiteHeader } from "@/components/lp/SiteHeader";
 import { SiteFooter } from "@/components/lp/SiteFooter";
