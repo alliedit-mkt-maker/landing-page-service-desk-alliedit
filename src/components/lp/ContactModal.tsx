@@ -107,7 +107,7 @@ export function ContactModal({ open, onOpenChange, source, title = "Vamos falar 
     return () => {
       cancelled = true;
     };
-  }, [open, navigate, onOpenChange, source, targetId]);
+  }, [open, navigate, onOpenChange, source, targetId, activeFormId]);
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
