@@ -196,7 +196,7 @@ function Services() {
               <div className="relative">
                 <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-gold mb-4 block">Próximo passo</span>
                 <h3 className="font-extrabold text-lg sm:text-xl mb-4 leading-tight text-balance">Vamos falar sobre o seu projeto?</h3>
-                <p className="text-white/75 text-sm leading-relaxed">Conta o que você precisa. A gente faz o levantamento e volta com projeto e orçamento fechado.</p>
+                <p className="text-white/75 text-sm leading-relaxed">Conta o que você precisa.</p>
               </div>
               <span className="relative mt-6 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-widest text-gold">
                 Fale conosco <span aria-hidden className="transition-transform group-hover:translate-x-1">→</span>
