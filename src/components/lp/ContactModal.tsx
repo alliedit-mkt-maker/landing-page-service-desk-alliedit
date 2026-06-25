@@ -39,12 +39,13 @@ function loadHubspotScript(): Promise<void> {
   });
 }
 
-export function ContactModal({ open, onOpenChange, source, title = "Vamos falar de Service Desk." }: { open: boolean; onOpenChange: (v: boolean) => void; source?: string; title?: string }) {
+export function ContactModal({ open, onOpenChange, source, title = "Vamos falar de Service Desk.", formId }: { open: boolean; onOpenChange: (v: boolean) => void; source?: string; title?: string; formId?: string }) {
   const navigate = useNavigate();
   const targetId = useId().replace(/:/g, "_");
   const containerRef = useRef<HTMLDivElement>(null);
   const renderedRef = useRef(false);
   const [error, setError] = useState<string | null>(null);
+  const activeFormId = formId || HS_FORM_ID;
 
   useEffect(() => {
     if (!open) {
@@ -53,8 +54,8 @@ export function ContactModal({ open, onOpenChange, source, title = "Vamos falar 
       return;
     }
     if (renderedRef.current) return;
-    if (!HS_PORTAL_ID || !HS_FORM_ID) {
-      setError("Formulário não configurado. Defina VITE_HUBSPOT_PORTAL_ID e VITE_HUBSPOT_FORM_ID.");
+    if (!HS_PORTAL_ID || !activeFormId) {
+      setError("Formulário não configurado.");
       return;
     }
 
@@ -65,7 +66,7 @@ export function ContactModal({ open, onOpenChange, source, title = "Vamos falar 
         renderedRef.current = true;
         window.hbspt.forms.create({
           portalId: HS_PORTAL_ID,
-          formId: HS_FORM_ID,
+          formId: activeFormId,
           region: HS_REGION,
           target: `#${targetId}`,
           onFormReady: ($form: unknown) => {
@@ -106,7 +107,7 @@ export function ContactModal({ open, onOpenChange, source, title = "Vamos falar 
     return () => {
       cancelled = true;
     };
-  }, [open, navigate, onOpenChange, source, targetId]);
+  }, [open, navigate, onOpenChange, source, targetId, activeFormId]);
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
