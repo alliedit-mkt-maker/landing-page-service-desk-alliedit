@@ -97,17 +97,17 @@ function Hero() {
           </Reveal>
           <Reveal variant="fade-up" delay={120}>
             <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[5.5rem] font-extrabold tracking-tight text-balance leading-[0.95] mb-6 sm:mb-8 text-ink-mid">
-              Cabo todo mundo passa.
+              A diferença está no acabamento
             </h1>
           </Reveal>
           <Reveal variant="fade-up" delay={160}>
             <p className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-balance leading-[1.05] mb-8 sm:mb-10 text-petrol/70">
-              A diferença está no acabamento.
+              Nós entregamos rede que dura mais que a reforma.
             </p>
           </Reveal>
           <Reveal variant="fade-up" delay={200}>
             <p className="text-petrol/70 text-base sm:text-lg max-w-3xl mb-8 sm:mb-10 leading-relaxed">
-              Nós entregamos rede que dura mais que a reforma. Projeto, instalação e certificação de cabeamento estruturado, fibra óptica e data center. A camada que ninguém vê, e que derruba tudo quando é mal feita.
+              Projeto, instalação e certificação de cabeamento estruturado, fibra óptica e data center.
             </p>
           </Reveal>
           <ul className="flex flex-col gap-4 sm:gap-5 mb-10 sm:mb-12">
