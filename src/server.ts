@@ -66,11 +66,28 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
   return brandedErrorResponse();
 }
 
+// Host-based rewrites: each LP subdomain serves its route at "/".
+// e.g. cabeamento.alliedit.com.br/ -> internally renders /cabeamento
+const HOST_REWRITES: Record<string, string> = {
+  "cabeamento.alliedit.com.br": "/cabeamento",
+};
+
+function rewriteRequestForHost(request: Request): Request {
+  const url = new URL(request.url);
+  const target = HOST_REWRITES[url.hostname.toLowerCase()];
+  if (!target) return request;
+  // Only rewrite the root path; deep links keep their original path.
+  if (url.pathname !== "/" && url.pathname !== "") return request;
+  url.pathname = target;
+  return new Request(url.toString(), request);
+}
+
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
       const handler = await getServerEntry();
-      const response = await handler.fetch(request, env, ctx);
+      const rewritten = rewriteRequestForHost(request);
+      const response = await handler.fetch(rewritten, env, ctx);
       return await normalizeCatastrophicSsrResponse(response);
     } catch (error) {
       console.error(error);
