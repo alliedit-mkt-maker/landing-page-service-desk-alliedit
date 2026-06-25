@@ -1,5 +1,19 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, redirect } from "@tanstack/react-router";
+import { getRequestHost } from "@tanstack/react-start/server";
+import { createServerFn } from "@tanstack/react-start";
 import ogImage from "@/assets/og-image.png.asset.json";
+
+const getHost = createServerFn({ method: "GET" }).handler(async () => {
+  try {
+    return getRequestHost();
+  } catch {
+    return "";
+  }
+});
+
+const HOST_ROUTE_MAP: Record<string, string> = {
+  "cabeamento.alliedit.com.br": "/cabeamento",
+};
 import { LpProvider } from "@/components/lp/LpProvider";
 import { SiteHeader } from "@/components/lp/SiteHeader";
 import { SiteFooter } from "@/components/lp/SiteFooter";
@@ -17,6 +31,13 @@ const title = "AlliedIT | Service Desk terceirizado 24x7 com NOC e SOC integrado
 const description = "A operação de TI por trás das marcas que você conhece. Service Desk 24x7, N1/N2/N3 na mesma equipe, NOC e SOC integrados, custo previsível e SLA real. +7 anos atendendo hotelaria, saúde, varejo, farma e logística.";
 
 export const Route = createFileRoute("/")({
+  beforeLoad: async () => {
+    const host = (await getHost()).toLowerCase();
+    const target = HOST_ROUTE_MAP[host];
+    if (target) {
+      throw redirect({ to: target });
+    }
+  },
   head: () => ({
     meta: [
       { title },
