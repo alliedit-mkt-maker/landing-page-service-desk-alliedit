@@ -97,7 +97,7 @@ function Hero() {
           </Reveal>
           <Reveal variant="fade-up" delay={120}>
             <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[5.5rem] font-extrabold tracking-tight text-balance leading-[0.95] mb-6 sm:mb-8 text-ink-mid">
-              A diferença está no acabamento
+              Cabo todo mundo passa
             </h1>
           </Reveal>
           <Reveal variant="fade-up" delay={160}>
@@ -231,9 +231,7 @@ function WhyAllied() {
       <div className="max-w-7xl mx-auto">
         <Reveal variant="fade-up" className="mb-12 sm:mb-16 max-w-3xl">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-balance text-ink-mid">
-            Cabo todo mundo passa
-            <br />
-            Nós entregamos uma rede que não te dá problema depois
+            A diferença está no acabamento
           </h2>
           <p className="text-petrol/60 text-base sm:text-lg">
             Tem muita gente que puxa cabo. Pouca que entrega documentado, certificado e pensado pra quem vai operar aquilo no dia seguinte.
