@@ -81,14 +81,14 @@ function Hero() {
   const { openModal } = useLp();
   return (
     <section
-      className="relative overflow-hidden py-24 sm:py-32 px-4 sm:px-6"
+      className="relative overflow-hidden min-h-screen flex flex-col justify-center py-24 sm:py-32 px-4 sm:px-6"
       id="hero"
       style={{
         backgroundImage:
           "radial-gradient(60% 60% at 85% 0%, color-mix(in oklch, var(--gold) 18%, transparent), transparent 70%), radial-gradient(55% 55% at 0% 50%, color-mix(in oklch, var(--petrol) 10%, transparent), transparent 70%), linear-gradient(180deg, color-mix(in oklch, var(--gold) 8%, var(--surface)) 0%, color-mix(in oklch, var(--gold) 4%, var(--surface)) 55%, #ffffff 100%)",
       }}
     >
-      <div className="max-w-7xl mx-auto relative">
+      <div className="max-w-7xl mx-auto relative w-full">
         <div className="max-w-5xl relative">
           <Reveal variant="fade-up">
             <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.2em] text-gold font-semibold mb-4 sm:mb-6 block">
