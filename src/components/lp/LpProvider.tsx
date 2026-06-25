@@ -24,7 +24,7 @@ export function pushEvent(event: string, data: Record<string, unknown> = {}) {
   window.dataLayer.push({ event, ...data });
 }
 
-export function LpProvider({ children }: { children: ReactNode }) {
+export function LpProvider({ children, modalTitle }: { children: ReactNode; modalTitle?: string }) {
   const [selectedPath, setSelectedPath] = useState<Path>(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalSource, setModalSource] = useState<string | undefined>();
@@ -58,7 +58,7 @@ export function LpProvider({ children }: { children: ReactNode }) {
   return (
     <Ctx.Provider value={{ selectedPath, setPath, openModal }}>
       {children}
-      <ContactModal open={modalOpen} onOpenChange={setModalOpen} source={modalSource} />
+      <ContactModal open={modalOpen} onOpenChange={setModalOpen} source={modalSource} title={modalTitle} />
     </Ctx.Provider>
   );
 }

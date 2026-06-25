@@ -39,7 +39,7 @@ function loadHubspotScript(): Promise<void> {
   });
 }
 
-export function ContactModal({ open, onOpenChange, source }: { open: boolean; onOpenChange: (v: boolean) => void; source?: string }) {
+export function ContactModal({ open, onOpenChange, source, title = "Vamos falar de Service Desk." }: { open: boolean; onOpenChange: (v: boolean) => void; source?: string; title?: string }) {
   const navigate = useNavigate();
   const targetId = useId().replace(/:/g, "_");
   const containerRef = useRef<HTMLDivElement>(null);
@@ -112,7 +112,7 @@ export function ContactModal({ open, onOpenChange, source }: { open: boolean; on
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-lg max-h-[90vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-extrabold tracking-tight text-petrol">Vamos falar de Service Desk.</DialogTitle>
+          <DialogTitle className="text-2xl font-extrabold tracking-tight text-petrol">{title}</DialogTitle>
           <DialogDescription className="sr-only">
             Formulário de contato AlliedIT Service Desk
           </DialogDescription>

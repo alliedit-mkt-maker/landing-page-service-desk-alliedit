@@ -50,7 +50,7 @@ export const Route = createFileRoute("/cabeamento")({
 
 function CabeamentoPage() {
   return (
-    <LpProvider>
+    <LpProvider modalTitle="Vamos falar do seu projeto de cabeamento.">
       <div className="min-h-screen bg-surface text-petrol font-sans">
         <SiteHeader />
         <main>
@@ -74,7 +74,7 @@ function CabeamentoPage() {
 const heroBullets = [
   "Cada ponto testado e certificado, com laudo em mãos",
   "Documentação completa: planta, etiquetagem e as-built",
-  "Máxima velocidade e estabilidade com rede blindada contra quedas constantes",
+  "Equipe própria que atende em todo o Brasil",
 ];
 
 function Hero() {
@@ -96,13 +96,18 @@ function Hero() {
             </span>
           </Reveal>
           <Reveal variant="fade-up" delay={120}>
-            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[5.5rem] font-extrabold tracking-tight text-balance leading-[0.95] mb-8 sm:mb-10 text-ink-mid">
-              A rede só é boa até o último cabo
+            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[5.5rem] font-extrabold tracking-tight text-balance leading-[0.95] mb-6 sm:mb-8 text-ink-mid">
+              Cabo todo mundo passa.
             </h1>
+          </Reveal>
+          <Reveal variant="fade-up" delay={160}>
+            <p className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-balance leading-[1.05] mb-8 sm:mb-10 text-petrol/70">
+              A diferença está no acabamento.
+            </p>
           </Reveal>
           <Reveal variant="fade-up" delay={200}>
             <p className="text-petrol/70 text-base sm:text-lg max-w-3xl mb-8 sm:mb-10 leading-relaxed">
-              Projeto, instalação e certificação de cabeamento estruturado, fibra óptica e data center. A camada que ninguém vê, e que derruba tudo quando é mal feita.
+              Nós entregamos rede que dura mais que a reforma. Projeto, instalação e certificação de cabeamento estruturado, fibra óptica e data center. A camada que ninguém vê, e que derruba tudo quando é mal feita.
             </p>
           </Reveal>
           <ul className="flex flex-col gap-4 sm:gap-5 mb-10 sm:mb-12">
@@ -161,11 +166,9 @@ function Services() {
     <section className="py-16 sm:py-24 px-4 sm:px-6 bg-petrol/[0.02]" id="servicos">
       <div className="max-w-7xl mx-auto">
         <Reveal variant="fade-up" className="mb-12 sm:mb-16 max-w-3xl">
-          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-4 block">O que fazemos</span>
+          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-4 block">Cinco frentes</span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-balance text-ink-mid">
-            Cinco frentes
-            <br />
-            Uma infraestrutura que não te dá dor de cabeça
+            Tudo que sua infraestrutura precisa
           </h2>
         </Reveal>
 
@@ -191,7 +194,7 @@ function Services() {
             <button onClick={() => openModal("services_cta")} className="bg-petrol text-white p-6 sm:p-8 flex flex-col justify-between text-left group hover:bg-petrol-light transition-colors relative overflow-hidden">
               <div aria-hidden className="pointer-events-none absolute -top-12 -right-12 size-48 rounded-full bg-gold/15 blur-3xl" />
               <div className="relative">
-                <span className="font-mono text-[11px] text-gold mb-4 block">06</span>
+                <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-gold mb-4 block">Próximo passo</span>
                 <h3 className="font-extrabold text-lg sm:text-xl mb-4 leading-tight text-balance">Vamos falar sobre o seu projeto?</h3>
                 <p className="text-white/75 text-sm leading-relaxed">Conta o que você precisa. A gente faz o levantamento e volta com projeto e orçamento fechado.</p>
               </div>
@@ -297,9 +300,9 @@ function Proof() {
     <section className="py-16 sm:py-24 px-4 sm:px-6 bg-petrol/[0.02]" id="prova">
       <div className="max-w-7xl mx-auto">
         <Reveal variant="fade-up" className="mb-12 sm:mb-16 max-w-3xl">
-          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-4 block">Quem não pode errar, escolhe a AlliedIT</span>
+          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-4 block">+7 anos de operação</span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-balance text-ink-mid">
-            +7 anos de operação Infraestrutura que aguenta o negócio em cima
+            Infraestrutura que aguenta a operação
           </h2>
         </Reveal>
         <div className="grid sm:grid-cols-3 gap-px bg-border border border-border">
