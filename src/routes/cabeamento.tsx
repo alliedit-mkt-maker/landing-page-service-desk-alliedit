@@ -97,7 +97,7 @@ function Hero() {
           </Reveal>
           <Reveal variant="fade-up" delay={120}>
             <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[5.5rem] font-extrabold tracking-tight text-balance leading-[0.95] mb-6 sm:mb-8 text-ink-mid">
-              A diferença está no acabamento
+              Cabo todo mundo passa
             </h1>
           </Reveal>
           <Reveal variant="fade-up" delay={160}>
