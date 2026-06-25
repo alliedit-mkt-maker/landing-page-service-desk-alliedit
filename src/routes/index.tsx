@@ -31,6 +31,13 @@ const title = "AlliedIT | Service Desk terceirizado 24x7 com NOC e SOC integrado
 const description = "A operação de TI por trás das marcas que você conhece. Service Desk 24x7, N1/N2/N3 na mesma equipe, NOC e SOC integrados, custo previsível e SLA real. +7 anos atendendo hotelaria, saúde, varejo, farma e logística.";
 
 export const Route = createFileRoute("/")({
+  beforeLoad: async () => {
+    const host = (await getHost()).toLowerCase();
+    const target = HOST_ROUTE_MAP[host];
+    if (target) {
+      throw redirect({ to: target });
+    }
+  },
   head: () => ({
     meta: [
       { title },
