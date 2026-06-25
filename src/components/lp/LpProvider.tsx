@@ -58,7 +58,7 @@ export function LpProvider({ children, modalTitle, formId }: { children: ReactNo
   return (
     <Ctx.Provider value={{ selectedPath, setPath, openModal }}>
       {children}
-      <ContactModal open={modalOpen} onOpenChange={setModalOpen} source={modalSource} title={modalTitle} />
+      <ContactModal open={modalOpen} onOpenChange={setModalOpen} source={modalSource} title={modalTitle} formId={formId} />},
     </Ctx.Provider>
   );
 }
