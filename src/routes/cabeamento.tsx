@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import ogImage from "@/assets/og-image.png.asset.json";
 import nestleLogo from "@/assets/cases/nestle-puravida-logo.png.asset.json";
+import leandroPhoto from "@/assets/testimonials/leandro-souza.png.asset.json";
 import { LpProvider, useLp } from "@/components/lp/LpProvider";
 import { SiteHeader } from "@/components/lp/SiteHeader";
 import { SiteFooter } from "@/components/lp/SiteFooter";
@@ -343,8 +344,16 @@ function Testimonials() {
         <Reveal as="blockquote" variant="fade-up" className="bg-surface border border-border p-8 sm:p-12 max-w-4xl mx-auto flex flex-col">
           <div className="text-gold text-5xl leading-none mb-6 font-serif">"</div>
           <p className="text-petrol/90 text-base sm:text-lg leading-relaxed mb-8 flex-1">{testimonial.quote}</p>
-          <cite className="not-italic font-mono text-[11px] uppercase tracking-widest text-petrol/60 border-t border-border pt-6">
-            {testimonial.who}
+          <cite className="not-italic flex items-center gap-4 border-t border-border pt-6">
+            <img
+              src={leandroPhoto.url}
+              alt="Leandro Souza"
+              loading="lazy"
+              className="size-14 rounded-full object-cover border border-border shrink-0"
+            />
+            <span className="font-mono text-[11px] uppercase tracking-widest text-petrol/60">
+              {testimonial.who}
+            </span>
           </cite>
         </Reveal>
       </div>
