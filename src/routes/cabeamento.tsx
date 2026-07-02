@@ -324,10 +324,11 @@ function Stat({ n, label }: { n: string; label: string }) {
   );
 }
 
-const testimonials = [
-  { quote: "[DEPOIMENTO 1 — placeholder, preencher depois]", who: "Nome, Cargo — Empresa" },
-  { quote: "[DEPOIMENTO 2 — placeholder, preencher depois]", who: "Nome, Cargo — Empresa" },
-];
+const testimonial = {
+  quote:
+    "Gostaria de compartilhar meu reconhecimento e expressar minha satisfação com o trabalho que a Allied IT vem realizando em nosso novo Centro de Distribuição em Extrema. Desde o início do projeto, eles demonstraram um alto nível de comprometimento, dedicação e profissionalismo. A forma como conduziram as atividades, enfrentaram os desafios e garantiram o andamento das operações foi fundamental para o sucesso do CD.",
+  who: "Leandro Souza, Especialista em Redes e Infraestrutura Cloud — Puravida",
+};
 
 function Testimonials() {
   return (
@@ -339,17 +340,13 @@ function Testimonials() {
             O melhor termômetro não é o que falamos
           </h2>
         </Reveal>
-        <div className="grid md:grid-cols-2 gap-px bg-border border border-border">
-          {testimonials.map((t, i) => (
-            <Reveal as="blockquote" key={i} variant="fade-up" delay={i * 120} className="bg-surface p-6 sm:p-8 flex flex-col">
-              <div className="text-gold text-3xl leading-none mb-4 font-serif">"</div>
-              <p className="text-petrol/90 text-sm leading-relaxed mb-6 flex-1">{t.quote}</p>
-              <cite className="not-italic font-mono text-[11px] uppercase tracking-widest text-petrol/60 border-t border-border pt-4">
-                {t.who}
-              </cite>
-            </Reveal>
-          ))}
-        </div>
+        <Reveal as="blockquote" variant="fade-up" className="bg-surface border border-border p-8 sm:p-12 max-w-4xl mx-auto flex flex-col">
+          <div className="text-gold text-5xl leading-none mb-6 font-serif">"</div>
+          <p className="text-petrol/90 text-base sm:text-lg leading-relaxed mb-8 flex-1">{testimonial.quote}</p>
+          <cite className="not-italic font-mono text-[11px] uppercase tracking-widest text-petrol/60 border-t border-border pt-6">
+            {testimonial.who}
+          </cite>
+        </Reveal>
       </div>
     </section>
   );
