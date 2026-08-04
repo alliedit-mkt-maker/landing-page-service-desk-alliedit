@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/lp/SiteHeader";
 import { SiteFooter } from "@/components/lp/SiteFooter";
@@ -15,7 +16,25 @@ export const Route = createFileRoute("/obrigado")({
   component: ObrigadoPage,
 });
 
+const WA_NUMBER = "5511943319875";
+const WA_MSG_DEFAULT =
+  "Olá! Me interessei pelo Service Desk da AlliedIT e gostaria de falar com um especialista.";
+const WA_MSG_CABEAMENTO =
+  "Olá! Me interessei pelos serviços de cabeamento e redes da AlliedIT e gostaria de falar com um especialista.";
+
 function ObrigadoPage() {
+  const [isCabeamento, setIsCabeamento] = useState(false);
+
+  useEffect(() => {
+    const host = window.location.hostname.toLowerCase();
+    const param = new URLSearchParams(window.location.search).get("lp");
+    setIsCabeamento(host.includes("cabeamento") || param === "cabeamento");
+  }, []);
+
+  const waHref = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(
+    isCabeamento ? WA_MSG_CABEAMENTO : WA_MSG_DEFAULT,
+  )}`;
+
   return (
     <LpProvider>
       <div className="min-h-screen bg-surface text-petrol flex flex-col">
@@ -34,7 +53,7 @@ function ObrigadoPage() {
                 Precisa falar agora?
               </h3>
               <a
-                href="https://wa.me/5511943319875?text=Ol%C3%A1%21%20Me%20interessei%20pelo%20Service%20Desk%20da%20AlliedIT%20e%20gostaria%20de%20falar%20com%20um%20especialista."
+                href={waHref}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => pushEvent("whatsapp_click_thankyou")}
