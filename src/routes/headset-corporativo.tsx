@@ -316,9 +316,10 @@ function Brands() {
 
 type Product = { brand: string; model: string; desc: string; img: string };
 
-const levels: { level: number; title: string; subtitle: string; products: Product[] }[] = [
+const levels: { level: number; icon: LucideIcon; title: string; subtitle: string; products: Product[] }[] = [
   {
     level: 1,
+    icon: Headphones,
     title: "Uso diário / entrada",
     subtitle: "Para quem faz chamadas ocasionais e precisa de algo simples e confiável",
     products: [
