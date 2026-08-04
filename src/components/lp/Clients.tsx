@@ -16,12 +16,15 @@ const logos = [
   { src: bradesco, name: "Bradesco" },
 ];
 
-export function Clients() {
+export function Clients({ centered = false }: { centered?: boolean }) {
   const loop = [...logos, ...logos];
   return (
     <section className="py-14 sm:py-20 bg-white" aria-labelledby="clientes-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <h2 id="clientes-heading" className="font-mono text-[10px] uppercase tracking-[0.25em] text-petrol/50 mb-8 sm:mb-12">
+        <h2
+          id="clientes-heading"
+          className={`font-mono text-[10px] uppercase tracking-[0.25em] text-petrol/50 mb-8 sm:mb-12 ${centered ? "text-center" : ""}`}
+        >
           Alguns dos nossos clientes
         </h2>
       </div>

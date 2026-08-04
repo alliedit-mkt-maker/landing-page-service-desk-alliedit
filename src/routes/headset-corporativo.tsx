@@ -17,6 +17,12 @@ import polyBlackwire3220 from "@/assets/headsets/poly-blackwire-3220.png.asset.j
 import polyBlackwire5220 from "@/assets/headsets/poly-blackwire-5220.webp.asset.json";
 import polyVoyagerFocus2 from "@/assets/headsets/poly-voyager-focus-2.webp.asset.json";
 import polyEncorePro520 from "@/assets/headsets/poly-encorepro-520.png.asset.json";
+import yealinkLogo from "@/assets/headsets/yealink-logo.png.asset.json";
+import logitechLogo from "@/assets/headsets/logitech-logo.png.asset.json";
+import polyLogo from "@/assets/headsets/poly-logo.webp.asset.json";
+import yealinkLifestyle from "@/assets/headsets/yealink-lifestyle.png.asset.json";
+import logitechLifestyle from "@/assets/headsets/logitech-lifestyle.jpg.asset.json";
+import polyLifestyle from "@/assets/headsets/poly-lifestyle.jpg.asset.json";
 import { LpProvider, useLp, pushEvent } from "@/components/lp/LpProvider";
 import logoAlliedIt from "@/assets/logo-alliedit.png";
 import { SiteFooter } from "@/components/lp/SiteFooter";
@@ -75,11 +81,12 @@ export function HeadsetPage() {
       <div className="min-h-screen bg-surface text-petrol font-sans">
         <main>
           <Hero />
+          <Clients centered />
           <Brands />
           <Matrix />
-          <Clients />
           <WhyAllied />
           <FinalCta />
+
         </main>
         <SiteFooter />
       </div>
@@ -115,32 +122,48 @@ function Hero() {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(0deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.82) 45%, rgba(0,0,0,0.5) 78%, rgba(0,0,0,0.12) 92%, rgba(0,0,0,0) 100%)",
+            "linear-gradient(0deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.62) 45%, rgba(0,0,0,0.32) 78%, rgba(0,0,0,0.06) 92%, rgba(0,0,0,0) 100%)",
         }}
       />
       <div className="max-w-4xl mx-auto relative w-full text-center flex flex-col items-center">
         <img
           src={logoAlliedIt}
           alt="AlliedIT"
-          className="h-9 sm:h-11 w-auto brightness-0 invert mb-10 sm:mb-12"
+          className="h-12 sm:h-16 w-auto brightness-0 invert mb-10 sm:mb-12 drop-shadow-lg"
         />
 
         <Reveal variant="fade-up">
           <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-gold font-semibold mb-5 block">
-            Headsets corporativos Yealink · Logitech · Poly
+            Headsets corporativos
           </span>
         </Reveal>
         <Reveal variant="fade-up" delay={120}>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-balance leading-[1.02] mb-6 sm:mb-8 text-white">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-balance leading-[1.02] mb-6 sm:mb-8 text-white drop-shadow-[0_2px_18px_rgba(0,0,0,0.6)]">
             O headset certo para cada tipo de chamada da sua empresa
           </h1>
         </Reveal>
         <Reveal variant="fade-up" delay={200}>
-          <p className="text-white/75 text-base sm:text-lg max-w-2xl mx-auto mb-9 leading-relaxed">
+          <p className="text-white/80 text-base sm:text-lg max-w-2xl mx-auto mb-9 leading-relaxed drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)]">
             Da ligação do dia a dia ao call center de alto volume. A AlliedIT ajuda você a escolher entre as três
             marcas mais confiáveis do mercado e cuida da compra, entrega e suporte depois.
           </p>
         </Reveal>
+        <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12 mb-10">
+          {[
+            { src: yealinkLogo.url, alt: "Yealink" },
+            { src: logitechLogo.url, alt: "Logitech" },
+            { src: polyLogo.url, alt: "Poly" },
+          ].map((logo, i) => (
+            <Reveal key={logo.alt} variant="fade-up" delay={380 + i * 160}>
+              <img
+                src={logo.src}
+                alt={logo.alt}
+                loading="lazy"
+                className="h-5 sm:h-7 w-auto object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity"
+              />
+            </Reveal>
+          ))}
+        </div>
         <Reveal variant="fade-up" delay={300}>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button onClick={() => openModal("hero_primary")} className={pillLight}>
@@ -151,6 +174,7 @@ function Hero() {
             </a>
           </div>
         </Reveal>
+
       </div>
     </section>
   );
@@ -161,19 +185,22 @@ const brands = [
     name: "Yealink",
     title: "Melhor custo-benefício",
     body: "Para quem equipa muita gente sem abrir mão de qualidade. Boa relação entre preço e recurso em toda a linha.",
-    img: yealinkBh70.url,
+    img: yealinkLifestyle.url,
+    logo: yealinkLogo.url,
   },
   {
     name: "Logitech",
     title: "Equilíbrio entre custo e recurso",
     body: "Para quem quer um meio-termo confiável, com recursos modernos, conforto no dia a dia, sem pagar por excesso.",
-    img: logitechZoneWireless2.url,
+    img: logitechLifestyle.url,
+    logo: logitechLogo.url,
   },
   {
     name: "Poly",
     title: "Performance e qualidade sonora",
     body: "Para quem prioriza o melhor da categoria: áudio, cancelamento de ruído e durabilidade no topo de linha.",
-    img: polyVoyagerFocus2.url,
+    img: polyLifestyle.url,
+    logo: polyLogo.url,
   },
 ];
 
@@ -181,10 +208,12 @@ function TabPill({
   active,
   onClick,
   children,
+  logo,
 }: {
   active: boolean;
   onClick: () => void;
   children: React.ReactNode;
+  logo?: string;
 }) {
   return (
     <button
@@ -192,11 +221,17 @@ function TabPill({
       onClick={onClick}
       aria-pressed={active}
       className={
-        active
-          ? "bg-petrol text-white border border-petrol px-6 py-3 text-[11px] font-bold uppercase tracking-[0.18em] transition-colors"
-          : "border border-petrol/25 text-petrol/70 px-6 py-3 text-[11px] font-bold uppercase tracking-[0.18em] hover:border-petrol hover:text-petrol transition-colors"
+        (active
+          ? "bg-petrol text-white border border-petrol "
+          : "border border-petrol/25 text-petrol/70 hover:border-petrol hover:text-petrol ") +
+        "inline-flex items-center gap-3 px-6 py-3 text-[11px] font-bold uppercase tracking-[0.18em] transition-colors"
       }
     >
+      {logo ? (
+        <span className="bg-white flex items-center justify-center px-2 py-1.5">
+          <img src={logo} alt="" aria-hidden loading="lazy" className="h-3.5 w-auto object-contain" />
+        </span>
+      ) : null}
       {children}
     </button>
   );
@@ -208,16 +243,23 @@ function Brands() {
   return (
     <section className="py-16 sm:py-24 px-4 sm:px-6 bg-petrol/[0.03]" id="marcas">
       <div className="max-w-6xl mx-auto">
-        <Reveal variant="fade-up" className="mb-8 sm:mb-10 max-w-3xl">
+        <Reveal variant="fade-up" className="mb-6 sm:mb-8 max-w-3xl mx-auto text-center">
           <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-4 block">Como escolher</span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-balance text-ink-mid">
             Três marcas, três perfis de compra
           </h2>
         </Reveal>
 
-        <div className="flex flex-wrap gap-3 mb-8 sm:mb-10">
+        <Reveal variant="fade-up" delay={100} className="flex flex-col items-center gap-2 mb-6 sm:mb-8">
+          <p className="text-petrol/60 text-sm">Clique e veja qual marca te atende melhor</p>
+          <span aria-hidden className="text-gold text-xl leading-none animate-bounce">
+            ↓
+          </span>
+        </Reveal>
+
+        <div className="flex flex-wrap justify-center gap-3 mb-8 sm:mb-10">
           {brands.map((br, i) => (
-            <TabPill key={br.name} active={i === active} onClick={() => setActive(i)}>
+            <TabPill key={br.name} active={i === active} onClick={() => setActive(i)} logo={br.logo}>
               {br.name}
             </TabPill>
           ))}
@@ -227,15 +269,15 @@ function Brands() {
           key={b.name}
           className="reveal reveal-in reveal-fade-up overflow-hidden bg-petrol text-white grid md:grid-cols-[0.9fr_1.1fr]"
         >
-          <div className="relative bg-white/5 flex items-center justify-center p-10 min-h-[240px]">
-            <img src={b.img} alt={b.name} loading="lazy" className="max-h-64 w-auto object-contain drop-shadow-2xl" />
+          <div className="relative bg-white/5 min-h-[280px]">
+            <img src={b.img} alt={`Headset ${b.name} em uso`} loading="lazy" className="absolute inset-0 size-full object-cover" />
           </div>
           <div className="p-8 sm:p-12 flex flex-col justify-center">
             <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-gold mb-4 block">{b.name}</span>
             <h3 className="font-extrabold text-2xl sm:text-3xl mb-4 leading-tight text-balance">{b.title}</h3>
             <p className="text-white/70 text-base leading-relaxed mb-8 max-w-xl">{b.body}</p>
             <a href="#comparativo" className={`${pillLightGhost} self-start`}>
-              Ver modelos {b.name} →
+              Esse é meu cenário →
             </a>
           </div>
         </div>
@@ -243,6 +285,7 @@ function Brands() {
     </section>
   );
 }
+
 
 
 type Product = { brand: string; model: string; desc: string; img: string };
