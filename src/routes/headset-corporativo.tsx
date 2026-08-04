@@ -442,28 +442,52 @@ const whyItems = [
 ];
 
 function WhyAllied() {
+  const { openModal } = useLp();
   return (
-    <section className="py-16 sm:py-24 px-4 sm:px-6 bg-petrol/[0.02]" id="por-que-allied">
-      <div className="max-w-7xl mx-auto">
-        <Reveal variant="fade-up" className="mb-12 sm:mb-14 max-w-3xl">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-balance text-ink-mid">
+    <section className="relative overflow-hidden py-20 sm:py-28 px-4 sm:px-6" id="por-que-allied">
+      <img
+        src={officeImage}
+        alt=""
+        aria-hidden
+        loading="lazy"
+        width={1600}
+        height={900}
+        className="absolute inset-0 size-full object-cover"
+      />
+      <div aria-hidden className="absolute inset-0 bg-petrol/80" />
+      <div aria-hidden className="absolute inset-0 bg-black/40" />
+      <div className="max-w-6xl mx-auto relative">
+        <Reveal variant="fade-up" className="mb-10 sm:mb-14 max-w-3xl">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-balance text-white">
             Por que comprar seu headset com a AlliedIT
           </h2>
         </Reveal>
-        <div className="grid md:grid-cols-3 gap-px bg-border border border-border">
+        <div className="grid md:grid-cols-3 gap-5">
           {whyItems.map((it, i) => (
-            <Reveal as="article" key={it.title} variant="fade-up" delay={i * 90} className="bg-surface p-6 sm:p-8">
-              <h3 className="font-extrabold text-lg sm:text-xl mb-3 leading-tight text-balance text-ink-mid">
+            <Reveal
+              as="article"
+              key={it.title}
+              variant="fade-up"
+              delay={i * 90}
+              className="bg-black/55 backdrop-blur-sm p-7 sm:p-8"
+            >
+              <h3 className="font-extrabold text-lg sm:text-xl mb-3 leading-tight text-balance text-white">
                 {it.title}
               </h3>
-              <p className="text-petrol/70 text-sm leading-relaxed">{it.body}</p>
+              <p className="text-white/75 text-sm leading-relaxed">{it.body}</p>
             </Reveal>
           ))}
         </div>
+        <Reveal variant="fade-up" delay={280} className="mt-10">
+          <button onClick={() => openModal("why_allied")} className={pillLight}>
+            Pedir cotação
+          </button>
+        </Reveal>
       </div>
     </section>
   );
 }
+
 
 function FinalCta() {
   const { openModal } = useLp();
