@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
+import { Headphones, PhoneCall, Bluetooth, Headset, type LucideIcon } from "lucide-react";
 
 import ogImage from "@/assets/og-image.png.asset.json";
 import heroImage from "@/assets/headsets/hero-headset.jpg";
