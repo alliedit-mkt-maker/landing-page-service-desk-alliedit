@@ -357,73 +357,74 @@ function LevelDots({ level }: { level: number }) {
 
 function Matrix() {
   const { openModal } = useLp();
+  const [active, setActive] = useState(0);
+  const lvl = levels[active];
   return (
     <section className="py-16 sm:py-24 px-4 sm:px-6" id="comparativo">
       <div className="max-w-7xl mx-auto">
-        <Reveal variant="fade-up" className="mb-12 sm:mb-16 max-w-3xl">
+        <Reveal variant="fade-up" className="mb-8 sm:mb-10 max-w-3xl">
           <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-4 block">Comparativo</span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-balance text-ink-mid">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-balance text-ink-mid">
             Encontre o modelo certo para o seu cenário
           </h2>
         </Reveal>
 
-        <div className="flex flex-col gap-12 sm:gap-16">
-          {levels.map((lvl) => (
-            <div key={lvl.level}>
-              <Reveal variant="fade-up" className="mb-6 sm:mb-8 flex flex-col gap-3">
-                <div className="flex items-center gap-4">
-                  <LevelDots level={lvl.level} />
-                  <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-petrol/50">
-                    Nível {lvl.level}
-                  </span>
-                </div>
-                <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight text-ink-mid">{lvl.title}</h3>
-                <p className="text-petrol/60 text-sm sm:text-base max-w-2xl">{lvl.subtitle}</p>
-              </Reveal>
-
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-border border border-border">
-                {lvl.products.map((p, i) => (
-                  <Reveal
-                    as="article"
-                    key={p.model}
-                    variant="fade-up"
-                    delay={i * 90}
-                    className="bg-surface p-6 sm:p-8 flex flex-col"
-                  >
-                    <div className="bg-petrol/[0.03] border border-border mb-6 h-56 flex items-center justify-center p-4">
-                      <img
-                        src={p.img}
-                        alt={`${p.brand} ${p.model}`}
-                        loading="lazy"
-                        className="h-full w-full object-contain mix-blend-multiply"
-                      />
-                    </div>
-
-                    <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-gold mb-2 block">
-                      {p.brand}
-                    </span>
-                    <h4 className="font-extrabold text-lg mb-3 text-ink-mid">{p.model}</h4>
-                    <p className="text-petrol/70 text-sm leading-relaxed mb-6 flex-1">{p.desc}</p>
-                    <button
-                      data-product={`${p.brand} ${p.model}`}
-                      onClick={() => {
-                        pushEvent("product_select", { product: `${p.brand} ${p.model}`, level: lvl.level });
-                        openModal(`matriz_${p.brand.toLowerCase()}_${p.model.toLowerCase().replace(/\s+/g, "_")}`);
-                      }}
-                      className="self-start font-bold text-xs uppercase tracking-widest border-b-2 border-petrol pb-1 hover:border-gold hover:text-gold transition-colors"
-                    >
-                      Quero este →
-                    </button>
-                  </Reveal>
-                ))}
-              </div>
-            </div>
+        <div className="flex flex-wrap gap-3 mb-8">
+          {levels.map((l, i) => (
+            <TabPill key={l.level} active={i === active} onClick={() => setActive(i)}>
+              Nível {l.level}
+            </TabPill>
           ))}
+        </div>
+
+        <div key={lvl.level}>
+          <div className="mb-6 sm:mb-8 flex flex-col gap-3">
+            <div className="flex items-center gap-4">
+              <LevelDots level={lvl.level} />
+              <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-petrol/50">
+                Nível {lvl.level}
+              </span>
+            </div>
+            <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight text-ink-mid">{lvl.title}</h3>
+            <p className="text-petrol/60 text-sm sm:text-base max-w-2xl">{lvl.subtitle}</p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-border border border-border">
+            {lvl.products.map((p) => (
+              <article key={p.model} className="bg-surface p-6 sm:p-8 flex flex-col">
+                <div className="mb-6 h-56 flex items-center justify-center p-4">
+                  <img
+                    src={p.img}
+                    alt={`${p.brand} ${p.model}`}
+                    loading="lazy"
+                    className="h-full w-full object-contain mix-blend-multiply drop-shadow-xl"
+                  />
+                </div>
+
+                <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-gold mb-2 block">
+                  {p.brand}
+                </span>
+                <h4 className="font-extrabold text-lg mb-3 text-ink-mid">{p.model}</h4>
+                <p className="text-petrol/70 text-sm leading-relaxed mb-6 flex-1">{p.desc}</p>
+                <button
+                  data-product={`${p.brand} ${p.model}`}
+                  onClick={() => {
+                    pushEvent("product_select", { product: `${p.brand} ${p.model}`, level: lvl.level });
+                    openModal(`matriz_${p.brand.toLowerCase()}_${p.model.toLowerCase().replace(/\s+/g, "_")}`);
+                  }}
+                  className={`${pillOutline} self-start`}
+                >
+                  Quero este →
+                </button>
+              </article>
+            ))}
+          </div>
         </div>
       </div>
     </section>
   );
 }
+
 
 const whyItems = [
   {
