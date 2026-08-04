@@ -81,11 +81,12 @@ export function HeadsetPage() {
       <div className="min-h-screen bg-surface text-petrol font-sans">
         <main>
           <Hero />
+          <Clients centered />
           <Brands />
           <Matrix />
-          <Clients />
           <WhyAllied />
           <FinalCta />
+
         </main>
         <SiteFooter />
       </div>
