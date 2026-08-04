@@ -3,6 +3,8 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import ogImage from "@/assets/og-image.png.asset.json";
 import heroImage from "@/assets/headsets/hero-headset.jpg";
+import officeImage from "@/assets/headsets/office-team.jpg";
+
 import yealinkUh34 from "@/assets/headsets/yealink-uh34.png.asset.json";
 import yealinkUh42 from "@/assets/headsets/yealink-uh42.png.asset.json";
 import yealinkBh70 from "@/assets/headsets/yealink-bh70.png.asset.json";
