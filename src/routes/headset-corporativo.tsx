@@ -73,7 +73,6 @@ export function HeadsetPage() {
     <LpProvider modalTitle="Pedir cotação de headsets.">
 
       <div className="min-h-screen bg-surface text-petrol font-sans">
-        <SiteHeader />
         <main>
           <Hero />
           <Brands />
