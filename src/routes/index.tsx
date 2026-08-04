@@ -103,6 +103,8 @@ export const Route = createFileRoute("/")({
 function Index() {
   const { variant } = Route.useLoaderData();
   if (variant === "cabeamento") return <CabeamentoPage />;
+  if (variant === "headset") return <HeadsetPage />;
+
   return (
     <LpProvider>
       <div className="min-h-screen bg-surface text-petrol font-sans">
