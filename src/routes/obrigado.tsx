@@ -15,7 +15,25 @@ export const Route = createFileRoute("/obrigado")({
   component: ObrigadoPage,
 });
 
+const WA_NUMBER = "5511943319875";
+const WA_MSG_DEFAULT =
+  "Olá! Me interessei pelo Service Desk da AlliedIT e gostaria de falar com um especialista.";
+const WA_MSG_CABEAMENTO =
+  "Olá! Me interessei pelos serviços de cabeamento e redes da AlliedIT e gostaria de falar com um especialista.";
+
 function ObrigadoPage() {
+  const [isCabeamento, setIsCabeamento] = useState(false);
+
+  useEffect(() => {
+    const host = window.location.hostname.toLowerCase();
+    const param = new URLSearchParams(window.location.search).get("lp");
+    setIsCabeamento(host.includes("cabeamento") || param === "cabeamento");
+  }, []);
+
+  const waHref = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(
+    isCabeamento ? WA_MSG_CABEAMENTO : WA_MSG_DEFAULT,
+  )}`;
+
   return (
     <LpProvider>
       <div className="min-h-screen bg-surface text-petrol flex flex-col">
