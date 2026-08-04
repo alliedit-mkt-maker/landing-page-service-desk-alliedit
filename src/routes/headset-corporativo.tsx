@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
+import { Headphones, PhoneCall, Bluetooth, Headset, type LucideIcon } from "lucide-react";
 
 import ogImage from "@/assets/og-image.png.asset.json";
 import heroImage from "@/assets/headsets/hero-headset.jpg";
@@ -155,12 +156,14 @@ function Hero() {
             { src: polyLogo.url, alt: "Poly" },
           ].map((logo, i) => (
             <Reveal key={logo.alt} variant="fade-up" delay={380 + i * 160}>
-              <img
-                src={logo.src}
-                alt={logo.alt}
-                loading="lazy"
-                className="h-5 sm:h-7 w-auto object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity"
-              />
+              <span className="flex h-7 sm:h-9 w-28 sm:w-36 items-center justify-center">
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  loading="lazy"
+                  className="max-h-full max-w-full object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity"
+                />
+              </span>
             </Reveal>
           ))}
         </div>
@@ -208,12 +211,12 @@ function TabPill({
   active,
   onClick,
   children,
-  logo,
+  icon: Icon,
 }: {
   active: boolean;
   onClick: () => void;
   children: React.ReactNode;
-  logo?: string;
+  icon?: LucideIcon;
 }) {
   return (
     <button
@@ -222,17 +225,42 @@ function TabPill({
       aria-pressed={active}
       className={
         (active
-          ? "bg-petrol text-white border border-petrol "
+          ? "bg-petrol text-white border border-petrol shadow-[0_10px_30px_-16px_rgba(0,0,0,0.6)] "
           : "border border-petrol/25 text-petrol/70 hover:border-petrol hover:text-petrol ") +
-        "inline-flex items-center gap-3 px-6 py-3 text-[11px] font-bold uppercase tracking-[0.18em] transition-colors"
+        "inline-flex items-center gap-2.5 px-6 py-3 text-[11px] font-bold uppercase tracking-[0.18em] transition-colors"
       }
     >
-      {logo ? (
-        <span className="bg-white flex items-center justify-center px-2 py-1.5">
-          <img src={logo} alt="" aria-hidden loading="lazy" className="h-3.5 w-auto object-contain" />
-        </span>
-      ) : null}
+      {Icon ? <Icon size={16} className={active ? "text-gold" : "text-petrol/50"} /> : null}
       {children}
+    </button>
+  );
+}
+
+function BrandTab({
+  active,
+  onClick,
+  logo,
+  name,
+}: {
+  active: boolean;
+  onClick: () => void;
+  logo: string;
+  name: string;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-pressed={active}
+      aria-label={name}
+      className={
+        (active
+          ? "border-petrol opacity-100 shadow-[0_12px_30px_-18px_rgba(0,0,0,0.55)] "
+          : "border-petrol/15 opacity-45 grayscale hover:opacity-90 hover:grayscale-0 hover:border-petrol/40 ") +
+        "border-2 bg-white flex items-center justify-center h-16 w-40 sm:w-48 px-6 transition-all"
+      }
+    >
+      <img src={logo} alt={name} loading="lazy" className="max-h-7 max-w-full object-contain" />
     </button>
   );
 }
@@ -257,11 +285,9 @@ function Brands() {
           </span>
         </Reveal>
 
-        <div className="flex flex-wrap justify-center gap-3 mb-8 sm:mb-10">
+        <div className="flex flex-wrap justify-center gap-4 mb-8 sm:mb-10">
           {brands.map((br, i) => (
-            <TabPill key={br.name} active={i === active} onClick={() => setActive(i)} logo={br.logo}>
-              {br.name}
-            </TabPill>
+            <BrandTab key={br.name} active={i === active} onClick={() => setActive(i)} logo={br.logo} name={br.name} />
           ))}
         </div>
 
@@ -290,9 +316,10 @@ function Brands() {
 
 type Product = { brand: string; model: string; desc: string; img: string };
 
-const levels: { level: number; title: string; subtitle: string; products: Product[] }[] = [
+const levels: { level: number; icon: LucideIcon; title: string; subtitle: string; products: Product[] }[] = [
   {
     level: 1,
+    icon: Headphones,
     title: "Uso diário / entrada",
     subtitle: "Para quem faz chamadas ocasionais e precisa de algo simples e confiável",
     products: [
@@ -318,6 +345,7 @@ const levels: { level: number; title: string; subtitle: string; products: Produc
   },
   {
     level: 2,
+    icon: PhoneCall,
     title: "Intermediário / uso frequente",
     subtitle: "Para quem está em chamada boa parte do expediente",
     products: [
@@ -343,6 +371,7 @@ const levels: { level: number; title: string; subtitle: string; products: Produc
   },
   {
     level: 3,
+    icon: Bluetooth,
     title: "Avançado sem fio, com cancelamento de ruído",
     subtitle: "Para quem precisa de mobilidade e silêncio em ambientes movimentados ou trabalho híbrido",
     products: [
@@ -368,6 +397,7 @@ const levels: { level: number; title: string; subtitle: string; products: Produc
   },
   {
     level: 4,
+    icon: Headset,
     title: "Call center / uso intensivo",
     subtitle: "Para operações de atendimento com alto volume de chamadas, o dia inteiro",
     products: [
@@ -414,49 +444,61 @@ function Matrix() {
   return (
     <section className="py-16 sm:py-24 px-4 sm:px-6" id="comparativo">
       <div className="max-w-7xl mx-auto">
-        <Reveal variant="fade-up" className="mb-8 sm:mb-10 max-w-3xl">
+        <Reveal variant="fade-up" className="mb-6 sm:mb-8 max-w-3xl mx-auto text-center">
           <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-4 block">Comparativo</span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-balance text-ink-mid">
-            Encontre o modelo certo para o seu cenário
+            Encontre o melhor modelo
           </h2>
         </Reveal>
 
-        <div className="flex flex-wrap gap-3 mb-8">
+        <p className="text-petrol/60 text-sm text-center mb-5">
+          Selecione a opção que representa seu cenário atual
+        </p>
+
+        <div className="flex flex-wrap justify-center gap-3 mb-10">
           {levels.map((l, i) => (
-            <TabPill key={l.level} active={i === active} onClick={() => setActive(i)}>
-              Nível {l.level}
+            <TabPill key={l.level} active={i === active} onClick={() => setActive(i)} icon={l.icon}>
+              {l.title}
             </TabPill>
           ))}
         </div>
 
         <div key={lvl.level}>
-          <div className="mb-6 sm:mb-8 flex flex-col gap-3">
-            <div className="flex items-center gap-4">
-              <LevelDots level={lvl.level} />
-              <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-petrol/50">
-                Nível {lvl.level}
-              </span>
-            </div>
+          <div className="mb-8 sm:mb-10 flex flex-col items-center gap-3 text-center">
+            <LevelDots level={lvl.level} />
             <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight text-ink-mid">{lvl.title}</h3>
             <p className="text-petrol/60 text-sm sm:text-base max-w-2xl">{lvl.subtitle}</p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-border border border-border">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {lvl.products.map((p) => (
-              <article key={p.model} className="bg-surface p-6 sm:p-8 flex flex-col">
+              <article
+                key={p.model}
+                className="group bg-surface border border-border border-t-2 border-t-petrol/15 hover:border-t-gold p-6 sm:p-8 flex flex-col transition-all duration-300 hover:shadow-[0_24px_50px_-30px_rgba(0,0,0,0.45)] hover:-translate-y-1"
+              >
                 <div className="mb-6 h-56 flex items-center justify-center p-4">
                   <img
                     src={p.img}
                     alt={`${p.brand} ${p.model}`}
                     loading="lazy"
-                    className="h-full w-full object-contain mix-blend-multiply drop-shadow-xl"
+                    className="h-full w-full object-contain mix-blend-multiply drop-shadow-xl transition-transform duration-300 group-hover:scale-[1.04]"
                   />
                 </div>
 
                 <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-gold mb-2 block">
                   {p.brand}
                 </span>
-                <h4 className="font-extrabold text-lg mb-3 text-ink-mid">{p.model}</h4>
+                <h4 className="mb-3">
+                  <span className="relative inline-block overflow-hidden px-3 py-1.5 -ml-3">
+                    <span
+                      aria-hidden
+                      className="absolute inset-0 bg-petrol origin-left scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100"
+                    />
+                    <span className="relative font-extrabold text-lg text-ink-mid transition-colors duration-300 group-hover:text-white">
+                      {p.model}
+                    </span>
+                  </span>
+                </h4>
                 <p className="text-petrol/70 text-sm leading-relaxed mb-6 flex-1">{p.desc}</p>
                 <button
                   data-product={`${p.brand} ${p.model}`}
