@@ -340,14 +340,15 @@ function Matrix() {
                     delay={i * 90}
                     className="bg-surface p-6 sm:p-8 flex flex-col"
                   >
-                    <div className="bg-petrol/[0.03] border border-border mb-6 aspect-4/3 grid place-items-center p-4">
+                    <div className="bg-petrol/[0.03] border border-border mb-6 h-56 flex items-center justify-center p-4">
                       <img
                         src={p.img}
                         alt={`${p.brand} ${p.model}`}
                         loading="lazy"
-                        className="max-h-full max-w-full w-auto object-contain mix-blend-multiply"
+                        className="h-full w-full object-contain mix-blend-multiply"
                       />
                     </div>
+
                     <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-gold mb-2 block">
                       {p.brand}
                     </span>
