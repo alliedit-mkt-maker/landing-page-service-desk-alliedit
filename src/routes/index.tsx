@@ -81,7 +81,10 @@ export const Route = createFileRoute("/")({
             "@type": "Service",
             serviceType: isCabeamento
               ? "Cabeamento estruturado, fibra óptica e data center"
-              : "Service Desk terceirizado",
+              : isHeadset
+                ? "Revenda de headsets corporativos Yealink, Logitech e Poly"
+                : "Service Desk terceirizado",
+
             provider: {
               "@type": "Organization",
               name: "AlliedIT",
