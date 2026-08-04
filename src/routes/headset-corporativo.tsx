@@ -17,6 +17,12 @@ import polyBlackwire3220 from "@/assets/headsets/poly-blackwire-3220.png.asset.j
 import polyBlackwire5220 from "@/assets/headsets/poly-blackwire-5220.webp.asset.json";
 import polyVoyagerFocus2 from "@/assets/headsets/poly-voyager-focus-2.webp.asset.json";
 import polyEncorePro520 from "@/assets/headsets/poly-encorepro-520.png.asset.json";
+import yealinkLogo from "@/assets/headsets/yealink-logo.png.asset.json";
+import logitechLogo from "@/assets/headsets/logitech-logo.png.asset.json";
+import polyLogo from "@/assets/headsets/poly-logo.webp.asset.json";
+import yealinkLifestyle from "@/assets/headsets/yealink-lifestyle.png.asset.json";
+import logitechLifestyle from "@/assets/headsets/logitech-lifestyle.jpg.asset.json";
+import polyLifestyle from "@/assets/headsets/poly-lifestyle.jpg.asset.json";
 import { LpProvider, useLp, pushEvent } from "@/components/lp/LpProvider";
 import logoAlliedIt from "@/assets/logo-alliedit.png";
 import { SiteFooter } from "@/components/lp/SiteFooter";
