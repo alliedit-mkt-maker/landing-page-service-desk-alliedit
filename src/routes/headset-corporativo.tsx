@@ -155,12 +155,14 @@ function Hero() {
             { src: polyLogo.url, alt: "Poly" },
           ].map((logo, i) => (
             <Reveal key={logo.alt} variant="fade-up" delay={380 + i * 160}>
-              <img
-                src={logo.src}
-                alt={logo.alt}
-                loading="lazy"
-                className="h-5 sm:h-7 w-auto object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity"
-              />
+              <span className="flex h-7 sm:h-9 w-28 sm:w-36 items-center justify-center">
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  loading="lazy"
+                  className="max-h-full max-w-full object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity"
+                />
+              </span>
             </Reveal>
           ))}
         </div>
