@@ -345,6 +345,7 @@ const levels: { level: number; icon: LucideIcon; title: string; subtitle: string
   },
   {
     level: 2,
+    icon: PhoneCall,
     title: "Intermediário / uso frequente",
     subtitle: "Para quem está em chamada boa parte do expediente",
     products: [
