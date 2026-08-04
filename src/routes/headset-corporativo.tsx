@@ -284,11 +284,9 @@ function Brands() {
           </span>
         </Reveal>
 
-        <div className="flex flex-wrap justify-center gap-3 mb-8 sm:mb-10">
+        <div className="flex flex-wrap justify-center gap-4 mb-8 sm:mb-10">
           {brands.map((br, i) => (
-            <TabPill key={br.name} active={i === active} onClick={() => setActive(i)} logo={br.logo}>
-              {br.name}
-            </TabPill>
+            <BrandTab key={br.name} active={i === active} onClick={() => setActive(i)} logo={br.logo} name={br.name} />
           ))}
         </div>
 
