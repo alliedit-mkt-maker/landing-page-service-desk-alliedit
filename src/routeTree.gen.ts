@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ObrigadoRouteImport } from './routes/obrigado'
+import { Route as HeadsetCorporativoRouteImport } from './routes/headset-corporativo'
 import { Route as CabeamentoRouteImport } from './routes/cabeamento'
 import { Route as IndexRouteImport } from './routes/index'
 
 const ObrigadoRoute = ObrigadoRouteImport.update({
   id: '/obrigado',
   path: '/obrigado',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HeadsetCorporativoRoute = HeadsetCorporativoRouteImport.update({
+  id: '/headset-corporativo',
+  path: '/headset-corporativo',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CabeamentoRoute = CabeamentoRouteImport.update({
@@ -32,30 +38,34 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/cabeamento': typeof CabeamentoRoute
+  '/headset-corporativo': typeof HeadsetCorporativoRoute
   '/obrigado': typeof ObrigadoRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/cabeamento': typeof CabeamentoRoute
+  '/headset-corporativo': typeof HeadsetCorporativoRoute
   '/obrigado': typeof ObrigadoRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/cabeamento': typeof CabeamentoRoute
+  '/headset-corporativo': typeof HeadsetCorporativoRoute
   '/obrigado': typeof ObrigadoRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/cabeamento' | '/obrigado'
+  fullPaths: '/' | '/cabeamento' | '/headset-corporativo' | '/obrigado'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/cabeamento' | '/obrigado'
-  id: '__root__' | '/' | '/cabeamento' | '/obrigado'
+  to: '/' | '/cabeamento' | '/headset-corporativo' | '/obrigado'
+  id: '__root__' | '/' | '/cabeamento' | '/headset-corporativo' | '/obrigado'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CabeamentoRoute: typeof CabeamentoRoute
+  HeadsetCorporativoRoute: typeof HeadsetCorporativoRoute
   ObrigadoRoute: typeof ObrigadoRoute
 }
 
@@ -66,6 +76,13 @@ declare module '@tanstack/react-router' {
       path: '/obrigado'
       fullPath: '/obrigado'
       preLoaderRoute: typeof ObrigadoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/headset-corporativo': {
+      id: '/headset-corporativo'
+      path: '/headset-corporativo'
+      fullPath: '/headset-corporativo'
+      preLoaderRoute: typeof HeadsetCorporativoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cabeamento': {
@@ -88,18 +105,9 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CabeamentoRoute: CabeamentoRoute,
+  HeadsetCorporativoRoute: HeadsetCorporativoRoute,
   ObrigadoRoute: ObrigadoRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

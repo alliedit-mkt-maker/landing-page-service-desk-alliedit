@@ -70,7 +70,9 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
 // e.g. cabeamento.alliedit.com.br/ -> internally renders /cabeamento
 const HOST_REWRITES: Record<string, string> = {
   "cabeamento.alliedit.com.br": "/cabeamento",
+  "headset-corporativo.alliedit.com.br": "/headset-corporativo",
 };
+
 
 function rewriteRequestForHost(request: Request): Request {
   const url = new URL(request.url);
