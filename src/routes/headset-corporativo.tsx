@@ -122,32 +122,48 @@ function Hero() {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(0deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.82) 45%, rgba(0,0,0,0.5) 78%, rgba(0,0,0,0.12) 92%, rgba(0,0,0,0) 100%)",
+            "linear-gradient(0deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.62) 45%, rgba(0,0,0,0.32) 78%, rgba(0,0,0,0.06) 92%, rgba(0,0,0,0) 100%)",
         }}
       />
       <div className="max-w-4xl mx-auto relative w-full text-center flex flex-col items-center">
         <img
           src={logoAlliedIt}
           alt="AlliedIT"
-          className="h-9 sm:h-11 w-auto brightness-0 invert mb-10 sm:mb-12"
+          className="h-12 sm:h-16 w-auto brightness-0 invert mb-10 sm:mb-12 drop-shadow-lg"
         />
 
         <Reveal variant="fade-up">
           <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-gold font-semibold mb-5 block">
-            Headsets corporativos Yealink · Logitech · Poly
+            Headsets corporativos
           </span>
         </Reveal>
         <Reveal variant="fade-up" delay={120}>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-balance leading-[1.02] mb-6 sm:mb-8 text-white">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-balance leading-[1.02] mb-6 sm:mb-8 text-white drop-shadow-[0_2px_18px_rgba(0,0,0,0.6)]">
             O headset certo para cada tipo de chamada da sua empresa
           </h1>
         </Reveal>
         <Reveal variant="fade-up" delay={200}>
-          <p className="text-white/75 text-base sm:text-lg max-w-2xl mx-auto mb-9 leading-relaxed">
+          <p className="text-white/80 text-base sm:text-lg max-w-2xl mx-auto mb-9 leading-relaxed drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)]">
             Da ligação do dia a dia ao call center de alto volume. A AlliedIT ajuda você a escolher entre as três
             marcas mais confiáveis do mercado e cuida da compra, entrega e suporte depois.
           </p>
         </Reveal>
+        <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12 mb-10">
+          {[
+            { src: yealinkLogo.url, alt: "Yealink" },
+            { src: logitechLogo.url, alt: "Logitech" },
+            { src: polyLogo.url, alt: "Poly" },
+          ].map((logo, i) => (
+            <Reveal key={logo.alt} variant="fade-up" delay={380 + i * 160}>
+              <img
+                src={logo.src}
+                alt={logo.alt}
+                loading="lazy"
+                className="h-5 sm:h-7 w-auto object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity"
+              />
+            </Reveal>
+          ))}
+        </div>
         <Reveal variant="fade-up" delay={300}>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button onClick={() => openModal("hero_primary")} className={pillLight}>
@@ -158,6 +174,7 @@ function Hero() {
             </a>
           </div>
         </Reveal>
+
       </div>
     </section>
   );
