@@ -18,7 +18,7 @@ import polyBlackwire5220 from "@/assets/headsets/poly-blackwire-5220.webp.asset.
 import polyVoyagerFocus2 from "@/assets/headsets/poly-voyager-focus-2.webp.asset.json";
 import polyEncorePro520 from "@/assets/headsets/poly-encorepro-520.png.asset.json";
 import { LpProvider, useLp, pushEvent } from "@/components/lp/LpProvider";
-import { SiteHeader } from "@/components/lp/SiteHeader";
+import logoAlliedIt from "@/assets/logo-alliedit.png";
 import { SiteFooter } from "@/components/lp/SiteFooter";
 import { Clients } from "@/components/lp/Clients";
 import { Reveal } from "@/components/lp/Reveal";
