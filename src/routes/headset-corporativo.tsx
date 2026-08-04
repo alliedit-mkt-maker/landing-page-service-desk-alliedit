@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
+
 import ogImage from "@/assets/og-image.png.asset.json";
 import heroImage from "@/assets/headsets/hero-headset.jpg";
 import yealinkUh34 from "@/assets/headsets/yealink-uh34.png.asset.json";
