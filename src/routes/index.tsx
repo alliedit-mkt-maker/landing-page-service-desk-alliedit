@@ -21,8 +21,9 @@ import { HeadsetPage, headsetMeta } from "./headset-corporativo";
 const SD_TITLE = "AlliedIT | Service Desk terceirizado 24x7 com NOC e SOC integrados";
 const SD_DESCRIPTION = "A operação de TI por trás das marcas que você conhece. Service Desk 24x7, N1/N2/N3 na mesma equipe, NOC e SOC integrados, custo previsível e SLA real. +7 anos atendendo hotelaria, saúde, varejo, farma e logística.";
 
-const HOST_VARIANT_MAP: Record<string, "cabeamento"> = {
+const HOST_VARIANT_MAP: Record<string, "cabeamento" | "headset"> = {
   "cabeamento.alliedit.com.br": "cabeamento",
+  "headset-corporativo.alliedit.com.br": "headset",
 };
 
 const getRouteVariant = createServerFn({ method: "GET" }).handler(async () => {
@@ -37,12 +38,23 @@ const getRouteVariant = createServerFn({ method: "GET" }).handler(async () => {
 export const Route = createFileRoute("/")({
   loader: async () => ({ variant: await getRouteVariant() }),
   head: ({ loaderData }) => {
-    const isCabeamento = loaderData?.variant === "cabeamento";
-    const title = isCabeamento ? cabeamentoMeta.title : SD_TITLE;
-    const description = isCabeamento ? cabeamentoMeta.description : SD_DESCRIPTION;
-    const canonical = isCabeamento ? "https://cabeamento.alliedit.com.br/" : "https://service-desk.alliedit.com.br/";
+    const variant = loaderData?.variant;
+    const isCabeamento = variant === "cabeamento";
+    const isHeadset = variant === "headset";
+    const title = isCabeamento ? cabeamentoMeta.title : isHeadset ? headsetMeta.title : SD_TITLE;
+    const description = isCabeamento
+      ? cabeamentoMeta.description
+      : isHeadset
+        ? headsetMeta.description
+        : SD_DESCRIPTION;
+    const canonical = isCabeamento
+      ? "https://cabeamento.alliedit.com.br/"
+      : isHeadset
+        ? "https://headset-corporativo.alliedit.com.br/"
+        : "https://service-desk.alliedit.com.br/";
     const ogUrl = canonical;
     const ogImageUrl = `https://service-desk.alliedit.com.br${ogImage.url}`;
+
     return {
       meta: [
         { title },
