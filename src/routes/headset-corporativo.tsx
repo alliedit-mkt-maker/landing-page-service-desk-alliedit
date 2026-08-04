@@ -100,7 +100,7 @@ function Hero() {
   const { openModal } = useLp();
   return (
     <section
-      className="relative overflow-hidden min-h-[calc(100vh-4rem)] flex flex-col justify-center py-20 px-4 sm:px-6"
+      className="relative overflow-hidden min-h-screen flex flex-col justify-center py-20 px-4 sm:px-6"
       id="hero"
     >
       <img
@@ -110,13 +110,21 @@ function Hero() {
         width={1920}
         height={1088}
       />
-      <div aria-hidden className="absolute inset-0 bg-black/65" />
       <div
         aria-hidden
         className="absolute inset-0"
-        style={{ background: "linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.2) 45%, rgba(0,0,0,0.6) 100%)" }}
+        style={{
+          background:
+            "linear-gradient(0deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.82) 45%, rgba(0,0,0,0.5) 78%, rgba(0,0,0,0.12) 92%, rgba(0,0,0,0) 100%)",
+        }}
       />
       <div className="max-w-4xl mx-auto relative w-full text-center flex flex-col items-center">
+        <img
+          src={logoAlliedIt}
+          alt="AlliedIT"
+          className="h-9 sm:h-11 w-auto brightness-0 invert mb-10 sm:mb-12"
+        />
+
         <Reveal variant="fade-up">
           <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-gold font-semibold mb-5 block">
             Headsets corporativos Yealink · Logitech · Poly
