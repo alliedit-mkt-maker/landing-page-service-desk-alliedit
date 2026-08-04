@@ -89,13 +89,13 @@ export function HeadsetPage() {
 }
 
 const pillDark =
-  "inline-flex items-center justify-center rounded-full border border-petrol bg-petrol text-white px-7 py-3.5 text-[11px] font-bold uppercase tracking-[0.18em] hover:bg-petrol-light transition-colors";
+  "inline-flex items-center justify-center border border-petrol bg-petrol text-white px-7 py-3.5 text-[11px] font-bold uppercase tracking-[0.18em] hover:bg-petrol-light transition-colors";
 const pillOutline =
-  "inline-flex items-center justify-center rounded-full border border-petrol/30 text-petrol px-7 py-3.5 text-[11px] font-bold uppercase tracking-[0.18em] hover:border-gold hover:text-gold transition-colors";
+  "inline-flex items-center justify-center border border-petrol/30 text-petrol px-7 py-3.5 text-[11px] font-bold uppercase tracking-[0.18em] hover:border-gold hover:text-gold transition-colors";
 const pillLight =
-  "inline-flex items-center justify-center rounded-full border-2 border-white text-white px-8 py-4 text-[11px] font-bold uppercase tracking-[0.18em] hover:bg-white hover:text-petrol transition-colors";
+  "inline-flex items-center justify-center border-2 border-white text-white px-8 py-4 text-[11px] font-bold uppercase tracking-[0.18em] hover:bg-white hover:text-petrol transition-colors";
 const pillLightGhost =
-  "inline-flex items-center justify-center rounded-full border border-white/40 text-white/90 px-7 py-4 text-[11px] font-bold uppercase tracking-[0.18em] hover:border-gold hover:text-gold transition-colors";
+  "inline-flex items-center justify-center border border-white/40 text-white/90 px-7 py-4 text-[11px] font-bold uppercase tracking-[0.18em] hover:border-gold hover:text-gold transition-colors";
 
 function Hero() {
   const { openModal } = useLp();
@@ -106,36 +106,36 @@ function Hero() {
     >
       <img
         src={heroImage}
-        alt="Profissional em chamada corporativa usando headset em escritório"
-        className="absolute inset-0 size-full object-cover"
-        width={1200}
-        height={1408}
+        alt="Equipe corporativa usando headsets em central de atendimento"
+        className="absolute inset-0 size-full object-cover object-center"
+        width={1920}
+        height={1088}
       />
-      <div aria-hidden className="absolute inset-0 bg-petrol/85" />
+      <div aria-hidden className="absolute inset-0 bg-black/65" />
       <div
         aria-hidden
         className="absolute inset-0"
-        style={{ background: "linear-gradient(100deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 60%, rgba(0,0,0,0.5) 100%)" }}
+        style={{ background: "linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.2) 45%, rgba(0,0,0,0.6) 100%)" }}
       />
-      <div className="max-w-5xl mx-auto relative w-full">
+      <div className="max-w-4xl mx-auto relative w-full text-center flex flex-col items-center">
         <Reveal variant="fade-up">
           <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-gold font-semibold mb-5 block">
             Headsets corporativos Yealink · Logitech · Poly
           </span>
         </Reveal>
         <Reveal variant="fade-up" delay={120}>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[4.4rem] font-extrabold tracking-tight text-balance leading-[0.98] mb-6 sm:mb-8 text-white">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-balance leading-[1.02] mb-6 sm:mb-8 text-white">
             O headset certo para cada tipo de chamada da sua empresa
           </h1>
         </Reveal>
         <Reveal variant="fade-up" delay={200}>
-          <p className="text-white/75 text-base sm:text-lg max-w-2xl mb-9 leading-relaxed">
+          <p className="text-white/75 text-base sm:text-lg max-w-2xl mx-auto mb-9 leading-relaxed">
             Da ligação do dia a dia ao call center de alto volume. A AlliedIT ajuda você a escolher entre as três
-            marcas mais confiáveis do mercado — e cuida da compra, entrega e suporte depois.
+            marcas mais confiáveis do mercado e cuida da compra, entrega e suporte depois.
           </p>
         </Reveal>
         <Reveal variant="fade-up" delay={300}>
-          <div className="flex flex-wrap items-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button onClick={() => openModal("hero_primary")} className={pillLight}>
               Pedir cotação
             </button>
@@ -159,13 +159,13 @@ const brands = [
   {
     name: "Logitech",
     title: "Equilíbrio entre custo e recurso",
-    body: "Para quem quer um meio-termo confiável — recursos modernos, conforto no dia a dia, sem pagar por excesso.",
+    body: "Para quem quer um meio-termo confiável, com recursos modernos, conforto no dia a dia, sem pagar por excesso.",
     img: logitechZoneWireless2.url,
   },
   {
     name: "Poly",
     title: "Performance e qualidade sonora",
-    body: "Para quem prioriza o melhor da categoria — áudio, cancelamento de ruído e durabilidade no topo de linha.",
+    body: "Para quem prioriza o melhor da categoria: áudio, cancelamento de ruído e durabilidade no topo de linha.",
     img: polyVoyagerFocus2.url,
   },
 ];
@@ -186,8 +186,8 @@ function TabPill({
       aria-pressed={active}
       className={
         active
-          ? "rounded-full bg-petrol text-white border border-petrol px-6 py-3 text-[11px] font-bold uppercase tracking-[0.18em] transition-colors"
-          : "rounded-full border border-petrol/25 text-petrol/70 px-6 py-3 text-[11px] font-bold uppercase tracking-[0.18em] hover:border-petrol hover:text-petrol transition-colors"
+          ? "bg-petrol text-white border border-petrol px-6 py-3 text-[11px] font-bold uppercase tracking-[0.18em] transition-colors"
+          : "border border-petrol/25 text-petrol/70 px-6 py-3 text-[11px] font-bold uppercase tracking-[0.18em] hover:border-petrol hover:text-petrol transition-colors"
       }
     >
       {children}
@@ -218,7 +218,7 @@ function Brands() {
 
         <div
           key={b.name}
-          className="reveal reveal-in reveal-fade-up rounded-3xl overflow-hidden bg-petrol text-white grid md:grid-cols-[0.9fr_1.1fr]"
+          className="reveal reveal-in reveal-fade-up overflow-hidden bg-petrol text-white grid md:grid-cols-[0.9fr_1.1fr]"
         >
           <div className="relative bg-white/5 flex items-center justify-center p-10 min-h-[240px]">
             <img src={b.img} alt={b.name} loading="lazy" className="max-h-64 w-auto object-contain drop-shadow-2xl" />
@@ -431,7 +431,7 @@ function Matrix() {
 const whyItems = [
   {
     title: "Compra sem complicação",
-    body: "Cotação rápida, sem burocracia, com o modelo certo pro seu cenário — não o que sobrou em estoque.",
+    body: "Cotação rápida, sem burocracia, com o modelo certo pro seu cenário, não o que sobrou em estoque.",
   },
   {
     title: "Suporte depois da compra",
@@ -439,7 +439,7 @@ const whyItems = [
   },
   {
     title: "Parceira de TI, não só revenda",
-    body: "A AlliedIT já cuida da infraestrutura de TI de centenas de empresas — o headset é parte de uma operação que a gente entende de ponta a ponta.",
+    body: "A AlliedIT já cuida da infraestrutura de TI de centenas de empresas, e o headset é parte de uma operação que a gente entende de ponta a ponta.",
   },
 ];
 
@@ -514,7 +514,7 @@ function FinalCta() {
         <Reveal variant="scale-in" delay={340}>
           <button
             onClick={() => openModal("final_cta")}
-            className="inline-flex items-center justify-center rounded-full bg-white text-petrol px-10 sm:px-12 py-5 text-[12px] font-bold uppercase tracking-[0.18em] hover:bg-gold transition-colors mb-6"
+            className="inline-flex items-center justify-center bg-white text-petrol px-10 sm:px-12 py-5 text-[12px] font-bold uppercase tracking-[0.18em] hover:bg-gold transition-colors mb-6"
           >
             Solicitar cotação
           </button>
