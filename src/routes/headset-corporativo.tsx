@@ -371,6 +371,7 @@ const levels: { level: number; icon: LucideIcon; title: string; subtitle: string
   },
   {
     level: 3,
+    icon: Bluetooth,
     title: "Avançado sem fio, com cancelamento de ruído",
     subtitle: "Para quem precisa de mobilidade e silêncio em ambientes movimentados ou trabalho híbrido",
     products: [
