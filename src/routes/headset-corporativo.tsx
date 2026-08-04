@@ -514,10 +514,11 @@ function FinalCta() {
         <Reveal variant="scale-in" delay={340}>
           <button
             onClick={() => openModal("final_cta")}
-            className="btn-sheen bg-white text-petrol px-10 sm:px-12 py-5 sm:py-6 text-sm font-bold uppercase tracking-widest hover:bg-gold transition-colors mb-6"
+            className="inline-flex items-center justify-center rounded-full bg-white text-petrol px-10 sm:px-12 py-5 text-[12px] font-bold uppercase tracking-[0.18em] hover:bg-gold transition-colors mb-6"
           >
             Solicitar cotação
           </button>
+
         </Reveal>
       </div>
     </section>
