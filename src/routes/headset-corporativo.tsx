@@ -84,60 +84,61 @@ export function HeadsetPage() {
   );
 }
 
+const pillDark =
+  "inline-flex items-center justify-center rounded-full border border-petrol bg-petrol text-white px-7 py-3.5 text-[11px] font-bold uppercase tracking-[0.18em] hover:bg-petrol-light transition-colors";
+const pillOutline =
+  "inline-flex items-center justify-center rounded-full border border-petrol/30 text-petrol px-7 py-3.5 text-[11px] font-bold uppercase tracking-[0.18em] hover:border-gold hover:text-gold transition-colors";
+const pillLight =
+  "inline-flex items-center justify-center rounded-full border-2 border-white text-white px-8 py-4 text-[11px] font-bold uppercase tracking-[0.18em] hover:bg-white hover:text-petrol transition-colors";
+const pillLightGhost =
+  "inline-flex items-center justify-center rounded-full border border-white/40 text-white/90 px-7 py-4 text-[11px] font-bold uppercase tracking-[0.18em] hover:border-gold hover:text-gold transition-colors";
+
 function Hero() {
   const { openModal } = useLp();
   return (
     <section
-      className="relative overflow-hidden min-h-[calc(100vh-4rem)] flex flex-col justify-center py-16 sm:py-24 px-4 sm:px-6"
+      className="relative overflow-hidden min-h-[calc(100vh-4rem)] flex flex-col justify-center py-20 px-4 sm:px-6"
       id="hero"
-      style={{
-        backgroundImage:
-          "radial-gradient(60% 60% at 85% 0%, color-mix(in oklch, var(--gold) 18%, transparent), transparent 70%), radial-gradient(55% 55% at 0% 50%, color-mix(in oklch, var(--petrol) 10%, transparent), transparent 70%), linear-gradient(180deg, color-mix(in oklch, var(--gold) 8%, var(--surface)) 0%, color-mix(in oklch, var(--gold) 4%, var(--surface)) 55%, #ffffff 100%)",
-      }}
     >
-      <div className="max-w-7xl mx-auto relative w-full grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-16 items-center">
-        <div>
-          <Reveal variant="fade-up">
-            <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.2em] text-gold font-semibold mb-4 sm:mb-6 block">
-              Headsets corporativos Yealink · Logitech · Poly
-            </span>
-          </Reveal>
-          <Reveal variant="fade-up" delay={120}>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[4.2rem] font-extrabold tracking-tight text-balance leading-[0.98] mb-6 sm:mb-8 text-ink-mid">
-              O headset certo para cada tipo de chamada da sua empresa
-            </h1>
-          </Reveal>
-          <Reveal variant="fade-up" delay={200}>
-            <p className="text-petrol/70 text-base sm:text-lg max-w-2xl mb-8 sm:mb-10 leading-relaxed">
-              Da ligação do dia a dia ao call center de alto volume. A AlliedIT ajuda você a escolher entre as três
-              marcas mais confiáveis do mercado — e cuida da compra, entrega e suporte depois.
-            </p>
-          </Reveal>
-          <Reveal variant="fade-up" delay={300}>
-            <div className="flex flex-wrap items-center gap-6">
-              <button
-                onClick={() => openModal("hero_primary")}
-                className="btn-sheen bg-petrol text-white px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-petrol-light transition-colors"
-              >
-                Pedir cotação
-              </button>
-              <a
-                href="#comparativo"
-                className="font-bold text-xs uppercase tracking-widest border-b-2 border-petrol/30 pb-1 hover:border-gold hover:text-gold transition-colors"
-              >
-                Ver comparativo de modelos ↓
-              </a>
-            </div>
-          </Reveal>
-        </div>
-        <Reveal variant="scale-in" delay={220} className="hidden lg:block">
-          <img
-            src={heroImage}
-            alt="Profissional em chamada corporativa usando headset com microfone em escritório"
-            width={1200}
-            height={1408}
-            className="w-full h-auto max-h-[60vh] object-cover border border-border"
-          />
+      <img
+        src={heroImage}
+        alt="Profissional em chamada corporativa usando headset em escritório"
+        className="absolute inset-0 size-full object-cover"
+        width={1200}
+        height={1408}
+      />
+      <div aria-hidden className="absolute inset-0 bg-petrol/85" />
+      <div
+        aria-hidden
+        className="absolute inset-0"
+        style={{ background: "linear-gradient(100deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 60%, rgba(0,0,0,0.5) 100%)" }}
+      />
+      <div className="max-w-5xl mx-auto relative w-full">
+        <Reveal variant="fade-up">
+          <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-gold font-semibold mb-5 block">
+            Headsets corporativos Yealink · Logitech · Poly
+          </span>
+        </Reveal>
+        <Reveal variant="fade-up" delay={120}>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[4.4rem] font-extrabold tracking-tight text-balance leading-[0.98] mb-6 sm:mb-8 text-white">
+            O headset certo para cada tipo de chamada da sua empresa
+          </h1>
+        </Reveal>
+        <Reveal variant="fade-up" delay={200}>
+          <p className="text-white/75 text-base sm:text-lg max-w-2xl mb-9 leading-relaxed">
+            Da ligação do dia a dia ao call center de alto volume. A AlliedIT ajuda você a escolher entre as três
+            marcas mais confiáveis do mercado — e cuida da compra, entrega e suporte depois.
+          </p>
+        </Reveal>
+        <Reveal variant="fade-up" delay={300}>
+          <div className="flex flex-wrap items-center gap-4">
+            <button onClick={() => openModal("hero_primary")} className={pillLight}>
+              Pedir cotação
+            </button>
+            <a href="#comparativo" className={pillLightGhost}>
+              Ver comparativo de modelos ↓
+            </a>
+          </div>
         </Reveal>
       </div>
     </section>
@@ -149,42 +150,89 @@ const brands = [
     name: "Yealink",
     title: "Melhor custo-benefício",
     body: "Para quem equipa muita gente sem abrir mão de qualidade. Boa relação entre preço e recurso em toda a linha.",
+    img: yealinkBh70.url,
   },
   {
     name: "Logitech",
     title: "Equilíbrio entre custo e recurso",
     body: "Para quem quer um meio-termo confiável — recursos modernos, conforto no dia a dia, sem pagar por excesso.",
+    img: logitechZoneWireless2.url,
   },
   {
     name: "Poly",
     title: "Performance e qualidade sonora",
     body: "Para quem prioriza o melhor da categoria — áudio, cancelamento de ruído e durabilidade no topo de linha.",
+    img: polyVoyagerFocus2.url,
   },
 ];
 
-function Brands() {
+function TabPill({
+  active,
+  onClick,
+  children,
+}: {
+  active: boolean;
+  onClick: () => void;
+  children: React.ReactNode;
+}) {
   return (
-    <section className="py-16 sm:py-24 px-4 sm:px-6 bg-petrol/[0.02]" id="marcas">
-      <div className="max-w-7xl mx-auto">
-        <Reveal variant="fade-up" className="mb-12 sm:mb-16 max-w-3xl">
+    <button
+      type="button"
+      onClick={onClick}
+      aria-pressed={active}
+      className={
+        active
+          ? "rounded-full bg-petrol text-white border border-petrol px-6 py-3 text-[11px] font-bold uppercase tracking-[0.18em] transition-colors"
+          : "rounded-full border border-petrol/25 text-petrol/70 px-6 py-3 text-[11px] font-bold uppercase tracking-[0.18em] hover:border-petrol hover:text-petrol transition-colors"
+      }
+    >
+      {children}
+    </button>
+  );
+}
+
+function Brands() {
+  const [active, setActive] = useState(0);
+  const b = brands[active];
+  return (
+    <section className="py-16 sm:py-24 px-4 sm:px-6 bg-petrol/[0.03]" id="marcas">
+      <div className="max-w-6xl mx-auto">
+        <Reveal variant="fade-up" className="mb-8 sm:mb-10 max-w-3xl">
           <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-4 block">Como escolher</span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-balance text-ink-mid">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-balance text-ink-mid">
             Três marcas, três perfis de compra
           </h2>
         </Reveal>
-        <div className="grid md:grid-cols-3 gap-px bg-border border border-border">
-          {brands.map((b, i) => (
-            <Reveal as="article" key={b.name} variant="fade-up" delay={i * 100} className="bg-surface p-6 sm:p-8">
-              <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-gold mb-5 block">{b.name}</span>
-              <h3 className="font-extrabold text-lg sm:text-xl mb-3 leading-tight text-balance text-ink-mid">{b.title}</h3>
-              <p className="text-petrol/70 text-sm leading-relaxed">{b.body}</p>
-            </Reveal>
+
+        <div className="flex flex-wrap gap-3 mb-8 sm:mb-10">
+          {brands.map((br, i) => (
+            <TabPill key={br.name} active={i === active} onClick={() => setActive(i)}>
+              {br.name}
+            </TabPill>
           ))}
+        </div>
+
+        <div
+          key={b.name}
+          className="reveal reveal-in reveal-fade-up rounded-3xl overflow-hidden bg-petrol text-white grid md:grid-cols-[0.9fr_1.1fr]"
+        >
+          <div className="relative bg-white/5 flex items-center justify-center p-10 min-h-[240px]">
+            <img src={b.img} alt={b.name} loading="lazy" className="max-h-64 w-auto object-contain drop-shadow-2xl" />
+          </div>
+          <div className="p-8 sm:p-12 flex flex-col justify-center">
+            <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-gold mb-4 block">{b.name}</span>
+            <h3 className="font-extrabold text-2xl sm:text-3xl mb-4 leading-tight text-balance">{b.title}</h3>
+            <p className="text-white/70 text-base leading-relaxed mb-8 max-w-xl">{b.body}</p>
+            <a href="#comparativo" className={`${pillLightGhost} self-start`}>
+              Ver modelos {b.name} →
+            </a>
+          </div>
         </div>
       </div>
     </section>
   );
 }
+
 
 type Product = { brand: string; model: string; desc: string; img: string };
 
