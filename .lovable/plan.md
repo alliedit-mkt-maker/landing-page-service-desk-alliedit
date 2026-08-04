@@ -4,22 +4,18 @@ Nova landing page de fundo de funil para revenda de headsets Yealink, Logitech e
 
 ## Imagens
 
-**Já recebidas (10 de 12):**
+**Todas as 12 fotos de produto recebidas:**
 
 | Nível | Yealink | Logitech | Poly |
 |---|---|---|---|
 | Entrada | UH34 ✅ | H390 ✅ | Blackwire 3220 ✅ |
-| Intermediário | UH42 ✅ | Zone Wired ✅ | Blackwire 5220 ⬜ |
-| Sem fio / ANC | BH70 ✅ | Zone Wireless 2 ✅ | Voyager Focus 2 ⬜ |
+| Intermediário | UH42 ✅ | Zone Wired ✅ | Blackwire 5220 ✅ |
+| Sem fio / ANC | BH70 ✅ | Zone Wireless 2 ✅ | Voyager Focus 2 ✅ |
 | Call center | UH36 ✅ | H570e ✅ | EncorePro 520 ✅ |
 
-**Ainda faltam:**
-- Poly Blackwire 5220
-- Poly Voyager Focus 2
-- Logos das 3 marcas (Yealink, Logitech, Poly) — PNG horizontal com fundo transparente. Se preferir, posso usar apenas o nome da marca em tipografia, sem logo.
-- Imagem do Hero (pessoa em call usando headset em escritório) — opcional; se não tiver, eu gero.
-
-Monto a página já com as 10 fotos recebidas e deixo placeholders nomeados nos dois modelos Poly que faltam, para trocar assim que chegarem.
+**Ainda faltam (opcionais):**
+- Logos das 3 marcas (Yealink, Logitech, Poly) — PNG horizontal com fundo transparente. Sem eles, uso apenas o nome da marca em tipografia.
+- Imagem do Hero (pessoa em call usando headset em escritório) — se não tiver, eu gero.
 
 ## Estrutura da página
 
