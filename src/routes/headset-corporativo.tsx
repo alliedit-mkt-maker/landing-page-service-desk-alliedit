@@ -159,13 +159,13 @@ const brands = [
   {
     name: "Logitech",
     title: "Equilíbrio entre custo e recurso",
-    body: "Para quem quer um meio-termo confiável — recursos modernos, conforto no dia a dia, sem pagar por excesso.",
+    body: "Para quem quer um meio-termo confiável, com recursos modernos, conforto no dia a dia, sem pagar por excesso.",
     img: logitechZoneWireless2.url,
   },
   {
     name: "Poly",
     title: "Performance e qualidade sonora",
-    body: "Para quem prioriza o melhor da categoria — áudio, cancelamento de ruído e durabilidade no topo de linha.",
+    body: "Para quem prioriza o melhor da categoria: áudio, cancelamento de ruído e durabilidade no topo de linha.",
     img: polyVoyagerFocus2.url,
   },
 ];
@@ -186,8 +186,8 @@ function TabPill({
       aria-pressed={active}
       className={
         active
-          ? "rounded-full bg-petrol text-white border border-petrol px-6 py-3 text-[11px] font-bold uppercase tracking-[0.18em] transition-colors"
-          : "rounded-full border border-petrol/25 text-petrol/70 px-6 py-3 text-[11px] font-bold uppercase tracking-[0.18em] hover:border-petrol hover:text-petrol transition-colors"
+          ? "bg-petrol text-white border border-petrol px-6 py-3 text-[11px] font-bold uppercase tracking-[0.18em] transition-colors"
+          : "border border-petrol/25 text-petrol/70 px-6 py-3 text-[11px] font-bold uppercase tracking-[0.18em] hover:border-petrol hover:text-petrol transition-colors"
       }
     >
       {children}
@@ -218,7 +218,7 @@ function Brands() {
 
         <div
           key={b.name}
-          className="reveal reveal-in reveal-fade-up rounded-3xl overflow-hidden bg-petrol text-white grid md:grid-cols-[0.9fr_1.1fr]"
+          className="reveal reveal-in reveal-fade-up overflow-hidden bg-petrol text-white grid md:grid-cols-[0.9fr_1.1fr]"
         >
           <div className="relative bg-white/5 flex items-center justify-center p-10 min-h-[240px]">
             <img src={b.img} alt={b.name} loading="lazy" className="max-h-64 w-auto object-contain drop-shadow-2xl" />
@@ -431,7 +431,7 @@ function Matrix() {
 const whyItems = [
   {
     title: "Compra sem complicação",
-    body: "Cotação rápida, sem burocracia, com o modelo certo pro seu cenário — não o que sobrou em estoque.",
+    body: "Cotação rápida, sem burocracia, com o modelo certo pro seu cenário, não o que sobrou em estoque.",
   },
   {
     title: "Suporte depois da compra",
@@ -439,7 +439,7 @@ const whyItems = [
   },
   {
     title: "Parceira de TI, não só revenda",
-    body: "A AlliedIT já cuida da infraestrutura de TI de centenas de empresas — o headset é parte de uma operação que a gente entende de ponta a ponta.",
+    body: "A AlliedIT já cuida da infraestrutura de TI de centenas de empresas, e o headset é parte de uma operação que a gente entende de ponta a ponta.",
   },
 ];
 
@@ -514,7 +514,7 @@ function FinalCta() {
         <Reveal variant="scale-in" delay={340}>
           <button
             onClick={() => openModal("final_cta")}
-            className="inline-flex items-center justify-center rounded-full bg-white text-petrol px-10 sm:px-12 py-5 text-[12px] font-bold uppercase tracking-[0.18em] hover:bg-gold transition-colors mb-6"
+            className="inline-flex items-center justify-center bg-white text-petrol px-10 sm:px-12 py-5 text-[12px] font-bold uppercase tracking-[0.18em] hover:bg-gold transition-colors mb-6"
           >
             Solicitar cotação
           </button>
