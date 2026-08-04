@@ -63,7 +63,11 @@ export const headsetMeta = { title, description };
 
 export function HeadsetPage() {
   return (
+    /* HUBSPOT FORM EMBED GOES HERE — assim que o formulário de cotação de headsets
+       for criado no HubSpot, passe o Form ID em formId="<hubspot-form-id>".
+       Sem formId, o modal usa o formulário padrão configurado em VITE_HUBSPOT_FORM_ID. */
     <LpProvider modalTitle="Pedir cotação de headsets.">
+
       <div className="min-h-screen bg-surface text-petrol font-sans">
         <SiteHeader />
         <main>
