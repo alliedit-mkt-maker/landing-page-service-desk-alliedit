@@ -397,6 +397,7 @@ const levels: { level: number; icon: LucideIcon; title: string; subtitle: string
   },
   {
     level: 4,
+    icon: Headset,
     title: "Call center / uso intensivo",
     subtitle: "Para operações de atendimento com alto volume de chamadas, o dia inteiro",
     products: [
