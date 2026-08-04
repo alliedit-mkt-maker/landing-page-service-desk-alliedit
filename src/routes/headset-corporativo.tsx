@@ -210,12 +210,12 @@ function TabPill({
   active,
   onClick,
   children,
-  logo,
+  icon: Icon,
 }: {
   active: boolean;
   onClick: () => void;
   children: React.ReactNode;
-  logo?: string;
+  icon?: LucideIcon;
 }) {
   return (
     <button
@@ -224,17 +224,42 @@ function TabPill({
       aria-pressed={active}
       className={
         (active
-          ? "bg-petrol text-white border border-petrol "
+          ? "bg-petrol text-white border border-petrol shadow-[0_10px_30px_-16px_rgba(0,0,0,0.6)] "
           : "border border-petrol/25 text-petrol/70 hover:border-petrol hover:text-petrol ") +
-        "inline-flex items-center gap-3 px-6 py-3 text-[11px] font-bold uppercase tracking-[0.18em] transition-colors"
+        "inline-flex items-center gap-2.5 px-6 py-3 text-[11px] font-bold uppercase tracking-[0.18em] transition-colors"
       }
     >
-      {logo ? (
-        <span className="bg-white flex items-center justify-center px-2 py-1.5">
-          <img src={logo} alt="" aria-hidden loading="lazy" className="h-3.5 w-auto object-contain" />
-        </span>
-      ) : null}
+      {Icon ? <Icon size={16} className={active ? "text-gold" : "text-petrol/50"} /> : null}
       {children}
+    </button>
+  );
+}
+
+function BrandTab({
+  active,
+  onClick,
+  logo,
+  name,
+}: {
+  active: boolean;
+  onClick: () => void;
+  logo: string;
+  name: string;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-pressed={active}
+      aria-label={name}
+      className={
+        (active
+          ? "border-petrol opacity-100 shadow-[0_12px_30px_-18px_rgba(0,0,0,0.55)] "
+          : "border-petrol/15 opacity-45 grayscale hover:opacity-90 hover:grayscale-0 hover:border-petrol/40 ") +
+        "border-2 bg-white flex items-center justify-center h-16 w-40 sm:w-48 px-6 transition-all"
+      }
+    >
+      <img src={logo} alt={name} loading="lazy" className="max-h-7 max-w-full object-contain" />
     </button>
   );
 }
