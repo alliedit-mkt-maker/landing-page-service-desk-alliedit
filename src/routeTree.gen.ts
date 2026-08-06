@@ -9,11 +9,17 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as RallyBarRouteImport } from './routes/rally-bar'
 import { Route as ObrigadoRouteImport } from './routes/obrigado'
 import { Route as HeadsetCorporativoRouteImport } from './routes/headset-corporativo'
 import { Route as CabeamentoRouteImport } from './routes/cabeamento'
 import { Route as IndexRouteImport } from './routes/index'
 
+const RallyBarRoute = RallyBarRouteImport.update({
+  id: '/rally-bar',
+  path: '/rally-bar',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ObrigadoRoute = ObrigadoRouteImport.update({
   id: '/obrigado',
   path: '/obrigado',
@@ -40,12 +46,14 @@ export interface FileRoutesByFullPath {
   '/cabeamento': typeof CabeamentoRoute
   '/headset-corporativo': typeof HeadsetCorporativoRoute
   '/obrigado': typeof ObrigadoRoute
+  '/rally-bar': typeof RallyBarRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/cabeamento': typeof CabeamentoRoute
   '/headset-corporativo': typeof HeadsetCorporativoRoute
   '/obrigado': typeof ObrigadoRoute
+  '/rally-bar': typeof RallyBarRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,13 +61,25 @@ export interface FileRoutesById {
   '/cabeamento': typeof CabeamentoRoute
   '/headset-corporativo': typeof HeadsetCorporativoRoute
   '/obrigado': typeof ObrigadoRoute
+  '/rally-bar': typeof RallyBarRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/cabeamento' | '/headset-corporativo' | '/obrigado'
+  fullPaths:
+    | '/'
+    | '/cabeamento'
+    | '/headset-corporativo'
+    | '/obrigado'
+    | '/rally-bar'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/cabeamento' | '/headset-corporativo' | '/obrigado'
-  id: '__root__' | '/' | '/cabeamento' | '/headset-corporativo' | '/obrigado'
+  to: '/' | '/cabeamento' | '/headset-corporativo' | '/obrigado' | '/rally-bar'
+  id:
+    | '__root__'
+    | '/'
+    | '/cabeamento'
+    | '/headset-corporativo'
+    | '/obrigado'
+    | '/rally-bar'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -67,10 +87,18 @@ export interface RootRouteChildren {
   CabeamentoRoute: typeof CabeamentoRoute
   HeadsetCorporativoRoute: typeof HeadsetCorporativoRoute
   ObrigadoRoute: typeof ObrigadoRoute
+  RallyBarRoute: typeof RallyBarRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/rally-bar': {
+      id: '/rally-bar'
+      path: '/rally-bar'
+      fullPath: '/rally-bar'
+      preLoaderRoute: typeof RallyBarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/obrigado': {
       id: '/obrigado'
       path: '/obrigado'
@@ -107,17 +135,8 @@ const rootRouteChildren: RootRouteChildren = {
   CabeamentoRoute: CabeamentoRoute,
   HeadsetCorporativoRoute: HeadsetCorporativoRoute,
   ObrigadoRoute: ObrigadoRoute,
+  RallyBarRoute: RallyBarRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

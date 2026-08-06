@@ -71,12 +71,14 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
 const HOST_REWRITES: Record<string, string> = {
   "cabeamento.alliedit.com.br": "/cabeamento",
   "headset-corporativo.alliedit.com.br": "/headset-corporativo",
+  "rally-bar.alliedit.com.br": "/rally-bar",
 };
 
 // Canonical home for each LP path. Requests to these paths on any other host
 // are 301'd to the LP's own subdomain root (avoids duplicate content).
 const CANONICAL_HOSTS: Record<string, string> = {
   "/headset-corporativo": "headset-corporativo.alliedit.com.br",
+  "/rally-bar": "rally-bar.alliedit.com.br",
 };
 
 function canonicalRedirect(request: Request): Response | undefined {
