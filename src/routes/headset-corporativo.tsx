@@ -524,7 +524,7 @@ const whyItems = [
   {
     icon: Handshake,
     title: "Parceiros oficiais das três marcas",
-    body: "Compramos direto dos fabricantes Yealink, Logitech e Poly, sem intermediários, sem produto paralelo.",
+    body: "Somos parceiros e revendedores oficiais Yealink, Logitech e Poly. Produto genuíno, com nota fiscal e procedência garantida.",
   },
   {
     icon: Compass,
