@@ -16,14 +16,16 @@ import { Faq } from "@/components/lp/Faq";
 import { FinalCta } from "@/components/lp/FinalCta";
 import { CabeamentoPage, cabeamentoMeta } from "./cabeamento";
 import { HeadsetPage, headsetMeta } from "./headset-corporativo";
+import { RallyBarPage, rallyBarMeta } from "./rally-bar";
 
 
 const SD_TITLE = "AlliedIT | Service Desk terceirizado 24x7 com NOC e SOC integrados";
 const SD_DESCRIPTION = "A operação de TI por trás das marcas que você conhece. Service Desk 24x7, N1/N2/N3 na mesma equipe, NOC e SOC integrados, custo previsível e SLA real. +7 anos atendendo hotelaria, saúde, varejo, farma e logística.";
 
-const HOST_VARIANT_MAP: Record<string, "cabeamento" | "headset"> = {
+const HOST_VARIANT_MAP: Record<string, "cabeamento" | "headset" | "rally-bar"> = {
   "cabeamento.alliedit.com.br": "cabeamento",
   "headset-corporativo.alliedit.com.br": "headset",
+  "rally-bar.alliedit.com.br": "rally-bar",
 };
 
 const getRouteVariant = createServerFn({ method: "GET" }).handler(async () => {
@@ -41,13 +43,18 @@ export const Route = createFileRoute("/")({
     const variant = loaderData?.variant;
     const isCabeamento = variant === "cabeamento";
     const isHeadset = variant === "headset";
-    const title = isCabeamento ? cabeamentoMeta.title : isHeadset ? headsetMeta.title : SD_TITLE;
-    const description = isCabeamento
+    const isRally = variant === "rally-bar";
+    const title = isRally ? rallyBarMeta.title : isCabeamento ? cabeamentoMeta.title : isHeadset ? headsetMeta.title : SD_TITLE;
+    const description = isRally
+      ? rallyBarMeta.description
+      : isCabeamento
       ? cabeamentoMeta.description
       : isHeadset
         ? headsetMeta.description
         : SD_DESCRIPTION;
-    const canonical = isCabeamento
+    const canonical = isRally
+      ? "https://rally-bar.alliedit.com.br/"
+      : isCabeamento
       ? "https://cabeamento.alliedit.com.br/"
       : isHeadset
         ? "https://headset-corporativo.alliedit.com.br/"
@@ -79,7 +86,9 @@ export const Route = createFileRoute("/")({
           children: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Service",
-            serviceType: isCabeamento
+            serviceType: isRally
+              ? "Revenda e instalação de barras de videoconferência Logitech Rally Bar"
+              : isCabeamento
               ? "Cabeamento estruturado, fibra óptica e data center"
               : isHeadset
                 ? "Revenda de headsets corporativos Yealink, Logitech e Poly"
@@ -104,6 +113,7 @@ function Index() {
   const { variant } = Route.useLoaderData();
   if (variant === "cabeamento") return <CabeamentoPage />;
   if (variant === "headset") return <HeadsetPage />;
+  if (variant === "rally-bar") return <RallyBarPage />;
 
   return (
     <LpProvider>
