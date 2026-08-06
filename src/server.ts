@@ -73,6 +73,25 @@ const HOST_REWRITES: Record<string, string> = {
   "headset-corporativo.alliedit.com.br": "/headset-corporativo",
 };
 
+// Canonical home for each LP path. Requests to these paths on any other host
+// are 301'd to the LP's own subdomain root (avoids duplicate content).
+const CANONICAL_HOSTS: Record<string, string> = {
+  "/headset-corporativo": "headset-corporativo.alliedit.com.br",
+};
+
+function canonicalRedirect(request: Request): Response | undefined {
+  const url = new URL(request.url);
+  const host = url.hostname.toLowerCase();
+  // Never redirect from preview/sandbox hosts, so the editor preview keeps working.
+  if (!host.endsWith("alliedit.com.br")) return undefined;
+  const path = url.pathname.replace(/\/+$/, "") || "/";
+  const canonicalHost = CANONICAL_HOSTS[path];
+  if (!canonicalHost || canonicalHost === host) return undefined;
+  const target = new URL(url.toString());
+  target.hostname = canonicalHost;
+  target.pathname = "/";
+  return Response.redirect(target.toString(), 301);
+}
 
 function rewriteRequestForHost(request: Request): Request {
   const url = new URL(request.url);
@@ -84,9 +103,12 @@ function rewriteRequestForHost(request: Request): Request {
   return new Request(url.toString(), request);
 }
 
+
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
+      const redirect = canonicalRedirect(request);
+      if (redirect) return redirect;
       const handler = await getServerEntry();
       const rewritten = rewriteRequestForHost(request);
       const response = await handler.fetch(rewritten, env, ctx);
