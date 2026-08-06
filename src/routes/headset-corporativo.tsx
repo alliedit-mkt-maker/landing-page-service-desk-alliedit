@@ -20,7 +20,7 @@ import polyVoyagerFocus2 from "@/assets/headsets/poly-voyager-focus-2.webp.asset
 import polyEncorePro520 from "@/assets/headsets/poly-encorepro-520.png.asset.json";
 import yealinkLogo from "@/assets/headsets/yealink-logo.png.asset.json";
 import logitechLogo from "@/assets/headsets/logitech-logo.png.asset.json";
-import polyLogo from "@/assets/headsets/poly-logo.webp.asset.json";
+import polyLogo from "@/assets/headsets/poly-hp-logo.png.asset.json";
 import yealinkLifestyle from "@/assets/headsets/yealink-lifestyle.png.asset.json";
 import logitechLifestyle from "@/assets/headsets/logitech-lifestyle.jpg.asset.json";
 import polyLifestyle from "@/assets/headsets/poly-lifestyle.jpg.asset.json";
