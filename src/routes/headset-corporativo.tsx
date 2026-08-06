@@ -74,10 +74,7 @@ export const headsetMeta = { title, description };
 
 export function HeadsetPage() {
   return (
-    /* HUBSPOT FORM EMBED GOES HERE — assim que o formulário de cotação de headsets
-       for criado no HubSpot, passe o Form ID em formId="<hubspot-form-id>".
-       Sem formId, o modal usa o formulário padrão configurado em VITE_HUBSPOT_FORM_ID. */
-    <LpProvider modalTitle="Pedir cotação de headsets.">
+    <LpProvider modalTitle="Pedir cotação de headsets." formId="5e99da13-3800-4581-b2ea-0ea2fe2de8f4">
 
       <div className="min-h-screen bg-surface text-petrol font-sans">
         <main>
@@ -151,9 +148,9 @@ function Hero() {
         </Reveal>
         <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12 mb-10">
           {[
-            { src: yealinkLogo.url, alt: "Yealink" },
-            { src: logitechLogo.url, alt: "Logitech" },
-            { src: polyLogo.url, alt: "Poly" },
+            { src: yealinkLogo.url, alt: "Yealink", scale: "scale-[0.78]" },
+            { src: logitechLogo.url, alt: "Logitech", scale: "" },
+            { src: polyLogo.url, alt: "Poly", scale: "" },
           ].map((logo, i) => (
             <Reveal key={logo.alt} variant="fade-up" delay={380 + i * 160}>
               <span className="flex h-7 sm:h-9 w-28 sm:w-36 items-center justify-center">
@@ -161,8 +158,9 @@ function Hero() {
                   src={logo.src}
                   alt={logo.alt}
                   loading="lazy"
-                  className="max-h-full max-w-full object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity"
+                  className={`max-h-full max-w-full object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity ${logo.scale}`}
                 />
+
               </span>
             </Reveal>
           ))}
@@ -260,7 +258,12 @@ function BrandTab({
         "border-2 bg-white flex items-center justify-center h-16 w-40 sm:w-48 px-6 transition-all"
       }
     >
-      <img src={logo} alt={name} loading="lazy" className="max-h-7 max-w-full object-contain" />
+      <img
+        src={logo}
+        alt={name}
+        loading="lazy"
+        className={`max-h-7 max-w-full object-contain ${name === "Yealink" ? "scale-[0.78]" : ""}`}
+      />
     </button>
   );
 }
