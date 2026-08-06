@@ -258,7 +258,12 @@ function BrandTab({
         "border-2 bg-white flex items-center justify-center h-16 w-40 sm:w-48 px-6 transition-all"
       }
     >
-      <img src={logo} alt={name} loading="lazy" className="max-h-7 max-w-full object-contain" />
+      <img
+        src={logo}
+        alt={name}
+        loading="lazy"
+        className={`max-h-7 max-w-full object-contain ${name === "Yealink" ? "scale-[0.78]" : ""}`}
+      />
     </button>
   );
 }
