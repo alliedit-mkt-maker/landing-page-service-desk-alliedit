@@ -148,9 +148,9 @@ function Hero() {
         </Reveal>
         <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12 mb-10">
           {[
-            { src: yealinkLogo.url, alt: "Yealink" },
-            { src: logitechLogo.url, alt: "Logitech" },
-            { src: polyLogo.url, alt: "Poly" },
+            { src: yealinkLogo.url, alt: "Yealink", scale: "scale-[0.78]" },
+            { src: logitechLogo.url, alt: "Logitech", scale: "" },
+            { src: polyLogo.url, alt: "Poly", scale: "" },
           ].map((logo, i) => (
             <Reveal key={logo.alt} variant="fade-up" delay={380 + i * 160}>
               <span className="flex h-7 sm:h-9 w-28 sm:w-36 items-center justify-center">
@@ -158,8 +158,9 @@ function Hero() {
                   src={logo.src}
                   alt={logo.alt}
                   loading="lazy"
-                  className="max-h-full max-w-full object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity"
+                  className={`max-h-full max-w-full object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity ${logo.scale}`}
                 />
+
               </span>
             </Reveal>
           ))}
