@@ -522,16 +522,19 @@ function Matrix() {
 
 const whyItems = [
   {
-    title: "Compra sem complicação",
-    body: "Cotação rápida, sem burocracia, com o modelo certo pro seu cenário, não o que sobrou em estoque.",
+    icon: Handshake,
+    title: "Parceiros oficiais das três marcas",
+    body: "Compramos direto dos fabricantes Yealink, Logitech e Poly, sem intermediários, sem produto paralelo.",
   },
   {
-    title: "Suporte depois da compra",
-    body: "Quem vende também dá suporte. Problema no equipamento, você fala com a gente, não com um SAC genérico.",
+    icon: Compass,
+    title: "Atendimento consultivo",
+    body: "A gente ajuda a escolher o modelo certo pro seu cenário, não empurra o que sobrou em estoque.",
   },
   {
-    title: "Parceira de TI, não só revenda",
-    body: "A AlliedIT já cuida da infraestrutura de TI de centenas de empresas, e o headset é parte de uma operação que a gente entende de ponta a ponta.",
+    icon: ShieldCheck,
+    title: "Garantia de fábrica",
+    body: "Todo produto sai com garantia oficial do fabricante, suporte de verdade se algo precisar de reparo ou troca.",
   },
 ];
 
@@ -540,7 +543,7 @@ function WhyAllied() {
   return (
     <section className="relative overflow-hidden py-20 sm:py-28 px-4 sm:px-6" id="por-que-allied">
       <img
-        src={officeImage}
+        src={heroImage}
         alt=""
         aria-hidden
         loading="lazy"
@@ -548,23 +551,30 @@ function WhyAllied() {
         height={900}
         className="absolute inset-0 size-full object-cover"
       />
-      <div aria-hidden className="absolute inset-0 bg-petrol/80" />
-      <div aria-hidden className="absolute inset-0 bg-black/40" />
-      <div className="max-w-6xl mx-auto relative">
+      <div
+        aria-hidden
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(0deg, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.72) 45%, rgba(0,0,0,0.55) 78%, rgba(0,0,0,0.4) 100%)",
+        }}
+      />
+      <div className="max-w-6xl mx-auto relative px-0">
         <Reveal variant="fade-up" className="mb-10 sm:mb-14 max-w-3xl">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-balance text-white">
             Por que comprar seu headset com a AlliedIT
           </h2>
         </Reveal>
-        <div className="grid md:grid-cols-3 gap-5">
+        <div className="grid md:grid-cols-3 gap-6 items-stretch">
           {whyItems.map((it, i) => (
             <Reveal
               as="article"
               key={it.title}
               variant="fade-up"
               delay={i * 90}
-              className="bg-black/55 backdrop-blur-sm p-7 sm:p-8"
+              className="h-full flex flex-col border-t-[3px] border-t-gold bg-white/10 backdrop-blur-md ring-1 ring-white/10 p-8 sm:p-10"
             >
+              <it.icon className="size-7 text-gold mb-5" strokeWidth={1.75} aria-hidden />
               <h3 className="font-extrabold text-lg sm:text-xl mb-3 leading-tight text-balance text-white">
                 {it.title}
               </h3>
