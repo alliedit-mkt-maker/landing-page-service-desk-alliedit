@@ -107,6 +107,8 @@ function rewriteRequestForHost(request: Request): Request {
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
+      const redirect = canonicalRedirect(request);
+      if (redirect) return redirect;
       const handler = await getServerEntry();
       const rewritten = rewriteRequestForHost(request);
       const response = await handler.fetch(rewritten, env, ctx);
