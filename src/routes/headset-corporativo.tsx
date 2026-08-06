@@ -150,10 +150,10 @@ function Hero() {
           {[
             { src: yealinkLogo.url, alt: "Yealink", scale: "scale-[0.78]" },
             { src: logitechLogo.url, alt: "Logitech", scale: "" },
-            { src: polyLogo.url, alt: "Poly", scale: "" },
+            { src: polyLogo.url, alt: "Poly", scale: "scale-[1.25]" },
           ].map((logo, i) => (
             <Reveal key={logo.alt} variant="fade-up" delay={380 + i * 160}>
-              <span className="flex h-7 sm:h-9 w-28 sm:w-36 items-center justify-center">
+              <span className="flex h-7 sm:h-9 w-32 sm:w-40 items-center justify-center">
                 <img
                   src={logo.src}
                   alt={logo.alt}
@@ -262,7 +262,7 @@ function BrandTab({
         src={logo}
         alt={name}
         loading="lazy"
-        className={`max-h-7 max-w-full object-contain ${name === "Yealink" ? "scale-[0.78]" : ""}`}
+        className={`max-h-7 max-w-full object-contain ${name === "Yealink" ? "scale-[0.78]" : name === "Poly" ? "scale-[1.25]" : ""}`}
       />
     </button>
   );
