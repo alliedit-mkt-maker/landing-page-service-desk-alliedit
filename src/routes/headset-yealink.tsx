@@ -245,12 +245,18 @@ function Bh70Spotlight() {
 
           >
             <span aria-hidden className="absolute inset-x-0 top-0 h-[3px] bg-gold" />
+            <div
+              aria-hidden
+              className="absolute left-1/2 top-1/2 size-[78%] -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl"
+              style={{ background: "radial-gradient(circle, rgba(255,255,255,0.30) 0%, rgba(255,255,255,0) 70%)" }}
+            />
             <img
               src={bh70Main.url}
               alt="Yealink BH70"
               loading="lazy"
-              className="relative mx-auto w-auto max-h-[380px] object-contain drop-shadow-[0_28px_45px_rgba(0,0,0,0.28)]"
+              className="relative mx-auto w-auto max-h-[440px] scale-[1.08] object-contain drop-shadow-[0_34px_55px_rgba(0,0,0,0.5)]"
             />
+
           </div>
         </Reveal>
 
