@@ -110,31 +110,40 @@ function Hero() {
   return (
     <section
       id="hero"
-      className="relative overflow-hidden min-h-screen flex flex-col justify-center py-16 sm:py-20 px-4 sm:px-6"
+      className="relative overflow-hidden py-14 sm:py-20 px-4 sm:px-6"
       style={{
         backgroundImage:
           "radial-gradient(70% 60% at 50% 8%, color-mix(in oklch, var(--gold) 12%, transparent), transparent 70%), linear-gradient(180deg, #ffffff 0%, color-mix(in oklch, var(--petrol) 4%, #ffffff) 60%, #ffffff 100%)",
       }}
     >
       <div className="max-w-5xl mx-auto relative w-full text-center flex flex-col items-center">
-        <img src={logoAlliedIt} alt="AlliedIT" className="h-10 sm:h-12 w-auto mb-8 sm:mb-10" />
+        <img src={logoAlliedIt} alt="AlliedIT" className="h-9 sm:h-11 w-auto mb-7 sm:mb-9" />
         <Reveal variant="fade-up">
-          <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-gold font-semibold mb-5 block">
+          <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-gold font-semibold mb-4 block">
             Logitech Rally Family
           </span>
         </Reveal>
         <Reveal variant="fade-up" delay={120}>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-balance leading-[1.02] mb-6 sm:mb-8 text-ink-mid">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-balance leading-[1.02] text-ink-mid max-w-4xl">
             Videoconferência all-in-one para qualquer sala
           </h1>
         </Reveal>
-        <Reveal variant="fade-up" delay={220}>
-          <p className="text-petrol/70 text-base sm:text-lg max-w-2xl mx-auto mb-9 leading-relaxed">
+
+        <Reveal variant="fade-up" delay={220} className="w-full">
+          <img
+            src={rallyBar01.url}
+            alt="Logitech Rally Bar grafite vista de frente"
+            className="w-full max-w-3xl mx-auto object-contain animate-float-slow -my-2 sm:-my-4"
+          />
+        </Reveal>
+
+        <Reveal variant="fade-up" delay={300}>
+          <p className="text-petrol/70 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
             Da sala pequena à sala de diretoria. Conheça a Rally Bar e a Rally Bar Mini e deixe a AlliedIT cuidar da
             escolha certa, da instalação ao suporte.
           </p>
         </Reveal>
-        <Reveal variant="fade-up" delay={320} className="flex flex-wrap gap-4 justify-center">
+        <Reveal variant="fade-up" delay={380} className="flex flex-wrap gap-4 justify-center mt-7 sm:mt-8">
           <button onClick={() => openModal("hero")} className={pillDark}>
             Pedir cotação
           </button>
@@ -142,23 +151,7 @@ function Hero() {
             Ver as duas opções ↓
           </a>
         </Reveal>
-
-        {/* Produto grande e nítido, com assinatura tipográfica sobreposta */}
-        <Reveal variant="fade-up" delay={420} className="relative w-full mt-12 sm:mt-16">
-          <img
-            src={rallyBar01.url}
-            alt="Logitech Rally Bar grafite vista de frente"
-            className="w-full max-w-4xl mx-auto object-contain animate-float-slow"
-          />
-          <div aria-hidden className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 w-full flex justify-center">
-            <span className="inline-flex items-center rounded-full bg-white/85 px-8 py-3 shadow-[0_8px_30px_rgba(0,0,0,0.12)] ring-1 ring-petrol/10 backdrop-blur-md">
-              <span className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tighter text-petrol">
-                Rally <span style={outlineDark}>Bar</span>
-              </span>
-            </span>
-          </div>
-        </Reveal>
-        <Reveal variant="fade-in" delay={520} className="mt-10">
+        <Reveal variant="fade-in" delay={460} className="mt-8 sm:mt-10">
           <img src={logitechLogo.url} alt="Logitech" className="h-6 sm:h-7 w-auto opacity-80" loading="lazy" />
         </Reveal>
       </div>
