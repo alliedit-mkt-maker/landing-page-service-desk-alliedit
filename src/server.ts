@@ -73,6 +73,7 @@ const HOST_REWRITES: Record<string, string> = {
   "headset-callcenter.alliedit.com.br": "/headset-callcenter",
   "rally-bar.alliedit.com.br": "/rally-bar",
   "headsets-poly.alliedit.com.br": "/headsets-poly",
+  "headset-logitech.alliedit.com.br": "/headset-logitech",
 };
 
 // Canonical home for each LP path. Requests to these paths on any other host
@@ -82,7 +83,9 @@ const CANONICAL_HOSTS: Record<string, string> = {
   "/headset-corporativo": "headset-callcenter.alliedit.com.br",
   "/rally-bar": "rally-bar.alliedit.com.br",
   "/headsets-poly": "headsets-poly.alliedit.com.br",
+  "/headset-logitech": "headset-logitech.alliedit.com.br",
 };
+
 
 function canonicalRedirect(request: Request): Response | undefined {
   const url = new URL(request.url);
