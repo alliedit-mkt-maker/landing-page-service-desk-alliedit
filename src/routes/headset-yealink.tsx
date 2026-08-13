@@ -129,13 +129,13 @@ function Hero() {
         </Reveal>
         <Reveal variant="fade-up" delay={120}>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-balance leading-[1.02] mb-6 sm:mb-8 text-white drop-shadow-[0_2px_18px_rgba(0,0,0,0.6)]">
-            Equipar o time inteiro sem estourar o orçamento
+            Equipe seu time de atendimento com custo-benefício
           </h1>
         </Reveal>
         <Reveal variant="fade-up" delay={200}>
           <p className="text-white/80 text-base sm:text-lg max-w-2xl mx-auto mb-9 leading-relaxed drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)]">
-            Nem toda posição precisa do headset mais caro do catálogo. A gente entende como sua equipe trabalha e
-            entrega o parque padronizado no melhor custo por posição, com produto genuíno, nota fiscal e garantia.
+            Áudio profissional, conforto para o expediente inteiro e um parque padronizado que a TI consegue manter. A
+            AlliedIT ajuda a escolher o modelo certo para cada posição, com produto genuíno, nota fiscal e garantia.
           </p>
         </Reveal>
 
