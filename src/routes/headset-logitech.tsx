@@ -17,6 +17,7 @@ import {
 
 import ogImage from "@/assets/og-image.png.asset.json";
 import heroImage from "@/assets/headsets/logitech-hero.webp.asset.json";
+import whyImage from "@/assets/headsets/logitech-why.webp.asset.json";
 import logitechLogo from "@/assets/headsets/logitech-logo.png.asset.json";
 import zw1 from "@/assets/headsets/zw-1.png.asset.json";
 import zw2 from "@/assets/headsets/zw-2.webp.asset.json";
@@ -439,7 +440,7 @@ function WhyAllied() {
   return (
     <section className="relative overflow-hidden py-20 sm:py-28 px-4 sm:px-6" id="por-que-allied">
       <img
-        src={heroImage.url}
+        src={whyImage.url}
         alt=""
         aria-hidden
         loading="lazy"
