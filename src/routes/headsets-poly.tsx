@@ -5,7 +5,7 @@ import { Handshake, Compass, ShieldCheck, Headset, Bluetooth, FileCheck2, Refres
 import ogImage from "@/assets/og-image.png.asset.json";
 import heroImage from "@/assets/headsets/hero-headset.jpg";
 import polyLogo from "@/assets/headsets/poly-hp-logo.png.asset.json";
-import bwPrimary from "@/assets/headsets/poly-bw-primary.webp.asset.json";
+import bwPrimary from "@/assets/headsets/poly-bw-main.webp.asset.json";
 import bw2 from "@/assets/headsets/poly-bw-2.jpg.asset.json";
 import bw3 from "@/assets/headsets/poly-bw-3.jpg.asset.json";
 import bw4 from "@/assets/headsets/poly-bw-4.jpg.asset.json";
