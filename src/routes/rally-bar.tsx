@@ -97,9 +97,14 @@ const pillLightGhost =
 const pillDark =
   "inline-flex items-center justify-center border border-petrol bg-petrol text-white px-7 py-3.5 text-[11px] font-bold uppercase tracking-[0.18em] hover:bg-petrol-light transition-colors";
 
-const outlineText: React.CSSProperties = {
+const outlineDark: React.CSSProperties = {
   color: "transparent",
-  WebkitTextStroke: "1.5px rgba(255,255,255,0.85)",
+  WebkitTextStroke: "1.5px color-mix(in oklch, var(--petrol) 70%, transparent)",
+  paintOrder: "stroke fill",
+};
+
+const solidDark: React.CSSProperties = {
+  textShadow: "0 1px 0 rgba(255,255,255,0.85), 0 0 22px rgba(255,255,255,0.9)",
 };
 
 /* ---------- 1. Hero ---------- */
@@ -109,65 +114,71 @@ function Hero() {
   return (
     <section
       id="hero"
-      className="relative overflow-hidden min-h-screen flex flex-col justify-center py-20 px-4 sm:px-6"
+      className="relative overflow-hidden min-h-screen flex flex-col justify-center py-16 sm:py-20 px-4 sm:px-6"
+      style={{
+        backgroundImage:
+          "radial-gradient(70% 60% at 50% 8%, color-mix(in oklch, var(--gold) 12%, transparent), transparent 70%), linear-gradient(180deg, #ffffff 0%, color-mix(in oklch, var(--petrol) 4%, #ffffff) 60%, #ffffff 100%)",
+      }}
     >
-      <img
-        src={heroRoom}
-        alt="Sala de reunião corporativa preparada para videoconferência"
-        className="absolute inset-0 size-full object-cover object-center"
-        width={1920}
-        height={1088}
-      />
-      <div
-        aria-hidden
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(0deg, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.68) 45%, rgba(0,0,0,0.4) 78%, rgba(0,0,0,0.12) 92%, rgba(0,0,0,0) 100%)",
-        }}
-      />
-      <div className="max-w-4xl mx-auto relative w-full text-center flex flex-col items-center">
-        <img
-          src={logoAlliedIt}
-          alt="AlliedIT"
-          className="h-12 sm:h-16 w-auto brightness-0 invert mb-10 sm:mb-12 drop-shadow-lg"
-        />
+      <div className="max-w-5xl mx-auto relative w-full text-center flex flex-col items-center">
+        <img src={logoAlliedIt} alt="AlliedIT" className="h-10 sm:h-12 w-auto mb-8 sm:mb-10" />
         <Reveal variant="fade-up">
           <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-gold font-semibold mb-5 block">
             Logitech Rally Family
           </span>
         </Reveal>
         <Reveal variant="fade-up" delay={120}>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-balance leading-[1.02] mb-6 sm:mb-8 text-white drop-shadow-[0_2px_18px_rgba(0,0,0,0.6)]">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-balance leading-[1.02] mb-6 sm:mb-8 text-ink-mid">
             Videoconferência all-in-one para qualquer sala
           </h1>
         </Reveal>
         <Reveal variant="fade-up" delay={220}>
-          <p className="text-white/75 text-base sm:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+          <p className="text-petrol/70 text-base sm:text-lg max-w-2xl mx-auto mb-9 leading-relaxed">
             Da sala pequena à sala de diretoria. Conheça a Rally Bar e a Rally Bar Mini e deixe a AlliedIT cuidar da
             escolha certa, da instalação ao suporte.
           </p>
         </Reveal>
         <Reveal variant="fade-up" delay={320} className="flex flex-wrap gap-4 justify-center">
-          <button onClick={() => openModal("hero")} className={pillLight}>
+          <button onClick={() => openModal("hero")} className={pillDark}>
             Pedir cotação
           </button>
-          <a href="#rally-bar" className={pillLightGhost}>
+          <a href="#rally-bar" className={pillDarkGhost}>
             Ver as duas opções ↓
           </a>
         </Reveal>
-        <Reveal variant="fade-in" delay={440} className="mt-14">
+
+        {/* Produto grande e nítido, com assinatura tipográfica sobreposta */}
+        <Reveal variant="fade-up" delay={420} className="relative w-full mt-12 sm:mt-16">
           <img
-            src={logitechLogo.url}
-            alt="Logitech"
-            className="h-6 sm:h-7 w-auto brightness-0 invert opacity-80"
-            loading="lazy"
+            src={rallyBar01.url}
+            alt="Logitech Rally Bar grafite vista de frente"
+            className="w-full max-w-4xl mx-auto object-contain animate-float-slow"
           />
+          <div aria-hidden className="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-center">
+            <span className="relative px-8 py-2">
+              <span
+                aria-hidden
+                className="absolute inset-0 rounded-full backdrop-blur-[2px]"
+                style={{
+                  background:
+                    "radial-gradient(60% 120% at 50% 50%, rgba(255,255,255,0.82), rgba(255,255,255,0) 75%)",
+                }}
+              />
+              <span className="relative text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tighter text-petrol">
+                <span style={solidDark}>Rally</span>{" "}
+                <span style={{ ...outlineDark, filter: "drop-shadow(0 1px 2px rgba(255,255,255,0.95))" }}>Bar</span>
+              </span>
+            </span>
+          </div>
+        </Reveal>
+        <Reveal variant="fade-in" delay={520} className="mt-10">
+          <img src={logitechLogo.url} alt="Logitech" className="h-6 sm:h-7 w-auto opacity-80" loading="lazy" />
         </Reveal>
       </div>
     </section>
   );
 }
+
 
 /* ---------- product sections ---------- */
 
