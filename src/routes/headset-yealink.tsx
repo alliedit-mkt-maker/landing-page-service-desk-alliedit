@@ -17,7 +17,7 @@ import {
 } from "lucide-react";
 
 import ogImage from "@/assets/og-image.png.asset.json";
-import heroImage from "@/assets/headsets/yl-hero.jpg.asset.json";
+import heroImage from "@/assets/headsets/yl-hero-2.jpg.asset.json";
 import bh70Banner from "@/assets/headsets/yl-bh70-banner.webp.asset.json";
 import whyImage from "@/assets/headsets/yealink-lifestyle.png.asset.json";
 import yealinkLogo from "@/assets/headsets/yealink-logo.png.asset.json";
@@ -81,7 +81,6 @@ export function YealinkPage() {
           <Hero />
           <Clients centered />
           <Bh70Spotlight />
-          <Bh70 />
           <Wh64 />
           <Uh34 />
           <Comparison />
@@ -130,13 +129,13 @@ function Hero() {
         </Reveal>
         <Reveal variant="fade-up" delay={120}>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-balance leading-[1.02] mb-6 sm:mb-8 text-white drop-shadow-[0_2px_18px_rgba(0,0,0,0.6)]">
-            Equipar o time inteiro sem estourar o orçamento
+            Equipe seu time de atendimento com custo-benefício
           </h1>
         </Reveal>
         <Reveal variant="fade-up" delay={200}>
           <p className="text-white/80 text-base sm:text-lg max-w-2xl mx-auto mb-9 leading-relaxed drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)]">
-            Nem toda posição precisa do headset mais caro do catálogo. A gente entende como sua equipe trabalha e
-            entrega o parque padronizado no melhor custo por posição, com produto genuíno, nota fiscal e garantia.
+            Áudio profissional, conforto para o expediente inteiro e um parque padronizado que a TI consegue manter. A
+            AlliedIT ajuda a escolher o modelo certo para cada posição, com produto genuíno, nota fiscal e garantia.
           </p>
         </Reveal>
 
@@ -168,7 +167,7 @@ function Hero() {
 function Bh70Spotlight() {
   const { openModal } = useLp();
   return (
-    <section className="relative overflow-hidden py-20 sm:py-28 px-4 sm:px-6" id="destaque-bh70">
+    <section className="relative overflow-hidden py-20 sm:py-28 px-4 sm:px-6" id="bh70">
       <img
         src={bh70Banner.url}
         alt=""
@@ -186,30 +185,30 @@ function Bh70Spotlight() {
             "linear-gradient(90deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.78) 38%, rgba(0,0,0,0.45) 68%, rgba(0,0,0,0.15) 100%)",
         }}
       />
-      <div className="max-w-6xl mx-auto relative">
-        <div className="max-w-2xl">
+      <div className="max-w-6xl mx-auto relative grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <div>
           <Reveal variant="fade-up">
             <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-5 block">
-              Destaque da linha
+              Destaque da linha · Yealink BH70
             </span>
           </Reveal>
           <Reveal variant="fade-up" delay={120}>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-balance leading-[1.05] text-white mb-5">
-              BH70: 35 horas de bateria por uma fração do headset premium
+              O sem fio que atravessa a semana inteira
             </h2>
           </Reveal>
           <Reveal variant="fade-up" delay={200}>
             <p className="text-white/75 text-base sm:text-lg leading-relaxed mb-8">
-              O sem fio que atravessa a semana inteira sem cabo na mesa. Bluetooth com receptor USB, microfone com
-              redução de ruído e autonomia suficiente para o usuário esquecer que existe carregador.
+              Para quem alterna entre mesa, reunião e home office e não pode ficar preso ao computador. Autonomia para
+              o usuário esquecer que existe carregador e voz limpa mesmo em escritório movimentado.
             </p>
           </Reveal>
           <Reveal variant="fade-up" delay={280}>
             <div className="grid sm:grid-cols-3 gap-px bg-white/15 ring-1 ring-white/15 mb-9">
               {[
-                { icon: BatteryCharging, label: "Até 35h de conversação" },
-                { icon: Bluetooth, label: "Bluetooth + receptor USB" },
-                { icon: Sparkles, label: "Microfone com redução de ruído" },
+                { icon: BatteryCharging, label: "Até 35h de conversação com carga rápida" },
+                { icon: Bluetooth, label: "Bluetooth com receptor USB e dois dispositivos" },
+                { icon: Sparkles, label: "Microfone direcional com redução de ruído" },
               ].map((s) => (
                 <div key={s.label} className="bg-black/40 backdrop-blur-sm p-5 flex flex-col gap-2">
                   <s.icon className="size-5 text-gold" strokeWidth={1.75} aria-hidden />
@@ -220,6 +219,7 @@ function Bh70Spotlight() {
           </Reveal>
           <Reveal variant="fade-up" delay={340}>
             <button
+              data-product="Yealink BH70"
               onClick={() => {
                 pushEvent("product_select", { product: "Yealink BH70" });
                 openModal("destaque_bh70");
@@ -230,6 +230,17 @@ function Bh70Spotlight() {
             </button>
           </Reveal>
         </div>
+
+        <Reveal variant="scale-in" delay={180}>
+          <div className="bg-white/95 border border-white/20">
+            <img
+              src={bh70Main.url}
+              alt="Yealink BH70"
+              loading="lazy"
+              className="aspect-square w-full object-contain p-8 sm:p-12"
+            />
+          </div>
+        </Reveal>
       </div>
     </section>
   );
@@ -361,30 +372,6 @@ function ProductSection({
   );
 }
 
-function Bh70() {
-  return (
-    <ProductSection
-      id="bh70"
-      eyebrow="Sem fio, autonomia recorde"
-      name="BH70"
-      headline="Sem fio para o dia inteiro, com o melhor custo por posição da linha."
-      body="Pensado para quem alterna entre mesa, reunião e home office e não pode ficar preso ao computador. Autonomia de até 35 horas de conversação, conexão Bluetooth com receptor USB e microfone que entrega voz limpa mesmo em escritório movimentado."
-      bullets={[
-        "Até 35 horas de conversação com carga rápida",
-        "Bluetooth com receptor USB e conexão a dois dispositivos",
-        "Microfone com redução de ruído e captação direcional",
-        "Certificado para as principais plataformas de reunião corporativa",
-      ]}
-      specs={[
-        { icon: BatteryCharging, label: "Até 35h de bateria" },
-        { icon: Bluetooth, label: "Bluetooth + receptor USB" },
-        { icon: FileCheck2, label: "Homologado para UC" },
-      ]}
-      images={[bh70Main.url]}
-      tone="white"
-    />
-  );
-}
 
 function Wh64() {
   return (
