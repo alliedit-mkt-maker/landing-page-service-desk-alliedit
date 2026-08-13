@@ -172,6 +172,7 @@ function ProductSection({
   tagline,
   subtitle,
   cta,
+  bannerSrc,
   heroSrc,
   heroAlt,
   gallery,
@@ -185,6 +186,7 @@ function ProductSection({
   tagline: string;
   subtitle: string;
   cta: string;
+  bannerSrc: string;
   heroSrc: string;
   heroAlt: string;
   gallery: { src: string; alt: string }[];
@@ -193,39 +195,51 @@ function ProductSection({
   tone: "white" | "light";
 }) {
   const { openModal } = useLp();
+  const [openSpecs, setOpenSpecs] = useState(false);
   const bg = tone === "white" ? "bg-white" : "bg-surface";
   return (
-    <section id={id} className={`${bg} text-petrol py-20 sm:py-28 px-4 sm:px-6 relative overflow-hidden`}>
-      <div className="max-w-6xl mx-auto relative">
-        {/* Nome + produto */}
-        <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-5xl sm:text-7xl md:text-8xl font-extrabold tracking-tighter leading-[0.95] text-ink-mid">
+    <section id={id} className={`${bg} text-petrol relative overflow-hidden border-t border-petrol/10`}>
+      {/* Sub-hero: ambiente com degradê e nome do produto */}
+      <div className="relative h-[46vh] min-h-[300px] sm:h-[56vh] w-full overflow-hidden">
+        <img src={bannerSrc} alt="" aria-hidden loading="lazy" className="absolute inset-0 size-full object-cover" />
+        <div
+          aria-hidden
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(0deg, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.62) 45%, rgba(0,0,0,0.4) 75%, rgba(0,0,0,0.25) 100%)",
+          }}
+        />
+        <div className="relative h-full flex items-end justify-center pb-8 sm:pb-12 px-4">
+          <h2 className="text-5xl sm:text-7xl md:text-8xl font-extrabold tracking-tighter leading-[0.95] text-white text-center">
             <Reveal as="span" variant="fade-up" className="inline-block">
               {solidWord}
             </Reveal>{" "}
-            <Reveal as="span" variant="fade-up" delay={220} className="inline-block">
-              <span style={outlineDark}>{outlineWord}</span>
+            <Reveal as="span" variant="fade-up" delay={180} className="inline-block">
+              <span style={outlineLight}>{outlineWord}</span>
             </Reveal>
           </h2>
         </div>
+      </div>
 
-        <Reveal variant="fade-up" delay={120} className="relative">
+      <div className="max-w-6xl mx-auto relative px-4 sm:px-6 pt-8 sm:pt-12 pb-20 sm:pb-24">
+        <Reveal variant="fade-up" delay={80} className="relative">
           <img
             src={heroSrc}
             alt={heroAlt}
             loading="lazy"
-            className="w-full max-w-4xl mx-auto object-contain animate-float-slow"
+            className="w-full max-w-3xl mx-auto object-contain animate-float-slow"
           />
         </Reveal>
 
-        <div className="max-w-3xl mx-auto text-center mt-10 sm:mt-14">
+        <div className="max-w-3xl mx-auto text-center mt-2 sm:mt-4">
           <Reveal variant="fade-up">
             <p className="text-2xl sm:text-3xl font-extrabold tracking-tight text-balance mb-4 text-ink-mid">
               {tagline}
             </p>
           </Reveal>
           <Reveal variant="fade-up" delay={120}>
-            <p className="text-petrol/70 text-base leading-relaxed mb-9">{subtitle}</p>
+            <p className="text-petrol/70 text-base leading-relaxed mb-7">{subtitle}</p>
           </Reveal>
           <Reveal variant="scale-in" delay={220}>
             <button onClick={() => openModal(id)} data-product={solidWord + " " + outlineWord} className={pillDark}>
@@ -235,7 +249,7 @@ function ProductSection({
         </div>
 
         {/* Destaques numerados */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-20">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
           {highlights.map((h, i) => (
             <Reveal as="article" key={h.n} variant="fade-up" delay={i * 140} className="border-t-2 border-gold/60 pt-6">
               <span className="font-mono text-gold text-sm tracking-[0.2em] block mb-4">{h.n}</span>
@@ -248,7 +262,7 @@ function ProductSection({
         </div>
 
         {/* Galeria */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-20">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-16">
           {gallery.map((g, i) => (
             <Reveal
               key={g.src}
@@ -261,26 +275,39 @@ function ProductSection({
           ))}
         </div>
 
-        {/* Ficha técnica */}
-        <div className="mt-20 max-w-3xl mx-auto">
-          <Reveal variant="fade-up">
-            <h3 className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-6">Ficha técnica</h3>
-          </Reveal>
-          <dl className="divide-y divide-petrol/10 border-y border-petrol/15">
-            {specs.map(([k, v], i) => (
-              <Reveal
-                key={k}
-                variant="fade-up"
-                delay={i * 70}
-                className="grid sm:grid-cols-[200px_1fr] gap-1 sm:gap-6 py-4"
-              >
-                <dt className="text-petrol/45 text-xs uppercase tracking-[0.12em] font-semibold">{k}</dt>
-                <dd className="text-petrol/85 text-sm leading-relaxed">{v}</dd>
-              </Reveal>
-            ))}
-          </dl>
+        {/* Ficha técnica (expansível) */}
+        <div className="mt-16 max-w-3xl mx-auto">
+          <button
+            type="button"
+            onClick={() => setOpenSpecs((v) => !v)}
+            aria-expanded={openSpecs}
+            aria-controls={`${id}-specs`}
+            className="w-full flex items-center justify-between gap-4 border-y border-petrol/15 py-5 text-left group"
+          >
+            <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold">Ficha técnica</span>
+            <span className="flex items-center gap-3 text-petrol/60 text-[11px] uppercase tracking-[0.15em] font-semibold">
+              {openSpecs ? "Fechar" : "Ver detalhes"}
+              <ChevronDown
+                className={`size-4 transition-transform duration-300 ${openSpecs ? "rotate-180" : ""}`}
+                aria-hidden
+              />
+            </span>
+          </button>
+          <div
+            id={`${id}-specs`}
+            hidden={!openSpecs}
+            className={`${tone === "white" ? "bg-surface" : "bg-white"} px-5 sm:px-6`}
+          >
+            <dl className="divide-y divide-petrol/10">
+              {specs.map(([k, v]) => (
+                <div key={k} className="grid sm:grid-cols-[200px_1fr] gap-1 sm:gap-6 py-4">
+                  <dt className="text-petrol/45 text-xs uppercase tracking-[0.12em] font-semibold">{k}</dt>
+                  <dd className="text-petrol/85 text-sm leading-relaxed">{v}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
         </div>
-
       </div>
     </section>
   );
