@@ -15,7 +15,7 @@ import { CaseStudy } from "@/components/lp/CaseStudy";
 import { Faq } from "@/components/lp/Faq";
 import { FinalCta } from "@/components/lp/FinalCta";
 import { CabeamentoPage, cabeamentoMeta } from "./cabeamento";
-import { HeadsetPage, headsetMeta } from "./headset-corporativo";
+import { HeadsetPage, headsetMeta } from "./headset-callcenter";
 import { RallyBarPage, rallyBarMeta } from "./rally-bar";
 
 
@@ -24,7 +24,7 @@ const SD_DESCRIPTION = "A operação de TI por trás das marcas que você conhec
 
 const HOST_VARIANT_MAP: Record<string, "cabeamento" | "headset" | "rally-bar"> = {
   "cabeamento.alliedit.com.br": "cabeamento",
-  "headset-corporativo.alliedit.com.br": "headset",
+  "headset-callcenter.alliedit.com.br": "headset",
   "rally-bar.alliedit.com.br": "rally-bar",
 };
 
@@ -57,7 +57,7 @@ export const Route = createFileRoute("/")({
       : isCabeamento
       ? "https://cabeamento.alliedit.com.br/"
       : isHeadset
-        ? "https://headset-corporativo.alliedit.com.br/"
+        ? "https://headset-callcenter.alliedit.com.br/"
         : "https://service-desk.alliedit.com.br/";
     const ogUrl = canonical;
     const ogImageUrl = `https://service-desk.alliedit.com.br${ogImage.url}`;
@@ -91,7 +91,7 @@ export const Route = createFileRoute("/")({
               : isCabeamento
               ? "Cabeamento estruturado, fibra óptica e data center"
               : isHeadset
-                ? "Revenda de headsets corporativos Yealink, Logitech e Poly"
+                ? "Headsets para call center Yealink, Logitech e Poly"
                 : "Service Desk terceirizado",
 
             provider: {

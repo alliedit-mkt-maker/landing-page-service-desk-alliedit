@@ -11,7 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as RallyBarRouteImport } from './routes/rally-bar'
 import { Route as ObrigadoRouteImport } from './routes/obrigado'
-import { Route as HeadsetCorporativoRouteImport } from './routes/headset-corporativo'
+import { Route as HeadsetCallcenterRouteImport } from './routes/headset-callcenter'
 import { Route as CabeamentoRouteImport } from './routes/cabeamento'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -25,9 +25,9 @@ const ObrigadoRoute = ObrigadoRouteImport.update({
   path: '/obrigado',
   getParentRoute: () => rootRouteImport,
 } as any)
-const HeadsetCorporativoRoute = HeadsetCorporativoRouteImport.update({
-  id: '/headset-corporativo',
-  path: '/headset-corporativo',
+const HeadsetCallcenterRoute = HeadsetCallcenterRouteImport.update({
+  id: '/headset-callcenter',
+  path: '/headset-callcenter',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CabeamentoRoute = CabeamentoRouteImport.update({
@@ -44,14 +44,14 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/cabeamento': typeof CabeamentoRoute
-  '/headset-corporativo': typeof HeadsetCorporativoRoute
+  '/headset-callcenter': typeof HeadsetCallcenterRoute
   '/obrigado': typeof ObrigadoRoute
   '/rally-bar': typeof RallyBarRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/cabeamento': typeof CabeamentoRoute
-  '/headset-corporativo': typeof HeadsetCorporativoRoute
+  '/headset-callcenter': typeof HeadsetCallcenterRoute
   '/obrigado': typeof ObrigadoRoute
   '/rally-bar': typeof RallyBarRoute
 }
@@ -59,7 +59,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/cabeamento': typeof CabeamentoRoute
-  '/headset-corporativo': typeof HeadsetCorporativoRoute
+  '/headset-callcenter': typeof HeadsetCallcenterRoute
   '/obrigado': typeof ObrigadoRoute
   '/rally-bar': typeof RallyBarRoute
 }
@@ -68,16 +68,16 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/cabeamento'
-    | '/headset-corporativo'
+    | '/headset-callcenter'
     | '/obrigado'
     | '/rally-bar'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/cabeamento' | '/headset-corporativo' | '/obrigado' | '/rally-bar'
+  to: '/' | '/cabeamento' | '/headset-callcenter' | '/obrigado' | '/rally-bar'
   id:
     | '__root__'
     | '/'
     | '/cabeamento'
-    | '/headset-corporativo'
+    | '/headset-callcenter'
     | '/obrigado'
     | '/rally-bar'
   fileRoutesById: FileRoutesById
@@ -85,7 +85,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CabeamentoRoute: typeof CabeamentoRoute
-  HeadsetCorporativoRoute: typeof HeadsetCorporativoRoute
+  HeadsetCallcenterRoute: typeof HeadsetCallcenterRoute
   ObrigadoRoute: typeof ObrigadoRoute
   RallyBarRoute: typeof RallyBarRoute
 }
@@ -106,11 +106,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ObrigadoRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/headset-corporativo': {
-      id: '/headset-corporativo'
-      path: '/headset-corporativo'
-      fullPath: '/headset-corporativo'
-      preLoaderRoute: typeof HeadsetCorporativoRouteImport
+    '/headset-callcenter': {
+      id: '/headset-callcenter'
+      path: '/headset-callcenter'
+      fullPath: '/headset-callcenter'
+      preLoaderRoute: typeof HeadsetCallcenterRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cabeamento': {
@@ -133,10 +133,20 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CabeamentoRoute: CabeamentoRoute,
-  HeadsetCorporativoRoute: HeadsetCorporativoRoute,
+  HeadsetCallcenterRoute: HeadsetCallcenterRoute,
   ObrigadoRoute: ObrigadoRoute,
   RallyBarRoute: RallyBarRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
