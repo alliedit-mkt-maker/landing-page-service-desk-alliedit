@@ -23,7 +23,7 @@ import { Reveal } from "@/components/lp/Reveal";
 
 const title = "AlliedIT | Headsets Poly: Blackwire 3220 e Voyager Focus 2";
 const description =
-  "Revenda oficial Poly (HP). Blackwire C3220 para operação e call center, Voyager Focus 2 para uso executivo sem fio. Produto genuíno, garantia de fábrica e gestão pelo Poly Lens.";
+  "Áudio limpo em cada chamada da sua empresa. A AlliedIT indica, entrega e padroniza headsets Poly (HP) para operação, call center e times executivos, com produto genuíno e nota fiscal.";
 
 export const Route = createFileRoute("/headsets-poly")({
   head: () => ({
@@ -413,7 +413,7 @@ const whyItems = [
   {
     icon: ShieldCheck,
     title: "Quem entende de TI corporativa",
-    body: "Mais de 7 anos operando TI de grandes empresas. Compra, entrega, implantação e suporte com o mesmo time.",
+    body: "Mais de 7 anos operando TI de grandes empresas. Compra, entrega e padronização do parque com o mesmo time.",
   },
 ];
 
