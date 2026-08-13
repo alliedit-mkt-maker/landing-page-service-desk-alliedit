@@ -21,7 +21,7 @@ import heroImage from "@/assets/headsets/yl-hero-2.jpg.asset.json";
 import bh70Banner from "@/assets/headsets/yl-bh70-banner.webp.asset.json";
 import whyImage from "@/assets/headsets/yealink-lifestyle.png.asset.json";
 import yealinkLogo from "@/assets/headsets/yealink-logo.png.asset.json";
-import bh70Main from "@/assets/headsets/yl-bh70-main.png.asset.json";
+import bh70Main from "@/assets/headsets/yl-bh70-cutout.png.asset.json";
 import wh64Main from "@/assets/headsets/yl-wh64-main.png.asset.json";
 import uh34Main from "@/assets/headsets/yl-uh34-main.jpg.asset.json";
 import logoAlliedIt from "@/assets/logo-alliedit.png";
@@ -119,7 +119,7 @@ function Hero() {
             "linear-gradient(0deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.65) 45%, rgba(0,0,0,0.35) 78%, rgba(0,0,0,0.08) 92%, rgba(0,0,0,0) 100%)",
         }}
       />
-      <div className="max-w-4xl mx-auto relative w-full text-center flex flex-col items-center">
+      <div className="max-w-5xl mx-auto relative w-full text-center flex flex-col items-center">
         <img src={logoAlliedIt} alt="AlliedIT" className="h-12 sm:h-16 w-auto brightness-0 invert mb-10 sm:mb-12 drop-shadow-lg" />
 
         <Reveal variant="fade-up">
@@ -128,9 +128,11 @@ function Hero() {
           </span>
         </Reveal>
         <Reveal variant="fade-up" delay={120}>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-balance leading-[1.02] mb-6 sm:mb-8 text-white drop-shadow-[0_2px_18px_rgba(0,0,0,0.6)]">
-            Equipe seu time de atendimento com custo-benefício
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.05] mb-6 sm:mb-8 text-white drop-shadow-[0_2px_18px_rgba(0,0,0,0.6)]">
+            <span className="block whitespace-nowrap">Equipe seu time de atendimento</span>
+            <span className="block whitespace-nowrap">com custo-benefício</span>
           </h1>
+
         </Reveal>
         <Reveal variant="fade-up" delay={200}>
           <p className="text-white/80 text-base sm:text-lg max-w-2xl mx-auto mb-9 leading-relaxed drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)]">
@@ -182,9 +184,10 @@ function Bh70Spotlight() {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(90deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.78) 38%, rgba(0,0,0,0.45) 68%, rgba(0,0,0,0.15) 100%)",
+            "linear-gradient(90deg, rgba(0,0,0,0.94) 0%, rgba(0,0,0,0.88) 40%, rgba(0,0,0,0.8) 70%, rgba(0,0,0,0.75) 100%)",
         }}
       />
+
       <div className="max-w-6xl mx-auto relative grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
         <div>
           <Reveal variant="fade-up">
@@ -232,15 +235,23 @@ function Bh70Spotlight() {
         </div>
 
         <Reveal variant="scale-in" delay={180}>
-          <div className="bg-white/95 border border-white/20">
+          <div className="relative border border-white/12 bg-black/55 backdrop-blur-xl p-8 sm:p-12">
+            <span aria-hidden className="absolute inset-x-0 top-0 h-px bg-gold/70" />
+            <div
+              aria-hidden
+              className="absolute inset-0 m-auto size-[70%] rounded-full blur-3xl"
+              style={{ background: "radial-gradient(circle, rgba(255,255,255,0.14) 0%, rgba(0,0,0,0) 70%)" }}
+            />
             <img
               src={bh70Main.url}
               alt="Yealink BH70"
               loading="lazy"
-              className="aspect-square w-full object-contain p-8 sm:p-12"
+              className="relative mx-auto w-auto max-h-[380px] object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.7)]"
             />
           </div>
         </Reveal>
+
+
       </div>
     </section>
   );
