@@ -78,8 +78,6 @@ export function PolyPage() {
 
 const pillDark =
   "inline-flex items-center justify-center border border-petrol bg-petrol text-white px-7 py-3.5 text-[11px] font-bold uppercase tracking-[0.18em] hover:bg-petrol-light transition-colors";
-const pillOutline =
-  "inline-flex items-center justify-center border border-petrol/30 text-petrol px-7 py-3.5 text-[11px] font-bold uppercase tracking-[0.18em] hover:border-gold hover:text-gold transition-colors";
 const pillLight =
   "inline-flex items-center justify-center border-2 border-white text-white px-8 py-4 text-[11px] font-bold uppercase tracking-[0.18em] hover:bg-white hover:text-petrol transition-colors";
 const pillLightGhost =
@@ -484,5 +482,3 @@ function FinalCta() {
     </section>
   );
 }
-
-void pillOutline;
