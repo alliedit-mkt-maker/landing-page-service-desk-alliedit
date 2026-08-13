@@ -177,7 +177,7 @@ function Bh70Spotlight() {
         loading="lazy"
         width={1216}
         height={631}
-        className="absolute inset-0 size-full object-cover object-center scale-x-[-1]"
+        className="absolute inset-0 size-full object-cover object-center"
       />
 
       <div
