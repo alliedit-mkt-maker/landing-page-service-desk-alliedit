@@ -1,13 +1,20 @@
+import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { Handshake, Compass, ShieldCheck, Headset, Bluetooth, FileCheck2, LifeBuoy, RefreshCw, Sparkles, Gauge, MonitorCog } from "lucide-react";
+import { Handshake, Compass, ShieldCheck, Headset, Bluetooth, FileCheck2, RefreshCw, Sparkles, Gauge, MonitorCog, ChevronLeft, ChevronRight } from "lucide-react";
 
 import ogImage from "@/assets/og-image.png.asset.json";
 import heroImage from "@/assets/headsets/hero-headset.jpg";
 import polyLogo from "@/assets/headsets/poly-hp-logo.png.asset.json";
-import polyBlackwire3220 from "@/assets/headsets/poly-blackwire-3220.png.asset.json";
-import polyVoyagerFocus2 from "@/assets/headsets/poly-voyager-focus-2.webp.asset.json";
-import polyStudio from "@/assets/headsets/poly-studio.webp.asset.json";
+import bw1 from "@/assets/headsets/poly-bw-1.jpg.asset.json";
+import bw2 from "@/assets/headsets/poly-bw-2.jpg.asset.json";
+import bw3 from "@/assets/headsets/poly-bw-3.jpg.asset.json";
+import bw4 from "@/assets/headsets/poly-bw-4.jpg.asset.json";
+import vf1 from "@/assets/headsets/poly-vf2-1.jpg.asset.json";
+import vf2 from "@/assets/headsets/poly-vf2-2.jpg.asset.json";
+import vf3 from "@/assets/headsets/poly-vf2-3.jpg.asset.json";
+import polyStudio from "@/assets/headsets/poly-studio-clean.png.asset.json";
 import logoAlliedIt from "@/assets/logo-alliedit.png";
+
 
 import { LpProvider, useLp, pushEvent } from "@/components/lp/LpProvider";
 import { SiteFooter } from "@/components/lp/SiteFooter";
@@ -16,7 +23,7 @@ import { Reveal } from "@/components/lp/Reveal";
 
 const title = "AlliedIT | Headsets Poly: Blackwire 3220 e Voyager Focus 2";
 const description =
-  "Revenda oficial Poly (HP). Blackwire C3220 para operação e call center, Voyager Focus 2 para uso executivo sem fio. Produto genuíno, garantia de fábrica e gestão pelo Poly Lens.";
+  "Áudio limpo em cada chamada da sua empresa. A AlliedIT indica, entrega e padroniza headsets Poly (HP) para operação, call center e times executivos, com produto genuíno e nota fiscal.";
 
 export const Route = createFileRoute("/headsets-poly")({
   head: () => ({
@@ -66,7 +73,7 @@ export function PolyPage() {
           <Blackwire />
           <VoyagerFocus />
           <PolyStudio />
-          <Warranty />
+          
           <WhyAllied />
           <FinalCta />
         </main>
@@ -107,21 +114,22 @@ function Hero() {
 
         <Reveal variant="fade-up">
           <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-gold font-semibold mb-5 block">
-            Headsets corporativos Poly · Revenda oficial
+            Headsets corporativos Poly
           </span>
         </Reveal>
         <Reveal variant="fade-up" delay={120}>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-balance leading-[1.02] mb-6 sm:mb-8 text-white drop-shadow-[0_2px_18px_rgba(0,0,0,0.6)]">
-            Dois headsets Poly, dois jeitos de trabalhar
+            Sua equipe merece ser ouvida com clareza
           </h1>
         </Reveal>
         <Reveal variant="fade-up" delay={200}>
           <p className="text-white/80 text-base sm:text-lg max-w-2xl mx-auto mb-9 leading-relaxed drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)]">
-            Blackwire C3220 para operação e call center, com fio e sempre pronto. Voyager Focus 2 para quem vive em
-            reunião e precisa de liberdade sem fio com cancelamento de ruído. A Allied IT cuida da compra, da entrega e
-            do suporte depois.
+            Ruído no atendimento, reunião que trava, headset barato que estraga em três meses e TI apagando incêndio.
+            A gente resolve isso: entende como sua equipe trabalha, indica o equipamento certo e entrega padronizado,
+            com nota fiscal e procedência garantida.
           </p>
         </Reveal>
+
         <Reveal variant="fade-up" delay={320}>
           <span className="flex h-8 sm:h-10 w-40 items-center justify-center mb-10">
             <img
@@ -131,6 +139,8 @@ function Hero() {
             />
           </span>
         </Reveal>
+
+
         <Reveal variant="fade-up" delay={380}>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button onClick={() => openModal("hero_primary")} className={pillLight}>
@@ -148,6 +158,57 @@ function Hero() {
 
 type Spec = { icon: typeof Headset; label: string };
 
+function Gallery({ images, name }: { images: string[]; name: string }) {
+  const [i, setI] = useState(0);
+  const go = (d: number) => setI((p) => (p + d + images.length) % images.length);
+  return (
+    <div className="relative bg-white border border-border">
+      <div className="relative aspect-square w-full overflow-hidden">
+        {images.map((src, idx) => (
+          <img
+            key={src}
+            src={src}
+            alt={`Poly ${name} — foto ${idx + 1}`}
+            loading="lazy"
+            className={`absolute inset-0 size-full object-contain p-6 sm:p-10 transition-opacity duration-300 ${idx === i ? "opacity-100" : "opacity-0"}`}
+          />
+        ))}
+      </div>
+      {images.length > 1 && (
+        <>
+          <button
+            type="button"
+            aria-label="Foto anterior"
+            onClick={() => go(-1)}
+            className="absolute left-3 top-1/2 -translate-y-1/2 size-10 flex items-center justify-center border border-border bg-white/90 text-petrol hover:bg-petrol hover:text-white transition-colors"
+          >
+            <ChevronLeft className="size-5" aria-hidden />
+          </button>
+          <button
+            type="button"
+            aria-label="Próxima foto"
+            onClick={() => go(1)}
+            className="absolute right-3 top-1/2 -translate-y-1/2 size-10 flex items-center justify-center border border-border bg-white/90 text-petrol hover:bg-petrol hover:text-white transition-colors"
+          >
+            <ChevronRight className="size-5" aria-hidden />
+          </button>
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+            {images.map((src, idx) => (
+              <button
+                key={src}
+                type="button"
+                aria-label={`Ver foto ${idx + 1}`}
+                onClick={() => setI(idx)}
+                className={`size-2 transition-colors ${idx === i ? "bg-petrol" : "bg-petrol/25"}`}
+              />
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
 function ProductSection({
   id,
   eyebrow,
@@ -156,7 +217,7 @@ function ProductSection({
   body,
   bullets,
   specs,
-  img,
+  images,
   tone,
   reverse,
 }: {
@@ -167,7 +228,7 @@ function ProductSection({
   body: string;
   bullets: string[];
   specs: Spec[];
-  img: string;
+  images: string[];
   tone: "white" | "gray";
   reverse?: boolean;
 }) {
@@ -176,15 +237,9 @@ function ProductSection({
     <section id={id} className={`py-16 sm:py-24 px-4 sm:px-6 ${tone === "gray" ? "bg-petrol/[0.03]" : "bg-surface"}`}>
       <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
         <Reveal variant="fade-up" className={reverse ? "lg:order-2" : ""}>
-          <div className="relative bg-white border border-border p-8 sm:p-12 flex items-center justify-center min-h-[320px]">
-            <img
-              src={img}
-              alt={`Poly ${name}`}
-              loading="lazy"
-              className="max-h-[340px] w-auto object-contain mix-blend-multiply drop-shadow-xl"
-            />
-          </div>
+          <Gallery images={images} name={name} />
         </Reveal>
+
 
         <Reveal variant="fade-up" delay={120} className={reverse ? "lg:order-1" : ""}>
           <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-4 block">{eyebrow}</span>
@@ -237,7 +292,7 @@ function Blackwire() {
       headline="Com fio, plug and play, feito para o expediente inteiro."
       body="O headset de trabalho da operação: conecta no USB e funciona. Áudio estéreo, microfone com redução de ruído e hastes almofadadas para quem passa horas em chamada, sem se preocupar com bateria."
       bullets={[
-        "Conexão USB-A ou USB-C, sem dongle e sem pareamento",
+        "Conexão USB-A ou USB-C, direto na máquina do usuário",
         "Microfone com redução de ruído e haste flexível com mute ao levantar",
         "Controles no cabo para volume, mudo e atender/encerrar",
         "Certificado para as principais plataformas de comunicação corporativa",
@@ -247,7 +302,7 @@ function Blackwire() {
         { icon: Gauge, label: "Uso intensivo, sem bateria" },
         { icon: FileCheck2, label: "Homologado para UC" },
       ]}
-      img={polyBlackwire3220.url}
+      images={[bw1.url, bw2.url, bw3.url, bw4.url]}
       tone="white"
     />
   );
@@ -272,7 +327,7 @@ function VoyagerFocus() {
         { icon: Sparkles, label: "Cancelamento ativo de ruído" },
         { icon: Gauge, label: "Autonomia para o dia inteiro" },
       ]}
-      img={polyVoyagerFocus2.url}
+      images={[vf1.url, vf2.url, vf3.url]}
       tone="gray"
       reverse
     />
@@ -299,86 +354,41 @@ const studioItems = [
 
 function PolyStudio() {
   return (
-    <section className="py-16 sm:py-24 px-4 sm:px-6 bg-surface" id="poly-studio">
-      <div className="max-w-6xl mx-auto grid lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-16 items-center">
-        <Reveal variant="fade-up">
+    <section className="py-20 sm:py-28 px-4 sm:px-6 bg-petrol/[0.03]" id="poly-studio">
+      <div className="max-w-6xl mx-auto">
+        <Reveal variant="fade-up" className="max-w-3xl mx-auto text-center mb-12 sm:mb-16">
           <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-4 block">
             Hub de gerenciamento
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-balance text-ink-mid mb-5">
             Poly Studio: seus headsets sob controle da TI
           </h2>
-          <p className="text-petrol/70 text-base leading-relaxed mb-8 max-w-xl">
+          <p className="text-petrol/70 text-base leading-relaxed">
             Todo headset Poly conversa com o app de gerenciamento da HP. É onde a TI enxerga o parque inteiro,
             padroniza configuração e resolve o que dá problema sem depender do usuário.
           </p>
-          <div className="flex flex-col divide-y divide-border border-y border-border">
-            {studioItems.map((it) => (
-              <div key={it.title} className="flex items-start gap-4 py-5">
-                <it.icon className="size-5 text-gold mt-0.5 shrink-0" strokeWidth={1.75} aria-hidden />
-                <div>
-                  <h3 className="font-extrabold text-base text-ink-mid mb-1">{it.title}</h3>
-                  <p className="text-petrol/70 text-sm leading-relaxed">{it.body}</p>
-                </div>
-              </div>
-            ))}
-          </div>
         </Reveal>
 
-        <Reveal variant="fade-up" delay={140}>
-          <div className="bg-white border border-border p-4 sm:p-6">
-            <img
-              src={polyStudio.url}
-              alt="Interface do aplicativo de gerenciamento Poly Studio"
-              loading="lazy"
-              className="w-full h-auto object-contain"
-            />
-          </div>
+        <Reveal variant="fade-up" delay={120} className="mb-12 sm:mb-16">
+          <img
+            src={polyStudio.url}
+            alt="Poly Studio aberto em um notebook e no celular"
+            loading="lazy"
+            className="w-full max-w-4xl mx-auto h-auto object-contain"
+          />
         </Reveal>
-      </div>
-    </section>
-  );
-}
 
-const warrantyItems = [
-  {
-    icon: ShieldCheck,
-    title: "Garantia oficial de fábrica",
-    body: "Todo equipamento sai com a garantia do fabricante Poly/HP, contada a partir da nota fiscal de venda.",
-  },
-  {
-    icon: FileCheck2,
-    title: "Produto genuíno com nota",
-    body: "Nada de importação paralela: procedência rastreável, nota fiscal e número de série registrado.",
-  },
-  {
-    icon: LifeBuoy,
-    title: "Suporte da Allied IT no meio do caminho",
-    body: "Se algo precisar de reparo ou troca, você fala com a gente, não com um call center de fabricante.",
-  },
-];
-
-function Warranty() {
-  return (
-    <section className="py-16 sm:py-24 px-4 sm:px-6 bg-petrol/[0.03]" id="garantia">
-      <div className="max-w-6xl mx-auto">
-        <Reveal variant="fade-up" className="max-w-3xl mx-auto text-center mb-10 sm:mb-14">
-          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-4 block">Garantia</span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-balance text-ink-mid">
-            Comprou com a gente, está coberto
-          </h2>
-        </Reveal>
-        <div className="grid md:grid-cols-3 gap-6 items-stretch">
-          {warrantyItems.map((it, i) => (
+        <div className="grid md:grid-cols-3 gap-px bg-border border border-border">
+          {studioItems.map((it, i) => (
             <Reveal
               as="article"
               key={it.title}
               variant="fade-up"
               delay={i * 90}
-              className="h-full flex flex-col bg-surface border border-border border-t-2 border-t-gold p-8"
+              className="h-full bg-surface p-8 flex flex-col"
             >
-              <it.icon className="size-7 text-gold mb-5" strokeWidth={1.75} aria-hidden />
-              <h3 className="font-extrabold text-lg mb-3 leading-tight text-balance text-ink-mid">{it.title}</h3>
+              <it.icon className="size-6 text-gold mb-5" strokeWidth={1.75} aria-hidden />
+              <h3 className="font-extrabold text-base sm:text-lg text-ink-mid mb-2 leading-tight">{it.title}</h3>
               <p className="text-petrol/70 text-sm leading-relaxed">{it.body}</p>
             </Reveal>
           ))}
@@ -387,6 +397,7 @@ function Warranty() {
     </section>
   );
 }
+
 
 const whyItems = [
   {
@@ -402,7 +413,7 @@ const whyItems = [
   {
     icon: ShieldCheck,
     title: "Quem entende de TI corporativa",
-    body: "Mais de 7 anos operando TI de grandes empresas. Compra, entrega, implantação e suporte com o mesmo time.",
+    body: "Mais de 7 anos operando TI de grandes empresas. Compra, entrega e padronização do parque com o mesmo time.",
   },
 ];
 
