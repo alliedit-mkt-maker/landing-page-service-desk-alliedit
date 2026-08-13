@@ -154,7 +154,7 @@ function Hero() {
             alt="Logitech Rally Bar grafite vista de frente"
             className="w-full max-w-4xl mx-auto object-contain animate-float-slow"
           />
-          <div aria-hidden className="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-center sm:justify-start sm:pl-[13%]">
+          <div aria-hidden className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 w-full sm:w-[52%] flex justify-center">
             <span className="relative px-8 py-2">
               <span
                 aria-hidden
