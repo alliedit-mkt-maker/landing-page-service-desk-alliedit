@@ -245,7 +245,7 @@ function Bh70Spotlight() {
               src={bh70Main.url}
               alt="Yealink BH70"
               loading="lazy"
-              className="relative w-full max-w-md object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.75)]"
+              className="relative mx-auto w-auto max-h-[420px] object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.75)]"
             />
           </div>
         </Reveal>
