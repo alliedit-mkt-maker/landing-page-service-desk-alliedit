@@ -105,12 +105,6 @@ const outlineLight: React.CSSProperties = {
   paintOrder: "stroke fill",
 };
 
-const outlineDark: React.CSSProperties = {
-  color: "transparent",
-  WebkitTextStroke: "2px color-mix(in oklch, var(--petrol) 85%, transparent)",
-  paintOrder: "stroke fill",
-};
-
 /* ---------- 1. Hero ---------- */
 
 function Hero() {
@@ -488,7 +482,7 @@ const certs = [
 
 function Certifications() {
   return (
-    <section className="py-16 sm:py-24 px-4 sm:px-6 bg-white">
+    <section className="py-16 sm:py-24 px-4 sm:px-6 bg-surface border-t border-petrol/10">
       <div className="max-w-4xl mx-auto text-center">
         <Reveal variant="fade-up">
           <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight mb-3">Certificada para empresas</h2>
