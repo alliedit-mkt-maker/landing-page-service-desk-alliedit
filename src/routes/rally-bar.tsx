@@ -422,35 +422,44 @@ const compareRows: [string, string, string][] = [
 function Compare() {
   const { openModal } = useLp();
   return (
-    <section id="comparativo" className="py-20 sm:py-28 px-4 sm:px-6 bg-surface">
+    <section id="comparativo" className="py-20 sm:py-28 px-4 sm:px-6 bg-white border-t border-petrol/10">
       <div className="max-w-5xl mx-auto">
         <Reveal variant="fade-up" className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-balance">
-            Rally Bar ou Rally Bar Mini — qual é a sua sala?
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-balance text-ink-mid">
+            Qual a melhor para o meu cenário?
           </h2>
         </Reveal>
 
         <div className="overflow-x-auto">
-          <div className="min-w-[560px]">
-            <div className="grid grid-cols-3 gap-4 pb-4 border-b-2 border-petrol/20">
-              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-petrol/45" />
-              <span className="font-extrabold text-lg">Rally Bar</span>
-              <span className="font-extrabold text-lg">Rally Bar Mini</span>
+          <div className="min-w-[560px] rounded-2xl ring-1 ring-petrol/10 shadow-[0_18px_50px_-30px_rgba(0,0,0,0.45)] overflow-hidden bg-white">
+            <div className="grid grid-cols-[1.1fr_1fr_1fr] bg-surface">
+              <span />
+              <span className="px-5 py-5 font-extrabold text-base sm:text-lg text-ink-mid border-l border-petrol/10">
+                Rally Bar
+              </span>
+              <span className="px-5 py-5 font-extrabold text-base sm:text-lg text-ink-mid border-l border-petrol/10">
+                Rally Bar Mini
+              </span>
             </div>
             {compareRows.map(([label, a, b], i) => (
               <Reveal
                 key={label}
                 variant="fade-up"
-                delay={i * 90}
-                className="grid grid-cols-3 gap-4 py-4 border-b border-petrol/10"
+                delay={i * 80}
+                className={`grid grid-cols-[1.1fr_1fr_1fr] border-t border-petrol/10 ${
+                  i % 2 === 1 ? "bg-surface/50" : "bg-white"
+                }`}
               >
-                <span className="text-xs uppercase tracking-[0.12em] font-semibold text-petrol/50">{label}</span>
-                <span className="text-sm text-petrol/85">{a}</span>
-                <span className="text-sm text-petrol/85">{b}</span>
+                <span className="px-5 py-4 text-[11px] uppercase tracking-[0.12em] font-semibold text-petrol/50 self-center">
+                  {label}
+                </span>
+                <span className="px-5 py-4 text-sm text-petrol/85 border-l border-petrol/10 self-center">{a}</span>
+                <span className="px-5 py-4 text-sm text-petrol/85 border-l border-petrol/10 self-center">{b}</span>
               </Reveal>
             ))}
           </div>
         </div>
+
 
         <Reveal variant="fade-up" delay={200} className="flex flex-wrap gap-4 justify-center mt-12">
           <button onClick={() => openModal("compare_rally_bar")} data-product="Rally Bar" className={pillDark}>
