@@ -289,7 +289,7 @@ function Blackwire() {
       headline="Com fio, plug and play, feito para o expediente inteiro."
       body="O headset de trabalho da operação: conecta no USB e funciona. Áudio estéreo, microfone com redução de ruído e hastes almofadadas para quem passa horas em chamada, sem se preocupar com bateria."
       bullets={[
-        "Conexão USB-A ou USB-C, sem dongle e sem pareamento",
+        "Conexão USB-A ou USB-C, direto na máquina do usuário",
         "Microfone com redução de ruído e haste flexível com mute ao levantar",
         "Controles no cabo para volume, mudo e atender/encerrar",
         "Certificado para as principais plataformas de comunicação corporativa",
@@ -299,7 +299,7 @@ function Blackwire() {
         { icon: Gauge, label: "Uso intensivo, sem bateria" },
         { icon: FileCheck2, label: "Homologado para UC" },
       ]}
-      img={polyBlackwire3220.url}
+      images={[bw1.url, bw2.url, bw3.url, bw4.url]}
       tone="white"
     />
   );
@@ -324,7 +324,7 @@ function VoyagerFocus() {
         { icon: Sparkles, label: "Cancelamento ativo de ruído" },
         { icon: Gauge, label: "Autonomia para o dia inteiro" },
       ]}
-      img={polyVoyagerFocus2.url}
+      images={[vf1.url, vf2.url, vf3.url]}
       tone="gray"
       reverse
     />
