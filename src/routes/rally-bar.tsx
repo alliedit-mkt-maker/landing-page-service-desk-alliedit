@@ -12,9 +12,7 @@ import rallyBar04 from "@/assets/rally/rally-bar-graphite-04.webp.asset.json";
 import rallyBanner from "@/assets/rally/rally-banner.webp.asset.json";
 import miniBanner from "@/assets/rally/rally-mini-banner.webp.asset.json";
 import rbHero from "@/assets/rally/rb-hero.webp.asset.json";
-import rbAngle from "@/assets/rally/rb-04.webp.asset.json";
 import miniHero from "@/assets/rally/mini-hero.webp.asset.json";
-import miniAngle from "@/assets/rally/mini-02.webp.asset.json";
 import mini02 from "@/assets/rally/rally-bar-mini-graphite-02.webp.asset.json";
 import mini03 from "@/assets/rally/rally-bar-mini-graphite-03.webp.asset.json";
 import mini04 from "@/assets/rally/rally-bar-mini-graphite-04.webp.asset.json";
@@ -235,14 +233,14 @@ function ProductSection({
 
       <div className="max-w-6xl mx-auto relative px-4 sm:px-6 pt-12 sm:pt-16 pb-20 sm:pb-24">
         <Reveal variant="fade-up" delay={80} className="relative">
-          <div className="grid sm:grid-cols-2 gap-6 sm:gap-10 items-center max-w-4xl mx-auto">
+          <div className="flex justify-center items-center max-w-3xl mx-auto">
             {heroImages.map((img) => (
               <img
                 key={img.src}
                 src={img.src}
                 alt={img.alt}
                 loading="lazy"
-                className="w-full max-h-56 object-contain"
+                className="w-full max-h-64 object-contain"
               />
             ))}
           </div>
@@ -345,7 +343,6 @@ function RallyBarSection() {
       cta="Quero a Rally Bar →"
       heroImages={[
         { src: rbHero.url, alt: "Logitech Rally Bar grafite vista de frente" },
-        { src: rbAngle.url, alt: "Logitech Rally Bar grafite em ângulo com controle remoto" },
       ]}
 
       gallery={[
@@ -389,14 +386,13 @@ function RallyBarMiniSection() {
       id="rally-bar-mini"
       solidWord="Rally Bar"
       outlineWord="Mini"
-      tone="light"
+      tone="white"
       bannerSrc={miniBanner.url}
       tagline="Toda a potência da Rally, no tamanho certo pra sala pequena."
       subtitle="Salas pequenas e médias, plug-and-play, com a mesma qualidade de áudio e vídeo da linha Rally."
       cta="Quero a Rally Bar Mini →"
       heroImages={[
         { src: miniHero.url, alt: "Logitech Rally Bar Mini grafite vista de frente" },
-        { src: miniAngle.url, alt: "Logitech Rally Bar Mini grafite em ângulo" },
       ]}
 
       gallery={[
@@ -439,7 +435,7 @@ const compareRows: [string, string, string][] = [
 function Compare() {
   const { openModal } = useLp();
   return (
-    <section id="comparativo" className="py-20 sm:py-28 px-4 sm:px-6 bg-white border-t border-petrol/10">
+    <section id="comparativo" className="py-20 sm:py-28 px-4 sm:px-6 bg-[#f8fafb] border-t border-petrol/10">
       <div className="max-w-5xl mx-auto">
         <Reveal variant="fade-up" className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-balance text-ink-mid">
@@ -505,7 +501,7 @@ const certs = [
 
 function Certifications() {
   return (
-    <section className="py-16 sm:py-24 px-4 sm:px-6 bg-[#eaeef1] border-t border-petrol/10">
+    <section className="py-16 sm:py-24 px-4 sm:px-6 bg-white border-t border-petrol/10">
       <div className="max-w-4xl mx-auto text-center">
         <Reveal variant="fade-up">
           <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight mb-3">Certificada para empresas</h2>
