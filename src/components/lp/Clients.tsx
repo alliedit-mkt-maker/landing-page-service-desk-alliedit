@@ -6,14 +6,14 @@ import espacoLaser from "@/assets/clients/espaco-laser.webp";
 import ipanema from "@/assets/clients/ipanema.webp";
 import bradesco from "@/assets/clients/bradesco.webp";
 
-const logos: { src: string; name: string; boost?: boolean }[] = [
+const logos: { src: string; name: string }[] = [
   { src: einstein, name: "Hospital Israelita Albert Einstein" },
   { src: semParar, name: "Sem Parar" },
-  { src: cacauShow, name: "Cacau Show", boost: true },
+  { src: cacauShow, name: "Cacau Show" },
   { src: apsen, name: "Apsen" },
   { src: espacoLaser, name: "Espaço Laser" },
   { src: ipanema, name: "Ipanema" },
-  { src: bradesco, name: "Bradesco", boost: true },
+  { src: bradesco, name: "Bradesco" },
 ];
 
 export function Clients({ centered = false }: { centered?: boolean }) {
