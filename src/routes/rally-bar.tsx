@@ -302,8 +302,8 @@ function ProductSection({
             aria-controls={`${id}-specs`}
             className="w-full flex items-center justify-between gap-4 border-y border-petrol/15 py-5 text-left group"
           >
-            <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold">Ficha técnica</span>
-            <span className="flex items-center gap-3 text-petrol/60 text-[11px] uppercase tracking-[0.15em] font-semibold">
+            <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-gold font-bold">Ficha técnica</span>
+            <span className="flex items-center gap-3 text-petrol text-[11px] uppercase tracking-[0.15em] font-bold">
               {openSpecs ? "Fechar" : "Ver detalhes"}
               <ChevronDown
                 className={`size-4 transition-transform duration-300 ${openSpecs ? "rotate-180" : ""}`}
@@ -314,15 +314,16 @@ function ProductSection({
           <div
             id={`${id}-specs`}
             hidden={!openSpecs}
-            className={`${tone === "white" ? "bg-surface" : "bg-white"} px-5 sm:px-6`}
+            className={`px-5 sm:px-6 ring-1 ring-petrol/10 ${tone === "white" ? "bg-[#f2f5f7]" : "bg-white"}`}
           >
             <dl className="divide-y divide-petrol/10">
               {specs.map(([k, v]) => (
                 <div key={k} className="grid sm:grid-cols-[200px_1fr] gap-1 sm:gap-6 py-4">
-                  <dt className="text-petrol/45 text-xs uppercase tracking-[0.12em] font-semibold">{k}</dt>
-                  <dd className="text-petrol/85 text-sm leading-relaxed">{v}</dd>
+                  <dt className="text-petrol/70 text-xs uppercase tracking-[0.12em] font-bold">{k}</dt>
+                  <dd className="text-petrol text-sm leading-relaxed">{v}</dd>
                 </div>
               ))}
+
             </dl>
           </div>
         </div>
