@@ -285,12 +285,11 @@ function ProductSection({
               key={g.src}
               variant="fade-up"
               delay={i * 110}
-              className="ring-1 ring-petrol/10 p-4"
-              style={{ backgroundColor: tone === "white" ? "#f2f5f7" : "#ffffff" }}
-
+              className={`ring-1 ring-petrol/10 p-4 ${tone === "white" ? "bg-[#f2f5f7]" : "bg-white"}`}
             >
               <img src={g.src} alt={g.alt} loading="lazy" className="w-full h-40 sm:h-48 object-contain" />
             </Reveal>
+
           ))}
         </div>
 
