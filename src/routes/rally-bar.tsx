@@ -449,7 +449,7 @@ function Compare() {
 
         <div className="overflow-x-auto">
           <div className="min-w-[560px] rounded-2xl ring-1 ring-petrol/10 shadow-[0_18px_50px_-30px_rgba(0,0,0,0.45)] overflow-hidden bg-white">
-            <div className="grid grid-cols-[1.1fr_1fr_1fr] bg-surface">
+            <div className="grid grid-cols-[1.1fr_1fr_1fr] bg-[#eaeef1]">
               <span />
               <span className="px-5 py-5 font-extrabold text-base sm:text-lg text-ink-mid border-l border-petrol/10">
                 Rally Bar
@@ -464,7 +464,7 @@ function Compare() {
                 variant="fade-up"
                 delay={i * 80}
                 className={`grid grid-cols-[1.1fr_1fr_1fr] border-t border-petrol/10 ${
-                  i % 2 === 1 ? "bg-surface/50" : "bg-white"
+                  i % 2 === 1 ? "bg-[#f4f7f8]" : "bg-white"
                 }`}
               >
                 <span className="px-5 py-4 text-[11px] uppercase tracking-[0.12em] font-semibold text-petrol/50 self-center">
@@ -505,7 +505,7 @@ const certs = [
 
 function Certifications() {
   return (
-    <section className="py-16 sm:py-24 px-4 sm:px-6 bg-surface border-t border-petrol/10">
+    <section className="py-16 sm:py-24 px-4 sm:px-6 bg-[#eaeef1] border-t border-petrol/10">
       <div className="max-w-4xl mx-auto text-center">
         <Reveal variant="fade-up">
           <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight mb-3">Certificada para empresas</h2>
