@@ -5,14 +5,13 @@ import { Handshake, Compass, ShieldCheck, Headset, Bluetooth, FileCheck2, Refres
 import ogImage from "@/assets/og-image.png.asset.json";
 import heroImage from "@/assets/headsets/hero-headset.jpg";
 import polyLogo from "@/assets/headsets/poly-hp-logo.png.asset.json";
-import bw1 from "@/assets/headsets/poly-bw-1.jpg.asset.json";
 import bw2 from "@/assets/headsets/poly-bw-2.jpg.asset.json";
 import bw3 from "@/assets/headsets/poly-bw-3.jpg.asset.json";
 import bw4 from "@/assets/headsets/poly-bw-4.jpg.asset.json";
 import vf1 from "@/assets/headsets/poly-vf2-1.jpg.asset.json";
 import vf2 from "@/assets/headsets/poly-vf2-2.jpg.asset.json";
 import vf3 from "@/assets/headsets/poly-vf2-3.jpg.asset.json";
-import polyStudio from "@/assets/headsets/poly-studio-clean.png.asset.json";
+import polyStudio from "@/assets/headsets/poly-studio-lens.png.asset.json";
 import logoAlliedIt from "@/assets/logo-alliedit.png";
 
 
@@ -302,7 +301,7 @@ function Blackwire() {
         { icon: Gauge, label: "Uso intensivo, sem bateria" },
         { icon: FileCheck2, label: "Homologado para UC" },
       ]}
-      images={[bw1.url, bw2.url, bw3.url, bw4.url]}
+      images={[bw2.url, bw3.url, bw4.url]}
       tone="white"
     />
   );
@@ -374,7 +373,7 @@ function PolyStudio() {
             src={polyStudio.url}
             alt="Poly Studio aberto em um notebook e no celular"
             loading="lazy"
-            className="w-full max-w-4xl mx-auto h-auto object-contain"
+            className="w-full max-w-2xl mx-auto h-auto object-contain"
           />
         </Reveal>
 
