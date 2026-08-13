@@ -154,15 +154,11 @@ function Hero() {
             alt="Logitech Rally Bar grafite vista de frente"
             className="w-full max-w-4xl mx-auto object-contain animate-float-slow"
           />
-          <div aria-hidden className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 w-full sm:w-[52%] flex justify-center">
+          <div aria-hidden className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 w-full flex justify-center">
             <span className="relative px-8 py-2">
               <span
                 aria-hidden
-                className="absolute inset-0 rounded-full backdrop-blur-[2px]"
-                style={{
-                  background:
-                    "radial-gradient(65% 150% at 50% 50%, rgba(255,255,255,0.92), rgba(255,255,255,0.55) 55%, rgba(255,255,255,0) 80%)",
-                }}
+                className="absolute -inset-y-1 inset-x-0 rounded-full bg-white/80 backdrop-blur-md ring-1 ring-petrol/10"
               />
               <span className="relative text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tighter text-petrol">
                 <span style={solidDark}>Rally</span>{" "}
