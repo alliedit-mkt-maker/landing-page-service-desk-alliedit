@@ -5,6 +5,7 @@ import { Handshake, Compass, ShieldCheck, Headset, Bluetooth, FileCheck2, Refres
 import ogImage from "@/assets/og-image.png.asset.json";
 import heroImage from "@/assets/headsets/hero-headset.jpg";
 import polyLogo from "@/assets/headsets/poly-hp-logo.png.asset.json";
+import bwPrimary from "@/assets/headsets/poly-bw-primary.webp.asset.json";
 import bw2 from "@/assets/headsets/poly-bw-2.jpg.asset.json";
 import bw3 from "@/assets/headsets/poly-bw-3.jpg.asset.json";
 import bw4 from "@/assets/headsets/poly-bw-4.jpg.asset.json";
@@ -301,7 +302,7 @@ function Blackwire() {
         { icon: Gauge, label: "Uso intensivo, sem bateria" },
         { icon: FileCheck2, label: "Homologado para UC" },
       ]}
-      images={[bw2.url, bw3.url, bw4.url]}
+      images={[bwPrimary.url, bw2.url, bw3.url, bw4.url]}
       tone="white"
     />
   );
@@ -353,7 +354,7 @@ const studioItems = [
 
 function PolyStudio() {
   return (
-    <section className="py-20 sm:py-28 px-4 sm:px-6 bg-petrol/[0.03]" id="poly-studio">
+    <section className="py-20 sm:py-28 px-4 sm:px-6 bg-surface" id="poly-studio">
       <div className="max-w-6xl mx-auto">
         <Reveal variant="fade-up" className="max-w-3xl mx-auto text-center mb-12 sm:mb-16">
           <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-4 block">
