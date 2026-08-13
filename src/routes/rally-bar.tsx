@@ -133,11 +133,11 @@ function Hero() {
           </h1>
         </Reveal>
 
-        <Reveal variant="fade-up" delay={220} className="w-full">
+        <Reveal variant="fade-up" delay={220} className="w-full my-2 sm:my-4">
           <img
             src={rallyBar01Trim}
             alt="Logitech Rally Bar grafite vista de frente"
-            className="w-full max-w-3xl mx-auto object-contain animate-float-slow -my-2 sm:-my-4"
+            className="w-full max-w-xl mx-auto object-contain animate-float-slow"
           />
         </Reveal>
 
@@ -204,7 +204,7 @@ function ProductSection({
   return (
     <section id={id} className={`${bg} text-petrol relative overflow-hidden border-t border-petrol/10`}>
       {/* Sub-hero: ambiente com degradê e nome do produto */}
-      <div className="relative h-[46vh] min-h-[300px] sm:h-[56vh] w-full overflow-hidden">
+      <div className="relative h-[38vh] min-h-[260px] sm:h-[46vh] max-h-[520px] w-full overflow-hidden">
         <img src={bannerSrc} alt="" aria-hidden loading="lazy" className="absolute inset-0 size-full object-cover" />
         <div
           aria-hidden
@@ -226,13 +226,13 @@ function ProductSection({
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto relative px-4 sm:px-6 pt-8 sm:pt-12 pb-20 sm:pb-24">
+      <div className="max-w-6xl mx-auto relative px-4 sm:px-6 pt-10 sm:pt-14 pb-20 sm:pb-24">
         <Reveal variant="fade-up" delay={80} className="relative">
           <img
             src={heroSrc}
             alt={heroAlt}
             loading="lazy"
-            className="w-full max-w-3xl mx-auto object-contain animate-float-slow"
+            className="w-full max-w-2xl mx-auto object-contain animate-float-slow"
           />
         </Reveal>
 
