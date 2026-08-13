@@ -103,10 +103,6 @@ const outlineDark: React.CSSProperties = {
   paintOrder: "stroke fill",
 };
 
-const solidDark: React.CSSProperties = {
-  textShadow: "0 1px 0 rgba(255,255,255,0.85), 0 0 22px rgba(255,255,255,0.9)",
-};
-
 /* ---------- 1. Hero ---------- */
 
 function Hero() {
@@ -155,14 +151,9 @@ function Hero() {
             className="w-full max-w-4xl mx-auto object-contain animate-float-slow"
           />
           <div aria-hidden className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 w-full flex justify-center">
-            <span className="relative px-8 py-2">
-              <span
-                aria-hidden
-                className="absolute -inset-y-1 inset-x-0 rounded-full bg-white/80 backdrop-blur-md ring-1 ring-petrol/10"
-              />
-              <span className="relative text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tighter text-petrol">
-                <span style={solidDark}>Rally</span>{" "}
-                <span style={{ ...outlineDark, filter: "drop-shadow(0 1px 2px rgba(255,255,255,0.95))" }}>Bar</span>
+            <span className="inline-flex items-center rounded-full bg-white/85 px-8 py-3 shadow-[0_8px_30px_rgba(0,0,0,0.12)] ring-1 ring-petrol/10 backdrop-blur-md">
+              <span className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tighter text-petrol">
+                Rally <span style={outlineDark}>Bar</span>
               </span>
             </span>
           </div>
