@@ -236,7 +236,7 @@ function Bh70Spotlight() {
         </div>
 
         <Reveal variant="scale-in" delay={180}>
-          <div className="relative border border-white/12 bg-white/[0.06] backdrop-blur-md p-8 sm:p-12">
+          <div className="relative border border-white/12 bg-black/55 backdrop-blur-xl p-8 sm:p-12">
             <span aria-hidden className="absolute inset-x-0 top-0 h-px bg-gold/70" />
             <div
               aria-hidden
