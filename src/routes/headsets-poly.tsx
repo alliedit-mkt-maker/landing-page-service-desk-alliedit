@@ -1,13 +1,20 @@
+import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { Handshake, Compass, ShieldCheck, Headset, Bluetooth, FileCheck2, LifeBuoy, RefreshCw, Sparkles, Gauge, MonitorCog } from "lucide-react";
+import { Handshake, Compass, ShieldCheck, Headset, Bluetooth, FileCheck2, RefreshCw, Sparkles, Gauge, MonitorCog, ChevronLeft, ChevronRight } from "lucide-react";
 
 import ogImage from "@/assets/og-image.png.asset.json";
 import heroImage from "@/assets/headsets/hero-headset.jpg";
 import polyLogo from "@/assets/headsets/poly-hp-logo.png.asset.json";
-import polyBlackwire3220 from "@/assets/headsets/poly-blackwire-3220.png.asset.json";
-import polyVoyagerFocus2 from "@/assets/headsets/poly-voyager-focus-2.webp.asset.json";
-import polyStudio from "@/assets/headsets/poly-studio.webp.asset.json";
+import bw1 from "@/assets/headsets/poly-bw-1.jpg.asset.json";
+import bw2 from "@/assets/headsets/poly-bw-2.jpg.asset.json";
+import bw3 from "@/assets/headsets/poly-bw-3.jpg.asset.json";
+import bw4 from "@/assets/headsets/poly-bw-4.jpg.asset.json";
+import vf1 from "@/assets/headsets/poly-vf2-1.jpg.asset.json";
+import vf2 from "@/assets/headsets/poly-vf2-2.jpg.asset.json";
+import vf3 from "@/assets/headsets/poly-vf2-3.jpg.asset.json";
+import polyStudio from "@/assets/headsets/poly-studio-clean.png.asset.json";
 import logoAlliedIt from "@/assets/logo-alliedit.png";
+
 
 import { LpProvider, useLp, pushEvent } from "@/components/lp/LpProvider";
 import { SiteFooter } from "@/components/lp/SiteFooter";
