@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { Handshake, Compass, ShieldCheck, type LucideIcon } from "lucide-react";
+import { ChevronDown, Handshake, Compass, ShieldCheck, type LucideIcon } from "lucide-react";
 
 import ogImage from "@/assets/og-image.png.asset.json";
 import logoAlliedIt from "@/assets/logo-alliedit.png";
@@ -8,6 +9,7 @@ import heroRoom from "@/assets/rally/hero-room.jpg";
 import rallyBar01 from "@/assets/rally/rally-bar-graphite-01.webp.asset.json";
 import rallyBar02 from "@/assets/rally/rally-bar-graphite-02.webp.asset.json";
 import rallyBar04 from "@/assets/rally/rally-bar-graphite-04.webp.asset.json";
+import rallyBar05 from "@/assets/rally/rally-bar-graphite-05.webp.asset.json";
 import miniOverview from "@/assets/rally/rally-bar-mini-overview.webp.asset.json";
 import mini02 from "@/assets/rally/rally-bar-mini-graphite-02.webp.asset.json";
 import mini03 from "@/assets/rally/rally-bar-mini-graphite-03.webp.asset.json";
@@ -96,6 +98,12 @@ const pillDarkGhost =
   "inline-flex items-center justify-center border border-petrol/30 text-petrol px-7 py-4 text-[11px] font-bold uppercase tracking-[0.18em] hover:border-gold hover:text-gold transition-colors";
 const pillDark =
   "inline-flex items-center justify-center border border-petrol bg-petrol text-white px-7 py-3.5 text-[11px] font-bold uppercase tracking-[0.18em] hover:bg-petrol-light transition-colors";
+
+const outlineLight: React.CSSProperties = {
+  color: "transparent",
+  WebkitTextStroke: "2px rgba(255,255,255,0.9)",
+  paintOrder: "stroke fill",
+};
 
 const outlineDark: React.CSSProperties = {
   color: "transparent",
@@ -279,7 +287,7 @@ function ProductSection({
         <div className="mt-16 max-w-3xl mx-auto">
           <button
             type="button"
-            onClick={() => setOpenSpecs((v) => !v)}
+            onClick={() => setOpenSpecs((v: boolean) => !v)}
             aria-expanded={openSpecs}
             aria-controls={`${id}-specs`}
             className="w-full flex items-center justify-between gap-4 border-y border-petrol/15 py-5 text-left group"
@@ -320,6 +328,7 @@ function RallyBarSection() {
       solidWord="Rally"
       outlineWord="Bar"
       tone="white"
+      bannerSrc={rallyBar05.url}
       tagline="A barra de vídeo para salas que não perdoam ruído nem falha."
       subtitle="Salas médias e grandes, até 15x de zoom HD e microfones com alcance de 7 metros."
       cta="Quero a Rally Bar →"
@@ -367,11 +376,12 @@ function RallyBarMiniSection() {
       solidWord="Rally Bar"
       outlineWord="Mini"
       tone="light"
+      bannerSrc={miniOverview.url}
       tagline="Toda a potência da Rally, no tamanho certo pra sala pequena."
       subtitle="Salas pequenas e médias, plug-and-play, com a mesma qualidade de áudio e vídeo da linha Rally."
       cta="Quero a Rally Bar Mini →"
-      heroSrc={miniOverview.url}
-      heroAlt="Logitech Rally Bar Mini instalada em sala de reunião"
+      heroSrc={mini02.url}
+      heroAlt="Logitech Rally Bar Mini grafite"
       gallery={[
         { src: mini02.url, alt: "Rally Bar Mini em ângulo" },
         { src: mini03.url, alt: "Rally Bar Mini com controle remoto" },
