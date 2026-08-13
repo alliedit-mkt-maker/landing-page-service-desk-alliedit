@@ -177,8 +177,9 @@ function Bh70Spotlight() {
         loading="lazy"
         width={1216}
         height={631}
-        className="absolute inset-0 size-full object-cover object-center"
+        className="absolute inset-0 size-full object-cover object-center scale-x-[-1]"
       />
+
       <div
         aria-hidden
         className="absolute inset-0"
