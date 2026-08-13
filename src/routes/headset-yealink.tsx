@@ -17,7 +17,7 @@ import {
 } from "lucide-react";
 
 import ogImage from "@/assets/og-image.png.asset.json";
-import heroImage from "@/assets/headsets/yl-hero.jpg.asset.json";
+import heroImage from "@/assets/headsets/yl-hero-2.jpg.asset.json";
 import bh70Banner from "@/assets/headsets/yl-bh70-banner.webp.asset.json";
 import whyImage from "@/assets/headsets/yealink-lifestyle.png.asset.json";
 import yealinkLogo from "@/assets/headsets/yealink-logo.png.asset.json";
@@ -81,7 +81,6 @@ export function YealinkPage() {
           <Hero />
           <Clients centered />
           <Bh70Spotlight />
-          <Bh70 />
           <Wh64 />
           <Uh34 />
           <Comparison />
