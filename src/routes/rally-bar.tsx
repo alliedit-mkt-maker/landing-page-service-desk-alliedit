@@ -136,13 +136,16 @@ function Hero() {
           </h1>
         </Reveal>
 
-        <Reveal variant="fade-up" delay={220} className="w-full my-2 sm:my-4">
+        <Reveal variant="fade-up" delay={220} className="w-full mt-8 mb-8 sm:mt-10 sm:mb-10">
           <img
-            src={rallyBar01Trim}
+            src={rbHero.url}
             alt="Logitech Rally Bar grafite vista de frente"
-            className="w-full max-w-xl mx-auto object-contain animate-float-slow"
+            width={1400}
+            height={254}
+            className="w-full max-w-2xl mx-auto object-contain"
           />
         </Reveal>
+
 
         <Reveal variant="fade-up" delay={300}>
           <p className="text-petrol/70 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
