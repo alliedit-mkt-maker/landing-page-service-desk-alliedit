@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { Headphones, PhoneCall, Bluetooth, Headset, Handshake, Compass, ShieldCheck, type LucideIcon } from "lucide-react";
+import { Headphones, Headset, Handshake, Compass, ShieldCheck, type LucideIcon } from "lucide-react";
 
 import ogImage from "@/assets/og-image.png.asset.json";
 import heroImage from "@/assets/headsets/hero-headset.jpg";
@@ -132,18 +132,18 @@ function Hero() {
 
         <Reveal variant="fade-up">
           <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-gold font-semibold mb-5 block">
-            Headsets corporativos
+            Headsets para Call Center Yealink · Logitech · Poly
           </span>
         </Reveal>
         <Reveal variant="fade-up" delay={120}>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-balance leading-[1.02] mb-6 sm:mb-8 text-white drop-shadow-[0_2px_18px_rgba(0,0,0,0.6)]">
-            O headset certo para cada tipo de chamada da sua empresa
+            O headset certo para o seu Call Center
           </h1>
         </Reveal>
         <Reveal variant="fade-up" delay={200}>
           <p className="text-white/80 text-base sm:text-lg max-w-2xl mx-auto mb-9 leading-relaxed drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)]">
-            Da ligação do dia a dia ao call center de alto volume. A AlliedIT ajuda você a escolher entre as três
-            marcas mais confiáveis do mercado e cuida da compra, entrega e suporte depois.
+            Do atendimento pontual ao call center de alto volume, o dia inteiro. A Allied IT ajuda você a escolher
+            entre as três marcas mais confiáveis do mercado e cuida da compra, entrega e suporte depois.
           </p>
         </Reveal>
         <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12 mb-10">
@@ -348,58 +348,6 @@ const levels: { level: number; icon: LucideIcon; title: string; subtitle: string
   },
   {
     level: 2,
-    icon: PhoneCall,
-    title: "Intermediário / uso frequente",
-    subtitle: "Para quem está em chamada boa parte do expediente",
-    products: [
-      {
-        brand: "Yealink",
-        model: "UH42",
-        desc: "Headset USB com fio (USB-C/USB-A), microfone com cancelamento de ruído por IA, indicado para uso corporativo frequente.",
-        img: yealinkUh42.url,
-      },
-      {
-        brand: "Logitech",
-        model: "Zone Wired",
-        desc: "Modelo intermediário com fio, indicado para reuniões, chamadas e uso corporativo frequente.",
-        img: logitechZoneWired.url,
-      },
-      {
-        brand: "Poly",
-        model: "Blackwire 5220",
-        desc: "Modelo intermediário com conexão USB e 3,5 mm, indicado para chamadas frequentes e uso prolongado.",
-        img: polyBlackwire5220.url,
-      },
-    ],
-  },
-  {
-    level: 3,
-    icon: Bluetooth,
-    title: "Avançado sem fio, com cancelamento de ruído",
-    subtitle: "Para quem precisa de mobilidade e silêncio em ambientes movimentados ou trabalho híbrido",
-    products: [
-      {
-        brand: "Yealink",
-        model: "BH70",
-        desc: "Modelo Bluetooth avançado, com sistema de microfones para redução de ruído e maior mobilidade no trabalho.",
-        img: yealinkBh70.url,
-      },
-      {
-        brand: "Logitech",
-        model: "Zone Wireless 2",
-        desc: "Headset premium Bluetooth com cancelamento ativo de ruído e recursos inteligentes para melhorar a clareza das chamadas.",
-        img: logitechZoneWireless2.url,
-      },
-      {
-        brand: "Poly",
-        model: "Voyager Focus 2",
-        desc: "Headset Bluetooth avançado com cancelamento ativo de ruído, microfones inteligentes e maior liberdade de movimentação.",
-        img: polyVoyagerFocus2.url,
-      },
-    ],
-  },
-  {
-    level: 4,
     icon: Headset,
     title: "Call center / uso intensivo",
     subtitle: "Para operações de atendimento com alto volume de chamadas, o dia inteiro",
@@ -428,8 +376,8 @@ const levels: { level: number; icon: LucideIcon; title: string; subtitle: string
 
 function LevelDots({ level }: { level: number }) {
   return (
-    <span aria-label={`Nível ${level} de 4`} className="flex items-center gap-1.5">
-      {[1, 2, 3, 4].map((n) => (
+    <span aria-label={`Nível ${level} de 2`} className="flex items-center gap-1.5">
+      {[1, 2].map((n) => (
         <span
           key={n}
           aria-hidden
