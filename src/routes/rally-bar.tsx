@@ -227,7 +227,7 @@ function ProductSection({
       </div>
 
       <div className="max-w-6xl mx-auto relative px-4 sm:px-6 pt-10 sm:pt-14 pb-20 sm:pb-24">
-        <Reveal variant="fade-up" delay={80} className="relative">
+        <Reveal variant="fade-up" delay={80} className="relative -mt-2 -mb-6 sm:-mb-8">
           <img
             src={heroSrc}
             alt={heroAlt}
