@@ -130,6 +130,17 @@ function Hero() {
           </p>
         </Reveal>
 
+        <Reveal variant="fade-up" delay={320}>
+          <span className="flex h-8 sm:h-10 w-40 items-center justify-center mb-10">
+            <img
+              src={polyLogo.url}
+              alt="Poly | HP"
+              className="max-h-full max-w-full object-contain brightness-0 invert opacity-85 scale-[1.25]"
+            />
+          </span>
+        </Reveal>
+
+
         <Reveal variant="fade-up" delay={380}>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button onClick={() => openModal("hero_primary")} className={pillLight}>
