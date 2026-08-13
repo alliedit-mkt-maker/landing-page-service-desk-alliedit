@@ -210,21 +210,21 @@ function ProductSection({
   gallery: { src: string; alt: string }[];
   highlights: Highlight[];
   specs: SpecRow[];
-  tone: "black" | "graphite";
+  tone: "white" | "light";
 }) {
   const { openModal } = useLp();
-  const bg = tone === "black" ? "bg-[#0a0d0f]" : "bg-[#15191c]";
+  const bg = tone === "white" ? "bg-white" : "bg-surface";
   return (
-    <section id={id} className={`${bg} text-white py-20 sm:py-28 px-4 sm:px-6 relative overflow-hidden`}>
+    <section id={id} className={`${bg} text-petrol py-20 sm:py-28 px-4 sm:px-6 relative overflow-hidden`}>
       <div className="max-w-6xl mx-auto relative">
         {/* Nome + produto */}
         <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-5xl sm:text-7xl md:text-8xl font-extrabold tracking-tighter leading-[0.95]">
+          <h2 className="text-5xl sm:text-7xl md:text-8xl font-extrabold tracking-tighter leading-[0.95] text-ink-mid">
             <Reveal as="span" variant="fade-up" className="inline-block">
               {solidWord}
             </Reveal>{" "}
             <Reveal as="span" variant="fade-up" delay={220} className="inline-block">
-              <span style={outlineText}>{outlineWord}</span>
+              <span style={outlineDark}>{outlineWord}</span>
             </Reveal>
           </h2>
         </div>
@@ -240,13 +240,15 @@ function ProductSection({
 
         <div className="max-w-3xl mx-auto text-center mt-10 sm:mt-14">
           <Reveal variant="fade-up">
-            <p className="text-2xl sm:text-3xl font-extrabold tracking-tight text-balance mb-4">{tagline}</p>
+            <p className="text-2xl sm:text-3xl font-extrabold tracking-tight text-balance mb-4 text-ink-mid">
+              {tagline}
+            </p>
           </Reveal>
           <Reveal variant="fade-up" delay={120}>
-            <p className="text-white/65 text-base leading-relaxed mb-9">{subtitle}</p>
+            <p className="text-petrol/70 text-base leading-relaxed mb-9">{subtitle}</p>
           </Reveal>
           <Reveal variant="scale-in" delay={220}>
-            <button onClick={() => openModal(id)} data-product={solidWord + " " + outlineWord} className={pillLight}>
+            <button onClick={() => openModal(id)} data-product={solidWord + " " + outlineWord} className={pillDark}>
               {cta}
             </button>
           </Reveal>
@@ -255,16 +257,12 @@ function ProductSection({
         {/* Destaques numerados */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-20">
           {highlights.map((h, i) => (
-            <Reveal
-              as="article"
-              key={h.n}
-              variant="fade-up"
-              delay={i * 140}
-              className="border-t border-white/15 pt-6"
-            >
+            <Reveal as="article" key={h.n} variant="fade-up" delay={i * 140} className="border-t-2 border-gold/60 pt-6">
               <span className="font-mono text-gold text-sm tracking-[0.2em] block mb-4">{h.n}</span>
-              <h3 className="font-extrabold text-base sm:text-lg leading-tight text-balance mb-2">{h.title}</h3>
-              <p className="text-white/60 text-sm leading-relaxed">{h.body}</p>
+              <h3 className="font-extrabold text-base sm:text-lg leading-tight text-balance mb-2 text-ink-mid">
+                {h.title}
+              </h3>
+              <p className="text-petrol/65 text-sm leading-relaxed">{h.body}</p>
             </Reveal>
           ))}
         </div>
@@ -272,7 +270,12 @@ function ProductSection({
         {/* Galeria */}
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-20">
           {gallery.map((g, i) => (
-            <Reveal key={g.src} variant="fade-up" delay={i * 110} className="bg-white/5 ring-1 ring-white/10 p-4">
+            <Reveal
+              key={g.src}
+              variant="fade-up"
+              delay={i * 110}
+              className={`${tone === "white" ? "bg-surface" : "bg-white"} ring-1 ring-petrol/10 p-4`}
+            >
               <img src={g.src} alt={g.alt} loading="lazy" className="w-full h-40 sm:h-48 object-contain" />
             </Reveal>
           ))}
@@ -283,7 +286,7 @@ function ProductSection({
           <Reveal variant="fade-up">
             <h3 className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-6">Ficha técnica</h3>
           </Reveal>
-          <dl className="divide-y divide-white/10 border-y border-white/10">
+          <dl className="divide-y divide-petrol/10 border-y border-petrol/15">
             {specs.map(([k, v], i) => (
               <Reveal
                 key={k}
@@ -291,12 +294,13 @@ function ProductSection({
                 delay={i * 70}
                 className="grid sm:grid-cols-[200px_1fr] gap-1 sm:gap-6 py-4"
               >
-                <dt className="text-white/45 text-xs uppercase tracking-[0.12em] font-semibold">{k}</dt>
-                <dd className="text-white/85 text-sm leading-relaxed">{v}</dd>
+                <dt className="text-petrol/45 text-xs uppercase tracking-[0.12em] font-semibold">{k}</dt>
+                <dd className="text-petrol/85 text-sm leading-relaxed">{v}</dd>
               </Reveal>
             ))}
           </dl>
         </div>
+
       </div>
     </section>
   );
