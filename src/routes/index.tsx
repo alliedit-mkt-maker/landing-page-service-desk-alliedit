@@ -17,15 +17,17 @@ import { FinalCta } from "@/components/lp/FinalCta";
 import { CabeamentoPage, cabeamentoMeta } from "./cabeamento";
 import { HeadsetPage, headsetMeta } from "./headset-callcenter";
 import { RallyBarPage, rallyBarMeta } from "./rally-bar";
+import { PolyPage, polyMeta } from "./headsets-poly";
 
 
 const SD_TITLE = "AlliedIT | Service Desk terceirizado 24x7 com NOC e SOC integrados";
 const SD_DESCRIPTION = "A operação de TI por trás das marcas que você conhece. Service Desk 24x7, N1/N2/N3 na mesma equipe, NOC e SOC integrados, custo previsível e SLA real. +7 anos atendendo hotelaria, saúde, varejo, farma e logística.";
 
-const HOST_VARIANT_MAP: Record<string, "cabeamento" | "headset" | "rally-bar"> = {
+const HOST_VARIANT_MAP: Record<string, "cabeamento" | "headset" | "rally-bar" | "poly"> = {
   "cabeamento.alliedit.com.br": "cabeamento",
   "headset-callcenter.alliedit.com.br": "headset",
   "rally-bar.alliedit.com.br": "rally-bar",
+  "headsets-poly.alliedit.com.br": "poly",
 };
 
 const getRouteVariant = createServerFn({ method: "GET" }).handler(async () => {
@@ -44,15 +46,20 @@ export const Route = createFileRoute("/")({
     const isCabeamento = variant === "cabeamento";
     const isHeadset = variant === "headset";
     const isRally = variant === "rally-bar";
-    const title = isRally ? rallyBarMeta.title : isCabeamento ? cabeamentoMeta.title : isHeadset ? headsetMeta.title : SD_TITLE;
-    const description = isRally
+    const isPoly = variant === "poly";
+    const title = isPoly ? polyMeta.title : isRally ? rallyBarMeta.title : isCabeamento ? cabeamentoMeta.title : isHeadset ? headsetMeta.title : SD_TITLE;
+    const description = isPoly
+      ? polyMeta.description
+      : isRally
       ? rallyBarMeta.description
       : isCabeamento
       ? cabeamentoMeta.description
       : isHeadset
         ? headsetMeta.description
         : SD_DESCRIPTION;
-    const canonical = isRally
+    const canonical = isPoly
+      ? "https://headsets-poly.alliedit.com.br/"
+      : isRally
       ? "https://rally-bar.alliedit.com.br/"
       : isCabeamento
       ? "https://cabeamento.alliedit.com.br/"
@@ -86,7 +93,9 @@ export const Route = createFileRoute("/")({
           children: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Service",
-            serviceType: isRally
+            serviceType: isPoly
+              ? "Revenda de headsets corporativos Poly (HP)"
+              : isRally
               ? "Revenda e instalação de barras de videoconferência Logitech Rally Bar"
               : isCabeamento
               ? "Cabeamento estruturado, fibra óptica e data center"
@@ -114,6 +123,7 @@ function Index() {
   if (variant === "cabeamento") return <CabeamentoPage />;
   if (variant === "headset") return <HeadsetPage />;
   if (variant === "rally-bar") return <RallyBarPage />;
+  if (variant === "poly") return <PolyPage />;
 
   return (
     <LpProvider>

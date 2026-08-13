@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as RallyBarRouteImport } from './routes/rally-bar'
 import { Route as ObrigadoRouteImport } from './routes/obrigado'
+import { Route as HeadsetsPolyRouteImport } from './routes/headsets-poly'
 import { Route as HeadsetCallcenterRouteImport } from './routes/headset-callcenter'
 import { Route as CabeamentoRouteImport } from './routes/cabeamento'
 import { Route as IndexRouteImport } from './routes/index'
@@ -23,6 +24,11 @@ const RallyBarRoute = RallyBarRouteImport.update({
 const ObrigadoRoute = ObrigadoRouteImport.update({
   id: '/obrigado',
   path: '/obrigado',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HeadsetsPolyRoute = HeadsetsPolyRouteImport.update({
+  id: '/headsets-poly',
+  path: '/headsets-poly',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HeadsetCallcenterRoute = HeadsetCallcenterRouteImport.update({
@@ -45,6 +51,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/cabeamento': typeof CabeamentoRoute
   '/headset-callcenter': typeof HeadsetCallcenterRoute
+  '/headsets-poly': typeof HeadsetsPolyRoute
   '/obrigado': typeof ObrigadoRoute
   '/rally-bar': typeof RallyBarRoute
 }
@@ -52,6 +59,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/cabeamento': typeof CabeamentoRoute
   '/headset-callcenter': typeof HeadsetCallcenterRoute
+  '/headsets-poly': typeof HeadsetsPolyRoute
   '/obrigado': typeof ObrigadoRoute
   '/rally-bar': typeof RallyBarRoute
 }
@@ -60,6 +68,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/cabeamento': typeof CabeamentoRoute
   '/headset-callcenter': typeof HeadsetCallcenterRoute
+  '/headsets-poly': typeof HeadsetsPolyRoute
   '/obrigado': typeof ObrigadoRoute
   '/rally-bar': typeof RallyBarRoute
 }
@@ -69,15 +78,23 @@ export interface FileRouteTypes {
     | '/'
     | '/cabeamento'
     | '/headset-callcenter'
+    | '/headsets-poly'
     | '/obrigado'
     | '/rally-bar'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/cabeamento' | '/headset-callcenter' | '/obrigado' | '/rally-bar'
+  to:
+    | '/'
+    | '/cabeamento'
+    | '/headset-callcenter'
+    | '/headsets-poly'
+    | '/obrigado'
+    | '/rally-bar'
   id:
     | '__root__'
     | '/'
     | '/cabeamento'
     | '/headset-callcenter'
+    | '/headsets-poly'
     | '/obrigado'
     | '/rally-bar'
   fileRoutesById: FileRoutesById
@@ -86,6 +103,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CabeamentoRoute: typeof CabeamentoRoute
   HeadsetCallcenterRoute: typeof HeadsetCallcenterRoute
+  HeadsetsPolyRoute: typeof HeadsetsPolyRoute
   ObrigadoRoute: typeof ObrigadoRoute
   RallyBarRoute: typeof RallyBarRoute
 }
@@ -104,6 +122,13 @@ declare module '@tanstack/react-router' {
       path: '/obrigado'
       fullPath: '/obrigado'
       preLoaderRoute: typeof ObrigadoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/headsets-poly': {
+      id: '/headsets-poly'
+      path: '/headsets-poly'
+      fullPath: '/headsets-poly'
+      preLoaderRoute: typeof HeadsetsPolyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/headset-callcenter': {
@@ -134,6 +159,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CabeamentoRoute: CabeamentoRoute,
   HeadsetCallcenterRoute: HeadsetCallcenterRoute,
+  HeadsetsPolyRoute: HeadsetsPolyRoute,
   ObrigadoRoute: ObrigadoRoute,
   RallyBarRoute: RallyBarRoute,
 }
