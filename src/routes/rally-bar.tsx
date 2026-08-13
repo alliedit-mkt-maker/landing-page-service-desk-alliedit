@@ -9,7 +9,9 @@ import heroRoom from "@/assets/rally/hero-room.jpg";
 import rallyBar01 from "@/assets/rally/rally-bar-graphite-01.webp.asset.json";
 import rallyBar02 from "@/assets/rally/rally-bar-graphite-02.webp.asset.json";
 import rallyBar04 from "@/assets/rally/rally-bar-graphite-04.webp.asset.json";
-import rallyBar05 from "@/assets/rally/rally-bar-graphite-05.webp.asset.json";
+import rallyBarAmbient from "@/assets/rally/rally-bar-ambient.webp";
+import rallyBar01Trim from "@/assets/rally/rally-bar-01-trim.webp";
+import mini02Trim from "@/assets/rally/rally-bar-mini-02-trim.webp";
 import miniOverview from "@/assets/rally/rally-bar-mini-overview.webp.asset.json";
 import mini02 from "@/assets/rally/rally-bar-mini-graphite-02.webp.asset.json";
 import mini03 from "@/assets/rally/rally-bar-mini-graphite-03.webp.asset.json";
@@ -133,7 +135,7 @@ function Hero() {
 
         <Reveal variant="fade-up" delay={220} className="w-full">
           <img
-            src={rallyBar01.url}
+            src={rallyBar01Trim}
             alt="Logitech Rally Bar grafite vista de frente"
             className="w-full max-w-3xl mx-auto object-contain animate-float-slow -my-2 sm:-my-4"
           />
@@ -322,11 +324,11 @@ function RallyBarSection() {
       solidWord="Rally"
       outlineWord="Bar"
       tone="white"
-      bannerSrc={rallyBar05.url}
+      bannerSrc={rallyBarAmbient}
       tagline="A barra de vídeo para salas que não perdoam ruído nem falha."
       subtitle="Salas médias e grandes, até 15x de zoom HD e microfones com alcance de 7 metros."
       cta="Quero a Rally Bar →"
-      heroSrc={rallyBar01.url}
+      heroSrc={rallyBar01Trim}
       heroAlt="Logitech Rally Bar grafite vista de frente"
       gallery={[
         { src: rallyBar02.url, alt: "Rally Bar em ângulo lateral" },
@@ -374,7 +376,7 @@ function RallyBarMiniSection() {
       tagline="Toda a potência da Rally, no tamanho certo pra sala pequena."
       subtitle="Salas pequenas e médias, plug-and-play, com a mesma qualidade de áudio e vídeo da linha Rally."
       cta="Quero a Rally Bar Mini →"
-      heroSrc={mini02.url}
+      heroSrc={mini02Trim}
       heroAlt="Logitech Rally Bar Mini grafite"
       gallery={[
         { src: mini02.url, alt: "Rally Bar Mini em ângulo" },
