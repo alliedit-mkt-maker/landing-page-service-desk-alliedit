@@ -155,6 +155,57 @@ function Hero() {
 
 type Spec = { icon: typeof Headset; label: string };
 
+function Gallery({ images, name }: { images: string[]; name: string }) {
+  const [i, setI] = useState(0);
+  const go = (d: number) => setI((p) => (p + d + images.length) % images.length);
+  return (
+    <div className="relative bg-white border border-border">
+      <div className="relative aspect-square w-full overflow-hidden">
+        {images.map((src, idx) => (
+          <img
+            key={src}
+            src={src}
+            alt={`Poly ${name} — foto ${idx + 1}`}
+            loading="lazy"
+            className={`absolute inset-0 size-full object-contain p-6 sm:p-10 transition-opacity duration-300 ${idx === i ? "opacity-100" : "opacity-0"}`}
+          />
+        ))}
+      </div>
+      {images.length > 1 && (
+        <>
+          <button
+            type="button"
+            aria-label="Foto anterior"
+            onClick={() => go(-1)}
+            className="absolute left-3 top-1/2 -translate-y-1/2 size-10 flex items-center justify-center border border-border bg-white/90 text-petrol hover:bg-petrol hover:text-white transition-colors"
+          >
+            <ChevronLeft className="size-5" aria-hidden />
+          </button>
+          <button
+            type="button"
+            aria-label="Próxima foto"
+            onClick={() => go(1)}
+            className="absolute right-3 top-1/2 -translate-y-1/2 size-10 flex items-center justify-center border border-border bg-white/90 text-petrol hover:bg-petrol hover:text-white transition-colors"
+          >
+            <ChevronRight className="size-5" aria-hidden />
+          </button>
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+            {images.map((src, idx) => (
+              <button
+                key={src}
+                type="button"
+                aria-label={`Ver foto ${idx + 1}`}
+                onClick={() => setI(idx)}
+                className={`size-2 transition-colors ${idx === i ? "bg-petrol" : "bg-petrol/25"}`}
+              />
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
 function ProductSection({
   id,
   eyebrow,
@@ -163,7 +214,7 @@ function ProductSection({
   body,
   bullets,
   specs,
-  img,
+  images,
   tone,
   reverse,
 }: {
@@ -174,7 +225,7 @@ function ProductSection({
   body: string;
   bullets: string[];
   specs: Spec[];
-  img: string;
+  images: string[];
   tone: "white" | "gray";
   reverse?: boolean;
 }) {
@@ -183,15 +234,9 @@ function ProductSection({
     <section id={id} className={`py-16 sm:py-24 px-4 sm:px-6 ${tone === "gray" ? "bg-petrol/[0.03]" : "bg-surface"}`}>
       <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
         <Reveal variant="fade-up" className={reverse ? "lg:order-2" : ""}>
-          <div className="relative bg-white border border-border p-8 sm:p-12 flex items-center justify-center min-h-[320px]">
-            <img
-              src={img}
-              alt={`Poly ${name}`}
-              loading="lazy"
-              className="max-h-[340px] w-auto object-contain mix-blend-multiply drop-shadow-xl"
-            />
-          </div>
+          <Gallery images={images} name={name} />
         </Reveal>
+
 
         <Reveal variant="fade-up" delay={120} className={reverse ? "lg:order-1" : ""}>
           <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-4 block">{eyebrow}</span>
