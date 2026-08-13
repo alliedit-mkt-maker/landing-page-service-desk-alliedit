@@ -19,17 +19,19 @@ import { HeadsetPage, headsetMeta } from "./headset-callcenter";
 import { RallyBarPage, rallyBarMeta } from "./rally-bar";
 import { PolyPage, polyMeta } from "./headsets-poly";
 import { LogitechPage, logitechMeta } from "./headset-logitech";
+import { YealinkPage, yealinkMeta } from "./headset-yealink";
 
 
 const SD_TITLE = "AlliedIT | Service Desk terceirizado 24x7 com NOC e SOC integrados";
 const SD_DESCRIPTION = "A operação de TI por trás das marcas que você conhece. Service Desk 24x7, N1/N2/N3 na mesma equipe, NOC e SOC integrados, custo previsível e SLA real. +7 anos atendendo hotelaria, saúde, varejo, farma e logística.";
 
-const HOST_VARIANT_MAP: Record<string, "cabeamento" | "headset" | "rally-bar" | "poly" | "logitech"> = {
+const HOST_VARIANT_MAP: Record<string, "cabeamento" | "headset" | "rally-bar" | "poly" | "logitech" | "yealink"> = {
   "cabeamento.alliedit.com.br": "cabeamento",
   "headset-callcenter.alliedit.com.br": "headset",
   "rally-bar.alliedit.com.br": "rally-bar",
   "headsets-poly.alliedit.com.br": "poly",
   "headset-logitech.alliedit.com.br": "logitech",
+  "headset-yealink.alliedit.com.br": "yealink",
 };
 
 const getRouteVariant = createServerFn({ method: "GET" }).handler(async () => {
@@ -50,8 +52,11 @@ export const Route = createFileRoute("/")({
     const isRally = variant === "rally-bar";
     const isPoly = variant === "poly";
     const isLogitech = variant === "logitech";
-    const title = isLogitech ? logitechMeta.title : isPoly ? polyMeta.title : isRally ? rallyBarMeta.title : isCabeamento ? cabeamentoMeta.title : isHeadset ? headsetMeta.title : SD_TITLE;
-    const description = isLogitech
+    const isYealink = variant === "yealink";
+    const title = isYealink ? yealinkMeta.title : isLogitech ? logitechMeta.title : isPoly ? polyMeta.title : isRally ? rallyBarMeta.title : isCabeamento ? cabeamentoMeta.title : isHeadset ? headsetMeta.title : SD_TITLE;
+    const description = isYealink
+      ? yealinkMeta.description
+      : isLogitech
       ? logitechMeta.description
       : isPoly
       ? polyMeta.description
@@ -62,7 +67,9 @@ export const Route = createFileRoute("/")({
       : isHeadset
         ? headsetMeta.description
         : SD_DESCRIPTION;
-    const canonical = isLogitech
+    const canonical = isYealink
+      ? "https://headset-yealink.alliedit.com.br/"
+      : isLogitech
       ? "https://headset-logitech.alliedit.com.br/"
       : isPoly
       ? "https://headsets-poly.alliedit.com.br/"
@@ -100,7 +107,9 @@ export const Route = createFileRoute("/")({
           children: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Service",
-            serviceType: isLogitech
+            serviceType: isYealink
+              ? "Revenda de headsets corporativos Yealink"
+              : isLogitech
               ? "Revenda de headsets corporativos Logitech"
               : isPoly
               ? "Revenda de headsets corporativos Poly (HP)"
@@ -134,6 +143,7 @@ function Index() {
   if (variant === "rally-bar") return <RallyBarPage />;
   if (variant === "poly") return <PolyPage />;
   if (variant === "logitech") return <LogitechPage />;
+  if (variant === "yealink") return <YealinkPage />;
 
   return (
     <LpProvider>
