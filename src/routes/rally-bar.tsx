@@ -94,6 +94,8 @@ const pillLight =
   "inline-flex items-center justify-center border-2 border-white text-white px-8 py-4 text-[11px] font-bold uppercase tracking-[0.18em] hover:bg-white hover:text-petrol transition-colors";
 const pillLightGhost =
   "inline-flex items-center justify-center border border-white/40 text-white/90 px-7 py-4 text-[11px] font-bold uppercase tracking-[0.18em] hover:border-gold hover:text-gold transition-colors";
+const pillDarkGhost =
+  "inline-flex items-center justify-center border border-petrol/30 text-petrol px-7 py-4 text-[11px] font-bold uppercase tracking-[0.18em] hover:border-gold hover:text-gold transition-colors";
 const pillDark =
   "inline-flex items-center justify-center border border-petrol bg-petrol text-white px-7 py-3.5 text-[11px] font-bold uppercase tracking-[0.18em] hover:bg-petrol-light transition-colors";
 
@@ -312,7 +314,7 @@ function RallyBarSection() {
       id="rally-bar"
       solidWord="Rally"
       outlineWord="Bar"
-      tone="black"
+      tone="white"
       tagline="A barra de vídeo para salas que não perdoam ruído nem falha."
       subtitle="Salas médias e grandes, até 15x de zoom HD e microfones com alcance de 7 metros."
       cta="Quero a Rally Bar →"
@@ -359,7 +361,7 @@ function RallyBarMiniSection() {
       id="rally-bar-mini"
       solidWord="Rally Bar"
       outlineWord="Mini"
-      tone="graphite"
+      tone="light"
       tagline="Toda a potência da Rally, no tamanho certo pra sala pequena."
       subtitle="Salas pequenas e médias, plug-and-play, com a mesma qualidade de áudio e vídeo da linha Rally."
       cta="Quero a Rally Bar Mini →"
