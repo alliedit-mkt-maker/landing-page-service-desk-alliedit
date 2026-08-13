@@ -237,28 +237,31 @@ function Bh70Spotlight() {
 
         <Reveal variant="scale-in" delay={180}>
           <div
-            className="relative overflow-hidden border border-white/15 p-8 sm:p-14 backdrop-blur-md shadow-[0_40px_90px_rgba(0,0,0,0.55)]"
+            className="group relative overflow-hidden border border-white/15 p-8 sm:p-14 backdrop-blur-md shadow-[0_40px_90px_rgba(0,0,0,0.55)]"
             style={{
               background:
                 "radial-gradient(120% 100% at 50% 0%, rgba(255,255,255,0.35) 0%, rgba(238,242,244,0.22) 45%, rgba(215,222,226,0.12) 100%)",
             }}
-
           >
-            <span aria-hidden className="absolute inset-x-0 top-0 h-[3px] bg-gold" />
             <div
               aria-hidden
-              className="absolute left-1/2 top-1/2 size-[78%] -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl"
+              className="absolute inset-0 bg-white opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+            />
+            <span aria-hidden className="absolute inset-x-0 top-0 z-10 h-[3px] bg-gold" />
+            <div
+              aria-hidden
+              className="absolute left-1/2 top-1/2 size-[78%] -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl transition-opacity duration-300 group-hover:opacity-0"
               style={{ background: "radial-gradient(circle, rgba(255,255,255,0.30) 0%, rgba(255,255,255,0) 70%)" }}
             />
             <img
               src={bh70Main.url}
               alt="Yealink BH70"
               loading="lazy"
-              className="relative mx-auto w-auto max-h-[440px] scale-[1.08] object-contain drop-shadow-[0_34px_55px_rgba(0,0,0,0.5)]"
+              className="relative mx-auto w-auto max-h-[440px] scale-[1.08] object-contain drop-shadow-[0_34px_55px_rgba(0,0,0,0.5)] transition-all duration-300 group-hover:scale-[1.12] group-hover:drop-shadow-[0_24px_40px_rgba(0,0,0,0.25)]"
             />
-
           </div>
         </Reveal>
+
 
 
 
