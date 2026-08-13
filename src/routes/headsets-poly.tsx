@@ -351,86 +351,41 @@ const studioItems = [
 
 function PolyStudio() {
   return (
-    <section className="py-16 sm:py-24 px-4 sm:px-6 bg-surface" id="poly-studio">
-      <div className="max-w-6xl mx-auto grid lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-16 items-center">
-        <Reveal variant="fade-up">
+    <section className="py-20 sm:py-28 px-4 sm:px-6 bg-petrol/[0.03]" id="poly-studio">
+      <div className="max-w-6xl mx-auto">
+        <Reveal variant="fade-up" className="max-w-3xl mx-auto text-center mb-12 sm:mb-16">
           <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-4 block">
             Hub de gerenciamento
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-balance text-ink-mid mb-5">
             Poly Studio: seus headsets sob controle da TI
           </h2>
-          <p className="text-petrol/70 text-base leading-relaxed mb-8 max-w-xl">
+          <p className="text-petrol/70 text-base leading-relaxed">
             Todo headset Poly conversa com o app de gerenciamento da HP. É onde a TI enxerga o parque inteiro,
             padroniza configuração e resolve o que dá problema sem depender do usuário.
           </p>
-          <div className="flex flex-col divide-y divide-border border-y border-border">
-            {studioItems.map((it) => (
-              <div key={it.title} className="flex items-start gap-4 py-5">
-                <it.icon className="size-5 text-gold mt-0.5 shrink-0" strokeWidth={1.75} aria-hidden />
-                <div>
-                  <h3 className="font-extrabold text-base text-ink-mid mb-1">{it.title}</h3>
-                  <p className="text-petrol/70 text-sm leading-relaxed">{it.body}</p>
-                </div>
-              </div>
-            ))}
-          </div>
         </Reveal>
 
-        <Reveal variant="fade-up" delay={140}>
-          <div className="bg-white border border-border p-4 sm:p-6">
-            <img
-              src={polyStudio.url}
-              alt="Interface do aplicativo de gerenciamento Poly Studio"
-              loading="lazy"
-              className="w-full h-auto object-contain"
-            />
-          </div>
+        <Reveal variant="fade-up" delay={120} className="mb-12 sm:mb-16">
+          <img
+            src={polyStudio.url}
+            alt="Poly Studio aberto em um notebook e no celular"
+            loading="lazy"
+            className="w-full max-w-4xl mx-auto h-auto object-contain"
+          />
         </Reveal>
-      </div>
-    </section>
-  );
-}
 
-const warrantyItems = [
-  {
-    icon: ShieldCheck,
-    title: "Garantia oficial de fábrica",
-    body: "Todo equipamento sai com a garantia do fabricante Poly/HP, contada a partir da nota fiscal de venda.",
-  },
-  {
-    icon: FileCheck2,
-    title: "Produto genuíno com nota",
-    body: "Nada de importação paralela: procedência rastreável, nota fiscal e número de série registrado.",
-  },
-  {
-    icon: LifeBuoy,
-    title: "Suporte da Allied IT no meio do caminho",
-    body: "Se algo precisar de reparo ou troca, você fala com a gente, não com um call center de fabricante.",
-  },
-];
-
-function Warranty() {
-  return (
-    <section className="py-16 sm:py-24 px-4 sm:px-6 bg-petrol/[0.03]" id="garantia">
-      <div className="max-w-6xl mx-auto">
-        <Reveal variant="fade-up" className="max-w-3xl mx-auto text-center mb-10 sm:mb-14">
-          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-4 block">Garantia</span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-balance text-ink-mid">
-            Comprou com a gente, está coberto
-          </h2>
-        </Reveal>
-        <div className="grid md:grid-cols-3 gap-6 items-stretch">
-          {warrantyItems.map((it, i) => (
+        <div className="grid md:grid-cols-3 gap-px bg-border border border-border">
+          {studioItems.map((it, i) => (
             <Reveal
               as="article"
               key={it.title}
               variant="fade-up"
               delay={i * 90}
-              className="h-full flex flex-col bg-surface border border-border border-t-2 border-t-gold p-8"
+              className="h-full bg-surface p-8 flex flex-col"
             >
-              <it.icon className="size-7 text-gold mb-5" strokeWidth={1.75} aria-hidden />
-              <h3 className="font-extrabold text-lg mb-3 leading-tight text-balance text-ink-mid">{it.title}</h3>
+              <it.icon className="size-6 text-gold mb-5" strokeWidth={1.75} aria-hidden />
+              <h3 className="font-extrabold text-base sm:text-lg text-ink-mid mb-2 leading-tight">{it.title}</h3>
               <p className="text-petrol/70 text-sm leading-relaxed">{it.body}</p>
             </Reveal>
           ))}
@@ -439,6 +394,7 @@ function Warranty() {
     </section>
   );
 }
+
 
 const whyItems = [
   {
