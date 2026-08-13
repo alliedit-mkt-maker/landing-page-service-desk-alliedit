@@ -22,7 +22,7 @@ import bh70Banner from "@/assets/headsets/yl-bh70-banner.webp.asset.json";
 import whyImage from "@/assets/headsets/yealink-lifestyle.png.asset.json";
 import yealinkLogo from "@/assets/headsets/yealink-logo.png.asset.json";
 import bh70Main from "@/assets/headsets/yl-bh70-cutout.png.asset.json";
-import wh64Main from "@/assets/headsets/yl-wh64-main.png.asset.json";
+import wh64Main from "@/assets/headsets/yl-wh64-main-2.png.asset.json";
 import uh34Main from "@/assets/headsets/yl-uh34-main.jpg.asset.json";
 import logoAlliedIt from "@/assets/logo-alliedit.png";
 
@@ -272,7 +272,7 @@ function Bh70Spotlight() {
 
 type Spec = { icon: typeof Headset; label: string };
 
-function Gallery({ images, name }: { images: string[]; name: string }) {
+function Gallery({ images, name, zoom }: { images: string[]; name: string; zoom?: boolean }) {
   const [i, setI] = useState(0);
   const go = (d: number) => setI((p) => (p + d + images.length) % images.length);
   return (
@@ -284,7 +284,7 @@ function Gallery({ images, name }: { images: string[]; name: string }) {
             src={src}
             alt={`Yealink ${name} — foto ${idx + 1}`}
             loading="lazy"
-            className={`absolute inset-0 size-full object-contain p-6 sm:p-10 transition-opacity duration-300 ${idx === i ? "opacity-100" : "opacity-0"}`}
+            className={`absolute inset-0 size-full object-contain transition-opacity duration-300 ${zoom ? "p-2 sm:p-3 scale-[1.18]" : "p-6 sm:p-10"} ${idx === i ? "opacity-100" : "opacity-0"}`}
           />
         ))}
       </div>
@@ -334,6 +334,7 @@ function ProductSection({
   images,
   tone,
   reverse,
+  zoom,
 }: {
   id: string;
   eyebrow: string;
@@ -345,13 +346,14 @@ function ProductSection({
   images: string[];
   tone: "white" | "gray";
   reverse?: boolean;
+  zoom?: boolean;
 }) {
   const { openModal } = useLp();
   return (
     <section id={id} className={`py-16 sm:py-24 px-4 sm:px-6 ${tone === "gray" ? "bg-petrol/[0.03]" : "bg-surface"}`}>
       <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
         <Reveal variant="fade-up" className={reverse ? "lg:order-2" : ""}>
-          <Gallery images={images} name={name} />
+          <Gallery images={images} name={name} zoom={zoom} />
         </Reveal>
 
         <Reveal variant="fade-up" delay={120} className={reverse ? "lg:order-1" : ""}>
@@ -443,6 +445,7 @@ function Uh34() {
         { icon: FileCheck2, label: "Homologado para UC" },
       ]}
       images={[uh34Main.url]}
+      zoom
       tone="white"
     />
   );
