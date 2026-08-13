@@ -7,16 +7,10 @@ import heroImage from "@/assets/headsets/hero-headset.jpg";
 import officeImage from "@/assets/headsets/office-team.jpg";
 
 import yealinkUh34 from "@/assets/headsets/yealink-uh34.png.asset.json";
-import yealinkUh42 from "@/assets/headsets/yealink-uh42.png.asset.json";
-import yealinkBh70 from "@/assets/headsets/yealink-bh70.png.asset.json";
 import yealinkUh36 from "@/assets/headsets/yealink-uh36.png.asset.json";
 import logitechH390 from "@/assets/headsets/logitech-h390.webp.asset.json";
-import logitechZoneWired from "@/assets/headsets/logitech-zone-wired.png.asset.json";
-import logitechZoneWireless2 from "@/assets/headsets/logitech-zone-wireless-2.png.asset.json";
 import logitechH570e from "@/assets/headsets/logitech-h570e.png.asset.json";
 import polyBlackwire3220 from "@/assets/headsets/poly-blackwire-3220.png.asset.json";
-import polyBlackwire5220 from "@/assets/headsets/poly-blackwire-5220.webp.asset.json";
-import polyVoyagerFocus2 from "@/assets/headsets/poly-voyager-focus-2.webp.asset.json";
 import polyEncorePro520 from "@/assets/headsets/poly-encorepro-520.png.asset.json";
 import yealinkLogo from "@/assets/headsets/yealink-logo.png.asset.json";
 import logitechLogo from "@/assets/headsets/logitech-logo.png.asset.json";
