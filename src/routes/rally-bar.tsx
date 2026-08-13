@@ -183,8 +183,7 @@ function ProductSection({
   subtitle,
   cta,
   bannerSrc,
-  heroSrc,
-  heroAlt,
+  heroImages,
   gallery,
   highlights,
   specs,
@@ -197,8 +196,7 @@ function ProductSection({
   subtitle: string;
   cta: string;
   bannerSrc: string;
-  heroSrc: string;
-  heroAlt: string;
+  heroImages: { src: string; alt: string }[];
   gallery: { src: string; alt: string }[];
   highlights: Highlight[];
   specs: SpecRow[];
@@ -206,9 +204,12 @@ function ProductSection({
 }) {
   const { openModal } = useLp();
   const [openSpecs, setOpenSpecs] = useState(false);
-  const bg = tone === "white" ? "bg-white" : "bg-surface";
   return (
-    <section id={id} className={`${bg} text-petrol relative overflow-hidden border-t border-petrol/10`}>
+    <section
+      id={id}
+      className="text-petrol relative overflow-hidden border-t border-petrol/10"
+      style={{ backgroundColor: tone === "white" ? "#ffffff" : "#eaeef1" }}
+    >
       {/* Sub-hero: ambiente com degradê e nome do produto */}
       <div className="relative h-[38vh] min-h-[260px] sm:h-[46vh] max-h-[520px] w-full overflow-hidden">
         <img src={bannerSrc} alt="" aria-hidden loading="lazy" className="absolute inset-0 size-full object-cover" />
@@ -217,10 +218,10 @@ function ProductSection({
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(0deg, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.62) 45%, rgba(0,0,0,0.4) 75%, rgba(0,0,0,0.25) 100%)",
+              "linear-gradient(0deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.55) 45%, rgba(0,0,0,0.38) 75%, rgba(0,0,0,0.25) 100%)",
           }}
         />
-        <div className="relative h-full flex items-end justify-center pb-8 sm:pb-12 px-4">
+        <div className="relative h-full flex items-center justify-center px-4">
           <h2 className="text-5xl sm:text-7xl md:text-8xl font-extrabold tracking-tighter leading-[0.95] text-white text-center">
             <Reveal as="span" variant="fade-up" className="inline-block">
               {solidWord}
@@ -232,15 +233,21 @@ function ProductSection({
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto relative px-4 sm:px-6 pt-10 sm:pt-14 pb-20 sm:pb-24">
-        <Reveal variant="fade-up" delay={80} className="relative -mt-2 -mb-6 sm:-mb-8">
-          <img
-            src={heroSrc}
-            alt={heroAlt}
-            loading="lazy"
-            className="w-full max-w-2xl mx-auto object-contain animate-float-slow"
-          />
+      <div className="max-w-6xl mx-auto relative px-4 sm:px-6 pt-12 sm:pt-16 pb-20 sm:pb-24">
+        <Reveal variant="fade-up" delay={80} className="relative">
+          <div className="grid sm:grid-cols-2 gap-6 sm:gap-10 items-center max-w-4xl mx-auto">
+            {heroImages.map((img) => (
+              <img
+                key={img.src}
+                src={img.src}
+                alt={img.alt}
+                loading="lazy"
+                className="w-full max-h-56 object-contain"
+              />
+            ))}
+          </div>
         </Reveal>
+
 
         <div className="max-w-3xl mx-auto text-center mt-2 sm:mt-4">
           <Reveal variant="fade-up">
