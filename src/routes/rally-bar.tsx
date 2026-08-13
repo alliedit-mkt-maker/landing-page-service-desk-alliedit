@@ -339,12 +339,15 @@ function RallyBarSection() {
       solidWord="Rally"
       outlineWord="Bar"
       tone="white"
-      bannerSrc={rallyBarAmbient}
+      bannerSrc={rallyBanner.url}
       tagline="A barra de vídeo para salas que não perdoam ruído nem falha."
       subtitle="Salas médias e grandes, até 15x de zoom HD e microfones com alcance de 7 metros."
       cta="Quero a Rally Bar →"
-      heroSrc={rallyBar01Trim}
-      heroAlt="Logitech Rally Bar grafite vista de frente"
+      heroImages={[
+        { src: rbHero.url, alt: "Logitech Rally Bar grafite vista de frente" },
+        { src: rbAngle.url, alt: "Logitech Rally Bar grafite em ângulo com controle remoto" },
+      ]}
+
       gallery={[
         { src: rallyBar02.url, alt: "Rally Bar em ângulo lateral" },
         { src: rallyBar04.url, alt: "Rally Bar com controle remoto" },
