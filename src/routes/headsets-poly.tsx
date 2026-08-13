@@ -73,7 +73,7 @@ export function PolyPage() {
           <Blackwire />
           <VoyagerFocus />
           <PolyStudio />
-          <Warranty />
+          
           <WhyAllied />
           <FinalCta />
         </main>
@@ -114,30 +114,22 @@ function Hero() {
 
         <Reveal variant="fade-up">
           <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-gold font-semibold mb-5 block">
-            Headsets corporativos Poly · Revenda oficial
+            Headsets corporativos Poly
           </span>
         </Reveal>
         <Reveal variant="fade-up" delay={120}>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-balance leading-[1.02] mb-6 sm:mb-8 text-white drop-shadow-[0_2px_18px_rgba(0,0,0,0.6)]">
-            Dois headsets Poly, dois jeitos de trabalhar
+            Sua equipe merece ser ouvida com clareza
           </h1>
         </Reveal>
         <Reveal variant="fade-up" delay={200}>
           <p className="text-white/80 text-base sm:text-lg max-w-2xl mx-auto mb-9 leading-relaxed drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)]">
-            Blackwire C3220 para operação e call center, com fio e sempre pronto. Voyager Focus 2 para quem vive em
-            reunião e precisa de liberdade sem fio com cancelamento de ruído. A Allied IT cuida da compra, da entrega e
-            do suporte depois.
+            Ruído no atendimento, reunião que trava, headset barato que estraga em três meses e TI apagando incêndio.
+            A gente resolve isso: entende como sua equipe trabalha, indica o equipamento certo e entrega padronizado,
+            com nota fiscal e procedência garantida.
           </p>
         </Reveal>
-        <Reveal variant="fade-up" delay={320}>
-          <span className="flex h-8 sm:h-10 w-40 items-center justify-center mb-10">
-            <img
-              src={polyLogo.url}
-              alt="Poly | HP"
-              className="max-h-full max-w-full object-contain brightness-0 invert opacity-85 scale-[1.25]"
-            />
-          </span>
-        </Reveal>
+
         <Reveal variant="fade-up" delay={380}>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button onClick={() => openModal("hero_primary")} className={pillLight}>
