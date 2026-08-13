@@ -47,10 +47,9 @@ export function Clients({ centered = false }: { centered?: boolean }) {
                 alt={logo.name}
                 loading="lazy"
                 style={{ mixBlendMode: "multiply" }}
-                className={`h-[58px] md:h-[68px] w-auto object-contain grayscale hover:grayscale-0 hover:opacity-100 hover:scale-[1.2] transition-all duration-300 ${
-                  logo.boost ? "opacity-95 contrast-[1.5] brightness-[0.75]" : "opacity-70"
-                }`}
+                className="h-[58px] md:h-[68px] w-auto object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 hover:scale-[1.2] transition-all duration-300"
               />
+
             </div>
           ))}
         </div>
