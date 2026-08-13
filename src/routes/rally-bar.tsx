@@ -390,12 +390,15 @@ function RallyBarMiniSection() {
       solidWord="Rally Bar"
       outlineWord="Mini"
       tone="light"
-      bannerSrc={miniOverview.url}
+      bannerSrc={miniBanner.url}
       tagline="Toda a potência da Rally, no tamanho certo pra sala pequena."
       subtitle="Salas pequenas e médias, plug-and-play, com a mesma qualidade de áudio e vídeo da linha Rally."
       cta="Quero a Rally Bar Mini →"
-      heroSrc={mini02Trim}
-      heroAlt="Logitech Rally Bar Mini grafite"
+      heroImages={[
+        { src: miniHero.url, alt: "Logitech Rally Bar Mini grafite vista de frente" },
+        { src: miniAngle.url, alt: "Logitech Rally Bar Mini grafite em ângulo" },
+      ]}
+
       gallery={[
         { src: mini02.url, alt: "Rally Bar Mini em ângulo" },
         { src: mini03.url, alt: "Rally Bar Mini com controle remoto" },
