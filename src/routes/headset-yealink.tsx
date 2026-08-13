@@ -177,8 +177,9 @@ function Bh70Spotlight() {
         loading="lazy"
         width={1216}
         height={631}
-        className="absolute inset-0 size-full object-cover object-center"
+        className="absolute inset-0 size-full object-cover object-center scale-x-[-1]"
       />
+
       <div
         aria-hidden
         className="absolute inset-0"
@@ -236,11 +237,12 @@ function Bh70Spotlight() {
 
         <Reveal variant="scale-in" delay={180}>
           <div
-            className="relative overflow-hidden border border-white/15 p-8 sm:p-14 shadow-[0_40px_90px_rgba(0,0,0,0.55)]"
+            className="relative overflow-hidden border border-white/15 p-8 sm:p-14 backdrop-blur-md shadow-[0_40px_90px_rgba(0,0,0,0.55)]"
             style={{
               background:
-                "radial-gradient(120% 100% at 50% 0%, #ffffff 0%, #eef2f4 45%, #d7dee2 100%)",
+                "radial-gradient(120% 100% at 50% 0%, rgba(255,255,255,0.35) 0%, rgba(238,242,244,0.22) 45%, rgba(215,222,226,0.12) 100%)",
             }}
+
           >
             <span aria-hidden className="absolute inset-x-0 top-0 h-[3px] bg-gold" />
             <img
