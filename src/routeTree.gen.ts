@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as RallyBarRouteImport } from './routes/rally-bar'
+import { Route as PolyStudioRouteImport } from './routes/poly-studio'
 import { Route as ObrigadoRouteImport } from './routes/obrigado'
 import { Route as HeadsetsPolyRouteImport } from './routes/headsets-poly'
 import { Route as HeadsetYealinkRouteImport } from './routes/headset-yealink'
@@ -21,6 +22,11 @@ import { Route as IndexRouteImport } from './routes/index'
 const RallyBarRoute = RallyBarRouteImport.update({
   id: '/rally-bar',
   path: '/rally-bar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PolyStudioRoute = PolyStudioRouteImport.update({
+  id: '/poly-studio',
+  path: '/poly-studio',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ObrigadoRoute = ObrigadoRouteImport.update({
@@ -67,6 +73,7 @@ export interface FileRoutesByFullPath {
   '/headset-yealink': typeof HeadsetYealinkRoute
   '/headsets-poly': typeof HeadsetsPolyRoute
   '/obrigado': typeof ObrigadoRoute
+  '/poly-studio': typeof PolyStudioRoute
   '/rally-bar': typeof RallyBarRoute
 }
 export interface FileRoutesByTo {
@@ -77,6 +84,7 @@ export interface FileRoutesByTo {
   '/headset-yealink': typeof HeadsetYealinkRoute
   '/headsets-poly': typeof HeadsetsPolyRoute
   '/obrigado': typeof ObrigadoRoute
+  '/poly-studio': typeof PolyStudioRoute
   '/rally-bar': typeof RallyBarRoute
 }
 export interface FileRoutesById {
@@ -88,6 +96,7 @@ export interface FileRoutesById {
   '/headset-yealink': typeof HeadsetYealinkRoute
   '/headsets-poly': typeof HeadsetsPolyRoute
   '/obrigado': typeof ObrigadoRoute
+  '/poly-studio': typeof PolyStudioRoute
   '/rally-bar': typeof RallyBarRoute
 }
 export interface FileRouteTypes {
@@ -100,6 +109,7 @@ export interface FileRouteTypes {
     | '/headset-yealink'
     | '/headsets-poly'
     | '/obrigado'
+    | '/poly-studio'
     | '/rally-bar'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -110,6 +120,7 @@ export interface FileRouteTypes {
     | '/headset-yealink'
     | '/headsets-poly'
     | '/obrigado'
+    | '/poly-studio'
     | '/rally-bar'
   id:
     | '__root__'
@@ -120,6 +131,7 @@ export interface FileRouteTypes {
     | '/headset-yealink'
     | '/headsets-poly'
     | '/obrigado'
+    | '/poly-studio'
     | '/rally-bar'
   fileRoutesById: FileRoutesById
 }
@@ -131,6 +143,7 @@ export interface RootRouteChildren {
   HeadsetYealinkRoute: typeof HeadsetYealinkRoute
   HeadsetsPolyRoute: typeof HeadsetsPolyRoute
   ObrigadoRoute: typeof ObrigadoRoute
+  PolyStudioRoute: typeof PolyStudioRoute
   RallyBarRoute: typeof RallyBarRoute
 }
 
@@ -141,6 +154,13 @@ declare module '@tanstack/react-router' {
       path: '/rally-bar'
       fullPath: '/rally-bar'
       preLoaderRoute: typeof RallyBarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/poly-studio': {
+      id: '/poly-studio'
+      path: '/poly-studio'
+      fullPath: '/poly-studio'
+      preLoaderRoute: typeof PolyStudioRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/obrigado': {
@@ -203,6 +223,7 @@ const rootRouteChildren: RootRouteChildren = {
   HeadsetYealinkRoute: HeadsetYealinkRoute,
   HeadsetsPolyRoute: HeadsetsPolyRoute,
   ObrigadoRoute: ObrigadoRoute,
+  PolyStudioRoute: PolyStudioRoute,
   RallyBarRoute: RallyBarRoute,
 }
 export const routeTree = rootRouteImport
