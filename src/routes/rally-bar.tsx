@@ -9,13 +9,16 @@ import heroRoom from "@/assets/rally/hero-room.jpg";
 import rallyBar01 from "@/assets/rally/rally-bar-graphite-01.webp.asset.json";
 import rallyBar02 from "@/assets/rally/rally-bar-graphite-02.webp.asset.json";
 import rallyBar04 from "@/assets/rally/rally-bar-graphite-04.webp.asset.json";
-import rallyBarAmbient from "@/assets/rally/rally-bar-ambient.webp";
-import rallyBar01Trim from "@/assets/rally/rally-bar-01-trim.webp";
-import mini02Trim from "@/assets/rally/rally-bar-mini-02-trim.webp";
-import miniOverview from "@/assets/rally/rally-bar-mini-overview.webp.asset.json";
+import rallyBanner from "@/assets/rally/rally-banner.webp.asset.json";
+import miniBanner from "@/assets/rally/rally-mini-banner.webp.asset.json";
+import rbHero from "@/assets/rally/rb-hero.webp.asset.json";
+import rbAngle from "@/assets/rally/rb-04.webp.asset.json";
+import miniHero from "@/assets/rally/mini-hero.webp.asset.json";
+import miniAngle from "@/assets/rally/mini-02.webp.asset.json";
 import mini02 from "@/assets/rally/rally-bar-mini-graphite-02.webp.asset.json";
 import mini03 from "@/assets/rally/rally-bar-mini-graphite-03.webp.asset.json";
 import mini04 from "@/assets/rally/rally-bar-mini-graphite-04.webp.asset.json";
+
 
 import logitechLogo from "@/assets/rally/logitech-logo.png.asset.json";
 import teamsLogo from "@/assets/rally/teams-logo.png.asset.json";
