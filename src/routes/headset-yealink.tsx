@@ -21,7 +21,7 @@ import heroImage from "@/assets/headsets/yl-hero-2.jpg.asset.json";
 import bh70Banner from "@/assets/headsets/yl-bh70-banner.webp.asset.json";
 import whyImage from "@/assets/headsets/yealink-lifestyle.png.asset.json";
 import yealinkLogo from "@/assets/headsets/yealink-logo.png.asset.json";
-import bh70Main from "@/assets/headsets/yl-bh70-main.png.asset.json";
+import bh70Main from "@/assets/headsets/yl-bh70-cutout.png.asset.json";
 import wh64Main from "@/assets/headsets/yl-wh64-main.png.asset.json";
 import uh34Main from "@/assets/headsets/yl-uh34-main.jpg.asset.json";
 import logoAlliedIt from "@/assets/logo-alliedit.png";
