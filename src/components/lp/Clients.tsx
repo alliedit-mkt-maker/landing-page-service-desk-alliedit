@@ -6,14 +6,14 @@ import espacoLaser from "@/assets/clients/espaco-laser.webp";
 import ipanema from "@/assets/clients/ipanema.webp";
 import bradesco from "@/assets/clients/bradesco.webp";
 
-const logos = [
+const logos: { src: string; name: string; boost?: boolean }[] = [
   { src: einstein, name: "Hospital Israelita Albert Einstein" },
   { src: semParar, name: "Sem Parar" },
-  { src: cacauShow, name: "Cacau Show" },
+  { src: cacauShow, name: "Cacau Show", boost: true },
   { src: apsen, name: "Apsen" },
   { src: espacoLaser, name: "Espaço Laser" },
   { src: ipanema, name: "Ipanema" },
-  { src: bradesco, name: "Bradesco" },
+  { src: bradesco, name: "Bradesco", boost: true },
 ];
 
 export function Clients({ centered = false }: { centered?: boolean }) {
@@ -47,7 +47,9 @@ export function Clients({ centered = false }: { centered?: boolean }) {
                 alt={logo.name}
                 loading="lazy"
                 style={{ mixBlendMode: "multiply" }}
-                className="h-[58px] md:h-[68px] w-auto object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 hover:scale-[1.2] transition-all duration-300"
+                className={`h-[58px] md:h-[68px] w-auto object-contain grayscale hover:grayscale-0 hover:opacity-100 hover:scale-[1.2] transition-all duration-300 ${
+                  logo.boost ? "opacity-95 contrast-[1.5] brightness-[0.75]" : "opacity-70"
+                }`}
               />
             </div>
           ))}

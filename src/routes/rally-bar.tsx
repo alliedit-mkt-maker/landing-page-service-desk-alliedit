@@ -92,14 +92,15 @@ export function RallyBarPage() {
 
 const pillLight =
   "inline-flex items-center justify-center border-2 border-white text-white px-8 py-4 text-[11px] font-bold uppercase tracking-[0.18em] hover:bg-white hover:text-petrol transition-colors";
-const pillLightGhost =
-  "inline-flex items-center justify-center border border-white/40 text-white/90 px-7 py-4 text-[11px] font-bold uppercase tracking-[0.18em] hover:border-gold hover:text-gold transition-colors";
+const pillDarkGhost =
+  "inline-flex items-center justify-center border border-petrol/30 text-petrol px-7 py-4 text-[11px] font-bold uppercase tracking-[0.18em] hover:border-gold hover:text-gold transition-colors";
 const pillDark =
   "inline-flex items-center justify-center border border-petrol bg-petrol text-white px-7 py-3.5 text-[11px] font-bold uppercase tracking-[0.18em] hover:bg-petrol-light transition-colors";
 
-const outlineText: React.CSSProperties = {
+const outlineDark: React.CSSProperties = {
   color: "transparent",
-  WebkitTextStroke: "1.5px rgba(255,255,255,0.85)",
+  WebkitTextStroke: "2px color-mix(in oklch, var(--petrol) 85%, transparent)",
+  paintOrder: "stroke fill",
 };
 
 /* ---------- 1. Hero ---------- */
@@ -109,65 +110,62 @@ function Hero() {
   return (
     <section
       id="hero"
-      className="relative overflow-hidden min-h-screen flex flex-col justify-center py-20 px-4 sm:px-6"
+      className="relative overflow-hidden min-h-screen flex flex-col justify-center py-16 sm:py-20 px-4 sm:px-6"
+      style={{
+        backgroundImage:
+          "radial-gradient(70% 60% at 50% 8%, color-mix(in oklch, var(--gold) 12%, transparent), transparent 70%), linear-gradient(180deg, #ffffff 0%, color-mix(in oklch, var(--petrol) 4%, #ffffff) 60%, #ffffff 100%)",
+      }}
     >
-      <img
-        src={heroRoom}
-        alt="Sala de reunião corporativa preparada para videoconferência"
-        className="absolute inset-0 size-full object-cover object-center"
-        width={1920}
-        height={1088}
-      />
-      <div
-        aria-hidden
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(0deg, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.68) 45%, rgba(0,0,0,0.4) 78%, rgba(0,0,0,0.12) 92%, rgba(0,0,0,0) 100%)",
-        }}
-      />
-      <div className="max-w-4xl mx-auto relative w-full text-center flex flex-col items-center">
-        <img
-          src={logoAlliedIt}
-          alt="AlliedIT"
-          className="h-12 sm:h-16 w-auto brightness-0 invert mb-10 sm:mb-12 drop-shadow-lg"
-        />
+      <div className="max-w-5xl mx-auto relative w-full text-center flex flex-col items-center">
+        <img src={logoAlliedIt} alt="AlliedIT" className="h-10 sm:h-12 w-auto mb-8 sm:mb-10" />
         <Reveal variant="fade-up">
           <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-gold font-semibold mb-5 block">
             Logitech Rally Family
           </span>
         </Reveal>
         <Reveal variant="fade-up" delay={120}>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-balance leading-[1.02] mb-6 sm:mb-8 text-white drop-shadow-[0_2px_18px_rgba(0,0,0,0.6)]">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-balance leading-[1.02] mb-6 sm:mb-8 text-ink-mid">
             Videoconferência all-in-one para qualquer sala
           </h1>
         </Reveal>
         <Reveal variant="fade-up" delay={220}>
-          <p className="text-white/75 text-base sm:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+          <p className="text-petrol/70 text-base sm:text-lg max-w-2xl mx-auto mb-9 leading-relaxed">
             Da sala pequena à sala de diretoria. Conheça a Rally Bar e a Rally Bar Mini e deixe a AlliedIT cuidar da
             escolha certa, da instalação ao suporte.
           </p>
         </Reveal>
         <Reveal variant="fade-up" delay={320} className="flex flex-wrap gap-4 justify-center">
-          <button onClick={() => openModal("hero")} className={pillLight}>
+          <button onClick={() => openModal("hero")} className={pillDark}>
             Pedir cotação
           </button>
-          <a href="#rally-bar" className={pillLightGhost}>
+          <a href="#rally-bar" className={pillDarkGhost}>
             Ver as duas opções ↓
           </a>
         </Reveal>
-        <Reveal variant="fade-in" delay={440} className="mt-14">
+
+        {/* Produto grande e nítido, com assinatura tipográfica sobreposta */}
+        <Reveal variant="fade-up" delay={420} className="relative w-full mt-12 sm:mt-16">
           <img
-            src={logitechLogo.url}
-            alt="Logitech"
-            className="h-6 sm:h-7 w-auto brightness-0 invert opacity-80"
-            loading="lazy"
+            src={rallyBar01.url}
+            alt="Logitech Rally Bar grafite vista de frente"
+            className="w-full max-w-4xl mx-auto object-contain animate-float-slow"
           />
+          <div aria-hidden className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 w-full flex justify-center">
+            <span className="inline-flex items-center rounded-full bg-white/85 px-8 py-3 shadow-[0_8px_30px_rgba(0,0,0,0.12)] ring-1 ring-petrol/10 backdrop-blur-md">
+              <span className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tighter text-petrol">
+                Rally <span style={outlineDark}>Bar</span>
+              </span>
+            </span>
+          </div>
+        </Reveal>
+        <Reveal variant="fade-in" delay={520} className="mt-10">
+          <img src={logitechLogo.url} alt="Logitech" className="h-6 sm:h-7 w-auto opacity-80" loading="lazy" />
         </Reveal>
       </div>
     </section>
   );
 }
+
 
 /* ---------- product sections ---------- */
 
@@ -199,21 +197,21 @@ function ProductSection({
   gallery: { src: string; alt: string }[];
   highlights: Highlight[];
   specs: SpecRow[];
-  tone: "black" | "graphite";
+  tone: "white" | "light";
 }) {
   const { openModal } = useLp();
-  const bg = tone === "black" ? "bg-[#0a0d0f]" : "bg-[#15191c]";
+  const bg = tone === "white" ? "bg-white" : "bg-surface";
   return (
-    <section id={id} className={`${bg} text-white py-20 sm:py-28 px-4 sm:px-6 relative overflow-hidden`}>
+    <section id={id} className={`${bg} text-petrol py-20 sm:py-28 px-4 sm:px-6 relative overflow-hidden`}>
       <div className="max-w-6xl mx-auto relative">
         {/* Nome + produto */}
         <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-5xl sm:text-7xl md:text-8xl font-extrabold tracking-tighter leading-[0.95]">
+          <h2 className="text-5xl sm:text-7xl md:text-8xl font-extrabold tracking-tighter leading-[0.95] text-ink-mid">
             <Reveal as="span" variant="fade-up" className="inline-block">
               {solidWord}
             </Reveal>{" "}
             <Reveal as="span" variant="fade-up" delay={220} className="inline-block">
-              <span style={outlineText}>{outlineWord}</span>
+              <span style={outlineDark}>{outlineWord}</span>
             </Reveal>
           </h2>
         </div>
@@ -229,13 +227,15 @@ function ProductSection({
 
         <div className="max-w-3xl mx-auto text-center mt-10 sm:mt-14">
           <Reveal variant="fade-up">
-            <p className="text-2xl sm:text-3xl font-extrabold tracking-tight text-balance mb-4">{tagline}</p>
+            <p className="text-2xl sm:text-3xl font-extrabold tracking-tight text-balance mb-4 text-ink-mid">
+              {tagline}
+            </p>
           </Reveal>
           <Reveal variant="fade-up" delay={120}>
-            <p className="text-white/65 text-base leading-relaxed mb-9">{subtitle}</p>
+            <p className="text-petrol/70 text-base leading-relaxed mb-9">{subtitle}</p>
           </Reveal>
           <Reveal variant="scale-in" delay={220}>
-            <button onClick={() => openModal(id)} data-product={solidWord + " " + outlineWord} className={pillLight}>
+            <button onClick={() => openModal(id)} data-product={solidWord + " " + outlineWord} className={pillDark}>
               {cta}
             </button>
           </Reveal>
@@ -244,16 +244,12 @@ function ProductSection({
         {/* Destaques numerados */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-20">
           {highlights.map((h, i) => (
-            <Reveal
-              as="article"
-              key={h.n}
-              variant="fade-up"
-              delay={i * 140}
-              className="border-t border-white/15 pt-6"
-            >
+            <Reveal as="article" key={h.n} variant="fade-up" delay={i * 140} className="border-t-2 border-gold/60 pt-6">
               <span className="font-mono text-gold text-sm tracking-[0.2em] block mb-4">{h.n}</span>
-              <h3 className="font-extrabold text-base sm:text-lg leading-tight text-balance mb-2">{h.title}</h3>
-              <p className="text-white/60 text-sm leading-relaxed">{h.body}</p>
+              <h3 className="font-extrabold text-base sm:text-lg leading-tight text-balance mb-2 text-ink-mid">
+                {h.title}
+              </h3>
+              <p className="text-petrol/65 text-sm leading-relaxed">{h.body}</p>
             </Reveal>
           ))}
         </div>
@@ -261,7 +257,12 @@ function ProductSection({
         {/* Galeria */}
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-20">
           {gallery.map((g, i) => (
-            <Reveal key={g.src} variant="fade-up" delay={i * 110} className="bg-white/5 ring-1 ring-white/10 p-4">
+            <Reveal
+              key={g.src}
+              variant="fade-up"
+              delay={i * 110}
+              className={`${tone === "white" ? "bg-surface" : "bg-white"} ring-1 ring-petrol/10 p-4`}
+            >
               <img src={g.src} alt={g.alt} loading="lazy" className="w-full h-40 sm:h-48 object-contain" />
             </Reveal>
           ))}
@@ -272,7 +273,7 @@ function ProductSection({
           <Reveal variant="fade-up">
             <h3 className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-6">Ficha técnica</h3>
           </Reveal>
-          <dl className="divide-y divide-white/10 border-y border-white/10">
+          <dl className="divide-y divide-petrol/10 border-y border-petrol/15">
             {specs.map(([k, v], i) => (
               <Reveal
                 key={k}
@@ -280,12 +281,13 @@ function ProductSection({
                 delay={i * 70}
                 className="grid sm:grid-cols-[200px_1fr] gap-1 sm:gap-6 py-4"
               >
-                <dt className="text-white/45 text-xs uppercase tracking-[0.12em] font-semibold">{k}</dt>
-                <dd className="text-white/85 text-sm leading-relaxed">{v}</dd>
+                <dt className="text-petrol/45 text-xs uppercase tracking-[0.12em] font-semibold">{k}</dt>
+                <dd className="text-petrol/85 text-sm leading-relaxed">{v}</dd>
               </Reveal>
             ))}
           </dl>
         </div>
+
       </div>
     </section>
   );
@@ -297,7 +299,7 @@ function RallyBarSection() {
       id="rally-bar"
       solidWord="Rally"
       outlineWord="Bar"
-      tone="black"
+      tone="white"
       tagline="A barra de vídeo para salas que não perdoam ruído nem falha."
       subtitle="Salas médias e grandes, até 15x de zoom HD e microfones com alcance de 7 metros."
       cta="Quero a Rally Bar →"
@@ -344,7 +346,7 @@ function RallyBarMiniSection() {
       id="rally-bar-mini"
       solidWord="Rally Bar"
       outlineWord="Mini"
-      tone="graphite"
+      tone="light"
       tagline="Toda a potência da Rally, no tamanho certo pra sala pequena."
       subtitle="Salas pequenas e médias, plug-and-play, com a mesma qualidade de áudio e vídeo da linha Rally."
       cta="Quero a Rally Bar Mini →"
