@@ -119,7 +119,7 @@ function Hero() {
             "linear-gradient(0deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.65) 45%, rgba(0,0,0,0.35) 78%, rgba(0,0,0,0.08) 92%, rgba(0,0,0,0) 100%)",
         }}
       />
-      <div className="max-w-4xl mx-auto relative w-full text-center flex flex-col items-center">
+      <div className="max-w-5xl mx-auto relative w-full text-center flex flex-col items-center">
         <img src={logoAlliedIt} alt="AlliedIT" className="h-12 sm:h-16 w-auto brightness-0 invert mb-10 sm:mb-12 drop-shadow-lg" />
 
         <Reveal variant="fade-up">
@@ -129,9 +129,8 @@ function Hero() {
         </Reveal>
         <Reveal variant="fade-up" delay={120}>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.05] mb-6 sm:mb-8 text-white drop-shadow-[0_2px_18px_rgba(0,0,0,0.6)]">
-            Equipe seu time de atendimento
-            <br />
-            com custo-benefício
+            <span className="block whitespace-nowrap">Equipe seu time de atendimento</span>
+            <span className="block whitespace-nowrap">com custo-benefício</span>
           </h1>
 
         </Reveal>
