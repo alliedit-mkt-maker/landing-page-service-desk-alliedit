@@ -167,7 +167,7 @@ function Hero() {
 function Bh70Spotlight() {
   const { openModal } = useLp();
   return (
-    <section className="relative overflow-hidden py-20 sm:py-28 px-4 sm:px-6" id="destaque-bh70">
+    <section className="relative overflow-hidden py-20 sm:py-28 px-4 sm:px-6" id="bh70">
       <img
         src={bh70Banner.url}
         alt=""
@@ -372,30 +372,6 @@ function ProductSection({
   );
 }
 
-function Bh70() {
-  return (
-    <ProductSection
-      id="bh70"
-      eyebrow="Sem fio, autonomia recorde"
-      name="BH70"
-      headline="Sem fio para o dia inteiro, com o melhor custo por posição da linha."
-      body="Pensado para quem alterna entre mesa, reunião e home office e não pode ficar preso ao computador. Autonomia de até 35 horas de conversação, conexão Bluetooth com receptor USB e microfone que entrega voz limpa mesmo em escritório movimentado."
-      bullets={[
-        "Até 35 horas de conversação com carga rápida",
-        "Bluetooth com receptor USB e conexão a dois dispositivos",
-        "Microfone com redução de ruído e captação direcional",
-        "Certificado para as principais plataformas de reunião corporativa",
-      ]}
-      specs={[
-        { icon: BatteryCharging, label: "Até 35h de bateria" },
-        { icon: Bluetooth, label: "Bluetooth + receptor USB" },
-        { icon: FileCheck2, label: "Homologado para UC" },
-      ]}
-      images={[bh70Main.url]}
-      tone="white"
-    />
-  );
-}
 
 function Wh64() {
   return (
