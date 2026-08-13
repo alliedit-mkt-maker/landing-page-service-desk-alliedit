@@ -185,30 +185,30 @@ function Bh70Spotlight() {
             "linear-gradient(90deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.78) 38%, rgba(0,0,0,0.45) 68%, rgba(0,0,0,0.15) 100%)",
         }}
       />
-      <div className="max-w-6xl mx-auto relative">
-        <div className="max-w-2xl">
+      <div className="max-w-6xl mx-auto relative grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <div>
           <Reveal variant="fade-up">
             <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-5 block">
-              Destaque da linha
+              Destaque da linha · Yealink BH70
             </span>
           </Reveal>
           <Reveal variant="fade-up" delay={120}>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-balance leading-[1.05] text-white mb-5">
-              BH70: 35 horas de bateria por uma fração do headset premium
+              O sem fio que atravessa a semana inteira
             </h2>
           </Reveal>
           <Reveal variant="fade-up" delay={200}>
             <p className="text-white/75 text-base sm:text-lg leading-relaxed mb-8">
-              O sem fio que atravessa a semana inteira sem cabo na mesa. Bluetooth com receptor USB, microfone com
-              redução de ruído e autonomia suficiente para o usuário esquecer que existe carregador.
+              Para quem alterna entre mesa, reunião e home office e não pode ficar preso ao computador. Autonomia para
+              o usuário esquecer que existe carregador e voz limpa mesmo em escritório movimentado.
             </p>
           </Reveal>
           <Reveal variant="fade-up" delay={280}>
             <div className="grid sm:grid-cols-3 gap-px bg-white/15 ring-1 ring-white/15 mb-9">
               {[
-                { icon: BatteryCharging, label: "Até 35h de conversação" },
-                { icon: Bluetooth, label: "Bluetooth + receptor USB" },
-                { icon: Sparkles, label: "Microfone com redução de ruído" },
+                { icon: BatteryCharging, label: "Até 35h de conversação com carga rápida" },
+                { icon: Bluetooth, label: "Bluetooth com receptor USB e dois dispositivos" },
+                { icon: Sparkles, label: "Microfone direcional com redução de ruído" },
               ].map((s) => (
                 <div key={s.label} className="bg-black/40 backdrop-blur-sm p-5 flex flex-col gap-2">
                   <s.icon className="size-5 text-gold" strokeWidth={1.75} aria-hidden />
@@ -219,6 +219,7 @@ function Bh70Spotlight() {
           </Reveal>
           <Reveal variant="fade-up" delay={340}>
             <button
+              data-product="Yealink BH70"
               onClick={() => {
                 pushEvent("product_select", { product: "Yealink BH70" });
                 openModal("destaque_bh70");
@@ -229,6 +230,17 @@ function Bh70Spotlight() {
             </button>
           </Reveal>
         </div>
+
+        <Reveal variant="scale-in" delay={180}>
+          <div className="bg-white/95 border border-white/20">
+            <img
+              src={bh70Main.url}
+              alt="Yealink BH70"
+              loading="lazy"
+              className="aspect-square w-full object-contain p-8 sm:p-12"
+            />
+          </div>
+        </Reveal>
       </div>
     </section>
   );
