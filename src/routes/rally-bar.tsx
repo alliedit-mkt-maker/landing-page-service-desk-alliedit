@@ -9,13 +9,16 @@ import heroRoom from "@/assets/rally/hero-room.jpg";
 import rallyBar01 from "@/assets/rally/rally-bar-graphite-01.webp.asset.json";
 import rallyBar02 from "@/assets/rally/rally-bar-graphite-02.webp.asset.json";
 import rallyBar04 from "@/assets/rally/rally-bar-graphite-04.webp.asset.json";
-import rallyBarAmbient from "@/assets/rally/rally-bar-ambient.webp";
-import rallyBar01Trim from "@/assets/rally/rally-bar-01-trim.webp";
-import mini02Trim from "@/assets/rally/rally-bar-mini-02-trim.webp";
-import miniOverview from "@/assets/rally/rally-bar-mini-overview.webp.asset.json";
+import rallyBanner from "@/assets/rally/rally-banner.webp.asset.json";
+import miniBanner from "@/assets/rally/rally-mini-banner.webp.asset.json";
+import rbHero from "@/assets/rally/rb-hero.webp.asset.json";
+import rbAngle from "@/assets/rally/rb-04.webp.asset.json";
+import miniHero from "@/assets/rally/mini-hero.webp.asset.json";
+import miniAngle from "@/assets/rally/mini-02.webp.asset.json";
 import mini02 from "@/assets/rally/rally-bar-mini-graphite-02.webp.asset.json";
 import mini03 from "@/assets/rally/rally-bar-mini-graphite-03.webp.asset.json";
 import mini04 from "@/assets/rally/rally-bar-mini-graphite-04.webp.asset.json";
+
 
 import logitechLogo from "@/assets/rally/logitech-logo.png.asset.json";
 import teamsLogo from "@/assets/rally/teams-logo.png.asset.json";
@@ -133,13 +136,16 @@ function Hero() {
           </h1>
         </Reveal>
 
-        <Reveal variant="fade-up" delay={220} className="w-full my-2 sm:my-4">
+        <Reveal variant="fade-up" delay={220} className="w-full mt-8 mb-8 sm:mt-10 sm:mb-10">
           <img
-            src={rallyBar01Trim}
+            src={rbHero.url}
             alt="Logitech Rally Bar grafite vista de frente"
-            className="w-full max-w-xl mx-auto object-contain animate-float-slow"
+            width={1400}
+            height={254}
+            className="w-full max-w-2xl mx-auto object-contain"
           />
         </Reveal>
+
 
         <Reveal variant="fade-up" delay={300}>
           <p className="text-petrol/70 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
@@ -177,8 +183,7 @@ function ProductSection({
   subtitle,
   cta,
   bannerSrc,
-  heroSrc,
-  heroAlt,
+  heroImages,
   gallery,
   highlights,
   specs,
@@ -191,8 +196,7 @@ function ProductSection({
   subtitle: string;
   cta: string;
   bannerSrc: string;
-  heroSrc: string;
-  heroAlt: string;
+  heroImages: { src: string; alt: string }[];
   gallery: { src: string; alt: string }[];
   highlights: Highlight[];
   specs: SpecRow[];
@@ -200,9 +204,12 @@ function ProductSection({
 }) {
   const { openModal } = useLp();
   const [openSpecs, setOpenSpecs] = useState(false);
-  const bg = tone === "white" ? "bg-white" : "bg-surface";
   return (
-    <section id={id} className={`${bg} text-petrol relative overflow-hidden border-t border-petrol/10`}>
+    <section
+      id={id}
+      className="text-petrol relative overflow-hidden border-t border-petrol/10"
+      style={{ backgroundColor: tone === "white" ? "#ffffff" : "#eaeef1" }}
+    >
       {/* Sub-hero: ambiente com degradê e nome do produto */}
       <div className="relative h-[38vh] min-h-[260px] sm:h-[46vh] max-h-[520px] w-full overflow-hidden">
         <img src={bannerSrc} alt="" aria-hidden loading="lazy" className="absolute inset-0 size-full object-cover" />
@@ -211,10 +218,10 @@ function ProductSection({
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(0deg, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.62) 45%, rgba(0,0,0,0.4) 75%, rgba(0,0,0,0.25) 100%)",
+              "linear-gradient(0deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.55) 45%, rgba(0,0,0,0.38) 75%, rgba(0,0,0,0.25) 100%)",
           }}
         />
-        <div className="relative h-full flex items-end justify-center pb-8 sm:pb-12 px-4">
+        <div className="relative h-full flex items-center justify-center px-4">
           <h2 className="text-5xl sm:text-7xl md:text-8xl font-extrabold tracking-tighter leading-[0.95] text-white text-center">
             <Reveal as="span" variant="fade-up" className="inline-block">
               {solidWord}
@@ -226,15 +233,21 @@ function ProductSection({
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto relative px-4 sm:px-6 pt-10 sm:pt-14 pb-20 sm:pb-24">
-        <Reveal variant="fade-up" delay={80} className="relative -mt-2 -mb-6 sm:-mb-8">
-          <img
-            src={heroSrc}
-            alt={heroAlt}
-            loading="lazy"
-            className="w-full max-w-2xl mx-auto object-contain animate-float-slow"
-          />
+      <div className="max-w-6xl mx-auto relative px-4 sm:px-6 pt-12 sm:pt-16 pb-20 sm:pb-24">
+        <Reveal variant="fade-up" delay={80} className="relative">
+          <div className="grid sm:grid-cols-2 gap-6 sm:gap-10 items-center max-w-4xl mx-auto">
+            {heroImages.map((img) => (
+              <img
+                key={img.src}
+                src={img.src}
+                alt={img.alt}
+                loading="lazy"
+                className="w-full max-h-56 object-contain"
+              />
+            ))}
+          </div>
         </Reveal>
+
 
         <div className="max-w-3xl mx-auto text-center mt-2 sm:mt-4">
           <Reveal variant="fade-up">
@@ -272,10 +285,11 @@ function ProductSection({
               key={g.src}
               variant="fade-up"
               delay={i * 110}
-              className={`${tone === "white" ? "bg-surface" : "bg-white"} ring-1 ring-petrol/10 p-4`}
+              className={`ring-1 ring-petrol/10 p-4 ${tone === "white" ? "bg-[#f2f5f7]" : "bg-white"}`}
             >
               <img src={g.src} alt={g.alt} loading="lazy" className="w-full h-40 sm:h-48 object-contain" />
             </Reveal>
+
           ))}
         </div>
 
@@ -288,8 +302,8 @@ function ProductSection({
             aria-controls={`${id}-specs`}
             className="w-full flex items-center justify-between gap-4 border-y border-petrol/15 py-5 text-left group"
           >
-            <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold">Ficha técnica</span>
-            <span className="flex items-center gap-3 text-petrol/60 text-[11px] uppercase tracking-[0.15em] font-semibold">
+            <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-gold font-bold">Ficha técnica</span>
+            <span className="flex items-center gap-3 text-petrol text-[11px] uppercase tracking-[0.15em] font-bold">
               {openSpecs ? "Fechar" : "Ver detalhes"}
               <ChevronDown
                 className={`size-4 transition-transform duration-300 ${openSpecs ? "rotate-180" : ""}`}
@@ -300,15 +314,16 @@ function ProductSection({
           <div
             id={`${id}-specs`}
             hidden={!openSpecs}
-            className={`${tone === "white" ? "bg-surface" : "bg-white"} px-5 sm:px-6`}
+            className={`px-5 sm:px-6 ring-1 ring-petrol/10 ${tone === "white" ? "bg-[#f2f5f7]" : "bg-white"}`}
           >
             <dl className="divide-y divide-petrol/10">
               {specs.map(([k, v]) => (
                 <div key={k} className="grid sm:grid-cols-[200px_1fr] gap-1 sm:gap-6 py-4">
-                  <dt className="text-petrol/45 text-xs uppercase tracking-[0.12em] font-semibold">{k}</dt>
-                  <dd className="text-petrol/85 text-sm leading-relaxed">{v}</dd>
+                  <dt className="text-petrol/70 text-xs uppercase tracking-[0.12em] font-bold">{k}</dt>
+                  <dd className="text-petrol text-sm leading-relaxed">{v}</dd>
                 </div>
               ))}
+
             </dl>
           </div>
         </div>
@@ -324,12 +339,15 @@ function RallyBarSection() {
       solidWord="Rally"
       outlineWord="Bar"
       tone="white"
-      bannerSrc={rallyBarAmbient}
+      bannerSrc={rallyBanner.url}
       tagline="A barra de vídeo para salas que não perdoam ruído nem falha."
       subtitle="Salas médias e grandes, até 15x de zoom HD e microfones com alcance de 7 metros."
       cta="Quero a Rally Bar →"
-      heroSrc={rallyBar01Trim}
-      heroAlt="Logitech Rally Bar grafite vista de frente"
+      heroImages={[
+        { src: rbHero.url, alt: "Logitech Rally Bar grafite vista de frente" },
+        { src: rbAngle.url, alt: "Logitech Rally Bar grafite em ângulo com controle remoto" },
+      ]}
+
       gallery={[
         { src: rallyBar02.url, alt: "Rally Bar em ângulo lateral" },
         { src: rallyBar04.url, alt: "Rally Bar com controle remoto" },
@@ -372,12 +390,15 @@ function RallyBarMiniSection() {
       solidWord="Rally Bar"
       outlineWord="Mini"
       tone="light"
-      bannerSrc={miniOverview.url}
+      bannerSrc={miniBanner.url}
       tagline="Toda a potência da Rally, no tamanho certo pra sala pequena."
       subtitle="Salas pequenas e médias, plug-and-play, com a mesma qualidade de áudio e vídeo da linha Rally."
       cta="Quero a Rally Bar Mini →"
-      heroSrc={mini02Trim}
-      heroAlt="Logitech Rally Bar Mini grafite"
+      heroImages={[
+        { src: miniHero.url, alt: "Logitech Rally Bar Mini grafite vista de frente" },
+        { src: miniAngle.url, alt: "Logitech Rally Bar Mini grafite em ângulo" },
+      ]}
+
       gallery={[
         { src: mini02.url, alt: "Rally Bar Mini em ângulo" },
         { src: mini03.url, alt: "Rally Bar Mini com controle remoto" },
@@ -428,7 +449,7 @@ function Compare() {
 
         <div className="overflow-x-auto">
           <div className="min-w-[560px] rounded-2xl ring-1 ring-petrol/10 shadow-[0_18px_50px_-30px_rgba(0,0,0,0.45)] overflow-hidden bg-white">
-            <div className="grid grid-cols-[1.1fr_1fr_1fr] bg-surface">
+            <div className="grid grid-cols-[1.1fr_1fr_1fr] bg-[#eaeef1]">
               <span />
               <span className="px-5 py-5 font-extrabold text-base sm:text-lg text-ink-mid border-l border-petrol/10">
                 Rally Bar
@@ -443,7 +464,7 @@ function Compare() {
                 variant="fade-up"
                 delay={i * 80}
                 className={`grid grid-cols-[1.1fr_1fr_1fr] border-t border-petrol/10 ${
-                  i % 2 === 1 ? "bg-surface/50" : "bg-white"
+                  i % 2 === 1 ? "bg-[#f4f7f8]" : "bg-white"
                 }`}
               >
                 <span className="px-5 py-4 text-[11px] uppercase tracking-[0.12em] font-semibold text-petrol/50 self-center">
@@ -484,7 +505,7 @@ const certs = [
 
 function Certifications() {
   return (
-    <section className="py-16 sm:py-24 px-4 sm:px-6 bg-surface border-t border-petrol/10">
+    <section className="py-16 sm:py-24 px-4 sm:px-6 bg-[#eaeef1] border-t border-petrol/10">
       <div className="max-w-4xl mx-auto text-center">
         <Reveal variant="fade-up">
           <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight mb-3">Certificada para empresas</h2>
