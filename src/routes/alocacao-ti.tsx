@@ -317,14 +317,16 @@ function Profiles() {
               <p className="text-petrol/70 text-sm leading-relaxed">{p.body}</p>
             </Reveal>
           ))}
-          <Reveal variant="scale-in" delay={profiles.length * 90} className="bg-petrol p-6 sm:p-8 flex items-center justify-center text-center transition-colors hover:bg-petrol-light">
+          <Reveal variant="scale-in" delay={profiles.length * 90} className="bg-petrol p-6 sm:p-8 flex items-center transition-colors hover:bg-petrol-light">
             <button
               onClick={() => openModal("profiles")}
-              className="text-white text-sm font-bold uppercase tracking-widest"
+              className="group text-white text-sm font-bold uppercase tracking-widest text-left inline-flex items-center gap-3"
             >
-              Precisa de outro perfil? Fale com a gente
+              <span>Precisa de outro perfil? Fale com a gente</span>
+              <ArrowRight className="h-4 w-4 shrink-0 text-gold transition-transform group-hover:translate-x-1" />
             </button>
           </Reveal>
+
         </div>
       </div>
     </section>
