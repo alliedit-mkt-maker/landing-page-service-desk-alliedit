@@ -38,7 +38,7 @@ import { SiteFooter } from "@/components/lp/SiteFooter";
 import { Clients } from "@/components/lp/Clients";
 import { Reveal } from "@/components/lp/Reveal";
 
-// Formulário HubSpot dedicado desta LP — preencher quando o ID for criado.
+// Formulário HubSpot dedicado desta LP, preencher quando o ID for criado.
 const YEALINK_VC_FORM_ID = "";
 
 const title = "AlliedIT | Videoconferência Yealink: MeetingBar A40, A50 e kits MVC/ZVC";
@@ -157,7 +157,7 @@ function Hero() {
           <p className="text-petrol/70 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
             Chega de reunião que começa atrasada porque ninguém acha o cabo certo, de quem fica de fora do enquadramento
             da câmera e de áudio abafado que faz todo mundo perguntar "pode repetir?". A Yealink resolve câmera, áudio e
-            início de reunião em um equipamento só — e a AlliedIT dimensiona a sala certa pra você.
+            início de reunião em um equipamento só, e a AlliedIT dimensiona a sala certa pra você.
           </p>
         </Reveal>
         <Reveal variant="fade-up" delay={380} className="flex flex-wrap gap-4 justify-center mt-7 sm:mt-8">
@@ -182,7 +182,7 @@ const spaces: { tag: string; title: string; body: string; models: string; href: 
   {
     tag: "Até 6-8 pessoas",
     title: "Huddle room",
-    body: "Salas pequenas e espaços de decisão rápida. Uma barra resolve câmera, microfone e alto-falante — instalação simples.",
+    body: "Salas pequenas e espaços de decisão rápida. Uma barra resolve câmera, microfone e alto-falante, instalação simples.",
     models: "MeetingBar A40 · MVC S40 · ZVC S40",
     href: "#huddle",
     img: bannerHuddle.url,
@@ -260,8 +260,8 @@ const modes: { icon: LucideIcon; tag: string; title: string; body: string; model
     icon: Tablet,
     tag: "Kit completo (Teams ou Zoom nativo)",
     title: "A sala roda sozinha, sem depender de notebook",
-    body: "O kit roda a plataforma direto na sala — inclui mini-PC, painel touch e sensor de presença. Ideal para salas de uso frequente e agenda cheia.",
-    models: "MVC S40/S50 (Teams) ou ZVC S40/S50 (Zoom) — mesmo hardware, muda o sistema",
+    body: "O kit roda a plataforma direto na sala, inclui mini-PC, painel touch e sensor de presença. Ideal para salas de uso frequente e agenda cheia.",
+    models: "MVC S40/S50 (Teams) ou ZVC S40/S50 (Zoom), mesmo hardware, muda o sistema",
   },
 ];
 
@@ -465,7 +465,7 @@ function ModelCard({
           {model.bullets.map((b) => (
             <li key={b} className="flex gap-3 text-sm text-petrol/80 leading-relaxed">
               <span className="text-gold font-bold" aria-hidden>
-                —
+                -
               </span>
               {b}
             </li>
@@ -559,13 +559,13 @@ function HuddleSection() {
             ["Câmera", "SmartVision 40, dupla lente 48MP, FoV 120° diagonal / 111° horizontal"],
             ["Áudio", "8 microfones MEMS, alcance até 6m, 2 microfones de expansão opcionais"],
             ["Inclui", "Mini-PC (MCore), painel touch (MTouch), sensor de presença (RoomSensor)"],
-            ["Plataforma", "Teams Rooms nativo (MVC) ou Zoom Rooms nativo (ZVC) — mesmo hardware"],
+            ["Plataforma", "Teams Rooms nativo (MVC) ou Zoom Rooms nativo (ZVC), mesmo hardware"],
             ["Indicado para", "Salas pequenas a médias, uso frequente"],
           ],
         },
       ]}
       highlights={[
-        { icon: Wrench, title: "Instalação enxuta", body: "Cabo único até o console touch — sem rack e sem PC na sala." },
+        { icon: Wrench, title: "Instalação enxuta", body: "Cabo único até o console touch, sem rack e sem PC na sala." },
         { icon: ScanFace, title: "IntelliFocus", body: "A câmera destaca automaticamente quem está falando." },
         { icon: Volume2, title: "Áudio de mesa curta", body: "Microfones MEMS com captação limpa em até 6 metros." },
         { icon: MonitorCog, title: "Nativo ou BYOD", body: "Teams e Zoom nativos no kit, ou notebook via USB quando preciso." },
@@ -624,7 +624,7 @@ function MediumSection() {
             ["Câmera", "MeetingBar A50 integrada, tripla 50MP, FoV 98° diagonal, vídeo até 4K60"],
             ["Áudio", "16 microfones MEMS, alcance até 10m"],
             ["Inclui", "Mini-PC (MCore 4), painel touch (MTouch Plus), sensor de presença (RoomSensor)"],
-            ["Plataforma", "Teams Rooms nativo (MVC) ou Zoom Rooms nativo (ZVC) — mesmo hardware"],
+            ["Plataforma", "Teams Rooms nativo (MVC) ou Zoom Rooms nativo (ZVC), mesmo hardware"],
             ["Indicado para", "Salas médias a grandes, 10-20 pessoas"],
           ],
         },
@@ -652,7 +652,7 @@ const compareRows: [string, string, string, string, string][] = [
     "Qualquer uma (via notebook)",
     "Teams ou Zoom nativo",
   ],
-  ["Alcance de microfone", "— (depende do notebook)", "Até 6m", "— (depende do notebook)", "Até 10m"],
+  ["Alcance de microfone", "- (depende do notebook)", "Até 6m", "- (depende do notebook)", "Até 10m"],
 ];
 
 function Compare() {
@@ -671,10 +671,10 @@ function Compare() {
             <div className="grid grid-cols-[1.1fr_1fr_1fr_1fr_1fr] bg-[#eaeef1]">
               <span />
               {[
-                "Huddle — barra avulsa",
-                "Huddle — kit completo",
-                "Média/grande — barra avulsa",
-                "Média/grande — kit completo",
+                "Huddle, barra avulsa",
+                "Huddle, kit completo",
+                "Média/grande, barra avulsa",
+                "Média/grande, kit completo",
               ].map((h) => (
                 <span
                   key={h}
@@ -735,7 +735,7 @@ function Certifications() {
         </Reveal>
         <Reveal variant="fade-up" delay={100}>
           <p className="text-petrol/60 text-sm sm:text-base mb-12">
-            Kits nativos para Microsoft Teams Rooms e Zoom Rooms — e barras que funcionam com qualquer plataforma via
+            Kits nativos para Microsoft Teams Rooms e Zoom Rooms, e barras que funcionam com qualquer plataforma via
             USB.
           </p>
         </Reveal>
@@ -762,7 +762,7 @@ const whyItems: { icon: LucideIcon; title: string; body: string }[] = [
   {
     icon: Compass,
     title: "Atendimento consultivo",
-    body: "A gente ajuda a escolher entre barra avulsa e kit completo — e qual plataforma faz sentido pra sua operação.",
+    body: "A gente ajuda a escolher entre barra avulsa e kit completo, e qual plataforma faz sentido pra sua operação.",
   },
   {
     icon: ShieldCheck,
