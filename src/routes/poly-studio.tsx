@@ -1,6 +1,21 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { ChevronDown, Handshake, Compass, ShieldCheck, Laptop, Tablet, type LucideIcon } from "lucide-react";
+import {
+  ChevronDown,
+  Handshake,
+  Compass,
+  ShieldCheck,
+  Laptop,
+  Tablet,
+  Wrench,
+  ScanFace,
+  Volume2,
+  MonitorCog,
+  Mic,
+  AudioLines,
+  Expand,
+  type LucideIcon,
+} from "lucide-react";
 
 import ogImage from "@/assets/og-image.png.asset.json";
 import logoAlliedIt from "@/assets/logo-alliedit.png";
