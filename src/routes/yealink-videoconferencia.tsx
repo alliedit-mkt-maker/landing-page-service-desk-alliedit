@@ -29,6 +29,7 @@ import kitS50Img from "@/assets/yealinkvc/kit-s50.jpg.asset.json";
 import bannerHuddle from "@/assets/yealinkvc/banner-huddle.webp.asset.json";
 import bannerMedium from "@/assets/yealinkvc/banner-medium.webp.asset.json";
 import bannerSala from "@/assets/yealinkvc/banner-sala.jpg.asset.json";
+import heroRoom from "@/assets/yealinkvc/hero-a40-room.webp.asset.json";
 
 import teamsLogo from "@/assets/rally/teams-logo.png.asset.json";
 import zoomLogo from "@/assets/rally/zoom-logo.png.asset.json";
