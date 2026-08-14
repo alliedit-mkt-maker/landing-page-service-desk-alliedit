@@ -1,6 +1,21 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { ChevronDown, Handshake, Compass, ShieldCheck, Laptop, Tablet, type LucideIcon } from "lucide-react";
+import {
+  ChevronDown,
+  Handshake,
+  Compass,
+  ShieldCheck,
+  Laptop,
+  Tablet,
+  Wrench,
+  ScanFace,
+  Volume2,
+  MonitorCog,
+  Mic,
+  AudioLines,
+  Expand,
+  type LucideIcon,
+} from "lucide-react";
 
 import ogImage from "@/assets/og-image.png.asset.json";
 import logoAlliedIt from "@/assets/logo-alliedit.png";
@@ -9,6 +24,7 @@ import polyLogo from "@/assets/headsets/poly-hp-logo.png.asset.json";
 import v12Img from "@/assets/polystudio/v12.avif.asset.json";
 import v52Img from "@/assets/polystudio/v52.avif.asset.json";
 import xSeriesImg from "@/assets/polystudio/x-series.avif.asset.json";
+import x52Img from "@/assets/polystudio/x52.png.asset.json";
 import bannerHuddle from "@/assets/polystudio/banner-huddle.avif.asset.json";
 import bannerMedium from "@/assets/polystudio/banner-medium.avif.asset.json";
 import bannerSala from "@/assets/polystudio/banner-sala.png.asset.json";
@@ -100,8 +116,8 @@ const pillDark =
 
 const outlineLight: React.CSSProperties = {
   color: "transparent",
-  WebkitTextStroke: "2px rgba(255,255,255,0.9)",
-  paintOrder: "stroke fill",
+  WebkitTextStroke: "1.5px rgba(255,255,255,0.92)",
+  letterSpacing: "0.01em",
 };
 
 /* ---------- 1. Hero ---------- */
@@ -142,8 +158,9 @@ function Hero() {
 
         <Reveal variant="fade-up" delay={300}>
           <p className="text-petrol/70 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            Da huddle room de 4 lugares à sala média de reunião. V12, X32, V52 e X52 — em modo USB no notebook ou
-            independente com o tablet TC10. A AlliedIT dimensiona, instala e dá suporte.
+            Chega de reunião que atrasa 10 minutos por causa do cabo, de quem está no fundo da sala aparecendo pequeno e
+            de voz abafada do outro lado da chamada. O Poly Studio resolve imagem, áudio e início de reunião em um
+            equipamento só — e a AlliedIT dimensiona a sala certa para você não comprar barra demais nem de menos.
           </p>
         </Reveal>
         <Reveal variant="fade-up" delay={380} className="flex flex-wrap gap-4 justify-center mt-7 sm:mt-8">
@@ -297,7 +314,7 @@ function Modes() {
 
 /* ---------- seções de produto por espaço ---------- */
 
-type Highlight = { n: string; title: string; body: string };
+type Highlight = { icon: LucideIcon; title: string; body: string };
 type SpecRow = [string, string];
 type Model = {
   name: string;
@@ -354,7 +371,7 @@ function SpaceSection({
             <Reveal as="span" variant="fade-up" className="inline-block">
               {solidWord}
             </Reveal>{" "}
-            <Reveal as="span" variant="fade-up" delay={180} className="inline-block">
+            <Reveal as="span" variant="fade-up" delay={180} className="inline-block tracking-normal">
               <span style={outlineLight}>{outlineWord}</span>
             </Reveal>
           </h2>
@@ -385,15 +402,25 @@ function SpaceSection({
           ))}
         </div>
 
-        {/* Destaques numerados */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
+        {/* Destaques */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px mt-16 bg-petrol/10 ring-1 ring-petrol/10">
           {highlights.map((h, i) => (
-            <Reveal as="article" key={h.n} variant="fade-up" delay={i * 140} className="border-t-2 border-gold/60 pt-6">
-              <span className="font-mono text-gold text-sm tracking-[0.2em] block mb-4">{h.n}</span>
-              <h3 className="font-extrabold text-base sm:text-lg leading-tight text-balance mb-2 text-ink-mid">
+            <Reveal
+              as="article"
+              key={h.title}
+              variant="fade-up"
+              delay={i * 120}
+              className={`group h-full p-7 sm:p-8 ${tone === "white" ? "bg-white" : "bg-[#f5f7f9]"} transition-colors hover:bg-petrol`}
+            >
+              <span className="inline-flex items-center justify-center size-11 border border-gold/40 bg-gold/10 text-gold mb-5 transition-colors group-hover:bg-gold group-hover:text-petrol">
+                <h.icon className="size-5" strokeWidth={1.75} aria-hidden />
+              </span>
+              <h3 className="font-extrabold text-base sm:text-lg leading-tight text-balance mb-2 text-ink-mid transition-colors group-hover:text-white">
                 {h.title}
               </h3>
-              <p className="text-petrol/65 text-sm leading-relaxed">{h.body}</p>
+              <p className="text-petrol/65 text-sm leading-relaxed transition-colors group-hover:text-white/70">
+                {h.body}
+              </p>
             </Reveal>
           ))}
         </div>
@@ -537,10 +564,10 @@ function HuddleSection() {
         },
       ]}
       highlights={[
-        { n: "01", title: "Instalação em uma peça", body: "Barra única acima ou abaixo da TV — sem rack, sem PC." },
-        { n: "02", title: "Enquadramento automático", body: "A câmera encontra e emoldura quem está na sala." },
-        { n: "03", title: "Áudio limpo", body: "NoiseBlockAI corta digitação, ar-condicionado e ruído de corredor." },
-        { n: "04", title: "Gestão pelo Poly Lens", body: "Inventário, saúde do device e atualização remota." },
+        { icon: Wrench, title: "Instalação em uma peça", body: "Barra única acima ou abaixo da TV — sem rack, sem PC." },
+        { icon: ScanFace, title: "Enquadramento automático", body: "A câmera encontra e emoldura quem está na sala." },
+        { icon: Volume2, title: "Áudio limpo", body: "NoiseBlockAI corta digitação, ar-condicionado e ruído de corredor." },
+        { icon: MonitorCog, title: "Gestão pelo Poly Lens", body: "Inventário, saúde do device e atualização remota." },
       ]}
     />
   );
@@ -583,7 +610,7 @@ function MediumSection() {
         {
           name: "Poly Studio X52",
           mode: "Modo independente (+ TC10)",
-          img: xSeriesImg.url,
+          img: x52Img.url,
           imgAlt: "Poly Studio X52 vista frontal",
           pitch:
             "O topo da linha para salas médias: roda Teams Rooms ou Zoom Rooms nativamente, com DirectorAI e áudio de sala cheia.",
@@ -604,10 +631,10 @@ function MediumSection() {
         },
       ]}
       highlights={[
-        { n: "01", title: "Cobertura de mesa longa", body: "Microfones com alcance para toda a sala de reunião." },
-        { n: "02", title: "DirectorAI", body: "Enquadra quem fala e mantém a reunião com cara de estúdio." },
-        { n: "03", title: "Áudio estéreo", body: "Voz nítida também para quem está do outro lado da chamada." },
-        { n: "04", title: "Pronto para crescer", body: "Microfones e acessórios adicionais conforme a sala muda." },
+        { icon: Mic, title: "Cobertura de mesa longa", body: "Microfones com alcance para toda a sala de reunião." },
+        { icon: ScanFace, title: "DirectorAI", body: "Enquadra quem fala e mantém a reunião com cara de estúdio." },
+        { icon: AudioLines, title: "Áudio estéreo", body: "Voz nítida também para quem está do outro lado da chamada." },
+        { icon: Expand, title: "Pronto para crescer", body: "Microfones e acessórios adicionais conforme a sala muda." },
       ]}
     />
   );
@@ -733,8 +760,8 @@ const whyItems: { icon: LucideIcon; title: string; body: string }[] = [
   },
   {
     icon: ShieldCheck,
-    title: "Instalação e garantia de fábrica",
-    body: "Instalamos, configuramos a plataforma e entregamos com garantia oficial Poly.",
+    title: "Garantia oficial e instalação opcional",
+    body: "Entregamos com garantia de fábrica Poly. Se quiser, você contrata também nosso pacote de instalação e configuração da plataforma.",
   },
 ];
 
