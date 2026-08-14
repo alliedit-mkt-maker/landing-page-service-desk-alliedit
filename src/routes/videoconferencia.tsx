@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { Handshake, Compass, ShieldCheck, Users, Expand, type LucideIcon } from "lucide-react";
+import { Handshake, Compass, ShieldCheck, Users, Expand, Mic, type LucideIcon } from "lucide-react";
 
 import ogImage from "@/assets/og-image.png.asset.json";
 import logoAlliedIt from "@/assets/logo-alliedit.png";
