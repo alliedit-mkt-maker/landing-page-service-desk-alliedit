@@ -8,6 +8,8 @@ import { Clients } from "@/components/lp/Clients";
 import { Reveal } from "@/components/lp/Reveal";
 import { cn } from "@/lib/utils";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { ArrowRight } from "lucide-react";
+
 
 const title = "AlliedIT | Alocação de profissionais de TI sob demanda";
 const description =
