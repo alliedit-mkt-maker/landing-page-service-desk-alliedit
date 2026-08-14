@@ -24,6 +24,7 @@ import polyLogo from "@/assets/headsets/poly-hp-logo.png.asset.json";
 import v12Img from "@/assets/polystudio/v12.avif.asset.json";
 import v52Img from "@/assets/polystudio/v52.avif.asset.json";
 import xSeriesImg from "@/assets/polystudio/x-series.avif.asset.json";
+import x52Img from "@/assets/polystudio/x52.png.asset.json";
 import bannerHuddle from "@/assets/polystudio/banner-huddle.avif.asset.json";
 import bannerMedium from "@/assets/polystudio/banner-medium.avif.asset.json";
 import bannerSala from "@/assets/polystudio/banner-sala.png.asset.json";
@@ -115,8 +116,8 @@ const pillDark =
 
 const outlineLight: React.CSSProperties = {
   color: "transparent",
-  WebkitTextStroke: "2px rgba(255,255,255,0.9)",
-  paintOrder: "stroke fill",
+  WebkitTextStroke: "1.5px rgba(255,255,255,0.92)",
+  letterSpacing: "0.01em",
 };
 
 /* ---------- 1. Hero ---------- */
