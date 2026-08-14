@@ -18,6 +18,7 @@ import { Route as HeadsetYealinkRouteImport } from './routes/headset-yealink'
 import { Route as HeadsetLogitechRouteImport } from './routes/headset-logitech'
 import { Route as HeadsetCallcenterRouteImport } from './routes/headset-callcenter'
 import { Route as CabeamentoRouteImport } from './routes/cabeamento'
+import { Route as AlocacaoTiRouteImport } from './routes/alocacao-ti'
 import { Route as IndexRouteImport } from './routes/index'
 
 const YealinkVideoconferenciaRoute = YealinkVideoconferenciaRouteImport.update({
@@ -65,6 +66,11 @@ const CabeamentoRoute = CabeamentoRouteImport.update({
   path: '/cabeamento',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AlocacaoTiRoute = AlocacaoTiRouteImport.update({
+  id: '/alocacao-ti',
+  path: '/alocacao-ti',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -73,6 +79,7 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/alocacao-ti': typeof AlocacaoTiRoute
   '/cabeamento': typeof CabeamentoRoute
   '/headset-callcenter': typeof HeadsetCallcenterRoute
   '/headset-logitech': typeof HeadsetLogitechRoute
@@ -85,6 +92,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/alocacao-ti': typeof AlocacaoTiRoute
   '/cabeamento': typeof CabeamentoRoute
   '/headset-callcenter': typeof HeadsetCallcenterRoute
   '/headset-logitech': typeof HeadsetLogitechRoute
@@ -98,6 +106,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/alocacao-ti': typeof AlocacaoTiRoute
   '/cabeamento': typeof CabeamentoRoute
   '/headset-callcenter': typeof HeadsetCallcenterRoute
   '/headset-logitech': typeof HeadsetLogitechRoute
@@ -112,6 +121,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/alocacao-ti'
     | '/cabeamento'
     | '/headset-callcenter'
     | '/headset-logitech'
@@ -124,6 +134,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/alocacao-ti'
     | '/cabeamento'
     | '/headset-callcenter'
     | '/headset-logitech'
@@ -136,6 +147,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/alocacao-ti'
     | '/cabeamento'
     | '/headset-callcenter'
     | '/headset-logitech'
@@ -149,6 +161,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AlocacaoTiRoute: typeof AlocacaoTiRoute
   CabeamentoRoute: typeof CabeamentoRoute
   HeadsetCallcenterRoute: typeof HeadsetCallcenterRoute
   HeadsetLogitechRoute: typeof HeadsetLogitechRoute
@@ -225,6 +238,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CabeamentoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/alocacao-ti': {
+      id: '/alocacao-ti'
+      path: '/alocacao-ti'
+      fullPath: '/alocacao-ti'
+      preLoaderRoute: typeof AlocacaoTiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -237,6 +257,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AlocacaoTiRoute: AlocacaoTiRoute,
   CabeamentoRoute: CabeamentoRoute,
   HeadsetCallcenterRoute: HeadsetCallcenterRoute,
   HeadsetLogitechRoute: HeadsetLogitechRoute,
