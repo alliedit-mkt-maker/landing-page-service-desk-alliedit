@@ -556,7 +556,7 @@ function HuddleSection() {
           ],
           specs: [
             ["Sala", "Huddle e salas pequenas (até 6 pessoas)"],
-            ["Câmera", "4K, campo de visão de 95°, DirectorAI"],
+            ["Câmera", "4K, campo de visão de 120°, DirectorAI"],
             ["Áudio", "Alto-falantes integrados + microfones com NoiseBlockAI e Acoustic Fence"],
             ["Modos", "Nativo (Teams Rooms / Zoom Rooms) e USB"],
             ["Conectividade", "HDMI, USB, Ethernet, Wi-Fi"],
@@ -648,7 +648,7 @@ const compareRows: [string, string, string, string, string][] = [
   ["Modo de uso", "USB / BYOD", "Independente + USB", "USB / BYOD", "Independente + USB"],
   ["Plataforma nativa", "Não (usa o notebook)", "Teams Rooms / Zoom Rooms", "Não (usa o notebook)", "Teams Rooms / Zoom Rooms"],
   ["Controle TC10", "—", "Recomendado", "—", "Recomendado"],
-  ["Áudio", "Mono integrado", "Integrado + Acoustic Fence", "Estéreo", "Estéreo + Acoustic Fence"],
+  ["Áudio", "Estéreo integrado", "Integrado + Acoustic Fence", "Estéreo", "Estéreo + Acoustic Fence"],
   ["Gestão Poly Lens", "Sim", "Sim", "Sim", "Sim"],
 ];
 
