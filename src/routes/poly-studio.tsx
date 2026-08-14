@@ -23,8 +23,9 @@ import logoAlliedIt from "@/assets/logo-alliedit.png";
 import polyLogo from "@/assets/headsets/poly-hp-logo.png.asset.json";
 import v12Img from "@/assets/polystudio/v12.avif.asset.json";
 import v52Img from "@/assets/polystudio/v52.avif.asset.json";
-import xSeriesImg from "@/assets/polystudio/x-series.avif.asset.json";
+import x32Img from "@/assets/polystudio/x32.png.asset.json";
 import x52Img from "@/assets/polystudio/x52.png.asset.json";
+
 import bannerHuddle from "@/assets/polystudio/banner-huddle.avif.asset.json";
 import bannerMedium from "@/assets/polystudio/banner-medium.avif.asset.json";
 import bannerSala from "@/assets/polystudio/banner-sala.png.asset.json";
@@ -115,10 +116,10 @@ const pillDark =
   "inline-flex items-center justify-center border border-petrol bg-petrol text-white px-7 py-3.5 text-[11px] font-bold uppercase tracking-[0.18em] hover:bg-petrol-light transition-colors";
 
 const outlineLight: React.CSSProperties = {
-  color: "transparent",
-  WebkitTextStroke: "1.5px rgba(255,255,255,0.92)",
+  color: "rgba(255,255,255,0.55)",
   letterSpacing: "0.01em",
 };
+
 
 /* ---------- 1. Hero ---------- */
 
@@ -148,7 +149,7 @@ function Hero() {
 
         <Reveal variant="fade-up" delay={220} className="w-full mt-8 mb-8 sm:mt-10 sm:mb-10">
           <img
-            src={xSeriesImg.url}
+            src={x52Img.url}
             alt="Barra de videoconferência Poly Studio vista de frente"
             width={1400}
             height={254}
@@ -543,7 +544,7 @@ function HuddleSection() {
         {
           name: "Poly Studio X32",
           mode: "Modo independente (+ TC10)",
-          img: xSeriesImg.url,
+          img: x32Img.url,
           imgAlt: "Poly Studio X32 vista frontal",
           pitch:
             "Sala pequena com vida própria: roda Teams Rooms ou Zoom Rooms nativamente, sem PC, com controle de mesa TC10.",
