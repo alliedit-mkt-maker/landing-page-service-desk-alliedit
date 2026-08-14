@@ -19,6 +19,7 @@ import { Route as HeadsetYealinkRouteImport } from './routes/headset-yealink'
 import { Route as HeadsetLogitechRouteImport } from './routes/headset-logitech'
 import { Route as HeadsetCallcenterRouteImport } from './routes/headset-callcenter'
 import { Route as CabeamentoRouteImport } from './routes/cabeamento'
+import { Route as BriefingCampanhasRouteImport } from './routes/briefing-campanhas'
 import { Route as AlocacaoTiRouteImport } from './routes/alocacao-ti'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -72,6 +73,11 @@ const CabeamentoRoute = CabeamentoRouteImport.update({
   path: '/cabeamento',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BriefingCampanhasRoute = BriefingCampanhasRouteImport.update({
+  id: '/briefing-campanhas',
+  path: '/briefing-campanhas',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AlocacaoTiRoute = AlocacaoTiRouteImport.update({
   id: '/alocacao-ti',
   path: '/alocacao-ti',
@@ -86,6 +92,7 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/alocacao-ti': typeof AlocacaoTiRoute
+  '/briefing-campanhas': typeof BriefingCampanhasRoute
   '/cabeamento': typeof CabeamentoRoute
   '/headset-callcenter': typeof HeadsetCallcenterRoute
   '/headset-logitech': typeof HeadsetLogitechRoute
@@ -100,6 +107,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/alocacao-ti': typeof AlocacaoTiRoute
+  '/briefing-campanhas': typeof BriefingCampanhasRoute
   '/cabeamento': typeof CabeamentoRoute
   '/headset-callcenter': typeof HeadsetCallcenterRoute
   '/headset-logitech': typeof HeadsetLogitechRoute
@@ -115,6 +123,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/alocacao-ti': typeof AlocacaoTiRoute
+  '/briefing-campanhas': typeof BriefingCampanhasRoute
   '/cabeamento': typeof CabeamentoRoute
   '/headset-callcenter': typeof HeadsetCallcenterRoute
   '/headset-logitech': typeof HeadsetLogitechRoute
@@ -131,6 +140,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/alocacao-ti'
+    | '/briefing-campanhas'
     | '/cabeamento'
     | '/headset-callcenter'
     | '/headset-logitech'
@@ -145,6 +155,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/alocacao-ti'
+    | '/briefing-campanhas'
     | '/cabeamento'
     | '/headset-callcenter'
     | '/headset-logitech'
@@ -159,6 +170,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/alocacao-ti'
+    | '/briefing-campanhas'
     | '/cabeamento'
     | '/headset-callcenter'
     | '/headset-logitech'
@@ -174,6 +186,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AlocacaoTiRoute: typeof AlocacaoTiRoute
+  BriefingCampanhasRoute: typeof BriefingCampanhasRoute
   CabeamentoRoute: typeof CabeamentoRoute
   HeadsetCallcenterRoute: typeof HeadsetCallcenterRoute
   HeadsetLogitechRoute: typeof HeadsetLogitechRoute
@@ -258,6 +271,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CabeamentoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/briefing-campanhas': {
+      id: '/briefing-campanhas'
+      path: '/briefing-campanhas'
+      fullPath: '/briefing-campanhas'
+      preLoaderRoute: typeof BriefingCampanhasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/alocacao-ti': {
       id: '/alocacao-ti'
       path: '/alocacao-ti'
@@ -278,6 +298,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AlocacaoTiRoute: AlocacaoTiRoute,
+  BriefingCampanhasRoute: BriefingCampanhasRoute,
   CabeamentoRoute: CabeamentoRoute,
   HeadsetCallcenterRoute: HeadsetCallcenterRoute,
   HeadsetLogitechRoute: HeadsetLogitechRoute,
