@@ -23,12 +23,13 @@ import { YealinkPage, yealinkMeta } from "./headset-yealink";
 import { PolyStudioPage, polyStudioMeta } from "./poly-studio";
 import { YealinkVcPage, yealinkVcMeta } from "./yealink-videoconferencia";
 import { AlocacaoPage, alocacaoMeta } from "./alocacao-ti";
+import { VideoconferenciaPage, videoconferenciaMeta } from "./videoconferencia";
 
 
 const SD_TITLE = "AlliedIT | Service Desk terceirizado 24x7 com NOC e SOC integrados";
 const SD_DESCRIPTION = "A operação de TI por trás das marcas que você conhece. Service Desk 24x7, N1/N2/N3 na mesma equipe, NOC e SOC integrados, custo previsível e SLA real. +7 anos atendendo hotelaria, saúde, varejo, farma e logística.";
 
-const HOST_VARIANT_MAP: Record<string, "cabeamento" | "headset" | "rally-bar" | "poly" | "logitech" | "yealink" | "poly-studio" | "yealink-vc" | "alocacao"> = {
+const HOST_VARIANT_MAP: Record<string, "cabeamento" | "headset" | "rally-bar" | "poly" | "logitech" | "yealink" | "poly-studio" | "yealink-vc" | "alocacao" | "videoconferencia"> = {
   "cabeamento.alliedit.com.br": "cabeamento",
   "headset-callcenter.alliedit.com.br": "headset",
   "rally-bar.alliedit.com.br": "rally-bar",
@@ -38,6 +39,7 @@ const HOST_VARIANT_MAP: Record<string, "cabeamento" | "headset" | "rally-bar" | 
   "poly-studio.alliedit.com.br": "poly-studio",
   "yealink-videoconferencia.alliedit.com.br": "yealink-vc",
   "alocacao-ti.alliedit.com.br": "alocacao",
+  "videoconferencia.alliedit.com.br": "videoconferencia",
 };
 
 const getRouteVariant = createServerFn({ method: "GET" }).handler(async () => {
@@ -62,8 +64,11 @@ export const Route = createFileRoute("/")({
     const isPolyStudio = variant === "poly-studio";
     const isYealinkVc = variant === "yealink-vc";
     const isAlocacao = variant === "alocacao";
-    const title = isAlocacao ? alocacaoMeta.title : isYealinkVc ? yealinkVcMeta.title : isPolyStudio ? polyStudioMeta.title : isYealink ? yealinkMeta.title : isLogitech ? logitechMeta.title : isPoly ? polyMeta.title : isRally ? rallyBarMeta.title : isCabeamento ? cabeamentoMeta.title : isHeadset ? headsetMeta.title : SD_TITLE;
-    const description = isAlocacao
+    const isVc = variant === "videoconferencia";
+    const title = isVc ? videoconferenciaMeta.title : isAlocacao ? alocacaoMeta.title : isYealinkVc ? yealinkVcMeta.title : isPolyStudio ? polyStudioMeta.title : isYealink ? yealinkMeta.title : isLogitech ? logitechMeta.title : isPoly ? polyMeta.title : isRally ? rallyBarMeta.title : isCabeamento ? cabeamentoMeta.title : isHeadset ? headsetMeta.title : SD_TITLE;
+    const description = isVc
+      ? videoconferenciaMeta.description
+      : isAlocacao
       ? alocacaoMeta.description
       : isYealinkVc
       ? yealinkVcMeta.description
@@ -82,7 +87,9 @@ export const Route = createFileRoute("/")({
       : isHeadset
         ? headsetMeta.description
         : SD_DESCRIPTION;
-    const canonical = isAlocacao
+    const canonical = isVc
+      ? "https://videoconferencia.alliedit.com.br/"
+      : isAlocacao
       ? "https://alocacao-ti.alliedit.com.br/"
       : isYealinkVc
       ? "https://yealink-videoconferencia.alliedit.com.br/"
@@ -128,7 +135,9 @@ export const Route = createFileRoute("/")({
           children: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Service",
-            serviceType: isAlocacao
+            serviceType: isVc
+              ? "Revenda e instalação de videoconferência Logitech, Poly e Yealink"
+              : isAlocacao
               ? "Alocação de profissionais de TI"
               : isYealinkVc
               ? "Revenda e instalação de videoconferência Yealink (MeetingBar, MVC e ZVC)"
@@ -174,6 +183,7 @@ function Index() {
   if (variant === "poly-studio") return <PolyStudioPage />;
   if (variant === "yealink-vc") return <YealinkVcPage />;
   if (variant === "alocacao") return <AlocacaoPage />;
+  if (variant === "videoconferencia") return <VideoconferenciaPage />;
 
   return (
     <LpProvider>
