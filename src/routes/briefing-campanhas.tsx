@@ -303,24 +303,6 @@ function BriefingPage() {
             </p>
           </div>
         </section>
-
-        <section id="observacoes" className="scroll-mt-8">
-          <Reveal variant="fade-up" className="mb-6">
-            <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight">Observações gerais</h2>
-          </Reveal>
-          <ol className="list-decimal pl-5 space-y-3 text-sm sm:text-base text-petrol/75 leading-relaxed">
-            <li>Todas as landing pages estão publicadas e ativas nos links acima.</li>
-            <li>
-              As páginas de hardware convertem via formulário de cotação (modal); a página de alocação converte via
-              “Falar com especialista”.
-            </li>
-            <li>Segmentação geográfica, formatos de anúncio e estrutura de grupos de anúncios: a critério da agência.</li>
-            <li>
-              Solicitamos acompanhamento de performance por campanha para eventual realocação de verba entre os clusters
-              de hardware.
-            </li>
-          </ol>
-        </section>
       </main>
 
       <footer className="border-t border-petrol/10 px-4 sm:px-6 py-8">
