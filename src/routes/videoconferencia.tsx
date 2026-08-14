@@ -18,7 +18,7 @@ import x32Img from "@/assets/polystudio/x32.png.asset.json";
 import v52Img from "@/assets/polystudio/v52.avif.asset.json";
 import x52Img from "@/assets/polystudio/x52.png.asset.json";
 
-import heroRoom from "@/assets/yealinkvc/hero-a40-room.webp.asset.json";
+import heroRoom from "@/assets/yealinkvc/vc-hero-room.jpg.asset.json";
 import bannerHuddle from "@/assets/polystudio/banner-huddle.avif.asset.json";
 import bannerMedium from "@/assets/yealinkvc/banner-medium.webp.asset.json";
 import bannerSala from "@/assets/polystudio/banner-sala.png.asset.json";
@@ -304,8 +304,8 @@ const medium: Product[] = [
   },
   {
     brand: "Logitech",
-    name: "Rally Bar Mini ou Rally Bar",
-    body: "Mini para o limite inferior, Rally Bar para salas maiores: 4K, zoom HD 15x e microfones com alcance de 7 metros.",
+    name: "Rally Bar",
+    body: "4K, zoom HD 15x e microfones com alcance de 7 metros para salas maiores.",
     img: rbHero.url,
   },
   {
@@ -390,7 +390,7 @@ function RoomSections() {
           <Reveal variant="fade-up" className="mb-10 flex items-start gap-4">
             <Users className="size-7 text-gold shrink-0 mt-1" strokeWidth={1.75} aria-hidden />
             <div>
-              <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight">Huddle (até 6 a 8 pessoas)</h3>
+              <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight">Huddle e salas pequenas</h3>
               <p className="text-petrol/65 text-sm sm:text-base mt-2 leading-relaxed max-w-2xl">
                 Salas pequenas de reunião rápida, onde a barra precisa cobrir a mesa inteira sem cabo extra.
               </p>
@@ -414,7 +414,7 @@ function RoomSections() {
             <Expand className="size-7 text-gold shrink-0 mt-1" strokeWidth={1.75} aria-hidden />
             <div>
               <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
-                Salas médias e grandes (6+ pessoas)
+                Salas médias e grandes
               </h3>
               <p className="text-petrol/65 text-sm sm:text-base mt-2 leading-relaxed max-w-2xl">
                 Mesa longa, mais participantes e distância maior da câmera. Aqui pesam zoom, enquadramento inteligente
