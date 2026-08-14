@@ -547,10 +547,10 @@ function HuddleSection() {
         },
       ]}
       highlights={[
-        { n: "01", title: "Instalação em uma peça", body: "Barra única acima ou abaixo da TV — sem rack, sem PC." },
-        { n: "02", title: "Enquadramento automático", body: "A câmera encontra e emoldura quem está na sala." },
-        { n: "03", title: "Áudio limpo", body: "NoiseBlockAI corta digitação, ar-condicionado e ruído de corredor." },
-        { n: "04", title: "Gestão pelo Poly Lens", body: "Inventário, saúde do device e atualização remota." },
+        { icon: Wrench, title: "Instalação em uma peça", body: "Barra única acima ou abaixo da TV — sem rack, sem PC." },
+        { icon: ScanFace, title: "Enquadramento automático", body: "A câmera encontra e emoldura quem está na sala." },
+        { icon: Volume2, title: "Áudio limpo", body: "NoiseBlockAI corta digitação, ar-condicionado e ruído de corredor." },
+        { icon: MonitorCog, title: "Gestão pelo Poly Lens", body: "Inventário, saúde do device e atualização remota." },
       ]}
     />
   );
@@ -614,10 +614,10 @@ function MediumSection() {
         },
       ]}
       highlights={[
-        { n: "01", title: "Cobertura de mesa longa", body: "Microfones com alcance para toda a sala de reunião." },
-        { n: "02", title: "DirectorAI", body: "Enquadra quem fala e mantém a reunião com cara de estúdio." },
-        { n: "03", title: "Áudio estéreo", body: "Voz nítida também para quem está do outro lado da chamada." },
-        { n: "04", title: "Pronto para crescer", body: "Microfones e acessórios adicionais conforme a sala muda." },
+        { icon: Mic, title: "Cobertura de mesa longa", body: "Microfones com alcance para toda a sala de reunião." },
+        { icon: ScanFace, title: "DirectorAI", body: "Enquadra quem fala e mantém a reunião com cara de estúdio." },
+        { icon: AudioLines, title: "Áudio estéreo", body: "Voz nítida também para quem está do outro lado da chamada." },
+        { icon: Expand, title: "Pronto para crescer", body: "Microfones e acessórios adicionais conforme a sala muda." },
       ]}
     />
   );
