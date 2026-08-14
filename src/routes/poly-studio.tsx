@@ -158,8 +158,9 @@ function Hero() {
 
         <Reveal variant="fade-up" delay={300}>
           <p className="text-petrol/70 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            Da huddle room de 4 lugares à sala média de reunião. V12, X32, V52 e X52 — em modo USB no notebook ou
-            independente com o tablet TC10. A AlliedIT dimensiona, instala e dá suporte.
+            Chega de reunião que atrasa 10 minutos por causa do cabo, de quem está no fundo da sala aparecendo pequeno e
+            de voz abafada do outro lado da chamada. O Poly Studio resolve imagem, áudio e início de reunião em um
+            equipamento só — e a AlliedIT dimensiona a sala certa para você não comprar barra demais nem de menos.
           </p>
         </Reveal>
         <Reveal variant="fade-up" delay={380} className="flex flex-wrap gap-4 justify-center mt-7 sm:mt-8">
@@ -370,7 +371,7 @@ function SpaceSection({
             <Reveal as="span" variant="fade-up" className="inline-block">
               {solidWord}
             </Reveal>{" "}
-            <Reveal as="span" variant="fade-up" delay={180} className="inline-block">
+            <Reveal as="span" variant="fade-up" delay={180} className="inline-block tracking-normal">
               <span style={outlineLight}>{outlineWord}</span>
             </Reveal>
           </h2>
@@ -609,7 +610,7 @@ function MediumSection() {
         {
           name: "Poly Studio X52",
           mode: "Modo independente (+ TC10)",
-          img: xSeriesImg.url,
+          img: x52Img.url,
           imgAlt: "Poly Studio X52 vista frontal",
           pitch:
             "O topo da linha para salas médias: roda Teams Rooms ou Zoom Rooms nativamente, com DirectorAI e áudio de sala cheia.",
@@ -759,8 +760,8 @@ const whyItems: { icon: LucideIcon; title: string; body: string }[] = [
   },
   {
     icon: ShieldCheck,
-    title: "Instalação e garantia de fábrica",
-    body: "Instalamos, configuramos a plataforma e entregamos com garantia oficial Poly.",
+    title: "Garantia oficial e instalação opcional",
+    body: "Entregamos com garantia de fábrica Poly. Se quiser, você contrata também nosso pacote de instalação e configuração da plataforma.",
   },
 ];
 
