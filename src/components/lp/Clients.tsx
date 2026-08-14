@@ -1,10 +1,11 @@
 import einstein from "@/assets/clients/einstein.webp";
 import semParar from "@/assets/clients/sem-parar.webp";
-import cacauShow from "@/assets/clients/cacau-show.webp";
+import cacauShow from "@/assets/clients/cacau-show.webp.asset.json";
 import apsen from "@/assets/clients/apsen.webp";
 import espacoLaser from "@/assets/clients/espaco-laser.webp";
 import ipanema from "@/assets/clients/ipanema.webp";
-import bradesco from "@/assets/clients/bradesco.webp";
+import bradesco from "@/assets/clients/bradesco.webp.asset.json";
+
 
 const logos: { src: string; name: string }[] = [
   { src: einstein, name: "Hospital Israelita Albert Einstein" },
