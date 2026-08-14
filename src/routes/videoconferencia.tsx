@@ -304,8 +304,8 @@ const medium: Product[] = [
   },
   {
     brand: "Logitech",
-    name: "Rally Bar Mini ou Rally Bar",
-    body: "Mini para o limite inferior, Rally Bar para salas maiores: 4K, zoom HD 15x e microfones com alcance de 7 metros.",
+    name: "Rally Bar",
+    body: "4K, zoom HD 15x e microfones com alcance de 7 metros para salas maiores.",
     img: rbHero.url,
   },
   {
