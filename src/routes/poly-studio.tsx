@@ -297,7 +297,7 @@ function Modes() {
 
 /* ---------- seções de produto por espaço ---------- */
 
-type Highlight = { n: string; title: string; body: string };
+type Highlight = { icon: LucideIcon; title: string; body: string };
 type SpecRow = [string, string];
 type Model = {
   name: string;
@@ -385,15 +385,25 @@ function SpaceSection({
           ))}
         </div>
 
-        {/* Destaques numerados */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
+        {/* Destaques */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px mt-16 bg-petrol/10 ring-1 ring-petrol/10">
           {highlights.map((h, i) => (
-            <Reveal as="article" key={h.n} variant="fade-up" delay={i * 140} className="border-t-2 border-gold/60 pt-6">
-              <span className="font-mono text-gold text-sm tracking-[0.2em] block mb-4">{h.n}</span>
-              <h3 className="font-extrabold text-base sm:text-lg leading-tight text-balance mb-2 text-ink-mid">
+            <Reveal
+              as="article"
+              key={h.title}
+              variant="fade-up"
+              delay={i * 120}
+              className={`group h-full p-7 sm:p-8 ${tone === "white" ? "bg-white" : "bg-[#f5f7f9]"} transition-colors hover:bg-petrol`}
+            >
+              <span className="inline-flex items-center justify-center size-11 border border-gold/40 bg-gold/10 text-gold mb-5 transition-colors group-hover:bg-gold group-hover:text-petrol">
+                <h.icon className="size-5" strokeWidth={1.75} aria-hidden />
+              </span>
+              <h3 className="font-extrabold text-base sm:text-lg leading-tight text-balance mb-2 text-ink-mid transition-colors group-hover:text-white">
                 {h.title}
               </h3>
-              <p className="text-petrol/65 text-sm leading-relaxed">{h.body}</p>
+              <p className="text-petrol/65 text-sm leading-relaxed transition-colors group-hover:text-white/70">
+                {h.body}
+              </p>
             </Reveal>
           ))}
         </div>
