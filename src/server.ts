@@ -76,6 +76,7 @@ const HOST_REWRITES: Record<string, string> = {
   "headset-logitech.alliedit.com.br": "/headset-logitech",
   "headset-yealink.alliedit.com.br": "/headset-yealink",
   "poly-studio.alliedit.com.br": "/poly-studio",
+  "yealink-videoconferencia.alliedit.com.br": "/yealink-videoconferencia",
 };
 
 // Canonical home for each LP path. Requests to these paths on any other host
@@ -88,6 +89,7 @@ const CANONICAL_HOSTS: Record<string, string> = {
   "/headset-logitech": "headset-logitech.alliedit.com.br",
   "/headset-yealink": "headset-yealink.alliedit.com.br",
   "/poly-studio": "poly-studio.alliedit.com.br",
+  "/yealink-videoconferencia": "yealink-videoconferencia.alliedit.com.br",
 };
 
 
