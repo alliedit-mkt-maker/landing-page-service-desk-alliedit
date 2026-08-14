@@ -112,58 +112,61 @@ const hardware: Campaign[] = [
 ];
 
 const priorityClass: Record<Campaign["priority"], string> = {
-  Alta: "border-gold text-gold",
-  Média: "border-petrol/40 text-petrol/70",
-  Baixa: "border-petrol/20 text-petrol/45",
+  Alta: "bg-gold text-petrol",
+  Média: "bg-petrol/12 text-petrol",
+  Baixa: "bg-petrol/6 text-petrol/55",
 };
 
 const sections = [
   { id: "verba", label: "1. Resumo de verba" },
   { id: "hardware", label: "2. Frente 1: Hardware" },
   { id: "servico", label: "3. Frente 2: Serviço" },
-  { id: "observacoes", label: "4. Observações gerais" },
 ];
 
 function CampaignCard({ c }: { c: Campaign }) {
   return (
-    <article className="border border-petrol/12 bg-white p-6 sm:p-8">
-      <div className="flex flex-wrap items-center gap-3 mb-3">
-        <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold font-semibold">
+    <article className="border border-petrol/15 bg-white shadow-[0_10px_30px_-26px_rgba(0,0,0,0.5)]">
+      <header className="bg-petrol px-6 sm:px-8 py-5">
+        <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold font-semibold block mb-2">
           Campanha {c.n}
         </span>
+        <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight text-white">{c.name}</h3>
+      </header>
+
+      <div className="flex flex-wrap items-center gap-3 border-b border-petrol/10 bg-surface px-6 sm:px-8 py-4">
         <span
-          className={`border px-3 py-1 text-[10px] font-bold uppercase tracking-[0.15em] ${priorityClass[c.priority]}`}
+          className={`px-3 py-1 text-[10px] font-bold uppercase tracking-[0.15em] ${priorityClass[c.priority]}`}
         >
           Prioridade {c.priority}
         </span>
-        <span className="text-[11px] uppercase tracking-[0.15em] text-petrol/50 font-semibold">
+        <span className="text-[11px] uppercase tracking-[0.15em] text-petrol/55 font-semibold">
           Volume {c.volume}
         </span>
+        <a
+          href={c.lp}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="ml-auto inline-flex items-center gap-2 text-[13px] font-semibold text-petrol underline underline-offset-4 hover:text-gold transition-colors break-all"
+        >
+          {c.lp.replace("https://", "")}
+          <ExternalLink className="size-3.5 shrink-0" aria-hidden />
+        </a>
       </div>
-      <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight mb-3">{c.name}</h3>
-      <a
-        href={c.lp}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 text-sm text-petrol/70 underline underline-offset-4 hover:text-gold transition-colors break-all"
-      >
-        {c.lp.replace("https://", "")}
-        <ExternalLink className="size-3.5 shrink-0" aria-hidden />
-      </a>
-      <dl className="mt-5 space-y-3 text-sm">
+
+      <dl className="px-6 sm:px-8 py-6 space-y-5 text-sm">
         <div>
-          <dt className="font-mono text-[10px] uppercase tracking-[0.2em] text-petrol/45 font-semibold mb-1">
+          <dt className="font-mono text-[10px] uppercase tracking-[0.2em] text-petrol/45 font-semibold mb-2">
             Keywords
           </dt>
-          <dd className="text-petrol/75 leading-relaxed">{c.keywords}</dd>
+          <dd className="text-petrol font-medium leading-relaxed">{c.keywords}</dd>
         </div>
         {c.notes?.length ? (
-          <div>
-            <dt className="font-mono text-[10px] uppercase tracking-[0.2em] text-petrol/45 font-semibold mb-1">
+          <div className="border-l-2 border-petrol/20 pl-4">
+            <dt className="font-mono text-[10px] uppercase tracking-[0.2em] text-petrol/45 font-semibold mb-2">
               Observações
             </dt>
             <dd>
-              <ul className="list-disc pl-4 space-y-1 text-petrol/75 leading-relaxed">
+              <ul className="list-disc pl-4 space-y-1.5 text-petrol/65 leading-relaxed">
                 {c.notes.map((n) => (
                   <li key={n}>{n}</li>
                 ))}
@@ -179,7 +182,13 @@ function CampaignCard({ c }: { c: Campaign }) {
 function BriefingPage() {
   return (
     <div className="min-h-screen bg-surface text-petrol font-sans">
-      <header className="bg-ink px-4 sm:px-6 py-14 sm:py-20">
+      <header
+        className="px-4 sm:px-6 py-14 sm:py-20"
+        style={{
+          background:
+            "linear-gradient(135deg, var(--petrol) 0%, color-mix(in oklch, var(--petrol) 78%, var(--ink)) 100%)",
+        }}
+      >
         <div className="max-w-4xl mx-auto">
           <img src={logoAlliedIt} alt="AlliedIT" className="h-8 sm:h-10 w-auto mb-8 brightness-0 invert" />
           <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold font-semibold block mb-4">
@@ -188,12 +197,13 @@ function BriefingPage() {
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-[1.05] text-balance">
             Campanhas de fundo de funil: Google Ads
           </h1>
-          <p className="mt-5 text-white/75 text-base sm:text-lg max-w-2xl leading-relaxed">
+          <p className="mt-5 text-white/80 text-base sm:text-lg max-w-2xl leading-relaxed">
             Briefing para criação de campanhas de captura de demanda de intenção no Google. Uma campanha por cluster,
             com landing page dedicada já publicada para cada uma.
           </p>
         </div>
       </header>
+
 
       <nav aria-label="Sumário" className="border-b border-petrol/10 bg-white px-4 sm:px-6 py-5">
         <div className="max-w-4xl mx-auto flex flex-wrap gap-x-8 gap-y-2">
@@ -292,24 +302,6 @@ function BriefingPage() {
               termo é dominado pela marca de cosméticos The Body Shop e por oficinas de lataria. Verba desperdiçada.
             </p>
           </div>
-        </section>
-
-        <section id="observacoes" className="scroll-mt-8">
-          <Reveal variant="fade-up" className="mb-6">
-            <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight">Observações gerais</h2>
-          </Reveal>
-          <ol className="list-decimal pl-5 space-y-3 text-sm sm:text-base text-petrol/75 leading-relaxed">
-            <li>Todas as landing pages estão publicadas e ativas nos links acima.</li>
-            <li>
-              As páginas de hardware convertem via formulário de cotação (modal); a página de alocação converte via
-              “Falar com especialista”.
-            </li>
-            <li>Segmentação geográfica, formatos de anúncio e estrutura de grupos de anúncios: a critério da agência.</li>
-            <li>
-              Solicitamos acompanhamento de performance por campanha para eventual realocação de verba entre os clusters
-              de hardware.
-            </li>
-          </ol>
         </section>
       </main>
 
