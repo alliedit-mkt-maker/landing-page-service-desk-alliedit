@@ -299,6 +299,30 @@ export function AssinaturasPage() {
     setError("");
     const node = previewRef.current;
     if (!node) return;
+
+    const done = () => {
+      setOk("✓ Copiado! Agora cole no Outlook (Ctrl+V).");
+      setTimeout(() => setOk(""), 4000);
+    };
+
+    // Preferimos escrever o HTML bruto no clipboard: assim o Outlook/Gmail recebem
+    // exatamente a marcação de tabelas (bgcolor, paddings, border-radius) sem
+    // passar pela serialização do DOM, que reescreve estilos.
+    try {
+      if (navigator.clipboard && typeof ClipboardItem !== "undefined") {
+        await navigator.clipboard.write([
+          new ClipboardItem({
+            "text/html": new Blob([html], { type: "text/html" }),
+            "text/plain": new Blob([node.innerText], { type: "text/plain" }),
+          }),
+        ]);
+        done();
+        return;
+      }
+    } catch {
+      // cai no fallback abaixo
+    }
+
     try {
       const selection = window.getSelection();
       const range = document.createRange();
@@ -307,12 +331,12 @@ export function AssinaturasPage() {
       selection?.addRange(range);
       document.execCommand("copy");
       selection?.removeAllRanges();
-      setOk("✓ Copiado! Agora cole no Outlook (Ctrl+V).");
-      setTimeout(() => setOk(""), 4000);
+      done();
     } catch {
       setError("Não foi possível copiar automaticamente. Selecione a pré-visualização e copie manualmente.");
     }
   };
+
 
   return (
     <div
