@@ -293,14 +293,12 @@ export function AssinaturasPage() {
     const missing: string[] = [];
     if (!nome.trim()) missing.push("Nome completo");
     if (!cargo) missing.push("Cargo");
-    if (!telefone.trim()) missing.push("Telefone");
     if (!email.trim()) missing.push("E-mail");
     if (missing.length) {
       setOk("");
       setError(`⚠ Preencha todos os campos antes de copiar (${missing.join(", ")}).`);
       if (!nome.trim()) nomeRef.current?.focus();
       else if (!cargo) cargoRef.current?.focus();
-      else if (!telefone.trim()) telRef.current?.focus();
       else emailRef.current?.focus();
       return;
     }
