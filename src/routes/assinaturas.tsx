@@ -415,7 +415,7 @@ export function AssinaturasPage() {
               <br />
               4. Clique no botão azul "Copiar assinatura".
               <br />
-              5. No Outlook: Arquivo → Opções → E-mail → Assinaturas → Nova → cole (Ctrl+V) no campo de edição → OK.
+              5. No Outlook: Arquivo → Configurar → Contas → Assinaturas → Adicionar assinatura → cole (Ctrl+V) no campo de edição → Salvar.
             </div>
 
             <div
