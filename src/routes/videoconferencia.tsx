@@ -33,7 +33,7 @@ import { Clients } from "@/components/lp/Clients";
 import { Reveal } from "@/components/lp/Reveal";
 
 // Formulário HubSpot dedicado desta LP, preencher quando o ID for criado.
-const VC_FORM_ID = "";
+const VC_FORM_ID = "aaf63ed6-edf2-45ed-8434-54c3d6d4df0d";
 
 const title = "AlliedIT | Videoconferência Logitech, Poly e Yealink para salas de reunião";
 const description =

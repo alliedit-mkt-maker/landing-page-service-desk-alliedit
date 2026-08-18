@@ -76,7 +76,7 @@ export const logitechMeta = { title, description };
 
 export function LogitechPage() {
   return (
-    <LpProvider modalTitle="Pedir cotação de headsets Logitech." formId="5e99da13-3800-4581-b2ea-0ea2fe2de8f4">
+    <LpProvider modalTitle="Pedir cotação de headsets Logitech." formId="abe5cb76-6159-4d92-b15d-6cfbe2f400a5">
       <div className="min-h-screen bg-surface text-petrol font-sans">
         <main>
           <Hero />

@@ -29,7 +29,7 @@ import { Clients } from "@/components/lp/Clients";
 import { Reveal } from "@/components/lp/Reveal";
 
 // Formulário HubSpot dedicado desta LP — preencher quando o ID for criado.
-const RALLY_FORM_ID = "";
+const RALLY_FORM_ID = "b8f8c9e7-cdd4-4ef4-904f-3bb5c3e9c812";
 
 const title = "AlliedIT | Logitech Rally Bar e Rally Bar Mini para salas de reunião";
 const description =

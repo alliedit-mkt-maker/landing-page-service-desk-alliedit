@@ -75,7 +75,7 @@ export const yealinkMeta = { title, description };
 
 export function YealinkPage() {
   return (
-    <LpProvider modalTitle="Pedir cotação de headsets Yealink." formId="5e99da13-3800-4581-b2ea-0ea2fe2de8f4">
+    <LpProvider modalTitle="Pedir cotação de headsets Yealink." formId="d1b524ee-050e-4c16-97fb-ced65a636365">
       <div className="min-h-screen bg-surface text-petrol font-sans">
         <main>
           <Hero />

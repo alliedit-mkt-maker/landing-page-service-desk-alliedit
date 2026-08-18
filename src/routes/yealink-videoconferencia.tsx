@@ -40,7 +40,7 @@ import { Clients } from "@/components/lp/Clients";
 import { Reveal } from "@/components/lp/Reveal";
 
 // Formulário HubSpot dedicado desta LP, preencher quando o ID for criado.
-const YEALINK_VC_FORM_ID = "";
+const YEALINK_VC_FORM_ID = "854dbac0-c313-4ef4-8f50-8935b4e76bb8";
 
 const title = "AlliedIT | Videoconferência Yealink: MeetingBar A40, A50 e kits MVC/ZVC";
 const description =
