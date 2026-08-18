@@ -127,7 +127,7 @@ function buildSignature(opts: {
 }) {
   const nome = opts.nome.trim() || "[Nome completo]";
   const cargo = opts.cargo.trim() || "[Cargo]";
-  const telefone = opts.telefone.trim() || "[Telefone]";
+  const telefone = opts.telefone.trim();
   const email = opts.email.trim() || "[email@alliedit.com.br]";
   const fotoCell = opts.foto
     ? `<td style="padding-right: 14px;" valign="top"><img src="${opts.foto}" width="120" height="120" style="display:block; border-radius: 22px; width:120px; height:120px;"></td>`
@@ -146,7 +146,7 @@ function buildSignature(opts: {
               <tr><td style="padding-bottom: 2px;"><span style="font-size: 14px; font-weight: 700; color: #111111;">${nome}</span></td></tr>
               <tr><td style="padding-bottom: 6px;"><span style="font-size: 12.5px; color: #6b7280;">${cargo}</span></td></tr>
               <tr><td style="padding-bottom: 2px;">
-                <span style="font-size: 12.5px; color: #6b7280;">${telefone} &nbsp;&middot;&nbsp; </span><a href="mailto:${email}" style="font-size: 12.5px; color: #6b7280; text-decoration: none;">${email}</a>
+                ${telefone ? `<span style="font-size: 12.5px; color: #6b7280;">${telefone} &nbsp;&middot;&nbsp; </span>` : ""}<a href="mailto:${email}" style="font-size: 12.5px; color: #6b7280; text-decoration: none;">${email}</a>
               </td></tr>
               <tr><td>
                 <a href="https://www.alliedit.com.br" style="font-size: 12.5px; color: #6b7280; text-decoration: none;">alliedit.com.br</a><span style="font-size: 12.5px; color: #6b7280;"> &nbsp;&middot;&nbsp; Alphaville Industrial, Barueri-SP</span>
@@ -293,14 +293,12 @@ export function AssinaturasPage() {
     const missing: string[] = [];
     if (!nome.trim()) missing.push("Nome completo");
     if (!cargo) missing.push("Cargo");
-    if (!telefone.trim()) missing.push("Telefone");
     if (!email.trim()) missing.push("E-mail");
     if (missing.length) {
       setOk("");
       setError(`⚠ Preencha todos os campos antes de copiar (${missing.join(", ")}).`);
       if (!nome.trim()) nomeRef.current?.focus();
       else if (!cargo) cargoRef.current?.focus();
-      else if (!telefone.trim()) telRef.current?.focus();
       else emailRef.current?.focus();
       return;
     }
@@ -467,7 +465,7 @@ export function AssinaturasPage() {
                 </div>
               </div>
               <div>
-                <label style={labelStyle} htmlFor="f-tel">Telefone</label>
+                <label style={labelStyle} htmlFor="f-tel">Telefone (opcional)</label>
                 <input id="f-tel" ref={telRef} className="sig-input" style={inputStyle} value={telefone} onChange={(e) => setTelefone(formatTelefone(e.target.value))} inputMode="tel" maxLength={15} placeholder="Ex: (11) 91234-5678" />
               </div>
               <div>
