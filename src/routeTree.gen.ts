@@ -20,6 +20,7 @@ import { Route as HeadsetLogitechRouteImport } from './routes/headset-logitech'
 import { Route as HeadsetCallcenterRouteImport } from './routes/headset-callcenter'
 import { Route as CabeamentoRouteImport } from './routes/cabeamento'
 import { Route as BriefingCampanhasRouteImport } from './routes/briefing-campanhas'
+import { Route as AssinaturasRouteImport } from './routes/assinaturas'
 import { Route as AlocacaoTiRouteImport } from './routes/alocacao-ti'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -78,6 +79,11 @@ const BriefingCampanhasRoute = BriefingCampanhasRouteImport.update({
   path: '/briefing-campanhas',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AssinaturasRoute = AssinaturasRouteImport.update({
+  id: '/assinaturas',
+  path: '/assinaturas',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AlocacaoTiRoute = AlocacaoTiRouteImport.update({
   id: '/alocacao-ti',
   path: '/alocacao-ti',
@@ -92,6 +98,7 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/alocacao-ti': typeof AlocacaoTiRoute
+  '/assinaturas': typeof AssinaturasRoute
   '/briefing-campanhas': typeof BriefingCampanhasRoute
   '/cabeamento': typeof CabeamentoRoute
   '/headset-callcenter': typeof HeadsetCallcenterRoute
@@ -107,6 +114,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/alocacao-ti': typeof AlocacaoTiRoute
+  '/assinaturas': typeof AssinaturasRoute
   '/briefing-campanhas': typeof BriefingCampanhasRoute
   '/cabeamento': typeof CabeamentoRoute
   '/headset-callcenter': typeof HeadsetCallcenterRoute
@@ -123,6 +131,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/alocacao-ti': typeof AlocacaoTiRoute
+  '/assinaturas': typeof AssinaturasRoute
   '/briefing-campanhas': typeof BriefingCampanhasRoute
   '/cabeamento': typeof CabeamentoRoute
   '/headset-callcenter': typeof HeadsetCallcenterRoute
@@ -140,6 +149,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/alocacao-ti'
+    | '/assinaturas'
     | '/briefing-campanhas'
     | '/cabeamento'
     | '/headset-callcenter'
@@ -155,6 +165,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/alocacao-ti'
+    | '/assinaturas'
     | '/briefing-campanhas'
     | '/cabeamento'
     | '/headset-callcenter'
@@ -170,6 +181,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/alocacao-ti'
+    | '/assinaturas'
     | '/briefing-campanhas'
     | '/cabeamento'
     | '/headset-callcenter'
@@ -186,6 +198,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AlocacaoTiRoute: typeof AlocacaoTiRoute
+  AssinaturasRoute: typeof AssinaturasRoute
   BriefingCampanhasRoute: typeof BriefingCampanhasRoute
   CabeamentoRoute: typeof CabeamentoRoute
   HeadsetCallcenterRoute: typeof HeadsetCallcenterRoute
@@ -278,6 +291,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BriefingCampanhasRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/assinaturas': {
+      id: '/assinaturas'
+      path: '/assinaturas'
+      fullPath: '/assinaturas'
+      preLoaderRoute: typeof AssinaturasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/alocacao-ti': {
       id: '/alocacao-ti'
       path: '/alocacao-ti'
@@ -298,6 +318,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AlocacaoTiRoute: AlocacaoTiRoute,
+  AssinaturasRoute: AssinaturasRoute,
   BriefingCampanhasRoute: BriefingCampanhasRoute,
   CabeamentoRoute: CabeamentoRoute,
   HeadsetCallcenterRoute: HeadsetCallcenterRoute,
