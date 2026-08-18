@@ -146,7 +146,7 @@ function buildSignature(opts: {
               <tr><td style="padding-bottom: 2px;"><span style="font-size: 14px; font-weight: 700; color: #111111;">${nome}</span></td></tr>
               <tr><td style="padding-bottom: 6px;"><span style="font-size: 12.5px; color: #6b7280;">${cargo}</span></td></tr>
               <tr><td style="padding-bottom: 2px;">
-                <span style="font-size: 12.5px; color: #6b7280;">${telefone} &nbsp;&middot;&nbsp; </span><a href="mailto:${email}" style="font-size: 12.5px; color: #6b7280; text-decoration: none;">${email}</a>
+                ${telefone ? `<span style="font-size: 12.5px; color: #6b7280;">${telefone} &nbsp;&middot;&nbsp; </span>` : ""}<a href="mailto:${email}" style="font-size: 12.5px; color: #6b7280; text-decoration: none;">${email}</a>
               </td></tr>
               <tr><td>
                 <a href="https://www.alliedit.com.br" style="font-size: 12.5px; color: #6b7280; text-decoration: none;">alliedit.com.br</a><span style="font-size: 12.5px; color: #6b7280;"> &nbsp;&middot;&nbsp; Alphaville Industrial, Barueri-SP</span>
