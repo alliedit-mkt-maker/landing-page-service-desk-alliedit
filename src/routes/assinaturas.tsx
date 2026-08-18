@@ -460,7 +460,7 @@ export function AssinaturasPage() {
               </div>
               <div>
                 <label style={labelStyle} htmlFor="f-tel">Telefone</label>
-                <input id="f-tel" ref={telRef} className="sig-input" style={inputStyle} value={telefone} onChange={(e) => setTelefone(e.target.value)} placeholder="Ex: (11) 91234-5678" />
+                <input id="f-tel" ref={telRef} className="sig-input" style={inputStyle} value={telefone} onChange={(e) => setTelefone(formatTelefone(e.target.value))} inputMode="tel" maxLength={15} placeholder="Ex: (11) 91234-5678" />
               </div>
               <div>
                 <label style={labelStyle} htmlFor="f-email">E-mail</label>
