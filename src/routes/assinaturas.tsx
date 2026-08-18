@@ -127,7 +127,7 @@ function buildSignature(opts: {
 }) {
   const nome = opts.nome.trim() || "[Nome completo]";
   const cargo = opts.cargo.trim() || "[Cargo]";
-  const telefone = opts.telefone.trim() || "[Telefone]";
+  const telefone = opts.telefone.trim();
   const email = opts.email.trim() || "[email@alliedit.com.br]";
   const fotoCell = opts.foto
     ? `<td style="padding-right: 14px;" valign="top"><img src="${opts.foto}" width="120" height="120" style="display:block; border-radius: 22px; width:120px; height:120px;"></td>`
