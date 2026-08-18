@@ -79,6 +79,7 @@ const HOST_REWRITES: Record<string, string> = {
   "yealink-videoconferencia.alliedit.com.br": "/yealink-videoconferencia",
   "alocacao-ti.alliedit.com.br": "/alocacao-ti",
   "videoconferencia.alliedit.com.br": "/videoconferencia",
+  "assinaturas.alliedit.com.br": "/assinaturas",
 };
 
 // Canonical home for each LP path. Requests to these paths on any other host
@@ -94,6 +95,7 @@ const CANONICAL_HOSTS: Record<string, string> = {
   "/yealink-videoconferencia": "yealink-videoconferencia.alliedit.com.br",
   "/alocacao-ti": "alocacao-ti.alliedit.com.br",
   "/videoconferencia": "videoconferencia.alliedit.com.br",
+  "/assinaturas": "assinaturas.alliedit.com.br",
 };
 
 
