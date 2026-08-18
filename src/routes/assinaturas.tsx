@@ -415,7 +415,7 @@ export function AssinaturasPage() {
               <br />
               4. Clique no botão azul "Copiar assinatura".
               <br />
-              5. No Outlook: Arquivo → Opções → E-mail → Assinaturas → Nova → cole (Ctrl+V) no campo de edição → OK.
+              5. No Outlook: Arquivo → Configurar → Contas → Assinaturas → Adicionar assinatura → cole (Ctrl+V) no campo de edição → Salvar.
             </div>
 
             <div
@@ -465,7 +465,7 @@ export function AssinaturasPage() {
                 </div>
               </div>
               <div>
-                <label style={labelStyle} htmlFor="f-tel">Telefone Corporativo (opcional)</label>
+                <label style={labelStyle} htmlFor="f-tel">Telefone Corporativo</label>
                 <input id="f-tel" ref={telRef} className="sig-input" style={inputStyle} value={telefone} onChange={(e) => setTelefone(formatTelefone(e.target.value))} inputMode="tel" maxLength={15} placeholder="Ex: (11) 91234-5678" />
               </div>
               <div>
