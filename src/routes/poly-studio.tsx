@@ -40,7 +40,7 @@ import { Clients } from "@/components/lp/Clients";
 import { Reveal } from "@/components/lp/Reveal";
 
 // Formulário HubSpot dedicado desta LP — preencher quando o ID for criado.
-const POLY_STUDIO_FORM_ID = "";
+const POLY_STUDIO_FORM_ID = "8f281409-2949-45fc-a83f-b7d643b42f54";
 
 const title = "AlliedIT | Poly Studio V12, X32, V52 e X52 para salas de reunião";
 const description =
