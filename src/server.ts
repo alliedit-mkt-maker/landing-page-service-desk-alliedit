@@ -73,6 +73,7 @@ const HOST_REWRITES: Record<string, string> = {
   "headset-callcenter.alliedit.com.br": "/headset-callcenter",
   "rally-bar.alliedit.com.br": "/rally-bar",
   "headsets-poly.alliedit.com.br": "/headsets-poly",
+  "headset-poly.alliedit.com.br": "/headsets-poly",
   "headset-logitech.alliedit.com.br": "/headset-logitech",
   "headset-yealink.alliedit.com.br": "/headset-yealink",
   "poly-studio.alliedit.com.br": "/poly-studio",

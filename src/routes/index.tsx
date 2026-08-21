@@ -35,6 +35,7 @@ const HOST_VARIANT_MAP: Record<string, "cabeamento" | "headset" | "rally-bar" | 
   "headset-callcenter.alliedit.com.br": "headset",
   "rally-bar.alliedit.com.br": "rally-bar",
   "headsets-poly.alliedit.com.br": "poly",
+  "headset-poly.alliedit.com.br": "poly",
   "headset-logitech.alliedit.com.br": "logitech",
   "headset-yealink.alliedit.com.br": "yealink",
   "poly-studio.alliedit.com.br": "poly-studio",
