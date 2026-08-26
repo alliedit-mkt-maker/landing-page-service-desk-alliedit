@@ -30,6 +30,7 @@ const CARGOS = [
   "Analista de Field Services",
   "Analista de Infraestrutura",
   "Analista de Marketing",
+  "Analista de Mídias Sociais",
   "Analista de Operações",
   "Analista de Processos",
   "Analista de Recursos Humanos",
