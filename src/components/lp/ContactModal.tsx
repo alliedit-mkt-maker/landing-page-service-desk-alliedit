@@ -110,6 +110,7 @@ export function ContactModal({ open, onOpenChange, source, title = "Vamos falar 
 
     return () => {
       cancelled = true;
+      stopMask?.();
     };
   }, [open, navigate, onOpenChange, source, targetId, activeFormId]);
 
