@@ -89,6 +89,8 @@ export function ContactModal({ open, onOpenChange, source, title = "Vamos falar 
             } catch {
               /* noop */
             }
+            stopMask?.();
+            stopMask = setupWhatsappMask(containerRef.current);
             void $form;
           },
           onFormSubmitted: () => {
