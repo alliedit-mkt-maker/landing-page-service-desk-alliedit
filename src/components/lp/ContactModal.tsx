@@ -3,6 +3,7 @@ import { useNavigate } from "@tanstack/react-router";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { pushEvent } from "./LpProvider";
 import { getUtms, UTM_KEYS } from "@/lib/utm";
+import { setupWhatsappMask } from "@/lib/whatsapp-mask";
 
 const HS_PORTAL_ID = (import.meta.env.VITE_HUBSPOT_PORTAL_ID as string) || "47388409";
 const HS_FORM_ID = (import.meta.env.VITE_HUBSPOT_FORM_ID as string) || "087109f4-f093-404c-aec9-b4a3f6d763a4";
