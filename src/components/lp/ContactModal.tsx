@@ -61,6 +61,7 @@ export function ContactModal({ open, onOpenChange, source, title = "Vamos falar 
     }
 
     let cancelled = false;
+    let stopMask: (() => void) | undefined = setupWhatsappMask(containerRef.current);
     loadHubspotScript()
       .then(() => {
         if (cancelled || !window.hbspt) return;
