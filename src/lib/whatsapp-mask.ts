@@ -91,7 +91,10 @@ function enhanceInput(input: HTMLInputElement) {
   input.setAttribute("placeholder", input.getAttribute("placeholder") || "(11) 98765-4321");
   input.setAttribute("maxlength", "16");
 
+  let suppressMask = false;
+
   const apply = () => {
+    if (suppressMask) return;
     const before = input.value;
     const caret = input.selectionStart ?? before.length;
     const digitsBefore = countDigitsBefore(before, caret);
@@ -133,9 +136,17 @@ function enhanceInput(input: HTMLInputElement) {
         }
         clearError(input);
         // Envia apenas os dígitos limpos, sem DDI e sem máscara.
-        input.value = normalizeBrDigits(input.value);
+        suppressMask = true;
+        const digits = normalizeBrDigits(input.value);
+        const nativeSetter = Object.getOwnPropertyDescriptor(
+          window.HTMLInputElement.prototype,
+          "value",
+        )?.set;
+        if (nativeSetter) nativeSetter.call(input, digits);
+        else input.value = digits;
         input.dispatchEvent(new Event("input", { bubbles: true }));
         input.dispatchEvent(new Event("change", { bubbles: true }));
+        suppressMask = false;
       },
       true,
     );
