@@ -1,8 +1,8 @@
 import { useEffect, useRef } from "react";
 import symbolSrc from "@/assets/site/brand-symbol.png";
 
-const TEAL = "56,176,208";
-const YELLOW = "247,206,32";
+const TEAL = "70,225,255";
+const YELLOW = "255,224,60";
 
 type IconParticle = {
   hx: number; // home position, normalized 0..1 inside icon box
@@ -75,7 +75,7 @@ export function HeroParticles() {
 
     const layoutIcon = () => {
       const mobile = width < 900;
-      const size = mobile ? Math.min(width * 0.72, 340) : Math.min(height * 0.78, width * 0.30, 420);
+      const size = mobile ? Math.min(width * 0.86, 420) : Math.min(height * 0.98, width * 0.42, 620);
       iconBox = {
         size,
         x: mobile ? (width - size) / 2 : width * 0.74 - size / 2,
@@ -213,11 +213,14 @@ export function HeroParticles() {
             }
           }
         }
-        const alpha = (0.55 + 0.45 * Math.sin(p.phase + t * 0.0009)) * p.life;
-        ctx.fillStyle = `rgba(${p.c},${Math.min(1, alpha * 1.25).toFixed(3)})`;
+        const alpha = (0.62 + 0.38 * Math.sin(p.phase + t * 0.0009)) * p.life;
+        ctx.shadowBlur = 9;
+        ctx.shadowColor = `rgba(${p.c},0.9)`;
+        ctx.fillStyle = `rgba(${p.c},${Math.min(1, alpha * 1.55).toFixed(3)})`;
         ctx.beginPath();
-        ctx.arc(bx + p.hx * size + p.ox, by + p.hy * size + p.oy, p.r, 0, Math.PI * 2);
+        ctx.arc(bx + p.hx * size + p.ox, by + p.hy * size + p.oy, p.r * 1.15, 0, Math.PI * 2);
         ctx.fill();
+        ctx.shadowBlur = 0;
       }
 
       ctx.globalCompositeOperation = "source-over";

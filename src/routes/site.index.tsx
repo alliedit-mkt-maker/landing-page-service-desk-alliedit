@@ -22,25 +22,22 @@ export const Route = createFileRoute("/site/")({
   component: SiteHome,
 });
 
-const WORDS: { label: string; style: string; delay: string }[] = [
-  { label: "Segurança", style: "left-[4%] top-[12%]", delay: "0s" },
-  { label: "Nuvem", style: "right-[8%] top-[6%]", delay: "1.4s" },
-  { label: "Infraestrutura", style: "left-[2%] top-[42%]", delay: "2.6s" },
-  { label: "Automação", style: "right-[6%] top-[34%]", delay: "3.8s" },
-  { label: "Inteligência Artificial", style: "left-[6%] bottom-[10%]", delay: "0.8s" },
-  { label: "Inovação", style: "right-[4%] bottom-[16%]", delay: "2.1s" },
-  { label: "Monitoramento", style: "left-[26%] bottom-[2%]", delay: "3.2s" },
-  { label: "Performance", style: "right-[24%] top-[2%]", delay: "4.4s" },
-  { label: "Conectividade", style: "left-[1%] top-[74%]", delay: "1.9s" },
-  { label: "Escalabilidade", style: "right-[8%] bottom-[42%]", delay: "5s" },
+// Posições mantidas nas bordas para nunca sobrepor o ícone (zona central-direita).
+const WORDS: { label: string; style: string; delay: string; desktopOnly?: boolean }[] = [
+  { label: "Cloud Ops", style: "left-[3%] top-[6%]", delay: "0s" },
+  { label: "Cyber Shield 360°", style: "right-[2%] top-[4%]", delay: "1.6s" },
+  { label: "Infra Core", style: "left-[3%] top-[88%]", delay: "3.1s" },
+  { label: "Product Engineering", style: "right-[2%] bottom-[5%]", delay: "4.6s", desktopOnly: true },
+  { label: "Inteligência Artificial", style: "left-[30%] bottom-[4%]", delay: "6.1s", desktopOnly: true },
+  { label: "Data Organization", style: "left-[34%] top-[5%]", delay: "7.6s", desktopOnly: true },
 ];
 
 function SiteHome() {
   const btnBase =
-    "font-chillax inline-flex h-14 items-center justify-center border border-white/70 px-8 text-[15px] font-medium uppercase tracking-[0.08em] text-white transition-colors duration-200";
+    "font-inter inline-flex h-14 items-center justify-center whitespace-nowrap px-9 text-[13px] font-semibold uppercase tracking-[0.14em] text-white transition-colors duration-200";
 
   return (
-    <section className="relative isolate overflow-hidden bg-[#0A0E12]">
+    <section className="relative isolate -mt-[92px] overflow-hidden bg-[#0A0E12] pt-[92px]">
       <div
         aria-hidden="true"
         className="absolute inset-0"
@@ -51,47 +48,46 @@ function SiteHome() {
       />
       <HeroParticles />
 
-      <div className="relative mx-auto grid min-h-[86vh] max-w-7xl grid-cols-1 items-center gap-14 px-5 py-20 sm:px-8 lg:min-h-[88vh] lg:grid-cols-[1.05fr_1fr] lg:gap-8 lg:py-24">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-10 hidden sm:block">
+        {WORDS.map((w) => (
+          <span
+            key={w.label}
+            className={`site-orbit-word font-inter absolute ${w.style} text-[11px] tracking-[0.16em] text-white sm:text-[12px] ${
+              w.desktopOnly ? "hidden lg:block" : ""
+            }`}
+            style={{ animationDelay: w.delay }}
+          >
+            {w.label}
+          </span>
+        ))}
+      </div>
+
+      <div className="relative z-20 mx-auto grid min-h-[86vh] max-w-7xl grid-cols-1 items-center gap-14 px-5 py-20 sm:px-8 lg:min-h-[88vh] lg:grid-cols-[1.05fr_1fr] lg:gap-8 lg:py-24">
         <div>
-          <p className="font-chillax text-xs font-medium uppercase tracking-[0.24em] text-[#F3C400]">
-            Soluções em TI
-          </p>
-          <h1 className="font-chillax mt-6 max-w-2xl text-[2rem] font-bold uppercase leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-[3.4rem]">
-            Do suporte à nuvem, da rede à segurança: sua operação de TI em boas mãos.
+          <h1 className="font-chillax max-w-2xl text-[2rem] font-bold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-[3.4rem]">
+            Do suporte à nuvem, da rede à segurança: sua operação de TI em boas mãos
           </h1>
           <p className="mt-7 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg">
-            A Allied IT assume a complexidade da sua tecnologia com atuação consultiva, +7 anos de
-            operação e gestão baseada em indicadores, para a sua empresa focar no que faz de melhor.
+            A Allied IT assume a complexidade da sua tecnologia com atuação consultiva para a sua
+            empresa focar no que faz de melhor.
           </p>
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
             <Link
               to="/site/contato"
-              className={`${btnBase} hover:border-[#046E8B] hover:bg-[#046E8B]`}
+              className={`${btnBase} border border-white hover:bg-white hover:text-[#0A0E12]`}
             >
               Falar com especialista
             </Link>
             <Link
               to="/site/servicos"
-              className={`${btnBase} hover:bg-white hover:text-[#0A0E12]`}
+              className={`${btnBase} border border-white/30 hover:border-white`}
             >
               Conheça nossas soluções
             </Link>
           </div>
         </div>
 
-        <div className="relative h-[300px] sm:h-[380px] lg:h-[520px]" aria-hidden="true">
-          {WORDS.map((w, i) => (
-            <span
-              key={w.label}
-              className={`site-orbit-word font-chillax absolute ${w.style} text-[10px] uppercase tracking-[0.18em] text-white/45 sm:text-[11px] ${
-                i > 5 ? "hidden lg:block" : ""
-              }`}
-              style={{ animationDelay: w.delay }}
-            >
-              {w.label}
-            </span>
-          ))}
-        </div>
+        <div className="h-[320px] sm:h-[400px] lg:h-[560px]" aria-hidden="true" />
       </div>
     </section>
   );
