@@ -87,7 +87,7 @@ export function HeroParticles() {
 
 
     const buildIcon = () => {
-      const keep = width < 700 ? 3 : 2;
+      const keep = width < 900 ? 4 : 3;
       iconParticles = sampled
         .filter((_, i) => i % keep === 0)
         .map((s) => ({
