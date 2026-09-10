@@ -164,7 +164,8 @@ export function HeroParticles() {
       t += 25;
       ctx.clearRect(0, 0, width, height);
 
-
+      // partículas ambientes agrupadas por cor/opacidade (poucos draw calls)
+      const ambientBuckets = new Map<string, Path2D>();
       for (const p of ambient) {
         if (!reduced) {
           p.x += p.vx;
@@ -175,10 +176,21 @@ export function HeroParticles() {
           if (p.y > height + 10) p.y = -10;
         }
         const alpha = p.base * (0.55 + 0.45 * Math.sin(p.phase + t * p.speed));
-        ctx.fillStyle = `rgba(${p.c},${alpha.toFixed(2)})`;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fill();
+        const step = Math.round(alpha * 5) / 5;
+        if (step <= 0) continue;
+        const key = `${p.c}|${step}`;
+        let path = ambientBuckets.get(key);
+        if (!path) {
+          path = new Path2D();
+          ambientBuckets.set(key, path);
+        }
+        const d = p.r * 2;
+        path.rect(p.x, p.y, d, d);
+      }
+      for (const [key, path] of ambientBuckets) {
+        const [c, a] = key.split("|");
+        ctx.fillStyle = `rgba(${c},${a})`;
+        ctx.fill(path);
       }
 
       const { x: bx, y: by, size } = iconBox;
@@ -200,9 +212,9 @@ export function HeroParticles() {
             }
           } else {
             p.life = Math.min(1, p.life + 0.03);
-            p.ox = Math.sin(p.phase + t * p.speed) * 1.6;
-            p.oy = Math.cos(p.phase * 1.3 + t * p.speed) * 1.6;
-            if (Math.random() < 0.0005) {
+            p.ox = Math.sin(p.phase + t * p.speed) * 1.8;
+            p.oy = Math.cos(p.phase * 1.3 + t * p.speed) * 1.8;
+            if (Math.random() < 0.0006) {
               p.drift = 1;
               const a = Math.random() * Math.PI * 2;
               p.vx = Math.cos(a) * 0.25;
@@ -210,7 +222,10 @@ export function HeroParticles() {
             }
           }
         }
-        const alpha = Math.min(1, (0.62 + 0.38 * Math.sin(p.phase + t * 0.0009)) * p.life * 1.5);
+        const x = bx + p.hx * size + p.ox;
+        const y = by + p.hy * size + p.oy;
+        if (x < -20 || x > width + 20 || y < -20 || y > height + 20) continue;
+        const alpha = Math.min(0.85, (0.45 + 0.3 * Math.sin(p.phase + t * 0.0009)) * p.life);
         const step = Math.round(alpha * 5) / 5;
         if (step <= 0) continue;
         const key = `${p.c}|${step}`;
@@ -219,9 +234,7 @@ export function HeroParticles() {
           path = new Path2D();
           buckets.set(key, path);
         }
-        const x = bx + p.hx * size + p.ox;
-        const y = by + p.hy * size + p.oy;
-        const d = p.r * 2.2;
+        const d = p.r * 2;
         path.rect(x, y, d, d);
       }
       for (const [key, path] of buckets) {
@@ -230,7 +243,7 @@ export function HeroParticles() {
         ctx.fill(path);
       }
 
-      ctx.globalCompositeOperation = "source-over";
+
       if (!reduced) raf = requestAnimationFrame(frame);
     };
 
