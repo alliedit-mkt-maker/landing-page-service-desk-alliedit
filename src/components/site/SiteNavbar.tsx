@@ -11,15 +11,7 @@ const NAV_ITEMS = [
 ] as const;
 
 export function SiteNavbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 4);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -29,25 +21,21 @@ export function SiteNavbar() {
   }, [open]);
 
   const linkBase =
-    "font-chillax relative text-[15px] font-medium tracking-tight text-[var(--site-ink)] transition-colors hover:text-[var(--site-blue)] after:absolute after:left-0 after:-bottom-1.5 after:h-[2px] after:w-0 after:bg-[var(--site-yellow)] after:transition-all after:duration-200 hover:after:w-full";
+    "font-inter relative text-[14px] font-medium tracking-tight text-[var(--site-ink)] transition-colors hover:text-[var(--site-blue)] after:absolute after:left-0 after:-bottom-1.5 after:h-[2px] after:w-0 after:bg-[var(--site-yellow)] after:transition-all after:duration-200 hover:after:w-full";
 
   return (
-    <header
-      className={`sticky top-0 z-50 bg-white transition-shadow duration-200 ${
-        scrolled ? "shadow-[0_1px_16px_-6px_rgba(16,26,31,0.25)]" : ""
-      }`}
-    >
-      <div className="mx-auto flex h-[76px] max-w-7xl items-center justify-between px-5 sm:px-8">
+    <header className="pointer-events-none fixed inset-x-0 top-4 z-50 px-4 sm:px-6">
+      <div className="pointer-events-auto mx-auto flex h-[68px] max-w-6xl items-center justify-between rounded-full border border-white/60 bg-white/85 px-5 shadow-[0_10px_40px_-12px_rgba(10,14,18,0.45)] backdrop-blur-md sm:px-7">
         <Link
           to="/site"
           aria-label="Allied IT, ir para a página inicial"
           onClick={() => setOpen(false)}
-          className="font-chillax text-xl font-semibold tracking-tight text-[var(--site-ink)]"
+          className="flex items-center"
         >
-          Allied<span className="text-[var(--site-blue)]">IT</span>
+          <img src="/logo-allied-it.png" alt="Allied IT" className="h-8 w-auto" />
         </Link>
 
-        <nav aria-label="Navegação principal" className="hidden items-center gap-9 lg:flex">
+        <nav aria-label="Navegação principal" className="hidden items-center gap-8 lg:flex">
           {NAV_ITEMS.map((item) => (
             <Link
               key={item.to}
@@ -60,42 +48,30 @@ export function SiteNavbar() {
           ))}
         </nav>
 
-
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Fechar menu" : "Abrir menu"}
           aria-expanded={open}
-          className="inline-flex h-11 w-11 items-center justify-center rounded-md text-[var(--site-ink)] transition-colors hover:bg-[#F4F6F7] lg:hidden"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full text-[var(--site-ink)] transition-colors hover:bg-[#F4F6F7] lg:hidden"
         >
           {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </div>
 
       {open ? (
-        <div className="border-t border-[var(--site-line)] bg-white lg:hidden">
-          <nav aria-label="Navegação principal" className="mx-auto flex max-w-7xl flex-col px-5 py-4 sm:px-8">
+        <div className="pointer-events-auto mx-auto mt-3 max-w-6xl rounded-3xl border border-white/60 bg-white/95 p-4 shadow-[0_10px_40px_-12px_rgba(10,14,18,0.45)] backdrop-blur-md lg:hidden">
+          <nav aria-label="Navegação principal" className="flex flex-col">
             {NAV_ITEMS.map((item) => (
               <Link
                 key={item.to}
                 to={item.to}
                 onClick={() => setOpen(false)}
-                className="font-chillax border-b border-[var(--site-line)] py-4 text-[17px] font-medium text-[var(--site-ink)]"
-                activeProps={{
-                  className:
-                    "font-chillax border-b border-[var(--site-line)] py-4 text-[17px] font-medium text-[var(--site-ink)] shadow-[inset_3px_0_0_0_var(--site-yellow)] pl-3",
-                }}
+                className="font-inter border-b border-[var(--site-line)] py-4 text-[16px] font-medium text-[var(--site-ink)] last:border-0"
               >
                 {item.label}
               </Link>
             ))}
-            <Link
-              to="/site/contato"
-              onClick={() => setOpen(false)}
-              className="font-chillax mt-5 inline-flex h-12 items-center justify-center rounded-md bg-[var(--site-blue)] px-6 text-[15px] font-medium text-white"
-            >
-              Falar com especialista
-            </Link>
           </nav>
         </div>
       ) : null}
