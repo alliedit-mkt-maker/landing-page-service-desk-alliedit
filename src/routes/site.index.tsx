@@ -25,14 +25,14 @@ export const Route = createFileRoute("/site/")({
 const WORDS: { label: string; style: string; delay: string }[] = [
   { label: "Segurança", style: "left-[4%] top-[12%]", delay: "0s" },
   { label: "Nuvem", style: "right-[8%] top-[6%]", delay: "1.4s" },
-  { label: "Infraestrutura", style: "left-[-2%] top-[42%]", delay: "2.6s" },
-  { label: "Automação", style: "right-[-2%] top-[34%]", delay: "3.8s" },
+  { label: "Infraestrutura", style: "left-[2%] top-[42%]", delay: "2.6s" },
+  { label: "Automação", style: "right-[2%] top-[34%]", delay: "3.8s" },
   { label: "Inteligência Artificial", style: "left-[6%] bottom-[10%]", delay: "0.8s" },
   { label: "Inovação", style: "right-[4%] bottom-[16%]", delay: "2.1s" },
-  { label: "Monitoramento", style: "left-[26%] bottom-[-1%]", delay: "3.2s" },
-  { label: "Performance", style: "right-[24%] top-[-2%]", delay: "4.4s" },
-  { label: "Conectividade", style: "left-[-6%] top-[74%]", delay: "1.9s" },
-  { label: "Escalabilidade", style: "right-[-6%] bottom-[42%]", delay: "5s" },
+  { label: "Monitoramento", style: "left-[26%] bottom-[2%]", delay: "3.2s" },
+  { label: "Performance", style: "right-[24%] top-[2%]", delay: "4.4s" },
+  { label: "Conectividade", style: "left-[1%] top-[74%]", delay: "1.9s" },
+  { label: "Escalabilidade", style: "right-[1%] bottom-[42%]", delay: "5s" },
 ];
 
 function SiteHome() {

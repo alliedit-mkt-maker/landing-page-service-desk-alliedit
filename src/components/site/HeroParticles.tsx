@@ -1,8 +1,8 @@
 import { useEffect, useRef } from "react";
 import symbolSrc from "@/assets/site/brand-symbol.png";
 
-const TEAL = "4,110,139";
-const YELLOW = "243,196,0";
+const TEAL = "56,176,208";
+const YELLOW = "247,206,32";
 
 type IconParticle = {
   hx: number; // home position, normalized 0..1 inside icon box
@@ -75,7 +75,7 @@ export function HeroParticles() {
 
     const layoutIcon = () => {
       const mobile = width < 900;
-      const size = mobile ? Math.min(width * 0.72, 340) : Math.min(height * 0.86, width * 0.34, 460);
+      const size = mobile ? Math.min(width * 0.72, 340) : Math.min(height * 0.78, width * 0.30, 420);
       iconBox = {
         size,
         x: mobile ? (width - size) / 2 : width * 0.74 - size / 2,
@@ -153,8 +153,8 @@ export function HeroParticles() {
       const cx = iconBox.x + iconBox.size / 2;
       const cy = iconBox.y + iconBox.size / 2;
       const g = ctx.createRadialGradient(cx, cy, iconBox.size * 0.05, cx, cy, iconBox.size * 0.78);
-      g.addColorStop(0, `rgba(${TEAL},0.20)`);
-      g.addColorStop(0.45, `rgba(${TEAL},0.09)`);
+      g.addColorStop(0, `rgba(4,110,139,0.30)`);
+      g.addColorStop(0.45, `rgba(4,110,139,0.12)`);
       g.addColorStop(1, "rgba(4,110,139,0)");
       ctx.fillStyle = g;
       ctx.beginPath();
@@ -214,7 +214,7 @@ export function HeroParticles() {
           }
         }
         const alpha = (0.55 + 0.45 * Math.sin(p.phase + t * 0.0009)) * p.life;
-        ctx.fillStyle = `rgba(${p.c},${(alpha * 0.85).toFixed(3)})`;
+        ctx.fillStyle = `rgba(${p.c},${Math.min(1, alpha * 1.25).toFixed(3)})`;
         ctx.beginPath();
         ctx.arc(bx + p.hx * size + p.ox, by + p.hy * size + p.oy, p.r, 0, Math.PI * 2);
         ctx.fill();
