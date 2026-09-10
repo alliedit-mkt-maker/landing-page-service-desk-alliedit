@@ -27,13 +27,13 @@ export const Route = createFileRoute("/site/")({
 // animação; o delay é apenas uma defasagem curta e progressiva (onda coesa).
 const STAGGER = 0.35; // s entre uma palavra e a seguinte (cascata de cima para baixo)
 // Posições seguindo o arco esquerdo do ícone (elipse em torno do símbolo).
-const WORDS: { label: string; style: string; desktopOnly?: boolean }[] = [
+const WORDS: { label: string; style: string }[] = [
   { label: "Cloud Ops", style: "left-[67%] top-[10%]" },
   { label: "Cyber Shield 360°", style: "left-[58.5%] top-[26%]" },
   { label: "Infra Core", style: "left-[55.5%] top-[42%]" },
   { label: "Product Engineering", style: "left-[55.5%] top-[58%]" },
-  { label: "Inteligência Artificial", style: "left-[58.5%] top-[74%]", desktopOnly: true },
-  { label: "Data Organization", style: "left-[67%] top-[90%]", desktopOnly: true },
+  { label: "Inteligência Artificial", style: "left-[58.5%] top-[74%]" },
+  { label: "Data Organization", style: "left-[67%] top-[90%]" },
 ];
 
 
@@ -83,9 +83,7 @@ function SiteHome() {
         {WORDS.map((w, i) => (
           <span
             key={w.label}
-            className={`site-orbit-word font-inter absolute ${w.style} -translate-x-full whitespace-nowrap text-[12px] tracking-[0.14em] text-white/90 ${
-              w.desktopOnly ? "hidden xl:block" : ""
-            }`}
+            className={`site-orbit-word font-inter absolute ${w.style} -translate-x-full whitespace-nowrap text-[12px] tracking-[0.14em] text-white/90`}
             style={{ animationDelay: `${(i * STAGGER).toFixed(2)}s` }}
           >
             {w.label}
