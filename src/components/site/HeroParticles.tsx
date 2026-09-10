@@ -54,7 +54,7 @@ export function HeroParticles() {
     const parent = canvas.parentElement as HTMLElement;
 
     const buildAmbient = () => {
-      const density = width < 700 ? 34 : width < 1100 ? 55 : 78;
+      const density = width < 700 ? 22 : width < 1100 ? 34 : 46;
       ambient = Array.from({ length: density }, () => {
         // lower density on the left (text area), higher near the icon
         const biased = Math.random() ** 0.75;
@@ -84,9 +84,9 @@ export function HeroParticles() {
     };
 
     const buildIcon = () => {
-      const step = width < 700 ? 3 : 2;
+      const keep = width < 700 ? 3 : 2;
       iconParticles = sampled
-        .filter((_, i) => i % (step === 3 ? 2 : 1) === 0)
+        .filter((_, i) => i % keep === 0)
         .map((s) => ({
           hx: s.hx,
           hy: s.hy,
@@ -94,7 +94,7 @@ export function HeroParticles() {
           oy: 0,
           vx: 0,
           vy: 0,
-          r: 0.55 + Math.random() * 0.95,
+          r: 0.6 + Math.random() * 1.05,
           c: s.c,
           phase: Math.random() * Math.PI * 2,
           speed: 0.0006 + Math.random() * 0.0016,
@@ -104,7 +104,7 @@ export function HeroParticles() {
     };
 
     const resize = () => {
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      dpr = Math.min(window.devicePixelRatio || 1, 1.5);
       const rect = parent.getBoundingClientRect();
       width = rect.width;
       height = rect.height;
@@ -128,7 +128,7 @@ export function HeroParticles() {
       octx.drawImage(img, 0, 0, S, S);
       const data = octx.getImageData(0, 0, S, S).data;
       const out: { hx: number; hy: number; c: string }[] = [];
-      const gap = 2;
+      const gap = 3;
       for (let y = 0; y < S; y += gap) {
         for (let x = 0; x < S; x += gap) {
           const i = (y * S + x) * 4;
