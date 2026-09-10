@@ -213,11 +213,14 @@ export function HeroParticles() {
             }
           }
         }
-        const alpha = (0.55 + 0.45 * Math.sin(p.phase + t * 0.0009)) * p.life;
-        ctx.fillStyle = `rgba(${p.c},${Math.min(1, alpha * 1.25).toFixed(3)})`;
+        const alpha = (0.62 + 0.38 * Math.sin(p.phase + t * 0.0009)) * p.life;
+        ctx.shadowBlur = 9;
+        ctx.shadowColor = `rgba(${p.c},0.9)`;
+        ctx.fillStyle = `rgba(${p.c},${Math.min(1, alpha * 1.55).toFixed(3)})`;
         ctx.beginPath();
-        ctx.arc(bx + p.hx * size + p.ox, by + p.hy * size + p.oy, p.r, 0, Math.PI * 2);
+        ctx.arc(bx + p.hx * size + p.ox, by + p.hy * size + p.oy, p.r * 1.15, 0, Math.PI * 2);
         ctx.fill();
+        ctx.shadowBlur = 0;
       }
 
       ctx.globalCompositeOperation = "source-over";
