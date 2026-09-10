@@ -54,7 +54,7 @@ function SiteHome() {
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(90% 80% at 0% 100%, rgba(4,110,139,0.22) 0%, rgba(4,110,139,0.10) 35%, rgba(10,14,18,0) 70%)",
+            "radial-gradient(70% 65% at -5% 105%, rgba(4,110,139,0.42) 0%, rgba(4,110,139,0.22) 30%, rgba(4,110,139,0.08) 55%, rgba(10,14,18,0) 78%)",
         }}
       />
       <HeroParticles />
