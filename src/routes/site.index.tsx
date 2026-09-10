@@ -66,7 +66,7 @@ function SiteHome() {
             className={`site-orbit-word font-inter absolute ${w.style} -translate-x-1/2 whitespace-nowrap text-[12px] tracking-[0.14em] text-white/90 ${
               w.desktopOnly ? "hidden xl:block" : ""
             }`}
-            style={{ animationDelay: w.delay }}
+            style={{ animationDelay: `${(i * STAGGER).toFixed(2)}s` }}
           >
             {w.label}
           </span>
