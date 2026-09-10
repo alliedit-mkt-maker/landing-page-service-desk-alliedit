@@ -149,16 +149,25 @@ export function HeroParticles() {
       buildIcon();
     };
 
+    let halo: CanvasGradient | null = null;
+    let haloKey = "";
     const drawHalo = () => {
       const cx = iconBox.x + iconBox.size / 2;
       const cy = iconBox.y + iconBox.size / 2;
-      const g = ctx.createRadialGradient(cx, cy, iconBox.size * 0.05, cx, cy, iconBox.size * 0.78);
-      g.addColorStop(0, `rgba(4,110,139,0.30)`);
-      g.addColorStop(0.45, `rgba(4,110,139,0.12)`);
-      g.addColorStop(1, "rgba(4,110,139,0)");
-      ctx.fillStyle = g;
+      const r = iconBox.size * 0.78;
+      const key = `${cx}|${cy}|${r}`;
+      if (key !== haloKey) {
+        const g = ctx.createRadialGradient(cx, cy, iconBox.size * 0.05, cx, cy, r);
+        g.addColorStop(0, "rgba(24,150,185,0.34)");
+        g.addColorStop(0.45, "rgba(12,120,155,0.14)");
+        g.addColorStop(1, "rgba(4,110,139,0)");
+        halo = g;
+        haloKey = key;
+      }
+      if (!halo) return;
+      ctx.fillStyle = halo;
       ctx.beginPath();
-      ctx.arc(cx, cy, iconBox.size * 0.78, 0, Math.PI * 2);
+      ctx.arc(cx, cy, r, 0, Math.PI * 2);
       ctx.fill();
     };
 
