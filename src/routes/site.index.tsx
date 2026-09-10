@@ -24,14 +24,15 @@ export const Route = createFileRoute("/site/")({
 
 // Palavras em arco à esquerda do ícone. Todas compartilham o mesmo ciclo de
 // animação; o delay é apenas uma defasagem curta e progressiva (onda coesa).
-const STAGGER = 0.08; // s entre uma palavra e a seguinte
+const STAGGER = 0.35; // s entre uma palavra e a seguinte (cascata de cima para baixo)
+// Posições seguindo o arco esquerdo do ícone (elipse em torno do símbolo).
 const WORDS: { label: string; style: string; desktopOnly?: boolean }[] = [
-  { label: "Cloud Ops", style: "left-[55%] top-[12%]" },
-  { label: "Cyber Shield 360°", style: "left-[52%] top-[26%]" },
-  { label: "Infra Core", style: "left-[50%] top-[42%]" },
-  { label: "Product Engineering", style: "left-[54%] top-[58%]" },
-  { label: "Inteligência Artificial", style: "left-[64%] top-[76%]", desktopOnly: true },
-  { label: "Data Organization", style: "left-[68%] top-[89%]", desktopOnly: true },
+  { label: "Cloud Ops", style: "left-[62%] top-[10%]" },
+  { label: "Cyber Shield 360°", style: "left-[53.5%] top-[26%]" },
+  { label: "Infra Core", style: "left-[50.5%] top-[42%]" },
+  { label: "Product Engineering", style: "left-[50.5%] top-[58%]" },
+  { label: "Inteligência Artificial", style: "left-[53.5%] top-[74%]", desktopOnly: true },
+  { label: "Data Organization", style: "left-[62%] top-[90%]", desktopOnly: true },
 ];
 
 
