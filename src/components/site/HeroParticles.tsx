@@ -54,7 +54,7 @@ export function HeroParticles() {
     const parent = canvas.parentElement as HTMLElement;
 
     const buildAmbient = () => {
-      const density = width < 700 ? 34 : width < 1100 ? 55 : 78;
+      const density = width < 700 ? 22 : width < 1100 ? 34 : 46;
       ambient = Array.from({ length: density }, () => {
         // lower density on the left (text area), higher near the icon
         const biased = Math.random() ** 0.75;
@@ -84,9 +84,9 @@ export function HeroParticles() {
     };
 
     const buildIcon = () => {
-      const step = width < 700 ? 3 : 2;
+      const keep = width < 700 ? 3 : 2;
       iconParticles = sampled
-        .filter((_, i) => i % (step === 3 ? 2 : 1) === 0)
+        .filter((_, i) => i % keep === 0)
         .map((s) => ({
           hx: s.hx,
           hy: s.hy,
@@ -94,7 +94,7 @@ export function HeroParticles() {
           oy: 0,
           vx: 0,
           vy: 0,
-          r: 0.55 + Math.random() * 0.95,
+          r: 0.6 + Math.random() * 1.05,
           c: s.c,
           phase: Math.random() * Math.PI * 2,
           speed: 0.0006 + Math.random() * 0.0016,
@@ -104,7 +104,7 @@ export function HeroParticles() {
     };
 
     const resize = () => {
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      dpr = Math.min(window.devicePixelRatio || 1, 1.5);
       const rect = parent.getBoundingClientRect();
       width = rect.width;
       height = rect.height;
@@ -128,7 +128,7 @@ export function HeroParticles() {
       octx.drawImage(img, 0, 0, S, S);
       const data = octx.getImageData(0, 0, S, S).data;
       const out: { hx: number; hy: number; c: string }[] = [];
-      const gap = 2;
+      const gap = 3;
       for (let y = 0; y < S; y += gap) {
         for (let x = 0; x < S; x += gap) {
           const i = (y * S + x) * 4;
@@ -149,22 +149,38 @@ export function HeroParticles() {
       buildIcon();
     };
 
+    let halo: CanvasGradient | null = null;
+    let haloKey = "";
     const drawHalo = () => {
       const cx = iconBox.x + iconBox.size / 2;
       const cy = iconBox.y + iconBox.size / 2;
-      const g = ctx.createRadialGradient(cx, cy, iconBox.size * 0.05, cx, cy, iconBox.size * 0.78);
-      g.addColorStop(0, `rgba(4,110,139,0.30)`);
-      g.addColorStop(0.45, `rgba(4,110,139,0.12)`);
-      g.addColorStop(1, "rgba(4,110,139,0)");
-      ctx.fillStyle = g;
+      const r = iconBox.size * 0.78;
+      const key = `${cx}|${cy}|${r}`;
+      if (key !== haloKey) {
+        const g = ctx.createRadialGradient(cx, cy, iconBox.size * 0.05, cx, cy, r);
+        g.addColorStop(0, "rgba(24,150,185,0.34)");
+        g.addColorStop(0.45, "rgba(12,120,155,0.14)");
+        g.addColorStop(1, "rgba(4,110,139,0)");
+        halo = g;
+        haloKey = key;
+      }
+      if (!halo) return;
+      ctx.fillStyle = halo;
       ctx.beginPath();
-      ctx.arc(cx, cy, iconBox.size * 0.78, 0, Math.PI * 2);
+      ctx.arc(cx, cy, r, 0, Math.PI * 2);
       ctx.fill();
     };
 
     let t = 0;
-    const frame = () => {
-      t += 16;
+    let last = 0;
+    const frame = (now: number) => {
+      // limita a ~40fps: menos trabalho por segundo, mesma sensação de fluidez
+      if (now - last < 25) {
+        raf = requestAnimationFrame(frame);
+        return;
+      }
+      last = now;
+      t += 25;
       ctx.clearRect(0, 0, width, height);
       ctx.globalCompositeOperation = "lighter";
 
@@ -180,19 +196,21 @@ export function HeroParticles() {
           if (p.y > height + 10) p.y = -10;
         }
         const alpha = p.base * (0.55 + 0.45 * Math.sin(p.phase + t * p.speed));
-        ctx.fillStyle = `rgba(${p.c},${alpha.toFixed(3)})`;
+        ctx.fillStyle = `rgba(${p.c},${alpha.toFixed(2)})`;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fill();
       }
 
       const { x: bx, y: by, size } = iconBox;
+      // agrupa por cor + faixa de opacidade: poucos fillStyle e poucos paths por quadro
+      const buckets = new Map<string, Path2D>();
       for (const p of iconParticles) {
         if (!reduced) {
           if (p.drift > 0) {
             p.ox += p.vx;
             p.oy += p.vy;
-            p.life -= 0.006;
+            p.life -= 0.009;
             if (p.life <= 0) {
               p.drift = 0;
               p.ox = 0;
@@ -202,10 +220,10 @@ export function HeroParticles() {
               p.life = 0;
             }
           } else {
-            p.life = Math.min(1, p.life + 0.02);
+            p.life = Math.min(1, p.life + 0.03);
             p.ox = Math.sin(p.phase + t * p.speed) * 1.6;
             p.oy = Math.cos(p.phase * 1.3 + t * p.speed) * 1.6;
-            if (Math.random() < 0.00035) {
+            if (Math.random() < 0.0005) {
               p.drift = 1;
               const a = Math.random() * Math.PI * 2;
               p.vx = Math.cos(a) * 0.25;
@@ -213,14 +231,24 @@ export function HeroParticles() {
             }
           }
         }
-        const alpha = (0.62 + 0.38 * Math.sin(p.phase + t * 0.0009)) * p.life;
-        ctx.shadowBlur = 9;
-        ctx.shadowColor = `rgba(${p.c},0.9)`;
-        ctx.fillStyle = `rgba(${p.c},${Math.min(1, alpha * 1.55).toFixed(3)})`;
-        ctx.beginPath();
-        ctx.arc(bx + p.hx * size + p.ox, by + p.hy * size + p.oy, p.r * 1.15, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.shadowBlur = 0;
+        const alpha = Math.min(1, (0.62 + 0.38 * Math.sin(p.phase + t * 0.0009)) * p.life * 1.5);
+        const step = Math.round(alpha * 5) / 5;
+        if (step <= 0) continue;
+        const key = `${p.c}|${step}`;
+        let path = buckets.get(key);
+        if (!path) {
+          path = new Path2D();
+          buckets.set(key, path);
+        }
+        const x = bx + p.hx * size + p.ox;
+        const y = by + p.hy * size + p.oy;
+        const d = p.r * 2.2;
+        path.rect(x, y, d, d);
+      }
+      for (const [key, path] of buckets) {
+        const [c, a] = key.split("|");
+        ctx.fillStyle = `rgba(${c},${a})`;
+        ctx.fill(path);
       }
 
       ctx.globalCompositeOperation = "source-over";
