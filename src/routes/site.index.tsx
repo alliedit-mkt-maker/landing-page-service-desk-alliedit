@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { HeroParticles } from "@/components/site/HeroParticles";
 
@@ -40,6 +41,20 @@ function SiteHome() {
   const btnBase =
     "font-inter inline-flex h-11 items-center justify-center whitespace-nowrap px-7 text-[11px] font-semibold uppercase tracking-[0.16em] text-white transition-colors duration-200";
 
+  // Reinicia todas as palavras a partir do mesmo instante, mantendo a cascata
+  // de cima para baixo mesmo após remontagens (HMR, navegação).
+  const wordsRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const nodes = wordsRef.current?.querySelectorAll<HTMLElement>(".site-orbit-word");
+    nodes?.forEach((node, i) => {
+      node.style.animation = "none";
+      void node.offsetWidth;
+      node.style.animation = "";
+      node.style.animationDelay = `${(i * STAGGER).toFixed(2)}s`;
+    });
+  }, []);
+
+
   return (
     <section className="relative isolate -mt-[92px] overflow-hidden bg-[#0A0E12] pt-[92px]">
       <div
@@ -60,7 +75,11 @@ function SiteHome() {
       />
       <HeroParticles />
 
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-10 hidden lg:block">
+      <div
+        ref={wordsRef}
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-10 hidden lg:block"
+      >
         {WORDS.map((w, i) => (
           <span
             key={w.label}
