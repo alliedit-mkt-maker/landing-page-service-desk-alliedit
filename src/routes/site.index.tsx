@@ -24,12 +24,12 @@ export const Route = createFileRoute("/site/")({
 
 // Palavras distribuídas em arco à esquerda do ícone, com ritmo irregular.
 const WORDS: { label: string; style: string; delay: string; desktopOnly?: boolean }[] = [
-  { label: "Cloud Ops", style: "left-[58%] top-[14%]", delay: "0s" },
-  { label: "Cyber Shield 360°", style: "left-[50%] top-[27%]", delay: "1.3s" },
-  { label: "Infra Core", style: "left-[47%] top-[41%]", delay: "2.9s" },
-  { label: "Product Engineering", style: "left-[49%] top-[55%]", delay: "4.2s" },
-  { label: "Inteligência Artificial", style: "left-[54%] top-[69%]", delay: "5.6s", desktopOnly: true },
-  { label: "Data Organization", style: "left-[62%] top-[82%]", delay: "7s", desktopOnly: true },
+  { label: "Cloud Ops", style: "left-[55%] top-[12%]", delay: "0s" },
+  { label: "Cyber Shield 360°", style: "left-[52%] top-[26%]", delay: "1.3s" },
+  { label: "Infra Core", style: "left-[50%] top-[42%]", delay: "2.9s" },
+  { label: "Product Engineering", style: "left-[52%] top-[58%]", delay: "4.2s" },
+  { label: "Inteligência Artificial", style: "left-[55%] top-[74%]", delay: "5.6s", desktopOnly: true },
+  { label: "Data Organization", style: "left-[58%] top-[88%]", delay: "7s", desktopOnly: true },
 ];
 
 
