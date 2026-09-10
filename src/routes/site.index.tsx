@@ -27,12 +27,12 @@ export const Route = createFileRoute("/site/")({
 const STAGGER = 0.35; // s entre uma palavra e a seguinte (cascata de cima para baixo)
 // Posições seguindo o arco esquerdo do ícone (elipse em torno do símbolo).
 const WORDS: { label: string; style: string; desktopOnly?: boolean }[] = [
-  { label: "Cloud Ops", style: "left-[62%] top-[10%]" },
-  { label: "Cyber Shield 360°", style: "left-[53.5%] top-[26%]" },
-  { label: "Infra Core", style: "left-[50.5%] top-[42%]" },
-  { label: "Product Engineering", style: "left-[50.5%] top-[58%]" },
-  { label: "Inteligência Artificial", style: "left-[53.5%] top-[74%]", desktopOnly: true },
-  { label: "Data Organization", style: "left-[62%] top-[90%]", desktopOnly: true },
+  { label: "Cloud Ops", style: "left-[67%] top-[10%]" },
+  { label: "Cyber Shield 360°", style: "left-[58.5%] top-[26%]" },
+  { label: "Infra Core", style: "left-[55.5%] top-[42%]" },
+  { label: "Product Engineering", style: "left-[55.5%] top-[58%]" },
+  { label: "Inteligência Artificial", style: "left-[58.5%] top-[74%]", desktopOnly: true },
+  { label: "Data Organization", style: "left-[67%] top-[90%]", desktopOnly: true },
 ];
 
 
@@ -77,12 +77,15 @@ function SiteHome() {
 
       <div className="relative z-20 mx-auto grid min-h-[86vh] max-w-7xl grid-cols-1 items-center gap-14 px-5 py-20 sm:px-8 lg:min-h-[88vh] lg:grid-cols-[1.05fr_1fr] lg:gap-8 lg:py-24">
         <div className="text-center lg:text-left">
-          <h1 className="font-chillax mx-auto max-w-[19ch] text-[1.9rem] font-bold leading-[1.1] tracking-tight text-white sm:text-[2.5rem] lg:mx-0 lg:text-[2.9rem]">
-            Do suporte à nuvem, da rede à segurança: sua operação de TI em boas mãos
+          <h1 className="font-chillax mx-auto max-w-[24ch] text-[1.9rem] font-bold leading-[1.15] tracking-tight text-white sm:text-[2.5rem] lg:mx-0 lg:text-[2.9rem]">
+            Nós cuidamos da sua TI
+            <br />
+            Você cuida do seu Negócio
           </h1>
-          <p className="mx-auto mt-5 max-w-[46ch] text-[15px] leading-relaxed text-white/65 sm:text-base lg:mx-0">
-            A Allied IT assume a complexidade da sua tecnologia com atuação consultiva para a sua
-            empresa focar no que faz de melhor.
+          <p className="mx-auto mt-5 max-w-[52ch] text-[15px] leading-relaxed text-white/65 sm:text-base lg:mx-0">
+            A Allied IT assume a complexidade da sua tecnologia com atuação
+            <br className="hidden sm:block" />
+            consultiva para a sua empresa focar no que faz de melhor.
           </p>
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:items-start lg:justify-start">
             <Link
