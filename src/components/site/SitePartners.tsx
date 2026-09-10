@@ -62,11 +62,11 @@ export function SitePartners() {
           aria-hidden="true"
         >
           <div
-            className="site-marquee-y flex flex-col items-center gap-10"
+            className="site-marquee-y flex flex-col items-center"
             style={{ animationPlayState: running ? "running" : "paused" }}
           >
             {[...PARTNERS, ...PARTNERS].map((p, i) => (
-              <div key={`${p.name}-${i}`} className="flex h-16 w-full items-center justify-center">
+              <div key={`${p.name}-${i}`} className="flex h-24 w-full items-center justify-center">
                 {p.src ? (
                   <img
                     src={p.src}

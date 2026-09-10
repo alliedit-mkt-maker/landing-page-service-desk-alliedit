@@ -56,7 +56,8 @@ function SiteHome() {
 
 
   return (
-    <section className="relative isolate -mt-[92px] overflow-hidden bg-[#0A0E12] pt-[92px]">
+    <>
+    <section className="sticky top-0 z-0 isolate -mt-[92px] overflow-hidden bg-[#0A0E12] pt-[92px]">
       <div
         aria-hidden="true"
         className="absolute inset-0"
