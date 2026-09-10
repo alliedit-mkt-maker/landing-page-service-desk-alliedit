@@ -62,14 +62,14 @@ export function SiteNavbar() {
       </div>
 
       {open ? (
-        <div className="pointer-events-auto mx-auto mt-3 max-w-6xl rounded-3xl border border-white/60 bg-white/95 p-4 shadow-[0_10px_40px_-12px_rgba(10,14,18,0.45)] backdrop-blur-md lg:hidden">
+        <div className="pointer-events-auto mx-auto mt-3 max-w-6xl rounded-3xl border border-white/15 bg-[#0A0E12]/90 p-4 backdrop-blur-md lg:hidden">
           <nav aria-label="Navegação principal" className="flex flex-col">
             {NAV_ITEMS.map((item) => (
               <Link
                 key={item.to}
                 to={item.to}
                 onClick={() => setOpen(false)}
-                className="font-inter border-b border-[var(--site-line)] py-4 text-[16px] font-medium text-[var(--site-ink)] last:border-0"
+                className="font-inter border-b border-white/10 py-4 text-[16px] font-medium text-white last:border-0"
               >
                 {item.label}
               </Link>
@@ -77,6 +77,7 @@ export function SiteNavbar() {
           </nav>
         </div>
       ) : null}
+
     </header>
   );
 }
