@@ -60,7 +60,7 @@ function SiteHome() {
       <HeroParticles />
 
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-10 hidden lg:block">
-        {WORDS.map((w) => (
+        {WORDS.map((w, i) => (
           <span
             key={w.label}
             className={`site-orbit-word font-inter absolute ${w.style} -translate-x-1/2 whitespace-nowrap text-[12px] tracking-[0.14em] text-white/90 ${
