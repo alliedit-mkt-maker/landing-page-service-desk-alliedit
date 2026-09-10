@@ -46,7 +46,14 @@ function SiteHome() {
           background:
             "radial-gradient(120% 90% at 80% 50%, rgba(4,110,139,0.16) 0%, rgba(4,110,139,0.05) 40%, rgba(10,14,18,0) 72%)",
         }}
-
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(90% 80% at 0% 100%, rgba(4,110,139,0.22) 0%, rgba(4,110,139,0.10) 35%, rgba(10,14,18,0) 70%)",
+        }}
       />
       <HeroParticles />
 
@@ -66,15 +73,15 @@ function SiteHome() {
 
 
       <div className="relative z-20 mx-auto grid min-h-[86vh] max-w-7xl grid-cols-1 items-center gap-14 px-5 py-20 sm:px-8 lg:min-h-[88vh] lg:grid-cols-[1.05fr_1fr] lg:gap-8 lg:py-24">
-        <div>
-          <h1 className="font-chillax max-w-[19ch] text-[1.9rem] font-bold leading-[1.1] tracking-tight text-white sm:text-[2.5rem] lg:text-[2.9rem]">
+        <div className="text-center lg:text-left">
+          <h1 className="font-chillax mx-auto max-w-[19ch] text-[1.9rem] font-bold leading-[1.1] tracking-tight text-white sm:text-[2.5rem] lg:mx-0 lg:text-[2.9rem]">
             Do suporte à nuvem, da rede à segurança: sua operação de TI em boas mãos
           </h1>
-          <p className="mt-5 max-w-[46ch] text-[15px] leading-relaxed text-white/65 sm:text-base">
+          <p className="mx-auto mt-5 max-w-[46ch] text-[15px] leading-relaxed text-white/65 sm:text-base lg:mx-0">
             A Allied IT assume a complexidade da sua tecnologia com atuação consultiva para a sua
             empresa focar no que faz de melhor.
           </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:items-start lg:justify-start">
             <Link
               to="/site/contato"
               className={`${btnBase} border border-white hover:bg-white hover:text-[#0A0E12]`}
