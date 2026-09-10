@@ -27,9 +27,9 @@ const WORDS: { label: string; style: string; delay: string; desktopOnly?: boolea
   { label: "Cloud Ops", style: "left-[55%] top-[12%]", delay: "0s" },
   { label: "Cyber Shield 360°", style: "left-[52%] top-[26%]", delay: "1.3s" },
   { label: "Infra Core", style: "left-[50%] top-[42%]", delay: "2.9s" },
-  { label: "Product Engineering", style: "left-[52%] top-[58%]", delay: "4.2s" },
-  { label: "Inteligência Artificial", style: "left-[55%] top-[74%]", delay: "5.6s", desktopOnly: true },
-  { label: "Data Organization", style: "left-[58%] top-[88%]", delay: "7s", desktopOnly: true },
+  { label: "Product Engineering", style: "left-[54%] top-[58%]", delay: "4.2s" },
+  { label: "Inteligência Artificial", style: "left-[64%] top-[76%]", delay: "5.6s", desktopOnly: true },
+  { label: "Data Organization", style: "left-[68%] top-[89%]", delay: "7s", desktopOnly: true },
 ];
 
 
