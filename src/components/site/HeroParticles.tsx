@@ -76,12 +76,17 @@ export function HeroParticles() {
 
     const layoutIcon = () => {
       const mobile = width < 900;
-      // ícone grande e solto: pode sangrar para fora da borda direita
-      const size = mobile ? Math.min(width * 0.95, 480) : Math.min(height * 1.15, width * 0.62, 820);
+      const headerSafe = 120; // respiro abaixo do header flutuante
+      const available = Math.max(160, height - headerSafe - 40);
+      const size = mobile
+        ? Math.min(width * 0.7, available, 360)
+        : Math.min(available, width * 0.42, 560);
+      const cx = mobile ? width * 0.5 : width * 0.76;
+      const cy = mobile ? height * 0.7 : headerSafe + available / 2;
       iconBox = {
         size,
-        x: mobile ? width * 0.6 - size / 2 : width * 0.79 - size / 2,
-        y: mobile ? height * 0.66 - size / 2 : height * 0.52 - size / 2,
+        x: cx - size / 2,
+        y: Math.max(headerSafe, cy - size / 2),
       };
     };
 
