@@ -21,11 +21,11 @@ export function SiteNavbar() {
   }, [open]);
 
   const linkBase =
-    "font-inter relative text-[14px] font-medium tracking-tight text-[var(--site-ink)] transition-colors hover:text-[var(--site-blue)] after:absolute after:left-0 after:-bottom-1.5 after:h-[2px] after:w-0 after:bg-[var(--site-yellow)] after:transition-all after:duration-200 hover:after:w-full";
+    "font-inter relative text-[14px] font-medium tracking-tight text-white/85 transition-colors hover:text-white after:absolute after:left-0 after:-bottom-1.5 after:h-[2px] after:w-0 after:bg-[var(--site-yellow)] after:transition-all after:duration-200 hover:after:w-full";
 
   return (
     <header className="pointer-events-none fixed inset-x-0 top-4 z-50 px-4 sm:px-6">
-      <div className="pointer-events-auto mx-auto flex h-[68px] max-w-6xl items-center justify-between rounded-full border border-white/60 bg-white/85 px-5 shadow-[0_10px_40px_-12px_rgba(10,14,18,0.45)] backdrop-blur-md sm:px-7">
+      <div className="pointer-events-auto mx-auto flex h-[68px] max-w-6xl items-center justify-between px-1 sm:px-2">
         <Link
           to="/site"
           aria-label="Allied IT, ir para a página inicial"
@@ -34,6 +34,7 @@ export function SiteNavbar() {
         >
           <img src="/logo-allied-it.png" alt="Allied IT" className="h-8 w-auto" />
         </Link>
+
 
         <nav aria-label="Navegação principal" className="hidden items-center gap-8 lg:flex">
           {NAV_ITEMS.map((item) => (
