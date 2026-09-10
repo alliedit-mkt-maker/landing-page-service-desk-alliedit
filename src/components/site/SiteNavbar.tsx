@@ -54,10 +54,11 @@ export function SiteNavbar() {
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Fechar menu" : "Abrir menu"}
           aria-expanded={open}
-          className="inline-flex h-11 w-11 items-center justify-center rounded-full text-[var(--site-ink)] transition-colors hover:bg-[#F4F6F7] lg:hidden"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full text-white transition-colors hover:bg-white/10 lg:hidden"
         >
           {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
+
       </div>
 
       {open ? (
