@@ -60,7 +60,11 @@ function SiteHome() {
       />
       <HeroParticles />
 
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-10 hidden lg:block">
+      <div
+        ref={wordsRef}
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-10 hidden lg:block"
+      >
         {WORDS.map((w, i) => (
           <span
             key={w.label}
