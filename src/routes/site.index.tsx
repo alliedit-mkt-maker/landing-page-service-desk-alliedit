@@ -46,7 +46,14 @@ function SiteHome() {
           background:
             "radial-gradient(120% 90% at 80% 50%, rgba(4,110,139,0.16) 0%, rgba(4,110,139,0.05) 40%, rgba(10,14,18,0) 72%)",
         }}
-
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(90% 80% at 0% 100%, rgba(4,110,139,0.22) 0%, rgba(4,110,139,0.10) 35%, rgba(10,14,18,0) 70%)",
+        }}
       />
       <HeroParticles />
 
