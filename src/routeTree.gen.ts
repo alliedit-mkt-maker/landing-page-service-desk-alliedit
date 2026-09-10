@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as YealinkVideoconferenciaRouteImport } from './routes/yealink-videoconferencia'
 import { Route as VideoconferenciaRouteImport } from './routes/videoconferencia'
+import { Route as SiteRouteImport } from './routes/site'
 import { Route as RallyBarRouteImport } from './routes/rally-bar'
 import { Route as PolyStudioRouteImport } from './routes/poly-studio'
 import { Route as ObrigadoRouteImport } from './routes/obrigado'
@@ -23,6 +24,7 @@ import { Route as BriefingCampanhasRouteImport } from './routes/briefing-campanh
 import { Route as AssinaturasRouteImport } from './routes/assinaturas'
 import { Route as AlocacaoTiRouteImport } from './routes/alocacao-ti'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SiteIndexRouteImport } from './routes/site.index'
 
 const YealinkVideoconferenciaRoute = YealinkVideoconferenciaRouteImport.update({
   id: '/yealink-videoconferencia',
@@ -32,6 +34,11 @@ const YealinkVideoconferenciaRoute = YealinkVideoconferenciaRouteImport.update({
 const VideoconferenciaRoute = VideoconferenciaRouteImport.update({
   id: '/videoconferencia',
   path: '/videoconferencia',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SiteRoute = SiteRouteImport.update({
+  id: '/site',
+  path: '/site',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RallyBarRoute = RallyBarRouteImport.update({
@@ -94,6 +101,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SiteIndexRoute = SiteIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => SiteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -108,8 +120,10 @@ export interface FileRoutesByFullPath {
   '/obrigado': typeof ObrigadoRoute
   '/poly-studio': typeof PolyStudioRoute
   '/rally-bar': typeof RallyBarRoute
+  '/site': typeof SiteRouteWithChildren
   '/videoconferencia': typeof VideoconferenciaRoute
   '/yealink-videoconferencia': typeof YealinkVideoconferenciaRoute
+  '/site/': typeof SiteIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -126,6 +140,7 @@ export interface FileRoutesByTo {
   '/rally-bar': typeof RallyBarRoute
   '/videoconferencia': typeof VideoconferenciaRoute
   '/yealink-videoconferencia': typeof YealinkVideoconferenciaRoute
+  '/site': typeof SiteIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -141,8 +156,10 @@ export interface FileRoutesById {
   '/obrigado': typeof ObrigadoRoute
   '/poly-studio': typeof PolyStudioRoute
   '/rally-bar': typeof RallyBarRoute
+  '/site': typeof SiteRouteWithChildren
   '/videoconferencia': typeof VideoconferenciaRoute
   '/yealink-videoconferencia': typeof YealinkVideoconferenciaRoute
+  '/site/': typeof SiteIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -159,8 +176,10 @@ export interface FileRouteTypes {
     | '/obrigado'
     | '/poly-studio'
     | '/rally-bar'
+    | '/site'
     | '/videoconferencia'
     | '/yealink-videoconferencia'
+    | '/site/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -177,6 +196,7 @@ export interface FileRouteTypes {
     | '/rally-bar'
     | '/videoconferencia'
     | '/yealink-videoconferencia'
+    | '/site'
   id:
     | '__root__'
     | '/'
@@ -191,8 +211,10 @@ export interface FileRouteTypes {
     | '/obrigado'
     | '/poly-studio'
     | '/rally-bar'
+    | '/site'
     | '/videoconferencia'
     | '/yealink-videoconferencia'
+    | '/site/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -208,6 +230,7 @@ export interface RootRouteChildren {
   ObrigadoRoute: typeof ObrigadoRoute
   PolyStudioRoute: typeof PolyStudioRoute
   RallyBarRoute: typeof RallyBarRoute
+  SiteRoute: typeof SiteRouteWithChildren
   VideoconferenciaRoute: typeof VideoconferenciaRoute
   YealinkVideoconferenciaRoute: typeof YealinkVideoconferenciaRoute
 }
@@ -226,6 +249,13 @@ declare module '@tanstack/react-router' {
       path: '/videoconferencia'
       fullPath: '/videoconferencia'
       preLoaderRoute: typeof VideoconferenciaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/site': {
+      id: '/site'
+      path: '/site'
+      fullPath: '/site'
+      preLoaderRoute: typeof SiteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/rally-bar': {
@@ -312,8 +342,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/site/': {
+      id: '/site/'
+      path: '/'
+      fullPath: '/site/'
+      preLoaderRoute: typeof SiteIndexRouteImport
+      parentRoute: typeof SiteRoute
+    }
   }
 }
+
+interface SiteRouteChildren {
+  SiteIndexRoute: typeof SiteIndexRoute
+}
+
+const SiteRouteChildren: SiteRouteChildren = {
+  SiteIndexRoute: SiteIndexRoute,
+}
+
+const SiteRouteWithChildren = SiteRoute._addFileChildren(SiteRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -328,6 +375,7 @@ const rootRouteChildren: RootRouteChildren = {
   ObrigadoRoute: ObrigadoRoute,
   PolyStudioRoute: PolyStudioRoute,
   RallyBarRoute: RallyBarRoute,
+  SiteRoute: SiteRouteWithChildren,
   VideoconferenciaRoute: VideoconferenciaRoute,
   YealinkVideoconferenciaRoute: YealinkVideoconferenciaRoute,
 }
