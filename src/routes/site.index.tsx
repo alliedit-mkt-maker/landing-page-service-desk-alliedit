@@ -49,12 +49,12 @@ function SiteHome() {
       />
       <HeroParticles />
 
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-10 hidden sm:block">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-10 hidden lg:block">
         {WORDS.map((w) => (
           <span
             key={w.label}
-            className={`site-orbit-word font-inter absolute ${w.style} text-[11px] tracking-[0.16em] text-white sm:text-[12px] ${
-              w.desktopOnly ? "hidden lg:block" : ""
+            className={`site-orbit-word font-inter absolute ${w.style} -translate-x-1/2 whitespace-nowrap text-[12px] tracking-[0.14em] text-white/90 ${
+              w.desktopOnly ? "hidden xl:block" : ""
             }`}
             style={{ animationDelay: w.delay }}
           >
@@ -62,6 +62,7 @@ function SiteHome() {
           </span>
         ))}
       </div>
+
 
       <div className="relative z-20 mx-auto grid min-h-[86vh] max-w-7xl grid-cols-1 items-center gap-14 px-5 py-20 sm:px-8 lg:min-h-[88vh] lg:grid-cols-[1.05fr_1fr] lg:gap-8 lg:py-24">
         <div>
