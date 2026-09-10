@@ -60,14 +60,6 @@ export function SiteNavbar() {
           ))}
         </nav>
 
-        <div className="hidden lg:block">
-          <Link
-            to="/site/contato"
-            className="font-chillax inline-flex h-11 items-center rounded-md bg-[var(--site-blue)] px-6 text-[15px] font-medium text-white transition-colors hover:bg-[var(--site-blue-dark)]"
-          >
-            Falar com especialista
-          </Link>
-        </div>
 
         <button
           type="button"
