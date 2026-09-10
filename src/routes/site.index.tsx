@@ -67,14 +67,14 @@ function SiteHome() {
 
       <div className="relative z-20 mx-auto grid min-h-[86vh] max-w-7xl grid-cols-1 items-center gap-14 px-5 py-20 sm:px-8 lg:min-h-[88vh] lg:grid-cols-[1.05fr_1fr] lg:gap-8 lg:py-24">
         <div>
-          <h1 className="font-chillax max-w-2xl text-[2rem] font-bold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-[3.4rem]">
+          <h1 className="font-chillax max-w-[19ch] text-[1.9rem] font-bold leading-[1.1] tracking-tight text-white sm:text-[2.5rem] lg:text-[2.9rem]">
             Do suporte à nuvem, da rede à segurança: sua operação de TI em boas mãos
           </h1>
-          <p className="mt-7 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg">
+          <p className="mt-5 max-w-[46ch] text-[15px] leading-relaxed text-white/65 sm:text-base">
             A Allied IT assume a complexidade da sua tecnologia com atuação consultiva para a sua
             empresa focar no que faz de melhor.
           </p>
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link
               to="/site/contato"
               className={`${btnBase} border border-white hover:bg-white hover:text-[#0A0E12]`}
