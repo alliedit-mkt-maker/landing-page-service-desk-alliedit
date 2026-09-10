@@ -1,8 +1,9 @@
 import { useEffect, useRef } from "react";
 import symbolSrc from "@/assets/site/brand-symbol.png";
 
-const TEAL = "70,225,255";
-const YELLOW = "255,224,60";
+const TEAL = "120,205,225";
+const YELLOW = "240,215,120";
+
 
 type IconParticle = {
   hx: number; // home position, normalized 0..1 inside icon box
@@ -75,16 +76,18 @@ export function HeroParticles() {
 
     const layoutIcon = () => {
       const mobile = width < 900;
-      const size = mobile ? Math.min(width * 0.86, 420) : Math.min(height * 0.98, width * 0.42, 620);
+      // ícone grande e solto: pode sangrar para fora da borda direita
+      const size = mobile ? Math.min(width * 0.95, 480) : Math.min(height * 1.15, width * 0.62, 820);
       iconBox = {
         size,
-        x: mobile ? (width - size) / 2 : width * 0.74 - size / 2,
-        y: mobile ? height * 0.63 - size / 2 : (height - size) / 2,
+        x: mobile ? width * 0.6 - size / 2 : width * 0.79 - size / 2,
+        y: mobile ? height * 0.66 - size / 2 : height * 0.52 - size / 2,
       };
     };
 
+
     const buildIcon = () => {
-      const keep = width < 700 ? 3 : 2;
+      const keep = width < 900 ? 3 : 1;
       iconParticles = sampled
         .filter((_, i) => i % keep === 0)
         .map((s) => ({
@@ -149,28 +152,6 @@ export function HeroParticles() {
       buildIcon();
     };
 
-    let halo: CanvasGradient | null = null;
-    let haloKey = "";
-    const drawHalo = () => {
-      const cx = iconBox.x + iconBox.size / 2;
-      const cy = iconBox.y + iconBox.size / 2;
-      const r = iconBox.size * 0.78;
-      const key = `${cx}|${cy}|${r}`;
-      if (key !== haloKey) {
-        const g = ctx.createRadialGradient(cx, cy, iconBox.size * 0.05, cx, cy, r);
-        g.addColorStop(0, "rgba(24,150,185,0.34)");
-        g.addColorStop(0.45, "rgba(12,120,155,0.14)");
-        g.addColorStop(1, "rgba(4,110,139,0)");
-        halo = g;
-        haloKey = key;
-      }
-      if (!halo) return;
-      ctx.fillStyle = halo;
-      ctx.beginPath();
-      ctx.arc(cx, cy, r, 0, Math.PI * 2);
-      ctx.fill();
-    };
-
     let t = 0;
     let last = 0;
     const frame = (now: number) => {
@@ -182,10 +163,9 @@ export function HeroParticles() {
       last = now;
       t += 25;
       ctx.clearRect(0, 0, width, height);
-      ctx.globalCompositeOperation = "lighter";
 
-      drawHalo();
-
+      // partículas ambientes agrupadas por cor/opacidade (poucos draw calls)
+      const ambientBuckets = new Map<string, Path2D>();
       for (const p of ambient) {
         if (!reduced) {
           p.x += p.vx;
@@ -196,10 +176,21 @@ export function HeroParticles() {
           if (p.y > height + 10) p.y = -10;
         }
         const alpha = p.base * (0.55 + 0.45 * Math.sin(p.phase + t * p.speed));
-        ctx.fillStyle = `rgba(${p.c},${alpha.toFixed(2)})`;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fill();
+        const step = Math.round(alpha * 5) / 5;
+        if (step <= 0) continue;
+        const key = `${p.c}|${step}`;
+        let path = ambientBuckets.get(key);
+        if (!path) {
+          path = new Path2D();
+          ambientBuckets.set(key, path);
+        }
+        const d = p.r * 2;
+        path.rect(p.x, p.y, d, d);
+      }
+      for (const [key, path] of ambientBuckets) {
+        const [c, a] = key.split("|");
+        ctx.fillStyle = `rgba(${c},${a})`;
+        ctx.fill(path);
       }
 
       const { x: bx, y: by, size } = iconBox;
@@ -221,9 +212,9 @@ export function HeroParticles() {
             }
           } else {
             p.life = Math.min(1, p.life + 0.03);
-            p.ox = Math.sin(p.phase + t * p.speed) * 1.6;
-            p.oy = Math.cos(p.phase * 1.3 + t * p.speed) * 1.6;
-            if (Math.random() < 0.0005) {
+            p.ox = Math.sin(p.phase + t * p.speed) * 1.8;
+            p.oy = Math.cos(p.phase * 1.3 + t * p.speed) * 1.8;
+            if (Math.random() < 0.0006) {
               p.drift = 1;
               const a = Math.random() * Math.PI * 2;
               p.vx = Math.cos(a) * 0.25;
@@ -231,7 +222,10 @@ export function HeroParticles() {
             }
           }
         }
-        const alpha = Math.min(1, (0.62 + 0.38 * Math.sin(p.phase + t * 0.0009)) * p.life * 1.5);
+        const x = bx + p.hx * size + p.ox;
+        const y = by + p.hy * size + p.oy;
+        if (x < -20 || x > width + 20 || y < -20 || y > height + 20) continue;
+        const alpha = Math.min(0.95, (0.62 + 0.3 * Math.sin(p.phase + t * 0.0009)) * p.life);
         const step = Math.round(alpha * 5) / 5;
         if (step <= 0) continue;
         const key = `${p.c}|${step}`;
@@ -240,9 +234,7 @@ export function HeroParticles() {
           path = new Path2D();
           buckets.set(key, path);
         }
-        const x = bx + p.hx * size + p.ox;
-        const y = by + p.hy * size + p.oy;
-        const d = p.r * 2.2;
+        const d = p.r * 2.3;
         path.rect(x, y, d, d);
       }
       for (const [key, path] of buckets) {
@@ -251,7 +243,7 @@ export function HeroParticles() {
         ctx.fill(path);
       }
 
-      ctx.globalCompositeOperation = "source-over";
+
       if (!reduced) raf = requestAnimationFrame(frame);
     };
 

@@ -22,15 +22,16 @@ export const Route = createFileRoute("/site/")({
   component: SiteHome,
 });
 
-// Posições mantidas nas bordas para nunca sobrepor o ícone (zona central-direita).
+// Palavras distribuídas em arco à esquerda do ícone, com ritmo irregular.
 const WORDS: { label: string; style: string; delay: string; desktopOnly?: boolean }[] = [
-  { label: "Cloud Ops", style: "left-[3%] top-[6%]", delay: "0s" },
-  { label: "Cyber Shield 360°", style: "right-[2%] top-[4%]", delay: "1.6s" },
-  { label: "Infra Core", style: "left-[3%] top-[88%]", delay: "3.1s" },
-  { label: "Product Engineering", style: "right-[2%] bottom-[5%]", delay: "4.6s", desktopOnly: true },
-  { label: "Inteligência Artificial", style: "left-[30%] bottom-[4%]", delay: "6.1s", desktopOnly: true },
-  { label: "Data Organization", style: "left-[34%] top-[5%]", delay: "7.6s", desktopOnly: true },
+  { label: "Cloud Ops", style: "left-[55%] top-[12%]", delay: "0s" },
+  { label: "Cyber Shield 360°", style: "left-[52%] top-[26%]", delay: "1.3s" },
+  { label: "Infra Core", style: "left-[50%] top-[42%]", delay: "2.9s" },
+  { label: "Product Engineering", style: "left-[54%] top-[58%]", delay: "4.2s" },
+  { label: "Inteligência Artificial", style: "left-[64%] top-[76%]", delay: "5.6s", desktopOnly: true },
+  { label: "Data Organization", style: "left-[68%] top-[89%]", delay: "7s", desktopOnly: true },
 ];
+
 
 function SiteHome() {
   const btnBase =
@@ -43,17 +44,18 @@ function SiteHome() {
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(120% 90% at 72% 45%, rgba(4,110,139,0.30) 0%, rgba(4,110,139,0.08) 38%, rgba(10,14,18,0) 70%), radial-gradient(90% 80% at 10% 20%, rgba(255,255,255,0.05) 0%, rgba(10,14,18,0) 60%)",
+            "radial-gradient(120% 90% at 80% 50%, rgba(4,110,139,0.16) 0%, rgba(4,110,139,0.05) 40%, rgba(10,14,18,0) 72%)",
         }}
+
       />
       <HeroParticles />
 
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-10 hidden sm:block">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-10 hidden lg:block">
         {WORDS.map((w) => (
           <span
             key={w.label}
-            className={`site-orbit-word font-inter absolute ${w.style} text-[11px] tracking-[0.16em] text-white sm:text-[12px] ${
-              w.desktopOnly ? "hidden lg:block" : ""
+            className={`site-orbit-word font-inter absolute ${w.style} -translate-x-1/2 whitespace-nowrap text-[12px] tracking-[0.14em] text-white/90 ${
+              w.desktopOnly ? "hidden xl:block" : ""
             }`}
             style={{ animationDelay: w.delay }}
           >
@@ -61,6 +63,7 @@ function SiteHome() {
           </span>
         ))}
       </div>
+
 
       <div className="relative z-20 mx-auto grid min-h-[86vh] max-w-7xl grid-cols-1 items-center gap-14 px-5 py-20 sm:px-8 lg:min-h-[88vh] lg:grid-cols-[1.05fr_1fr] lg:gap-8 lg:py-24">
         <div>
