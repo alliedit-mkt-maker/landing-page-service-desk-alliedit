@@ -22,15 +22,16 @@ export const Route = createFileRoute("/site/")({
   component: SiteHome,
 });
 
-// Posições mantidas nas bordas para nunca sobrepor o ícone (zona central-direita).
+// Palavras distribuídas em arco à esquerda do ícone, com ritmo irregular.
 const WORDS: { label: string; style: string; delay: string; desktopOnly?: boolean }[] = [
-  { label: "Cloud Ops", style: "left-[3%] top-[6%]", delay: "0s" },
-  { label: "Cyber Shield 360°", style: "right-[2%] top-[4%]", delay: "1.6s" },
-  { label: "Infra Core", style: "left-[3%] top-[88%]", delay: "3.1s" },
-  { label: "Product Engineering", style: "right-[2%] bottom-[5%]", delay: "4.6s", desktopOnly: true },
-  { label: "Inteligência Artificial", style: "left-[30%] bottom-[4%]", delay: "6.1s", desktopOnly: true },
-  { label: "Data Organization", style: "left-[34%] top-[5%]", delay: "7.6s", desktopOnly: true },
+  { label: "Cloud Ops", style: "left-[58%] top-[14%]", delay: "0s" },
+  { label: "Cyber Shield 360°", style: "left-[50%] top-[27%]", delay: "1.3s" },
+  { label: "Infra Core", style: "left-[47%] top-[41%]", delay: "2.9s" },
+  { label: "Product Engineering", style: "left-[49%] top-[55%]", delay: "4.2s" },
+  { label: "Inteligência Artificial", style: "left-[54%] top-[69%]", delay: "5.6s", desktopOnly: true },
+  { label: "Data Organization", style: "left-[62%] top-[82%]", delay: "7s", desktopOnly: true },
 ];
+
 
 function SiteHome() {
   const btnBase =
