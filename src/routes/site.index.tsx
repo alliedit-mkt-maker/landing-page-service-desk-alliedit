@@ -22,14 +22,16 @@ export const Route = createFileRoute("/site/")({
   component: SiteHome,
 });
 
-// Palavras distribuídas em arco à esquerda do ícone, com ritmo irregular.
-const WORDS: { label: string; style: string; delay: string; desktopOnly?: boolean }[] = [
-  { label: "Cloud Ops", style: "left-[55%] top-[12%]", delay: "0s" },
-  { label: "Cyber Shield 360°", style: "left-[52%] top-[26%]", delay: "1.3s" },
-  { label: "Infra Core", style: "left-[50%] top-[42%]", delay: "2.9s" },
-  { label: "Product Engineering", style: "left-[54%] top-[58%]", delay: "4.2s" },
-  { label: "Inteligência Artificial", style: "left-[64%] top-[76%]", delay: "5.6s", desktopOnly: true },
-  { label: "Data Organization", style: "left-[68%] top-[89%]", delay: "7s", desktopOnly: true },
+// Palavras em arco à esquerda do ícone. Todas compartilham o mesmo ciclo de
+// animação; o delay é apenas uma defasagem curta e progressiva (onda coesa).
+const STAGGER = 0.08; // s entre uma palavra e a seguinte
+const WORDS: { label: string; style: string; desktopOnly?: boolean }[] = [
+  { label: "Cloud Ops", style: "left-[55%] top-[12%]" },
+  { label: "Cyber Shield 360°", style: "left-[52%] top-[26%]" },
+  { label: "Infra Core", style: "left-[50%] top-[42%]" },
+  { label: "Product Engineering", style: "left-[54%] top-[58%]" },
+  { label: "Inteligência Artificial", style: "left-[64%] top-[76%]", desktopOnly: true },
+  { label: "Data Organization", style: "left-[68%] top-[89%]", desktopOnly: true },
 ];
 
 
@@ -52,19 +54,19 @@ function SiteHome() {
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(90% 80% at 0% 100%, rgba(4,110,139,0.22) 0%, rgba(4,110,139,0.10) 35%, rgba(10,14,18,0) 70%)",
+            "radial-gradient(70% 65% at -5% 105%, rgba(4,110,139,0.42) 0%, rgba(4,110,139,0.22) 30%, rgba(4,110,139,0.08) 55%, rgba(10,14,18,0) 78%)",
         }}
       />
       <HeroParticles />
 
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-10 hidden lg:block">
-        {WORDS.map((w) => (
+        {WORDS.map((w, i) => (
           <span
             key={w.label}
             className={`site-orbit-word font-inter absolute ${w.style} -translate-x-1/2 whitespace-nowrap text-[12px] tracking-[0.14em] text-white/90 ${
               w.desktopOnly ? "hidden xl:block" : ""
             }`}
-            style={{ animationDelay: w.delay }}
+            style={{ animationDelay: `${(i * STAGGER).toFixed(2)}s` }}
           >
             {w.label}
           </span>
