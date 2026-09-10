@@ -75,7 +75,7 @@ export function HeroParticles() {
 
     const layoutIcon = () => {
       const mobile = width < 900;
-      const size = mobile ? Math.min(width * 0.72, 340) : Math.min(height * 0.78, width * 0.30, 420);
+      const size = mobile ? Math.min(width * 0.86, 420) : Math.min(height * 0.98, width * 0.42, 620);
       iconBox = {
         size,
         x: mobile ? (width - size) / 2 : width * 0.74 - size / 2,
