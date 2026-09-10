@@ -76,7 +76,6 @@ export function SiteNavbar() {
           aria-expanded={open}
           className="inline-flex h-11 w-11 items-center justify-center rounded-md text-[var(--site-ink)] transition-colors hover:bg-[#F4F6F7] lg:hidden"
         >
-          {open ? <Menu className="hidden" /> : null}
           {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </div>
