@@ -86,7 +86,7 @@ export function HeroParticles() {
       iconBox = {
         size,
         x: cx - size / 2,
-        y: Math.max(headerSafe, cy - size / 2),
+        y: Math.min(Math.max(headerSafe, cy - size / 2), Math.max(headerSafe, height - size - 24)),
       };
     };
 
