@@ -1,6 +1,13 @@
 import { useEffect, useRef } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { HeroParticles } from "@/components/site/HeroParticles";
+import { SiteClients } from "@/components/site/SiteClients";
+import { SiteServices } from "@/components/site/SiteServices";
+import { SiteWhyAllied } from "@/components/site/SiteWhyAllied";
+import { SitePartners } from "@/components/site/SitePartners";
+import { SiteTestimonials } from "@/components/site/SiteTestimonials";
+import { SiteCta } from "@/components/site/SiteCta";
+import { SiteFooter } from "@/components/site/SiteFooter";
 
 export const Route = createFileRoute("/site/")({
   head: () => ({
@@ -124,5 +131,14 @@ function SiteHome() {
         <div className="h-[320px] sm:h-[400px] lg:h-[560px]" aria-hidden="true" />
       </div>
     </section>
+
+      <SiteClients />
+      <SiteServices />
+      <SiteWhyAllied />
+      <SitePartners />
+      <SiteTestimonials />
+      <SiteCta />
+      <SiteFooter />
+    </>
   );
 }
