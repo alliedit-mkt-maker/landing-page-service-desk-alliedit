@@ -1,0 +1,243 @@
+import { useEffect, useRef } from "react";
+import symbolSrc from "@/assets/site/brand-symbol.png";
+
+const TEAL = "4,110,139";
+const YELLOW = "243,196,0";
+
+type IconParticle = {
+  hx: number; // home position, normalized 0..1 inside icon box
+  hy: number;
+  ox: number; // current offset in px
+  oy: number;
+  vx: number;
+  vy: number;
+  r: number;
+  c: string;
+  phase: number;
+  speed: number;
+  drift: number; // 0 = anchored, >0 = detaching
+  life: number;
+};
+
+type Ambient = {
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  r: number;
+  c: string;
+  phase: number;
+  speed: number;
+  base: number;
+};
+
+export function HeroParticles() {
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    let width = 0;
+    let height = 0;
+    let dpr = 1;
+    let raf = 0;
+    let iconParticles: IconParticle[] = [];
+    let ambient: Ambient[] = [];
+    let sampled: { hx: number; hy: number; c: string }[] = [];
+    let iconBox = { x: 0, y: 0, size: 0 };
+
+    const parent = canvas.parentElement as HTMLElement;
+
+    const buildAmbient = () => {
+      const density = width < 700 ? 34 : width < 1100 ? 55 : 78;
+      ambient = Array.from({ length: density }, () => {
+        // lower density on the left (text area), higher near the icon
+        const biased = Math.random() ** 0.75;
+        const x = (0.05 + biased * 0.95) * width;
+        return {
+          x,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.09,
+          vy: (Math.random() - 0.5) * 0.09,
+          r: 0.6 + Math.random() * 1.5,
+          c: Math.random() < 0.12 ? YELLOW : Math.random() < 0.55 ? TEAL : "255,255,255",
+          phase: Math.random() * Math.PI * 2,
+          speed: 0.0004 + Math.random() * 0.0009,
+          base: 0.12 + Math.random() * 0.3,
+        };
+      });
+    };
+
+    const layoutIcon = () => {
+      const mobile = width < 900;
+      const size = mobile ? Math.min(width * 0.72, 340) : Math.min(height * 0.86, width * 0.34, 460);
+      iconBox = {
+        size,
+        x: mobile ? (width - size) / 2 : width * 0.74 - size / 2,
+        y: mobile ? height * 0.63 - size / 2 : (height - size) / 2,
+      };
+    };
+
+    const buildIcon = () => {
+      const step = width < 700 ? 3 : 2;
+      iconParticles = sampled
+        .filter((_, i) => i % (step === 3 ? 2 : 1) === 0)
+        .map((s) => ({
+          hx: s.hx,
+          hy: s.hy,
+          ox: 0,
+          oy: 0,
+          vx: 0,
+          vy: 0,
+          r: 0.55 + Math.random() * 0.95,
+          c: s.c,
+          phase: Math.random() * Math.PI * 2,
+          speed: 0.0006 + Math.random() * 0.0016,
+          drift: 0,
+          life: 1,
+        }));
+    };
+
+    const resize = () => {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const rect = parent.getBoundingClientRect();
+      width = rect.width;
+      height = rect.height;
+      canvas.width = Math.floor(width * dpr);
+      canvas.height = Math.floor(height * dpr);
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      layoutIcon();
+      buildAmbient();
+      if (sampled.length) buildIcon();
+    };
+
+    const sampleImage = (img: HTMLImageElement) => {
+      const S = 200;
+      const off = document.createElement("canvas");
+      off.width = S;
+      off.height = S;
+      const octx = off.getContext("2d", { willReadFrequently: true });
+      if (!octx) return;
+      octx.drawImage(img, 0, 0, S, S);
+      const data = octx.getImageData(0, 0, S, S).data;
+      const out: { hx: number; hy: number; c: string }[] = [];
+      const gap = 2;
+      for (let y = 0; y < S; y += gap) {
+        for (let x = 0; x < S; x += gap) {
+          const i = (y * S + x) * 4;
+          const a = data[i + 3];
+          if (a < 120) continue;
+          const r = data[i];
+          const g = data[i + 1];
+          const b = data[i + 2];
+          const yellowish = r > 150 && g > 120 && b < 120;
+          out.push({
+            hx: (x + (Math.random() - 0.5) * gap) / S,
+            hy: (y + (Math.random() - 0.5) * gap) / S,
+            c: yellowish ? YELLOW : TEAL,
+          });
+        }
+      }
+      sampled = out;
+      buildIcon();
+    };
+
+    const drawHalo = () => {
+      const cx = iconBox.x + iconBox.size / 2;
+      const cy = iconBox.y + iconBox.size / 2;
+      const g = ctx.createRadialGradient(cx, cy, iconBox.size * 0.05, cx, cy, iconBox.size * 0.78);
+      g.addColorStop(0, `rgba(${TEAL},0.20)`);
+      g.addColorStop(0.45, `rgba(${TEAL},0.09)`);
+      g.addColorStop(1, "rgba(4,110,139,0)");
+      ctx.fillStyle = g;
+      ctx.beginPath();
+      ctx.arc(cx, cy, iconBox.size * 0.78, 0, Math.PI * 2);
+      ctx.fill();
+    };
+
+    let t = 0;
+    const frame = () => {
+      t += 16;
+      ctx.clearRect(0, 0, width, height);
+      ctx.globalCompositeOperation = "lighter";
+
+      drawHalo();
+
+      for (const p of ambient) {
+        if (!reduced) {
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < -10) p.x = width + 10;
+          if (p.x > width + 10) p.x = -10;
+          if (p.y < -10) p.y = height + 10;
+          if (p.y > height + 10) p.y = -10;
+        }
+        const alpha = p.base * (0.55 + 0.45 * Math.sin(p.phase + t * p.speed));
+        ctx.fillStyle = `rgba(${p.c},${alpha.toFixed(3)})`;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      const { x: bx, y: by, size } = iconBox;
+      for (const p of iconParticles) {
+        if (!reduced) {
+          if (p.drift > 0) {
+            p.ox += p.vx;
+            p.oy += p.vy;
+            p.life -= 0.006;
+            if (p.life <= 0) {
+              p.drift = 0;
+              p.ox = 0;
+              p.oy = 0;
+              p.vx = 0;
+              p.vy = 0;
+              p.life = 0;
+            }
+          } else {
+            p.life = Math.min(1, p.life + 0.02);
+            p.ox = Math.sin(p.phase + t * p.speed) * 1.6;
+            p.oy = Math.cos(p.phase * 1.3 + t * p.speed) * 1.6;
+            if (Math.random() < 0.00035) {
+              p.drift = 1;
+              const a = Math.random() * Math.PI * 2;
+              p.vx = Math.cos(a) * 0.25;
+              p.vy = Math.sin(a) * 0.25 - 0.12;
+            }
+          }
+        }
+        const alpha = (0.55 + 0.45 * Math.sin(p.phase + t * 0.0009)) * p.life;
+        ctx.fillStyle = `rgba(${p.c},${(alpha * 0.85).toFixed(3)})`;
+        ctx.beginPath();
+        ctx.arc(bx + p.hx * size + p.ox, by + p.hy * size + p.oy, p.r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      ctx.globalCompositeOperation = "source-over";
+      if (!reduced) raf = requestAnimationFrame(frame);
+    };
+
+    resize();
+    const img = new Image();
+    img.src = symbolSrc;
+    img.onload = () => sampleImage(img);
+
+    raf = requestAnimationFrame(frame);
+    const ro = new ResizeObserver(() => resize());
+    ro.observe(parent);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      ro.disconnect();
+    };
+  }, []);
+
+  return <canvas ref={canvasRef} aria-hidden="true" className="pointer-events-none absolute inset-0 h-full w-full" />;
+}
