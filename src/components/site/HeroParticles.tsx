@@ -1,8 +1,9 @@
 import { useEffect, useRef } from "react";
 import symbolSrc from "@/assets/site/brand-symbol.png";
 
-const TEAL = "70,225,255";
-const YELLOW = "255,224,60";
+const TEAL = "120,205,225";
+const YELLOW = "240,215,120";
+
 
 type IconParticle = {
   hx: number; // home position, normalized 0..1 inside icon box
