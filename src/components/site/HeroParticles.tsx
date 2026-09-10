@@ -77,17 +77,17 @@ export function HeroParticles() {
     const layoutIcon = () => {
       const mobile = width < 900;
       // ícone grande e solto: pode sangrar para fora da borda direita
-      const size = mobile ? Math.min(width * 0.95, 480) : Math.min(height * 1.05, width * 0.52, 720);
+      const size = mobile ? Math.min(width * 0.95, 480) : Math.min(height * 1.15, width * 0.62, 820);
       iconBox = {
         size,
-        x: mobile ? width * 0.6 - size / 2 : width * 0.88 - size / 2,
+        x: mobile ? width * 0.6 - size / 2 : width * 0.79 - size / 2,
         y: mobile ? height * 0.66 - size / 2 : height * 0.52 - size / 2,
       };
     };
 
 
     const buildIcon = () => {
-      const keep = width < 900 ? 3 : 2;
+      const keep = width < 900 ? 3 : 1;
       iconParticles = sampled
         .filter((_, i) => i % keep === 0)
         .map((s) => ({
@@ -225,7 +225,7 @@ export function HeroParticles() {
         const x = bx + p.hx * size + p.ox;
         const y = by + p.hy * size + p.oy;
         if (x < -20 || x > width + 20 || y < -20 || y > height + 20) continue;
-        const alpha = Math.min(0.85, (0.45 + 0.3 * Math.sin(p.phase + t * 0.0009)) * p.life);
+        const alpha = Math.min(0.95, (0.62 + 0.3 * Math.sin(p.phase + t * 0.0009)) * p.life);
         const step = Math.round(alpha * 5) / 5;
         if (step <= 0) continue;
         const key = `${p.c}|${step}`;
@@ -234,7 +234,7 @@ export function HeroParticles() {
           path = new Path2D();
           buckets.set(key, path);
         }
-        const d = p.r * 2;
+        const d = p.r * 2.3;
         path.rect(x, y, d, d);
       }
       for (const [key, path] of buckets) {
