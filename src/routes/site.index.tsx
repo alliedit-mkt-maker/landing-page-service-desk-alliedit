@@ -35,7 +35,7 @@ const WORDS: { label: string; style: string; delay: string; desktopOnly?: boolea
 
 function SiteHome() {
   const btnBase =
-    "font-inter inline-flex h-14 items-center justify-center whitespace-nowrap px-9 text-[13px] font-semibold uppercase tracking-[0.14em] text-white transition-colors duration-200";
+    "font-inter inline-flex h-11 items-center justify-center whitespace-nowrap px-7 text-[11px] font-semibold uppercase tracking-[0.16em] text-white transition-colors duration-200";
 
   return (
     <section className="relative isolate -mt-[92px] overflow-hidden bg-[#0A0E12] pt-[92px]">
