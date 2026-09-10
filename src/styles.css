@@ -314,15 +314,15 @@
 
 @keyframes site-blur-reveal {
   0% { opacity: 0; filter: blur(12px); transform: translate3d(0, 8px, 0); }
-  18% { opacity: 1; filter: blur(0); transform: translate3d(0, 0, 0); }
-  70% { opacity: 1; filter: blur(0); transform: translate3d(0, 0, 0); }
-  88% { opacity: 0; filter: blur(12px); transform: translate3d(0, -8px, 0); }
+  12% { opacity: 1; filter: blur(0); transform: translate3d(0, 0, 0); }
+  62% { opacity: 1; filter: blur(0); transform: translate3d(0, 0, 0); }
+  76% { opacity: 0; filter: blur(12px); transform: translate3d(0, -8px, 0); }
   100% { opacity: 0; filter: blur(12px); transform: translate3d(0, -8px, 0); }
 }
 .site-orbit-word {
   opacity: 0;
-  /* ciclo único e compartilhado por todas as palavras */
-  animation: site-blur-reveal 9s ease-in-out infinite;
+  /* ciclo compartilhado; o delay por palavra cria a cascata de cima para baixo */
+  animation: site-blur-reveal 10s ease-in-out infinite;
   white-space: nowrap;
 }
 @media (prefers-reduced-motion: reduce) {
