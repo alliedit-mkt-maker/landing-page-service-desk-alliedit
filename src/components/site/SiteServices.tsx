@@ -1,129 +1,144 @@
-import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, Cloud, Cpu, Headset, Server, ShieldCheck, Sparkles } from "lucide-react";
+
+const STEPS = [
+  {
+    label: "Estudo do cenário",
+    text: "Mapeamos ambiente, riscos e prioridades antes de propor qualquer solução.",
+  },
+  {
+    label: "Implementação",
+    text: "Execução com plano, cronograma e time dedicado, sem parar sua operação.",
+  },
+  {
+    label: "Resultados",
+    text: "Indicadores, SLA e evolução contínua com relatórios claros de performance.",
+  },
+] as const;
 
 const SERVICES = [
   {
     icon: Headset,
     title: "Digital Workspace",
     text: "Suporte ao usuário, remoto e presencial, com SLA garantido e gestão centralizada.",
-    to: "/site/servicos",
+    highlight: "Atendimento com SLA",
+    metric: "98%",
+    metricLabel: "chamados no prazo",
   },
   {
     icon: Cloud,
     title: "Smart Cloud Ops",
     text: "Gestão de nuvem com foco em FinOps, SecOps e bancos de dados escaláveis.",
-    to: "/site/servicos",
+    highlight: "FinOps aplicado",
+    metric: "-30%",
+    metricLabel: "custo de nuvem",
   },
   {
     icon: ShieldCheck,
     title: "Cyber Shield 360°",
     text: "SOC e NOC 24x7, proteção de endpoints, firewall, LGPD e cultura de segurança.",
-    to: "/site/servicos",
+    highlight: "Monitoramento 24x7",
+    metric: "24/7",
+    metricLabel: "vigilância ativa",
   },
   {
     icon: Server,
     title: "Infra Core",
     text: "Projetos de rede, cabeamento, data center e modernização de ambientes físicos.",
-    to: "/site/servicos",
+    highlight: "Projeto ponta a ponta",
+    metric: "+500",
+    metricLabel: "pontos entregues",
   },
   {
     icon: Cpu,
     title: "Product Engineering",
     text: "Ferramentas sob medida: automação, integração de sistemas e desenvolvimento.",
-    to: "/site/servicos",
+    highlight: "Software sob medida",
+    metric: "+40",
+    metricLabel: "processos automatizados",
   },
   {
     icon: Sparkles,
     title: "Inteligência Artificial",
     text: "Soluções de IA aplicadas à operação, da automação inteligente à análise de dados.",
-    to: "/site/servicos",
+    highlight: "IA aplicada",
+    metric: "3x",
+    metricLabel: "ganho de produtividade",
   },
 ] as const;
 
 export function SiteServices() {
-  const wrapRef = useRef<HTMLDivElement>(null);
-  const [revealed, setRevealed] = useState(0);
-
-  useEffect(() => {
-    const el = wrapRef.current;
-    if (!el) return;
-    if (window.matchMedia("(max-width: 1023px)").matches) {
-      setRevealed(SERVICES.length);
-      return;
-    }
-    let raf = 0;
-    const onScroll = () => {
-      if (raf) return;
-      raf = requestAnimationFrame(() => {
-        raf = 0;
-        const rect = el.getBoundingClientRect();
-        const total = rect.height - window.innerHeight;
-        if (total <= 0) return;
-        const p = Math.min(1, Math.max(0, -rect.top / total));
-        setRevealed(Math.min(SERVICES.length, Math.ceil(p * (SERVICES.length + 0.6))));
-      });
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-    };
-  }, []);
-
   return (
-    <section aria-labelledby="site-servicos" className="relative z-10 bg-white">
-      <div ref={wrapRef} className="lg:h-[320vh]">
-        <div className="lg:sticky lg:top-0 lg:flex lg:h-screen lg:flex-col lg:justify-center">
-          <div className="mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:py-0">
-            <h2
-              id="site-servicos"
-              className="font-chillax max-w-[20ch] text-[1.7rem] font-bold leading-tight tracking-tight text-[var(--site-ink)] sm:text-[2.1rem]"
-            >
-              Soluções completas para toda a sua operação de TI
-            </h2>
-            <p className="font-inter mt-4 max-w-[62ch] text-[15px] leading-relaxed text-[var(--site-muted)]">
-              Da porta de entrada do usuário ao core da infraestrutura, cobrimos cada camada da sua
-              tecnologia.
-            </p>
+    <section aria-labelledby="site-servicos" className="relative z-10 bg-white py-20 sm:py-28">
+      <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
+        <h2
+          id="site-servicos"
+          className="font-chillax max-w-[22ch] text-[2rem] font-bold leading-[1.1] tracking-tight text-[var(--site-ink)] sm:text-[2.8rem]"
+        >
+          Soluções completas para toda a sua operação de TI
+        </h2>
 
-            <div className="-mx-5 mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-4 sm:px-8 lg:mx-0 lg:grid lg:grid-cols-6 lg:gap-4 lg:overflow-visible lg:px-0 lg:pb-0">
-              {SERVICES.map((s, i) => {
-                const Icon = s.icon;
-                const on = i < revealed;
-                return (
-                  <Link
-                    key={s.title}
-                    to={s.to}
-                    className="group flex w-[78vw] shrink-0 snap-start flex-col border border-[var(--site-line)] p-6 transition-[transform,opacity,border-color] duration-500 ease-out hover:border-[var(--site-blue)] sm:w-[42vw] lg:w-auto"
-                    style={{
-                      opacity: on ? 1 : 0,
-                      transform: on ? "translateX(0)" : "translateX(48px)",
-                    }}
-                  >
-                    <Icon
-                      className="h-7 w-7 stroke-[1.25]"
-                      style={{ color: "var(--site-blue)" }}
-                      aria-hidden="true"
-                    />
-                    <h3 className="font-chillax mt-6 text-[17px] font-semibold leading-snug text-[var(--site-ink)]">
-                      {s.title}
-                    </h3>
-                    <p className="font-inter mt-3 flex-1 text-[13.5px] leading-relaxed text-[var(--site-muted)]">
-                      {s.text}
-                    </p>
-                    <span className="font-inter mt-6 inline-flex items-center gap-1.5 text-[12px] font-semibold text-[var(--site-blue)]">
-                      Saiba mais
-                      <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-                    </span>
-                  </Link>
-                );
-              })}
+        {/* Timeline de metodologia */}
+        <div className="mt-14 grid grid-cols-1 gap-8 border-t border-[var(--site-line)] pt-8 sm:grid-cols-3 sm:gap-10">
+          {STEPS.map((s, i) => (
+            <div key={s.label} className="relative">
+              <span
+                aria-hidden="true"
+                className="absolute -top-[41px] left-0 h-[7px] w-[7px] bg-[var(--site-blue)]"
+              />
+              <p className="font-inter text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--site-ink)]">
+                {String(i + 1).padStart(2, "0")} — {s.label}
+              </p>
+              <p className="font-inter mt-3 max-w-[40ch] text-[13.5px] leading-relaxed text-[var(--site-muted)]">
+                {s.text}
+              </p>
             </div>
-          </div>
+          ))}
+        </div>
+
+        {/* Cards das soluções */}
+        <div className="mt-14 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {SERVICES.map((s) => {
+            const Icon = s.icon;
+            return (
+              <Link
+                key={s.title}
+                to="/site/servicos"
+                className="group relative flex min-h-[300px] flex-col justify-between overflow-hidden rounded-2xl p-7 transition-transform duration-300 hover:-translate-y-1"
+                style={{
+                  background:
+                    "linear-gradient(160deg, #E9EDEF 0%, #9FB6BF 22%, #076F8C 58%, #0A1E27 88%, #05090C 100%)",
+                }}
+              >
+                <div>
+                  <Icon className="h-6 w-6 stroke-[1.25] text-[var(--site-ink)]" aria-hidden="true" />
+                  <h3 className="font-chillax mt-5 text-[19px] font-semibold leading-snug text-[var(--site-ink)]">
+                    {s.title}
+                  </h3>
+                  <p className="font-inter mt-2 max-w-[34ch] text-[13px] leading-relaxed text-[var(--site-ink)]/70">
+                    {s.highlight}
+                  </p>
+                </div>
+
+                <div className="mt-8 rounded-xl bg-white p-5 shadow-[0_10px_30px_-12px_rgba(5,9,12,0.55)]">
+                  <p className="font-inter text-[13px] leading-relaxed text-[var(--site-muted)]">
+                    {s.text}
+                  </p>
+                  <div className="mt-4 flex items-end justify-between border-t border-[var(--site-line)] pt-4">
+                    <div>
+                      <span className="font-chillax block text-[22px] font-bold leading-none text-[var(--site-blue)]">
+                        {s.metric}
+                      </span>
+                      <span className="font-inter mt-1 block text-[11px] uppercase tracking-[0.14em] text-[var(--site-muted)]">
+                        {s.metricLabel}
+                      </span>
+                    </div>
+                    <ArrowRight className="h-4 w-4 text-[var(--site-blue)] transition-transform group-hover:translate-x-1" />
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </div>
     </section>
