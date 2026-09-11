@@ -20,14 +20,15 @@ export function SiteClients() {
   return (
     <section
       aria-labelledby="site-clientes"
-      className="relative z-10 rounded-t-[24px] bg-white py-12 sm:py-16"
+      className="relative z-10 rounded-t-[24px] bg-white py-20 sm:py-28"
     >
       <h2
         id="site-clientes"
-        className="font-inter mb-8 text-center text-[10px] font-medium uppercase tracking-[0.28em] text-[var(--site-muted)]"
+        className="font-inter mb-14 text-center text-[11px] font-medium uppercase tracking-[0.28em] text-[var(--site-muted)]"
       >
         Alguns dos nossos clientes
       </h2>
+
 
       <div
         className="group relative overflow-hidden"
@@ -39,14 +40,15 @@ export function SiteClients() {
       >
         <div className="flex w-max animate-marquee items-center group-hover:[animation-play-state:paused]">
           {[...LOGOS, ...LOGOS].map((logo, i) => (
-            <div key={`${logo.name}-${i}`} className="flex shrink-0 items-center px-9 md:px-12">
+            <div key={`${logo.name}-${i}`} className="flex shrink-0 items-center px-12 md:px-16">
               <img
                 src={logo.src}
                 alt={logo.name}
                 loading="lazy"
                 style={{ mixBlendMode: "multiply" }}
-                className="h-[46px] w-auto object-contain opacity-60 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0 md:h-[54px]"
+                className="h-[92px] w-auto object-contain opacity-60 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0 md:h-[108px]"
               />
+
             </div>
           ))}
         </div>
