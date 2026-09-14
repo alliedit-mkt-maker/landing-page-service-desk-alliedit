@@ -12,6 +12,7 @@ const NAV_ITEMS = [
 
 export function SiteNavbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -20,12 +21,27 @@ export function SiteNavbar() {
     };
   }, [open]);
 
+  useEffect(() => {
+    const onScroll = () => {
+      setScrolled(window.scrollY > window.innerHeight * 0.7);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   const linkBase =
     "font-inter relative text-[14px] font-medium tracking-tight text-white/85 transition-colors hover:text-white after:absolute after:left-0 after:-bottom-1.5 after:h-[2px] after:w-0 after:bg-[var(--site-yellow)] after:transition-all after:duration-200 hover:after:w-full";
 
   return (
     <header className="pointer-events-none fixed inset-x-0 top-4 z-50 px-4 sm:px-6">
-      <div className="pointer-events-auto mx-auto flex h-[68px] max-w-6xl items-center justify-between px-1 sm:px-2">
+      <div
+        className={`pointer-events-auto mx-auto flex h-[68px] max-w-6xl items-center justify-between rounded-full px-4 transition-all duration-300 sm:px-6 ${
+          scrolled
+            ? "border border-white/15 bg-[#0A0E12]/55 shadow-[0_8px_32px_-12px_rgba(0,0,0,0.5)] backdrop-blur-xl"
+            : "border border-transparent"
+        }`}
+      >
         <Link
           to="/site"
           aria-label="Allied IT, ir para a página inicial"
