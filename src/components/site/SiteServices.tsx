@@ -80,14 +80,14 @@ export function SiteServices() {
         </div>
 
         {/* Cards das soluções */}
-        <div className="mt-14 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-14 grid auto-rows-fr grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
           {SERVICES.map((s) => {
             const Icon = s.icon;
             return (
               <Link
                 key={s.title}
                 to="/site/servicos"
-                className="group relative flex min-h-[300px] flex-col justify-between overflow-hidden rounded-2xl p-7 transition-transform duration-300 hover:-translate-y-1"
+                className="group relative flex h-full min-h-[210px] flex-col justify-between overflow-hidden rounded-2xl p-6 transition-transform duration-300 hover:-translate-y-1"
                 style={{
                   background:
                     "linear-gradient(160deg, #E9EDEF 0%, #9FB6BF 22%, #076F8C 58%, #0A1E27 88%, #05090C 100%)",
@@ -95,18 +95,19 @@ export function SiteServices() {
               >
                 <span aria-hidden="true" className="site-noise" />
                 <div className="relative">
-                  <Icon className="h-6 w-6 stroke-[1.25] text-[var(--site-ink)]" aria-hidden="true" />
-                  <h3 className="font-chillax mt-5 text-[19px] font-semibold leading-snug text-[var(--site-ink)]">
+                  <Icon className="h-5 w-5 stroke-[1.25] text-[var(--site-ink)]" aria-hidden="true" />
+                  <h3 className="font-chillax mt-4 text-[18px] font-semibold leading-snug text-[var(--site-ink)]">
                     {s.title}
                   </h3>
                 </div>
 
-                <div className="relative mt-8 flex items-end justify-between gap-4 rounded-xl bg-white p-5 shadow-[0_10px_30px_-12px_rgba(5,9,12,0.55)]">
-                  <p className="font-inter text-[13px] leading-relaxed text-[var(--site-muted)]">
+                <div className="relative mt-6 flex items-end justify-between gap-3 rounded-xl bg-white p-4 shadow-[0_10px_30px_-12px_rgba(5,9,12,0.55)]">
+                  <p className="font-inter text-[12.5px] leading-relaxed text-[var(--site-muted)]">
                     {s.text}
                   </p>
                   <ArrowRight className="h-4 w-4 shrink-0 text-[var(--site-blue)] transition-transform group-hover:translate-x-1" />
                 </div>
+
 
               </Link>
             );
