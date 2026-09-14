@@ -312,6 +312,11 @@
   font-family: 'Inter', system-ui, sans-serif;
 }
 
+/* deixa o amarelo do logo no mesmo tom mostarda dos demais elementos (branco nao e afetado) */
+.site-logo-mustard {
+  filter: hue-rotate(-9deg) saturate(1.35);
+}
+
 @keyframes site-blur-reveal {
   0% { opacity: 0; filter: blur(12px); transform: translate3d(0, 8px, 0); }
   12% { opacity: 1; filter: blur(0); transform: translate3d(0, 0, 0); }

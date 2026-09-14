@@ -90,7 +90,7 @@ export function SiteServices() {
                 className="group relative flex h-full min-h-[210px] flex-col justify-between overflow-hidden rounded-2xl p-6 transition-transform duration-300 hover:-translate-y-1"
                 style={{
                   background:
-                    "linear-gradient(160deg, #E9EDEF 0%, #9FB6BF 22%, #076F8C 58%, #0A1E27 88%, #05090C 100%)",
+                    "linear-gradient(160deg, #0A8BAE 0%, #076F8C 32%, #0A1E27 78%, #05090C 100%)",
                 }}
               >
                 <span aria-hidden="true" className="site-noise" />

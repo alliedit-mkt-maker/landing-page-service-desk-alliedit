@@ -48,7 +48,7 @@ export function SiteNavbar() {
           onClick={() => setOpen(false)}
           className="flex items-center"
         >
-          <img src="/logo-allied-it.png" alt="Allied IT" className="h-8 w-auto" />
+          <img src="/logo-allied-it.png" alt="Allied IT" className="site-logo-mustard h-8 w-auto" />
         </Link>
 
 
