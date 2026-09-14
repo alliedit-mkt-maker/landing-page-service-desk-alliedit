@@ -42,13 +42,16 @@ export function SitePartners() {
         <div>
           <h2
             id="site-parceiros"
-            className="font-chillax max-w-[18ch] text-[1.7rem] font-bold leading-[1.15] tracking-tight text-[var(--site-ink)] sm:text-[2.1rem]"
+            className="font-chillax text-[1.7rem] font-bold leading-[1.15] tracking-tight text-[var(--site-ink)] sm:text-[2.1rem]"
           >
-            Parceiros oficiais das principais marcas de tecnologia
+            Parceiros oficiais das principais
+            <br />
+            marcas de tecnologia
           </h2>
-          <p className="font-inter mt-5 max-w-[54ch] text-[15px] leading-relaxed text-[var(--site-muted)]">
-            Trabalhamos com quem lidera o mercado, para entregar a solução certa, com garantia de
-            fábrica e suporte de quem entende de operação.
+          <p className="font-inter mt-5 text-[14px] leading-relaxed text-[var(--site-muted)]">
+            Trabalhamos com quem lidera o mercado, para entregar a solução certa,
+            <br />
+            com garantia de fábrica e suporte de quem entende de operação.
           </p>
         </div>
 
