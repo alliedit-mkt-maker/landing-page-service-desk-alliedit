@@ -1,97 +1,81 @@
-import { useEffect, useRef, useState } from "react";
+import { Link } from "@tanstack/react-router";
+import { ArrowRight } from "lucide-react";
 
 const POINTS = [
   {
-    title: "Gestão por indicadores",
-    text: "Decisões baseadas em dados e SLA, com transparência total.",
+    title: "+7 anos operando TI corporativa",
+    text: "Operação madura, processos parametrizados, equipe que já viu de tudo.",
   },
   {
-    title: "Atendimento humanizado",
-    text: "Você fala com gente que entende do seu negócio, não com um script.",
+    title: "Especialização vertical real",
+    text: "Hotelaria, saúde, varejo multi-unidade, farma, logística. Sabemos a particularidade de cada setor.",
   },
   {
-    title: "Operação madura",
-    text: "Processos parametrizados, equipe que já viu (e resolveu) de tudo.",
+    title: "Service Desk integrado com NOC e SOC",
+    text: "Monitoramento ativo de infra e segurança no mesmo time que opera o atendimento. Sem retrabalho.",
+  },
+  {
+    title: "Crescemos com você",
+    text: "Mais de 10 unidades de Louvre Hotels Group, 7 de Body Tech, multi-CNPJ na Mundial. Você expande, a gente acompanha.",
+  },
+  {
+    title: "Foco no que não é seu core",
+    text: "Você cuida do que faz a empresa única. A gente cuida da operação técnica.",
   },
 ];
 
-function useCountUp(target: number) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const [value, setValue] = useState(0);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    let raf = 0;
-    const io = new IntersectionObserver(
-      (entries) => {
-        if (!entries[0]?.isIntersecting) return;
-        io.disconnect();
-        const start = performance.now();
-        const tick = (now: number) => {
-          const p = Math.min(1, (now - start) / 1200);
-          setValue(Math.round(target * (1 - Math.pow(1 - p, 3))));
-          if (p < 1) raf = requestAnimationFrame(tick);
-        };
-        raf = requestAnimationFrame(tick);
-      },
-      { threshold: 0.4 },
-    );
-    io.observe(el);
-    return () => {
-      io.disconnect();
-      cancelAnimationFrame(raf);
-    };
-  }, [target]);
-
-  return { ref, value };
-}
-
 export function SiteWhyAllied() {
-  const { ref, value } = useCountUp(7);
-
   return (
-    <section aria-labelledby="site-why" className="relative z-10 bg-[#0A0E12] py-20 sm:py-28">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-14 px-5 sm:px-8 lg:grid-cols-2 lg:gap-20">
-        <div>
-          <h2
-            id="site-why"
-            className="font-chillax max-w-[16ch] text-[1.8rem] font-bold leading-[1.15] tracking-tight text-white sm:text-[2.3rem]"
+    <section
+      aria-labelledby="site-why"
+      className="relative z-10 overflow-hidden py-20 sm:py-28"
+      style={{
+        background:
+          "linear-gradient(160deg, #E9EDEF 0%, #9FB6BF 18%, #076F8C 52%, #0A1E27 84%, #05090C 100%)",
+      }}
+    >
+      <span aria-hidden="true" className="site-noise" />
+
+      <div className="relative mx-auto w-full max-w-7xl px-5 sm:px-8">
+        <h2
+          id="site-why"
+          className="font-chillax max-w-[24ch] text-[1.9rem] font-bold leading-[1.12] tracking-tight text-white sm:text-[2.6rem]"
+        >
+          Mais que um fornecedor de TI. Um parceiro de operação.
+        </h2>
+        <p className="font-inter mt-5 max-w-[58ch] text-[15px] leading-relaxed text-white/70">
+          Cada projeto desenhado para a sua realidade, não um pacote de prateleira. A gente assume a
+          complexidade pra você focar no que faz de melhor.
+        </p>
+
+        <div className="mt-14 grid auto-rows-fr grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {POINTS.map((p, i) => (
+            <div
+              key={p.title}
+              className="flex h-full flex-col border border-white/25 bg-white/[0.08] p-7 backdrop-blur-sm"
+            >
+              <span className="font-inter text-[12px] font-semibold tracking-[0.18em] text-[var(--site-yellow)]">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <h3 className="font-chillax mt-5 text-[19px] font-semibold leading-snug text-white">
+                {p.title}
+              </h3>
+              <p className="font-inter mt-3 text-[14px] leading-relaxed text-white/70">{p.text}</p>
+            </div>
+          ))}
+
+          <Link
+            to="/site/contato"
+            className="group flex h-full flex-col items-center justify-center gap-3 border border-white/35 bg-white/[0.14] p-7 text-center backdrop-blur-sm transition-colors hover:bg-white/[0.2]"
           >
-            Mais que um fornecedor de TI. Um parceiro de operação.
-          </h2>
-          <p className="font-inter mt-6 max-w-[54ch] text-[15px] leading-relaxed text-white/65">
-            Cada projeto desenhado para a sua realidade, não um pacote de prateleira. A gente assume
-            a complexidade pra você focar no que faz de melhor.
-          </p>
-        </div>
-
-        <div>
-          <p className="font-chillax flex items-baseline gap-3 text-white">
-            <span ref={ref} className="text-[4rem] font-bold leading-none sm:text-[5rem]">
-              +{value}
+            <span className="font-chillax text-[20px] font-bold text-white">
+              Falar com especialista
             </span>
-            <span className="font-inter text-[13px] uppercase tracking-[0.18em] text-white/60">
-              anos de operação
+            <span className="font-inter inline-flex items-center gap-2 text-[12px] font-semibold uppercase tracking-[0.18em] text-[var(--site-yellow)]">
+              Iniciar conversa
+              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
             </span>
-          </p>
-
-          <ul className="mt-12 space-y-8">
-            {POINTS.map((p) => (
-              <li key={p.title} className="flex gap-5">
-                <span
-                  aria-hidden="true"
-                  className="mt-3 h-px w-8 shrink-0 bg-[var(--site-yellow)]"
-                />
-                <div>
-                  <h3 className="font-chillax text-[17px] font-semibold text-white">{p.title}</h3>
-                  <p className="font-inter mt-1.5 max-w-[46ch] text-[14px] leading-relaxed text-white/60">
-                    {p.text}
-                  </p>
-                </div>
-              </li>
-            ))}
-          </ul>
+          </Link>
         </div>
       </div>
     </section>
