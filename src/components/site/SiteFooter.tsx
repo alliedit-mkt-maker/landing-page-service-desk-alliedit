@@ -30,7 +30,7 @@ export function SiteFooter() {
     <footer className="relative z-10 bg-[#0A0E12] pt-16">
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-5 sm:grid-cols-2 sm:px-8 lg:grid-cols-5">
         <div className="lg:col-span-1">
-          <img src="/logo-allied-it.png" alt="Allied IT" className="h-8 w-auto" />
+          <img src="/logo-allied-it.png" alt="Allied IT" className="site-logo-mustard h-8 w-auto" />
           <p className="font-inter mt-5 max-w-[34ch] text-[13.5px] leading-relaxed text-white/55">
             Serviços gerenciados, infraestrutura e produtos de TI para empresas que precisam de uma
             operação estável e previsível.
