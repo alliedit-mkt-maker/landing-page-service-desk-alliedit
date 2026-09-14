@@ -121,22 +121,13 @@ export function SiteServices() {
                   </p>
                 </div>
 
-                <div className="relative mt-8 rounded-xl bg-white p-5 shadow-[0_10px_30px_-12px_rgba(5,9,12,0.55)]">
+                <div className="relative mt-8 flex items-end justify-between gap-4 rounded-xl bg-white p-5 shadow-[0_10px_30px_-12px_rgba(5,9,12,0.55)]">
                   <p className="font-inter text-[13px] leading-relaxed text-[var(--site-muted)]">
                     {s.text}
                   </p>
-                  <div className="mt-4 flex items-end justify-between border-t border-[var(--site-line)] pt-4">
-                    <div>
-                      <span className="font-chillax block text-[22px] font-bold leading-none text-[var(--site-blue)]">
-                        {s.metric}
-                      </span>
-                      <span className="font-inter mt-1 block text-[11px] uppercase tracking-[0.14em] text-[var(--site-muted)]">
-                        {s.metricLabel}
-                      </span>
-                    </div>
-                    <ArrowRight className="h-4 w-4 text-[var(--site-blue)] transition-transform group-hover:translate-x-1" />
-                  </div>
+                  <ArrowRight className="h-4 w-4 shrink-0 text-[var(--site-blue)] transition-transform group-hover:translate-x-1" />
                 </div>
+
               </Link>
             );
           })}
