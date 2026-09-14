@@ -31,7 +31,7 @@ export function SiteWhyAllied() {
       className="relative z-10 overflow-hidden py-20 sm:py-28"
       style={{
         background:
-          "linear-gradient(160deg, #E9EDEF 0%, #9FB6BF 18%, #076F8C 52%, #0A1E27 84%, #05090C 100%)",
+          "linear-gradient(160deg, #0A8DB0 0%, #076F8C 30%, #0A1E27 78%, #05090C 100%)",
       }}
     >
       <span aria-hidden="true" className="site-noise" />
