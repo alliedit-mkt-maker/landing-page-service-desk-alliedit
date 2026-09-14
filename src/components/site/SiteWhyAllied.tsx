@@ -39,13 +39,16 @@ export function SiteWhyAllied() {
       <div className="relative mx-auto w-full max-w-7xl px-5 sm:px-8">
         <h2
           id="site-why"
-          className="font-chillax max-w-[24ch] text-[1.9rem] font-bold leading-[1.12] tracking-tight text-white sm:text-[2.6rem]"
+          className="font-chillax text-[1.9rem] font-bold leading-[1.12] tracking-tight text-white sm:text-[2.6rem]"
         >
-          Mais que um fornecedor de TI. Um parceiro de operação.
+          Mais que um fornecedor de TI.
+          <br />
+          Um parceiro de operação.
         </h2>
-        <p className="font-inter mt-5 max-w-[58ch] text-[15px] leading-relaxed text-white/70">
-          Cada projeto desenhado para a sua realidade, não um pacote de prateleira. A gente assume a
-          complexidade pra você focar no que faz de melhor.
+        <p className="font-inter mt-5 text-[15px] leading-relaxed text-white/70">
+          Cada projeto desenhado para a sua realidade, não um pacote de prateleira.
+          <br />
+          A gente assume a complexidade pra você focar no que faz de melhor.
         </p>
 
         <div className="mt-14 grid auto-rows-fr grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">

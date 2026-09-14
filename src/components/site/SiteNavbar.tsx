@@ -38,7 +38,7 @@ export function SiteNavbar() {
       <div
         className={`pointer-events-auto mx-auto flex h-[68px] max-w-6xl items-center justify-between rounded-full px-4 transition-all duration-300 sm:px-6 ${
           scrolled
-            ? "border border-white/25 bg-white/12 shadow-[0_8px_30px_-14px_rgba(0,0,0,0.35)] backdrop-blur-xl backdrop-saturate-150"
+            ? "border border-white/10 bg-[#232A2F]/95 shadow-[0_10px_34px_-16px_rgba(0,0,0,0.6)] backdrop-blur-xl"
             : "border border-transparent"
         }`}
       >

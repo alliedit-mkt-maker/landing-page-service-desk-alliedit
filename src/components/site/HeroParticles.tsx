@@ -189,8 +189,8 @@ export function HeroParticles() {
           path = new Path2D();
           ambientBuckets.set(key, path);
         }
-        const d = p.r * 2;
-        path.rect(p.x, p.y, d, d);
+        path.moveTo(p.x + p.r, p.y);
+        path.arc(p.x, p.y, p.r, 0, Math.PI * 2);
       }
       for (const [key, path] of ambientBuckets) {
         const [c, a] = key.split("|");
@@ -239,8 +239,9 @@ export function HeroParticles() {
           path = new Path2D();
           buckets.set(key, path);
         }
-        const d = p.r * 2.3;
-        path.rect(x, y, d, d);
+        const r = p.r * 1.15;
+        path.moveTo(x + r, y);
+        path.arc(x, y, r, 0, Math.PI * 2);
       }
       for (const [key, path] of buckets) {
         const [c, a] = key.split("|");

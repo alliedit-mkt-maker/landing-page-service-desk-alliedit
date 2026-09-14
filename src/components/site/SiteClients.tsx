@@ -46,7 +46,7 @@ export function SiteClients() {
                 alt={logo.name}
                 loading="lazy"
                 style={{ mixBlendMode: "multiply" }}
-                className="h-[92px] w-auto object-contain opacity-60 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0 md:h-[108px]"
+                className="h-[62px] w-auto object-contain opacity-60 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0 md:h-[74px]"
               />
 
             </div>
