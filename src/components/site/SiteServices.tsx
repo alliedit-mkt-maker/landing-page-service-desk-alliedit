@@ -21,51 +21,34 @@ const SERVICES = [
     icon: Headset,
     title: "Digital Workspace",
     text: "Suporte ao usuário, remoto e presencial, com SLA garantido e gestão centralizada.",
-    highlight: "Atendimento com SLA",
-    metric: "98%",
-    metricLabel: "chamados no prazo",
   },
   {
     icon: Cloud,
     title: "Smart Cloud Ops",
     text: "Gestão de nuvem com foco em FinOps, SecOps e bancos de dados escaláveis.",
-    highlight: "FinOps aplicado",
-    metric: "-30%",
-    metricLabel: "custo de nuvem",
   },
   {
     icon: ShieldCheck,
     title: "Cyber Shield 360°",
     text: "SOC e NOC 24x7, proteção de endpoints, firewall, LGPD e cultura de segurança.",
-    highlight: "Monitoramento 24x7",
-    metric: "24/7",
-    metricLabel: "vigilância ativa",
   },
   {
     icon: Server,
     title: "Infra Core",
     text: "Projetos de rede, cabeamento, data center e modernização de ambientes físicos.",
-    highlight: "Projeto ponta a ponta",
-    metric: "+500",
-    metricLabel: "pontos entregues",
   },
   {
     icon: Cpu,
     title: "Product Engineering",
     text: "Ferramentas sob medida: automação, integração de sistemas e desenvolvimento.",
-    highlight: "Software sob medida",
-    metric: "+40",
-    metricLabel: "processos automatizados",
   },
   {
     icon: Sparkles,
     title: "Inteligência Artificial",
     text: "Soluções de IA aplicadas à operação, da automação inteligente à análise de dados.",
-    highlight: "IA aplicada",
-    metric: "3x",
-    metricLabel: "ganho de produtividade",
   },
 ] as const;
+
 
 export function SiteServices() {
   return (
