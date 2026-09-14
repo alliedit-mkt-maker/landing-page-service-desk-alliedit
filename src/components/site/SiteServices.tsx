@@ -95,17 +95,17 @@ export function SiteServices() {
               >
                 <span aria-hidden="true" className="site-noise" />
                 <div className="relative">
-                  <Icon className="h-5 w-5 stroke-[1.25] text-[var(--site-ink)]" aria-hidden="true" />
-                  <h3 className="font-chillax mt-4 text-[18px] font-semibold leading-snug text-[var(--site-ink)]">
+                  <Icon className="h-5 w-5 stroke-[1.25] text-white" aria-hidden="true" />
+                  <h3 className="font-chillax mt-4 text-[18px] font-semibold leading-snug text-white">
                     {s.title}
                   </h3>
                 </div>
 
-                <div className="relative mt-6 flex items-end justify-between gap-3 rounded-xl bg-white p-4 shadow-[0_10px_30px_-12px_rgba(5,9,12,0.55)]">
-                  <p className="font-inter text-[12.5px] leading-relaxed text-[var(--site-muted)]">
+                <div className="relative mt-6 flex items-end justify-between gap-3">
+                  <p className="font-inter text-[12.5px] leading-relaxed text-white/75">
                     {s.text}
                   </p>
-                  <ArrowRight className="h-4 w-4 shrink-0 text-[var(--site-blue)] transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="h-4 w-4 shrink-0 text-[var(--site-yellow)] transition-transform group-hover:translate-x-1" />
                 </div>
 
 
