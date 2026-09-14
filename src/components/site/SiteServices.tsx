@@ -121,7 +121,7 @@ export function SiteServices() {
                   </p>
                 </div>
 
-                <div className="mt-8 rounded-xl bg-white p-5 shadow-[0_10px_30px_-12px_rgba(5,9,12,0.55)]">
+                <div className="relative mt-8 rounded-xl bg-white p-5 shadow-[0_10px_30px_-12px_rgba(5,9,12,0.55)]">
                   <p className="font-inter text-[13px] leading-relaxed text-[var(--site-muted)]">
                     {s.text}
                   </p>
