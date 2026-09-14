@@ -110,7 +110,8 @@ export function SiteServices() {
                     "linear-gradient(160deg, #E9EDEF 0%, #9FB6BF 22%, #076F8C 58%, #0A1E27 88%, #05090C 100%)",
                 }}
               >
-                <div>
+                <span aria-hidden="true" className="site-noise" />
+                <div className="relative">
                   <Icon className="h-6 w-6 stroke-[1.25] text-[var(--site-ink)]" aria-hidden="true" />
                   <h3 className="font-chillax mt-5 text-[19px] font-semibold leading-snug text-[var(--site-ink)]">
                     {s.title}
@@ -120,7 +121,7 @@ export function SiteServices() {
                   </p>
                 </div>
 
-                <div className="mt-8 rounded-xl bg-white p-5 shadow-[0_10px_30px_-12px_rgba(5,9,12,0.55)]">
+                <div className="relative mt-8 rounded-xl bg-white p-5 shadow-[0_10px_30px_-12px_rgba(5,9,12,0.55)]">
                   <p className="font-inter text-[13px] leading-relaxed text-[var(--site-muted)]">
                     {s.text}
                   </p>
