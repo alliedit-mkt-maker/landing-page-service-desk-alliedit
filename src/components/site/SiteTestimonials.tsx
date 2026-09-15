@@ -37,17 +37,31 @@ const ITEMS = [
 
 ];
 
-const PER_VIEW = 3;
+const GAP_REM = 1.5;
 
 export function SiteTestimonials() {
-  const maxStart = Math.max(0, ITEMS.length - PER_VIEW);
+  const [perView, setPerView] = useState(3);
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    const sync = () => setPerView(mq.matches ? 3 : 1);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
+
+  const maxStart = Math.max(0, ITEMS.length - perView);
   const [start, setStart] = useState(0);
+  useEffect(() => {
+    setStart((s) => Math.min(s, maxStart));
+  }, [maxStart]);
   const go = (dir: number) =>
     setStart((s) => Math.min(maxStart, Math.max(0, s + dir)));
-  const visible = ITEMS.slice(start, start + PER_VIEW);
   const pages = maxStart + 1;
-  const page = start;
+  const page = Math.min(start, maxStart);
   const setPage = setStart;
+  const itemBasis = `calc((100% - ${(perView - 1) * GAP_REM}rem) / ${perView})`;
+  const shift = `translateX(calc(-${page} * ((100% + ${GAP_REM}rem) / ${perView})))`;
+
 
 
   const btn =
