@@ -8,6 +8,7 @@ import { SitePartners } from "@/components/site/SitePartners";
 import { SiteTestimonials } from "@/components/site/SiteTestimonials";
 import { SiteCta } from "@/components/site/SiteCta";
 import { SiteFooter } from "@/components/site/SiteFooter";
+import heroBg from "@/assets/site/site-cta-banner.jpg.asset.json";
 
 export const Route = createFileRoute("/site/")({
   head: () => ({
@@ -65,6 +66,20 @@ function SiteHome() {
   return (
     <>
     <section className="sticky top-0 z-0 isolate -mt-[92px] overflow-hidden bg-[#0A0E12] pt-[92px]">
+      <img
+        src={heroBg.url}
+        alt=""
+        aria-hidden
+        className="absolute inset-0 size-full object-cover"
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(0deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.78) 45%, rgba(0,0,0,0.62) 78%, rgba(0,0,0,0.45) 100%)",
+        }}
+      />
       <div
         aria-hidden="true"
         className="absolute inset-0"
