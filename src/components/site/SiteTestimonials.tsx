@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import apsenPhoto from "@/assets/testimonials/apsen.jpg.asset.json";
 import hortifrutiPhoto from "@/assets/testimonials/hortifruti.jpeg.asset.json";
@@ -37,17 +37,31 @@ const ITEMS = [
 
 ];
 
-const PER_VIEW = 3;
+const GAP_REM = 1.5;
 
 export function SiteTestimonials() {
-  const maxStart = Math.max(0, ITEMS.length - PER_VIEW);
+  const [perView, setPerView] = useState(3);
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    const sync = () => setPerView(mq.matches ? 3 : 1);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
+
+  const maxStart = Math.max(0, ITEMS.length - perView);
   const [start, setStart] = useState(0);
+  useEffect(() => {
+    setStart((s) => Math.min(s, maxStart));
+  }, [maxStart]);
   const go = (dir: number) =>
     setStart((s) => Math.min(maxStart, Math.max(0, s + dir)));
-  const visible = ITEMS.slice(start, start + PER_VIEW);
   const pages = maxStart + 1;
-  const page = start;
+  const page = Math.min(start, maxStart);
   const setPage = setStart;
+  const itemBasis = `calc((100% - ${(perView - 1) * GAP_REM}rem) / ${perView})`;
+  const shift = `translateX(calc(-${page} * ((100% + ${GAP_REM}rem) / ${perView})))`;
+
 
 
   const btn =
@@ -78,10 +92,15 @@ export function SiteTestimonials() {
           )}
         </div>
 
-        <div key={page} className="animate-fade-up mt-12 grid auto-rows-fr gap-6 md:grid-cols-3">
-          {visible.map((item) => (
+        <div className="mt-12 overflow-hidden">
+          <div
+            className="flex items-stretch gap-6 transition-transform duration-500 ease-out"
+            style={{ transform: shift }}
+          >
+          {ITEMS.map((item) => (
             <figure
               key={item.quote}
+              style={{ flex: `0 0 ${itemBasis}` }}
               className="flex flex-col justify-between border border-white/12 bg-white/[0.03] p-6 sm:p-8"
             >
               <blockquote className="font-chillax text-[1rem] font-medium leading-relaxed text-white sm:text-[1.05rem]">
@@ -103,7 +122,9 @@ export function SiteTestimonials() {
               </figcaption>
             </figure>
           ))}
+          </div>
         </div>
+
 
         {pages > 1 && (
           <div className="mt-8 flex justify-center gap-2">
