@@ -92,10 +92,15 @@ export function SiteTestimonials() {
           )}
         </div>
 
-        <div key={page} className="animate-fade-up mt-12 grid auto-rows-fr gap-6 md:grid-cols-3">
-          {visible.map((item) => (
+        <div className="mt-12 overflow-hidden">
+          <div
+            className="flex items-stretch gap-6 transition-transform duration-500 ease-out"
+            style={{ transform: shift }}
+          >
+          {ITEMS.map((item) => (
             <figure
               key={item.quote}
+              style={{ flex: `0 0 ${itemBasis}` }}
               className="flex flex-col justify-between border border-white/12 bg-white/[0.03] p-6 sm:p-8"
             >
               <blockquote className="font-chillax text-[1rem] font-medium leading-relaxed text-white sm:text-[1.05rem]">
