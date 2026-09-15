@@ -122,7 +122,9 @@ export function SiteTestimonials() {
               </figcaption>
             </figure>
           ))}
+          </div>
         </div>
+
 
         {pages > 1 && (
           <div className="mt-8 flex justify-center gap-2">
