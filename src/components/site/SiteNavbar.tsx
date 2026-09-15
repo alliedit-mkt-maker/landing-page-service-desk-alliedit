@@ -1,10 +1,37 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Menu, X } from "lucide-react";
+import {
+  ChevronDown,
+  Cloud,
+  Cpu,
+  Headset,
+  Menu,
+  Monitor,
+  Server,
+  ShieldCheck,
+  Sparkles,
+  Video,
+  X,
+} from "lucide-react";
 
-const NAV_ITEMS = [
-  { label: "Serviços", to: "/site/servicos" },
-  { label: "Produtos", to: "/site/produtos" },
+const SERVICES = [
+  { icon: Headset, title: "Digital Workspace", text: "Suporte ao usuário, remoto e presencial" },
+  { icon: Cloud, title: "Smart Cloud Ops", text: "Gestão de nuvem e bancos de dados" },
+  { icon: ShieldCheck, title: "Cyber Shield 360°", text: "SOC, NOC e cibersegurança 24x7" },
+  { icon: Server, title: "Infra Core", text: "Redes, cabeamento e data center" },
+  { icon: Cpu, title: "Product Engineering", text: "Automação e desenvolvimento sob medida" },
+  { icon: Sparkles, title: "Inteligência Artificial", text: "Soluções de IA aplicadas à operação" },
+] as const;
+
+const PRODUCTS = [
+  { icon: Video, title: "Videoconferência" },
+  { icon: Headset, title: "Headsets" },
+  { icon: Monitor, title: "Microsoft 365" },
+  { icon: Cloud, title: "AWS" },
+  { icon: ShieldCheck, title: "Firewall" },
+] as const;
+
+const SIMPLE_ITEMS = [
   { label: "Sobre", to: "/site/sobre" },
   { label: "Blog", to: "/site/blog" },
 ] as const;
@@ -12,6 +39,12 @@ const NAV_ITEMS = [
 export function SiteNavbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [menu, setMenu] = useState<"servicos" | "produtos" | null>(null);
+  const [acc, setAcc] = useState<"servicos" | "produtos" | null>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const isHome = pathname === "/site" || pathname === "/site/";
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -22,24 +55,42 @@ export function SiteNavbar() {
 
   useEffect(() => {
     const onScroll = () => {
-      setScrolled(window.scrollY > window.innerHeight * 0.7);
+      const threshold = isHome ? window.innerHeight * 0.7 : 8;
+      setScrolled(window.scrollY > threshold);
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [isHome]);
 
-  const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const isHome = pathname === "/site" || pathname === "/site/";
+  useEffect(() => {
+    setMenu(null);
+    setOpen(false);
+  }, [pathname]);
+
+  const openMenu = (key: "servicos" | "produtos") => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setMenu(key);
+  };
+  const scheduleClose = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => setMenu(null), 140);
+  };
+
   const solid = scrolled || !isHome;
 
   const linkBase =
-    "font-inter relative text-[13px] font-semibold uppercase tracking-[0.16em] text-white/85 transition-colors hover:text-white after:absolute after:left-0 after:-bottom-1.5 after:h-[2px] after:w-0 after:bg-[var(--site-yellow)] after:transition-all after:duration-200 hover:after:w-full";
+    "font-inter relative inline-flex items-center gap-1 text-[11.5px] font-semibold uppercase tracking-[0.16em] text-white/85 transition-colors hover:text-white after:absolute after:left-0 after:-bottom-1.5 after:h-[2px] after:w-0 after:bg-[var(--site-yellow)] after:transition-all after:duration-200 hover:after:w-full";
+  const panelBase =
+    "absolute top-full mt-2 origin-top rounded-2xl border border-black/5 bg-white shadow-[0_18px_44px_-24px_rgba(0,0,0,0.45)] transition-all duration-200";
 
   return (
-    <header className="pointer-events-none fixed inset-x-0 top-4 z-50 px-4 sm:px-6">
+    <header
+      className="pointer-events-none fixed inset-x-0 top-3 z-50 px-4 sm:px-6"
+      onMouseLeave={scheduleClose}
+    >
       <div
-        className={`pointer-events-auto mx-auto flex h-[80px] max-w-6xl items-center justify-between rounded-full px-4 transition-all duration-300 sm:px-6 ${
+        className={`pointer-events-auto relative mx-auto flex h-[60px] max-w-5xl items-center justify-between rounded-full px-4 transition-all duration-300 sm:px-5 ${
           solid
             ? "border border-white/10 bg-[#232A2F]/95 shadow-[0_10px_34px_-16px_rgba(0,0,0,0.6)] backdrop-blur-xl"
             : "border border-transparent"
@@ -53,36 +104,147 @@ export function SiteNavbar() {
         >
           <span
             className={`relative z-10 flex items-center justify-center rounded-full transition-all duration-500 ${
-              scrolled ? "bg-white p-1.5 shadow-[0_4px_14px_-6px_rgba(0,0,0,0.5)]" : "bg-transparent p-0"
+              scrolled ? "bg-white p-1 shadow-[0_4px_14px_-6px_rgba(0,0,0,0.5)]" : "bg-transparent p-0"
             }`}
           >
-            <img
-              src="/logo-allied-symbol.png"
-              alt="Allied IT"
-              className="site-logo-mustard h-10 w-auto"
-            />
+            <img src="/logo-allied-symbol.png" alt="Allied IT" className="site-logo-mustard h-7 w-auto" />
           </span>
           <span
             aria-hidden="true"
             className={`relative z-0 overflow-hidden transition-all duration-500 ease-in-out ${
-              scrolled ? "ml-0 w-0 opacity-0" : "ml-2 w-[114px] opacity-100"
+              scrolled ? "ml-0 w-0 opacity-0" : "ml-2 w-[92px] opacity-100"
             }`}
           >
             <img
               src="/logo-allied-wordmark.png"
               alt=""
-              className={`site-logo-mustard h-8 w-auto max-w-none transition-transform duration-500 ease-in-out ${
+              className={`site-logo-mustard h-6 w-auto max-w-none transition-transform duration-500 ease-in-out ${
                 scrolled ? "-translate-x-full" : "translate-x-0"
               }`}
             />
           </span>
         </Link>
 
+        <div className="hidden items-center gap-7 lg:flex">
+          <nav aria-label="Navegação principal" className="flex items-center gap-7">
+            {/* Serviços — mega menu */}
+            <div
+              className="relative"
+              onMouseEnter={() => openMenu("servicos")}
+              onMouseLeave={scheduleClose}
+            >
+              <Link
+                to="/site/servicos"
+                aria-expanded={menu === "servicos"}
+                onClick={() => setMenu(null)}
+                className={`${linkBase} ${menu === "servicos" ? "text-white after:w-full" : ""}`}
+              >
+                Serviços
+                <ChevronDown
+                  className={`h-3.5 w-3.5 transition-transform ${menu === "servicos" ? "rotate-180" : ""}`}
+                />
+              </Link>
 
+              <div
+                className={`${panelBase} left-1/2 w-[640px] -translate-x-1/2 p-5 ${
+                  menu === "servicos"
+                    ? "pointer-events-auto translate-y-0 opacity-100"
+                    : "pointer-events-none -translate-y-1 opacity-0"
+                }`}
+              >
+                <div className="grid grid-cols-2 gap-1.5">
+                  {SERVICES.map((s) => {
+                    const Icon = s.icon;
+                    return (
+                      <Link
+                        key={s.title}
+                        to="/site/servicos"
+                        onClick={() => setMenu(null)}
+                        className="flex items-start gap-3 rounded-xl p-3 transition-colors hover:bg-[#046E8B]/[0.06]"
+                      >
+                        <Icon
+                          className="mt-0.5 h-4 w-4 shrink-0 stroke-[1.25] text-[#046E8B]"
+                          aria-hidden="true"
+                        />
+                        <span>
+                          <span className="font-chillax block text-[14px] font-semibold text-[var(--site-ink)]">
+                            {s.title}
+                          </span>
+                          <span className="font-inter mt-0.5 block text-[12px] leading-snug text-[var(--site-muted)]">
+                            {s.text}
+                          </span>
+                        </span>
+                      </Link>
+                    );
+                  })}
+                </div>
+                <Link
+                  to="/site/servicos"
+                  onClick={() => setMenu(null)}
+                  className="font-inter mt-4 flex items-center justify-between border-t border-black/5 pt-4 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#046E8B]"
+                >
+                  Ver todos os serviços <span aria-hidden="true">→</span>
+                </Link>
+              </div>
+            </div>
 
-        <div className="hidden items-center gap-8 lg:flex">
-          <nav aria-label="Navegação principal" className="flex items-center gap-8">
-            {NAV_ITEMS.map((item) => (
+            {/* Produtos — dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => openMenu("produtos")}
+              onMouseLeave={scheduleClose}
+            >
+              <Link
+                to="/site/produtos"
+                aria-expanded={menu === "produtos"}
+                onClick={() => setMenu(null)}
+                className={`${linkBase} ${menu === "produtos" ? "text-white after:w-full" : ""}`}
+              >
+                Produtos
+                <ChevronDown
+                  className={`h-3.5 w-3.5 transition-transform ${menu === "produtos" ? "rotate-180" : ""}`}
+                />
+              </Link>
+
+              <div
+                className={`${panelBase} left-1/2 w-[260px] -translate-x-1/2 p-3 ${
+                  menu === "produtos"
+                    ? "pointer-events-auto translate-y-0 opacity-100"
+                    : "pointer-events-none -translate-y-1 opacity-0"
+                }`}
+              >
+                <div className="flex flex-col">
+                  {PRODUCTS.map((p) => {
+                    const Icon = p.icon;
+                    return (
+                      <Link
+                        key={p.title}
+                        to="/site/produtos"
+                        onClick={() => setMenu(null)}
+                        className="flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors hover:bg-[#046E8B]/[0.06]"
+                      >
+                        <Icon
+                          className="h-4 w-4 shrink-0 stroke-[1.25] text-[#046E8B]"
+                          aria-hidden="true"
+                        />
+                        <span className="font-chillax text-[14px] font-semibold text-[var(--site-ink)]">
+                          {p.title}
+                        </span>
+                      </Link>
+                    );
+                  })}
+                </div>
+                <Link
+                  to="/site/produtos"
+                  onClick={() => setMenu(null)}
+                  className="font-inter mt-2 flex items-center justify-between border-t border-black/5 px-3 pt-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#046E8B]"
+                >
+                  Ver todos <span aria-hidden="true">→</span>
+                </Link>
+              </div>
+            </div>
+
+            {SIMPLE_ITEMS.map((item) => (
               <Link
                 key={item.to}
                 to={item.to}
@@ -96,34 +258,112 @@ export function SiteNavbar() {
 
           <Link
             to="/site/contato"
-            className="font-inter inline-flex h-11 items-center justify-center rounded-full border border-white/35 bg-transparent px-6 text-[13px] font-semibold uppercase tracking-[0.16em] text-white/85 transition-colors hover:border-white hover:text-white"
+            className="font-inter inline-flex h-9 items-center justify-center rounded-full border border-white/35 bg-transparent px-5 text-[11.5px] font-semibold uppercase tracking-[0.16em] text-white/85 transition-colors hover:border-white hover:text-white"
           >
             Contato
           </Link>
         </div>
-
 
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Fechar menu" : "Abrir menu"}
           aria-expanded={open}
-          className="inline-flex h-11 w-11 items-center justify-center rounded-full text-white transition-colors hover:bg-white/10 lg:hidden"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-full text-white transition-colors hover:bg-white/10 lg:hidden"
         >
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
-
       </div>
 
       {open ? (
-        <div className="pointer-events-auto mx-auto mt-3 max-w-6xl rounded-3xl border border-white/15 bg-[#0A0E12]/90 p-4 backdrop-blur-md lg:hidden">
+        <div className="pointer-events-auto mx-auto mt-3 max-h-[75vh] max-w-5xl overflow-y-auto rounded-3xl border border-white/15 bg-[#0A0E12]/95 p-4 backdrop-blur-md lg:hidden">
           <nav aria-label="Navegação principal" className="flex flex-col">
-            {NAV_ITEMS.map((item) => (
+            {/* Acordeão Serviços */}
+            <button
+              type="button"
+              onClick={() => setAcc((v) => (v === "servicos" ? null : "servicos"))}
+              aria-expanded={acc === "servicos"}
+              className="font-inter flex items-center justify-between border-b border-white/10 py-4 text-[12px] font-semibold uppercase tracking-[0.16em] text-white"
+            >
+              Serviços
+              <ChevronDown
+                className={`h-4 w-4 transition-transform ${acc === "servicos" ? "rotate-180" : ""}`}
+              />
+            </button>
+            {acc === "servicos" ? (
+              <div className="flex flex-col border-b border-white/10 py-2">
+                {SERVICES.map((s) => {
+                  const Icon = s.icon;
+                  return (
+                    <Link
+                      key={s.title}
+                      to="/site/servicos"
+                      onClick={() => setOpen(false)}
+                      className="flex items-center gap-3 py-2.5"
+                    >
+                      <Icon className="h-4 w-4 shrink-0 stroke-[1.25] text-[var(--site-yellow)]" />
+                      <span className="font-chillax text-[14px] font-semibold text-white">
+                        {s.title}
+                      </span>
+                    </Link>
+                  );
+                })}
+                <Link
+                  to="/site/servicos"
+                  onClick={() => setOpen(false)}
+                  className="font-inter mt-1 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--site-yellow)]"
+                >
+                  Ver todos os serviços →
+                </Link>
+              </div>
+            ) : null}
+
+            {/* Acordeão Produtos */}
+            <button
+              type="button"
+              onClick={() => setAcc((v) => (v === "produtos" ? null : "produtos"))}
+              aria-expanded={acc === "produtos"}
+              className="font-inter flex items-center justify-between border-b border-white/10 py-4 text-[12px] font-semibold uppercase tracking-[0.16em] text-white"
+            >
+              Produtos
+              <ChevronDown
+                className={`h-4 w-4 transition-transform ${acc === "produtos" ? "rotate-180" : ""}`}
+              />
+            </button>
+            {acc === "produtos" ? (
+              <div className="flex flex-col border-b border-white/10 py-2">
+                {PRODUCTS.map((p) => {
+                  const Icon = p.icon;
+                  return (
+                    <Link
+                      key={p.title}
+                      to="/site/produtos"
+                      onClick={() => setOpen(false)}
+                      className="flex items-center gap-3 py-2.5"
+                    >
+                      <Icon className="h-4 w-4 shrink-0 stroke-[1.25] text-[var(--site-yellow)]" />
+                      <span className="font-chillax text-[14px] font-semibold text-white">
+                        {p.title}
+                      </span>
+                    </Link>
+                  );
+                })}
+                <Link
+                  to="/site/produtos"
+                  onClick={() => setOpen(false)}
+                  className="font-inter mt-1 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--site-yellow)]"
+                >
+                  Ver todos os produtos →
+                </Link>
+              </div>
+            ) : null}
+
+            {SIMPLE_ITEMS.map((item) => (
               <Link
                 key={item.to}
                 to={item.to}
                 onClick={() => setOpen(false)}
-                className="font-inter border-b border-white/10 py-4 text-[13px] font-semibold uppercase tracking-[0.16em] text-white last:border-0"
+                className="font-inter border-b border-white/10 py-4 text-[12px] font-semibold uppercase tracking-[0.16em] text-white"
               >
                 {item.label}
               </Link>
@@ -131,14 +371,13 @@ export function SiteNavbar() {
             <Link
               to="/site/contato"
               onClick={() => setOpen(false)}
-              className="font-inter mt-4 inline-flex h-11 items-center justify-center rounded-full border border-white/35 px-6 text-[13px] font-semibold uppercase tracking-[0.16em] text-white"
+              className="font-inter mt-4 inline-flex h-11 items-center justify-center rounded-full border border-white/35 px-6 text-[12px] font-semibold uppercase tracking-[0.16em] text-white"
             >
               Contato
             </Link>
           </nav>
         </div>
       ) : null}
-
     </header>
   );
 }
