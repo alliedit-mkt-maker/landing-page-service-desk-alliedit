@@ -2,20 +2,27 @@ import { useEffect, useRef, useState } from "react";
 import polyLogo from "@/assets/headsets/poly-hp-logo.png.asset.json";
 import logitechLogo from "@/assets/headsets/logitech-logo.png.asset.json";
 import yealinkLogo from "@/assets/headsets/yealink-logo.png.asset.json";
+import fortinetLogo from "@/assets/partners/fortinet.png.asset.json";
+import microsoftLogo from "@/assets/partners/microsoft.png.asset.json";
+import ciscoLogo from "@/assets/partners/cisco.png.asset.json";
+import dellLogo from "@/assets/partners/dell.png.asset.json";
+import awsLogo from "@/assets/partners/aws.png.asset.json";
+import lenovoLogo from "@/assets/partners/lenovo.png.asset.json";
+import sensrLogo from "@/assets/partners/sensr.png.asset.json";
 
 type Partner = { name: string; src?: string };
 
-// Marcas sem asset de logo no projeto entram como placeholder tipográfico.
 const PARTNERS: Partner[] = [
   { name: "Poly", src: polyLogo.url },
   { name: "Logitech", src: logitechLogo.url },
   { name: "Yealink", src: yealinkLogo.url },
-  { name: "Fortinet" },
-  { name: "Microsoft" },
-  { name: "Cisco" },
-  { name: "Dell" },
-  { name: "AWS" },
-  { name: "Lenovo" },
+  { name: "Fortinet", src: fortinetLogo.url },
+  { name: "Microsoft", src: microsoftLogo.url },
+  { name: "Cisco", src: ciscoLogo.url },
+  { name: "Dell", src: dellLogo.url },
+  { name: "AWS", src: awsLogo.url },
+  { name: "Lenovo", src: lenovoLogo.url },
+  { name: "Sensr.IT", src: sensrLogo.url },
 ];
 
 export function SitePartners() {
