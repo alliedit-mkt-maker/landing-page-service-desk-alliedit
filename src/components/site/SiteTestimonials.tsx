@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import apsenPhoto from "@/assets/testimonials/apsen.jpg.asset.json";
 import hortifrutiPhoto from "@/assets/testimonials/hortifruti.jpeg.asset.json";
 import ipanemaPhoto from "@/assets/testimonials/ipanema.jpg.asset.json";
+import leandroPhoto from "@/assets/testimonials/leandro-souza.png.asset.json";
 
 const ITEMS = [
   {
@@ -26,12 +27,22 @@ const ITEMS = [
     quote:
       "Sempre fui atendido com muita rapidez e comprometimento com o resultado. Hoje, posso afirmar que essa parceria foi de grande sucesso para nós. Profissionais gabaritados, que nos atendem com muita dedicação.",
   },
+  {
+    name: "Leandro Souza",
+    role: "Especialista em Redes e Infraestrutura Cloud, Puravida",
+    photo: leandroPhoto.url,
+    quote:
+      "Gostaria de compartilhar meu reconhecimento e expressar minha satisfação com o trabalho que a Allied IT vem realizando em nosso novo Centro de Distribuição em Extrema. Desde o início do projeto, eles demonstraram um alto nível de comprometimento, dedicação e profissionalismo. A forma como conduziram as atividades, enfrentaram os desafios e garantiram o andamento das operações foi fundamental para o sucesso do CD.",
+  },
 ];
 
+const PER_PAGE = 3;
+
 export function SiteTestimonials() {
-  const [index, setIndex] = useState(0);
-  const item = ITEMS[index];
-  const go = (dir: number) => setIndex((i) => (i + dir + ITEMS.length) % ITEMS.length);
+  const pages = Math.ceil(ITEMS.length / PER_PAGE);
+  const [page, setPage] = useState(0);
+  const go = (dir: number) => setPage((p) => (p + dir + pages) % pages);
+  const visible = ITEMS.slice(page * PER_PAGE, page * PER_PAGE + PER_PAGE);
 
   const btn =
     "inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/25 text-white transition-colors hover:border-white hover:bg-white/10";
@@ -41,7 +52,7 @@ export function SiteTestimonials() {
       aria-labelledby="site-depoimentos"
       className="relative z-10 bg-[#0A0E12] py-20 sm:py-28"
     >
-      <div className="mx-auto max-w-4xl px-5 sm:px-8">
+      <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <div className="flex items-center justify-between gap-6">
           <h2
             id="site-depoimentos"
@@ -49,52 +60,60 @@ export function SiteTestimonials() {
           >
             O que dizem quem já confia na Allied IT
           </h2>
-          <div className="flex shrink-0 gap-3">
-            <button type="button" aria-label="Depoimento anterior" className={btn} onClick={() => go(-1)}>
-              <ChevronLeft className="h-4 w-4" />
-            </button>
-            <button type="button" aria-label="Próximo depoimento" className={btn} onClick={() => go(1)}>
-              <ChevronRight className="h-4 w-4" />
-            </button>
-          </div>
+          {pages > 1 && (
+            <div className="flex shrink-0 gap-3">
+              <button type="button" aria-label="Depoimentos anteriores" className={btn} onClick={() => go(-1)}>
+                <ChevronLeft className="h-4 w-4" />
+              </button>
+              <button type="button" aria-label="Próximos depoimentos" className={btn} onClick={() => go(1)}>
+                <ChevronRight className="h-4 w-4" />
+              </button>
+            </div>
+          )}
         </div>
 
-        <figure
-          key={index}
-          className="animate-fade-up mt-12 border border-white/12 bg-white/[0.03] p-8 sm:p-12"
-        >
-          <blockquote className="font-chillax text-[1.15rem] font-medium leading-relaxed text-white sm:text-[1.4rem]">
-            “{item.quote}”
-          </blockquote>
-          <figcaption className="mt-8 flex items-center gap-4">
-            <img
-              src={item.photo}
-              alt={`${item.name} — ${item.role}`}
-              loading="lazy"
-              className="h-12 w-12 rounded-full border border-white/20 object-cover"
-            />
-            <span>
-              <span className="font-inter block text-[14px] font-semibold text-white">
-                {item.name}
-              </span>
-              <span className="font-inter block text-[13px] text-white/55">{item.role}</span>
-            </span>
-          </figcaption>
-        </figure>
-
-        <div className="mt-8 flex justify-center gap-2">
-          {ITEMS.map((_, i) => (
-            <button
-              key={i}
-              type="button"
-              aria-label={`Ir para o depoimento ${i + 1}`}
-              onClick={() => setIndex(i)}
-              className={`h-1.5 rounded-full transition-all ${
-                i === index ? "w-6 bg-[var(--site-yellow)]" : "w-1.5 bg-white/25"
-              }`}
-            />
+        <div key={page} className="animate-fade-up mt-12 grid auto-rows-fr gap-6 md:grid-cols-3">
+          {visible.map((item) => (
+            <figure
+              key={item.quote}
+              className="flex flex-col justify-between border border-white/12 bg-white/[0.03] p-6 sm:p-8"
+            >
+              <blockquote className="font-chillax text-[1rem] font-medium leading-relaxed text-white sm:text-[1.05rem]">
+                “{item.quote}”
+              </blockquote>
+              <figcaption className="mt-8 flex items-center gap-4">
+                <img
+                  src={item.photo}
+                  alt={`${item.name} — ${item.role}`}
+                  loading="lazy"
+                  className="h-12 w-12 rounded-full border border-white/20 object-cover"
+                />
+                <span>
+                  <span className="font-inter block text-[14px] font-semibold text-white">
+                    {item.name}
+                  </span>
+                  <span className="font-inter block text-[13px] text-white/55">{item.role}</span>
+                </span>
+              </figcaption>
+            </figure>
           ))}
         </div>
+
+        {pages > 1 && (
+          <div className="mt-8 flex justify-center gap-2">
+            {Array.from({ length: pages }).map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                aria-label={`Ir para a página ${i + 1} de depoimentos`}
+                onClick={() => setPage(i)}
+                className={`h-1.5 rounded-full transition-all ${
+                  i === page ? "w-6 bg-[var(--site-yellow)]" : "w-1.5 bg-white/25"
+                }`}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
