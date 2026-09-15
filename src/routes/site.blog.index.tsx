@@ -93,8 +93,8 @@ function BlogList() {
     "font-inter inline-flex h-10 items-center justify-center whitespace-nowrap border px-5 text-[11px] font-semibold uppercase tracking-[0.16em] transition-colors duration-200";
 
   return (
-    <div className="-mt-[72px] bg-[#0A0E12] pt-[72px]">
-      <section className="relative overflow-hidden">
+    <div className="-mt-[72px] bg-[#0A0E12]">
+      <section className="relative overflow-hidden pt-[72px]">
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0"
