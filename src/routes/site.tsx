@@ -19,7 +19,7 @@ function SiteLayout() {
   return (
     <div className="site-scope min-h-screen bg-white text-[var(--site-ink)]">
       <SiteNavbar />
-      <main className="pt-[92px]">
+      <main className="pt-[72px]">
         <Outlet />
       </main>
     </div>
