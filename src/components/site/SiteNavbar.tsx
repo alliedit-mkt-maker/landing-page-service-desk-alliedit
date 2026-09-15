@@ -114,25 +114,26 @@ export function SiteNavbar() {
             <img
               src="/logo-allied-symbol.png"
               alt="Allied IT"
-              className={`site-logo-mustard w-auto transition-all duration-500 ${
-                hero ? "h-[54px]" : "h-9"
+              className={`site-logo-mustard w-auto transition-all duration-500 ease-out ${
+                hero ? "h-[46px]" : "h-9"
               }`}
             />
           </span>
           <span
             aria-hidden="true"
             className={`relative z-0 overflow-hidden transition-all duration-500 ease-in-out ${
-              scrolled ? "ml-0 w-0 opacity-0" : hero ? "ml-3 w-[176px] opacity-100" : "ml-2 w-[118px] opacity-100"
+              scrolled ? "ml-0 w-0 opacity-0" : hero ? "ml-3 w-[152px] opacity-100" : "ml-2 w-[118px] opacity-100"
             }`}
           >
             <img
               src="/logo-allied-wordmark.png"
               alt=""
               className={`site-logo-mustard w-auto max-w-none transition-all duration-500 ease-in-out ${
-                hero ? "h-[44px]" : "h-8"
+                hero ? "h-[38px]" : "h-8"
               } ${scrolled ? "-translate-x-full" : "translate-x-0"}`}
             />
           </span>
+
         </Link>
 
         <div className="hidden items-center gap-7 lg:flex">
