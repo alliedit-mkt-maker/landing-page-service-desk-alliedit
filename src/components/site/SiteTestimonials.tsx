@@ -40,13 +40,12 @@ const ITEMS = [
 const PER_VIEW = 3;
 
 export function SiteTestimonials() {
+  const maxStart = Math.max(0, ITEMS.length - PER_VIEW);
   const [start, setStart] = useState(0);
-  const go = (dir: number) => setStart((s) => (s + dir + ITEMS.length) % ITEMS.length);
-  const visible = Array.from(
-    { length: Math.min(PER_VIEW, ITEMS.length) },
-    (_, i) => ITEMS[(start + i) % ITEMS.length],
-  );
-  const pages = ITEMS.length;
+  const go = (dir: number) =>
+    setStart((s) => Math.min(maxStart, Math.max(0, s + dir)));
+  const visible = ITEMS.slice(start, start + PER_VIEW);
+  const pages = maxStart + 1;
   const page = start;
   const setPage = setStart;
 
@@ -69,10 +68,10 @@ export function SiteTestimonials() {
           </h2>
           {pages > 1 && (
             <div className="flex shrink-0 gap-3">
-              <button type="button" aria-label="Depoimentos anteriores" className={btn} onClick={() => go(-1)}>
+              <button type="button" aria-label="Depoimentos anteriores" disabled={page === 0} className={`${btn} disabled:opacity-35`} onClick={() => go(-1)}>
                 <ChevronLeft className="h-4 w-4" />
               </button>
-              <button type="button" aria-label="Próximos depoimentos" className={btn} onClick={() => go(1)}>
+              <button type="button" aria-label="Próximos depoimentos" disabled={page === maxStart} className={`${btn} disabled:opacity-35`} onClick={() => go(1)}>
                 <ChevronRight className="h-4 w-4" />
               </button>
             </div>
