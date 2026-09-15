@@ -40,7 +40,7 @@ export function SiteNavbar() {
     <header className="pointer-events-none fixed inset-x-0 top-4 z-50 px-4 sm:px-6">
       <div
         className={`pointer-events-auto mx-auto flex h-[80px] max-w-6xl items-center justify-between rounded-full px-4 transition-all duration-300 sm:px-6 ${
-          scrolled
+          solid
             ? "border border-white/10 bg-[#232A2F]/95 shadow-[0_10px_34px_-16px_rgba(0,0,0,0.6)] backdrop-blur-xl"
             : "border border-transparent"
         }`}
