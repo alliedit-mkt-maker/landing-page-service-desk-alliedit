@@ -32,7 +32,7 @@ const ITEMS = [
     role: "Puravida",
     photo: leandroPhoto.url,
     quote:
-      "Gostaria de compartilhar meu reconhecimento e expressar minha satisfação com o trabalho que a Allied IT vem realizando em nosso novo Centro de Distribuição em Extrema. Desde o início do projeto, eles demonstraram um alto nível de comprometimento, dedicação e profissionalismo.",
+      "Desde o início do projeto, eles demonstraram um alto nível de comprometimento, dedicação e profissionalismo.",
   },
 
 ];
