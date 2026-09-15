@@ -69,18 +69,12 @@ export function readingTime(post: WpPost): number {
   return Math.max(1, Math.ceil(words / 200));
 }
 
+const MESES = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
+
 export function formatDateShortPt(iso: string): string {
-  try {
-    return new Intl.DateTimeFormat("pt-BR", {
-      day: "2-digit",
-      month: "short",
-      year: "numeric",
-    })
-      .format(new Date(iso))
-      .replace(/\./g, "");
-  } catch {
-    return "";
-  }
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return "";
+  return `${String(d.getDate()).padStart(2, "0")} ${MESES[d.getMonth()]} ${d.getFullYear()}`;
 }
 
 export function primaryCategory(post: WpPost): string | null {
