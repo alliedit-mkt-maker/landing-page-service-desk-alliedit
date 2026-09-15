@@ -76,25 +76,28 @@ export function SiteNavbar() {
 
 
 
-        <nav aria-label="Navegação principal" className="hidden items-center gap-8 lg:flex">
-          {NAV_ITEMS.map((item) => (
-            <Link
-              key={item.to}
-              to={item.to}
-              className={linkBase}
-              activeProps={{ className: `${linkBase} after:w-full` }}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
+        <div className="hidden items-center gap-8 lg:flex">
+          <nav aria-label="Navegação principal" className="flex items-center gap-8">
+            {NAV_ITEMS.map((item) => (
+              <Link
+                key={item.to}
+                to={item.to}
+                className={linkBase}
+                activeProps={{ className: `${linkBase} after:w-full` }}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
 
-        <Link
-          to="/site/contato"
-          className="font-inter hidden h-11 items-center justify-center rounded-full border border-white/35 bg-transparent px-6 text-[13px] font-semibold uppercase tracking-[0.16em] text-white/85 transition-colors hover:border-white hover:text-white lg:inline-flex"
-        >
-          Contato
-        </Link>
+          <Link
+            to="/site/contato"
+            className="font-inter inline-flex h-11 items-center justify-center rounded-full border border-white/35 bg-transparent px-6 text-[13px] font-semibold uppercase tracking-[0.16em] text-white/85 transition-colors hover:border-white hover:text-white"
+          >
+            Contato
+          </Link>
+        </div>
+
 
         <button
           type="button"
