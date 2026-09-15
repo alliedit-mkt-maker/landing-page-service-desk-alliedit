@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import apsenPhoto from "@/assets/testimonials/apsen.jpg.asset.json";
 import hortifrutiPhoto from "@/assets/testimonials/hortifruti.jpeg.asset.json";
