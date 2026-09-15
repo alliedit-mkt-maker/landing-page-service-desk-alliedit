@@ -31,6 +31,7 @@ import { Route as SiteProdutosRouteImport } from './routes/site.produtos'
 import { Route as SiteContatoRouteImport } from './routes/site.contato'
 import { Route as SiteBlogRouteImport } from './routes/site.blog'
 import { Route as SiteBlogIndexRouteImport } from './routes/site.blog.index'
+import { Route as SiteBlogSlugRouteImport } from './routes/site.blog.$slug'
 
 const YealinkVideoconferenciaRoute = YealinkVideoconferenciaRouteImport.update({
   id: '/yealink-videoconferencia',
@@ -142,6 +143,11 @@ const SiteBlogIndexRoute = SiteBlogIndexRouteImport.update({
   path: '/',
   getParentRoute: () => SiteBlogRoute,
 } as any)
+const SiteBlogSlugRoute = SiteBlogSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => SiteBlogRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -165,6 +171,7 @@ export interface FileRoutesByFullPath {
   '/site/servicos': typeof SiteServicosRoute
   '/site/sobre': typeof SiteSobreRoute
   '/site/': typeof SiteIndexRoute
+  '/site/blog/$slug': typeof SiteBlogSlugRoute
   '/site/blog/': typeof SiteBlogIndexRoute
 }
 export interface FileRoutesByTo {
@@ -187,6 +194,7 @@ export interface FileRoutesByTo {
   '/site/servicos': typeof SiteServicosRoute
   '/site/sobre': typeof SiteSobreRoute
   '/site': typeof SiteIndexRoute
+  '/site/blog/$slug': typeof SiteBlogSlugRoute
   '/site/blog': typeof SiteBlogIndexRoute
 }
 export interface FileRoutesById {
@@ -212,6 +220,7 @@ export interface FileRoutesById {
   '/site/servicos': typeof SiteServicosRoute
   '/site/sobre': typeof SiteSobreRoute
   '/site/': typeof SiteIndexRoute
+  '/site/blog/$slug': typeof SiteBlogSlugRoute
   '/site/blog/': typeof SiteBlogIndexRoute
 }
 export interface FileRouteTypes {
@@ -238,6 +247,7 @@ export interface FileRouteTypes {
     | '/site/servicos'
     | '/site/sobre'
     | '/site/'
+    | '/site/blog/$slug'
     | '/site/blog/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -260,6 +270,7 @@ export interface FileRouteTypes {
     | '/site/servicos'
     | '/site/sobre'
     | '/site'
+    | '/site/blog/$slug'
     | '/site/blog'
   id:
     | '__root__'
@@ -284,6 +295,7 @@ export interface FileRouteTypes {
     | '/site/servicos'
     | '/site/sobre'
     | '/site/'
+    | '/site/blog/$slug'
     | '/site/blog/'
   fileRoutesById: FileRoutesById
 }
@@ -461,14 +473,23 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SiteBlogIndexRouteImport
       parentRoute: typeof SiteBlogRoute
     }
+    '/site/blog/$slug': {
+      id: '/site/blog/$slug'
+      path: '/$slug'
+      fullPath: '/site/blog/$slug'
+      preLoaderRoute: typeof SiteBlogSlugRouteImport
+      parentRoute: typeof SiteBlogRoute
+    }
   }
 }
 
 interface SiteBlogRouteChildren {
+  SiteBlogSlugRoute: typeof SiteBlogSlugRoute
   SiteBlogIndexRoute: typeof SiteBlogIndexRoute
 }
 
 const SiteBlogRouteChildren: SiteBlogRouteChildren = {
+  SiteBlogSlugRoute: SiteBlogSlugRoute,
   SiteBlogIndexRoute: SiteBlogIndexRoute,
 }
 
