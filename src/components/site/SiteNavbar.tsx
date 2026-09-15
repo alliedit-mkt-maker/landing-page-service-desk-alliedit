@@ -31,12 +31,12 @@ export function SiteNavbar() {
   }, []);
 
   const linkBase =
-    "font-inter relative text-[14px] font-medium tracking-tight text-white/85 transition-colors hover:text-white after:absolute after:left-0 after:-bottom-1.5 after:h-[2px] after:w-0 after:bg-[var(--site-yellow)] after:transition-all after:duration-200 hover:after:w-full";
+    "font-inter relative text-[16px] font-medium tracking-tight text-white/85 transition-colors hover:text-white after:absolute after:left-0 after:-bottom-1.5 after:h-[2px] after:w-0 after:bg-[var(--site-yellow)] after:transition-all after:duration-200 hover:after:w-full";
 
   return (
     <header className="pointer-events-none fixed inset-x-0 top-4 z-50 px-4 sm:px-6">
       <div
-        className={`pointer-events-auto mx-auto flex h-[68px] max-w-6xl items-center justify-between rounded-full px-4 transition-all duration-300 sm:px-6 ${
+        className={`pointer-events-auto mx-auto flex h-[80px] max-w-6xl items-center justify-between rounded-full px-4 transition-all duration-300 sm:px-6 ${
           scrolled
             ? "border border-white/10 bg-[#232A2F]/95 shadow-[0_10px_34px_-16px_rgba(0,0,0,0.6)] backdrop-blur-xl"
             : "border border-transparent"
@@ -48,8 +48,33 @@ export function SiteNavbar() {
           onClick={() => setOpen(false)}
           className="flex items-center"
         >
-          <img src="/logo-allied-it.png" alt="Allied IT" className="site-logo-mustard h-8 w-auto" />
+          <span
+            className={`relative z-10 flex items-center justify-center rounded-full transition-all duration-500 ${
+              scrolled ? "bg-white p-1.5 shadow-[0_4px_14px_-6px_rgba(0,0,0,0.5)]" : "bg-transparent p-0"
+            }`}
+          >
+            <img
+              src="/logo-allied-symbol.png"
+              alt="Allied IT"
+              className="site-logo-mustard h-10 w-auto"
+            />
+          </span>
+          <span
+            aria-hidden="true"
+            className={`relative z-0 overflow-hidden transition-all duration-500 ease-in-out ${
+              scrolled ? "ml-0 w-0 opacity-0" : "ml-2 w-[104px] opacity-100 sm:w-[124px]"
+            }`}
+          >
+            <img
+              src="/logo-allied-wordmark.png"
+              alt=""
+              className={`site-logo-mustard h-8 w-auto max-w-none transition-transform duration-500 ease-in-out ${
+                scrolled ? "-translate-x-full" : "translate-x-0"
+              }`}
+            />
+          </span>
         </Link>
+
 
 
         <nav aria-label="Navegação principal" className="hidden items-center gap-8 lg:flex">
