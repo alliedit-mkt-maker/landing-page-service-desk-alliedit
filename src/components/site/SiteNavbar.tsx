@@ -78,6 +78,7 @@ export function SiteNavbar() {
   };
 
   const solid = scrolled || !isHome;
+  const hero = isHome && !scrolled;
 
   const linkBase =
     "font-inter relative inline-flex items-center gap-1 text-[11.5px] font-semibold uppercase tracking-[0.16em] text-white/85 transition-colors hover:text-white after:absolute after:left-0 after:-bottom-1.5 after:h-[2px] after:w-0 after:bg-[var(--site-yellow)] after:transition-all after:duration-200 hover:after:w-full";
@@ -107,20 +108,26 @@ export function SiteNavbar() {
               scrolled ? "bg-white p-1 shadow-[0_4px_14px_-6px_rgba(0,0,0,0.5)]" : "bg-transparent p-0"
             }`}
           >
-            <img src="/logo-allied-symbol.png" alt="Allied IT" className="site-logo-mustard h-7 w-auto" />
+            <img
+              src="/logo-allied-symbol.png"
+              alt="Allied IT"
+              className={`site-logo-mustard w-auto transition-all duration-500 ${
+                hero ? "h-[54px]" : "h-9"
+              }`}
+            />
           </span>
           <span
             aria-hidden="true"
             className={`relative z-0 overflow-hidden transition-all duration-500 ease-in-out ${
-              scrolled ? "ml-0 w-0 opacity-0" : "ml-2 w-[92px] opacity-100"
+              scrolled ? "ml-0 w-0 opacity-0" : hero ? "ml-3 w-[176px] opacity-100" : "ml-2 w-[118px] opacity-100"
             }`}
           >
             <img
               src="/logo-allied-wordmark.png"
               alt=""
-              className={`site-logo-mustard h-6 w-auto max-w-none transition-transform duration-500 ease-in-out ${
-                scrolled ? "-translate-x-full" : "translate-x-0"
-              }`}
+              className={`site-logo-mustard w-auto max-w-none transition-all duration-500 ease-in-out ${
+                hero ? "h-[44px]" : "h-8"
+              } ${scrolled ? "-translate-x-full" : "translate-x-0"}`}
             />
           </span>
         </Link>
