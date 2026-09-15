@@ -29,7 +29,6 @@ import { Route as SiteSobreRouteImport } from './routes/site.sobre'
 import { Route as SiteServicosRouteImport } from './routes/site.servicos'
 import { Route as SiteProdutosRouteImport } from './routes/site.produtos'
 import { Route as SiteContatoRouteImport } from './routes/site.contato'
-import { Route as SiteBlogRouteImport } from './routes/site.blog'
 import { Route as SiteBlogIndexRouteImport } from './routes/site.blog.index'
 import { Route as SiteBlogSlugRouteImport } from './routes/site.blog.$slug'
 
@@ -133,20 +132,15 @@ const SiteContatoRoute = SiteContatoRouteImport.update({
   path: '/contato',
   getParentRoute: () => SiteRoute,
 } as any)
-const SiteBlogRoute = SiteBlogRouteImport.update({
-  id: '/blog',
-  path: '/blog',
+const SiteBlogIndexRoute = SiteBlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
   getParentRoute: () => SiteRoute,
 } as any)
-const SiteBlogIndexRoute = SiteBlogIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => SiteBlogRoute,
-} as any)
 const SiteBlogSlugRoute = SiteBlogSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => SiteBlogRoute,
+  id: '/blog/$slug',
+  path: '/blog/$slug',
+  getParentRoute: () => SiteRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -165,7 +159,6 @@ export interface FileRoutesByFullPath {
   '/site': typeof SiteRouteWithChildren
   '/videoconferencia': typeof VideoconferenciaRoute
   '/yealink-videoconferencia': typeof YealinkVideoconferenciaRoute
-  '/site/blog': typeof SiteBlogRouteWithChildren
   '/site/contato': typeof SiteContatoRoute
   '/site/produtos': typeof SiteProdutosRoute
   '/site/servicos': typeof SiteServicosRoute
@@ -214,7 +207,6 @@ export interface FileRoutesById {
   '/site': typeof SiteRouteWithChildren
   '/videoconferencia': typeof VideoconferenciaRoute
   '/yealink-videoconferencia': typeof YealinkVideoconferenciaRoute
-  '/site/blog': typeof SiteBlogRouteWithChildren
   '/site/contato': typeof SiteContatoRoute
   '/site/produtos': typeof SiteProdutosRoute
   '/site/servicos': typeof SiteServicosRoute
@@ -241,7 +233,6 @@ export interface FileRouteTypes {
     | '/site'
     | '/videoconferencia'
     | '/yealink-videoconferencia'
-    | '/site/blog'
     | '/site/contato'
     | '/site/produtos'
     | '/site/servicos'
@@ -289,7 +280,6 @@ export interface FileRouteTypes {
     | '/site'
     | '/videoconferencia'
     | '/yealink-videoconferencia'
-    | '/site/blog'
     | '/site/contato'
     | '/site/produtos'
     | '/site/servicos'
@@ -459,60 +449,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SiteContatoRouteImport
       parentRoute: typeof SiteRoute
     }
-    '/site/blog': {
-      id: '/site/blog'
-      path: '/blog'
-      fullPath: '/site/blog'
-      preLoaderRoute: typeof SiteBlogRouteImport
-      parentRoute: typeof SiteRoute
-    }
     '/site/blog/': {
       id: '/site/blog/'
-      path: '/'
+      path: '/blog'
       fullPath: '/site/blog/'
       preLoaderRoute: typeof SiteBlogIndexRouteImport
-      parentRoute: typeof SiteBlogRoute
+      parentRoute: typeof SiteRoute
     }
     '/site/blog/$slug': {
       id: '/site/blog/$slug'
-      path: '/$slug'
+      path: '/blog/$slug'
       fullPath: '/site/blog/$slug'
       preLoaderRoute: typeof SiteBlogSlugRouteImport
-      parentRoute: typeof SiteBlogRoute
+      parentRoute: typeof SiteRoute
     }
   }
 }
 
-interface SiteBlogRouteChildren {
-  SiteBlogSlugRoute: typeof SiteBlogSlugRoute
-  SiteBlogIndexRoute: typeof SiteBlogIndexRoute
-}
-
-const SiteBlogRouteChildren: SiteBlogRouteChildren = {
-  SiteBlogSlugRoute: SiteBlogSlugRoute,
-  SiteBlogIndexRoute: SiteBlogIndexRoute,
-}
-
-const SiteBlogRouteWithChildren = SiteBlogRoute._addFileChildren(
-  SiteBlogRouteChildren,
-)
-
 interface SiteRouteChildren {
-  SiteBlogRoute: typeof SiteBlogRouteWithChildren
   SiteContatoRoute: typeof SiteContatoRoute
   SiteProdutosRoute: typeof SiteProdutosRoute
   SiteServicosRoute: typeof SiteServicosRoute
   SiteSobreRoute: typeof SiteSobreRoute
   SiteIndexRoute: typeof SiteIndexRoute
+  SiteBlogSlugRoute: typeof SiteBlogSlugRoute
+  SiteBlogIndexRoute: typeof SiteBlogIndexRoute
 }
 
 const SiteRouteChildren: SiteRouteChildren = {
-  SiteBlogRoute: SiteBlogRouteWithChildren,
   SiteContatoRoute: SiteContatoRoute,
   SiteProdutosRoute: SiteProdutosRoute,
   SiteServicosRoute: SiteServicosRoute,
   SiteSobreRoute: SiteSobreRoute,
   SiteIndexRoute: SiteIndexRoute,
+  SiteBlogSlugRoute: SiteBlogSlugRoute,
+  SiteBlogIndexRoute: SiteBlogIndexRoute,
 }
 
 const SiteRouteWithChildren = SiteRoute._addFileChildren(SiteRouteChildren)
