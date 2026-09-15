@@ -7,7 +7,6 @@ const NAV_ITEMS = [
   { label: "Produtos", to: "/site/produtos" },
   { label: "Sobre", to: "/site/sobre" },
   { label: "Blog", to: "/site/blog" },
-  { label: "Contato", to: "/site/contato" },
 ] as const;
 
 export function SiteNavbar() {
@@ -31,7 +30,7 @@ export function SiteNavbar() {
   }, []);
 
   const linkBase =
-    "font-inter relative text-[16px] font-medium tracking-tight text-white/85 transition-colors hover:text-white after:absolute after:left-0 after:-bottom-1.5 after:h-[2px] after:w-0 after:bg-[var(--site-yellow)] after:transition-all after:duration-200 hover:after:w-full";
+    "font-inter relative text-[13px] font-semibold uppercase tracking-[0.16em] text-white/85 transition-colors hover:text-white after:absolute after:left-0 after:-bottom-1.5 after:h-[2px] after:w-0 after:bg-[var(--site-yellow)] after:transition-all after:duration-200 hover:after:w-full";
 
   return (
     <header className="pointer-events-none fixed inset-x-0 top-4 z-50 px-4 sm:px-6">
