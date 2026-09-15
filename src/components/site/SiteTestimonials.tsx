@@ -36,13 +36,19 @@ const ITEMS = [
   },
 ];
 
-const PER_PAGE = 3;
+const PER_VIEW = 3;
 
 export function SiteTestimonials() {
-  const pages = Math.ceil(ITEMS.length / PER_PAGE);
-  const [page, setPage] = useState(0);
-  const go = (dir: number) => setPage((p) => (p + dir + pages) % pages);
-  const visible = ITEMS.slice(page * PER_PAGE, page * PER_PAGE + PER_PAGE);
+  const [start, setStart] = useState(0);
+  const go = (dir: number) => setStart((s) => (s + dir + ITEMS.length) % ITEMS.length);
+  const visible = Array.from(
+    { length: Math.min(PER_VIEW, ITEMS.length) },
+    (_, i) => ITEMS[(start + i) % ITEMS.length],
+  );
+  const pages = ITEMS.length;
+  const page = start;
+  const setPage = setStart;
+
 
   const btn =
     "inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/25 text-white transition-colors hover:border-white hover:bg-white/10";
