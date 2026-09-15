@@ -62,7 +62,7 @@ export function SiteNavbar() {
           <span
             aria-hidden="true"
             className={`relative z-0 overflow-hidden transition-all duration-500 ease-in-out ${
-              scrolled ? "ml-0 w-0 opacity-0" : "ml-2 w-[104px] opacity-100 sm:w-[124px]"
+              scrolled ? "ml-0 w-0 opacity-0" : "ml-2 w-[114px] opacity-100"
             }`}
           >
             <img
