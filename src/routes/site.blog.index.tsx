@@ -64,12 +64,19 @@ function BlogList() {
   }, [pageQueries.data, page]);
 
   const items = useMemo(() => {
-    const map = new Map<number, WpPost>();
+    const byId = new Map<number, WpPost>();
     Object.keys(pages)
       .map(Number)
       .sort((a, b) => a - b)
-      .forEach((p) => pages[p]?.forEach((post) => map.set(post.id, post)));
-    return [...map.values()];
+      .forEach((p) => pages[p]?.forEach((post) => byId.set(post.id, post)));
+    // Além do ID, evita repetir artigos com o mesmo título (duplicatas no WP).
+    const seenTitles = new Set<string>();
+    return [...byId.values()].filter((post) => {
+      const key = stripHtml(post.title.rendered).toLowerCase();
+      if (seenTitles.has(key)) return false;
+      seenTitles.add(key);
+      return true;
+    });
   }, [pages]);
 
   const selectCategory = (id: number | null) => {
