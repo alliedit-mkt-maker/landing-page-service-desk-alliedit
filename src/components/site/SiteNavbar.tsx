@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 
 const NAV_ITEMS = [
@@ -28,6 +28,10 @@ export function SiteNavbar() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const isHome = pathname === "/site" || pathname === "/site/";
+  const solid = scrolled || !isHome;
 
   const linkBase =
     "font-inter relative text-[13px] font-semibold uppercase tracking-[0.16em] text-white/85 transition-colors hover:text-white after:absolute after:left-0 after:-bottom-1.5 after:h-[2px] after:w-0 after:bg-[var(--site-yellow)] after:transition-all after:duration-200 hover:after:w-full";
