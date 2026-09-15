@@ -357,3 +357,66 @@
 @media (prefers-reduced-motion: reduce) {
   .site-marquee-y { animation: none; }
 }
+
+/* conteúdo do artigo vindo do WordPress */
+.site-article {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 16.5px;
+  line-height: 1.75;
+  color: var(--site-ink);
+}
+.site-article > * + * { margin-top: 1.15em; }
+.site-article p { color: #2C3A41; }
+.site-article h2,
+.site-article h3,
+.site-article h4 {
+  font-family: Chillax, Inter, system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  margin-top: 2em;
+}
+.site-article h2 { font-size: 1.6rem; }
+.site-article h3 { font-size: 1.3rem; }
+.site-article h4 { font-size: 1.1rem; }
+.site-article a {
+  color: var(--site-blue);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.site-article ul,
+.site-article ol { padding-left: 1.35rem; }
+.site-article ul { list-style: disc; }
+.site-article ol { list-style: decimal; }
+.site-article li + li { margin-top: 0.45em; }
+.site-article li::marker { color: var(--site-blue); }
+.site-article img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--site-line);
+}
+.site-article figcaption {
+  font-size: 13px;
+  color: var(--site-muted);
+  margin-top: 0.5rem;
+}
+.site-article blockquote {
+  border-left: 3px solid var(--site-yellow);
+  padding: 0.25rem 0 0.25rem 1.25rem;
+  color: var(--site-muted);
+  font-size: 17px;
+}
+.site-article strong { font-weight: 600; }
+.site-article table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14.5px;
+}
+.site-article th,
+.site-article td {
+  border: 1px solid var(--site-line);
+  padding: 0.6rem 0.8rem;
+  text-align: left;
+}
+.site-article iframe { width: 100%; aspect-ratio: 16 / 9; height: auto; }
