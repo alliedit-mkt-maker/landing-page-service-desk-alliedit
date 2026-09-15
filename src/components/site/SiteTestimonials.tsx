@@ -1,25 +1,30 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import apsenPhoto from "@/assets/testimonials/apsen.jpg.asset.json";
+import hortifrutiPhoto from "@/assets/testimonials/hortifruti.jpeg.asset.json";
+import ipanemaPhoto from "@/assets/testimonials/ipanema.jpg.asset.json";
 
-// Depoimentos temporários de exemplo. Substituir por depoimentos reais de clientes.
 const ITEMS = [
   {
-    name: "Nome do Cliente",
-    role: "Cargo — Empresa Exemplo",
+    name: "CIO",
+    role: "Apsen Farmacêutica",
+    photo: apsenPhoto.url,
     quote:
-      "Texto de depoimento de exemplo. Este espaço será substituído por um depoimento real de cliente da Allied IT.",
+      "Notamos uma economia de mais de 30% e um aumento de 50% na qualidade percebida dos nossos serviços. Essas mudanças foram fundamentais para o crescimento e sucesso da nossa empresa.",
   },
   {
-    name: "Nome do Cliente",
-    role: "Cargo — Empresa Exemplo",
+    name: "Gerente de TI",
+    role: "HortiFruti Natural da Terra",
+    photo: hortifrutiPhoto.url,
     quote:
-      "Texto de depoimento de exemplo. Este espaço será substituído por um depoimento real de cliente da Allied IT.",
+      "A operação melhorou significativamente com constante aumento de chamados atendidos aos usuários e elevação no nível de satisfação. Tem sido uma empresa que não mede esforços em atender com agilidade e qualidade.",
   },
   {
-    name: "Nome do Cliente",
-    role: "Cargo — Empresa Exemplo",
+    name: "Gerente de TI",
+    role: "Queijos Ipanema",
+    photo: ipanemaPhoto.url,
     quote:
-      "Texto de depoimento de exemplo. Este espaço será substituído por um depoimento real de cliente da Allied IT.",
+      "Sempre fui atendido com muita rapidez e comprometimento com o resultado. Hoje, posso afirmar que essa parceria foi de grande sucesso para nós. Profissionais gabaritados, que nos atendem com muita dedicação.",
   },
 ];
 
@@ -62,16 +67,12 @@ export function SiteTestimonials() {
             “{item.quote}”
           </blockquote>
           <figcaption className="mt-8 flex items-center gap-4">
-            <span
-              aria-hidden="true"
-              className="font-inter flex h-12 w-12 items-center justify-center rounded-full border border-white/20 text-[13px] font-semibold text-white/70"
-            >
-              {item.name
-                .split(" ")
-                .slice(0, 2)
-                .map((w) => w[0])
-                .join("")}
-            </span>
+            <img
+              src={item.photo}
+              alt={`${item.name} — ${item.role}`}
+              loading="lazy"
+              className="h-12 w-12 rounded-full border border-white/20 object-cover"
+            />
             <span>
               <span className="font-inter block text-[14px] font-semibold text-white">
                 {item.name}
