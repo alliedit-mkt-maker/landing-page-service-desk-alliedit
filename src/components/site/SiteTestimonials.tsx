@@ -68,10 +68,10 @@ export function SiteTestimonials() {
           </h2>
           {pages > 1 && (
             <div className="flex shrink-0 gap-3">
-              <button type="button" aria-label="Depoimentos anteriores" className={btn} onClick={() => go(-1)}>
+              <button type="button" aria-label="Depoimentos anteriores" disabled={page === 0} className={`${btn} disabled:opacity-35`} onClick={() => go(-1)}>
                 <ChevronLeft className="h-4 w-4" />
               </button>
-              <button type="button" aria-label="Próximos depoimentos" className={btn} onClick={() => go(1)}>
+              <button type="button" aria-label="Próximos depoimentos" disabled={page === maxStart} className={`${btn} disabled:opacity-35`} onClick={() => go(1)}>
                 <ChevronRight className="h-4 w-4" />
               </button>
             </div>
