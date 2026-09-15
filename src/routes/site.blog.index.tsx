@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { ArrowRight } from "lucide-react";
@@ -47,8 +47,8 @@ function BlogList() {
     staleTime: 5 * 60 * 1000,
   });
 
-  // Uma query por página; o React Query mantém as anteriores em cache, então
-  // acumulamos aqui sem efeitos colaterais que possam duplicar artigos.
+  // Uma requisição por página/categoria; o resultado acumulado é sempre
+  // deduplicado por ID do artigo.
   const pageQueries = useQuery({
     queryKey: ["wp-posts", categoryId, page],
     queryFn: () => fetchPosts({ page, categoryId }),
@@ -57,14 +57,12 @@ function BlogList() {
 
   const [pages, setPages] = useState<Record<number, WpPost[]>>({});
 
-  // Registra o resultado da página atual sem duplicar (chave = número da página).
-  if (pageQueries.data && pages[page] !== pageQueries.data.posts) {
-    if (!pages[page] || pages[page]!.length !== pageQueries.data.posts.length) {
-      setPages((prev) => ({ ...prev, [page]: pageQueries.data!.posts }));
-    }
-  }
+  useEffect(() => {
+    const posts = pageQueries.data?.posts;
+    if (!posts) return;
+    setPages((prev) => (prev[page] === posts ? prev : { ...prev, [page]: posts }));
+  }, [pageQueries.data, page]);
 
-  // Deduplicação final por ID do artigo.
   const items = useMemo(() => {
     const map = new Map<number, WpPost>();
     Object.keys(pages)
