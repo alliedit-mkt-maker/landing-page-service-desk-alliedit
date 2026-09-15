@@ -89,6 +89,13 @@ export function SiteNavbar() {
           ))}
         </nav>
 
+        <Link
+          to="/site/contato"
+          className="font-inter hidden h-11 items-center justify-center rounded-full border border-white/35 bg-transparent px-6 text-[13px] font-semibold uppercase tracking-[0.16em] text-white/85 transition-colors hover:border-white hover:text-white lg:inline-flex"
+        >
+          Contato
+        </Link>
+
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
@@ -109,11 +116,18 @@ export function SiteNavbar() {
                 key={item.to}
                 to={item.to}
                 onClick={() => setOpen(false)}
-                className="font-inter border-b border-white/10 py-4 text-[16px] font-medium text-white last:border-0"
+                className="font-inter border-b border-white/10 py-4 text-[13px] font-semibold uppercase tracking-[0.16em] text-white last:border-0"
               >
                 {item.label}
               </Link>
             ))}
+            <Link
+              to="/site/contato"
+              onClick={() => setOpen(false)}
+              className="font-inter mt-4 inline-flex h-11 items-center justify-center rounded-full border border-white/35 px-6 text-[13px] font-semibold uppercase tracking-[0.16em] text-white"
+            >
+              Contato
+            </Link>
           </nav>
         </div>
       ) : null}
