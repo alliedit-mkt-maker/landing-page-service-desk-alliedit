@@ -28,12 +28,13 @@ const ITEMS = [
       "Sempre fui atendido com muita rapidez e comprometimento com o resultado. Hoje, posso afirmar que essa parceria foi de grande sucesso para nós. Profissionais gabaritados, que nos atendem com muita dedicação.",
   },
   {
-    name: "Leandro Souza",
-    role: "Especialista em Redes e Infraestrutura Cloud, Puravida",
+    name: "Especialista em Redes e Infraestrutura Cloud",
+    role: "Puravida",
     photo: leandroPhoto.url,
     quote:
-      "Gostaria de compartilhar meu reconhecimento e expressar minha satisfação com o trabalho que a Allied IT vem realizando em nosso novo Centro de Distribuição em Extrema. Desde o início do projeto, eles demonstraram um alto nível de comprometimento, dedicação e profissionalismo. A forma como conduziram as atividades, enfrentaram os desafios e garantiram o andamento das operações foi fundamental para o sucesso do CD.",
+      "Gostaria de compartilhar meu reconhecimento e expressar minha satisfação com o trabalho que a Allied IT vem realizando em nosso novo Centro de Distribuição em Extrema. Desde o início do projeto, eles demonstraram um alto nível de comprometimento, dedicação e profissionalismo.",
   },
+
 ];
 
 const PER_VIEW = 3;
