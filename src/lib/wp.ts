@@ -14,6 +14,7 @@ export type WpPost = {
   _embedded?: {
     "wp:featuredmedia"?: { source_url?: string; alt_text?: string }[];
     "wp:term"?: { id: number; name: string; taxonomy: string }[][];
+    author?: { name?: string }[];
   };
 };
 
@@ -54,6 +55,26 @@ export function formatDatePt(iso: string): string {
 
 export function featuredImage(post: WpPost): string | null {
   return post._embedded?.["wp:featuredmedia"]?.[0]?.source_url ?? null;
+}
+
+export function authorName(post: WpPost): string {
+  const name = post._embedded?.author?.[0]?.name;
+  return name ? stripHtml(name) : "Allied IT";
+}
+
+// ~200 palavras por minuto, mínimo de 1 minuto.
+export function readingTime(post: WpPost): number {
+  const text = stripHtml(post.content?.rendered ?? post.excerpt.rendered);
+  const words = text ? text.split(/\s+/).length : 0;
+  return Math.max(1, Math.ceil(words / 200));
+}
+
+const MESES = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
+
+export function formatDateShortPt(iso: string): string {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return "";
+  return `${String(d.getDate()).padStart(2, "0")} ${MESES[d.getMonth()]} ${d.getFullYear()}`;
 }
 
 export function primaryCategory(post: WpPost): string | null {
