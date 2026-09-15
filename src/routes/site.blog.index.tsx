@@ -93,7 +93,7 @@ function BlogList() {
     "font-inter inline-flex h-10 items-center justify-center whitespace-nowrap border px-5 text-[11px] font-semibold uppercase tracking-[0.16em] transition-colors duration-200";
 
   return (
-    <div className="bg-[#0A0E12]">
+    <div className="-mt-[72px] bg-[#0A0E12] pt-[72px]">
       <section className="relative overflow-hidden">
         <div
           aria-hidden
@@ -110,10 +110,12 @@ function BlogList() {
         />
         <div className="relative mx-auto max-w-4xl px-5 pb-16 pt-16 text-center sm:px-8 sm:pt-24">
           <p className="font-inter text-[11px] font-semibold uppercase tracking-[0.2em] text-[#D4A017]">
-            O blog
+            Allied Blog IT
           </p>
           <h1 className="font-chillax mx-auto mt-4 max-w-[26ch] text-[2rem] font-bold leading-[1.12] tracking-tight text-white sm:text-[2.75rem]">
-            Conteúdo direto ao ponto sobre TI e operação.
+            Conteúdo direto ao ponto
+            <br />
+            sobre TI e operação.
           </h1>
           <p className="font-inter mx-auto mt-5 max-w-[62ch] text-[15px] leading-relaxed text-white/60 sm:text-base">
             Como diagnosticamos operações de TI, o raciocínio por trás das soluções, e o que a
