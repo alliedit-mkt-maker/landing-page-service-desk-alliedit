@@ -13,37 +13,41 @@ export type BioLink = {
   placeholder: boolean;
 };
 
-/** PLACEHOLDER: número de WhatsApp no formato internacional, só dígitos. */
-export const WHATSAPP_NUMBER = "5511000000000";
+/** Número de WhatsApp no formato internacional, só dígitos (mesmo das landing pages). */
+export const WHATSAPP_NUMBER = "5511943319875";
+
+/** Mensagem de pré-envio do WhatsApp. */
+export const WHATSAPP_MESSAGE =
+  "Olá, Allied IT! 👋 Quero conhecer melhor as soluções de TI de vocês. Podem me ajudar?";
 
 export const BIO_LINKS: BioLink[] = [
   {
     id: "site",
     label: "Acesse nosso site",
-    url: "https://www.alliedit.com.br", // PLACEHOLDER
+    url: "https://alliedit.com.br/",
     icon: "globe",
-    placeholder: true,
+    placeholder: false,
   },
   {
     id: "atendimento",
     label: "Fale com a gente no WhatsApp",
-    url: `https://wa.me/${WHATSAPP_NUMBER}`, // PLACEHOLDER
+    url: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`,
     icon: "whatsapp",
-    placeholder: true,
+    placeholder: false,
   },
   {
     id: "linkedin",
     label: "Siga a gente no LinkedIn",
-    url: "https://www.linkedin.com/company/allied-it", // PLACEHOLDER (URL pública)
+    url: "https://www.linkedin.com/company/alliedit/",
     icon: "linkedin",
-    placeholder: true,
+    placeholder: false,
   },
   {
     id: "tiktok",
     label: "Confira nosso TikTok",
-    url: "https://www.tiktok.com/@alliedit", // PLACEHOLDER
+    url: "https://www.tiktok.com/@allied_it?_r=1&_t=ZS-99mdhytBm66",
     icon: "tiktok",
-    placeholder: true,
+    placeholder: false,
   },
 ];
 
