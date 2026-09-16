@@ -25,6 +25,7 @@ import { YealinkVcPage, yealinkVcMeta } from "./yealink-videoconferencia";
 import { AlocacaoPage, alocacaoMeta } from "./alocacao-ti";
 import { VideoconferenciaPage, videoconferenciaMeta } from "./videoconferencia";
 import { AssinaturasPage, assinaturasMeta } from "./assinaturas";
+import { LinksPage, linksMeta } from "./links";
 
 
 const SD_TITLE = "AlliedIT | Service Desk terceirizado 24x7 com NOC e SOC integrados";
