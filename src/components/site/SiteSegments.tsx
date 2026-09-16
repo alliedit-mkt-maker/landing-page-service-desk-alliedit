@@ -1,5 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useEffect, useRef } from "react";
 import hotelaria from "@/assets/sobre/seg-hotelaria.jpg.asset.json";
 import farma from "@/assets/sobre/seg-farma.jpg.asset.json";
 import varejo from "@/assets/sobre/seg-varejo.jpg.asset.json";
@@ -16,90 +15,98 @@ const SEGMENTS: { name: string; src: string }[] = [
   { name: "Logística", src: logistica.url },
 ];
 
+const LOOP = [...SEGMENTS, ...SEGMENTS];
+
 export function SiteSegments() {
   const trackRef = useRef<HTMLDivElement | null>(null);
-  const [atStart, setAtStart] = useState(true);
-  const [atEnd, setAtEnd] = useState(false);
-
-  const sync = useCallback(() => {
-    const el = trackRef.current;
-    if (!el) return;
-    setAtStart(el.scrollLeft <= 4);
-    setAtEnd(el.scrollLeft + el.clientWidth >= el.scrollWidth - 4);
-  }, []);
+  const pausedUntil = useRef(0);
+  const dragging = useRef(false);
 
   useEffect(() => {
-    sync();
     const el = trackRef.current;
     if (!el) return;
-    el.addEventListener("scroll", sync, { passive: true });
-    window.addEventListener("resize", sync);
-    return () => {
-      el.removeEventListener("scroll", sync);
-      window.removeEventListener("resize", sync);
-    };
-  }, [sync]);
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-  const scrollByCard = (dir: 1 | -1) => {
-    const el = trackRef.current;
-    if (!el) return;
-    const card = el.querySelector("article");
-    const step = card ? (card as HTMLElement).offsetWidth + 20 : el.clientWidth * 0.5;
-    el.scrollBy({ left: dir * step, behavior: "smooth" });
+    let raf = 0;
+    let last = performance.now();
+    const SPEED = 28; // px per second
+
+    const tick = (now: number) => {
+      const dt = (now - last) / 1000;
+      last = now;
+      if (!dragging.current && now > pausedUntil.current) {
+        const half = el.scrollWidth / 2;
+        let next = el.scrollLeft + SPEED * dt;
+        if (next >= half) next -= half;
+        el.scrollLeft = next;
+      }
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, []);
+
+  const pause = () => {
+    pausedUntil.current = performance.now() + 2500;
   };
 
-  const arrowBase =
-    "flex h-11 w-11 items-center justify-center border border-white/20 text-white transition-colors duration-200 hover:border-[var(--site-yellow)] hover:text-[var(--site-yellow)] disabled:opacity-25 disabled:hover:border-white/20 disabled:hover:text-white";
+  // pointer drag
+  const drag = useRef({ startX: 0, startScroll: 0 });
+  const onPointerDown = (e: React.PointerEvent) => {
+    const el = trackRef.current;
+    if (!el) return;
+    dragging.current = true;
+    drag.current = { startX: e.clientX, startScroll: el.scrollLeft };
+    el.setPointerCapture(e.pointerId);
+  };
+  const onPointerMove = (e: React.PointerEvent) => {
+    const el = trackRef.current;
+    if (!el || !dragging.current) return;
+    const half = el.scrollWidth / 2;
+    let next = drag.current.startScroll - (e.clientX - drag.current.startX);
+    if (next < 0) next += half;
+    if (next >= half) next -= half;
+    el.scrollLeft = next;
+  };
+  const endDrag = () => {
+    dragging.current = false;
+    pause();
+  };
 
   return (
     <section aria-labelledby="site-segmentos" className="relative bg-[#0A0E12] py-20 sm:py-28">
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-5 sm:px-8 md:flex-row md:items-end md:justify-between">
-        <div>
-          <h2
-            id="site-segmentos"
-            className="font-chillax text-[1.9rem] font-bold leading-[1.12] tracking-tight text-white sm:text-[2.6rem]"
-          >
-            Segmentos que atendemos
-          </h2>
-          <p className="font-inter mt-4 max-w-[52ch] text-[15px] leading-relaxed text-white/65">
-            Operações críticas, com particularidades próprias de cada setor.
-          </p>
-        </div>
-        <div className="flex gap-3">
-          <button
-            type="button"
-            aria-label="Segmento anterior"
-            onClick={() => scrollByCard(-1)}
-            disabled={atStart}
-            className={arrowBase}
-          >
-            <ChevronLeft className="h-5 w-5" strokeWidth={1.5} />
-          </button>
-          <button
-            type="button"
-            aria-label="Próximo segmento"
-            onClick={() => scrollByCard(1)}
-            disabled={atEnd}
-            className={arrowBase}
-          >
-            <ChevronRight className="h-5 w-5" strokeWidth={1.5} />
-          </button>
-        </div>
+      <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
+        <h2
+          id="site-segmentos"
+          className="font-chillax text-[1.9rem] font-bold leading-[1.12] tracking-tight text-white sm:text-[2.6rem]"
+        >
+          Segmentos que atendemos
+        </h2>
+        <p className="font-inter mt-4 max-w-[52ch] text-[15px] leading-relaxed text-white/65">
+          Operações críticas, com particularidades próprias de cada setor.
+        </p>
       </div>
 
       <div
         ref={trackRef}
-        className="mt-12 flex w-full snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-2 sm:px-8 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={endDrag}
+        onPointerCancel={endDrag}
+        onWheel={pause}
+        onTouchStart={pause}
+        className="mt-12 flex w-full cursor-grab gap-5 overflow-x-auto px-5 pb-2 select-none active:cursor-grabbing sm:px-8 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
-        {SEGMENTS.map((s) => (
+        {LOOP.map((s, i) => (
           <article
-            key={s.name}
-            className="group relative h-[460px] w-[80vw] shrink-0 snap-start overflow-hidden sm:h-[560px] sm:w-[46vw] lg:h-[620px] lg:w-[calc((100%-60px)/4)]"
+            key={`${s.name}-${i}`}
+            className="group relative h-[460px] w-[80vw] shrink-0 overflow-hidden sm:h-[560px] sm:w-[46vw] lg:h-[620px] lg:w-[calc((100%-60px)/4)]"
           >
             <img
               src={s.src}
               alt={s.name}
               loading="lazy"
+              draggable={false}
               className="absolute inset-0 size-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
             />
             <span aria-hidden="true" className="site-noise opacity-70" />

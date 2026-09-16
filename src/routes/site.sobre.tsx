@@ -95,7 +95,7 @@ function SobrePage() {
               "linear-gradient(90deg, rgba(0,0,0,0.95) 0%, rgba(4,110,139,0.78) 34%, rgba(4,110,139,0.34) 58%, rgba(4,110,139,0.04) 82%, rgba(0,0,0,0) 100%)",
           }}
         />
-        <div className="relative mx-auto flex min-h-[62vh] max-w-7xl items-center px-5 py-24 sm:px-8 lg:min-h-[74vh]">
+        <div className="relative mx-auto flex min-h-[78vh] max-w-7xl items-center px-5 py-28 sm:px-8 lg:min-h-[92vh]">
           <Reveal>
             <span className="font-inter text-[11px] font-semibold uppercase tracking-[0.24em] text-[var(--site-yellow)]">
               Quem somos
@@ -134,10 +134,17 @@ function SobrePage() {
             </div>
           </Reveal>
 
-          <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-x-12 sm:grid-cols-2">
             {DIFERENCIAIS.map((d, i) => (
-              <Reveal key={d.label} delay={i * 60} className="flex items-start gap-3">
-                <d.icon className="mt-0.5 h-5 w-5 shrink-0 text-[var(--site-blue)]" strokeWidth={1.5} />
+              <Reveal
+                key={d.label}
+                delay={i * 60}
+                className="group flex items-center gap-4 border-b border-black/[0.07] py-6"
+              >
+                <d.icon
+                  className="h-6 w-6 shrink-0 text-[var(--site-blue)] transition-colors duration-300 group-hover:text-[#F3C400]"
+                  strokeWidth={1.25}
+                />
                 <span className="font-inter text-[14.5px] leading-snug">{d.label}</span>
               </Reveal>
             ))}
@@ -155,46 +162,21 @@ function SobrePage() {
             backgroundSize: "22px 22px",
           }}
         />
-        <div className="relative mx-auto max-w-[1440px] lg:grid lg:grid-cols-[1.05fr_1fr] lg:items-center">
-          <Reveal variant="slide-right" className="relative">
-            <div className="relative overflow-hidden lg:rounded-r-[3px]">
+        <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-5 sm:px-8 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+          <Reveal variant="slide-right">
+            <div className="relative overflow-hidden">
               <img
                 src={ceo.url}
                 alt="Jimmy, CEO da Allied IT"
                 loading="lazy"
-                className="h-[420px] w-full object-cover object-center sm:h-[560px] lg:h-[680px]"
+                className="h-[360px] w-full object-cover object-center sm:h-[420px] lg:h-[480px]"
+                style={{ filter: "contrast(1.04) saturate(1.02)" }}
               />
-              <span
-                aria-hidden="true"
-                className="absolute inset-0 mix-blend-color"
-                style={{
-                  background:
-                    "linear-gradient(200deg, rgba(4,110,139,0.85) 0%, rgba(4,110,139,0.5) 58%, rgba(243,196,0,0.35) 100%)",
-                }}
-              />
-              <span
-                aria-hidden="true"
-                className="absolute inset-0"
-                style={{
-                  background:
-                    "linear-gradient(90deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0) 45%, rgba(246,248,249,0.9) 100%)",
-                }}
-              />
-              <span aria-hidden="true" className="site-noise opacity-60" />
             </div>
           </Reveal>
 
-          <Reveal
-            variant="slide-left"
-            className="relative z-10 mx-5 -mt-16 bg-white p-8 shadow-[0_28px_70px_-40px_rgba(4,110,139,0.55)] sm:mx-8 sm:p-12 lg:-ml-24 lg:mt-0 lg:mr-8 lg:p-14"
-          >
-            <span
-              aria-hidden="true"
-              className="font-chillax absolute -top-8 right-8 select-none text-[7rem] leading-none text-[#F3C400]/45"
-            >
-              &ldquo;
-            </span>
-            <h2 className="font-chillax text-[2.2rem] font-bold leading-[1.05] tracking-tight sm:text-[3rem]">
+          <Reveal variant="slide-left">
+            <h2 className="font-chillax text-[2.1rem] font-bold leading-[1.05] tracking-tight sm:text-[2.7rem]">
               Jimmy
             </h2>
             <span className="mt-4 block h-[3px] w-16 bg-[#F3C400]" />
