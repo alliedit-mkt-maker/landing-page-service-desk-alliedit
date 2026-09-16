@@ -53,7 +53,6 @@ function LinksDashboardRoute() {
 // Rendered when the dashboard subdomain serves this page at "/".
 export function LinksDashboardPage() {
   const [user, setUser] = useState<Awaited<ReturnType<typeof $getSessionUser>> | null>(null);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     let active = true;
@@ -61,20 +60,12 @@ export function LinksDashboardPage() {
       .then((u) => {
         if (active) setUser(u ?? null);
       })
-      .catch(() => {
-        if (active) setUser(null);
-      })
-      .finally(() => {
-        if (active) setLoading(false);
-      });
+      .catch(() => {});
     return () => {
       active = false;
     };
   }, []);
 
-  if (loading) {
-    return <div className="min-h-screen bg-[#08171D]" />;
-  }
   return <LinksDashboard user={user} />;
 }
 
