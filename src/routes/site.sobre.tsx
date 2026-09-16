@@ -152,50 +152,56 @@ function SobrePage() {
         </div>
       </section>
 
-      {/* DOBRA 3 — CEO (editorial, assimétrico) */}
-      <section className="relative overflow-hidden bg-[#F6F8F9] py-20 sm:py-28">
-        <span
-          aria-hidden="true"
-          className="absolute inset-0 opacity-[0.5]"
-          style={{
-            backgroundImage: "radial-gradient(rgba(4,110,139,0.18) 1.1px, transparent 1.1px)",
-            backgroundSize: "22px 22px",
-          }}
-        />
-        <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-5 sm:px-8 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
-          <Reveal variant="slide-right">
-            <div className="relative overflow-hidden">
-              <img
-                src={ceo.url}
-                alt="Jimmy, CEO da Allied IT"
-                loading="lazy"
-                className="h-[360px] w-full object-cover object-center sm:h-[420px] lg:h-[480px]"
-                style={{ filter: "contrast(1.04) saturate(1.02)" }}
-              />
-            </div>
-          </Reveal>
+      {/* DOBRA 3 — CEO (foto full-bleed lateral + reveal no scroll) */}
+      <section className="relative overflow-hidden bg-[#F6F8F9]">
+        <div className="mx-auto grid max-w-none grid-cols-1 items-stretch lg:grid-cols-[42%_58%]">
+          <div className="relative h-[300px] overflow-hidden lg:h-auto lg:min-h-[440px]">
+            <img
+              src={ceo.url}
+              alt="Jimmy, CEO da Allied IT"
+              loading="lazy"
+              className="absolute inset-0 size-full object-cover object-center"
+            />
+            <span aria-hidden="true" className="site-noise opacity-80" />
+            <span
+              aria-hidden="true"
+              className="absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(90deg, rgba(10,14,18,0.35) 0%, rgba(10,14,18,0.05) 60%, rgba(246,248,249,0.55) 100%)",
+              }}
+            />
+          </div>
 
-          <Reveal variant="slide-left">
-            <h2 className="font-chillax text-[2.1rem] font-bold leading-[1.05] tracking-tight sm:text-[2.7rem]">
-              Jimmy
-            </h2>
-            <span className="mt-4 block h-[3px] w-16 bg-[#F3C400]" />
-            <span className="font-inter mt-4 block text-[12px] font-semibold uppercase tracking-[0.22em] text-[var(--site-blue)]">
-              CEO da Allied IT
-            </span>
-            <p className="font-inter mt-7 text-[15px] leading-relaxed text-[var(--site-muted)] sm:text-base">
-              Com mais de 20 anos de atuação em tecnologia, Jimmy construiu sua trajetória em
-              operações, infraestrutura, serviços gerenciados e gestão. Ao longo desse período,
-              acompanhou de perto a evolução do papel da tecnologia nas empresas, e como ela passou a
-              impactar diretamente a eficiência, a segurança e a capacidade de crescimento dos
-              negócios.
-            </p>
-            <p className="font-inter mt-5 text-[15px] leading-relaxed text-[var(--site-muted)] sm:text-base">
-              Seu olhar sobre tecnologia sempre foi prático: precisa fazer sentido para a realidade
-              de cada empresa, apoiando decisões, operação e crescimento de forma consistente. É essa
-              visão que orienta a atuação da Allied IT hoje.
-            </p>
-          </Reveal>
+          <div className="flex items-center px-5 py-14 sm:px-10 lg:px-16">
+            <div className="max-w-[58ch]">
+              <Reveal variant="slide-left">
+                <h2 className="font-chillax text-[1.7rem] font-bold leading-[1.05] tracking-tight sm:text-[2.1rem]">
+                  Jimmy
+                </h2>
+                <span className="mt-3 block h-[3px] w-14 bg-[#F3C400]" />
+                <span className="font-inter mt-3 block text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--site-blue)]">
+                  CEO da Allied IT
+                </span>
+              </Reveal>
+              <Reveal variant="slide-left" delay={140}>
+                <p className="font-inter mt-6 text-[14.5px] leading-relaxed text-[var(--site-muted)]">
+                  Com mais de 20 anos de atuação em tecnologia, Jimmy construiu sua trajetória em
+                  operações, infraestrutura, serviços gerenciados e gestão. Ao longo desse período,
+                  acompanhou de perto a evolução do papel da tecnologia nas empresas, e como ela
+                  passou a impactar diretamente a eficiência, a segurança e a capacidade de
+                  crescimento dos negócios.
+                </p>
+              </Reveal>
+              <Reveal variant="slide-left" delay={260}>
+                <p className="font-inter mt-4 text-[14.5px] leading-relaxed text-[var(--site-muted)]">
+                  Seu olhar sobre tecnologia sempre foi prático: precisa fazer sentido para a
+                  realidade de cada empresa, apoiando decisões, operação e crescimento de forma
+                  consistente. É essa visão que orienta a atuação da Allied IT hoje.
+                </p>
+              </Reveal>
+            </div>
+          </div>
         </div>
       </section>
 
