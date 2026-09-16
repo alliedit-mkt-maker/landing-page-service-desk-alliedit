@@ -1,31 +1,78 @@
-const BRAZIL =
-  "M196,18 L250,60 L285,95 L330,120 L355,150 L400,175 L430,215 L415,265 L390,300 L370,330 L340,355 L305,375 L275,405 L250,440 L215,470 L185,450 L170,415 L150,380 L140,340 L120,310 L95,270 L70,235 L55,205 L85,175 L110,150 L150,130 Z";
+// Contorno simplificado do Brasil (decorativo, estilo halftone).
+const BRAZIL = [
+  [150, 72],
+  [178, 52],
+  [205, 30],
+  [232, 58],
+  [252, 80],
+  [272, 66],
+  [292, 92],
+  [320, 104],
+  [342, 120],
+  [372, 132],
+  [404, 150],
+  [424, 176],
+  [432, 206],
+  [424, 238],
+  [410, 268],
+  [396, 296],
+  [378, 318],
+  [356, 340],
+  [334, 356],
+  [306, 372],
+  [286, 392],
+  [266, 414],
+  [250, 436],
+  [238, 462],
+  [216, 486],
+  [190, 470],
+  [176, 444],
+  [168, 418],
+  [152, 398],
+  [144, 372],
+  [132, 352],
+  [126, 326],
+  [112, 306],
+  [96, 286],
+  [84, 262],
+  [70, 244],
+  [56, 226],
+  [64, 206],
+  [84, 192],
+  [100, 172],
+  [112, 148],
+  [126, 120],
+  [136, 96],
+]
+  .map(([x, y], i) => `${i === 0 ? "M" : "L"}${x},${y}`)
+  .join(" ")
+  .concat(" Z");
 
 // Origem em São Paulo -> destinos aproximados nos demais estados.
-const SP = { x: 288, y: 368 };
+const SP = { x: 288, y: 380 };
 const TARGETS = [
-  { x: 200, y: 60 },
-  { x: 300, y: 110 },
-  { x: 380, y: 175 },
-  { x: 415, y: 240 },
-  { x: 360, y: 320 },
-  { x: 245, y: 435 },
-  { x: 150, y: 350 },
-  { x: 95, y: 255 },
-  { x: 200, y: 230 },
+  { x: 210, y: 70 },
+  { x: 300, y: 112 },
+  { x: 380, y: 152 },
+  { x: 412, y: 214 },
+  { x: 370, y: 300 },
+  { x: 240, y: 452 },
+  { x: 168, y: 400 },
+  { x: 100, y: 276 },
+  { x: 200, y: 244 },
 ];
 
 export function SiteBrazilMap() {
   return (
     <svg
-      viewBox="0 0 500 520"
+      viewBox="0 0 500 540"
       role="img"
       aria-label="Mapa do Brasil com atuação a partir de São Paulo"
       className="h-auto w-full max-w-[460px]"
     >
       <defs>
         <pattern id="site-dots" width="9" height="9" patternUnits="userSpaceOnUse">
-          <circle cx="2" cy="2" r="1.6" fill="rgba(255,255,255,0.55)" />
+          <circle cx="2" cy="2" r="1.5" fill="rgba(255,255,255,0.5)" />
         </pattern>
         <clipPath id="site-br-clip">
           <path d={BRAZIL} />
@@ -33,19 +80,18 @@ export function SiteBrazilMap() {
       </defs>
 
       <g clipPath="url(#site-br-clip)">
-        <rect width="500" height="520" fill="url(#site-dots)" />
+        <rect width="500" height="540" fill="url(#site-dots)" />
       </g>
-      <path d={BRAZIL} fill="none" stroke="rgba(255,255,255,0.12)" strokeWidth="1" />
 
       {TARGETS.map((t, i) => (
         <g key={`${t.x}-${t.y}`}>
           <path
-            d={`M${SP.x},${SP.y} Q${(SP.x + t.x) / 2 + 18},${(SP.y + t.y) / 2 - 26} ${t.x},${t.y}`}
+            d={`M${SP.x},${SP.y} Q${(SP.x + t.x) / 2 + 16},${(SP.y + t.y) / 2 - 24} ${t.x},${t.y}`}
             fill="none"
             stroke="#D4A017"
             strokeWidth="1.2"
             strokeLinecap="round"
-            strokeDasharray="180"
+            strokeDasharray="200"
             className="site-map-line"
             style={{ animationDelay: `${i * 0.35}s` }}
           />
