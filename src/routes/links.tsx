@@ -31,7 +31,13 @@ const ICONS: Record<BioLink["icon"], typeof Globe> = {
   tiktok: Music2,
 };
 
-function LinksPage() {
+export const linksMeta = {
+  title: "Allied IT | Links oficiais",
+  description:
+    "Todos os canais oficiais da Allied IT em um só lugar: site, atendimento no WhatsApp, LinkedIn e TikTok.",
+};
+
+export function LinksPage() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#08171D] text-white">
       <div

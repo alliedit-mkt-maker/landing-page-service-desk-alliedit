@@ -25,12 +25,14 @@ import { YealinkVcPage, yealinkVcMeta } from "./yealink-videoconferencia";
 import { AlocacaoPage, alocacaoMeta } from "./alocacao-ti";
 import { VideoconferenciaPage, videoconferenciaMeta } from "./videoconferencia";
 import { AssinaturasPage, assinaturasMeta } from "./assinaturas";
+import { LinksPage, linksMeta } from "./links";
 
 
 const SD_TITLE = "AlliedIT | Service Desk terceirizado 24x7 com NOC e SOC integrados";
 const SD_DESCRIPTION = "A operação de TI por trás das marcas que você conhece. Service Desk 24x7, N1/N2/N3 na mesma equipe, NOC e SOC integrados, custo previsível e SLA real. +7 anos atendendo hotelaria, saúde, varejo, farma e logística.";
 
-const HOST_VARIANT_MAP: Record<string, "cabeamento" | "headset" | "rally-bar" | "poly" | "logitech" | "yealink" | "poly-studio" | "yealink-vc" | "alocacao" | "videoconferencia" | "assinaturas"> = {
+const HOST_VARIANT_MAP: Record<string, "cabeamento" | "headset" | "rally-bar" | "poly" | "logitech" | "yealink" | "poly-studio" | "yealink-vc" | "alocacao" | "videoconferencia" | "assinaturas" | "links"> = {
+  "links.alliedit.com.br": "links",
   "cabeamento.alliedit.com.br": "cabeamento",
   "headset-callcenter.alliedit.com.br": "headset",
   "rally-bar.alliedit.com.br": "rally-bar",
@@ -69,8 +71,11 @@ export const Route = createFileRoute("/")({
     const isAlocacao = variant === "alocacao";
     const isVc = variant === "videoconferencia";
     const isAssinaturas = variant === "assinaturas";
-    const title = isAssinaturas ? assinaturasMeta.title : isVc ? videoconferenciaMeta.title : isAlocacao ? alocacaoMeta.title : isYealinkVc ? yealinkVcMeta.title : isPolyStudio ? polyStudioMeta.title : isYealink ? yealinkMeta.title : isLogitech ? logitechMeta.title : isPoly ? polyMeta.title : isRally ? rallyBarMeta.title : isCabeamento ? cabeamentoMeta.title : isHeadset ? headsetMeta.title : SD_TITLE;
-    const description = isAssinaturas
+    const isLinks = variant === "links";
+    const title = isLinks ? linksMeta.title : isAssinaturas ? assinaturasMeta.title : isVc ? videoconferenciaMeta.title : isAlocacao ? alocacaoMeta.title : isYealinkVc ? yealinkVcMeta.title : isPolyStudio ? polyStudioMeta.title : isYealink ? yealinkMeta.title : isLogitech ? logitechMeta.title : isPoly ? polyMeta.title : isRally ? rallyBarMeta.title : isCabeamento ? cabeamentoMeta.title : isHeadset ? headsetMeta.title : SD_TITLE;
+    const description = isLinks
+      ? linksMeta.description
+      : isAssinaturas
       ? assinaturasMeta.description
       : isVc
       ? videoconferenciaMeta.description
@@ -93,7 +98,9 @@ export const Route = createFileRoute("/")({
       : isHeadset
         ? headsetMeta.description
         : SD_DESCRIPTION;
-    const canonical = isAssinaturas
+    const canonical = isLinks
+      ? "https://links.alliedit.com.br/"
+      : isAssinaturas
       ? "https://assinaturas.alliedit.com.br/"
       : isVc
       ? "https://videoconferencia.alliedit.com.br/"
@@ -194,6 +201,7 @@ function Index() {
   if (variant === "alocacao") return <AlocacaoPage />;
   if (variant === "videoconferencia") return <VideoconferenciaPage />;
   if (variant === "assinaturas") return <AssinaturasPage />;
+  if (variant === "links") return <LinksPage />;
 
   return (
     <LpProvider>
