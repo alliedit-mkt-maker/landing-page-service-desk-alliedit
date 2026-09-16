@@ -103,7 +103,7 @@ function SobrePage() {
             <h1 className="font-chillax mt-4 whitespace-nowrap text-[1.7rem] font-bold leading-[1.1] tracking-tight text-white sm:text-[2.4rem] lg:text-[3.1rem]">
               Por dentro da Allied IT
             </h1>
-            <p className="font-inter mt-5 max-w-[36ch] text-[15px] leading-relaxed text-white/75 sm:text-base">
+            <p className="font-inter mt-5 max-w-[34ch] text-[15px] leading-relaxed text-white/75 sm:max-w-[52ch] sm:text-base">
               Conheça a empresa por trás da operação de TI que atende empresas de médio e grande
               porte em todo o Brasil.
             </p>
