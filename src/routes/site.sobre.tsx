@@ -95,7 +95,7 @@ function SobrePage() {
               "linear-gradient(90deg, rgba(0,0,0,0.95) 0%, rgba(4,110,139,0.78) 34%, rgba(4,110,139,0.34) 58%, rgba(4,110,139,0.04) 82%, rgba(0,0,0,0) 100%)",
           }}
         />
-        <div className="relative mx-auto flex min-h-[62vh] max-w-7xl items-center px-5 py-24 sm:px-8 lg:min-h-[74vh]">
+        <div className="relative mx-auto flex min-h-[78vh] max-w-7xl items-center px-5 py-28 sm:px-8 lg:min-h-[92vh]">
           <Reveal>
             <span className="font-inter text-[11px] font-semibold uppercase tracking-[0.24em] text-[var(--site-yellow)]">
               Quem somos
