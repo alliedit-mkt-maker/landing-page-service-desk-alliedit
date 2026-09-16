@@ -85,7 +85,8 @@ function SobrePage() {
         <img
           src={officeHall.url}
           alt="Corredor do escritório da Allied IT, com o logo da marca sobre a parede verde"
-          className="absolute inset-0 size-full object-cover object-[68%_center]"
+          className="absolute inset-0 size-full object-cover object-[58%_center]"
+          style={{ transform: "rotate(-1.4deg) scale(1.09)" }}
         />
         <span
           aria-hidden="true"
