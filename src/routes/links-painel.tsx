@@ -53,7 +53,6 @@ function LinksDashboardRoute() {
 // Rendered when the dashboard subdomain serves this page at "/".
 export function LinksDashboardPage() {
   const [user, setUser] = useState<Awaited<ReturnType<typeof $getSessionUser>> | null>(null);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     let active = true;
@@ -61,20 +60,12 @@ export function LinksDashboardPage() {
       .then((u) => {
         if (active) setUser(u ?? null);
       })
-      .catch(() => {
-        if (active) setUser(null);
-      })
-      .finally(() => {
-        if (active) setLoading(false);
-      });
+      .catch(() => {});
     return () => {
       active = false;
     };
   }, []);
 
-  if (loading) {
-    return <div className="min-h-screen bg-[#08171D]" />;
-  }
   return <LinksDashboard user={user} />;
 }
 
@@ -109,20 +100,6 @@ function Card({
 function LinksDashboard({ user }: { user: Awaited<ReturnType<typeof $getSessionUser>> | null }) {
   const [period, setPeriod] = useState<Period>(30);
 
-  if (!user) {
-    return (
-      <div className="flex min-h-screen items-center justify-center bg-[#08171D] px-6 text-center text-white">
-        <div className="max-w-sm">
-          <h1 className="text-xl font-bold">Acesso restrito</h1>
-          <p className="mt-3 text-sm text-white/60">
-            Este painel é interno. Entre com a sua conta Lovable no mesmo navegador para visualizar
-            as métricas da página de links.
-          </p>
-        </div>
-      </div>
-    );
-  }
-
   const totals = totalsFor(period);
   const byLink = clicksByLink(period);
   const byHour = clicksByHour(period);
@@ -140,8 +117,8 @@ function LinksDashboard({ user }: { user: Awaited<ReturnType<typeof $getSessionU
             </p>
             <h1 className="mt-2 text-[28px] font-bold tracking-tight">Desempenho dos links</h1>
             <p className="mt-2 text-sm text-white/55">
-              Olá, {user.displayName ?? user.email}. Números de exemplo até o registro real de
-              cliques ser ativado.
+              {user ? `Olá, ${user.displayName ?? user.email}. ` : ""}Números de exemplo até o
+              registro real de cliques ser ativado.
             </p>
           </div>
           <div className="flex gap-2">
