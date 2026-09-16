@@ -24,46 +24,53 @@ export function SiteBrazilMap() {
       viewBox="0 0 500 540"
       role="img"
       aria-label="Mapa do Brasil com atuação a partir de São Paulo"
-      className="h-auto w-full max-w-[460px]"
+      className="h-auto w-full max-w-[880px]"
     >
       <defs>
-        <pattern id="site-dots" width="8" height="8" patternUnits="userSpaceOnUse">
-          <circle cx="2" cy="2" r="1.4" fill="rgba(255,255,255,0.5)" />
+        <pattern id="site-dots" width="7" height="7" patternUnits="userSpaceOnUse">
+          <circle cx="1.8" cy="1.8" r="1.5" fill="rgba(255,255,255,0.62)" />
         </pattern>
         <clipPath id="site-br-clip">
           <path d={BRAZIL} />
         </clipPath>
+        <filter id="site-map-glow" x="-30%" y="-30%" width="160%" height="160%">
+          <feGaussianBlur stdDeviation="2.4" result="b" />
+          <feMerge>
+            <feMergeNode in="b" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
       </defs>
 
       <g clipPath="url(#site-br-clip)" transform="translate(20,10)">
         <rect width="500" height="540" fill="url(#site-dots)" />
       </g>
 
-      <g transform="translate(20,10)">
+      <g transform="translate(20,10)" filter="url(#site-map-glow)">
         {TARGETS.map((t, i) => (
           <g key={`${t.x}-${t.y}`}>
             <path
               d={`M${SP.x},${SP.y} Q${(SP.x + t.x) / 2 + 14},${(SP.y + t.y) / 2 - 22} ${t.x},${t.y}`}
               fill="none"
-              stroke="#D4A017"
-              strokeWidth="1.1"
+              stroke="#F3C400"
+              strokeWidth="1.7"
               strokeLinecap="round"
               strokeDasharray="240"
               className="site-map-line"
-              style={{ animationDelay: `${i * 0.3}s` }}
+              style={{ animationDelay: `${i * 0.28}s` }}
             />
-            <circle cx={t.x} cy={t.y} r="2.4" fill="#D4A017" opacity="0.9" />
+            <circle cx={t.x} cy={t.y} r="3.1" fill="#F3C400" opacity="0.95" />
           </g>
         ))}
 
-        <circle cx={SP.x} cy={SP.y} r="10" fill="#D4A017" opacity="0.18" className="site-map-pulse" />
-        <circle cx={SP.x} cy={SP.y} r="4" fill="#D4A017" />
+        <circle cx={SP.x} cy={SP.y} r="14" fill="#F3C400" opacity="0.2" className="site-map-pulse" />
+        <circle cx={SP.x} cy={SP.y} r="5" fill="#F3C400" />
         <text
-          x={SP.x + 12}
-          y={SP.y + 14}
+          x={SP.x + 14}
+          y={SP.y + 16}
           fill="#ffffff"
-          fontSize="10"
-          letterSpacing="2"
+          fontSize="12"
+          letterSpacing="2.4"
           style={{ fontFamily: "Inter, sans-serif" }}
         >
           SÃO PAULO
