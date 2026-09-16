@@ -187,7 +187,7 @@ function SobrePage() {
               aria-hidden="true"
               className="absolute inset-0 mix-blend-color"
               style={{
-                background: "linear-gradient(200deg, rgba(4,110,139,0.55) 0%, rgba(212,160,23,0.35) 100%)",
+                background: "linear-gradient(200deg, rgba(4,110,139,0.7) 0%, rgba(4,110,139,0.45) 60%, rgba(212,160,23,0.2) 100%)",
               }}
             />
             <span aria-hidden="true" className="site-noise opacity-60" />
