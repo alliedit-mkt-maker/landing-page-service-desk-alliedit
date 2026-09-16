@@ -115,9 +115,28 @@ function canonicalRedirect(request: Request): Response | undefined {
   return Response.redirect(target.toString(), 301);
 }
 
+// Extra per-host path aliases (deep links inside a subdomain).
+// e.g. links.alliedit.com.br/painel -> internally renders /links-painel
+const HOST_PATH_REWRITES: Record<string, Record<string, string>> = {
+  "links.alliedit.com.br": {
+    "/painel": "/links-painel",
+    "/metricas": "/links-painel",
+  },
+};
+
 function rewriteRequestForHost(request: Request): Request {
   const url = new URL(request.url);
-  const target = HOST_REWRITES[url.hostname.toLowerCase()];
+  const host = url.hostname.toLowerCase();
+  const pathAliases = HOST_PATH_REWRITES[host];
+  if (pathAliases) {
+    const path = url.pathname.replace(/\/+$/, "") || "/";
+    const aliased = pathAliases[path];
+    if (aliased) {
+      url.pathname = aliased;
+      return new Request(url.toString(), request);
+    }
+  }
+  const target = HOST_REWRITES[host];
   if (!target) return request;
   // Only rewrite the root path; deep links keep their original path.
   if (url.pathname !== "/" && url.pathname !== "") return request;
