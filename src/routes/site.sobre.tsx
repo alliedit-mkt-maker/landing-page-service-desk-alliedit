@@ -161,7 +161,7 @@ function SobrePage() {
               src={ceo.url}
               alt="Jimmy, CEO da Allied IT"
               loading="lazy"
-              className="absolute inset-0 size-full object-cover object-center"
+              className="absolute inset-0 size-full object-cover object-[50%_22%]"
             />
             <span aria-hidden="true" className="site-noise opacity-80" />
             <span
