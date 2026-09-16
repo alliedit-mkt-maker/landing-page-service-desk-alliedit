@@ -134,10 +134,17 @@ function SobrePage() {
             </div>
           </Reveal>
 
-          <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-x-12 sm:grid-cols-2">
             {DIFERENCIAIS.map((d, i) => (
-              <Reveal key={d.label} delay={i * 60} className="flex items-start gap-3">
-                <d.icon className="mt-0.5 h-5 w-5 shrink-0 text-[var(--site-blue)]" strokeWidth={1.5} />
+              <Reveal
+                key={d.label}
+                delay={i * 60}
+                className="group flex items-center gap-4 border-b border-black/[0.07] py-6"
+              >
+                <d.icon
+                  className="h-6 w-6 shrink-0 text-[var(--site-blue)] transition-colors duration-300 group-hover:text-[#F3C400]"
+                  strokeWidth={1.25}
+                />
                 <span className="font-inter text-[14.5px] leading-snug">{d.label}</span>
               </Reveal>
             ))}
