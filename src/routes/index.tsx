@@ -26,13 +26,15 @@ import { AlocacaoPage, alocacaoMeta } from "./alocacao-ti";
 import { VideoconferenciaPage, videoconferenciaMeta } from "./videoconferencia";
 import { AssinaturasPage, assinaturasMeta } from "./assinaturas";
 import { LinksPage, linksMeta } from "./links";
+import { LinksDashboardPage, linksDashboardMeta } from "./links-painel";
 
 
 const SD_TITLE = "AlliedIT | Service Desk terceirizado 24x7 com NOC e SOC integrados";
 const SD_DESCRIPTION = "A operação de TI por trás das marcas que você conhece. Service Desk 24x7, N1/N2/N3 na mesma equipe, NOC e SOC integrados, custo previsível e SLA real. +7 anos atendendo hotelaria, saúde, varejo, farma e logística.";
 
-const HOST_VARIANT_MAP: Record<string, "cabeamento" | "headset" | "rally-bar" | "poly" | "logitech" | "yealink" | "poly-studio" | "yealink-vc" | "alocacao" | "videoconferencia" | "assinaturas" | "links"> = {
+const HOST_VARIANT_MAP: Record<string, "cabeamento" | "headset" | "rally-bar" | "poly" | "logitech" | "yealink" | "poly-studio" | "yealink-vc" | "alocacao" | "videoconferencia" | "assinaturas" | "links" | "links-dashboard"> = {
   "links.alliedit.com.br": "links",
+  "links-dashboard.alliedit.com.br": "links-dashboard",
   "cabeamento.alliedit.com.br": "cabeamento",
   "headset-callcenter.alliedit.com.br": "headset",
   "rally-bar.alliedit.com.br": "rally-bar",
@@ -60,6 +62,19 @@ export const Route = createFileRoute("/")({
   loader: async () => ({ variant: await getRouteVariant() }),
   head: ({ loaderData }) => {
     const variant = loaderData?.variant;
+    if (variant === "links-dashboard") {
+      return {
+        meta: [
+          { title: linksDashboardMeta.title },
+          { name: "description", content: linksDashboardMeta.description },
+          { property: "og:title", content: linksDashboardMeta.title },
+          { property: "og:description", content: linksDashboardMeta.description },
+          { property: "og:type", content: "website" },
+          { name: "twitter:card", content: "summary_large_image" },
+          { name: "robots", content: "noindex, nofollow" },
+        ],
+      };
+    }
     const isCabeamento = variant === "cabeamento";
     const isHeadset = variant === "headset";
     const isRally = variant === "rally-bar";
@@ -202,6 +217,7 @@ function Index() {
   if (variant === "videoconferencia") return <VideoconferenciaPage />;
   if (variant === "assinaturas") return <AssinaturasPage />;
   if (variant === "links") return <LinksPage />;
+  if (variant === "links-dashboard") return <LinksDashboardPage />;
 
   return (
     <LpProvider>

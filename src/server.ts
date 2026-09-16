@@ -82,6 +82,7 @@ const HOST_REWRITES: Record<string, string> = {
   "videoconferencia.alliedit.com.br": "/videoconferencia",
   "assinaturas.alliedit.com.br": "/assinaturas",
   "links.alliedit.com.br": "/links",
+  "links-dashboard.alliedit.com.br": "/links-painel",
 };
 
 // Canonical home for each LP path. Requests to these paths on any other host
