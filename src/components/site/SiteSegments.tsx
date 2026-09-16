@@ -76,11 +76,7 @@ export function SiteSegments() {
         </p>
       </div>
 
-      <div
-        className="mt-12 w-full overflow-hidden px-5 sm:px-8"
-        onMouseEnter={() => (paused.current = true)}
-        onMouseLeave={() => (paused.current = false)}
-      >
+      <div className="mt-12 w-full overflow-hidden px-5 sm:px-8">
         <div
           ref={trackRef}
           onPointerDown={onPointerDown}
@@ -108,14 +104,6 @@ export function SiteSegments() {
                 style={{
                   background:
                     "linear-gradient(0deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.35) 42%, rgba(0,0,0,0.08) 100%)",
-                }}
-              />
-              <span
-                aria-hidden="true"
-                className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                style={{
-                  background:
-                    "linear-gradient(0deg, rgba(7,111,140,0.85) 0%, rgba(0,0,0,0.75) 55%, rgba(0,0,0,0.25) 100%)",
                 }}
               />
               <div className="absolute inset-x-0 bottom-0 p-6">
