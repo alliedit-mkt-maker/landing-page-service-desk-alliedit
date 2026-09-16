@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import {
   Bar,
@@ -37,8 +37,46 @@ export const Route = createFileRoute("/links-painel")({
       { name: "robots", content: "noindex, nofollow" },
     ],
   }),
-  component: LinksDashboard,
+  component: LinksDashboardRoute,
 });
+
+export const linksDashboardMeta = {
+  title: "Painel de links | Allied IT",
+  description: "Painel interno de desempenho da página de links da Allied IT.",
+};
+
+function LinksDashboardRoute() {
+  const user = Route.useLoaderData();
+  return <LinksDashboard user={user} />;
+}
+
+// Rendered when the dashboard subdomain serves this page at "/".
+export function LinksDashboardPage() {
+  const [user, setUser] = useState<Awaited<ReturnType<typeof $getSessionUser>> | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let active = true;
+    $getSessionUser()
+      .then((u) => {
+        if (active) setUser(u ?? null);
+      })
+      .catch(() => {
+        if (active) setUser(null);
+      })
+      .finally(() => {
+        if (active) setLoading(false);
+      });
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  if (loading) {
+    return <div className="min-h-screen bg-[#08171D]" />;
+  }
+  return <LinksDashboard user={user} />;
+}
 
 const ACCENT = "#076F8C";
 const YELLOW = "#D4A017";
@@ -68,8 +106,7 @@ function Card({
   );
 }
 
-function LinksDashboard() {
-  const user = Route.useLoaderData();
+function LinksDashboard({ user }: { user: Awaited<ReturnType<typeof $getSessionUser>> | null }) {
   const [period, setPeriod] = useState<Period>(30);
 
   if (!user) {
