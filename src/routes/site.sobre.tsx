@@ -162,46 +162,21 @@ function SobrePage() {
             backgroundSize: "22px 22px",
           }}
         />
-        <div className="relative mx-auto max-w-[1440px] lg:grid lg:grid-cols-[1.05fr_1fr] lg:items-center">
-          <Reveal variant="slide-right" className="relative">
-            <div className="relative overflow-hidden lg:rounded-r-[3px]">
+        <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-5 sm:px-8 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+          <Reveal variant="slide-right">
+            <div className="relative overflow-hidden">
               <img
                 src={ceo.url}
                 alt="Jimmy, CEO da Allied IT"
                 loading="lazy"
-                className="h-[420px] w-full object-cover object-center sm:h-[560px] lg:h-[680px]"
+                className="h-[360px] w-full object-cover object-center sm:h-[420px] lg:h-[480px]"
+                style={{ filter: "contrast(1.04) saturate(1.02)" }}
               />
-              <span
-                aria-hidden="true"
-                className="absolute inset-0 mix-blend-color"
-                style={{
-                  background:
-                    "linear-gradient(200deg, rgba(4,110,139,0.85) 0%, rgba(4,110,139,0.5) 58%, rgba(243,196,0,0.35) 100%)",
-                }}
-              />
-              <span
-                aria-hidden="true"
-                className="absolute inset-0"
-                style={{
-                  background:
-                    "linear-gradient(90deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0) 45%, rgba(246,248,249,0.9) 100%)",
-                }}
-              />
-              <span aria-hidden="true" className="site-noise opacity-60" />
             </div>
           </Reveal>
 
-          <Reveal
-            variant="slide-left"
-            className="relative z-10 mx-5 -mt-16 bg-white p-8 shadow-[0_28px_70px_-40px_rgba(4,110,139,0.55)] sm:mx-8 sm:p-12 lg:-ml-24 lg:mt-0 lg:mr-8 lg:p-14"
-          >
-            <span
-              aria-hidden="true"
-              className="font-chillax absolute -top-8 right-8 select-none text-[7rem] leading-none text-[#F3C400]/45"
-            >
-              &ldquo;
-            </span>
-            <h2 className="font-chillax text-[2.2rem] font-bold leading-[1.05] tracking-tight sm:text-[3rem]">
+          <Reveal variant="slide-left">
+            <h2 className="font-chillax text-[2.1rem] font-bold leading-[1.05] tracking-tight sm:text-[2.7rem]">
               Jimmy
             </h2>
             <span className="mt-4 block h-[3px] w-16 bg-[#F3C400]" />
