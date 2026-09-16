@@ -201,6 +201,7 @@ function Index() {
   if (variant === "alocacao") return <AlocacaoPage />;
   if (variant === "videoconferencia") return <VideoconferenciaPage />;
   if (variant === "assinaturas") return <AssinaturasPage />;
+  if (variant === "links") return <LinksPage />;
 
   return (
     <LpProvider>
