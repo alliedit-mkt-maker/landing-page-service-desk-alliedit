@@ -20,7 +20,7 @@ const LOOP = [...SEGMENTS, ...SEGMENTS];
 export function SiteSegments() {
   const trackRef = useRef<HTMLDivElement | null>(null);
   const offset = useRef(0);
-  const paused = useRef(false);
+  
   const dragging = useRef(false);
   const drag = useRef({ startX: 0, startOffset: 0 });
 
@@ -38,7 +38,7 @@ export function SiteSegments() {
       last = now;
       const half = el.scrollWidth / 2;
       if (half > 0) {
-        if (!paused.current && !dragging.current) offset.current += SPEED * dt;
+        if (!dragging.current) offset.current += SPEED * dt;
         if (offset.current >= half) offset.current -= half;
         if (offset.current < 0) offset.current += half;
         el.style.transform = `translate3d(${-offset.current}px,0,0)`;
