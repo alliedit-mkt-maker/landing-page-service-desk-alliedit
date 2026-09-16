@@ -98,7 +98,9 @@ export const Route = createFileRoute("/")({
       : isHeadset
         ? headsetMeta.description
         : SD_DESCRIPTION;
-    const canonical = isAssinaturas
+    const canonical = isLinks
+      ? "https://links.alliedit.com.br/"
+      : isAssinaturas
       ? "https://assinaturas.alliedit.com.br/"
       : isVc
       ? "https://videoconferencia.alliedit.com.br/"
