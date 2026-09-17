@@ -1,5 +1,13 @@
 {
   "version": "7",
   "dialect": "postgresql",
-  "entries": []
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1789675030799,
+      "tag": "0000_create_bio_link_clicks",
+      "breakpoints": true
+    }
+  ]
 }
