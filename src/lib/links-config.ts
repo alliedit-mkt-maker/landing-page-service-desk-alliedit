@@ -57,35 +57,26 @@ export const BIO_PROFILE = {
 };
 
 // ---------------------------------------------------------------------------
-// Registro de cliques (temporário, apenas no navegador)
-// Quando o banco da Lovable Cloud for ativado, substituir por uma chamada de
-// server function que grave { linkId, timestamp } em uma tabela.
+// Registro de cliques (real, gravado no banco da Lovable Cloud)
 // ---------------------------------------------------------------------------
 
-export type ClickEvent = { linkId: BioLink["id"]; ts: number };
-
-const STORAGE_KEY = "allied_bio_clicks";
-
 export function recordClick(linkId: BioLink["id"]) {
-  const event: ClickEvent = { linkId, ts: Date.now() };
-  try {
-    const raw = window.localStorage.getItem(STORAGE_KEY);
-    const list: ClickEvent[] = raw ? JSON.parse(raw) : [];
-    list.push(event);
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(list.slice(-2000)));
-  } catch {
-    // ignora falhas de storage (modo privado etc.)
-  }
+  // grava no banco sem bloquear a navegação
+  void (async () => {
+    try {
+      const { supabase } = await import("@/integrations/supabase/client");
+      await supabase.from("bio_link_clicks").insert({
+        link_id: linkId,
+        referrer: document.referrer || null,
+        user_agent: navigator.userAgent,
+      });
+    } catch {
+      // não interrompe o clique se o registro falhar
+    }
+  })();
+
   const w = window as unknown as { dataLayer?: Record<string, unknown>[] };
   w.dataLayer = w.dataLayer ?? [];
   w.dataLayer.push({ event: "bio_link_click", link_id: linkId });
 }
 
-export function readClicks(): ClickEvent[] {
-  try {
-    const raw = window.localStorage.getItem(STORAGE_KEY);
-    return raw ? (JSON.parse(raw) as ClickEvent[]) : [];
-  } catch {
-    return [];
-  }
-}
