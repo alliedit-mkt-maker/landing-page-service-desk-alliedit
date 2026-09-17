@@ -14,15 +14,15 @@ import {
   YAxis,
 } from "recharts";
 import { $getSessionUser } from "@/lib/session";
+import { audienceByGender } from "@/lib/links-metrics-mock";
 import {
   PERIOD_OPTIONS,
-  audienceByGender,
-  clicksByHour,
-  clicksByLink,
-  peakHour,
-  totalsFor,
+  emptyMetrics,
+  fetchMetrics,
+  type MetricsData,
   type Period,
-} from "@/lib/links-metrics-mock";
+} from "@/lib/links-metrics";
+
 
 export const Route = createFileRoute("/links-painel")({
   loader: async () => await $getSessionUser(),
