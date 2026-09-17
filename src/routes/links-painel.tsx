@@ -99,11 +99,33 @@ function Card({
 
 function LinksDashboard({ user }: { user: Awaited<ReturnType<typeof $getSessionUser>> | null }) {
   const [period, setPeriod] = useState<Period>(30);
+  const [data, setData] = useState<MetricsData>(() => emptyMetrics());
+  const [loading, setLoading] = useState(true);
+  const [failed, setFailed] = useState(false);
 
-  const totals = totalsFor(period);
-  const byLink = clicksByLink(period);
-  const byHour = clicksByHour(period);
-  const peak = peakHour(period);
+  useEffect(() => {
+    let active = true;
+    setLoading(true);
+    setFailed(false);
+    fetchMetrics(period)
+      .then((result) => {
+        if (active) setData(result);
+      })
+      .catch(() => {
+        if (active) {
+          setData(emptyMetrics());
+          setFailed(true);
+        }
+      })
+      .finally(() => {
+        if (active) setLoading(false);
+      });
+    return () => {
+      active = false;
+    };
+  }, [period]);
+
+  const { totals, byLink, byHour, peak } = data;
   const gender = audienceByGender(period);
   const up = totals.change >= 0;
 
@@ -117,10 +139,15 @@ function LinksDashboard({ user }: { user: Awaited<ReturnType<typeof $getSessionU
             </p>
             <h1 className="mt-2 text-[28px] font-bold tracking-tight">Desempenho dos links</h1>
             <p className="mt-2 text-sm text-white/55">
-              {user ? `Olá, ${user.displayName ?? user.email}. ` : ""}Números de exemplo até o
-              registro real de cliques ser ativado.
+              {user ? `Olá, ${user.displayName ?? user.email}. ` : ""}
+              {failed
+                ? "Não foi possível carregar os cliques agora. Tente novamente em instantes."
+                : loading
+                  ? "Carregando cliques registrados..."
+                  : "Cliques reais registrados na página de links."}
             </p>
           </div>
+
           <div className="flex gap-2">
             {PERIOD_OPTIONS.map((opt) => (
               <button
