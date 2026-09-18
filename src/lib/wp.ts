@@ -1,6 +1,9 @@
-// Endpoint único do WordPress headless. Ao migrar o WP para um subdomínio,
-// basta trocar esta constante.
-export const WP_API_URL = "https://alliedit.com.br/wp-json/wp/v2";
+// Endpoint único do WordPress headless. O domínio próprio devolve desafio
+// anti-bot (403) para requisições feitas do servidor; o proxy oficial do
+// WordPress.com responde normalmente.
+export const WP_SITE_ID = "257102166";
+export const WP_API_URL = `https://public-api.wordpress.com/wp/v2/sites/${WP_SITE_ID}`;
+export const WP_REST_V1_URL = `https://public-api.wordpress.com/rest/v1.1/sites/${WP_SITE_ID}`;
 
 export type WpPost = {
   id: number;
