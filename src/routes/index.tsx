@@ -58,19 +58,6 @@ export const Route = createFileRoute("/")({
   loader: async () => ({ variant: await getRouteVariant() }),
   head: ({ loaderData }) => {
     const variant = loaderData?.variant;
-    if (variant === "links-dashboard") {
-      return {
-        meta: [
-          { title: linksDashboardMeta.title },
-          { name: "description", content: linksDashboardMeta.description },
-          { property: "og:title", content: linksDashboardMeta.title },
-          { property: "og:description", content: linksDashboardMeta.description },
-          { property: "og:type", content: "website" },
-          { name: "twitter:card", content: "summary_large_image" },
-          { name: "robots", content: "noindex, nofollow" },
-        ],
-      };
-    }
     const isCabeamento = variant === "cabeamento";
     const isHeadset = variant === "headset";
     const isRally = variant === "rally-bar";
