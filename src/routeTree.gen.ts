@@ -28,10 +28,11 @@ import { Route as AlocacaoTiRouteImport } from './routes/alocacao-ti'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SiteIndexRouteImport } from './routes/site.index'
 import { Route as SiteSobreRouteImport } from './routes/site.sobre'
-import { Route as SiteServicosRouteImport } from './routes/site.servicos'
 import { Route as SiteProdutosRouteImport } from './routes/site.produtos'
 import { Route as SiteContatoRouteImport } from './routes/site.contato'
+import { Route as SiteServicosIndexRouteImport } from './routes/site.servicos.index'
 import { Route as SiteBlogIndexRouteImport } from './routes/site.blog.index'
+import { Route as SiteServicosDigitalWorkspaceRouteImport } from './routes/site.servicos.digital-workspace'
 import { Route as SiteBlogSlugRouteImport } from './routes/site.blog.$slug'
 
 const YealinkVideoconferenciaRoute = YealinkVideoconferenciaRouteImport.update({
@@ -129,11 +130,6 @@ const SiteSobreRoute = SiteSobreRouteImport.update({
   path: '/sobre',
   getParentRoute: () => SiteRoute,
 } as any)
-const SiteServicosRoute = SiteServicosRouteImport.update({
-  id: '/servicos',
-  path: '/servicos',
-  getParentRoute: () => SiteRoute,
-} as any)
 const SiteProdutosRoute = SiteProdutosRouteImport.update({
   id: '/produtos',
   path: '/produtos',
@@ -144,11 +140,22 @@ const SiteContatoRoute = SiteContatoRouteImport.update({
   path: '/contato',
   getParentRoute: () => SiteRoute,
 } as any)
+const SiteServicosIndexRoute = SiteServicosIndexRouteImport.update({
+  id: '/servicos/',
+  path: '/servicos/',
+  getParentRoute: () => SiteRoute,
+} as any)
 const SiteBlogIndexRoute = SiteBlogIndexRouteImport.update({
   id: '/blog/',
   path: '/blog/',
   getParentRoute: () => SiteRoute,
 } as any)
+const SiteServicosDigitalWorkspaceRoute =
+  SiteServicosDigitalWorkspaceRouteImport.update({
+    id: '/servicos/digital-workspace',
+    path: '/servicos/digital-workspace',
+    getParentRoute: () => SiteRoute,
+  } as any)
 const SiteBlogSlugRoute = SiteBlogSlugRouteImport.update({
   id: '/blog/$slug',
   path: '/blog/$slug',
@@ -175,11 +182,12 @@ export interface FileRoutesByFullPath {
   '/yealink-videoconferencia': typeof YealinkVideoconferenciaRoute
   '/site/contato': typeof SiteContatoRoute
   '/site/produtos': typeof SiteProdutosRoute
-  '/site/servicos': typeof SiteServicosRoute
   '/site/sobre': typeof SiteSobreRoute
   '/site/': typeof SiteIndexRoute
   '/site/blog/$slug': typeof SiteBlogSlugRoute
+  '/site/servicos/digital-workspace': typeof SiteServicosDigitalWorkspaceRoute
   '/site/blog/': typeof SiteBlogIndexRoute
+  '/site/servicos/': typeof SiteServicosIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -200,11 +208,12 @@ export interface FileRoutesByTo {
   '/yealink-videoconferencia': typeof YealinkVideoconferenciaRoute
   '/site/contato': typeof SiteContatoRoute
   '/site/produtos': typeof SiteProdutosRoute
-  '/site/servicos': typeof SiteServicosRoute
   '/site/sobre': typeof SiteSobreRoute
   '/site': typeof SiteIndexRoute
   '/site/blog/$slug': typeof SiteBlogSlugRoute
+  '/site/servicos/digital-workspace': typeof SiteServicosDigitalWorkspaceRoute
   '/site/blog': typeof SiteBlogIndexRoute
+  '/site/servicos': typeof SiteServicosIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -227,11 +236,12 @@ export interface FileRoutesById {
   '/yealink-videoconferencia': typeof YealinkVideoconferenciaRoute
   '/site/contato': typeof SiteContatoRoute
   '/site/produtos': typeof SiteProdutosRoute
-  '/site/servicos': typeof SiteServicosRoute
   '/site/sobre': typeof SiteSobreRoute
   '/site/': typeof SiteIndexRoute
   '/site/blog/$slug': typeof SiteBlogSlugRoute
+  '/site/servicos/digital-workspace': typeof SiteServicosDigitalWorkspaceRoute
   '/site/blog/': typeof SiteBlogIndexRoute
+  '/site/servicos/': typeof SiteServicosIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -255,11 +265,12 @@ export interface FileRouteTypes {
     | '/yealink-videoconferencia'
     | '/site/contato'
     | '/site/produtos'
-    | '/site/servicos'
     | '/site/sobre'
     | '/site/'
     | '/site/blog/$slug'
+    | '/site/servicos/digital-workspace'
     | '/site/blog/'
+    | '/site/servicos/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -280,11 +291,12 @@ export interface FileRouteTypes {
     | '/yealink-videoconferencia'
     | '/site/contato'
     | '/site/produtos'
-    | '/site/servicos'
     | '/site/sobre'
     | '/site'
     | '/site/blog/$slug'
+    | '/site/servicos/digital-workspace'
     | '/site/blog'
+    | '/site/servicos'
   id:
     | '__root__'
     | '/'
@@ -306,11 +318,12 @@ export interface FileRouteTypes {
     | '/yealink-videoconferencia'
     | '/site/contato'
     | '/site/produtos'
-    | '/site/servicos'
     | '/site/sobre'
     | '/site/'
     | '/site/blog/$slug'
+    | '/site/servicos/digital-workspace'
     | '/site/blog/'
+    | '/site/servicos/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -468,13 +481,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SiteSobreRouteImport
       parentRoute: typeof SiteRoute
     }
-    '/site/servicos': {
-      id: '/site/servicos'
-      path: '/servicos'
-      fullPath: '/site/servicos'
-      preLoaderRoute: typeof SiteServicosRouteImport
-      parentRoute: typeof SiteRoute
-    }
     '/site/produtos': {
       id: '/site/produtos'
       path: '/produtos'
@@ -489,11 +495,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SiteContatoRouteImport
       parentRoute: typeof SiteRoute
     }
+    '/site/servicos/': {
+      id: '/site/servicos/'
+      path: '/servicos'
+      fullPath: '/site/servicos/'
+      preLoaderRoute: typeof SiteServicosIndexRouteImport
+      parentRoute: typeof SiteRoute
+    }
     '/site/blog/': {
       id: '/site/blog/'
       path: '/blog'
       fullPath: '/site/blog/'
       preLoaderRoute: typeof SiteBlogIndexRouteImport
+      parentRoute: typeof SiteRoute
+    }
+    '/site/servicos/digital-workspace': {
+      id: '/site/servicos/digital-workspace'
+      path: '/servicos/digital-workspace'
+      fullPath: '/site/servicos/digital-workspace'
+      preLoaderRoute: typeof SiteServicosDigitalWorkspaceRouteImport
       parentRoute: typeof SiteRoute
     }
     '/site/blog/$slug': {
@@ -509,21 +529,23 @@ declare module '@tanstack/react-router' {
 interface SiteRouteChildren {
   SiteContatoRoute: typeof SiteContatoRoute
   SiteProdutosRoute: typeof SiteProdutosRoute
-  SiteServicosRoute: typeof SiteServicosRoute
   SiteSobreRoute: typeof SiteSobreRoute
   SiteIndexRoute: typeof SiteIndexRoute
   SiteBlogSlugRoute: typeof SiteBlogSlugRoute
+  SiteServicosDigitalWorkspaceRoute: typeof SiteServicosDigitalWorkspaceRoute
   SiteBlogIndexRoute: typeof SiteBlogIndexRoute
+  SiteServicosIndexRoute: typeof SiteServicosIndexRoute
 }
 
 const SiteRouteChildren: SiteRouteChildren = {
   SiteContatoRoute: SiteContatoRoute,
   SiteProdutosRoute: SiteProdutosRoute,
-  SiteServicosRoute: SiteServicosRoute,
   SiteSobreRoute: SiteSobreRoute,
   SiteIndexRoute: SiteIndexRoute,
   SiteBlogSlugRoute: SiteBlogSlugRoute,
+  SiteServicosDigitalWorkspaceRoute: SiteServicosDigitalWorkspaceRoute,
   SiteBlogIndexRoute: SiteBlogIndexRoute,
+  SiteServicosIndexRoute: SiteServicosIndexRoute,
 }
 
 const SiteRouteWithChildren = SiteRoute._addFileChildren(SiteRouteChildren)

@@ -15,7 +15,12 @@ import {
 } from "lucide-react";
 
 const SERVICES = [
-  { icon: Headset, title: "Digital Workspace", text: "Suporte ao usuário, remoto e presencial" },
+  {
+    icon: Headset,
+    title: "Digital Workspace",
+    text: "Suporte ao usuário, remoto e presencial",
+    to: "/site/servicos/digital-workspace",
+  },
   { icon: Cloud, title: "Smart Cloud Ops", text: "Gestão de nuvem e bancos de dados" },
   { icon: ShieldCheck, title: "Cyber Shield 360°", text: "SOC, NOC e cibersegurança 24x7" },
   { icon: Server, title: "Infra Core", text: "Redes, cabeamento e data center" },
@@ -169,7 +174,7 @@ export function SiteNavbar() {
                     return (
                       <Link
                         key={s.title}
-                        to="/site/servicos"
+                        to={"to" in s ? s.to : "/site/servicos"}
                         onClick={() => setMenu(null)}
                         className="flex items-start gap-3 rounded-xl p-3 transition-colors hover:bg-[#046E8B]/[0.06]"
                       >
@@ -308,7 +313,7 @@ export function SiteNavbar() {
                   return (
                     <Link
                       key={s.title}
-                      to="/site/servicos"
+                      to={"to" in s ? s.to : "/site/servicos"}
                       onClick={() => setOpen(false)}
                       className="flex items-center gap-3 py-2.5"
                     >
