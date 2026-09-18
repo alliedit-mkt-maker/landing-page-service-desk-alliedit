@@ -238,7 +238,7 @@ function SectionHeading({
         </p>
       ) : null}
       <h2
-        className={`font-chillax mt-3 font-bold leading-tight tracking-tight ${
+        className={`font-chillax mt-3 text-balance font-bold leading-tight tracking-tight ${
           dark ? "text-white" : "text-[var(--site-ink)]"
         } ${
           large
