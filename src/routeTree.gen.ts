@@ -16,14 +16,11 @@ import { Route as SiteRouteImport } from './routes/site'
 import { Route as RallyBarRouteImport } from './routes/rally-bar'
 import { Route as PolyStudioRouteImport } from './routes/poly-studio'
 import { Route as ObrigadoRouteImport } from './routes/obrigado'
-import { Route as LinksPainelRouteImport } from './routes/links-painel'
-import { Route as LinksRouteImport } from './routes/links'
 import { Route as HeadsetsPolyRouteImport } from './routes/headsets-poly'
 import { Route as HeadsetYealinkRouteImport } from './routes/headset-yealink'
 import { Route as HeadsetLogitechRouteImport } from './routes/headset-logitech'
 import { Route as HeadsetCallcenterRouteImport } from './routes/headset-callcenter'
 import { Route as CabeamentoRouteImport } from './routes/cabeamento'
-import { Route as BriefingCampanhasRouteImport } from './routes/briefing-campanhas'
 import { Route as AssinaturasRouteImport } from './routes/assinaturas'
 import { Route as AlocacaoTiRouteImport } from './routes/alocacao-ti'
 import { Route as IndexRouteImport } from './routes/index'
@@ -71,16 +68,6 @@ const ObrigadoRoute = ObrigadoRouteImport.update({
   path: '/obrigado',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LinksPainelRoute = LinksPainelRouteImport.update({
-  id: '/links-painel',
-  path: '/links-painel',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LinksRoute = LinksRouteImport.update({
-  id: '/links',
-  path: '/links',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const HeadsetsPolyRoute = HeadsetsPolyRouteImport.update({
   id: '/headsets-poly',
   path: '/headsets-poly',
@@ -104,11 +91,6 @@ const HeadsetCallcenterRoute = HeadsetCallcenterRouteImport.update({
 const CabeamentoRoute = CabeamentoRouteImport.update({
   id: '/cabeamento',
   path: '/cabeamento',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BriefingCampanhasRoute = BriefingCampanhasRouteImport.update({
-  id: '/briefing-campanhas',
-  path: '/briefing-campanhas',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AssinaturasRoute = AssinaturasRouteImport.update({
@@ -172,14 +154,11 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/alocacao-ti': typeof AlocacaoTiRoute
   '/assinaturas': typeof AssinaturasRoute
-  '/briefing-campanhas': typeof BriefingCampanhasRoute
   '/cabeamento': typeof CabeamentoRoute
   '/headset-callcenter': typeof HeadsetCallcenterRoute
   '/headset-logitech': typeof HeadsetLogitechRoute
   '/headset-yealink': typeof HeadsetYealinkRoute
   '/headsets-poly': typeof HeadsetsPolyRoute
-  '/links': typeof LinksRoute
-  '/links-painel': typeof LinksPainelRoute
   '/obrigado': typeof ObrigadoRoute
   '/poly-studio': typeof PolyStudioRoute
   '/rally-bar': typeof RallyBarRoute
@@ -200,14 +179,11 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/alocacao-ti': typeof AlocacaoTiRoute
   '/assinaturas': typeof AssinaturasRoute
-  '/briefing-campanhas': typeof BriefingCampanhasRoute
   '/cabeamento': typeof CabeamentoRoute
   '/headset-callcenter': typeof HeadsetCallcenterRoute
   '/headset-logitech': typeof HeadsetLogitechRoute
   '/headset-yealink': typeof HeadsetYealinkRoute
   '/headsets-poly': typeof HeadsetsPolyRoute
-  '/links': typeof LinksRoute
-  '/links-painel': typeof LinksPainelRoute
   '/obrigado': typeof ObrigadoRoute
   '/poly-studio': typeof PolyStudioRoute
   '/rally-bar': typeof RallyBarRoute
@@ -228,14 +204,11 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/alocacao-ti': typeof AlocacaoTiRoute
   '/assinaturas': typeof AssinaturasRoute
-  '/briefing-campanhas': typeof BriefingCampanhasRoute
   '/cabeamento': typeof CabeamentoRoute
   '/headset-callcenter': typeof HeadsetCallcenterRoute
   '/headset-logitech': typeof HeadsetLogitechRoute
   '/headset-yealink': typeof HeadsetYealinkRoute
   '/headsets-poly': typeof HeadsetsPolyRoute
-  '/links': typeof LinksRoute
-  '/links-painel': typeof LinksPainelRoute
   '/obrigado': typeof ObrigadoRoute
   '/poly-studio': typeof PolyStudioRoute
   '/rally-bar': typeof RallyBarRoute
@@ -258,14 +231,11 @@ export interface FileRouteTypes {
     | '/'
     | '/alocacao-ti'
     | '/assinaturas'
-    | '/briefing-campanhas'
     | '/cabeamento'
     | '/headset-callcenter'
     | '/headset-logitech'
     | '/headset-yealink'
     | '/headsets-poly'
-    | '/links'
-    | '/links-painel'
     | '/obrigado'
     | '/poly-studio'
     | '/rally-bar'
@@ -286,14 +256,11 @@ export interface FileRouteTypes {
     | '/'
     | '/alocacao-ti'
     | '/assinaturas'
-    | '/briefing-campanhas'
     | '/cabeamento'
     | '/headset-callcenter'
     | '/headset-logitech'
     | '/headset-yealink'
     | '/headsets-poly'
-    | '/links'
-    | '/links-painel'
     | '/obrigado'
     | '/poly-studio'
     | '/rally-bar'
@@ -313,14 +280,11 @@ export interface FileRouteTypes {
     | '/'
     | '/alocacao-ti'
     | '/assinaturas'
-    | '/briefing-campanhas'
     | '/cabeamento'
     | '/headset-callcenter'
     | '/headset-logitech'
     | '/headset-yealink'
     | '/headsets-poly'
-    | '/links'
-    | '/links-painel'
     | '/obrigado'
     | '/poly-studio'
     | '/rally-bar'
@@ -342,14 +306,11 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AlocacaoTiRoute: typeof AlocacaoTiRoute
   AssinaturasRoute: typeof AssinaturasRoute
-  BriefingCampanhasRoute: typeof BriefingCampanhasRoute
   CabeamentoRoute: typeof CabeamentoRoute
   HeadsetCallcenterRoute: typeof HeadsetCallcenterRoute
   HeadsetLogitechRoute: typeof HeadsetLogitechRoute
   HeadsetYealinkRoute: typeof HeadsetYealinkRoute
   HeadsetsPolyRoute: typeof HeadsetsPolyRoute
-  LinksRoute: typeof LinksRoute
-  LinksPainelRoute: typeof LinksPainelRoute
   ObrigadoRoute: typeof ObrigadoRoute
   PolyStudioRoute: typeof PolyStudioRoute
   RallyBarRoute: typeof RallyBarRoute
@@ -410,20 +371,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ObrigadoRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/links-painel': {
-      id: '/links-painel'
-      path: '/links-painel'
-      fullPath: '/links-painel'
-      preLoaderRoute: typeof LinksPainelRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/links': {
-      id: '/links'
-      path: '/links'
-      fullPath: '/links'
-      preLoaderRoute: typeof LinksRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/headsets-poly': {
       id: '/headsets-poly'
       path: '/headsets-poly'
@@ -457,13 +404,6 @@ declare module '@tanstack/react-router' {
       path: '/cabeamento'
       fullPath: '/cabeamento'
       preLoaderRoute: typeof CabeamentoRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/briefing-campanhas': {
-      id: '/briefing-campanhas'
-      path: '/briefing-campanhas'
-      fullPath: '/briefing-campanhas'
-      preLoaderRoute: typeof BriefingCampanhasRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/assinaturas': {
@@ -574,14 +514,11 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AlocacaoTiRoute: AlocacaoTiRoute,
   AssinaturasRoute: AssinaturasRoute,
-  BriefingCampanhasRoute: BriefingCampanhasRoute,
   CabeamentoRoute: CabeamentoRoute,
   HeadsetCallcenterRoute: HeadsetCallcenterRoute,
   HeadsetLogitechRoute: HeadsetLogitechRoute,
   HeadsetYealinkRoute: HeadsetYealinkRoute,
   HeadsetsPolyRoute: HeadsetsPolyRoute,
-  LinksRoute: LinksRoute,
-  LinksPainelRoute: LinksPainelRoute,
   ObrigadoRoute: ObrigadoRoute,
   PolyStudioRoute: PolyStudioRoute,
   RallyBarRoute: RallyBarRoute,

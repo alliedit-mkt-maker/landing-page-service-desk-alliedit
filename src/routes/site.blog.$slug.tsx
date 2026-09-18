@@ -3,6 +3,8 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { ArrowLeft } from "lucide-react";
 import DOMPurify from "isomorphic-dompurify";
+import { createServerFn } from "@tanstack/react-start";
+import { getRequestUrl, setResponseHeader } from "@tanstack/react-start/server";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import ogImageAsset from "@/assets/og-image.png.asset.json";
 import {
@@ -21,10 +23,16 @@ import {
   type WpPostSeo,
 } from "@/lib/wp";
 
-function requestOrigin(): string {
-  if (typeof document !== "undefined") return window.location.origin;
-  return "https://service-desk.alliedit.com.br";
-}
+// Lê a origem da requisição no servidor e define o cache da resposta HTML.
+const getArticleOrigin = createServerFn({ method: "GET" }).handler(async () => {
+  try {
+    setResponseHeader("Cache-Control", "public, s-maxage=600, stale-while-revalidate=86400");
+    const url = new URL(String(getRequestUrl()));
+    return `${url.protocol}//${url.host}`;
+  } catch {
+    return "https://service-desk.alliedit.com.br";
+  }
+});
 
 function sanitize(html: string): string {
   return normalizeInternalLinks(DOMPurify.sanitize(html, { ADD_ATTR: ["target"] }));
@@ -32,20 +40,9 @@ function sanitize(html: string): string {
 
 export const Route = createFileRoute("/site/blog/$slug")({
   loader: async ({ params }) => {
-    let origin = requestOrigin();
-    if (typeof document === "undefined") {
-      const server = await import("@tanstack/react-start/server");
-      try {
-        const url = new URL(String(server.getRequestUrl()));
-        origin = `${url.protocol}//${url.host}`;
-      } catch {
-        /* mantém o fallback */
-      }
-      server.setResponseHeader(
-        "Cache-Control",
-        "public, s-maxage=600, stale-while-revalidate=86400",
-      );
-    }
+    const origin =
+      typeof document !== "undefined" ? window.location.origin : await getArticleOrigin();
+
 
     const [post, seo] = await Promise.all([fetchPostBySlug(params.slug), fetchPostSeo(params.slug)]);
     if (!post) throw notFound();

@@ -81,8 +81,6 @@ const HOST_REWRITES: Record<string, string> = {
   "alocacao-ti.alliedit.com.br": "/alocacao-ti",
   "videoconferencia.alliedit.com.br": "/videoconferencia",
   "assinaturas.alliedit.com.br": "/assinaturas",
-  "links.alliedit.com.br": "/links",
-  "links-dashboard.alliedit.com.br": "/links-painel",
 };
 
 // Canonical home for each LP path. Requests to these paths on any other host
@@ -117,13 +115,8 @@ function canonicalRedirect(request: Request): Response | undefined {
 }
 
 // Extra per-host path aliases (deep links inside a subdomain).
-// e.g. links.alliedit.com.br/painel -> internally renders /links-painel
-const HOST_PATH_REWRITES: Record<string, Record<string, string>> = {
-  "links.alliedit.com.br": {
-    "/painel": "/links-painel",
-    "/metricas": "/links-painel",
-  },
-};
+// e.g. exemplo.alliedit.com.br/atalho -> renderiza outra rota interna
+const HOST_PATH_REWRITES: Record<string, Record<string, string>> = {};
 
 function rewriteRequestForHost(request: Request): Request {
   const url = new URL(request.url);
