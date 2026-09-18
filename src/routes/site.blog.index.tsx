@@ -2,6 +2,8 @@ import { useEffect, useMemo, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { ArrowRight } from "lucide-react";
+import { createServerFn } from "@tanstack/react-start";
+import { getRequestUrl } from "@tanstack/react-start/server";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import {
   authorName,
@@ -21,20 +23,20 @@ const TITLE = "Blog Allied IT | Tecnologia e operação de TI para empresas";
 const DESC =
   "Como diagnosticamos operações de TI, o raciocínio por trás das soluções, e o que a tecnologia aplicada realmente muda.";
 
+// Origem da requisição, lida no servidor.
+const getBlogOrigin = createServerFn({ method: "GET" }).handler(async () => {
+  try {
+    const url = new URL(String(getRequestUrl()));
+    return `${url.protocol}//${url.host}`;
+  } catch {
+    return "https://service-desk.alliedit.com.br";
+  }
+});
+
 export const Route = createFileRoute("/site/blog/")({
   loader: async () => {
-    let origin = "https://service-desk.alliedit.com.br";
-    if (typeof document !== "undefined") {
-      origin = window.location.origin;
-    } else {
-      const server = await import("@tanstack/react-start/server");
-      try {
-        const url = new URL(String(server.getRequestUrl()));
-        origin = `${url.protocol}//${url.host}`;
-      } catch {
-        /* mantém o fallback */
-      }
-    }
+    const origin =
+      typeof document !== "undefined" ? window.location.origin : await getBlogOrigin();
 
     const [first, cats] = await Promise.all([
       fetchPosts({ page: 1, categoryId: null }),
