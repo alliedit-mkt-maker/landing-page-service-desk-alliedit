@@ -250,7 +250,7 @@ function SectionHeading({
       </h2>
       {text ? (
         <p
-          className={`font-inter mt-5 leading-relaxed ${
+          className={`font-inter mt-5 text-pretty leading-relaxed ${
             dark ? "text-white/65" : "text-[var(--site-muted)]"
           } ${large ? "text-[16px]" : "text-[15px]"}`}
         >
