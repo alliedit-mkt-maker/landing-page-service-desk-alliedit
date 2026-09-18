@@ -231,14 +231,14 @@ function SectionHeading({
   large?: boolean;
 }) {
   return (
-    <Reveal variant="fade-up" className="max-w-[62ch]">
+    <Reveal variant="fade-up" className="max-w-[46ch]">
       {eyebrow ? (
         <p className="font-inter text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--site-yellow)]">
           {eyebrow}
         </p>
       ) : null}
       <h2
-        className={`font-chillax mt-3 font-bold leading-tight tracking-tight ${
+        className={`font-chillax mt-3 text-balance font-bold leading-tight tracking-tight ${
           dark ? "text-white" : "text-[var(--site-ink)]"
         } ${
           large
@@ -250,7 +250,7 @@ function SectionHeading({
       </h2>
       {text ? (
         <p
-          className={`font-inter mt-5 leading-relaxed ${
+          className={`font-inter mt-5 text-pretty leading-relaxed ${
             dark ? "text-white/65" : "text-[var(--site-muted)]"
           } ${large ? "text-[16px]" : "text-[15px]"}`}
         >
@@ -313,10 +313,10 @@ function DigitalWorkspacePage() {
             <p className="font-inter text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--site-yellow)]">
               Digital Workspace
             </p>
-            <h1 className="font-chillax mt-4 text-[2.2rem] font-bold leading-[1.06] tracking-tight text-white sm:text-[3.2rem]">
+            <h1 className="font-chillax mt-4 max-w-[24ch] text-balance text-[2.2rem] font-bold leading-[1.06] tracking-tight text-white sm:text-[3.2rem]">
               O suporte que sua equipe sente que está sempre por perto
             </h1>
-            <p className="font-inter mt-6 max-w-[52ch] text-[16px] leading-relaxed text-white/75">
+            <p className="font-inter mt-6 max-w-[44ch] text-pretty text-[16px] leading-relaxed text-white/75">
               Service Desk e Field Service em uma só operação, atendimento remoto e presencial,
               com SLA garantido e gestão centralizada.
             </p>
@@ -331,7 +331,7 @@ function DigitalWorkspacePage() {
       </section>
 
       {/* DOBRA 2 — Card banner com fotos deslizantes */}
-      <section className="relative bg-[#050D12] py-20 sm:py-28">
+      <section className="relative border-b-2 border-[var(--site-yellow)]/70 bg-[#050D12] py-20 sm:py-28">
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
           <Reveal variant="fade-up">
             <div className="relative grid overflow-hidden rounded-[28px] border border-white/10 bg-[#08131A] shadow-[0_30px_80px_-40px_rgba(0,0,0,0.9)] lg:grid-cols-2">
@@ -345,17 +345,17 @@ function DigitalWorkspacePage() {
               </div>
 
               {/* texto */}
-              <div className="relative p-8 sm:p-12 lg:p-14">
+              <div className="relative flex flex-col justify-center p-8 sm:p-12 lg:p-14">
                 <span
                   aria-hidden
                   className="pointer-events-none absolute inset-0 opacity-50"
                   style={{ backgroundImage: DOT_TEXTURE, backgroundSize: "22px 22px" }}
                 />
-                <div className="relative flex flex-col items-center text-center">
-                  <h2 className="font-chillax text-[1.7rem] font-bold leading-tight tracking-tight text-white sm:text-[2.1rem]">
+                <div className="relative">
+                  <h2 className="font-chillax text-balance text-[1.7rem] font-bold leading-tight tracking-tight text-white sm:text-[2.1rem]">
                     O que é Digital Workspace
                   </h2>
-                  <p className="font-inter mt-5 text-[15px] leading-relaxed text-white/70">
+                  <p className="font-inter mt-5 max-w-[46ch] text-pretty text-[15px] leading-relaxed text-white/70">
                     É a porta de entrada da sua operação de TI: onde o usuário pede ajuda e onde o
                     problema físico é resolvido. Reunimos Service Desk (suporte remoto) e Field
                     Service (suporte presencial) em uma única frente, para que ninguém fique
@@ -369,7 +369,7 @@ function DigitalWorkspacePage() {
                           key={item.label}
                           variant="fade-up"
                           delay={i * 110}
-                          className="flex flex-col items-center gap-3 border-t border-white/15 pt-5 text-center"
+                          className="flex flex-col items-start gap-3 border-t border-white/15 pt-5"
                         >
                           <Icon
                             className="size-8 text-[var(--site-yellow)]"
@@ -446,7 +446,7 @@ function DigitalWorkspacePage() {
       </section>
 
       {/* DOBRA 4 — Field Service */}
-      <section className="bg-gradient-to-b from-white via-[#EEF4F6] to-[#DDE8EC] py-24 sm:py-32">
+      <section className="border-b-2 border-[var(--site-yellow)]/70 bg-gradient-to-b from-white to-[#EEF4F6] py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <div className="grid items-center gap-12 lg:grid-cols-[0.95fr_1.05fr]">
             <Reveal variant="scale-in" className="order-2 lg:order-1">
@@ -479,18 +479,18 @@ function DigitalWorkspacePage() {
       </section>
 
       {/* DOBRA 5 — Integração */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#DDE8EC] via-[#0A2430] to-[#08131A] py-20 text-white sm:py-28">
+      <section className="relative overflow-hidden bg-[#08131A] py-20 text-white sm:py-28">
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 opacity-70"
           style={{ backgroundImage: DOT_TEXTURE, backgroundSize: "22px 22px" }}
         />
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-          <Reveal variant="fade-up" className="max-w-[62ch]">
-            <h2 className="font-chillax text-[1.7rem] font-bold leading-tight tracking-tight sm:text-[2.1rem]">
+          <Reveal variant="fade-up" className="max-w-[60ch]">
+            <h2 className="font-chillax text-balance text-[1.7rem] font-bold leading-tight tracking-tight sm:text-[2.1rem]">
               Nada disso funciona isolado
             </h2>
-            <p className="font-inter mt-5 text-[15px] leading-relaxed text-white/65">
+            <p className="font-inter mt-5 text-pretty text-[15px] leading-relaxed text-white/65">
               Seu Digital Workspace conversa com o resto da sua operação de TI. Um incidente de rede
               identificado no Service Desk é escalado automaticamente para o NOC. Uma ameaça de
               segurança aciona o SOC. Você tem uma única visão, não silos desconectados.
@@ -547,11 +547,11 @@ function DigitalWorkspacePage() {
       {/* DOBRA 6 — Por que a Allied IT */}
       <section className="bg-gradient-to-b from-[#08131A] to-[#0B1B23] py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <Reveal variant="fade-up" className="mx-auto max-w-[52ch] text-center">
-            <h2 className="font-chillax text-[1.6rem] font-bold leading-tight tracking-tight text-white/90 sm:text-[1.95rem]">
+          <Reveal variant="fade-up" className="mx-auto max-w-[46ch] text-center">
+            <h2 className="font-chillax text-balance text-[1.6rem] font-bold leading-tight tracking-tight text-white/90 sm:text-[1.95rem]">
               Por que Digital Workspace com a Allied IT
             </h2>
-            <p className="font-inter mt-5 text-[15px] leading-relaxed text-white/55">
+            <p className="font-inter mt-5 text-pretty text-[15px] leading-relaxed text-white/55">
               Operação madura, especialização por segmento e presença nacional para acompanhar o
               crescimento da sua empresa.
             </p>
