@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute("/site/servicos")({
+export const Route = createFileRoute("/site/servicos/")({
   head: () => ({
     meta: [
       { title: "Serviços | Allied IT" },
