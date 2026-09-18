@@ -71,9 +71,7 @@ export const Route = createFileRoute("/")({
     const isAssinaturas = variant === "assinaturas";
     const isLinks = variant === "links";
     const title = isLinks ? linksMeta.title : isAssinaturas ? assinaturasMeta.title : isVc ? videoconferenciaMeta.title : isAlocacao ? alocacaoMeta.title : isYealinkVc ? yealinkVcMeta.title : isPolyStudio ? polyStudioMeta.title : isYealink ? yealinkMeta.title : isLogitech ? logitechMeta.title : isPoly ? polyMeta.title : isRally ? rallyBarMeta.title : isCabeamento ? cabeamentoMeta.title : isHeadset ? headsetMeta.title : SD_TITLE;
-    const description = isLinks
-      ? linksMeta.description
-      : isAssinaturas
+    const description = isAssinaturas
       ? assinaturasMeta.description
       : isVc
       ? videoconferenciaMeta.description
@@ -96,9 +94,7 @@ export const Route = createFileRoute("/")({
       : isHeadset
         ? headsetMeta.description
         : SD_DESCRIPTION;
-    const canonical = isLinks
-      ? "https://links.alliedit.com.br/"
-      : isAssinaturas
+    const canonical = isAssinaturas
       ? "https://assinaturas.alliedit.com.br/"
       : isVc
       ? "https://videoconferencia.alliedit.com.br/"
