@@ -1,14 +1,29 @@
 User-agent: *
 Allow: /
+Disallow: /links-painel
+Disallow: /briefing-campanhas
 
 User-agent: GPTBot
 Allow: /
+Disallow: /links-painel
+Disallow: /briefing-campanhas
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /links-painel
+Disallow: /briefing-campanhas
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /links-painel
+Disallow: /briefing-campanhas
 
 User-agent: Google-Extended
 Allow: /
+Disallow: /links-painel
+Disallow: /briefing-campanhas
+
+User-agent: CCBot
+Allow: /
+Disallow: /links-painel
+Disallow: /briefing-campanhas
