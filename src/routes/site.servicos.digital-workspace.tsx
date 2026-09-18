@@ -451,34 +451,44 @@ function DigitalWorkspacePage() {
       </section>
 
       {/* DOBRA 4 — Field Service */}
-      <section className="border-b-2 border-[var(--site-yellow)]/70 bg-gradient-to-b from-white to-[#EEF4F6] py-24 sm:py-32">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <div className="grid items-center gap-12 lg:grid-cols-[0.95fr_1.05fr]">
-            <Reveal variant="scale-in" className="order-2 lg:order-1">
-              <div className="relative overflow-hidden rounded-3xl">
+      <section className="relative overflow-hidden border-b-2 border-[var(--site-yellow)]/70 bg-gradient-to-b from-white to-[#EEF4F6] py-24 sm:py-32">
+        {/* intro com foto ocupando toda a primeira coluna, até a borda da tela */}
+        <div className="relative">
+          <Reveal
+            variant="scale-in"
+            className="absolute inset-y-0 left-0 hidden w-[48%] overflow-hidden lg:block"
+          >
+            <img
+              src={fieldPhoto.url}
+              alt="Técnico Allied IT em atendimento presencial"
+              className="size-full object-cover"
+            />
+          </Reveal>
+          <div className="mx-auto max-w-7xl px-5 sm:px-8">
+            <div className="grid items-center gap-12 lg:min-h-[460px] lg:grid-cols-2">
+              <Reveal variant="scale-in" className="order-2 lg:hidden">
                 <img
                   src={fieldPhoto.url}
                   alt="Técnico Allied IT em atendimento presencial"
-                  className="h-[280px] w-full object-cover sm:h-[360px]"
+                  className="h-[280px] w-full rounded-2xl object-cover"
                 />
-                <span
-                  aria-hidden
-                  className="absolute inset-0 bg-gradient-to-t from-[#046E8B]/35 to-transparent"
+              </Reveal>
+              <div className="order-1 lg:order-2 lg:col-start-2 lg:pl-10">
+                <Reveal variant="fade-up" className="mb-4">
+                  <Wrench className="size-14 text-[var(--site-blue)]" strokeWidth={1.1} />
+                </Reveal>
+                <SectionHeading
+                  eyebrow="Suporte presencial"
+                  title="Field Service"
+                  text="Equipe técnica especializada para o que só se resolve com mão na massa, presencialmente."
+                  large
                 />
               </div>
-            </Reveal>
-            <div className="order-1 lg:order-2">
-              <Reveal variant="fade-up" className="mb-4">
-                <Wrench className="size-14 text-[var(--site-blue)]" strokeWidth={1.1} />
-              </Reveal>
-              <SectionHeading
-                eyebrow="Suporte presencial"
-                title="Field Service"
-                text="Equipe técnica especializada para o que só se resolve com mão na massa, presencialmente."
-                large
-              />
             </div>
           </div>
+        </div>
+
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <FeatureGrid items={FIELD_SERVICE} />
         </div>
       </section>
