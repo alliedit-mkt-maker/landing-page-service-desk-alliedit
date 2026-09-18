@@ -14,6 +14,7 @@ import {
   formatDateShortPt,
   primaryCategory,
   readingTime,
+  slimPost,
   stripHtml,
   truncate,
   type WpPost,
@@ -34,6 +35,9 @@ const getBlogOrigin = createServerFn({ method: "GET" }).handler(async () => {
 });
 
 export const Route = createFileRoute("/site/blog/")({
+  headers: () => ({
+    "cache-control": "public, s-maxage=300, stale-while-revalidate=86400",
+  }),
   loader: async () => {
     const origin =
       typeof document !== "undefined" ? window.location.origin : await getBlogOrigin();
@@ -44,7 +48,7 @@ export const Route = createFileRoute("/site/blog/")({
     ]);
 
     return {
-      posts: dedupeByTitle(first.posts),
+      posts: dedupeByTitle(first.posts).map(slimPost),
       totalPages: first.totalPages,
       categories: cats,
       canonical: `${origin}/site/blog`,
