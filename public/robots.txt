@@ -27,3 +27,5 @@ User-agent: CCBot
 Allow: /
 Disallow: /links-painel
 Disallow: /briefing-campanhas
+
+Sitemap: https://service-desk.alliedit.com.br/sitemap.xml
