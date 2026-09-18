@@ -386,34 +386,44 @@ function DigitalWorkspacePage() {
 
       {/* DOBRA 3 — Service Desk */}
       <section className="bg-gradient-to-b from-[#F4F8F9] to-white py-24 sm:py-32">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
-            <div>
-              <Reveal variant="fade-up" className="mb-4">
-                <Headset className="size-14 text-[var(--site-blue)]" strokeWidth={1.1} />
-              </Reveal>
-              <SectionHeading
-                eyebrow="Suporte remoto"
-                title="Service Desk"
-                text="Atendimento especializado para o usuário final, disponível pelo canal que fizer mais sentido pra sua empresa."
-                large
-              />
-            </div>
-            <Reveal variant="scale-in" delay={120}>
-              <div className="relative overflow-hidden rounded-3xl">
+        {/* intro com foto ocupando toda a segunda coluna, até a borda da tela */}
+        <div className="relative">
+          <Reveal
+            variant="scale-in"
+            delay={120}
+            className="absolute inset-y-0 right-0 hidden w-[48%] overflow-hidden lg:block"
+          >
+            <img
+              src={deskPhoto.url}
+              alt="Analista de Service Desk atendendo usuários"
+              className="size-full object-cover"
+            />
+          </Reveal>
+          <div className="mx-auto max-w-7xl px-5 sm:px-8">
+            <div className="grid items-center gap-12 lg:min-h-[460px] lg:grid-cols-2">
+              <div className="lg:pr-10">
+                <Reveal variant="fade-up" className="mb-4">
+                  <Headset className="size-14 text-[var(--site-blue)]" strokeWidth={1.1} />
+                </Reveal>
+                <SectionHeading
+                  eyebrow="Suporte remoto"
+                  title="Service Desk"
+                  text="Atendimento especializado para o usuário final, disponível pelo canal que fizer mais sentido pra sua empresa."
+                  large
+                />
+              </div>
+              <Reveal variant="scale-in" className="lg:hidden">
                 <img
                   src={deskPhoto.url}
                   alt="Analista de Service Desk atendendo usuários"
-                  className="h-[280px] w-full object-cover sm:h-[360px]"
+                  className="h-[280px] w-full rounded-2xl object-cover"
                 />
-                <span
-                  aria-hidden
-                  className="absolute inset-0 bg-gradient-to-t from-[#046E8B]/35 to-transparent"
-                />
-              </div>
-            </Reveal>
+              </Reveal>
+            </div>
           </div>
+        </div>
 
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <FeatureGrid items={SERVICE_DESK} />
 
           <Reveal variant="fade-up" className="mt-16">
