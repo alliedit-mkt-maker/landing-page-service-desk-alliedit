@@ -479,7 +479,7 @@ function DigitalWorkspacePage() {
       </section>
 
       {/* DOBRA 5 — Integração */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#DDE8EC] via-[#0A2430] to-[#08131A] py-20 text-white sm:py-28">
+      <section className="relative overflow-hidden bg-[#08131A] py-20 text-white sm:py-28">
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 opacity-70"
