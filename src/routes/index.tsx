@@ -69,8 +69,7 @@ export const Route = createFileRoute("/")({
     const isAlocacao = variant === "alocacao";
     const isVc = variant === "videoconferencia";
     const isAssinaturas = variant === "assinaturas";
-    const isLinks = variant === "links";
-    const title = isLinks ? linksMeta.title : isAssinaturas ? assinaturasMeta.title : isVc ? videoconferenciaMeta.title : isAlocacao ? alocacaoMeta.title : isYealinkVc ? yealinkVcMeta.title : isPolyStudio ? polyStudioMeta.title : isYealink ? yealinkMeta.title : isLogitech ? logitechMeta.title : isPoly ? polyMeta.title : isRally ? rallyBarMeta.title : isCabeamento ? cabeamentoMeta.title : isHeadset ? headsetMeta.title : SD_TITLE;
+    const title = isAssinaturas ? assinaturasMeta.title : isVc ? videoconferenciaMeta.title : isAlocacao ? alocacaoMeta.title : isYealinkVc ? yealinkVcMeta.title : isPolyStudio ? polyStudioMeta.title : isYealink ? yealinkMeta.title : isLogitech ? logitechMeta.title : isPoly ? polyMeta.title : isRally ? rallyBarMeta.title : isCabeamento ? cabeamentoMeta.title : isHeadset ? headsetMeta.title : SD_TITLE;
     const description = isAssinaturas
       ? assinaturasMeta.description
       : isVc
