@@ -369,7 +369,7 @@ function DigitalWorkspacePage() {
                           key={item.label}
                           variant="fade-up"
                           delay={i * 110}
-                          className="flex flex-col items-start gap-3 border-t border-white/15 pt-5"
+                          className="flex flex-col items-center gap-3 border-t border-white/15 pt-5 text-center"
                         >
                           <Icon
                             className="size-8 text-[var(--site-yellow)]"
