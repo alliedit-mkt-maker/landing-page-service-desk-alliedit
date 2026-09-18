@@ -231,7 +231,7 @@ function SectionHeading({
   large?: boolean;
 }) {
   return (
-    <Reveal variant="fade-up" className="max-w-[62ch]">
+    <Reveal variant="fade-up" className="max-w-[46ch]">
       {eyebrow ? (
         <p className="font-inter text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--site-yellow)]">
           {eyebrow}
