@@ -331,7 +331,7 @@ function DigitalWorkspacePage() {
       </section>
 
       {/* DOBRA 2 — Card banner com fotos deslizantes */}
-      <section className="relative bg-[#050D12] py-20 sm:py-28">
+      <section className="relative border-b-2 border-[var(--site-yellow)]/70 bg-[#050D12] py-20 sm:py-28">
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
           <Reveal variant="fade-up">
             <div className="relative grid overflow-hidden rounded-[28px] border border-white/10 bg-[#08131A] shadow-[0_30px_80px_-40px_rgba(0,0,0,0.9)] lg:grid-cols-2">
