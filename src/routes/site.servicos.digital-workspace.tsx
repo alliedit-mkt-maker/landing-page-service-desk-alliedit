@@ -331,26 +331,31 @@ function DigitalWorkspacePage() {
       </section>
 
       {/* DOBRA 2 — Card banner com fotos deslizantes */}
-      <section className="relative border-b-2 border-[var(--site-yellow)]/70 bg-[#F4F8F9] py-20 sm:py-28">
+      <section className="relative bg-[#F4F8F9] py-20 sm:py-28">
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
           <Reveal variant="fade-up">
-            <div className="relative grid overflow-hidden rounded-[28px] border border-[var(--site-line)] bg-white shadow-[0_30px_80px_-50px_rgba(4,110,139,0.45)] lg:grid-cols-2">
+            <div className="relative grid overflow-hidden rounded-[28px] border border-white/10 bg-[#08131A] shadow-[0_30px_80px_-40px_rgba(0,0,0,0.55)] lg:grid-cols-2">
               {/* fotos */}
               <div className="relative min-h-[300px] lg:min-h-[520px]">
                 <PhotoSlider />
                 <div
                   aria-hidden
-                  className="absolute inset-0 bg-gradient-to-t from-white via-white/45 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-white/35 lg:to-white"
+                  className="absolute inset-0 bg-gradient-to-t from-[#08131A] via-[#08131A]/55 to-[#08131A]/20 lg:bg-gradient-to-r lg:from-[#08131A]/30 lg:via-[#08131A]/55 lg:to-[#08131A]"
                 />
               </div>
 
               {/* texto */}
               <div className="relative flex flex-col justify-center p-8 sm:p-12 lg:p-14">
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 opacity-50"
+                  style={{ backgroundImage: DOT_TEXTURE, backgroundSize: "22px 22px" }}
+                />
                 <div className="relative">
-                  <h2 className="font-chillax text-balance text-[1.7rem] font-bold leading-tight tracking-tight text-[var(--site-ink)] sm:text-[2.1rem]">
+                  <h2 className="font-chillax text-balance text-[1.7rem] font-bold leading-tight tracking-tight text-white sm:text-[2.1rem]">
                     O que é Digital Workspace
                   </h2>
-                  <p className="font-inter mt-5 max-w-[46ch] text-pretty text-[15px] leading-relaxed text-[var(--site-muted)]">
+                  <p className="font-inter mt-5 max-w-[46ch] text-pretty text-[15px] leading-relaxed text-white/70">
                     É a porta de entrada da sua operação de TI: onde o usuário pede ajuda e onde o
                     problema físico é resolvido. Reunimos Service Desk (suporte remoto) e Field
                     Service (suporte presencial) em uma única frente, para que ninguém fique
@@ -364,13 +369,13 @@ function DigitalWorkspacePage() {
                           key={item.label}
                           variant="fade-up"
                           delay={i * 110}
-                          className="flex flex-col items-start gap-3 border-t border-[var(--site-line)] pt-5"
+                          className="flex flex-col items-start gap-3 border-t border-white/15 pt-5"
                         >
                           <Icon
-                            className="size-8 text-[var(--site-blue)]"
+                            className="size-8 text-[var(--site-yellow)]"
                             strokeWidth={1.2}
                           />
-                          <p className="font-chillax text-base font-semibold text-[var(--site-ink)]">
+                          <p className="font-chillax text-base font-semibold text-white">
                             {item.label}
                           </p>
                         </Reveal>
@@ -451,7 +456,7 @@ function DigitalWorkspacePage() {
       </section>
 
       {/* DOBRA 4 — Field Service */}
-      <section className="relative overflow-hidden border-b-2 border-[var(--site-yellow)]/70 bg-gradient-to-b from-white to-[#EEF4F6] py-24 sm:py-32">
+      <section className="relative overflow-hidden bg-gradient-to-b from-white to-[#EEF4F6] py-24 sm:py-32">
         {/* intro com foto ocupando toda a primeira coluna, até a borda da tela */}
         <div className="relative">
           <Reveal
