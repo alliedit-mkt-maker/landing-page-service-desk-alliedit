@@ -486,11 +486,11 @@ function DigitalWorkspacePage() {
           style={{ backgroundImage: DOT_TEXTURE, backgroundSize: "22px 22px" }}
         />
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-          <Reveal variant="fade-up" className="max-w-[62ch]">
-            <h2 className="font-chillax text-[1.7rem] font-bold leading-tight tracking-tight sm:text-[2.1rem]">
+          <Reveal variant="fade-up" className="max-w-[60ch]">
+            <h2 className="font-chillax text-balance text-[1.7rem] font-bold leading-tight tracking-tight sm:text-[2.1rem]">
               Nada disso funciona isolado
             </h2>
-            <p className="font-inter mt-5 text-[15px] leading-relaxed text-white/65">
+            <p className="font-inter mt-5 text-pretty text-[15px] leading-relaxed text-white/65">
               Seu Digital Workspace conversa com o resto da sua operação de TI. Um incidente de rede
               identificado no Service Desk é escalado automaticamente para o NOC. Uma ameaça de
               segurança aciona o SOC. Você tem uma única visão, não silos desconectados.
