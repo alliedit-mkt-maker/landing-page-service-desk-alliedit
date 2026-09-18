@@ -331,31 +331,26 @@ function DigitalWorkspacePage() {
       </section>
 
       {/* DOBRA 2 — Card banner com fotos deslizantes */}
-      <section className="relative border-b-2 border-[var(--site-yellow)]/70 bg-[#050D12] py-20 sm:py-28">
+      <section className="relative border-b-2 border-[var(--site-yellow)]/70 bg-[#F4F8F9] py-20 sm:py-28">
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
           <Reveal variant="fade-up">
-            <div className="relative grid overflow-hidden rounded-[28px] border border-white/10 bg-[#08131A] shadow-[0_30px_80px_-40px_rgba(0,0,0,0.9)] lg:grid-cols-2">
+            <div className="relative grid overflow-hidden rounded-[28px] border border-[var(--site-line)] bg-white shadow-[0_30px_80px_-50px_rgba(4,110,139,0.45)] lg:grid-cols-2">
               {/* fotos */}
               <div className="relative min-h-[300px] lg:min-h-[520px]">
                 <PhotoSlider />
                 <div
                   aria-hidden
-                  className="absolute inset-0 bg-gradient-to-t from-[#08131A] via-[#08131A]/55 to-[#08131A]/20 lg:bg-gradient-to-r lg:from-[#08131A]/30 lg:via-[#08131A]/55 lg:to-[#08131A]"
+                  className="absolute inset-0 bg-gradient-to-t from-white via-white/45 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-white/35 lg:to-white"
                 />
               </div>
 
               {/* texto */}
               <div className="relative flex flex-col justify-center p-8 sm:p-12 lg:p-14">
-                <span
-                  aria-hidden
-                  className="pointer-events-none absolute inset-0 opacity-50"
-                  style={{ backgroundImage: DOT_TEXTURE, backgroundSize: "22px 22px" }}
-                />
                 <div className="relative">
-                  <h2 className="font-chillax text-balance text-[1.7rem] font-bold leading-tight tracking-tight text-white sm:text-[2.1rem]">
+                  <h2 className="font-chillax text-balance text-[1.7rem] font-bold leading-tight tracking-tight text-[var(--site-ink)] sm:text-[2.1rem]">
                     O que é Digital Workspace
                   </h2>
-                  <p className="font-inter mt-5 max-w-[46ch] text-pretty text-[15px] leading-relaxed text-white/70">
+                  <p className="font-inter mt-5 max-w-[46ch] text-pretty text-[15px] leading-relaxed text-[var(--site-muted)]">
                     É a porta de entrada da sua operação de TI: onde o usuário pede ajuda e onde o
                     problema físico é resolvido. Reunimos Service Desk (suporte remoto) e Field
                     Service (suporte presencial) em uma única frente, para que ninguém fique
@@ -369,13 +364,13 @@ function DigitalWorkspacePage() {
                           key={item.label}
                           variant="fade-up"
                           delay={i * 110}
-                          className="flex flex-col items-start gap-3 border-t border-white/15 pt-5"
+                          className="flex flex-col items-start gap-3 border-t border-[var(--site-line)] pt-5"
                         >
                           <Icon
-                            className="size-8 text-[var(--site-yellow)]"
+                            className="size-8 text-[var(--site-blue)]"
                             strokeWidth={1.2}
                           />
-                          <p className="font-chillax text-base font-semibold text-white">
+                          <p className="font-chillax text-base font-semibold text-[var(--site-ink)]">
                             {item.label}
                           </p>
                         </Reveal>
@@ -390,35 +385,45 @@ function DigitalWorkspacePage() {
       </section>
 
       {/* DOBRA 3 — Service Desk */}
-      <section className="bg-gradient-to-b from-[#F4F8F9] to-white py-24 sm:py-32">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
-            <div>
-              <Reveal variant="fade-up" className="mb-4">
-                <Headset className="size-14 text-[var(--site-blue)]" strokeWidth={1.1} />
-              </Reveal>
-              <SectionHeading
-                eyebrow="Suporte remoto"
-                title="Service Desk"
-                text="Atendimento especializado para o usuário final, disponível pelo canal que fizer mais sentido pra sua empresa."
-                large
-              />
-            </div>
-            <Reveal variant="scale-in" delay={120}>
-              <div className="relative overflow-hidden rounded-3xl">
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#F4F8F9] to-white py-24 sm:py-32">
+        {/* intro com foto ocupando toda a segunda coluna, até a borda da tela */}
+        <div className="relative">
+          <Reveal
+            variant="scale-in"
+            delay={120}
+            className="absolute inset-y-0 right-0 hidden w-[48%] overflow-hidden lg:block"
+          >
+            <img
+              src={deskPhoto.url}
+              alt="Analista de Service Desk atendendo usuários"
+              className="size-full object-cover"
+            />
+          </Reveal>
+          <div className="mx-auto max-w-7xl px-5 sm:px-8">
+            <div className="grid items-center gap-12 lg:min-h-[460px] lg:grid-cols-2">
+              <div className="lg:pr-10">
+                <Reveal variant="fade-up" className="mb-4">
+                  <Headset className="size-14 text-[var(--site-blue)]" strokeWidth={1.1} />
+                </Reveal>
+                <SectionHeading
+                  eyebrow="Suporte remoto"
+                  title="Service Desk"
+                  text="Atendimento especializado para o usuário final, disponível pelo canal que fizer mais sentido pra sua empresa."
+                  large
+                />
+              </div>
+              <Reveal variant="scale-in" className="lg:hidden">
                 <img
                   src={deskPhoto.url}
                   alt="Analista de Service Desk atendendo usuários"
-                  className="h-[280px] w-full object-cover sm:h-[360px]"
+                  className="h-[280px] w-full rounded-2xl object-cover"
                 />
-                <span
-                  aria-hidden
-                  className="absolute inset-0 bg-gradient-to-t from-[#046E8B]/35 to-transparent"
-                />
-              </div>
-            </Reveal>
+              </Reveal>
+            </div>
           </div>
+        </div>
 
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <FeatureGrid items={SERVICE_DESK} />
 
           <Reveal variant="fade-up" className="mt-16">
@@ -446,34 +451,44 @@ function DigitalWorkspacePage() {
       </section>
 
       {/* DOBRA 4 — Field Service */}
-      <section className="border-b-2 border-[var(--site-yellow)]/70 bg-gradient-to-b from-white to-[#EEF4F6] py-24 sm:py-32">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <div className="grid items-center gap-12 lg:grid-cols-[0.95fr_1.05fr]">
-            <Reveal variant="scale-in" className="order-2 lg:order-1">
-              <div className="relative overflow-hidden rounded-3xl">
+      <section className="relative overflow-hidden border-b-2 border-[var(--site-yellow)]/70 bg-gradient-to-b from-white to-[#EEF4F6] py-24 sm:py-32">
+        {/* intro com foto ocupando toda a primeira coluna, até a borda da tela */}
+        <div className="relative">
+          <Reveal
+            variant="scale-in"
+            className="absolute inset-y-0 left-0 hidden w-[48%] overflow-hidden lg:block"
+          >
+            <img
+              src={fieldPhoto.url}
+              alt="Técnico Allied IT em atendimento presencial"
+              className="size-full object-cover"
+            />
+          </Reveal>
+          <div className="mx-auto max-w-7xl px-5 sm:px-8">
+            <div className="grid items-center gap-12 lg:min-h-[460px] lg:grid-cols-2">
+              <Reveal variant="scale-in" className="order-2 lg:hidden">
                 <img
                   src={fieldPhoto.url}
                   alt="Técnico Allied IT em atendimento presencial"
-                  className="h-[280px] w-full object-cover sm:h-[360px]"
+                  className="h-[280px] w-full rounded-2xl object-cover"
                 />
-                <span
-                  aria-hidden
-                  className="absolute inset-0 bg-gradient-to-t from-[#046E8B]/35 to-transparent"
+              </Reveal>
+              <div className="order-1 lg:order-2 lg:col-start-2 lg:pl-10">
+                <Reveal variant="fade-up" className="mb-4">
+                  <Wrench className="size-14 text-[var(--site-blue)]" strokeWidth={1.1} />
+                </Reveal>
+                <SectionHeading
+                  eyebrow="Suporte presencial"
+                  title="Field Service"
+                  text="Equipe técnica especializada para o que só se resolve com mão na massa, presencialmente."
+                  large
                 />
               </div>
-            </Reveal>
-            <div className="order-1 lg:order-2">
-              <Reveal variant="fade-up" className="mb-4">
-                <Wrench className="size-14 text-[var(--site-blue)]" strokeWidth={1.1} />
-              </Reveal>
-              <SectionHeading
-                eyebrow="Suporte presencial"
-                title="Field Service"
-                text="Equipe técnica especializada para o que só se resolve com mão na massa, presencialmente."
-                large
-              />
             </div>
           </div>
+        </div>
+
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <FeatureGrid items={FIELD_SERVICE} />
         </div>
       </section>
@@ -545,13 +560,13 @@ function DigitalWorkspacePage() {
       </section>
 
       {/* DOBRA 6 — Por que a Allied IT */}
-      <section className="bg-gradient-to-b from-[#08131A] to-[#0B1B23] py-20 sm:py-24">
+      <section className="bg-gradient-to-b from-[#F4F8F9] to-white py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <Reveal variant="fade-up" className="mx-auto max-w-[46ch] text-center">
-            <h2 className="font-chillax text-balance text-[1.6rem] font-bold leading-tight tracking-tight text-white/90 sm:text-[1.95rem]">
+            <h2 className="font-chillax text-balance text-[1.6rem] font-bold leading-tight tracking-tight text-[var(--site-ink)] sm:text-[1.95rem]">
               Por que Digital Workspace com a Allied IT
             </h2>
-            <p className="font-inter mt-5 text-pretty text-[15px] leading-relaxed text-white/55">
+            <p className="font-inter mt-5 text-pretty text-[15px] leading-relaxed text-[var(--site-muted)]">
               Operação madura, especialização por segmento e presença nacional para acompanhar o
               crescimento da sua empresa.
             </p>
@@ -565,7 +580,7 @@ function DigitalWorkspacePage() {
                   key={item.title}
                   variant="fade-up"
                   delay={i * 110}
-                  className="rounded-2xl border border-white/10 bg-white/[0.06] p-7 backdrop-blur-sm transition-colors duration-200 hover:border-[var(--site-yellow)]/40"
+                  className="rounded-2xl border border-[var(--site-line)] bg-white p-7 transition-colors duration-200 hover:border-[var(--site-yellow)]"
                 >
                   <div className="flex items-center gap-4">
                     <span className="font-chillax text-sm font-bold tracking-[0.18em] text-[var(--site-yellow)]">
@@ -573,10 +588,10 @@ function DigitalWorkspacePage() {
                     </span>
                     <Icon className="size-7 text-[var(--site-yellow)]" strokeWidth={1.3} />
                   </div>
-                  <p className="font-chillax mt-5 text-lg font-semibold text-white">
+                  <p className="font-chillax mt-5 text-lg font-semibold text-[var(--site-ink)]">
                     {item.title}
                   </p>
-                  <p className="font-inter mt-2 text-[14px] leading-relaxed text-white/60">
+                  <p className="font-inter mt-2 text-[14px] leading-relaxed text-[var(--site-muted)]">
                     {item.text}
                   </p>
                 </Reveal>
