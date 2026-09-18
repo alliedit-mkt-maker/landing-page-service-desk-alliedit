@@ -9,7 +9,6 @@ import {
   FileCheck2,
   Sparkles,
   Gauge,
-  BatteryCharging,
   Check,
   Minus,
   ChevronLeft,
@@ -17,13 +16,15 @@ import {
 } from "lucide-react";
 
 import ogImage from "@/assets/og-image.png.asset.json";
-import heroImage from "@/assets/headsets/yl-hero-2.jpg.asset.json";
-import bh70Banner from "@/assets/headsets/yl-bh70-banner.webp.asset.json";
-import whyImage from "@/assets/headsets/yealink-lifestyle.png.asset.json";
-import yealinkLogo from "@/assets/headsets/yealink-logo.png.asset.json";
-import bh70Main from "@/assets/headsets/yl-bh70-cutout.png.asset.json";
-import wh64Main from "@/assets/headsets/yl-wh64-main-2.png.asset.json";
-import uh34Main from "@/assets/headsets/yl-uh34-main.jpg.asset.json";
+import heroImage from "@/assets/headsets/logitech-hero.webp.asset.json";
+import whyImage from "@/assets/headsets/logitech-why.webp.asset.json";
+import logitechLogo from "@/assets/headsets/logitech-logo.png.asset.json";
+import zw1 from "@/assets/headsets/zw-1.png.asset.json";
+import zw2 from "@/assets/headsets/zw-2.webp.asset.json";
+import zw3 from "@/assets/headsets/zw-3.webp.asset.json";
+import zwl1 from "@/assets/headsets/zwl-1.webp.asset.json";
+import zwl2 from "@/assets/headsets/zwl-2.webp.asset.json";
+import zwl3 from "@/assets/headsets/zwl-3.webp.asset.json";
 import logoAlliedIt from "@/assets/logo-alliedit.png";
 
 import { LpProvider, useLp, pushEvent } from "@/components/lp/LpProvider";
@@ -31,18 +32,18 @@ import { SiteFooter } from "@/components/lp/SiteFooter";
 import { Clients } from "@/components/lp/Clients";
 import { Reveal } from "@/components/lp/Reveal";
 
-const title = "AlliedIT | Headsets Yealink: BH70, WH64 e UH34 para empresas";
+const title = "AlliedIT | Headsets Logitech: Zone Wired e Zone Wireless";
 const description =
-  "Custo-benefício sem abrir mão de qualidade de áudio. A AlliedIT ajuda sua empresa a escolher e padronizar headsets Yealink para atendimento, operação e trabalho híbrido, com produto genuíno e nota fiscal.";
+  "Com fio ou sem fio? A AlliedIT ajuda sua empresa a escolher, comparar e padronizar headsets Logitech Zone para atendimento, reunião e trabalho híbrido, com produto genuíno e nota fiscal.";
 
-export const Route = createFileRoute("/headset-yealink")({
+export const Route = createFileRoute("/lp/headset-logitech")({
   head: () => ({
     meta: [
       { title },
       { name: "description", content: description },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
-      { property: "og:url", content: "https://headset-yealink.alliedit.com.br/" },
+      { property: "og:url", content: "https://headset-logitech.alliedit.com.br/" },
       { property: "og:type", content: "website" },
       { property: "og:image", content: `https://service-desk.alliedit.com.br${ogImage.url}` },
       { property: "og:image:width", content: "1200" },
@@ -53,14 +54,14 @@ export const Route = createFileRoute("/headset-yealink")({
       { name: "twitter:description", content: description },
       { name: "twitter:image", content: `https://service-desk.alliedit.com.br${ogImage.url}` },
     ],
-    links: [{ rel: "canonical", href: "https://headset-yealink.alliedit.com.br/" }],
+    links: [{ rel: "canonical", href: "https://headset-logitech.alliedit.com.br/" }],
     scripts: [
       {
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Service",
-          serviceType: "Revenda de headsets corporativos Yealink",
+          serviceType: "Revenda de headsets corporativos Logitech",
           provider: { "@type": "Organization", name: "AlliedIT", url: "https://www.alliedit.com.br" },
           areaServed: "BR",
           description,
@@ -68,21 +69,20 @@ export const Route = createFileRoute("/headset-yealink")({
       },
     ],
   }),
-  component: YealinkPage,
+  component: LogitechPage,
 });
 
-export const yealinkMeta = { title, description };
+export const logitechMeta = { title, description };
 
-export function YealinkPage() {
+export function LogitechPage() {
   return (
-    <LpProvider modalTitle="Pedir cotação de headsets Yealink." formId="d1b524ee-050e-4c16-97fb-ced65a636365">
+    <LpProvider modalTitle="Pedir cotação de headsets Logitech." formId="abe5cb76-6159-4d92-b15d-6cfbe2f400a5">
       <div className="min-h-screen bg-surface text-petrol font-sans">
         <main>
           <Hero />
           <Clients centered />
-          <Bh70Spotlight />
-          <Wh64 />
-          <Uh34 />
+          <ZoneWired />
+          <ZoneWireless />
           <Comparison />
           <WhyAllied />
           <FinalCta />
@@ -106,10 +106,10 @@ function Hero() {
     <section className="relative overflow-hidden min-h-screen flex flex-col justify-center py-20 px-4 sm:px-6" id="hero">
       <img
         src={heroImage.url}
-        alt="Profissional em atendimento usando headset Yealink no escritório"
+        alt="Profissional em videochamada usando headset Logitech Zone"
         className="absolute inset-0 size-full object-cover object-center"
-        width={1600}
-        height={900}
+        width={1920}
+        height={1160}
       />
       <div
         aria-hidden
@@ -119,33 +119,32 @@ function Hero() {
             "linear-gradient(0deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.65) 45%, rgba(0,0,0,0.35) 78%, rgba(0,0,0,0.08) 92%, rgba(0,0,0,0) 100%)",
         }}
       />
-      <div className="max-w-5xl mx-auto relative w-full text-center flex flex-col items-center">
+      <div className="max-w-4xl mx-auto relative w-full text-center flex flex-col items-center">
         <img src={logoAlliedIt} alt="AlliedIT" className="h-12 sm:h-16 w-auto brightness-0 invert mb-10 sm:mb-12 drop-shadow-lg" />
 
         <Reveal variant="fade-up">
           <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-gold font-semibold mb-5 block">
-            Headsets corporativos Yealink
+            Headsets corporativos Logitech
           </span>
         </Reveal>
         <Reveal variant="fade-up" delay={120}>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.05] mb-6 sm:mb-8 text-white drop-shadow-[0_2px_18px_rgba(0,0,0,0.6)]">
-            <span className="block whitespace-nowrap">Equipe seu time de atendimento</span>
-            <span className="block whitespace-nowrap">com custo-benefício</span>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-balance leading-[1.02] mb-6 sm:mb-8 text-white drop-shadow-[0_2px_18px_rgba(0,0,0,0.6)]">
+            Com fio ou sem fio? Depende de como sua equipe trabalha
           </h1>
-
         </Reveal>
         <Reveal variant="fade-up" delay={200}>
           <p className="text-white/80 text-base sm:text-lg max-w-2xl mx-auto mb-9 leading-relaxed drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)]">
-            Áudio profissional, conforto para o expediente inteiro e um parque padronizado que a TI consegue manter. A
-            AlliedIT ajuda a escolher o modelo certo para cada posição, com produto genuíno, nota fiscal e garantia.
+            Metade do time vive na mesa, a outra metade circula entre reunião, home office e viagem. A gente entende o
+            seu cenário, compara as duas linhas Zone lado a lado e entrega o parque padronizado, com nota fiscal e
+            procedência garantida.
           </p>
         </Reveal>
 
         <Reveal variant="fade-up" delay={320}>
-          <span className="flex h-7 sm:h-9 w-36 items-center justify-center mb-10">
+          <span className="flex h-8 sm:h-10 w-40 items-center justify-center mb-10">
             <img
-              src={yealinkLogo.url}
-              alt="Yealink"
+              src={logitechLogo.url}
+              alt="Logitech"
               className="max-h-full max-w-full object-contain brightness-0 invert opacity-85"
             />
           </span>
@@ -166,113 +165,9 @@ function Hero() {
   );
 }
 
-function Bh70Spotlight() {
-  const { openModal } = useLp();
-  return (
-    <section className="relative overflow-hidden py-20 sm:py-28 px-4 sm:px-6" id="bh70">
-      <img
-        src={bh70Banner.url}
-        alt=""
-        aria-hidden
-        loading="lazy"
-        width={1216}
-        height={631}
-        className="absolute inset-0 size-full object-cover object-center"
-      />
-
-      <div
-        aria-hidden
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(90deg, rgba(0,0,0,0.94) 0%, rgba(0,0,0,0.88) 40%, rgba(0,0,0,0.8) 70%, rgba(0,0,0,0.75) 100%)",
-        }}
-      />
-
-      <div className="max-w-6xl mx-auto relative grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-        <div>
-          <Reveal variant="fade-up">
-            <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-5 block">
-              Destaque da linha · Yealink BH70
-            </span>
-          </Reveal>
-          <Reveal variant="fade-up" delay={120}>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-balance leading-[1.05] text-white mb-5">
-              O sem fio que atravessa a semana inteira
-            </h2>
-          </Reveal>
-          <Reveal variant="fade-up" delay={200}>
-            <p className="text-white/75 text-base sm:text-lg leading-relaxed mb-8">
-              Para quem alterna entre mesa, reunião e home office e não pode ficar preso ao computador. Autonomia para
-              o usuário esquecer que existe carregador e voz limpa mesmo em escritório movimentado.
-            </p>
-          </Reveal>
-          <Reveal variant="fade-up" delay={280}>
-            <div className="grid sm:grid-cols-3 gap-px bg-white/15 ring-1 ring-white/15 mb-9">
-              {[
-                { icon: BatteryCharging, label: "Até 35h de conversação com carga rápida" },
-                { icon: Bluetooth, label: "Bluetooth com receptor USB e dois dispositivos" },
-                { icon: Sparkles, label: "Microfone direcional com redução de ruído" },
-              ].map((s) => (
-                <div key={s.label} className="bg-black/40 backdrop-blur-sm p-5 flex flex-col gap-2">
-                  <s.icon className="size-5 text-gold" strokeWidth={1.75} aria-hidden />
-                  <span className="text-xs text-white/80 leading-snug">{s.label}</span>
-                </div>
-              ))}
-            </div>
-          </Reveal>
-          <Reveal variant="fade-up" delay={340}>
-            <button
-              data-product="Yealink BH70"
-              onClick={() => {
-                pushEvent("product_select", { product: "Yealink BH70" });
-                openModal("destaque_bh70");
-              }}
-              className={pillLight}
-            >
-              Quero o BH70
-            </button>
-          </Reveal>
-        </div>
-
-        <Reveal variant="scale-in" delay={180}>
-          <div
-            className="group relative overflow-hidden border border-white/15 p-8 sm:p-14 backdrop-blur-md shadow-[0_40px_90px_rgba(0,0,0,0.55)]"
-            style={{
-              background:
-                "radial-gradient(120% 100% at 50% 0%, rgba(255,255,255,0.35) 0%, rgba(238,242,244,0.22) 45%, rgba(215,222,226,0.12) 100%)",
-            }}
-          >
-            <div
-              aria-hidden
-              className="absolute inset-0 bg-white opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-            />
-            <span aria-hidden className="absolute inset-x-0 top-0 z-10 h-[3px] bg-gold" />
-            <div
-              aria-hidden
-              className="absolute left-1/2 top-1/2 size-[78%] -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl transition-opacity duration-300 group-hover:opacity-0"
-              style={{ background: "radial-gradient(circle, rgba(255,255,255,0.30) 0%, rgba(255,255,255,0) 70%)" }}
-            />
-            <img
-              src={bh70Main.url}
-              alt="Yealink BH70"
-              loading="lazy"
-              className="relative mx-auto w-auto max-h-[440px] scale-[1.08] object-contain drop-shadow-[0_34px_55px_rgba(0,0,0,0.5)] transition-all duration-300 group-hover:scale-[1.12] group-hover:drop-shadow-[0_24px_40px_rgba(0,0,0,0.25)]"
-            />
-          </div>
-        </Reveal>
-
-
-
-
-      </div>
-    </section>
-  );
-}
-
 type Spec = { icon: typeof Headset; label: string };
 
-function Gallery({ images, name, zoom }: { images: string[]; name: string; zoom?: boolean }) {
+function Gallery({ images, name }: { images: string[]; name: string }) {
   const [i, setI] = useState(0);
   const go = (d: number) => setI((p) => (p + d + images.length) % images.length);
   return (
@@ -282,9 +177,9 @@ function Gallery({ images, name, zoom }: { images: string[]; name: string; zoom?
           <img
             key={src}
             src={src}
-            alt={`Yealink ${name} — foto ${idx + 1}`}
+            alt={`Logitech ${name} — foto ${idx + 1}`}
             loading="lazy"
-            className={`absolute inset-0 size-full object-contain transition-opacity duration-300 ${zoom ? "p-2 sm:p-3 scale-[1.18]" : "p-6 sm:p-10"} ${idx === i ? "opacity-100" : "opacity-0"}`}
+            className={`absolute inset-0 size-full object-contain p-6 sm:p-10 transition-opacity duration-300 ${idx === i ? "opacity-100" : "opacity-0"}`}
           />
         ))}
       </div>
@@ -334,7 +229,6 @@ function ProductSection({
   images,
   tone,
   reverse,
-  zoom,
 }: {
   id: string;
   eyebrow: string;
@@ -346,20 +240,19 @@ function ProductSection({
   images: string[];
   tone: "white" | "gray";
   reverse?: boolean;
-  zoom?: boolean;
 }) {
   const { openModal } = useLp();
   return (
     <section id={id} className={`py-16 sm:py-24 px-4 sm:px-6 ${tone === "gray" ? "bg-petrol/[0.03]" : "bg-surface"}`}>
       <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
         <Reveal variant="fade-up" className={reverse ? "lg:order-2" : ""}>
-          <Gallery images={images} name={name} zoom={zoom} />
+          <Gallery images={images} name={name} />
         </Reveal>
 
         <Reveal variant="fade-up" delay={120} className={reverse ? "lg:order-1" : ""}>
           <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-4 block">{eyebrow}</span>
           <h2 className="text-3xl sm:text-4xl md:text-[2.75rem] font-extrabold tracking-tight leading-[1.05] text-balance text-ink-mid mb-2">
-            Yealink {name}
+            Logitech {name}
           </h2>
           <p className="text-lg font-semibold text-petrol/80 mb-5">{headline}</p>
           <p className="text-petrol/70 text-base leading-relaxed mb-7">{body}</p>
@@ -383,9 +276,9 @@ function ProductSection({
           </div>
 
           <button
-            data-product={`Yealink ${name}`}
+            data-product={`Logitech ${name}`}
             onClick={() => {
-              pushEvent("product_select", { product: `Yealink ${name}` });
+              pushEvent("product_select", { product: `Logitech ${name}` });
               openModal(`produto_${id}`);
             }}
             className={pillDark}
@@ -398,74 +291,67 @@ function ProductSection({
   );
 }
 
-
-function Wh64() {
+function ZoneWired() {
   return (
     <ProductSection
-      id="wh64"
-      eyebrow="Sem fio DECT para a mesa"
-      name="WH64"
-      headline="DECT com base de carga, para quem circula pelo andar sem perder a chamada."
-      body="A opção sem fio para posições fixas que precisam de alcance. A base carrega o headset entre as chamadas, mantém a conexão estável longe da mesa e integra com o computador e o telefone IP na mesma estação."
+      id="zone-wired"
+      eyebrow="Operação e atendimento"
+      name="Zone Wired"
+      headline="Com fio, plug and play, pronto para o expediente inteiro."
+      body="O headset de quem passa o dia na mesa em chamada. Conecta no USB e funciona, sem bateria para acabar no meio do atendimento e sem pareamento para o usuário resolver sozinho."
       bullets={[
-        "Tecnologia DECT com alcance maior que Bluetooth no escritório",
-        "Base de carga que mantém o headset sempre pronto",
-        "Conexão com computador e telefone IP na mesma base",
-        "Microfone com redução de ruído para ambientes compartilhados",
-      ]}
-      specs={[
-        { icon: Bluetooth, label: "Sem fio DECT com base" },
-        { icon: Gauge, label: "Alcance para circular pelo andar" },
-        { icon: FileCheck2, label: "Homologado para UC" },
-      ]}
-      images={[wh64Main.url]}
-      tone="gray"
-      reverse
-    />
-  );
-}
-
-function Uh34() {
-  return (
-    <ProductSection
-      id="uh34"
-      eyebrow="Operação e call center"
-      name="UH34"
-      headline="Com fio, plug and play, o custo por posição mais enxuto da linha."
-      body="O headset de quem passa o expediente inteiro em chamada. Conecta no USB e funciona, sem bateria para acabar no meio do atendimento e sem pareamento para o usuário resolver sozinho. É o padrão ideal para escalar posições de operação."
-      bullets={[
-        "Conexão USB plug and play, sem instalação",
-        "Biauricular com espuma confortável para uso prolongado",
-        "Controles no cabo para volume, mudo e atender ou encerrar",
+        "Conexão USB-C com adaptador USB-A incluso",
         "Microfone com redução de ruído e haste ajustável",
+        "Controles no cabo para volume, mudo e atender ou encerrar",
+        "Certificado para as principais plataformas de reunião corporativa",
       ]}
       specs={[
         { icon: Headset, label: "Biauricular com fio (USB)" },
         { icon: Gauge, label: "Uso intensivo, sem bateria" },
         { icon: FileCheck2, label: "Homologado para UC" },
       ]}
-      images={[uh34Main.url]}
-      zoom
+      images={[zw1.url, zw2.url, zw3.url]}
       tone="white"
     />
   );
 }
 
-const rows: { label: string; bh70: string | boolean; wh64: string | boolean; uh34: string | boolean }[] = [
-  { label: "Conexão", bh70: "Bluetooth + receptor USB", wh64: "DECT com base", uh34: "USB com fio" },
-  {
-    label: "Perfil de uso",
-    bh70: "Híbrido, reunião e mobilidade",
-    wh64: "Mesa fixa com liberdade no andar",
-    uh34: "Operação e call center",
-  },
-  { label: "Bateria", bh70: "Até 35h de conversação", wh64: "Recarrega na base", uh34: "Não depende de bateria" },
-  { label: "Liberdade de movimento", bh70: true, wh64: true, uh34: false },
-  { label: "Microfone com redução de ruído", bh70: true, wh64: true, uh34: true },
-  { label: "Base de carga inclusa", bh70: false, wh64: true, uh34: false },
-  { label: "Integração com telefone IP", bh70: false, wh64: true, uh34: false },
-  { label: "Certificação para plataformas de reunião", bh70: true, wh64: true, uh34: true },
-  { label: "Melhor custo por posição", bh70: false, wh64: false, uh34: true },
+function ZoneWireless() {
+  return (
+    <ProductSection
+      id="zone-wireless"
+      eyebrow="Híbrido e mobilidade"
+      name="Zone Wireless"
+      headline="Sem fio, com cancelamento de ruído para quem vive em reunião."
+      body="Para quem alterna entre mesa, sala de reunião e home office. Bluetooth com receptor USB, cancelamento ativo de ruído e autonomia para atravessar o dia sem cabo preso ao computador."
+      bullets={[
+        "Bluetooth com receptor USB e conexão simultânea a dois dispositivos",
+        "Cancelamento ativo de ruído para foco em escritório aberto",
+        "Microfone com haste flexível e mute ao levantar",
+        "Autonomia para um dia inteiro de chamadas, com carga rápida",
+      ]}
+      specs={[
+        { icon: Bluetooth, label: "Sem fio Bluetooth + receptor" },
+        { icon: Sparkles, label: "Cancelamento ativo de ruído" },
+        { icon: Gauge, label: "Autonomia para o dia inteiro" },
+      ]}
+      images={[zwl1.url, zwl2.url, zwl3.url]}
+      tone="gray"
+      reverse
+    />
+  );
+}
+
+const rows: { label: string; wired: string | boolean; wireless: string | boolean }[] = [
+  { label: "Conexão", wired: "USB-C (adaptador USB-A)", wireless: "Bluetooth + receptor USB" },
+  { label: "Perfil de uso", wired: "Mesa fixa, atendimento e operação", wireless: "Híbrido, reunião e mobilidade" },
+  { label: "Bateria", wired: "Não depende de bateria", wireless: "Dia inteiro, com carga rápida" },
+  { label: "Cancelamento ativo de ruído", wired: false, wireless: true },
+  { label: "Microfone com redução de ruído", wired: true, wireless: true },
+  { label: "Controles no cabo / no fone", wired: "No cabo", wireless: "No fone" },
+  { label: "Liberdade de movimento", wired: false, wireless: true },
+  { label: "Certificação para plataformas de reunião", wired: true, wireless: true },
+  { label: "Melhor custo por posição", wired: true, wireless: false },
 ];
 
 function Cell({ v }: { v: string | boolean }) {
@@ -477,30 +363,29 @@ function Cell({ v }: { v: string | boolean }) {
 function Comparison() {
   const { openModal } = useLp();
   return (
-    <section className="py-20 sm:py-28 px-4 sm:px-6 bg-petrol/[0.03]" id="comparativo">
+    <section className="py-20 sm:py-28 px-4 sm:px-6 bg-surface" id="comparativo">
       <div className="max-w-5xl mx-auto">
         <Reveal variant="fade-up" className="max-w-3xl mx-auto text-center mb-12 sm:mb-16">
           <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-4 block">
             Comparativo direto
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-balance text-ink-mid mb-5">
-            BH70, WH64 ou UH34?
+            Zone Wired ou Zone Wireless?
           </h2>
           <p className="text-petrol/70 text-base leading-relaxed">
-            Na prática, a maioria das empresas combina os três: com fio nas posições fixas de atendimento, DECT em quem
-            circula pelo andar e Bluetooth para o time híbrido. Compare e monte a combinação certa.
+            Na prática, a maioria das empresas usa os dois: com fio nas posições fixas de atendimento e sem fio para
+            quem circula. Compare e monte a combinação que faz sentido para o seu time.
           </p>
         </Reveal>
 
         <Reveal variant="fade-up" delay={120}>
           <div className="overflow-x-auto border border-border">
-            <table className="w-full min-w-[760px] border-collapse bg-white text-left">
+            <table className="w-full min-w-[640px] border-collapse bg-white text-left">
               <thead>
                 <tr className="border-b border-border">
                   <th className="p-5 text-[11px] font-bold uppercase tracking-[0.18em] text-petrol/50">Critério</th>
-                  <th className="p-5 text-center text-base font-extrabold text-ink-mid">BH70</th>
-                  <th className="p-5 text-center text-base font-extrabold text-ink-mid">WH64</th>
-                  <th className="p-5 text-center text-base font-extrabold text-ink-mid">UH34</th>
+                  <th className="p-5 text-center text-base font-extrabold text-ink-mid">Zone Wired</th>
+                  <th className="p-5 text-center text-base font-extrabold text-ink-mid">Zone Wireless</th>
                 </tr>
               </thead>
               <tbody>
@@ -510,13 +395,10 @@ function Comparison() {
                       {r.label}
                     </th>
                     <td className="p-5 text-center align-middle">
-                      <Cell v={r.bh70} />
+                      <Cell v={r.wired} />
                     </td>
                     <td className="p-5 text-center align-middle">
-                      <Cell v={r.wh64} />
-                    </td>
-                    <td className="p-5 text-center align-middle">
-                      <Cell v={r.uh34} />
+                      <Cell v={r.wireless} />
                     </td>
                   </tr>
                 ))}
@@ -538,13 +420,13 @@ function Comparison() {
 const whyItems = [
   {
     icon: Handshake,
-    title: "Revenda oficial Yealink",
-    body: "Produto genuíno, com nota fiscal, garantia e procedência garantida. Nada de mercado paralelo.",
+    title: "Parceiros oficiais Logitech",
+    body: "Somos parceiros e revendedores oficiais Logitech. Produto genuíno, com nota fiscal e procedência garantida.",
   },
   {
     icon: Compass,
     title: "Atendimento consultivo",
-    body: "A gente ajuda a definir quantas posições pedem com fio, DECT ou Bluetooth, em vez de empurrar o que sobrou em estoque.",
+    body: "A gente ajuda a definir quantas posições pedem com fio e quantas pedem sem fio, em vez de empurrar o que sobrou em estoque.",
   },
   {
     icon: ShieldCheck,
@@ -577,7 +459,7 @@ function WhyAllied() {
       <div className="max-w-6xl mx-auto relative">
         <Reveal variant="fade-up" className="mb-10 sm:mb-14 max-w-3xl">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-balance text-white">
-            Por que comprar seu headset Yealink com a AlliedIT
+            Por que comprar seu headset Logitech com a AlliedIT
           </h2>
         </Reveal>
         <div className="grid md:grid-cols-3 gap-6 items-stretch">
@@ -622,7 +504,7 @@ function FinalCta() {
         <Reveal variant="fade-up" delay={220}>
           <p className="text-white/60 text-base sm:text-lg max-w-2xl mx-auto mb-10 sm:mb-12 leading-relaxed">
             Conta quantas pessoas você precisa equipar e como elas trabalham. A gente volta com a combinação certa de
-            BH70, WH64 e UH34 e o preço fechado.
+            Zone Wired e Zone Wireless e o preço fechado.
           </p>
         </Reveal>
         <Reveal variant="scale-in" delay={340}>

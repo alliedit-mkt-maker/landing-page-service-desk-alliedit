@@ -54,7 +54,7 @@ const TITLE = "Digital Workspace | Service Desk e Field Service | Allied IT";
 const DESCRIPTION =
   "Service Desk e Field Service em uma só operação: atendimento remoto e presencial, com SLA garantido, gestão centralizada e cobertura nacional.";
 
-export const Route = createFileRoute("/site/servicos/digital-workspace")({
+export const Route = createFileRoute("/_site/servicos/digital-workspace")({
   head: () => ({
     meta: [
       { title: TITLE },

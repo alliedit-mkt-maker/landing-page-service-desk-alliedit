@@ -15,7 +15,7 @@ const title = "AlliedIT | Alocação de profissionais de TI sob demanda";
 const description =
   "Desenvolvedores, POs, product managers, scrum masters e gerentes de projeto alocados sob demanda. Vira OpEx: sem abrir vaga CLT, sem trava de headcount.";
 
-export const Route = createFileRoute("/alocacao-ti")({
+export const Route = createFileRoute("/lp/alocacao-ti")({
   head: () => ({
     meta: [
       { title },

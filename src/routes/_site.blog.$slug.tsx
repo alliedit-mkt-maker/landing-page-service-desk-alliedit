@@ -33,7 +33,7 @@ const getArticleOrigin = createServerFn({ method: "GET" }).handler(async () => {
   }
 });
 
-export const Route = createFileRoute("/site/blog/$slug")({
+export const Route = createFileRoute("/_site/blog/$slug")({
   headers: () => ({
     "cache-control": "public, s-maxage=600, stale-while-revalidate=86400",
   }),

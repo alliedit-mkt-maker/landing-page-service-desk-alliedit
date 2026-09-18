@@ -13,7 +13,7 @@ const title = "AlliedIT | Cabeamento estruturado certificado e documentado";
 const description =
   "Projeto, instalação e certificação de cabeamento estruturado, fibra óptica e data center. Cada ponto testado, laudo e as-built. +7 anos de operação.";
 
-export const Route = createFileRoute("/cabeamento")({
+export const Route = createFileRoute("/lp/cabeamento")({
   head: () => ({
     meta: [
       { title },

@@ -35,7 +35,7 @@ const title = "AlliedIT | Logitech Rally Bar e Rally Bar Mini para salas de reun
 const description =
   "Videoconferência all-in-one Logitech: Rally Bar para salas médias e grandes, Rally Bar Mini para salas pequenas. Revenda oficial, instalação e suporte com a AlliedIT.";
 
-export const Route = createFileRoute("/rally-bar")({
+export const Route = createFileRoute("/lp/rally-bar")({
   head: () => ({
     meta: [
       { title },

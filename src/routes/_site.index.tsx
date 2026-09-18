@@ -10,7 +10,7 @@ import { SiteCta } from "@/components/site/SiteCta";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import heroBg from "@/assets/site/site-cta-banner.jpg.asset.json";
 
-export const Route = createFileRoute("/site/")({
+export const Route = createFileRoute("/_site/")({
   head: () => ({
     meta: [
       { title: "Allied IT | Tecnologia que sustenta a sua operação" },
