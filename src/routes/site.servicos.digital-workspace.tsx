@@ -560,13 +560,13 @@ function DigitalWorkspacePage() {
       </section>
 
       {/* DOBRA 6 — Por que a Allied IT */}
-      <section className="bg-gradient-to-b from-[#08131A] to-[#0B1B23] py-20 sm:py-24">
+      <section className="bg-gradient-to-b from-[#F4F8F9] to-white py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <Reveal variant="fade-up" className="mx-auto max-w-[46ch] text-center">
-            <h2 className="font-chillax text-balance text-[1.6rem] font-bold leading-tight tracking-tight text-white/90 sm:text-[1.95rem]">
+            <h2 className="font-chillax text-balance text-[1.6rem] font-bold leading-tight tracking-tight text-[var(--site-ink)] sm:text-[1.95rem]">
               Por que Digital Workspace com a Allied IT
             </h2>
-            <p className="font-inter mt-5 text-pretty text-[15px] leading-relaxed text-white/55">
+            <p className="font-inter mt-5 text-pretty text-[15px] leading-relaxed text-[var(--site-muted)]">
               Operação madura, especialização por segmento e presença nacional para acompanhar o
               crescimento da sua empresa.
             </p>
@@ -580,7 +580,7 @@ function DigitalWorkspacePage() {
                   key={item.title}
                   variant="fade-up"
                   delay={i * 110}
-                  className="rounded-2xl border border-white/10 bg-white/[0.06] p-7 backdrop-blur-sm transition-colors duration-200 hover:border-[var(--site-yellow)]/40"
+                  className="rounded-2xl border border-[var(--site-line)] bg-white p-7 transition-colors duration-200 hover:border-[var(--site-yellow)]"
                 >
                   <div className="flex items-center gap-4">
                     <span className="font-chillax text-sm font-bold tracking-[0.18em] text-[var(--site-yellow)]">
@@ -588,10 +588,10 @@ function DigitalWorkspacePage() {
                     </span>
                     <Icon className="size-7 text-[var(--site-yellow)]" strokeWidth={1.3} />
                   </div>
-                  <p className="font-chillax mt-5 text-lg font-semibold text-white">
+                  <p className="font-chillax mt-5 text-lg font-semibold text-[var(--site-ink)]">
                     {item.title}
                   </p>
-                  <p className="font-inter mt-2 text-[14px] leading-relaxed text-white/60">
+                  <p className="font-inter mt-2 text-[14px] leading-relaxed text-[var(--site-muted)]">
                     {item.text}
                   </p>
                 </Reveal>
