@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { ArrowLeft } from "lucide-react";
-import DOMPurify from "isomorphic-dompurify";
 import { createServerFn } from "@tanstack/react-start";
-import { getRequestUrl, setResponseHeader } from "@tanstack/react-start/server";
+import { getRequestUrl } from "@tanstack/react-start/server";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import ogImageAsset from "@/assets/og-image.png.asset.json";
 import {
@@ -13,6 +12,7 @@ import {
   fetchPostSeo,
   featuredImage,
   formatDatePt,
+  lightSanitize,
   normalizeInternalLinks,
   primaryCategory,
   seoTitle,
@@ -23,10 +23,9 @@ import {
   type WpPostSeo,
 } from "@/lib/wp";
 
-// Lê a origem da requisição no servidor e define o cache da resposta HTML.
+// Lê a origem da requisição no servidor.
 const getArticleOrigin = createServerFn({ method: "GET" }).handler(async () => {
   try {
-    setResponseHeader("Cache-Control", "public, s-maxage=600, stale-while-revalidate=86400");
     const url = new URL(String(getRequestUrl()));
     return `${url.protocol}//${url.host}`;
   } catch {
@@ -34,11 +33,10 @@ const getArticleOrigin = createServerFn({ method: "GET" }).handler(async () => {
   }
 });
 
-function sanitize(html: string): string {
-  return normalizeInternalLinks(DOMPurify.sanitize(html, { ADD_ATTR: ["target"] }));
-}
-
 export const Route = createFileRoute("/site/blog/$slug")({
+  headers: () => ({
+    "cache-control": "public, s-maxage=600, stale-while-revalidate=86400",
+  }),
   loader: async ({ params }) => {
     const origin =
       typeof document !== "undefined" ? window.location.origin : await getArticleOrigin();
@@ -128,10 +126,27 @@ function BlogArticle() {
   });
 
   const rawHtml = post.data?.content?.rendered ?? null;
-  const [safeHtml, setSafeHtml] = useState<string | null>(rawHtml ? sanitize(rawHtml) : null);
+
+  // Mesmo HTML no servidor e no primeiro render do cliente (sem DOM).
+  const baseHtml = useMemo(
+    () => (rawHtml ? normalizeInternalLinks(lightSanitize(rawHtml)) : null),
+    [rawHtml],
+  );
+  const [safeHtml, setSafeHtml] = useState<string | null>(baseHtml);
+
   useEffect(() => {
-    setSafeHtml(rawHtml ? sanitize(rawHtml) : null);
-  }, [rawHtml]);
+    let cancelled = false;
+    setSafeHtml(baseHtml);
+    if (!rawHtml) return;
+    // DOMPurify só no navegador, depois da hidratação.
+    import("isomorphic-dompurify").then(({ default: DOMPurify }) => {
+      if (cancelled) return;
+      setSafeHtml(normalizeInternalLinks(DOMPurify.sanitize(rawHtml, { ADD_ATTR: ["target"] })));
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [rawHtml, baseHtml]);
 
   const back = (
     <Link
