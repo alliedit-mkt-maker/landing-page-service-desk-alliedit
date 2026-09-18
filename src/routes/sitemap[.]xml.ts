@@ -11,6 +11,20 @@ const STATIC_PATHS = [
   "/blog",
 ];
 
+const LP_PATHS = [
+  "/lp/service-desk",
+  "/lp/cabeamento",
+  "/lp/headset-callcenter",
+  "/lp/headset-logitech",
+  "/lp/headset-yealink",
+  "/lp/headsets-poly",
+  "/lp/poly-studio",
+  "/lp/rally-bar",
+  "/lp/videoconferencia",
+  "/lp/yealink-videoconferencia",
+  "/lp/alocacao-ti",
+];
+
 function xmlEscape(value: string): string {
   return value
     .replace(/&/g, "&amp;")
@@ -41,7 +55,7 @@ export const Route = createFileRoute("/sitemap.xml")({
           return new Response("sitemap indisponível", { status: 500 });
         }
 
-        const entries: string[] = STATIC_PATHS.map(
+        const entries: string[] = [...STATIC_PATHS, ...LP_PATHS].map(
           (path) => `  <url><loc>${xmlEscape(origin + path)}</loc></url>`,
         );
 
