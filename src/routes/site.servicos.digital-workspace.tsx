@@ -571,7 +571,7 @@ function DigitalWorkspacePage() {
                     <span className="font-chillax text-sm font-bold tracking-[0.18em] text-[var(--site-yellow)]">
                       {item.num}
                     </span>
-                    <Icon className="size-7 text-[var(--site-blue)]" strokeWidth={1.3} />
+                    <Icon className="size-7 text-[var(--site-yellow)]" strokeWidth={1.3} />
                   </div>
                   <p className="font-chillax mt-5 text-lg font-semibold text-white">
                     {item.title}
