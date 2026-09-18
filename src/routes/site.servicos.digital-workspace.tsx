@@ -549,7 +549,7 @@ function DigitalWorkspacePage() {
       </section>
 
       {/* DOBRA 6 — Por que a Allied IT */}
-      <section className="bg-gradient-to-b from-[#08131A] via-[#0D2franchise]/0 to-[#0B1B23] py-20 sm:py-24">
+      <section className="bg-gradient-to-b from-[#08131A] to-[#0B1B23] py-20 sm:py-24">
         <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.1fr]">
           <Reveal variant="fade-up" className="max-w-[46ch]">
             <h2 className="font-chillax text-[1.6rem] font-bold leading-tight tracking-tight text-white/90 sm:text-[1.95rem]">
