@@ -351,11 +351,11 @@ function DigitalWorkspacePage() {
                   className="pointer-events-none absolute inset-0 opacity-50"
                   style={{ backgroundImage: DOT_TEXTURE, backgroundSize: "22px 22px" }}
                 />
-                <div className="relative flex flex-col items-center text-center">
-                  <h2 className="font-chillax text-[1.7rem] font-bold leading-tight tracking-tight text-white sm:text-[2.1rem]">
+                <div className="relative">
+                  <h2 className="font-chillax text-balance text-[1.7rem] font-bold leading-tight tracking-tight text-white sm:text-[2.1rem]">
                     O que é Digital Workspace
                   </h2>
-                  <p className="font-inter mt-5 text-[15px] leading-relaxed text-white/70">
+                  <p className="font-inter mt-5 max-w-[46ch] text-pretty text-[15px] leading-relaxed text-white/70">
                     É a porta de entrada da sua operação de TI: onde o usuário pede ajuda e onde o
                     problema físico é resolvido. Reunimos Service Desk (suporte remoto) e Field
                     Service (suporte presencial) em uma única frente, para que ninguém fique
