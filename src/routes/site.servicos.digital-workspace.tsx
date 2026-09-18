@@ -345,7 +345,7 @@ function DigitalWorkspacePage() {
               </div>
 
               {/* texto */}
-              <div className="relative p-8 sm:p-12 lg:p-14">
+              <div className="relative flex flex-col justify-center p-8 sm:p-12 lg:p-14">
                 <span
                   aria-hidden
                   className="pointer-events-none absolute inset-0 opacity-50"
