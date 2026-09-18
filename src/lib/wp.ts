@@ -68,7 +68,7 @@ export function authorName(post: WpPost): string {
 
 // ~200 palavras por minuto, mínimo de 1 minuto.
 export function readingTime(post: WpPost): number {
-  const text = stripHtml(post.content?.rendered ?? post.excerpt.rendered);
+  const text = stripHtml(post.content?.rendered || post.excerpt.rendered);
   const words = text ? text.split(/\s+/).length : 0;
   return Math.max(1, Math.ceil(words / 200));
 }
@@ -178,6 +178,49 @@ export function dedupeByTitle<T extends { title: { rendered: string }; date: str
   }
   const kept = new Set(best.values());
   return posts.filter((p) => kept.has(p));
+}
+
+// Sanitização pura, sem DOM: roda no Worker e no primeiro render do cliente,
+// garantindo HTML idêntico nos dois lados (hidratação sem erro).
+export function lightSanitize(html: string): string {
+  return html
+    .replace(/<(script|style|iframe|object|embed|form)\b[\s\S]*?<\/\1\s*>/gi, "")
+    .replace(/<(script|style|iframe|object|embed|form)\b[^>]*\/?>/gi, "")
+    .replace(/\son[a-z-]+\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+)/gi, "")
+    .replace(/\s(?:href|src)\s*=\s*(?:"\s*javascript:[^"]*"|'\s*javascript:[^']*'|javascript:[^\s>]*)/gi, "");
+}
+
+// Reduz o post ao que os cards da listagem usam, para não serializar o
+// conteúdo inteiro no HTML da página.
+export function slimPost(post: WpPost): WpPost {
+  const media = post._embedded?.["wp:featuredmedia"]?.[0];
+  const terms = (post._embedded?.["wp:term"] ?? [])
+    .map((group) =>
+      (group ?? [])
+        .filter((t) => t.taxonomy === "category")
+        .map((t) => ({ id: t.id, name: t.name, taxonomy: t.taxonomy })),
+    )
+    .filter((group) => group.length > 0);
+  const author = post._embedded?.author?.[0]?.name;
+
+  return {
+    id: post.id,
+    slug: post.slug,
+    date: post.date,
+    modified: post.modified,
+    link: post.link,
+    title: { rendered: post.title.rendered },
+    excerpt: { rendered: post.excerpt.rendered },
+    content: { rendered: "" },
+    categories: post.categories,
+    _embedded: {
+      ...(media
+        ? { "wp:featuredmedia": [{ source_url: media.source_url, alt_text: media.alt_text }] }
+        : {}),
+      ...(terms.length ? { "wp:term": terms } : {}),
+      ...(author ? { author: [{ name: author }] } : {}),
+    },
+  };
 }
 
 export function normalizeInternalLinks(html: string): string {
