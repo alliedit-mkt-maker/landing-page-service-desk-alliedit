@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
+import { lpCanonical } from "@/lib/site";
 import { Handshake, Compass, ShieldCheck, Headset, Bluetooth, FileCheck2, RefreshCw, Sparkles, Gauge, MonitorCog, ChevronLeft, ChevronRight } from "lucide-react";
 
 import ogImage from "@/assets/og-image.png.asset.json";
@@ -25,14 +26,14 @@ const title = "AlliedIT | Headsets Poly: Blackwire 3220 e Voyager Focus 2";
 const description =
   "Áudio limpo em cada chamada da sua empresa. A AlliedIT indica, entrega e padroniza headsets Poly (HP) para operação, call center e times executivos, com produto genuíno e nota fiscal.";
 
-export const Route = createFileRoute("/headsets-poly")({
+export const Route = createFileRoute("/lp/headsets-poly")({
   head: () => ({
     meta: [
       { title },
       { name: "description", content: description },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
-      { property: "og:url", content: "https://headsets-poly.alliedit.com.br/" },
+      { property: "og:url", content: lpCanonical("headsets-poly", "headsets-poly.alliedit.com.br") },
       { property: "og:type", content: "website" },
       { property: "og:image", content: `https://service-desk.alliedit.com.br${ogImage.url}` },
       { property: "og:image:width", content: "1200" },
@@ -43,7 +44,7 @@ export const Route = createFileRoute("/headsets-poly")({
       { name: "twitter:description", content: description },
       { name: "twitter:image", content: `https://service-desk.alliedit.com.br${ogImage.url}` },
     ],
-    links: [{ rel: "canonical", href: "https://headsets-poly.alliedit.com.br/" }],
+    links: [{ rel: "canonical", href: lpCanonical("headsets-poly", "headsets-poly.alliedit.com.br") }],
     scripts: [
       {
         type: "application/ld+json",

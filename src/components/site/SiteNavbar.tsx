@@ -19,7 +19,7 @@ const SERVICES = [
     icon: Headset,
     title: "Digital Workspace",
     text: "Suporte ao usuário, remoto e presencial",
-    to: "/site/servicos/digital-workspace",
+    to: "/servicos/digital-workspace",
   },
   { icon: Cloud, title: "Smart Cloud Ops", text: "Gestão de nuvem e bancos de dados" },
   { icon: ShieldCheck, title: "Cyber Shield 360°", text: "SOC, NOC e cibersegurança 24x7" },
@@ -37,8 +37,8 @@ const PRODUCTS = [
 ] as const;
 
 const SIMPLE_ITEMS = [
-  { label: "Sobre", to: "/site/sobre" },
-  { label: "Blog", to: "/site/blog" },
+  { label: "Sobre", to: "/sobre" },
+  { label: "Blog", to: "/blog" },
 ] as const;
 
 export function SiteNavbar() {
@@ -49,7 +49,7 @@ export function SiteNavbar() {
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const isHome = pathname === "/site" || pathname === "/site/";
+  const isHome = pathname === "/";
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -106,7 +106,7 @@ export function SiteNavbar() {
       >
 
         <Link
-          to="/site"
+          to="/"
           aria-label="Allied IT, ir para a página inicial"
           onClick={() => setOpen(false)}
           className="flex items-center"
@@ -150,7 +150,7 @@ export function SiteNavbar() {
               onMouseLeave={scheduleClose}
             >
               <Link
-                to="/site/servicos"
+                to="/servicos"
                 aria-expanded={menu === "servicos"}
                 onClick={() => setMenu(null)}
                 className={`${linkBase} ${menu === "servicos" ? "text-white after:w-full" : ""}`}
@@ -174,7 +174,7 @@ export function SiteNavbar() {
                     return (
                       <Link
                         key={s.title}
-                        to={"to" in s ? s.to : "/site/servicos"}
+                        to={"to" in s ? s.to : "/servicos"}
                         onClick={() => setMenu(null)}
                         className="flex items-start gap-3 rounded-xl p-3 transition-colors hover:bg-[#046E8B]/[0.06]"
                       >
@@ -195,7 +195,7 @@ export function SiteNavbar() {
                   })}
                 </div>
                 <Link
-                  to="/site/servicos"
+                  to="/servicos"
                   onClick={() => setMenu(null)}
                   className="font-inter mt-4 flex items-center justify-between border-t border-black/5 pt-4 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#046E8B]"
                 >
@@ -211,7 +211,7 @@ export function SiteNavbar() {
               onMouseLeave={scheduleClose}
             >
               <Link
-                to="/site/produtos"
+                to="/produtos"
                 aria-expanded={menu === "produtos"}
                 onClick={() => setMenu(null)}
                 className={`${linkBase} ${menu === "produtos" ? "text-white after:w-full" : ""}`}
@@ -235,7 +235,7 @@ export function SiteNavbar() {
                     return (
                       <Link
                         key={p.title}
-                        to="/site/produtos"
+                        to="/produtos"
                         onClick={() => setMenu(null)}
                         className="flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors hover:bg-[#046E8B]/[0.06]"
                       >
@@ -251,7 +251,7 @@ export function SiteNavbar() {
                   })}
                 </div>
                 <Link
-                  to="/site/produtos"
+                  to="/produtos"
                   onClick={() => setMenu(null)}
                   className="font-inter mt-2 flex items-center justify-between border-t border-black/5 px-3 pt-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#046E8B]"
                 >
@@ -273,7 +273,7 @@ export function SiteNavbar() {
           </nav>
 
           <Link
-            to="/site/contato"
+            to="/contato"
             className="font-inter inline-flex h-9 items-center justify-center rounded-full border border-white/35 bg-transparent px-5 text-[11.5px] font-semibold uppercase tracking-[0.16em] text-white/85 transition-colors hover:border-white hover:text-white"
           >
             Contato
@@ -313,7 +313,7 @@ export function SiteNavbar() {
                   return (
                     <Link
                       key={s.title}
-                      to={"to" in s ? s.to : "/site/servicos"}
+                      to={"to" in s ? s.to : "/servicos"}
                       onClick={() => setOpen(false)}
                       className="flex items-center gap-3 py-2.5"
                     >
@@ -325,7 +325,7 @@ export function SiteNavbar() {
                   );
                 })}
                 <Link
-                  to="/site/servicos"
+                  to="/servicos"
                   onClick={() => setOpen(false)}
                   className="font-inter mt-1 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--site-yellow)]"
                 >
@@ -353,7 +353,7 @@ export function SiteNavbar() {
                   return (
                     <Link
                       key={p.title}
-                      to="/site/produtos"
+                      to="/produtos"
                       onClick={() => setOpen(false)}
                       className="flex items-center gap-3 py-2.5"
                     >
@@ -365,7 +365,7 @@ export function SiteNavbar() {
                   );
                 })}
                 <Link
-                  to="/site/produtos"
+                  to="/produtos"
                   onClick={() => setOpen(false)}
                   className="font-inter mt-1 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--site-yellow)]"
                 >
@@ -385,7 +385,7 @@ export function SiteNavbar() {
               </Link>
             ))}
             <Link
-              to="/site/contato"
+              to="/contato"
               onClick={() => setOpen(false)}
               className="font-inter mt-4 inline-flex h-11 items-center justify-center rounded-full border border-white/35 px-6 text-[12px] font-semibold uppercase tracking-[0.16em] text-white"
             >

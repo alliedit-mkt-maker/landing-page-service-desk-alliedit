@@ -68,7 +68,7 @@ export function SiteWhyAllied() {
           ))}
 
           <Link
-            to="/site/contato"
+            to="/contato"
             className="group flex h-full flex-col items-center justify-center gap-3 border border-white/35 bg-white/[0.14] p-7 text-center backdrop-blur-sm transition-colors hover:bg-white/[0.2]"
           >
             <span className="font-chillax text-[20px] font-bold text-white">

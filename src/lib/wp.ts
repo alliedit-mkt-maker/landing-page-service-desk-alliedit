@@ -226,7 +226,7 @@ export function slimPost(post: WpPost): WpPost {
 export function normalizeInternalLinks(html: string): string {
   return html.replace(
     /href=("|')https?:\/\/(?:www\.)?alliedit\.com\.br\/([a-z0-9-]+)\/?\1/gi,
-    (_m, q: string, slug: string) => `href=${q}/site/blog/${slug}${q}`,
+    (_m, q: string, slug: string) => `href=${q}/blog/${slug}${q}`,
   );
 }
 

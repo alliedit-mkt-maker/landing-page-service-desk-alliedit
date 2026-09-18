@@ -54,7 +54,7 @@ const TITLE = "Digital Workspace | Service Desk e Field Service | Allied IT";
 const DESCRIPTION =
   "Service Desk e Field Service em uma só operação: atendimento remoto e presencial, com SLA garantido, gestão centralizada e cobertura nacional.";
 
-export const Route = createFileRoute("/site/servicos/digital-workspace")({
+export const Route = createFileRoute("/_site/servicos/digital-workspace")({
   head: () => ({
     meta: [
       { title: TITLE },
@@ -321,7 +321,7 @@ function DigitalWorkspacePage() {
               com SLA garantido e gestão centralizada.
             </p>
             <Link
-              to="/site/contato"
+              to="/contato"
               className={`${btn} mt-9 bg-[var(--site-yellow)] text-[#0B1418] hover:bg-white`}
             >
               Falar com especialista

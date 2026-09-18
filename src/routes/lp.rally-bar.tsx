@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
+import { lpCanonical } from "@/lib/site";
 import { ChevronDown, Handshake, Compass, ShieldCheck, type LucideIcon } from "lucide-react";
 
 import ogImage from "@/assets/og-image.png.asset.json";
@@ -35,14 +36,14 @@ const title = "AlliedIT | Logitech Rally Bar e Rally Bar Mini para salas de reun
 const description =
   "Videoconferência all-in-one Logitech: Rally Bar para salas médias e grandes, Rally Bar Mini para salas pequenas. Revenda oficial, instalação e suporte com a AlliedIT.";
 
-export const Route = createFileRoute("/rally-bar")({
+export const Route = createFileRoute("/lp/rally-bar")({
   head: () => ({
     meta: [
       { title },
       { name: "description", content: description },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
-      { property: "og:url", content: "https://rally-bar.alliedit.com.br/" },
+      { property: "og:url", content: lpCanonical("rally-bar", "rally-bar.alliedit.com.br") },
       { property: "og:type", content: "website" },
       { property: "og:image", content: `https://service-desk.alliedit.com.br${ogImage.url}` },
       { property: "og:image:width", content: "1200" },
@@ -53,7 +54,7 @@ export const Route = createFileRoute("/rally-bar")({
       { name: "twitter:description", content: description },
       { name: "twitter:image", content: `https://service-desk.alliedit.com.br${ogImage.url}` },
     ],
-    links: [{ rel: "canonical", href: "https://rally-bar.alliedit.com.br/" }],
+    links: [{ rel: "canonical", href: lpCanonical("rally-bar", "rally-bar.alliedit.com.br") }],
     scripts: [
       {
         type: "application/ld+json",

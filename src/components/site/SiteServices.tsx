@@ -86,7 +86,7 @@ export function SiteServices() {
             return (
               <Link
                 key={s.title}
-                to="/site/servicos"
+                to="/servicos"
                 className="group relative flex h-full min-h-[210px] flex-col justify-between overflow-hidden rounded-2xl p-6 transition-transform duration-300 hover:-translate-y-1"
                 style={{
                   background:

@@ -26,7 +26,7 @@ const TITLE = "Sobre a Allied IT | Quem somos e como operamos TI corporativa";
 const DESCRIPTION =
   "Empresa brasileira de tecnologia fundada em 2018, com atuação nacional em Service Desk, nuvem, segurança e infraestrutura para empresas de médio e grande porte.";
 
-export const Route = createFileRoute("/site/sobre")({
+export const Route = createFileRoute("/_site/sobre")({
   head: () => ({
     meta: [
       { title: TITLE },
@@ -273,7 +273,7 @@ function SobrePage() {
             Alphaville, Barueri - SP
           </p>
           <Link
-            to="/site/contato"
+            to="/contato"
             className={`${btnBase} bg-[var(--site-blue)] text-white hover:bg-[var(--site-blue-dark)]`}
           >
             Fale com a gente

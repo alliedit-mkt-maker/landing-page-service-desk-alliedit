@@ -15,7 +15,7 @@ export function SiteCta() {
           ganhar eficiência, segurança e previsibilidade. Sem compromisso.
         </p>
         <Link
-          to="/site/contato"
+          to="/contato"
           className="font-inter mt-9 inline-flex h-11 items-center justify-center whitespace-nowrap border border-[var(--site-blue)] px-8 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--site-blue)] transition-colors duration-200 hover:bg-[var(--site-blue)] hover:text-white"
         >
           Falar com especialista

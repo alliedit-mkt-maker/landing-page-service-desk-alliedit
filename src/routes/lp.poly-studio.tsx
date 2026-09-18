@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
+import { lpCanonical } from "@/lib/site";
 import {
   ChevronDown,
   Handshake,
@@ -20,40 +21,40 @@ import {
 import ogImage from "@/assets/og-image.png.asset.json";
 import logoAlliedIt from "@/assets/logo-alliedit.png";
 
-import yealinkLogo from "@/assets/headsets/yealink-logo.png.asset.json";
-import a40Img from "@/assets/yealinkvc/a40.png.asset.json";
-import a50Img from "@/assets/yealinkvc/a50.jpg.asset.json";
-import kitS40Img from "@/assets/yealinkvc/kit-s40.webp.asset.json";
-import kitS50Img from "@/assets/yealinkvc/kit-s50.jpg.asset.json";
+import polyLogo from "@/assets/headsets/poly-hp-logo.png.asset.json";
+import v12Img from "@/assets/polystudio/v12.avif.asset.json";
+import v52Img from "@/assets/polystudio/v52.avif.asset.json";
+import x32Img from "@/assets/polystudio/x32.png.asset.json";
+import x52Img from "@/assets/polystudio/x52.png.asset.json";
 
-import bannerHuddle from "@/assets/yealinkvc/banner-huddle.webp.asset.json";
-import bannerMedium from "@/assets/yealinkvc/banner-medium.webp.asset.json";
-import bannerSala from "@/assets/yealinkvc/banner-sala.jpg.asset.json";
-import heroRoom from "@/assets/yealinkvc/hero-a40-room.webp.asset.json";
+import bannerHuddle from "@/assets/polystudio/banner-huddle.avif.asset.json";
+import bannerMedium from "@/assets/polystudio/banner-medium.avif.asset.json";
+import bannerSala from "@/assets/polystudio/banner-sala.png.asset.json";
 
 import teamsLogo from "@/assets/rally/teams-logo.png.asset.json";
 import zoomLogo from "@/assets/rally/zoom-logo.png.asset.json";
+import meetLogo from "@/assets/rally/google-meet-logo.webp.asset.json";
 
 import { LpProvider, useLp } from "@/components/lp/LpProvider";
 import { SiteFooter } from "@/components/lp/SiteFooter";
 import { Clients } from "@/components/lp/Clients";
 import { Reveal } from "@/components/lp/Reveal";
 
-// Formulário HubSpot dedicado desta LP, preencher quando o ID for criado.
-const YEALINK_VC_FORM_ID = "854dbac0-c313-4ef4-8f50-8935b4e76bb8";
+// Formulário HubSpot dedicado desta LP — preencher quando o ID for criado.
+const POLY_STUDIO_FORM_ID = "8f281409-2949-45fc-a83f-b7d643b42f54";
 
-const title = "AlliedIT | Videoconferência Yealink: MeetingBar A40, A50 e kits MVC/ZVC";
+const title = "AlliedIT | Poly Studio V12, X32, V52 e X52 para salas de reunião";
 const description =
-  "Videoconferência Yealink por tamanho de sala: MeetingBar A40 e A50 em modo USB/BYOD, ou kits completos MVC (Teams Rooms) e ZVC (Zoom Rooms). Revenda autorizada, dimensionamento e suporte AlliedIT.";
+  "Videoconferência Poly (HP) por tipo de sala: V12 e X32 para huddle rooms, V52 e X52 para salas médias. Modo USB (BYOD) ou independente com o tablet TC10. Revenda, instalação e suporte AlliedIT.";
 
-export const Route = createFileRoute("/yealink-videoconferencia")({
+export const Route = createFileRoute("/lp/poly-studio")({
   head: () => ({
     meta: [
       { title },
       { name: "description", content: description },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
-      { property: "og:url", content: "https://yealink-videoconferencia.alliedit.com.br/" },
+      { property: "og:url", content: lpCanonical("poly-studio", "poly-studio.alliedit.com.br") },
       { property: "og:type", content: "website" },
       { property: "og:image", content: `https://service-desk.alliedit.com.br${ogImage.url}` },
       { property: "og:image:width", content: "1200" },
@@ -64,14 +65,14 @@ export const Route = createFileRoute("/yealink-videoconferencia")({
       { name: "twitter:description", content: description },
       { name: "twitter:image", content: `https://service-desk.alliedit.com.br${ogImage.url}` },
     ],
-    links: [{ rel: "canonical", href: "https://yealink-videoconferencia.alliedit.com.br/" }],
+    links: [{ rel: "canonical", href: lpCanonical("poly-studio", "poly-studio.alliedit.com.br") }],
     scripts: [
       {
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Service",
-          serviceType: "Revenda e instalação de videoconferência Yealink (MeetingBar, MVC e ZVC)",
+          serviceType: "Revenda e instalação de barras de videoconferência Poly Studio (HP)",
           provider: { "@type": "Organization", name: "AlliedIT", url: "https://www.alliedit.com.br" },
           areaServed: "BR",
           description,
@@ -79,14 +80,14 @@ export const Route = createFileRoute("/yealink-videoconferencia")({
       },
     ],
   }),
-  component: YealinkVcPage,
+  component: PolyStudioPage,
 });
 
-export const yealinkVcMeta = { title, description };
+export const polyStudioMeta = { title, description };
 
-export function YealinkVcPage() {
+export function PolyStudioPage() {
   return (
-    <LpProvider modalTitle="Pedir cotação Yealink." formId={YEALINK_VC_FORM_ID || undefined}>
+    <LpProvider modalTitle="Pedir cotação Poly Studio." formId={POLY_STUDIO_FORM_ID || undefined}>
       <div className="min-h-screen bg-surface text-petrol font-sans">
         <main>
           <Hero />
@@ -120,92 +121,82 @@ const outlineLight: React.CSSProperties = {
   letterSpacing: "0.01em",
 };
 
+
 /* ---------- 1. Hero ---------- */
 
 function Hero() {
   const { openModal } = useLp();
   return (
-    <section id="hero" className="relative overflow-hidden py-20 sm:py-28 px-4 sm:px-6 bg-ink">
-      <img
-        src={heroRoom.url}
-        alt="Sala de reunião com Yealink MeetingBar A40 instalada sob o painel"
-        className="absolute inset-0 size-full object-cover"
-      />
-      <div
-        aria-hidden
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(180deg, rgba(6,14,20,0.92) 0%, rgba(6,14,20,0.80) 45%, rgba(6,14,20,0.94) 100%)",
-        }}
-      />
-      <div
-        aria-hidden
-        className="absolute inset-0"
-        style={{ background: "radial-gradient(60% 50% at 50% 10%, color-mix(in oklch, var(--gold) 14%, transparent), transparent 70%)" }}
-      />
-
+    <section
+      id="hero"
+      className="relative overflow-hidden py-14 sm:py-20 px-4 sm:px-6"
+      style={{
+        backgroundImage:
+          "radial-gradient(70% 60% at 50% 8%, color-mix(in oklch, var(--gold) 12%, transparent), transparent 70%), linear-gradient(180deg, #ffffff 0%, color-mix(in oklch, var(--petrol) 4%, #ffffff) 60%, #ffffff 100%)",
+      }}
+    >
       <div className="max-w-5xl mx-auto relative w-full text-center flex flex-col items-center">
-        <img src={logoAlliedIt} alt="AlliedIT" className="h-9 sm:h-11 w-auto mb-7 sm:mb-9 brightness-0 invert" />
+        <img src={logoAlliedIt} alt="AlliedIT" className="h-9 sm:h-11 w-auto mb-7 sm:mb-9" />
         <Reveal variant="fade-up">
           <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-gold font-semibold mb-4 block">
-            Videoconferência Yealink
+            Poly Studio | HP
           </span>
         </Reveal>
         <Reveal variant="fade-up" delay={120}>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-balance leading-[1.02] text-white max-w-4xl">
-            Videoconferência Yealink para cada tamanho de sala
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-balance leading-[1.02] text-ink-mid max-w-4xl">
+            Videoconferência Poly para cada tamanho de sala
           </h1>
         </Reveal>
 
-        <Reveal variant="fade-up" delay={300} className="mt-7 sm:mt-8">
-          <p className="text-white/75 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            Chega de reunião que começa atrasada porque ninguém acha o cabo certo, de quem fica de fora do enquadramento
-            da câmera e de áudio abafado que faz todo mundo perguntar "pode repetir?". A Yealink resolve câmera, áudio e
-            início de reunião em um equipamento só, e a AlliedIT dimensiona a sala certa pra você.
+        <Reveal variant="fade-up" delay={220} className="w-full mt-8 mb-8 sm:mt-10 sm:mb-10">
+          <img
+            src={x52Img.url}
+            alt="Barra de videoconferência Poly Studio vista de frente"
+            width={1400}
+            height={254}
+            className="w-full max-w-2xl mx-auto object-contain"
+          />
+        </Reveal>
+
+        <Reveal variant="fade-up" delay={300}>
+          <p className="text-petrol/70 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+            Chega de reunião que atrasa 10 minutos por causa do cabo, de quem está no fundo da sala aparecendo pequeno e
+            de voz abafada do outro lado da chamada. O Poly Studio resolve imagem, áudio e início de reunião em um
+            equipamento só — e a AlliedIT dimensiona a sala certa para você não comprar barra demais nem de menos.
           </p>
         </Reveal>
-        <Reveal variant="fade-up" delay={380} className="flex flex-wrap gap-4 justify-center mt-8 sm:mt-10">
-          <button onClick={() => openModal("hero")} className={pillLight}>
+        <Reveal variant="fade-up" delay={380} className="flex flex-wrap gap-4 justify-center mt-7 sm:mt-8">
+          <button onClick={() => openModal("hero")} className={pillDark}>
             Pedir cotação
           </button>
-          <a
-            href="#espacos"
-            className="inline-flex items-center justify-center border border-white/35 text-white/85 px-7 py-4 text-[11px] font-bold uppercase tracking-[0.18em] hover:border-gold hover:text-gold transition-colors"
-          >
+          <a href="#espacos" className={pillDarkGhost}>
             Escolher pela sala ↓
           </a>
         </Reveal>
-        <Reveal variant="fade-in" delay={460} className="mt-10 sm:mt-12">
-          <img
-            src={yealinkLogo.url}
-            alt="Yealink"
-            className="h-7 sm:h-9 w-auto opacity-90 brightness-0 invert"
-            loading="lazy"
-          />
+        <Reveal variant="fade-in" delay={460} className="mt-8 sm:mt-10">
+          <img src={polyLogo.url} alt="Poly | HP" className="h-8 sm:h-10 w-auto opacity-90" loading="lazy" />
         </Reveal>
       </div>
     </section>
   );
 }
 
-
 /* ---------- 2. Escolha por espaço ---------- */
 
 const spaces: { tag: string; title: string; body: string; models: string; href: string; img: string }[] = [
   {
-    tag: "Até 6-8 pessoas",
+    tag: "Até 6 pessoas",
     title: "Huddle room",
-    body: "Salas pequenas e espaços de decisão rápida. Uma barra resolve câmera, microfone e alto-falante, instalação simples.",
-    models: "MeetingBar A40 · MVC S40 · ZVC S40",
+    body: "Salas pequenas, cabines de reunião e espaços de decisão rápida. Instalação simples, uma barra só resolve.",
+    models: "Poly Studio V12 · Poly Studio X32",
     href: "#huddle",
     img: bannerHuddle.url,
   },
   {
-    tag: "De 10 a 20 pessoas",
+    tag: "De 6 a 12 pessoas",
     title: "Sala média",
-    body: "Salas de reunião e diretoria: câmera com mais alcance, captação de áudio de até 10 metros e sala pronta pra rodar sozinha.",
-    models: "MeetingBar A50 · MVC S50 · ZVC S50",
+    body: "Salas de reunião e diretoria: mais alcance de microfone, áudio estéreo e enquadramento inteligente.",
+    models: "Poly Studio V52 · Poly Studio X52",
     href: "#sala-media",
     img: bannerMedium.url,
   },
@@ -265,17 +256,17 @@ function Spaces() {
 const modes: { icon: LucideIcon; tag: string; title: string; body: string; models: string }[] = [
   {
     icon: Laptop,
-    tag: "Barra avulsa (BYOD/USB)",
-    title: "O notebook de quem está na sala conduz a reunião",
-    body: "A barra conecta no notebook e funciona como câmera, microfone e alto-falante. Zero licença adicional, funciona com qualquer plataforma que o notebook já tenha.",
-    models: "MeetingBar A40 (huddle) e A50 (média/grande)",
+    tag: "Modo USB (BYOD)",
+    title: "O notebook do usuário conduz a reunião",
+    body: "A barra funciona como câmera, microfone e alto-falante USB. Quem entra na sala pluga o cabo e usa Teams, Zoom, Meet ou qualquer plataforma direto do próprio notebook. Zero licença, zero configuração.",
+    models: "Poly Studio V12 e V52",
   },
   {
     icon: Tablet,
-    tag: "Kit completo (Teams ou Zoom nativo)",
-    title: "A sala roda sozinha, sem depender de notebook",
-    body: "O kit roda a plataforma direto na sala, inclui mini-PC, painel touch e sensor de presença. Ideal para salas de uso frequente e agenda cheia.",
-    models: "MVC S40/S50 (Teams) ou ZVC S40/S50 (Zoom), mesmo hardware, muda o sistema",
+    tag: "Modo independente",
+    title: "A sala tem vida própria, com o tablet TC10",
+    body: "A barra roda a plataforma nativamente (Teams Rooms ou Zoom Rooms) e o controlador de mesa TC10 inicia a reunião com um toque. Ideal para salas de uso frequente e agenda cheia.",
+    models: "Poly Studio X32 e X52 (+ TC10)",
   },
 ];
 
@@ -289,7 +280,7 @@ function Modes() {
             Depois, escolha o modo
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-balance text-ink-mid">
-            Barra avulsa ou kit completo?
+            USB no notebook ou sala independente?
           </h2>
         </Reveal>
         <div className="grid md:grid-cols-2 gap-6">
@@ -329,7 +320,6 @@ type Highlight = { icon: LucideIcon; title: string; body: string };
 type SpecRow = [string, string];
 type Model = {
   name: string;
-  ctaLabel?: string;
   mode: string;
   img: string;
   imgAlt: string;
@@ -462,12 +452,7 @@ function ModelCard({
       className={`h-full flex flex-col ring-1 ring-petrol/10 ${tone === "white" ? "bg-[#f2f5f7]" : "bg-white"}`}
     >
       <div className="p-6 sm:p-8 flex items-center justify-center min-h-[190px]">
-        <img
-          src={model.img}
-          alt={model.imgAlt}
-          loading="lazy"
-          className="w-full max-h-44 object-contain mix-blend-multiply"
-        />
+        <img src={model.img} alt={model.imgAlt} loading="lazy" className="w-full max-h-40 object-contain" />
       </div>
       <div className="px-6 sm:px-8 pb-8 flex flex-col flex-1">
         <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-gold font-bold block mb-2">
@@ -479,7 +464,7 @@ function ModelCard({
           {model.bullets.map((b) => (
             <li key={b} className="flex gap-3 text-sm text-petrol/80 leading-relaxed">
               <span className="text-gold font-bold" aria-hidden>
-                -
+                —
               </span>
               {b}
             </li>
@@ -491,7 +476,7 @@ function ModelCard({
             type="button"
             onClick={() => setOpen((v: boolean) => !v)}
             aria-expanded={open}
-            aria-controls={`${sectionId}-${model.name.replace(/[^a-zA-Z0-9]+/g, "-")}-specs`}
+            aria-controls={`${sectionId}-${model.name.replace(/\s+/g, "-")}-specs`}
             className="w-full flex items-center justify-between gap-4 border-y border-petrol/15 py-4 text-left"
           >
             <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-gold font-bold">Ficha técnica</span>
@@ -500,7 +485,7 @@ function ModelCard({
               <ChevronDown className={`size-4 transition-transform duration-300 ${open ? "rotate-180" : ""}`} aria-hidden />
             </span>
           </button>
-          <div id={`${sectionId}-${model.name.replace(/[^a-zA-Z0-9]+/g, "-")}-specs`} hidden={!open}>
+          <div id={`${sectionId}-${model.name.replace(/\s+/g, "-")}-specs`} hidden={!open}>
             <dl className="divide-y divide-petrol/10">
               {model.specs.map(([k, v]) => (
                 <div key={k} className="grid sm:grid-cols-[150px_1fr] gap-1 sm:gap-5 py-4">
@@ -515,7 +500,7 @@ function ModelCard({
             data-product={model.name}
             className={`${pillDark} w-full mt-6`}
           >
-            {model.ctaLabel ?? `Cotar ${model.name}`} →
+            Cotar {model.name} →
           </button>
         </div>
       </div>
@@ -532,57 +517,59 @@ function HuddleSection() {
       tone="white"
       bannerSrc={bannerHuddle.url}
       tagline="Sala pequena não pede menos qualidade, pede menos complicação."
-      subtitle="Até 6-8 pessoas: uma solução simples e rápida de instalar. Escolha a MeetingBar A40 se o time prefere plugar o notebook, ou o kit MVC/ZVC S40 se a sala precisa iniciar reunião sozinha."
+      subtitle="Até 6 pessoas: uma única barra com câmera 4K, enquadramento automático e áudio que cobre a mesa inteira. Escolha o V12 se o time prefere plugar o notebook, ou o X32 se a sala precisa ser independente."
       cta="Quero equipar minha huddle room →"
       models={[
         {
-          name: "MeetingBar A40",
-          mode: "Barra avulsa (BYOD/USB)",
-          img: a40Img.url,
-          imgAlt: "Yealink MeetingBar A40 com console touch",
+          name: "Poly Studio V12",
+          mode: "Modo USB (BYOD)",
+          img: v12Img.url,
+          imgAlt: "Poly Studio V12 vista frontal",
           pitch:
-            "Barra tudo-em-um para salas pequenas: câmera dupla, áudio integrado e instalação com cabo único até o console touch.",
+            "A entrada da linha: barra USB plug-and-play para huddle rooms. Conecta no notebook e funciona com qualquer plataforma.",
           bullets: [
-            "Câmera dupla (2x lentes de 78°) combinando 120° de campo de visão",
-            "Sistema de cabo único (Cat5e) ligando a barra ao console touch",
-            "IA IntelliFocus: destaque automático de quem está falando",
-            "Funciona em modo USB/BYOD ou como parte de um kit completo",
+            "Câmera 4K com enquadramento automático de grupo",
+            "Áudio Poly com cancelamento de eco e supressão de ruído",
+            "Conexão USB-C única — sem licença de sala",
+            "Gerenciamento remoto pelo Poly Lens",
           ],
           specs: [
-            ["Câmera", "Dupla, 2x 78° FoV combinando para 120°, IA IntelliFocus"],
-            ["Conectividade", "Cabo único (Cat5e) até o console touch; USB-C para compartilhamento/BYOD"],
-            ["Modo", "USB/BYOD e/ou kit completo Teams/Zoom"],
-            ["Indicado para", "Salas pequenas, uso diário"],
+            ["Sala", "Huddle e salas pequenas (até 6 pessoas)"],
+            ["Câmera", "4K com campo de visão amplo e enquadramento automático"],
+            ["Áudio", "Alto-falante integrado + array de microfones com NoiseBlockAI"],
+            ["Conectividade", "USB-C (BYOD), Ethernet para gestão"],
+            ["Plataformas", "Teams, Zoom, Meet e demais via USB"],
+            ["Gestão", "Poly Lens (monitoramento e atualização remota)"],
           ],
         },
         {
-          name: "MVC S40 / ZVC S40",
-          ctaLabel: "Cotar kit S40",
-          mode: "Kit completo (Teams ou Zoom)",
-          img: kitS40Img.url,
-          imgAlt: "Kit Yealink MVC S40 com barra, painel touch, mini-PC e sensor de presença",
+          name: "Poly Studio X32",
+          mode: "Modo independente (+ TC10)",
+          img: x32Img.url,
+          imgAlt: "Poly Studio X32 vista frontal",
           pitch:
-            "A sala roda Teams Rooms ou Zoom Rooms nativamente: barra, mini-PC, painel touch e sensor de presença no mesmo kit.",
+            "Sala pequena com vida própria: roda Teams Rooms ou Zoom Rooms nativamente, sem PC, com controle de mesa TC10.",
           bullets: [
-            "Câmera SmartVision 40: lentes duplas de 48MP, 120° diagonal / 111° horizontal",
-            "8 microfones MEMS, captação até 6 metros, com 2 microfones de expansão opcionais",
-            "Inclui mini-PC (MCore), painel touch (MTouch) e sensor de presença (RoomSensor)",
-            "Também suporta BYOD com ou sem fio (WPP30), mesmo sendo kit nativo",
+            "Roda a plataforma nativamente, sem computador na sala",
+            "Câmera 4K com DirectorAI e enquadramento de participantes",
+            "Também funciona em modo USB quando necessário",
+            "Reunião iniciada com um toque no tablet TC10",
           ],
           specs: [
-            ["Câmera", "SmartVision 40, dupla lente 48MP, FoV 120° diagonal / 111° horizontal"],
-            ["Áudio", "8 microfones MEMS, alcance até 6m, 2 microfones de expansão opcionais"],
-            ["Inclui", "Mini-PC (MCore), painel touch (MTouch), sensor de presença (RoomSensor)"],
-            ["Plataforma", "Teams Rooms nativo (MVC) ou Zoom Rooms nativo (ZVC), mesmo hardware"],
-            ["Indicado para", "Salas pequenas a médias, uso frequente"],
+            ["Sala", "Huddle e salas pequenas (até 6 pessoas)"],
+            ["Câmera", "4K, campo de visão de 120°, DirectorAI"],
+            ["Áudio", "Alto-falantes integrados + microfones com NoiseBlockAI e Acoustic Fence"],
+            ["Modos", "Nativo (Teams Rooms / Zoom Rooms) e USB"],
+            ["Conectividade", "HDMI, USB, Ethernet, Wi-Fi"],
+            ["Controle", "Poly TC10 (opcional, recomendado)"],
           ],
         },
       ]}
       highlights={[
-        { icon: Wrench, title: "Instalação enxuta", body: "Cabo único até o console touch, sem rack e sem PC na sala." },
-        { icon: ScanFace, title: "IntelliFocus", body: "A câmera destaca automaticamente quem está falando." },
-        { icon: Volume2, title: "Áudio de mesa curta", body: "Microfones MEMS com captação limpa em até 6 metros." },
-        { icon: MonitorCog, title: "Nativo ou BYOD", body: "Teams e Zoom nativos no kit, ou notebook via USB quando preciso." },
+        { icon: Wrench, title: "Instalação em uma peça", body: "Barra única acima ou abaixo da TV — sem rack, sem PC." },
+        { icon: ScanFace, title: "Enquadramento automático", body: "A câmera encontra e emoldura quem está na sala." },
+        { icon: Volume2, title: "Áudio limpo", body: "NoiseBlockAI corta digitação, ar-condicionado e ruído de corredor." },
+        { icon: MonitorCog, title: "Gestão pelo Poly Lens", body: "Inventário, saúde do device e atualização remota." },
       ]}
     />
   );
@@ -597,57 +584,59 @@ function MediumSection() {
       tone="light"
       bannerSrc={bannerMedium.url}
       tagline="Mais gente na mesa, mais exigência de áudio e enquadramento."
-      subtitle="10 a 20 pessoas: câmera com mais alcance e áudio de sala cheia. A MeetingBar A50 para o time que pluga o notebook, o kit MVC/ZVC S50 para a sala que roda sozinha."
+      subtitle="De 6 a 12 pessoas: câmera com maior alcance, áudio estéreo e microfones que cobrem a sala inteira. V52 para o time que pluga o notebook, X52 para a sala que roda sozinha com o TC10."
       cta="Quero equipar minha sala de reunião →"
       models={[
         {
-          name: "MeetingBar A50",
-          mode: "Barra avulsa (BYOD/USB)",
-          img: a50Img.url,
-          imgAlt: "Yealink MeetingBar A50 com painel touch",
+          name: "Poly Studio V52",
+          mode: "Modo USB (BYOD)",
+          img: v52Img.url,
+          imgAlt: "Poly Studio V52 vista frontal",
           pitch:
-            "Câmera tripla e captação de até 10 metros: a barra avulsa dimensionada para salas médias e grandes.",
+            "Barra USB para salas médias: mesma simplicidade do V12, com alcance de câmera e áudio dimensionados para mais participantes.",
           bullets: [
-            "Câmera tripla: 3 lentes de 50MP (1 grande angular + 2 teleobjetivas)",
-            "Captação de áudio até 10 metros e alto-falantes estéreo integrados",
-            "IA IntelliFocus e Video Fence para enquadrar só o que importa",
-            "Suporta expansão com microfones adicionais",
+            "Câmera 4K com enquadramento inteligente para grupos maiores",
+            "Áudio estéreo com microfones de maior alcance",
+            "Conexão USB única — qualquer plataforma, sem licença de sala",
+            "Gerenciamento remoto pelo Poly Lens",
           ],
           specs: [
-            ["Câmera", "Tripla, 3x 50MP (1 grande angular + 2 teleobjetiva)"],
-            ["Áudio", "Alcance de captação até 10m, alto-falantes estéreo, suporta microfones de expansão"],
-            ["Modo", "USB/BYOD e/ou kit completo Teams/Zoom"],
-            ["Indicado para", "Salas médias a grandes"],
+            ["Sala", "Salas médias (6 a 12 pessoas)"],
+            ["Câmera", "4K com enquadramento automático e zoom digital"],
+            ["Áudio", "Alto-falantes estéreo + array de microfones com NoiseBlockAI"],
+            ["Conectividade", "USB-C (BYOD), Ethernet para gestão"],
+            ["Plataformas", "Teams, Zoom, Meet e demais via USB"],
+            ["Gestão", "Poly Lens (monitoramento e atualização remota)"],
           ],
         },
         {
-          name: "MVC S50 / ZVC S50",
-          ctaLabel: "Cotar kit S50",
-          mode: "Kit completo (Teams ou Zoom)",
-          img: kitS50Img.url,
-          imgAlt: "Kit Yealink MVC S50 com MeetingBar A50, MTouch Plus, mini-PC e sensor de presença",
+          name: "Poly Studio X52",
+          mode: "Modo independente (+ TC10)",
+          img: x52Img.url,
+          imgAlt: "Poly Studio X52 vista frontal",
           pitch:
-            "O topo da linha para salas médias e grandes: a própria MeetingBar A50 como câmera do kit, rodando Teams Rooms ou Zoom Rooms sem notebook.",
+            "O topo da linha para salas médias: roda Teams Rooms ou Zoom Rooms nativamente, com DirectorAI e áudio de sala cheia.",
           bullets: [
-            "Usa a MeetingBar A50 como câmera do kit: tripla 50MP, 98° diagonal, vídeo até 4K60",
-            "16 microfones MEMS com captação de até 10 metros",
-            "Inclui mini-PC (MCore 4), painel touch (MTouch Plus) e sensor de presença (RoomSensor)",
-            "Mesma sala pronta para Teams (MVC) ou Zoom (ZVC)",
+            "Sem PC na sala: plataforma nativa embarcada",
+            "DirectorAI com múltiplas câmeras virtuais e speaker framing",
+            "Áudio estéreo potente com Acoustic Fence",
+            "Expansível com microfones adicionais e controle TC10",
           ],
           specs: [
-            ["Câmera", "MeetingBar A50 integrada, tripla 50MP, FoV 98° diagonal, vídeo até 4K60"],
-            ["Áudio", "16 microfones MEMS, alcance até 10m"],
-            ["Inclui", "Mini-PC (MCore 4), painel touch (MTouch Plus), sensor de presença (RoomSensor)"],
-            ["Plataforma", "Teams Rooms nativo (MVC) ou Zoom Rooms nativo (ZVC), mesmo hardware"],
-            ["Indicado para", "Salas médias a grandes, 10-20 pessoas"],
+            ["Sala", "Salas médias (6 a 12 pessoas)"],
+            ["Câmera", "4K, DirectorAI com enquadramento de participantes e do orador"],
+            ["Áudio", "Alto-falantes estéreo + microfones com NoiseBlockAI e Acoustic Fence"],
+            ["Modos", "Nativo (Teams Rooms / Zoom Rooms) e USB"],
+            ["Conectividade", "HDMI, USB, Ethernet, Wi-Fi"],
+            ["Controle", "Poly TC10 (opcional, recomendado)"],
           ],
         },
       ]}
       highlights={[
-        { icon: Mic, title: "Captação de 10 metros", body: "Quem fala no fim da mesa é ouvido do mesmo jeito." },
-        { icon: ScanFace, title: "Câmera tripla 50MP", body: "Grande angular e teleobjetivas enquadram sem perder nitidez." },
+        { icon: Mic, title: "Cobertura de mesa longa", body: "Microfones com alcance para toda a sala de reunião." },
+        { icon: ScanFace, title: "DirectorAI", body: "Enquadra quem fala e mantém a reunião com cara de estúdio." },
         { icon: AudioLines, title: "Áudio estéreo", body: "Voz nítida também para quem está do outro lado da chamada." },
-        { icon: Expand, title: "Pronto para crescer", body: "Microfones de expansão e acessórios conforme a sala muda." },
+        { icon: Expand, title: "Pronto para crescer", body: "Microfones e acessórios adicionais conforme a sala muda." },
       ]}
     />
   );
@@ -656,17 +645,12 @@ function MediumSection() {
 /* ---------- Comparativo ---------- */
 
 const compareRows: [string, string, string, string, string][] = [
-  ["Modelo", "MeetingBar A40", "MVC / ZVC S40", "MeetingBar A50", "MVC / ZVC S50"],
-  ["Tamanho de sala", "Até 6-8 pessoas", "Até 6-8 pessoas", "10-20 pessoas", "10-20 pessoas"],
-  ["Precisa de notebook", "Sim", "Não", "Sim", "Não"],
-  [
-    "Plataforma",
-    "Qualquer uma (via notebook)",
-    "Teams ou Zoom nativo",
-    "Qualquer uma (via notebook)",
-    "Teams ou Zoom nativo",
-  ],
-  ["Alcance de microfone", "- (depende do notebook)", "Até 6m", "- (depende do notebook)", "Até 10m"],
+  ["Tamanho de sala", "Huddle (até 6)", "Huddle (até 6)", "Média (6 a 12)", "Média (6 a 12)"],
+  ["Modo de uso", "USB / BYOD", "Independente + USB", "USB / BYOD", "Independente + USB"],
+  ["Plataforma nativa", "Não (usa o notebook)", "Teams Rooms / Zoom Rooms", "Não (usa o notebook)", "Teams Rooms / Zoom Rooms"],
+  ["Controle TC10", "—", "Recomendado", "—", "Recomendado"],
+  ["Áudio", "Estéreo integrado", "Integrado + Acoustic Fence", "Estéreo", "Estéreo + Acoustic Fence"],
+  ["Gestão Poly Lens", "Sim", "Sim", "Sim", "Sim"],
 ];
 
 function Compare() {
@@ -676,23 +660,18 @@ function Compare() {
       <div className="max-w-6xl mx-auto">
         <Reveal variant="fade-up" className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-balance text-ink-mid">
-            Qual solução Yealink é a certa pra você?
+            Qual Poly Studio é o certo pra você?
           </h2>
         </Reveal>
 
         <div className="overflow-x-auto">
-          <div className="min-w-[880px] rounded-2xl ring-1 ring-petrol/10 shadow-[0_18px_50px_-30px_rgba(0,0,0,0.45)] overflow-hidden bg-white">
+          <div className="min-w-[820px] rounded-2xl ring-1 ring-petrol/10 shadow-[0_18px_50px_-30px_rgba(0,0,0,0.45)] overflow-hidden bg-white">
             <div className="grid grid-cols-[1.1fr_1fr_1fr_1fr_1fr] bg-[#eaeef1]">
               <span />
-              {[
-                "Huddle, barra avulsa",
-                "Huddle, kit completo",
-                "Média/grande, barra avulsa",
-                "Média/grande, kit completo",
-              ].map((h) => (
+              {["Studio V12", "Studio X32", "Studio V52", "Studio X52"].map((h) => (
                 <span
                   key={h}
-                  className="px-5 py-5 font-extrabold text-sm text-ink-mid border-l border-petrol/10"
+                  className="px-5 py-5 font-extrabold text-sm sm:text-base text-ink-mid border-l border-petrol/10"
                 >
                   {h}
                 </span>
@@ -711,7 +690,10 @@ function Compare() {
                   {label}
                 </span>
                 {[a, b, c, d].map((v, j) => (
-                  <span key={j} className="px-5 py-4 text-sm text-petrol/85 border-l border-petrol/10 self-center">
+                  <span
+                    key={j}
+                    className="px-5 py-4 text-sm text-petrol/85 border-l border-petrol/10 self-center"
+                  >
                     {v}
                   </span>
                 ))}
@@ -738,6 +720,7 @@ function Compare() {
 const certs = [
   { src: teamsLogo.url, alt: "Microsoft Teams" },
   { src: zoomLogo.url, alt: "Zoom" },
+  { src: meetLogo.url, alt: "Google Meet" },
 ];
 
 function Certifications() {
@@ -749,8 +732,7 @@ function Certifications() {
         </Reveal>
         <Reveal variant="fade-up" delay={100}>
           <p className="text-petrol/60 text-sm sm:text-base mb-12">
-            Kits nativos para Microsoft Teams Rooms e Zoom Rooms, e barras que funcionam com qualquer plataforma via
-            USB.
+            Compatível com as plataformas de videoconferência que sua empresa já usa.
           </p>
         </Reveal>
         <div className="flex flex-wrap items-center justify-center gap-x-14 gap-y-8">
@@ -770,18 +752,18 @@ function Certifications() {
 const whyItems: { icon: LucideIcon; title: string; body: string }[] = [
   {
     icon: Handshake,
-    title: "Revendedores autorizados Yealink",
+    title: "Revendedores autorizados Poly (HP)",
     body: "Produto genuíno, com nota fiscal e procedência garantida.",
   },
   {
     icon: Compass,
     title: "Atendimento consultivo",
-    body: "A gente ajuda a escolher entre barra avulsa e kit completo, e qual plataforma faz sentido pra sua operação.",
+    body: "A gente dimensiona a sala e o modo de uso antes de fechar a cotação — nada de comprar barra demais.",
   },
   {
     icon: ShieldCheck,
-    title: "Garantia de fábrica",
-    body: "Todo produto sai com garantia oficial Yealink, com opção de extensão e pacote de instalação opcional.",
+    title: "Garantia oficial e instalação opcional",
+    body: "Entregamos com garantia de fábrica Poly. Se quiser, você contrata também nosso pacote de instalação e configuração da plataforma.",
   },
 ];
 
@@ -789,7 +771,13 @@ function WhyAllied() {
   const { openModal } = useLp();
   return (
     <section className="relative overflow-hidden py-20 sm:py-28 px-4 sm:px-6" id="por-que-allied">
-      <img src={bannerSala.url} alt="" aria-hidden loading="lazy" className="absolute inset-0 size-full object-cover" />
+      <img
+        src={bannerSala.url}
+        alt=""
+        aria-hidden
+        loading="lazy"
+        className="absolute inset-0 size-full object-cover"
+      />
       <div
         aria-hidden
         className="absolute inset-0"
@@ -801,7 +789,7 @@ function WhyAllied() {
       <div className="max-w-6xl mx-auto relative">
         <Reveal variant="fade-up" className="mb-10 sm:mb-14 max-w-3xl">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-balance text-white">
-            Por que comprar sua videoconferência Yealink com a AlliedIT
+            Por que comprar seu Poly Studio com a AlliedIT
           </h2>
         </Reveal>
         <div className="grid md:grid-cols-3 gap-6 items-stretch">
@@ -853,7 +841,7 @@ function FinalCta() {
         <Reveal variant="fade-up" delay={220}>
           <p className="text-white/60 text-base sm:text-lg max-w-2xl mx-auto mb-10 sm:mb-12 leading-relaxed">
             Conta quantas salas, o tamanho de cada uma e a plataforma que vocês usam. A gente volta com o modelo certo,
-            o preço fechado e a opção de instalação.
+            o preço fechado e a instalação inclusa.
           </p>
         </Reveal>
         <Reveal variant="scale-in" delay={340}>

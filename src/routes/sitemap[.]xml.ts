@@ -2,13 +2,27 @@ import { createFileRoute } from "@tanstack/react-router";
 import { dedupeByTitle, fetchAllPosts } from "@/lib/wp";
 
 const STATIC_PATHS = [
-  "/site",
-  "/site/sobre",
-  "/site/servicos",
-  "/site/servicos/digital-workspace",
-  "/site/produtos",
-  "/site/contato",
-  "/site/blog",
+  "/",
+  "/sobre",
+  "/servicos",
+  "/servicos/digital-workspace",
+  "/produtos",
+  "/contato",
+  "/blog",
+];
+
+const LP_PATHS = [
+  "/lp/service-desk",
+  "/lp/cabeamento",
+  "/lp/headset-callcenter",
+  "/lp/headset-logitech",
+  "/lp/headset-yealink",
+  "/lp/headsets-poly",
+  "/lp/poly-studio",
+  "/lp/rally-bar",
+  "/lp/videoconferencia",
+  "/lp/yealink-videoconferencia",
+  "/lp/alocacao-ti",
 ];
 
 function xmlEscape(value: string): string {
@@ -41,7 +55,7 @@ export const Route = createFileRoute("/sitemap.xml")({
           return new Response("sitemap indisponível", { status: 500 });
         }
 
-        const entries: string[] = STATIC_PATHS.map(
+        const entries: string[] = [...STATIC_PATHS, ...LP_PATHS].map(
           (path) => `  <url><loc>${xmlEscape(origin + path)}</loc></url>`,
         );
 
@@ -51,7 +65,7 @@ export const Route = createFileRoute("/sitemap.xml")({
             .map((d) => new Date(d))
             .filter((d) => !Number.isNaN(d.getTime()))
             .sort((a, b) => b.getTime() - a.getTime())[0];
-          const loc = xmlEscape(`${origin}/site/blog/${post.slug}`);
+          const loc = xmlEscape(`${origin}/blog/${post.slug}`);
           entries.push(
             lastmod
               ? `  <url><loc>${loc}</loc><lastmod>${lastmod.toISOString()}</lastmod></url>`

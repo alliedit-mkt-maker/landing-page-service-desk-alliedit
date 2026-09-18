@@ -1,7 +1,7 @@
 import { createFileRoute, Outlet } from "@tanstack/react-router";
 import { SiteNavbar } from "@/components/site/SiteNavbar";
 
-export const Route = createFileRoute("/site")({
+export const Route = createFileRoute("/_site")({
   head: () => ({
     meta: [{ name: "robots", content: "noindex, nofollow" }],
     links: [
