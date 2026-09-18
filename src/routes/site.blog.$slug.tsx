@@ -1,58 +1,140 @@
 import { useEffect, useState } from "react";
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { ArrowLeft } from "lucide-react";
+import DOMPurify from "isomorphic-dompurify";
 import { SiteFooter } from "@/components/site/SiteFooter";
+import ogImageAsset from "@/assets/og-image.png.asset.json";
 import {
+  authorName,
   fetchPostBySlug,
+  fetchPostSeo,
   featuredImage,
   formatDatePt,
+  normalizeInternalLinks,
   primaryCategory,
+  seoTitle,
+  socialDescription,
   stripHtml,
+  truncateAtWord,
+  type WpPost,
+  type WpPostSeo,
 } from "@/lib/wp";
 
+function requestOrigin(): string {
+  if (typeof document !== "undefined") return window.location.origin;
+  return "https://service-desk.alliedit.com.br";
+}
+
+function sanitize(html: string): string {
+  return normalizeInternalLinks(DOMPurify.sanitize(html, { ADD_ATTR: ["target"] }));
+}
+
 export const Route = createFileRoute("/site/blog/$slug")({
-  head: () => ({
-    meta: [
-      { title: "Artigo | Blog Allied IT" },
-      { name: "description", content: "Artigo do blog da Allied IT sobre tecnologia e operação de TI." },
-      { property: "og:title", content: "Artigo | Blog Allied IT" },
-      {
-        property: "og:description",
-        content: "Artigo do blog da Allied IT sobre tecnologia e operação de TI.",
+  loader: async ({ params }) => {
+    let origin = requestOrigin();
+    if (typeof document === "undefined") {
+      const server = await import("@tanstack/react-start/server");
+      try {
+        const url = new URL(String(server.getRequestUrl()));
+        origin = `${url.protocol}//${url.host}`;
+      } catch {
+        /* mantém o fallback */
+      }
+      server.setResponseHeader(
+        "Cache-Control",
+        "public, s-maxage=600, stale-while-revalidate=86400",
+      );
+    }
+
+    const [post, seo] = await Promise.all([fetchPostBySlug(params.slug), fetchPostSeo(params.slug)]);
+    if (!post) throw notFound();
+
+    return {
+      post,
+      seo,
+      canonical: `${origin}/site/blog/${params.slug}`,
+      origin,
+    };
+  },
+  head: ({ loaderData }) => {
+    if (!loaderData) return {};
+    const { post, seo, canonical, origin } = loaderData as {
+      post: WpPost;
+      seo: WpPostSeo;
+      canonical: string;
+      origin: string;
+    };
+
+    const plainTitle = stripHtml(post.title.rendered);
+    const title = seo.rank_math_title || seoTitle(plainTitle);
+    const description =
+      seo.rank_math_description || truncateAtWord(stripHtml(post.excerpt.rendered), 120);
+    const social = seo.rank_math_facebook_description || socialDescription(description);
+    const image = featuredImage(post) || `${origin}${ogImageAsset.url}`;
+    const published = post.date;
+    const modified = post.modified || post.date;
+    const category = primaryCategory(post);
+    const words = stripHtml(post.content?.rendered ?? "").split(/\s+/).filter(Boolean).length;
+
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: plainTitle,
+      description,
+      image: [image],
+      datePublished: published,
+      dateModified: modified,
+      author: { "@type": "Person", name: authorName(post) },
+      publisher: {
+        "@type": "Organization",
+        name: "Allied IT",
+        logo: { "@type": "ImageObject", url: `${origin}/logo-allied-it.png` },
       },
-      { property: "og:type", content: "article" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+      mainEntityOfPage: { "@type": "WebPage", "@id": canonical },
+      ...(category ? { articleSection: stripHtml(category) } : {}),
+      wordCount: words,
+    };
+
+    return {
+      meta: [
+        { title },
+        { name: "description", content: description },
+        { property: "og:title", content: title },
+        { property: "og:description", content: social },
+        { property: "og:type", content: "article" },
+        { property: "og:url", content: canonical },
+        { property: "og:image", content: image },
+        { property: "article:published_time", content: published },
+        { property: "article:modified_time", content: modified },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: title },
+        { name: "twitter:description", content: social },
+        { name: "twitter:image", content: image },
+      ],
+      links: [{ rel: "canonical", href: canonical }],
+      scripts: [{ type: "application/ld+json", children: JSON.stringify(jsonLd) }],
+    };
+  },
   component: BlogArticle,
 });
 
 function BlogArticle() {
   const { slug } = Route.useParams();
+  const loaderData = Route.useLoaderData();
 
   const post = useQuery({
     queryKey: ["wp-post", slug],
     queryFn: () => fetchPostBySlug(slug),
+    initialData: loaderData.post,
     staleTime: 60 * 1000,
   });
 
-  const [safeHtml, setSafeHtml] = useState<string | null>(null);
+  const rawHtml = post.data?.content?.rendered ?? null;
+  const [safeHtml, setSafeHtml] = useState<string | null>(rawHtml ? sanitize(rawHtml) : null);
   useEffect(() => {
-    const raw = post.data?.content?.rendered;
-    if (!raw) {
-      setSafeHtml(null);
-      return;
-    }
-    let alive = true;
-    void import("dompurify").then((mod) => {
-      if (!alive) return;
-      setSafeHtml(mod.default.sanitize(raw, { ADD_ATTR: ["target"] }));
-    });
-    return () => {
-      alive = false;
-    };
-  }, [post.data]);
+    setSafeHtml(rawHtml ? sanitize(rawHtml) : null);
+  }, [rawHtml]);
 
   const back = (
     <Link
@@ -63,20 +145,6 @@ function BlogArticle() {
       Voltar para o blog
     </Link>
   );
-
-  if (post.isPending) {
-    return (
-      <section className="mx-auto max-w-3xl px-5 pb-24 pt-14 sm:px-8">
-        <div className="h-[280px] animate-pulse bg-[#EDF1F2]" />
-        <div className="mt-8 space-y-4">
-          <div className="h-3 w-32 animate-pulse bg-[#EDF1F2]" />
-          <div className="h-8 w-4/5 animate-pulse bg-[#EDF1F2]" />
-          <div className="h-4 w-full animate-pulse bg-[#EDF1F2]" />
-          <div className="h-4 w-11/12 animate-pulse bg-[#EDF1F2]" />
-        </div>
-      </section>
-    );
-  }
 
   if (post.isError) {
     return (
