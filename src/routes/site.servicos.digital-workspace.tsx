@@ -547,11 +547,11 @@ function DigitalWorkspacePage() {
       {/* DOBRA 6 — Por que a Allied IT */}
       <section className="bg-gradient-to-b from-[#08131A] to-[#0B1B23] py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <Reveal variant="fade-up" className="mx-auto max-w-[52ch] text-center">
-            <h2 className="font-chillax text-[1.6rem] font-bold leading-tight tracking-tight text-white/90 sm:text-[1.95rem]">
+          <Reveal variant="fade-up" className="mx-auto max-w-[46ch] text-center">
+            <h2 className="font-chillax text-balance text-[1.6rem] font-bold leading-tight tracking-tight text-white/90 sm:text-[1.95rem]">
               Por que Digital Workspace com a Allied IT
             </h2>
-            <p className="font-inter mt-5 text-[15px] leading-relaxed text-white/55">
+            <p className="font-inter mt-5 text-pretty text-[15px] leading-relaxed text-white/55">
               Operação madura, especialização por segmento e presença nacional para acompanhar o
               crescimento da sua empresa.
             </p>
