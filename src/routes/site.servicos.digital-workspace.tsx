@@ -361,7 +361,7 @@ function DigitalWorkspacePage() {
                     Service (suporte presencial) em uma única frente, para que ninguém fique
                     esperando entre um time e outro.
                   </p>
-                  <div className="mt-10 grid gap-6 sm:grid-cols-3">
+                  <div className="mt-10 grid w-full gap-6 sm:grid-cols-3">
                     {OVERVIEW.map((item, i) => {
                       const Icon = item.icon;
                       return (
