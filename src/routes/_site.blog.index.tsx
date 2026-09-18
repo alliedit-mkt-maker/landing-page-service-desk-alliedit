@@ -51,11 +51,11 @@ export const Route = createFileRoute("/_site/blog/")({
       posts: dedupeByTitle(first.posts).map(slimPost),
       totalPages: first.totalPages,
       categories: cats,
-      canonical: `${origin}/site/blog`,
+      canonical: `${origin}/blog`,
     };
   },
   head: ({ loaderData }) => {
-    const canonical = loaderData?.canonical ?? "https://service-desk.alliedit.com.br/site/blog";
+    const canonical = loaderData?.canonical ?? "https://service-desk.alliedit.com.br/blog";
     return {
       meta: [
         { title: TITLE },
@@ -265,7 +265,7 @@ function BlogList() {
                 return (
                   <Link
                     key={post.id}
-                    to="/site/blog/$slug"
+                    to="/blog/$slug"
                     params={{ slug: post.slug }}
                     className="group flex flex-col border border-white/12 bg-white/[0.05] transition-colors hover:border-white/35"
                   >

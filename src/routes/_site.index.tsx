@@ -129,13 +129,13 @@ function SiteHome() {
           </p>
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:items-start lg:justify-start">
             <Link
-              to="/site/contato"
+              to="/contato"
               className={`${btnBase} border border-white hover:bg-white hover:text-[#0A0E12]`}
             >
               Falar com especialista
             </Link>
             <Link
-              to="/site/servicos"
+              to="/servicos"
               className={`${btnBase} border border-white/30 hover:border-white`}
             >
               Conheça nossas soluções

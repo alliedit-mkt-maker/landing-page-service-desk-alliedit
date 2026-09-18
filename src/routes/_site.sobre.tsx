@@ -273,7 +273,7 @@ function SobrePage() {
             Alphaville, Barueri - SP
           </p>
           <Link
-            to="/site/contato"
+            to="/contato"
             className={`${btnBase} bg-[var(--site-blue)] text-white hover:bg-[var(--site-blue-dark)]`}
           >
             Fale com a gente

@@ -321,7 +321,7 @@ function DigitalWorkspacePage() {
               com SLA garantido e gestão centralizada.
             </p>
             <Link
-              to="/site/contato"
+              to="/contato"
               className={`${btn} mt-9 bg-[var(--site-yellow)] text-[#0B1418] hover:bg-white`}
             >
               Falar com especialista

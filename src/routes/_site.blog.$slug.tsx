@@ -48,7 +48,7 @@ export const Route = createFileRoute("/_site/blog/$slug")({
     return {
       post,
       seo,
-      canonical: `${origin}/site/blog/${params.slug}`,
+      canonical: `${origin}/blog/${params.slug}`,
       origin,
     };
   },
@@ -150,7 +150,7 @@ function BlogArticle() {
 
   const back = (
     <Link
-      to="/site/blog"
+      to="/blog"
       className="font-inter inline-flex items-center gap-2 text-[12px] font-semibold uppercase tracking-[0.16em] text-[var(--site-blue)] transition-colors hover:text-[var(--site-blue-dark)]"
     >
       <ArrowLeft className="h-4 w-4" />

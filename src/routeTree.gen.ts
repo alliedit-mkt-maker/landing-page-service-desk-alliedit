@@ -9,58 +9,32 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as YealinkVideoconferenciaRouteImport } from './routes/yealink-videoconferencia'
-import { Route as VideoconferenciaRouteImport } from './routes/videoconferencia'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as SiteRouteImport } from './routes/site'
-import { Route as RallyBarRouteImport } from './routes/rally-bar'
-import { Route as PolyStudioRouteImport } from './routes/poly-studio'
 import { Route as ObrigadoRouteImport } from './routes/obrigado'
-import { Route as HeadsetsPolyRouteImport } from './routes/headsets-poly'
-import { Route as HeadsetYealinkRouteImport } from './routes/headset-yealink'
-import { Route as HeadsetLogitechRouteImport } from './routes/headset-logitech'
-import { Route as HeadsetCallcenterRouteImport } from './routes/headset-callcenter'
-import { Route as CabeamentoRouteImport } from './routes/cabeamento'
 import { Route as AssinaturasRouteImport } from './routes/assinaturas'
-import { Route as AlocacaoTiRouteImport } from './routes/alocacao-ti'
-import { Route as IndexRouteImport } from './routes/index'
-import { Route as SiteIndexRouteImport } from './routes/site.index'
-import { Route as SiteSobreRouteImport } from './routes/site.sobre'
-import { Route as SiteProdutosRouteImport } from './routes/site.produtos'
-import { Route as SiteContatoRouteImport } from './routes/site.contato'
-import { Route as SiteServicosIndexRouteImport } from './routes/site.servicos.index'
-import { Route as SiteBlogIndexRouteImport } from './routes/site.blog.index'
-import { Route as SiteServicosDigitalWorkspaceRouteImport } from './routes/site.servicos.digital-workspace'
-import { Route as SiteBlogSlugRouteImport } from './routes/site.blog.$slug'
+import { Route as SiteRouteImport } from './routes/_site'
+import { Route as SiteIndexRouteImport } from './routes/_site.index'
+import { Route as LpYealinkVideoconferenciaRouteImport } from './routes/lp.yealink-videoconferencia'
+import { Route as LpVideoconferenciaRouteImport } from './routes/lp.videoconferencia'
+import { Route as LpRallyBarRouteImport } from './routes/lp.rally-bar'
+import { Route as LpPolyStudioRouteImport } from './routes/lp.poly-studio'
+import { Route as LpHeadsetsPolyRouteImport } from './routes/lp.headsets-poly'
+import { Route as LpHeadsetYealinkRouteImport } from './routes/lp.headset-yealink'
+import { Route as LpHeadsetLogitechRouteImport } from './routes/lp.headset-logitech'
+import { Route as LpHeadsetCallcenterRouteImport } from './routes/lp.headset-callcenter'
+import { Route as LpCabeamentoRouteImport } from './routes/lp.cabeamento'
+import { Route as LpAlocacaoTiRouteImport } from './routes/lp.alocacao-ti'
+import { Route as SiteSobreRouteImport } from './routes/_site.sobre'
+import { Route as SiteProdutosRouteImport } from './routes/_site.produtos'
+import { Route as SiteContatoRouteImport } from './routes/_site.contato'
+import { Route as SiteServicosIndexRouteImport } from './routes/_site.servicos.index'
+import { Route as SiteBlogIndexRouteImport } from './routes/_site.blog.index'
+import { Route as SiteServicosDigitalWorkspaceRouteImport } from './routes/_site.servicos.digital-workspace'
+import { Route as SiteBlogSlugRouteImport } from './routes/_site.blog.$slug'
 
-const YealinkVideoconferenciaRoute = YealinkVideoconferenciaRouteImport.update({
-  id: '/yealink-videoconferencia',
-  path: '/yealink-videoconferencia',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const VideoconferenciaRoute = VideoconferenciaRouteImport.update({
-  id: '/videoconferencia',
-  path: '/videoconferencia',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SiteRoute = SiteRouteImport.update({
-  id: '/site',
-  path: '/site',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const RallyBarRoute = RallyBarRouteImport.update({
-  id: '/rally-bar',
-  path: '/rally-bar',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PolyStudioRoute = PolyStudioRouteImport.update({
-  id: '/poly-studio',
-  path: '/poly-studio',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ObrigadoRoute = ObrigadoRouteImport.update({
@@ -68,50 +42,70 @@ const ObrigadoRoute = ObrigadoRouteImport.update({
   path: '/obrigado',
   getParentRoute: () => rootRouteImport,
 } as any)
-const HeadsetsPolyRoute = HeadsetsPolyRouteImport.update({
-  id: '/headsets-poly',
-  path: '/headsets-poly',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const HeadsetYealinkRoute = HeadsetYealinkRouteImport.update({
-  id: '/headset-yealink',
-  path: '/headset-yealink',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const HeadsetLogitechRoute = HeadsetLogitechRouteImport.update({
-  id: '/headset-logitech',
-  path: '/headset-logitech',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const HeadsetCallcenterRoute = HeadsetCallcenterRouteImport.update({
-  id: '/headset-callcenter',
-  path: '/headset-callcenter',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CabeamentoRoute = CabeamentoRouteImport.update({
-  id: '/cabeamento',
-  path: '/cabeamento',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const AssinaturasRoute = AssinaturasRouteImport.update({
   id: '/assinaturas',
   path: '/assinaturas',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AlocacaoTiRoute = AlocacaoTiRouteImport.update({
-  id: '/alocacao-ti',
-  path: '/alocacao-ti',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const SiteRoute = SiteRouteImport.update({
+  id: '/_site',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SiteIndexRoute = SiteIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => SiteRoute,
+} as any)
+const LpYealinkVideoconferenciaRoute =
+  LpYealinkVideoconferenciaRouteImport.update({
+    id: '/lp/yealink-videoconferencia',
+    path: '/lp/yealink-videoconferencia',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const LpVideoconferenciaRoute = LpVideoconferenciaRouteImport.update({
+  id: '/lp/videoconferencia',
+  path: '/lp/videoconferencia',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LpRallyBarRoute = LpRallyBarRouteImport.update({
+  id: '/lp/rally-bar',
+  path: '/lp/rally-bar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LpPolyStudioRoute = LpPolyStudioRouteImport.update({
+  id: '/lp/poly-studio',
+  path: '/lp/poly-studio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LpHeadsetsPolyRoute = LpHeadsetsPolyRouteImport.update({
+  id: '/lp/headsets-poly',
+  path: '/lp/headsets-poly',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LpHeadsetYealinkRoute = LpHeadsetYealinkRouteImport.update({
+  id: '/lp/headset-yealink',
+  path: '/lp/headset-yealink',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LpHeadsetLogitechRoute = LpHeadsetLogitechRouteImport.update({
+  id: '/lp/headset-logitech',
+  path: '/lp/headset-logitech',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LpHeadsetCallcenterRoute = LpHeadsetCallcenterRouteImport.update({
+  id: '/lp/headset-callcenter',
+  path: '/lp/headset-callcenter',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LpCabeamentoRoute = LpCabeamentoRouteImport.update({
+  id: '/lp/cabeamento',
+  path: '/lp/cabeamento',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LpAlocacaoTiRoute = LpAlocacaoTiRouteImport.update({
+  id: '/lp/alocacao-ti',
+  path: '/lp/alocacao-ti',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const SiteSobreRoute = SiteSobreRouteImport.update({
   id: '/sobre',
@@ -151,217 +145,173 @@ const SiteBlogSlugRoute = SiteBlogSlugRouteImport.update({
 } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/alocacao-ti': typeof AlocacaoTiRoute
+  '/': typeof SiteIndexRoute
   '/assinaturas': typeof AssinaturasRoute
-  '/cabeamento': typeof CabeamentoRoute
-  '/headset-callcenter': typeof HeadsetCallcenterRoute
-  '/headset-logitech': typeof HeadsetLogitechRoute
-  '/headset-yealink': typeof HeadsetYealinkRoute
-  '/headsets-poly': typeof HeadsetsPolyRoute
   '/obrigado': typeof ObrigadoRoute
-  '/poly-studio': typeof PolyStudioRoute
-  '/rally-bar': typeof RallyBarRoute
-  '/site': typeof SiteRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/videoconferencia': typeof VideoconferenciaRoute
-  '/yealink-videoconferencia': typeof YealinkVideoconferenciaRoute
-  '/site/contato': typeof SiteContatoRoute
-  '/site/produtos': typeof SiteProdutosRoute
-  '/site/sobre': typeof SiteSobreRoute
-  '/site/': typeof SiteIndexRoute
-  '/site/blog/$slug': typeof SiteBlogSlugRoute
-  '/site/servicos/digital-workspace': typeof SiteServicosDigitalWorkspaceRoute
-  '/site/blog/': typeof SiteBlogIndexRoute
-  '/site/servicos/': typeof SiteServicosIndexRoute
+  '/contato': typeof SiteContatoRoute
+  '/produtos': typeof SiteProdutosRoute
+  '/sobre': typeof SiteSobreRoute
+  '/lp/alocacao-ti': typeof LpAlocacaoTiRoute
+  '/lp/cabeamento': typeof LpCabeamentoRoute
+  '/lp/headset-callcenter': typeof LpHeadsetCallcenterRoute
+  '/lp/headset-logitech': typeof LpHeadsetLogitechRoute
+  '/lp/headset-yealink': typeof LpHeadsetYealinkRoute
+  '/lp/headsets-poly': typeof LpHeadsetsPolyRoute
+  '/lp/poly-studio': typeof LpPolyStudioRoute
+  '/lp/rally-bar': typeof LpRallyBarRoute
+  '/lp/videoconferencia': typeof LpVideoconferenciaRoute
+  '/lp/yealink-videoconferencia': typeof LpYealinkVideoconferenciaRoute
+  '/blog/$slug': typeof SiteBlogSlugRoute
+  '/servicos/digital-workspace': typeof SiteServicosDigitalWorkspaceRoute
+  '/blog/': typeof SiteBlogIndexRoute
+  '/servicos/': typeof SiteServicosIndexRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/alocacao-ti': typeof AlocacaoTiRoute
   '/assinaturas': typeof AssinaturasRoute
-  '/cabeamento': typeof CabeamentoRoute
-  '/headset-callcenter': typeof HeadsetCallcenterRoute
-  '/headset-logitech': typeof HeadsetLogitechRoute
-  '/headset-yealink': typeof HeadsetYealinkRoute
-  '/headsets-poly': typeof HeadsetsPolyRoute
   '/obrigado': typeof ObrigadoRoute
-  '/poly-studio': typeof PolyStudioRoute
-  '/rally-bar': typeof RallyBarRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/videoconferencia': typeof VideoconferenciaRoute
-  '/yealink-videoconferencia': typeof YealinkVideoconferenciaRoute
-  '/site/contato': typeof SiteContatoRoute
-  '/site/produtos': typeof SiteProdutosRoute
-  '/site/sobre': typeof SiteSobreRoute
-  '/site': typeof SiteIndexRoute
-  '/site/blog/$slug': typeof SiteBlogSlugRoute
-  '/site/servicos/digital-workspace': typeof SiteServicosDigitalWorkspaceRoute
-  '/site/blog': typeof SiteBlogIndexRoute
-  '/site/servicos': typeof SiteServicosIndexRoute
+  '/contato': typeof SiteContatoRoute
+  '/produtos': typeof SiteProdutosRoute
+  '/sobre': typeof SiteSobreRoute
+  '/lp/alocacao-ti': typeof LpAlocacaoTiRoute
+  '/lp/cabeamento': typeof LpCabeamentoRoute
+  '/lp/headset-callcenter': typeof LpHeadsetCallcenterRoute
+  '/lp/headset-logitech': typeof LpHeadsetLogitechRoute
+  '/lp/headset-yealink': typeof LpHeadsetYealinkRoute
+  '/lp/headsets-poly': typeof LpHeadsetsPolyRoute
+  '/lp/poly-studio': typeof LpPolyStudioRoute
+  '/lp/rally-bar': typeof LpRallyBarRoute
+  '/lp/videoconferencia': typeof LpVideoconferenciaRoute
+  '/lp/yealink-videoconferencia': typeof LpYealinkVideoconferenciaRoute
+  '/': typeof SiteIndexRoute
+  '/blog/$slug': typeof SiteBlogSlugRoute
+  '/servicos/digital-workspace': typeof SiteServicosDigitalWorkspaceRoute
+  '/blog': typeof SiteBlogIndexRoute
+  '/servicos': typeof SiteServicosIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
-  '/alocacao-ti': typeof AlocacaoTiRoute
+  '/_site': typeof SiteRouteWithChildren
   '/assinaturas': typeof AssinaturasRoute
-  '/cabeamento': typeof CabeamentoRoute
-  '/headset-callcenter': typeof HeadsetCallcenterRoute
-  '/headset-logitech': typeof HeadsetLogitechRoute
-  '/headset-yealink': typeof HeadsetYealinkRoute
-  '/headsets-poly': typeof HeadsetsPolyRoute
   '/obrigado': typeof ObrigadoRoute
-  '/poly-studio': typeof PolyStudioRoute
-  '/rally-bar': typeof RallyBarRoute
-  '/site': typeof SiteRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/videoconferencia': typeof VideoconferenciaRoute
-  '/yealink-videoconferencia': typeof YealinkVideoconferenciaRoute
-  '/site/contato': typeof SiteContatoRoute
-  '/site/produtos': typeof SiteProdutosRoute
-  '/site/sobre': typeof SiteSobreRoute
-  '/site/': typeof SiteIndexRoute
-  '/site/blog/$slug': typeof SiteBlogSlugRoute
-  '/site/servicos/digital-workspace': typeof SiteServicosDigitalWorkspaceRoute
-  '/site/blog/': typeof SiteBlogIndexRoute
-  '/site/servicos/': typeof SiteServicosIndexRoute
+  '/_site/contato': typeof SiteContatoRoute
+  '/_site/produtos': typeof SiteProdutosRoute
+  '/_site/sobre': typeof SiteSobreRoute
+  '/lp/alocacao-ti': typeof LpAlocacaoTiRoute
+  '/lp/cabeamento': typeof LpCabeamentoRoute
+  '/lp/headset-callcenter': typeof LpHeadsetCallcenterRoute
+  '/lp/headset-logitech': typeof LpHeadsetLogitechRoute
+  '/lp/headset-yealink': typeof LpHeadsetYealinkRoute
+  '/lp/headsets-poly': typeof LpHeadsetsPolyRoute
+  '/lp/poly-studio': typeof LpPolyStudioRoute
+  '/lp/rally-bar': typeof LpRallyBarRoute
+  '/lp/videoconferencia': typeof LpVideoconferenciaRoute
+  '/lp/yealink-videoconferencia': typeof LpYealinkVideoconferenciaRoute
+  '/_site/': typeof SiteIndexRoute
+  '/_site/blog/$slug': typeof SiteBlogSlugRoute
+  '/_site/servicos/digital-workspace': typeof SiteServicosDigitalWorkspaceRoute
+  '/_site/blog/': typeof SiteBlogIndexRoute
+  '/_site/servicos/': typeof SiteServicosIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/alocacao-ti'
     | '/assinaturas'
-    | '/cabeamento'
-    | '/headset-callcenter'
-    | '/headset-logitech'
-    | '/headset-yealink'
-    | '/headsets-poly'
     | '/obrigado'
-    | '/poly-studio'
-    | '/rally-bar'
-    | '/site'
     | '/sitemap.xml'
-    | '/videoconferencia'
-    | '/yealink-videoconferencia'
-    | '/site/contato'
-    | '/site/produtos'
-    | '/site/sobre'
-    | '/site/'
-    | '/site/blog/$slug'
-    | '/site/servicos/digital-workspace'
-    | '/site/blog/'
-    | '/site/servicos/'
+    | '/contato'
+    | '/produtos'
+    | '/sobre'
+    | '/lp/alocacao-ti'
+    | '/lp/cabeamento'
+    | '/lp/headset-callcenter'
+    | '/lp/headset-logitech'
+    | '/lp/headset-yealink'
+    | '/lp/headsets-poly'
+    | '/lp/poly-studio'
+    | '/lp/rally-bar'
+    | '/lp/videoconferencia'
+    | '/lp/yealink-videoconferencia'
+    | '/blog/$slug'
+    | '/servicos/digital-workspace'
+    | '/blog/'
+    | '/servicos/'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/'
-    | '/alocacao-ti'
     | '/assinaturas'
-    | '/cabeamento'
-    | '/headset-callcenter'
-    | '/headset-logitech'
-    | '/headset-yealink'
-    | '/headsets-poly'
     | '/obrigado'
-    | '/poly-studio'
-    | '/rally-bar'
     | '/sitemap.xml'
-    | '/videoconferencia'
-    | '/yealink-videoconferencia'
-    | '/site/contato'
-    | '/site/produtos'
-    | '/site/sobre'
-    | '/site'
-    | '/site/blog/$slug'
-    | '/site/servicos/digital-workspace'
-    | '/site/blog'
-    | '/site/servicos'
+    | '/contato'
+    | '/produtos'
+    | '/sobre'
+    | '/lp/alocacao-ti'
+    | '/lp/cabeamento'
+    | '/lp/headset-callcenter'
+    | '/lp/headset-logitech'
+    | '/lp/headset-yealink'
+    | '/lp/headsets-poly'
+    | '/lp/poly-studio'
+    | '/lp/rally-bar'
+    | '/lp/videoconferencia'
+    | '/lp/yealink-videoconferencia'
+    | '/'
+    | '/blog/$slug'
+    | '/servicos/digital-workspace'
+    | '/blog'
+    | '/servicos'
   id:
     | '__root__'
-    | '/'
-    | '/alocacao-ti'
+    | '/_site'
     | '/assinaturas'
-    | '/cabeamento'
-    | '/headset-callcenter'
-    | '/headset-logitech'
-    | '/headset-yealink'
-    | '/headsets-poly'
     | '/obrigado'
-    | '/poly-studio'
-    | '/rally-bar'
-    | '/site'
     | '/sitemap.xml'
-    | '/videoconferencia'
-    | '/yealink-videoconferencia'
-    | '/site/contato'
-    | '/site/produtos'
-    | '/site/sobre'
-    | '/site/'
-    | '/site/blog/$slug'
-    | '/site/servicos/digital-workspace'
-    | '/site/blog/'
-    | '/site/servicos/'
+    | '/_site/contato'
+    | '/_site/produtos'
+    | '/_site/sobre'
+    | '/lp/alocacao-ti'
+    | '/lp/cabeamento'
+    | '/lp/headset-callcenter'
+    | '/lp/headset-logitech'
+    | '/lp/headset-yealink'
+    | '/lp/headsets-poly'
+    | '/lp/poly-studio'
+    | '/lp/rally-bar'
+    | '/lp/videoconferencia'
+    | '/lp/yealink-videoconferencia'
+    | '/_site/'
+    | '/_site/blog/$slug'
+    | '/_site/servicos/digital-workspace'
+    | '/_site/blog/'
+    | '/_site/servicos/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  AlocacaoTiRoute: typeof AlocacaoTiRoute
-  AssinaturasRoute: typeof AssinaturasRoute
-  CabeamentoRoute: typeof CabeamentoRoute
-  HeadsetCallcenterRoute: typeof HeadsetCallcenterRoute
-  HeadsetLogitechRoute: typeof HeadsetLogitechRoute
-  HeadsetYealinkRoute: typeof HeadsetYealinkRoute
-  HeadsetsPolyRoute: typeof HeadsetsPolyRoute
-  ObrigadoRoute: typeof ObrigadoRoute
-  PolyStudioRoute: typeof PolyStudioRoute
-  RallyBarRoute: typeof RallyBarRoute
   SiteRoute: typeof SiteRouteWithChildren
+  AssinaturasRoute: typeof AssinaturasRoute
+  ObrigadoRoute: typeof ObrigadoRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
-  VideoconferenciaRoute: typeof VideoconferenciaRoute
-  YealinkVideoconferenciaRoute: typeof YealinkVideoconferenciaRoute
+  LpAlocacaoTiRoute: typeof LpAlocacaoTiRoute
+  LpCabeamentoRoute: typeof LpCabeamentoRoute
+  LpHeadsetCallcenterRoute: typeof LpHeadsetCallcenterRoute
+  LpHeadsetLogitechRoute: typeof LpHeadsetLogitechRoute
+  LpHeadsetYealinkRoute: typeof LpHeadsetYealinkRoute
+  LpHeadsetsPolyRoute: typeof LpHeadsetsPolyRoute
+  LpPolyStudioRoute: typeof LpPolyStudioRoute
+  LpRallyBarRoute: typeof LpRallyBarRoute
+  LpVideoconferenciaRoute: typeof LpVideoconferenciaRoute
+  LpYealinkVideoconferenciaRoute: typeof LpYealinkVideoconferenciaRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/yealink-videoconferencia': {
-      id: '/yealink-videoconferencia'
-      path: '/yealink-videoconferencia'
-      fullPath: '/yealink-videoconferencia'
-      preLoaderRoute: typeof YealinkVideoconferenciaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/videoconferencia': {
-      id: '/videoconferencia'
-      path: '/videoconferencia'
-      fullPath: '/videoconferencia'
-      preLoaderRoute: typeof VideoconferenciaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/site': {
-      id: '/site'
-      path: '/site'
-      fullPath: '/site'
-      preLoaderRoute: typeof SiteRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/rally-bar': {
-      id: '/rally-bar'
-      path: '/rally-bar'
-      fullPath: '/rally-bar'
-      preLoaderRoute: typeof RallyBarRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/poly-studio': {
-      id: '/poly-studio'
-      path: '/poly-studio'
-      fullPath: '/poly-studio'
-      preLoaderRoute: typeof PolyStudioRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/obrigado': {
@@ -371,41 +321,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ObrigadoRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/headsets-poly': {
-      id: '/headsets-poly'
-      path: '/headsets-poly'
-      fullPath: '/headsets-poly'
-      preLoaderRoute: typeof HeadsetsPolyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/headset-yealink': {
-      id: '/headset-yealink'
-      path: '/headset-yealink'
-      fullPath: '/headset-yealink'
-      preLoaderRoute: typeof HeadsetYealinkRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/headset-logitech': {
-      id: '/headset-logitech'
-      path: '/headset-logitech'
-      fullPath: '/headset-logitech'
-      preLoaderRoute: typeof HeadsetLogitechRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/headset-callcenter': {
-      id: '/headset-callcenter'
-      path: '/headset-callcenter'
-      fullPath: '/headset-callcenter'
-      preLoaderRoute: typeof HeadsetCallcenterRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/cabeamento': {
-      id: '/cabeamento'
-      path: '/cabeamento'
-      fullPath: '/cabeamento'
-      preLoaderRoute: typeof CabeamentoRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/assinaturas': {
       id: '/assinaturas'
       path: '/assinaturas'
@@ -413,73 +328,136 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AssinaturasRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/alocacao-ti': {
-      id: '/alocacao-ti'
-      path: '/alocacao-ti'
-      fullPath: '/alocacao-ti'
-      preLoaderRoute: typeof AlocacaoTiRouteImport
+    '/_site': {
+      id: '/_site'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof SiteRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
+    '/_site/': {
+      id: '/_site/'
       path: '/'
       fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/site/': {
-      id: '/site/'
-      path: '/'
-      fullPath: '/site/'
       preLoaderRoute: typeof SiteIndexRouteImport
       parentRoute: typeof SiteRoute
     }
-    '/site/sobre': {
-      id: '/site/sobre'
+    '/lp/yealink-videoconferencia': {
+      id: '/lp/yealink-videoconferencia'
+      path: '/lp/yealink-videoconferencia'
+      fullPath: '/lp/yealink-videoconferencia'
+      preLoaderRoute: typeof LpYealinkVideoconferenciaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lp/videoconferencia': {
+      id: '/lp/videoconferencia'
+      path: '/lp/videoconferencia'
+      fullPath: '/lp/videoconferencia'
+      preLoaderRoute: typeof LpVideoconferenciaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lp/rally-bar': {
+      id: '/lp/rally-bar'
+      path: '/lp/rally-bar'
+      fullPath: '/lp/rally-bar'
+      preLoaderRoute: typeof LpRallyBarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lp/poly-studio': {
+      id: '/lp/poly-studio'
+      path: '/lp/poly-studio'
+      fullPath: '/lp/poly-studio'
+      preLoaderRoute: typeof LpPolyStudioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lp/headsets-poly': {
+      id: '/lp/headsets-poly'
+      path: '/lp/headsets-poly'
+      fullPath: '/lp/headsets-poly'
+      preLoaderRoute: typeof LpHeadsetsPolyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lp/headset-yealink': {
+      id: '/lp/headset-yealink'
+      path: '/lp/headset-yealink'
+      fullPath: '/lp/headset-yealink'
+      preLoaderRoute: typeof LpHeadsetYealinkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lp/headset-logitech': {
+      id: '/lp/headset-logitech'
+      path: '/lp/headset-logitech'
+      fullPath: '/lp/headset-logitech'
+      preLoaderRoute: typeof LpHeadsetLogitechRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lp/headset-callcenter': {
+      id: '/lp/headset-callcenter'
+      path: '/lp/headset-callcenter'
+      fullPath: '/lp/headset-callcenter'
+      preLoaderRoute: typeof LpHeadsetCallcenterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lp/cabeamento': {
+      id: '/lp/cabeamento'
+      path: '/lp/cabeamento'
+      fullPath: '/lp/cabeamento'
+      preLoaderRoute: typeof LpCabeamentoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lp/alocacao-ti': {
+      id: '/lp/alocacao-ti'
+      path: '/lp/alocacao-ti'
+      fullPath: '/lp/alocacao-ti'
+      preLoaderRoute: typeof LpAlocacaoTiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_site/sobre': {
+      id: '/_site/sobre'
       path: '/sobre'
-      fullPath: '/site/sobre'
+      fullPath: '/sobre'
       preLoaderRoute: typeof SiteSobreRouteImport
       parentRoute: typeof SiteRoute
     }
-    '/site/produtos': {
-      id: '/site/produtos'
+    '/_site/produtos': {
+      id: '/_site/produtos'
       path: '/produtos'
-      fullPath: '/site/produtos'
+      fullPath: '/produtos'
       preLoaderRoute: typeof SiteProdutosRouteImport
       parentRoute: typeof SiteRoute
     }
-    '/site/contato': {
-      id: '/site/contato'
+    '/_site/contato': {
+      id: '/_site/contato'
       path: '/contato'
-      fullPath: '/site/contato'
+      fullPath: '/contato'
       preLoaderRoute: typeof SiteContatoRouteImport
       parentRoute: typeof SiteRoute
     }
-    '/site/servicos/': {
-      id: '/site/servicos/'
+    '/_site/servicos/': {
+      id: '/_site/servicos/'
       path: '/servicos'
-      fullPath: '/site/servicos/'
+      fullPath: '/servicos/'
       preLoaderRoute: typeof SiteServicosIndexRouteImport
       parentRoute: typeof SiteRoute
     }
-    '/site/blog/': {
-      id: '/site/blog/'
+    '/_site/blog/': {
+      id: '/_site/blog/'
       path: '/blog'
-      fullPath: '/site/blog/'
+      fullPath: '/blog/'
       preLoaderRoute: typeof SiteBlogIndexRouteImport
       parentRoute: typeof SiteRoute
     }
-    '/site/servicos/digital-workspace': {
-      id: '/site/servicos/digital-workspace'
+    '/_site/servicos/digital-workspace': {
+      id: '/_site/servicos/digital-workspace'
       path: '/servicos/digital-workspace'
-      fullPath: '/site/servicos/digital-workspace'
+      fullPath: '/servicos/digital-workspace'
       preLoaderRoute: typeof SiteServicosDigitalWorkspaceRouteImport
       parentRoute: typeof SiteRoute
     }
-    '/site/blog/$slug': {
-      id: '/site/blog/$slug'
+    '/_site/blog/$slug': {
+      id: '/_site/blog/$slug'
       path: '/blog/$slug'
-      fullPath: '/site/blog/$slug'
+      fullPath: '/blog/$slug'
       preLoaderRoute: typeof SiteBlogSlugRouteImport
       parentRoute: typeof SiteRoute
     }
@@ -511,21 +489,20 @@ const SiteRouteChildren: SiteRouteChildren = {
 const SiteRouteWithChildren = SiteRoute._addFileChildren(SiteRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
-  AlocacaoTiRoute: AlocacaoTiRoute,
-  AssinaturasRoute: AssinaturasRoute,
-  CabeamentoRoute: CabeamentoRoute,
-  HeadsetCallcenterRoute: HeadsetCallcenterRoute,
-  HeadsetLogitechRoute: HeadsetLogitechRoute,
-  HeadsetYealinkRoute: HeadsetYealinkRoute,
-  HeadsetsPolyRoute: HeadsetsPolyRoute,
-  ObrigadoRoute: ObrigadoRoute,
-  PolyStudioRoute: PolyStudioRoute,
-  RallyBarRoute: RallyBarRoute,
   SiteRoute: SiteRouteWithChildren,
+  AssinaturasRoute: AssinaturasRoute,
+  ObrigadoRoute: ObrigadoRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
-  VideoconferenciaRoute: VideoconferenciaRoute,
-  YealinkVideoconferenciaRoute: YealinkVideoconferenciaRoute,
+  LpAlocacaoTiRoute: LpAlocacaoTiRoute,
+  LpCabeamentoRoute: LpCabeamentoRoute,
+  LpHeadsetCallcenterRoute: LpHeadsetCallcenterRoute,
+  LpHeadsetLogitechRoute: LpHeadsetLogitechRoute,
+  LpHeadsetYealinkRoute: LpHeadsetYealinkRoute,
+  LpHeadsetsPolyRoute: LpHeadsetsPolyRoute,
+  LpPolyStudioRoute: LpPolyStudioRoute,
+  LpRallyBarRoute: LpRallyBarRoute,
+  LpVideoconferenciaRoute: LpVideoconferenciaRoute,
+  LpYealinkVideoconferenciaRoute: LpYealinkVideoconferenciaRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -12,10 +12,10 @@ const SERVICOS = [
 const PRODUTOS = ["Videoconferência", "Headsets", "Microsoft 365", "AWS", "Firewall"];
 
 const INSTITUCIONAL: { label: string; to: string }[] = [
-  { label: "Sobre", to: "/site/sobre" },
-  { label: "Blog", to: "/site/blog" },
-  { label: "Contato", to: "/site/contato" },
-  { label: "Trabalhe Conosco", to: "/site/contato" },
+  { label: "Sobre", to: "/sobre" },
+  { label: "Blog", to: "/blog" },
+  { label: "Contato", to: "/contato" },
+  { label: "Trabalhe Conosco", to: "/contato" },
 ];
 
 const WHATSAPP =
@@ -53,7 +53,7 @@ export function SiteFooter() {
           <ul className="space-y-3">
             {SERVICOS.map((s) => (
               <li key={s}>
-                <Link to="/site/servicos" className={item}>
+                <Link to="/servicos" className={item}>
                   {s}
                 </Link>
               </li>
@@ -66,7 +66,7 @@ export function SiteFooter() {
           <ul className="space-y-3">
             {PRODUTOS.map((p) => (
               <li key={p}>
-                <Link to="/site/produtos" className={item}>
+                <Link to="/produtos" className={item}>
                   {p}
                 </Link>
               </li>
