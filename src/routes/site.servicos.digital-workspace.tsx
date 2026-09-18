@@ -456,7 +456,7 @@ function DigitalWorkspacePage() {
       </section>
 
       {/* DOBRA 4 — Field Service */}
-      <section className="relative overflow-hidden border-b-2 border-[var(--site-yellow)]/70 bg-gradient-to-b from-white to-[#EEF4F6] py-24 sm:py-32">
+      <section className="relative overflow-hidden bg-gradient-to-b from-white to-[#EEF4F6] py-24 sm:py-32">
         {/* intro com foto ocupando toda a primeira coluna, até a borda da tela */}
         <div className="relative">
           <Reveal
