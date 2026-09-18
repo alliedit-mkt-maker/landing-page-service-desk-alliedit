@@ -298,7 +298,7 @@ function DigitalWorkspacePage() {
   return (
     <>
       {/* DOBRA 1 — Hero com foto */}
-      <section className="relative overflow-hidden bg-[#050D12]">
+      <section className="relative -mt-[72px] overflow-hidden bg-[#050D12] pt-[72px]">
         <img
           src={heroPhoto.url}
           alt="Profissional acessando serviços de TI em ambiente digital"
@@ -306,11 +306,7 @@ function DigitalWorkspacePage() {
         />
         <div
           aria-hidden
-          className="absolute inset-0 bg-gradient-to-r from-black via-black/85 to-[#046E8B]/25"
-        />
-        <div
-          aria-hidden
-          className="absolute inset-0 bg-gradient-to-t from-[#050D12] via-transparent to-black/50"
+          className="absolute inset-0 bg-gradient-to-r from-black/92 via-black/55 to-transparent"
         />
         <div className="relative mx-auto max-w-7xl px-5 py-28 sm:px-8 sm:py-36">
           <Reveal variant="fade-up" className="max-w-[58ch]">
