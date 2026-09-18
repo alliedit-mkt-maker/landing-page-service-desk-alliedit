@@ -126,10 +126,27 @@ function BlogArticle() {
   });
 
   const rawHtml = post.data?.content?.rendered ?? null;
-  const [safeHtml, setSafeHtml] = useState<string | null>(rawHtml ? sanitize(rawHtml) : null);
+
+  // Mesmo HTML no servidor e no primeiro render do cliente (sem DOM).
+  const baseHtml = useMemo(
+    () => (rawHtml ? normalizeInternalLinks(lightSanitize(rawHtml)) : null),
+    [rawHtml],
+  );
+  const [safeHtml, setSafeHtml] = useState<string | null>(baseHtml);
+
   useEffect(() => {
-    setSafeHtml(rawHtml ? sanitize(rawHtml) : null);
-  }, [rawHtml]);
+    let cancelled = false;
+    setSafeHtml(baseHtml);
+    if (!rawHtml) return;
+    // DOMPurify só no navegador, depois da hidratação.
+    import("isomorphic-dompurify").then(({ default: DOMPurify }) => {
+      if (cancelled) return;
+      setSafeHtml(normalizeInternalLinks(DOMPurify.sanitize(rawHtml, { ADD_ATTR: ["target"] })));
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [rawHtml, baseHtml]);
 
   const back = (
     <Link
