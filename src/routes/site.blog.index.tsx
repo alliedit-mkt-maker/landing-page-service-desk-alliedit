@@ -83,12 +83,14 @@ const DOTS =
   "radial-gradient(rgba(255,255,255,0.09) 1px, transparent 1px)";
 
 function BlogList() {
+  const loaderData = Route.useLoaderData();
   const [categoryId, setCategoryId] = useState<number | null>(null);
   const [page, setPage] = useState(1);
 
   const categories = useQuery({
     queryKey: ["wp-categories"],
     queryFn: fetchCategories,
+    initialData: loaderData.categories,
     staleTime: 5 * 60 * 1000,
   });
 
@@ -97,10 +99,14 @@ function BlogList() {
   const pageQueries = useQuery({
     queryKey: ["wp-posts", categoryId, page],
     queryFn: () => fetchPosts({ page, categoryId }),
+    initialData:
+      categoryId === null && page === 1
+        ? { posts: loaderData.posts, totalPages: loaderData.totalPages }
+        : undefined,
     staleTime: 60 * 1000,
   });
 
-  const [pages, setPages] = useState<Record<number, WpPost[]>>({});
+  const [pages, setPages] = useState<Record<number, WpPost[]>>({ 1: loaderData.posts });
 
   useEffect(() => {
     const posts = pageQueries.data?.posts;
@@ -115,13 +121,7 @@ function BlogList() {
       .sort((a, b) => a - b)
       .forEach((p) => pages[p]?.forEach((post) => byId.set(post.id, post)));
     // Além do ID, evita repetir artigos com o mesmo título (duplicatas no WP).
-    const seenTitles = new Set<string>();
-    return [...byId.values()].filter((post) => {
-      const key = stripHtml(post.title.rendered).toLowerCase();
-      if (seenTitles.has(key)) return false;
-      seenTitles.add(key);
-      return true;
-    });
+    return dedupeByTitle([...byId.values()]);
   }, [pages]);
 
   const selectCategory = (id: number | null) => {
