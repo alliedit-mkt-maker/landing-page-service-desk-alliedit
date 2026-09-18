@@ -351,7 +351,7 @@ function DigitalWorkspacePage() {
                   className="pointer-events-none absolute inset-0 opacity-50"
                   style={{ backgroundImage: DOT_TEXTURE, backgroundSize: "22px 22px" }}
                 />
-                <div className="relative">
+                <div className="relative flex flex-col items-center text-center">
                   <h2 className="font-chillax text-[1.7rem] font-bold leading-tight tracking-tight text-white sm:text-[2.1rem]">
                     O que é Digital Workspace
                   </h2>
