@@ -16,6 +16,7 @@ import { Route as SiteRouteImport } from './routes/_site'
 import { Route as SiteIndexRouteImport } from './routes/_site.index'
 import { Route as LpYealinkVideoconferenciaRouteImport } from './routes/lp.yealink-videoconferencia'
 import { Route as LpVideoconferenciaRouteImport } from './routes/lp.videoconferencia'
+import { Route as LpServiceDeskRouteImport } from './routes/lp.service-desk'
 import { Route as LpRallyBarRouteImport } from './routes/lp.rally-bar'
 import { Route as LpPolyStudioRouteImport } from './routes/lp.poly-studio'
 import { Route as LpHeadsetsPolyRouteImport } from './routes/lp.headsets-poly'
@@ -65,6 +66,11 @@ const LpYealinkVideoconferenciaRoute =
 const LpVideoconferenciaRoute = LpVideoconferenciaRouteImport.update({
   id: '/lp/videoconferencia',
   path: '/lp/videoconferencia',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LpServiceDeskRoute = LpServiceDeskRouteImport.update({
+  id: '/lp/service-desk',
+  path: '/lp/service-desk',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LpRallyBarRoute = LpRallyBarRouteImport.update({
@@ -160,6 +166,7 @@ export interface FileRoutesByFullPath {
   '/lp/headsets-poly': typeof LpHeadsetsPolyRoute
   '/lp/poly-studio': typeof LpPolyStudioRoute
   '/lp/rally-bar': typeof LpRallyBarRoute
+  '/lp/service-desk': typeof LpServiceDeskRoute
   '/lp/videoconferencia': typeof LpVideoconferenciaRoute
   '/lp/yealink-videoconferencia': typeof LpYealinkVideoconferenciaRoute
   '/blog/$slug': typeof SiteBlogSlugRoute
@@ -182,6 +189,7 @@ export interface FileRoutesByTo {
   '/lp/headsets-poly': typeof LpHeadsetsPolyRoute
   '/lp/poly-studio': typeof LpPolyStudioRoute
   '/lp/rally-bar': typeof LpRallyBarRoute
+  '/lp/service-desk': typeof LpServiceDeskRoute
   '/lp/videoconferencia': typeof LpVideoconferenciaRoute
   '/lp/yealink-videoconferencia': typeof LpYealinkVideoconferenciaRoute
   '/': typeof SiteIndexRoute
@@ -207,6 +215,7 @@ export interface FileRoutesById {
   '/lp/headsets-poly': typeof LpHeadsetsPolyRoute
   '/lp/poly-studio': typeof LpPolyStudioRoute
   '/lp/rally-bar': typeof LpRallyBarRoute
+  '/lp/service-desk': typeof LpServiceDeskRoute
   '/lp/videoconferencia': typeof LpVideoconferenciaRoute
   '/lp/yealink-videoconferencia': typeof LpYealinkVideoconferenciaRoute
   '/_site/': typeof SiteIndexRoute
@@ -233,6 +242,7 @@ export interface FileRouteTypes {
     | '/lp/headsets-poly'
     | '/lp/poly-studio'
     | '/lp/rally-bar'
+    | '/lp/service-desk'
     | '/lp/videoconferencia'
     | '/lp/yealink-videoconferencia'
     | '/blog/$slug'
@@ -255,6 +265,7 @@ export interface FileRouteTypes {
     | '/lp/headsets-poly'
     | '/lp/poly-studio'
     | '/lp/rally-bar'
+    | '/lp/service-desk'
     | '/lp/videoconferencia'
     | '/lp/yealink-videoconferencia'
     | '/'
@@ -279,6 +290,7 @@ export interface FileRouteTypes {
     | '/lp/headsets-poly'
     | '/lp/poly-studio'
     | '/lp/rally-bar'
+    | '/lp/service-desk'
     | '/lp/videoconferencia'
     | '/lp/yealink-videoconferencia'
     | '/_site/'
@@ -301,6 +313,7 @@ export interface RootRouteChildren {
   LpHeadsetsPolyRoute: typeof LpHeadsetsPolyRoute
   LpPolyStudioRoute: typeof LpPolyStudioRoute
   LpRallyBarRoute: typeof LpRallyBarRoute
+  LpServiceDeskRoute: typeof LpServiceDeskRoute
   LpVideoconferenciaRoute: typeof LpVideoconferenciaRoute
   LpYealinkVideoconferenciaRoute: typeof LpYealinkVideoconferenciaRoute
 }
@@ -354,6 +367,13 @@ declare module '@tanstack/react-router' {
       path: '/lp/videoconferencia'
       fullPath: '/lp/videoconferencia'
       preLoaderRoute: typeof LpVideoconferenciaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lp/service-desk': {
+      id: '/lp/service-desk'
+      path: '/lp/service-desk'
+      fullPath: '/lp/service-desk'
+      preLoaderRoute: typeof LpServiceDeskRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lp/rally-bar': {
@@ -501,6 +521,7 @@ const rootRouteChildren: RootRouteChildren = {
   LpHeadsetsPolyRoute: LpHeadsetsPolyRoute,
   LpPolyStudioRoute: LpPolyStudioRoute,
   LpRallyBarRoute: LpRallyBarRoute,
+  LpServiceDeskRoute: LpServiceDeskRoute,
   LpVideoconferenciaRoute: LpVideoconferenciaRoute,
   LpYealinkVideoconferenciaRoute: LpYealinkVideoconferenciaRoute,
 }
