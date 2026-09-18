@@ -9,6 +9,7 @@ export type WpPost = {
   id: number;
   slug: string;
   date: string;
+  modified?: string;
   link: string;
   title: { rendered: string };
   excerpt: { rendered: string };
