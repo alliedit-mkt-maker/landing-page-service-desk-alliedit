@@ -21,16 +21,60 @@ const DESC =
   "Como diagnosticamos operações de TI, o raciocínio por trás das soluções, e o que a tecnologia aplicada realmente muda.";
 
 export const Route = createFileRoute("/site/blog/")({
-  head: () => ({
-    meta: [
-      { title: TITLE },
-      { name: "description", content: DESC },
-      { property: "og:title", content: TITLE },
-      { property: "og:description", content: DESC },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  loader: async () => {
+    let origin = "https://service-desk.alliedit.com.br";
+    if (typeof document !== "undefined") {
+      origin = window.location.origin;
+    } else {
+      const server = await import("@tanstack/react-start/server");
+      try {
+        const url = new URL(String(server.getRequestUrl()));
+        origin = `${url.protocol}//${url.host}`;
+      } catch {
+        /* mantém o fallback */
+      }
+    }
+
+    const [first, cats] = await Promise.all([
+      fetchPosts({ page: 1, categoryId: null }),
+      fetchCategories(),
+    ]);
+
+    return {
+      posts: dedupeByTitle(first.posts),
+      totalPages: first.totalPages,
+      categories: cats,
+      canonical: `${origin}/site/blog`,
+    };
+  },
+  head: ({ loaderData }) => {
+    const canonical = loaderData?.canonical ?? "https://service-desk.alliedit.com.br/site/blog";
+    return {
+      meta: [
+        { title: TITLE },
+        { name: "description", content: DESC },
+        { property: "og:title", content: TITLE },
+        { property: "og:description", content: DESC },
+        { property: "og:type", content: "website" },
+        { property: "og:url", content: canonical },
+        { name: "twitter:card", content: "summary_large_image" },
+      ],
+      links: [{ rel: "canonical", href: canonical }],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Blog",
+            name: "Blog Allied IT",
+            description: DESC,
+            url: canonical,
+            publisher: { "@type": "Organization", name: "Allied IT" },
+          }),
+        },
+      ],
+    };
+  },
   component: BlogList,
 });
 
