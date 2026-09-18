@@ -546,8 +546,8 @@ function DigitalWorkspacePage() {
 
       {/* DOBRA 6 — Por que a Allied IT */}
       <section className="bg-gradient-to-b from-[#08131A] to-[#0B1B23] py-20 sm:py-24">
-        <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.1fr]">
-          <Reveal variant="fade-up" className="max-w-[46ch]">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+          <Reveal variant="fade-up" className="mx-auto max-w-[52ch] text-center">
             <h2 className="font-chillax text-[1.6rem] font-bold leading-tight tracking-tight text-white/90 sm:text-[1.95rem]">
               Por que Digital Workspace com a Allied IT
             </h2>
@@ -557,7 +557,7 @@ function DigitalWorkspacePage() {
             </p>
           </Reveal>
 
-          <div className="grid gap-5 sm:grid-cols-2">
+          <div className="mt-12 grid gap-5 sm:grid-cols-2">
             {WHY.map((item, i) => {
               const Icon = item.icon;
               return (
