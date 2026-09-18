@@ -313,10 +313,10 @@ function DigitalWorkspacePage() {
             <p className="font-inter text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--site-yellow)]">
               Digital Workspace
             </p>
-            <h1 className="font-chillax mt-4 text-[2.2rem] font-bold leading-[1.06] tracking-tight text-white sm:text-[3.2rem]">
+            <h1 className="font-chillax mt-4 max-w-[24ch] text-balance text-[2.2rem] font-bold leading-[1.06] tracking-tight text-white sm:text-[3.2rem]">
               O suporte que sua equipe sente que está sempre por perto
             </h1>
-            <p className="font-inter mt-6 max-w-[52ch] text-[16px] leading-relaxed text-white/75">
+            <p className="font-inter mt-6 max-w-[44ch] text-pretty text-[16px] leading-relaxed text-white/75">
               Service Desk e Field Service em uma só operação, atendimento remoto e presencial,
               com SLA garantido e gestão centralizada.
             </p>
