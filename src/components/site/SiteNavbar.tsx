@@ -49,7 +49,7 @@ export function SiteNavbar() {
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const isHome = pathname === "/" || pathname === "/";
+  const isHome = pathname === "/";
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
