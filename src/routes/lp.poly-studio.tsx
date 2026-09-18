@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
+import { lpCanonical } from "@/lib/site";
 import {
   ChevronDown,
   Handshake,
@@ -53,7 +54,7 @@ export const Route = createFileRoute("/lp/poly-studio")({
       { name: "description", content: description },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
-      { property: "og:url", content: "https://poly-studio.alliedit.com.br/" },
+      { property: "og:url", content: lpCanonical("poly-studio", "poly-studio.alliedit.com.br") },
       { property: "og:type", content: "website" },
       { property: "og:image", content: `https://service-desk.alliedit.com.br${ogImage.url}` },
       { property: "og:image:width", content: "1200" },
@@ -64,7 +65,7 @@ export const Route = createFileRoute("/lp/poly-studio")({
       { name: "twitter:description", content: description },
       { name: "twitter:image", content: `https://service-desk.alliedit.com.br${ogImage.url}` },
     ],
-    links: [{ rel: "canonical", href: "https://poly-studio.alliedit.com.br/" }],
+    links: [{ rel: "canonical", href: lpCanonical("poly-studio", "poly-studio.alliedit.com.br") }],
     scripts: [
       {
         type: "application/ld+json",

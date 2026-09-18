@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
+import { lpCanonical } from "@/lib/site";
 import {
   Handshake,
   Compass,
@@ -42,7 +43,7 @@ export const Route = createFileRoute("/lp/headset-yealink")({
       { name: "description", content: description },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
-      { property: "og:url", content: "https://headset-yealink.alliedit.com.br/" },
+      { property: "og:url", content: lpCanonical("headset-yealink", "headset-yealink.alliedit.com.br") },
       { property: "og:type", content: "website" },
       { property: "og:image", content: `https://service-desk.alliedit.com.br${ogImage.url}` },
       { property: "og:image:width", content: "1200" },
@@ -53,7 +54,7 @@ export const Route = createFileRoute("/lp/headset-yealink")({
       { name: "twitter:description", content: description },
       { name: "twitter:image", content: `https://service-desk.alliedit.com.br${ogImage.url}` },
     ],
-    links: [{ rel: "canonical", href: "https://headset-yealink.alliedit.com.br/" }],
+    links: [{ rel: "canonical", href: lpCanonical("headset-yealink", "headset-yealink.alliedit.com.br") }],
     scripts: [
       {
         type: "application/ld+json",

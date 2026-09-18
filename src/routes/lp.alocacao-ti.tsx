@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
+import { lpCanonical } from "@/lib/site";
 import ogImage from "@/assets/og-image.png.asset.json";
 import { LpProvider, useLp } from "@/components/lp/LpProvider";
 import { SiteHeader } from "@/components/lp/SiteHeader";
@@ -22,7 +23,7 @@ export const Route = createFileRoute("/lp/alocacao-ti")({
       { name: "description", content: description },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
-      { property: "og:url", content: "https://alocacao-ti.alliedit.com.br/" },
+      { property: "og:url", content: lpCanonical("alocacao-ti", "alocacao-ti.alliedit.com.br") },
       { property: "og:type", content: "website" },
       { property: "og:image", content: `https://service-desk.alliedit.com.br${ogImage.url}` },
       { property: "og:image:width", content: "1200" },
@@ -33,7 +34,7 @@ export const Route = createFileRoute("/lp/alocacao-ti")({
       { name: "twitter:description", content: description },
       { name: "twitter:image", content: `https://service-desk.alliedit.com.br${ogImage.url}` },
     ],
-    links: [{ rel: "canonical", href: "https://alocacao-ti.alliedit.com.br/" }],
+    links: [{ rel: "canonical", href: lpCanonical("alocacao-ti", "alocacao-ti.alliedit.com.br") }],
     scripts: [
       {
         type: "application/ld+json",

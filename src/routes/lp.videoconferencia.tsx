@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
+import { lpCanonical } from "@/lib/site";
 import { Handshake, Compass, ShieldCheck, Users, Expand, Mic, type LucideIcon } from "lucide-react";
 
 import ogImage from "@/assets/og-image.png.asset.json";
@@ -46,7 +47,7 @@ export const Route = createFileRoute("/lp/videoconferencia")({
       { name: "description", content: description },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
-      { property: "og:url", content: "https://videoconferencia.alliedit.com.br/" },
+      { property: "og:url", content: lpCanonical("videoconferencia", "videoconferencia.alliedit.com.br") },
       { property: "og:type", content: "website" },
       { property: "og:image", content: `https://service-desk.alliedit.com.br${ogImage.url}` },
       { property: "og:image:width", content: "1200" },
@@ -57,7 +58,7 @@ export const Route = createFileRoute("/lp/videoconferencia")({
       { name: "twitter:description", content: description },
       { name: "twitter:image", content: `https://service-desk.alliedit.com.br${ogImage.url}` },
     ],
-    links: [{ rel: "canonical", href: "https://videoconferencia.alliedit.com.br/" }],
+    links: [{ rel: "canonical", href: lpCanonical("videoconferencia", "videoconferencia.alliedit.com.br") }],
     scripts: [
       {
         type: "application/ld+json",

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
+import { lpCanonical } from "@/lib/site";
 import { Headphones, Headset, Handshake, Compass, ShieldCheck, type LucideIcon } from "lucide-react";
 
 import ogImage from "@/assets/og-image.png.asset.json";
@@ -35,7 +36,7 @@ export const Route = createFileRoute("/lp/headset-callcenter")({
       { name: "description", content: description },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
-      { property: "og:url", content: "https://headset-callcenter.alliedit.com.br/" },
+      { property: "og:url", content: lpCanonical("headset-callcenter", "headset-callcenter.alliedit.com.br") },
       { property: "og:type", content: "website" },
       { property: "og:image", content: `https://service-desk.alliedit.com.br${ogImage.url}` },
       { property: "og:image:width", content: "1200" },
@@ -46,7 +47,7 @@ export const Route = createFileRoute("/lp/headset-callcenter")({
       { name: "twitter:description", content: description },
       { name: "twitter:image", content: `https://service-desk.alliedit.com.br${ogImage.url}` },
     ],
-    links: [{ rel: "canonical", href: "https://headset-callcenter.alliedit.com.br/" }],
+    links: [{ rel: "canonical", href: lpCanonical("headset-callcenter", "headset-callcenter.alliedit.com.br") }],
     scripts: [
       {
         type: "application/ld+json",
