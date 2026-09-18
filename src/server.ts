@@ -2,6 +2,7 @@ import "./lib/error-capture";
 
 import { consumeLastCapturedError } from "./lib/error-capture";
 import { renderErrorPage } from "./lib/error-page";
+import { PAGE_REDIRECTS, POST_REDIRECTS } from "./lib/redirects";
 
 type ServerEntry = {
   fetch: (request: Request, env: unknown, ctx: unknown) => Promise<Response> | Response;
@@ -66,52 +67,100 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
   return brandedErrorResponse();
 }
 
-// Host-based rewrites: each LP subdomain serves its route at "/".
-// e.g. cabeamento.alliedit.com.br/ -> internally renders /cabeamento
+// Host-based rewrites: each LP subdomain serves its /lp/<nome> route at "/".
+// e.g. cabeamento.alliedit.com.br/ -> internally renders /lp/cabeamento
 const HOST_REWRITES: Record<string, string> = {
-  "cabeamento.alliedit.com.br": "/cabeamento",
-  "headset-callcenter.alliedit.com.br": "/headset-callcenter",
-  "rally-bar.alliedit.com.br": "/rally-bar",
-  "headsets-poly.alliedit.com.br": "/headsets-poly",
-  "headset-poly.alliedit.com.br": "/headsets-poly",
-  "headset-logitech.alliedit.com.br": "/headset-logitech",
-  "headset-yealink.alliedit.com.br": "/headset-yealink",
-  "poly-studio.alliedit.com.br": "/poly-studio",
-  "yealink-videoconferencia.alliedit.com.br": "/yealink-videoconferencia",
-  "alocacao-ti.alliedit.com.br": "/alocacao-ti",
-  "videoconferencia.alliedit.com.br": "/videoconferencia",
+  "service-desk.alliedit.com.br": "/lp/service-desk",
+  "cabeamento.alliedit.com.br": "/lp/cabeamento",
+  "headset-callcenter.alliedit.com.br": "/lp/headset-callcenter",
+  "rally-bar.alliedit.com.br": "/lp/rally-bar",
+  "headsets-poly.alliedit.com.br": "/lp/headsets-poly",
+  "headset-poly.alliedit.com.br": "/lp/headsets-poly",
+  "headset-logitech.alliedit.com.br": "/lp/headset-logitech",
+  "headset-yealink.alliedit.com.br": "/lp/headset-yealink",
+  "poly-studio.alliedit.com.br": "/lp/poly-studio",
+  "yealink-videoconferencia.alliedit.com.br": "/lp/yealink-videoconferencia",
+  "alocacao-ti.alliedit.com.br": "/lp/alocacao-ti",
+  "videoconferencia.alliedit.com.br": "/lp/videoconferencia",
   "assinaturas.alliedit.com.br": "/assinaturas",
 };
 
-// Canonical home for each LP path. Requests to these paths on any other host
-// are 301'd to the LP's own subdomain root (avoids duplicate content).
-const CANONICAL_HOSTS: Record<string, string> = {
-  "/headset-callcenter": "headset-callcenter.alliedit.com.br",
-  "/headset-corporativo": "headset-callcenter.alliedit.com.br",
-  "/rally-bar": "rally-bar.alliedit.com.br",
-  "/headsets-poly": "headsets-poly.alliedit.com.br",
-  "/headset-logitech": "headset-logitech.alliedit.com.br",
-  "/headset-yealink": "headset-yealink.alliedit.com.br",
-  "/poly-studio": "poly-studio.alliedit.com.br",
-  "/yealink-videoconferencia": "yealink-videoconferencia.alliedit.com.br",
-  "/alocacao-ti": "alocacao-ti.alliedit.com.br",
-  "/videoconferencia": "videoconferencia.alliedit.com.br",
-  "/assinaturas": "assinaturas.alliedit.com.br",
+// Subdomínio de LP -> caminho da LP no domínio raiz.
+const LP_SUBDOMAINS: Record<string, string> = {
+  "service-desk.alliedit.com.br": "/lp/service-desk",
+  "cabeamento.alliedit.com.br": "/lp/cabeamento",
+  "headset-callcenter.alliedit.com.br": "/lp/headset-callcenter",
+  "rally-bar.alliedit.com.br": "/lp/rally-bar",
+  "headsets-poly.alliedit.com.br": "/lp/headsets-poly",
+  "headset-poly.alliedit.com.br": "/lp/headsets-poly",
+  "headset-logitech.alliedit.com.br": "/lp/headset-logitech",
+  "headset-yealink.alliedit.com.br": "/lp/headset-yealink",
+  "poly-studio.alliedit.com.br": "/lp/poly-studio",
+  "yealink-videoconferencia.alliedit.com.br": "/lp/yealink-videoconferencia",
+  "alocacao-ti.alliedit.com.br": "/lp/alocacao-ti",
+  "videoconferencia.alliedit.com.br": "/lp/videoconferencia",
 };
 
+// Liga no dia da virada: raiz do subdomínio passa a 301 pro domínio raiz em /lp/<nome>.
+const LP_REDIRECT_TO_ROOT_DOMAIN = false;
 
-function canonicalRedirect(request: Request): Response | undefined {
+const ROOT_DOMAIN = "alliedit.com.br";
+const ROOT_ORIGIN = "https://alliedit.com.br";
+
+function normalizePath(pathname: string): string {
+  return pathname.replace(/\/+$/, "") || "/";
+}
+
+function redirectTo(url: URL, target: string): Response {
+  const location = target.startsWith("http")
+    ? new URL(target)
+    : new URL(target, ROOT_ORIGIN);
+  if (!target.startsWith("http")) {
+    location.protocol = url.protocol;
+    location.host = url.host;
+  }
+  location.search = url.search;
+  return new Response(null, { status: 301, headers: { location: location.toString() } });
+}
+
+function hostRedirect(request: Request): Response | undefined {
   const url = new URL(request.url);
   const host = url.hostname.toLowerCase();
-  // Never redirect from preview/sandbox hosts, so the editor preview keeps working.
-  if (!host.endsWith("alliedit.com.br")) return undefined;
-  const path = url.pathname.replace(/\/+$/, "") || "/";
-  const canonicalHost = CANONICAL_HOSTS[path];
-  if (!canonicalHost || canonicalHost === host) return undefined;
-  const target = new URL(url.toString());
-  target.hostname = canonicalHost;
-  target.pathname = "/";
-  return Response.redirect(target.toString(), 301);
+  const path = normalizePath(url.pathname);
+
+  // O endereço temporário /site pode ter sido compartilhado: sempre 301 pro caminho novo.
+  if (path === "/site" || path.startsWith("/site/")) {
+    const rest = path.slice("/site".length) || "/";
+    if (rest !== path) return redirectTo(url, rest);
+  }
+
+  if (!host.endsWith(ROOT_DOMAIN)) return undefined;
+
+  // www -> domínio raiz, mesmo caminho.
+  if (host === `www.${ROOT_DOMAIN}`) {
+    const target = new URL(url.toString());
+    target.hostname = ROOT_DOMAIN;
+    return new Response(null, { status: 301, headers: { location: target.toString() } });
+  }
+
+  // Raiz de subdomínio de LP -> domínio raiz (só depois da virada).
+  if (LP_REDIRECT_TO_ROOT_DOMAIN && path === "/") {
+    const lpPath = LP_SUBDOMAINS[host];
+    if (lpPath) return redirectTo(url, `${ROOT_ORIGIN}${lpPath}`);
+  }
+
+  // Tabela de 301 do WordPress: só no domínio raiz.
+  if (host === ROOT_DOMAIN) {
+    const slug = path.slice(1);
+    const page = PAGE_REDIRECTS[slug];
+    if (page && normalizePath(page) !== path) return redirectTo(url, page);
+    if (slug && !slug.includes("/")) {
+      const post = POST_REDIRECTS[slug];
+      if (post && `/blog/${post}` !== path) return redirectTo(url, `/blog/${post}`);
+    }
+  }
+
+  return undefined;
 }
 
 // Extra per-host path aliases (deep links inside a subdomain).
@@ -142,7 +191,7 @@ function rewriteRequestForHost(request: Request): Request {
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
-      const redirect = canonicalRedirect(request);
+      const redirect = hostRedirect(request);
       if (redirect) return redirect;
       const handler = await getServerEntry();
       const rewritten = rewriteRequestForHost(request);

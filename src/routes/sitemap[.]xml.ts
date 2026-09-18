@@ -2,13 +2,13 @@ import { createFileRoute } from "@tanstack/react-router";
 import { dedupeByTitle, fetchAllPosts } from "@/lib/wp";
 
 const STATIC_PATHS = [
-  "/site",
-  "/site/sobre",
-  "/site/servicos",
-  "/site/servicos/digital-workspace",
-  "/site/produtos",
-  "/site/contato",
-  "/site/blog",
+  "/",
+  "/sobre",
+  "/servicos",
+  "/servicos/digital-workspace",
+  "/produtos",
+  "/contato",
+  "/blog",
 ];
 
 function xmlEscape(value: string): string {
@@ -51,7 +51,7 @@ export const Route = createFileRoute("/sitemap.xml")({
             .map((d) => new Date(d))
             .filter((d) => !Number.isNaN(d.getTime()))
             .sort((a, b) => b.getTime() - a.getTime())[0];
-          const loc = xmlEscape(`${origin}/site/blog/${post.slug}`);
+          const loc = xmlEscape(`${origin}/blog/${post.slug}`);
           entries.push(
             lastmod
               ? `  <url><loc>${loc}</loc><lastmod>${lastmod.toISOString()}</lastmod></url>`
