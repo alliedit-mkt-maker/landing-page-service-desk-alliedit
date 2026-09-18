@@ -32,6 +32,7 @@ import { Route as SiteProdutosRouteImport } from './routes/site.produtos'
 import { Route as SiteContatoRouteImport } from './routes/site.contato'
 import { Route as SiteServicosIndexRouteImport } from './routes/site.servicos.index'
 import { Route as SiteBlogIndexRouteImport } from './routes/site.blog.index'
+import { Route as SiteServicosDigitalWorkspaceRouteImport } from './routes/site.servicos.digital-workspace'
 import { Route as SiteBlogSlugRouteImport } from './routes/site.blog.$slug'
 
 const YealinkVideoconferenciaRoute = YealinkVideoconferenciaRouteImport.update({
@@ -149,6 +150,12 @@ const SiteBlogIndexRoute = SiteBlogIndexRouteImport.update({
   path: '/blog/',
   getParentRoute: () => SiteRoute,
 } as any)
+const SiteServicosDigitalWorkspaceRoute =
+  SiteServicosDigitalWorkspaceRouteImport.update({
+    id: '/servicos/digital-workspace',
+    path: '/servicos/digital-workspace',
+    getParentRoute: () => SiteRoute,
+  } as any)
 const SiteBlogSlugRoute = SiteBlogSlugRouteImport.update({
   id: '/blog/$slug',
   path: '/blog/$slug',
@@ -178,6 +185,7 @@ export interface FileRoutesByFullPath {
   '/site/sobre': typeof SiteSobreRoute
   '/site/': typeof SiteIndexRoute
   '/site/blog/$slug': typeof SiteBlogSlugRoute
+  '/site/servicos/digital-workspace': typeof SiteServicosDigitalWorkspaceRoute
   '/site/blog/': typeof SiteBlogIndexRoute
   '/site/servicos/': typeof SiteServicosIndexRoute
 }
@@ -203,6 +211,7 @@ export interface FileRoutesByTo {
   '/site/sobre': typeof SiteSobreRoute
   '/site': typeof SiteIndexRoute
   '/site/blog/$slug': typeof SiteBlogSlugRoute
+  '/site/servicos/digital-workspace': typeof SiteServicosDigitalWorkspaceRoute
   '/site/blog': typeof SiteBlogIndexRoute
   '/site/servicos': typeof SiteServicosIndexRoute
 }
@@ -230,6 +239,7 @@ export interface FileRoutesById {
   '/site/sobre': typeof SiteSobreRoute
   '/site/': typeof SiteIndexRoute
   '/site/blog/$slug': typeof SiteBlogSlugRoute
+  '/site/servicos/digital-workspace': typeof SiteServicosDigitalWorkspaceRoute
   '/site/blog/': typeof SiteBlogIndexRoute
   '/site/servicos/': typeof SiteServicosIndexRoute
 }
@@ -258,6 +268,7 @@ export interface FileRouteTypes {
     | '/site/sobre'
     | '/site/'
     | '/site/blog/$slug'
+    | '/site/servicos/digital-workspace'
     | '/site/blog/'
     | '/site/servicos/'
   fileRoutesByTo: FileRoutesByTo
@@ -283,6 +294,7 @@ export interface FileRouteTypes {
     | '/site/sobre'
     | '/site'
     | '/site/blog/$slug'
+    | '/site/servicos/digital-workspace'
     | '/site/blog'
     | '/site/servicos'
   id:
@@ -309,6 +321,7 @@ export interface FileRouteTypes {
     | '/site/sobre'
     | '/site/'
     | '/site/blog/$slug'
+    | '/site/servicos/digital-workspace'
     | '/site/blog/'
     | '/site/servicos/'
   fileRoutesById: FileRoutesById
@@ -496,6 +509,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SiteBlogIndexRouteImport
       parentRoute: typeof SiteRoute
     }
+    '/site/servicos/digital-workspace': {
+      id: '/site/servicos/digital-workspace'
+      path: '/servicos/digital-workspace'
+      fullPath: '/site/servicos/digital-workspace'
+      preLoaderRoute: typeof SiteServicosDigitalWorkspaceRouteImport
+      parentRoute: typeof SiteRoute
+    }
     '/site/blog/$slug': {
       id: '/site/blog/$slug'
       path: '/blog/$slug'
@@ -512,6 +532,7 @@ interface SiteRouteChildren {
   SiteSobreRoute: typeof SiteSobreRoute
   SiteIndexRoute: typeof SiteIndexRoute
   SiteBlogSlugRoute: typeof SiteBlogSlugRoute
+  SiteServicosDigitalWorkspaceRoute: typeof SiteServicosDigitalWorkspaceRoute
   SiteBlogIndexRoute: typeof SiteBlogIndexRoute
   SiteServicosIndexRoute: typeof SiteServicosIndexRoute
 }
@@ -522,6 +543,7 @@ const SiteRouteChildren: SiteRouteChildren = {
   SiteSobreRoute: SiteSobreRoute,
   SiteIndexRoute: SiteIndexRoute,
   SiteBlogSlugRoute: SiteBlogSlugRoute,
+  SiteServicosDigitalWorkspaceRoute: SiteServicosDigitalWorkspaceRoute,
   SiteBlogIndexRoute: SiteBlogIndexRoute,
   SiteServicosIndexRoute: SiteServicosIndexRoute,
 }
