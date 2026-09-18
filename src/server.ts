@@ -115,7 +115,7 @@ function canonicalRedirect(request: Request): Response | undefined {
 }
 
 // Extra per-host path aliases (deep links inside a subdomain).
-// e.g. links.alliedit.com.br/painel -> internally renders /links-painel
+// e.g. exemplo.alliedit.com.br/atalho -> renderiza outra rota interna
 const HOST_PATH_REWRITES: Record<string, Record<string, string>> = {};
 
 function rewriteRequestForHost(request: Request): Request {
