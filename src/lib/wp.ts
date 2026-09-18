@@ -1,11 +1,15 @@
-// Endpoint único do WordPress headless. Ao migrar o WP para um subdomínio,
-// basta trocar esta constante.
-export const WP_API_URL = "https://alliedit.com.br/wp-json/wp/v2";
+// Endpoint único do WordPress headless. O domínio próprio devolve desafio
+// anti-bot (403) para requisições feitas do servidor; o proxy oficial do
+// WordPress.com responde normalmente.
+export const WP_SITE_ID = "257102166";
+export const WP_API_URL = `https://public-api.wordpress.com/wp/v2/sites/${WP_SITE_ID}`;
+export const WP_REST_V1_URL = `https://public-api.wordpress.com/rest/v1.1/sites/${WP_SITE_ID}`;
 
 export type WpPost = {
   id: number;
   slug: string;
   date: string;
+  modified?: string;
   link: string;
   title: { rendered: string };
   excerpt: { rendered: string };
@@ -86,10 +90,150 @@ export function primaryCategory(post: WpPost): string | null {
   return null;
 }
 
-async function wpFetch(path: string): Promise<Response> {
-  const res = await fetch(`${WP_API_URL}${path}`, { headers: { Accept: "application/json" } });
+// Cache-buster por minuto: fura cache de edge sem perder o benefício do cache.
+function cacheBuster(): string {
+  return String(Math.floor(Date.now() / 60_000));
+}
+
+export async function wpFetch(path: string): Promise<Response> {
+  const sep = path.includes("?") ? "&" : "?";
+  const res = await fetch(`${WP_API_URL}${path}${sep}_cb=${cacheBuster()}`, {
+    headers: { Accept: "application/json" },
+  });
   if (!res.ok) throw new Error(`WordPress respondeu ${res.status}`);
   return res;
+}
+
+// ---------- Helpers puros ----------
+
+export function truncateAtWord(text: string, max = 120): string {
+  const clean = text.trim();
+  if (clean.length <= max) return clean;
+  const cut = clean.slice(0, max);
+  const lastSpace = cut.lastIndexOf(" ");
+  return (lastSpace > 0 ? cut.slice(0, lastSpace) : cut).replace(/[\s,;:.-]+$/, "") + "…";
+}
+
+const DANGLING = new Set([
+  "e", "ou", "de", "da", "do", "das", "dos", "para", "pra", "que", "com", "sem",
+  "em", "no", "na", "o", "a", "os", "as", "um", "uma", "ao", "à", "por", "se",
+  "como", "mas",
+]);
+
+function dropDanglingConnector(text: string): string {
+  let out = text.replace(/[\s,;:.-]+$/, "");
+  for (;;) {
+    const m = /(?:^|\s)([^\s]+)$/.exec(out);
+    if (!m) break;
+    const word = m[1].toLowerCase().replace(/[^\p{L}]/gu, "");
+    if (!DANGLING.has(word)) break;
+    out = out.slice(0, out.length - m[1].length).replace(/[\s,;:.-]+$/, "");
+  }
+  return out;
+}
+
+export function socialDescription(text: string, max = 80): string {
+  const clean = text.trim();
+  if (clean.length <= max) return clean;
+  const window = clean.slice(0, max);
+
+  const sentence = /[.!?](?=[^.!?]*$)/.exec(window);
+  if (sentence && sentence.index > 20) {
+    return window.slice(0, sentence.index + 1);
+  }
+
+  const clauseIdx = Math.max(window.lastIndexOf(","), window.lastIndexOf(";"));
+  if (clauseIdx > 20) {
+    return dropDanglingConnector(window.slice(0, clauseIdx));
+  }
+
+  return dropDanglingConnector(truncateAtWord(window, max).replace(/…$/, ""));
+}
+
+export function seoTitle(title: string): string {
+  return `${title} | Allied IT`;
+}
+
+function normalizeTitleKey(title: string): string {
+  return stripHtml(title)
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N}\s]/gu, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+// Mantém a cópia mais ANTIGA de cada título (o CMS tem centenas de duplicatas).
+export function dedupeByTitle<T extends { title: { rendered: string }; date: string }>(
+  posts: T[],
+): T[] {
+  const best = new Map<string, T>();
+  for (const post of posts) {
+    const key = normalizeTitleKey(post.title.rendered);
+    const current = best.get(key);
+    if (!current || new Date(post.date).getTime() < new Date(current.date).getTime()) {
+      best.set(key, post);
+    }
+  }
+  const kept = new Set(best.values());
+  return posts.filter((p) => kept.has(p));
+}
+
+export function normalizeInternalLinks(html: string): string {
+  return html.replace(
+    /href=("|')https?:\/\/(?:www\.)?alliedit\.com\.br\/([a-z0-9-]+)\/?\1/gi,
+    (_m, q: string, slug: string) => `href=${q}/site/blog/${slug}${q}`,
+  );
+}
+
+// ---------- SEO (Rank Math via REST v1.1) ----------
+
+export type WpPostSeo = {
+  rank_math_title?: string;
+  rank_math_description?: string;
+  rank_math_facebook_description?: string;
+};
+
+export async function fetchPostSeo(slug: string): Promise<WpPostSeo> {
+  try {
+    const res = await fetch(
+      `${WP_REST_V1_URL}/posts/slug:${encodeURIComponent(slug)}?fields=ID,metadata&_cb=${cacheBuster()}`,
+      { headers: { Accept: "application/json" } },
+    );
+    if (!res.ok) return {};
+    const data = (await res.json()) as { metadata?: { key: string; value: unknown }[] };
+    const meta = data.metadata ?? [];
+    const read = (key: string): string | undefined => {
+      const found = meta.find((m) => m.key === key);
+      const value = typeof found?.value === "string" ? found.value.trim() : "";
+      return value ? value : undefined;
+    };
+    const title = read("rank_math_title");
+    return {
+      rank_math_title: title && !title.includes("%") ? title : undefined,
+      rank_math_description: read("rank_math_description"),
+      rank_math_facebook_description: read("rank_math_facebook_description"),
+    };
+  } catch {
+    return {};
+  }
+}
+
+export async function fetchAllPosts(): Promise<{ posts: WpPost[]; total: number }> {
+  const perPage = 100;
+  const all: WpPost[] = [];
+  let total = 0;
+  for (let page = 1; page <= 100; page += 1) {
+    const res = await wpFetch(
+      `/posts?per_page=${perPage}&page=${page}&orderby=id&order=asc&status=publish&_fields=id,slug,date,modified,title`,
+    );
+    if (page === 1) total = Number(res.headers.get("X-WP-Total") ?? "0") || 0;
+    const chunk = (await res.json()) as WpPost[];
+    all.push(...chunk);
+    if (chunk.length < perPage) break;
+  }
+  return { posts: all, total };
 }
 
 export async function fetchPosts(params: { page: number; categoryId: number | null }): Promise<{
