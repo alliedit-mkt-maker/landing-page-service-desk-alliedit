@@ -446,7 +446,7 @@ function DigitalWorkspacePage() {
       </section>
 
       {/* DOBRA 4 — Field Service */}
-      <section className="bg-gradient-to-b from-white via-[#EEF4F6] to-[#DDE8EC] py-24 sm:py-32">
+      <section className="border-b-2 border-[var(--site-yellow)]/70 bg-gradient-to-b from-white to-[#EEF4F6] py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <div className="grid items-center gap-12 lg:grid-cols-[0.95fr_1.05fr]">
             <Reveal variant="scale-in" className="order-2 lg:order-1">
