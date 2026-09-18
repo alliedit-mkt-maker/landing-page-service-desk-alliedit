@@ -298,7 +298,7 @@ function DigitalWorkspacePage() {
   return (
     <>
       {/* DOBRA 1 — Hero com foto */}
-      <section className="relative overflow-hidden bg-[#050D12]">
+      <section className="relative -mt-[72px] overflow-hidden bg-[#050D12] pt-[72px]">
         <img
           src={heroPhoto.url}
           alt="Profissional acessando serviços de TI em ambiente digital"
@@ -306,11 +306,7 @@ function DigitalWorkspacePage() {
         />
         <div
           aria-hidden
-          className="absolute inset-0 bg-gradient-to-r from-black via-black/85 to-[#046E8B]/25"
-        />
-        <div
-          aria-hidden
-          className="absolute inset-0 bg-gradient-to-t from-[#050D12] via-transparent to-black/50"
+          className="absolute inset-0 bg-gradient-to-r from-black/92 via-black/55 to-transparent"
         />
         <div className="relative mx-auto max-w-7xl px-5 py-28 sm:px-8 sm:py-36">
           <Reveal variant="fade-up" className="max-w-[58ch]">
@@ -335,7 +331,7 @@ function DigitalWorkspacePage() {
       </section>
 
       {/* DOBRA 2 — Card banner com fotos deslizantes */}
-      <section className="relative bg-gradient-to-b from-[#050D12] via-[#08202B] to-[#F4F8F9] py-20 sm:py-28">
+      <section className="relative bg-[#050D12] py-20 sm:py-28">
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
           <Reveal variant="fade-up">
             <div className="relative grid overflow-hidden rounded-[28px] border border-white/10 bg-[#08131A] shadow-[0_30px_80px_-40px_rgba(0,0,0,0.9)] lg:grid-cols-2">
@@ -355,7 +351,7 @@ function DigitalWorkspacePage() {
                   className="pointer-events-none absolute inset-0 opacity-50"
                   style={{ backgroundImage: DOT_TEXTURE, backgroundSize: "22px 22px" }}
                 />
-                <div className="relative">
+                <div className="relative flex flex-col items-center text-center">
                   <h2 className="font-chillax text-[1.7rem] font-bold leading-tight tracking-tight text-white sm:text-[2.1rem]">
                     O que é Digital Workspace
                   </h2>
@@ -365,7 +361,7 @@ function DigitalWorkspacePage() {
                     Service (suporte presencial) em uma única frente, para que ninguém fique
                     esperando entre um time e outro.
                   </p>
-                  <div className="mt-10 grid gap-6 sm:grid-cols-3">
+                  <div className="mt-10 grid w-full gap-6 sm:grid-cols-3">
                     {OVERVIEW.map((item, i) => {
                       const Icon = item.icon;
                       return (
@@ -373,7 +369,7 @@ function DigitalWorkspacePage() {
                           key={item.label}
                           variant="fade-up"
                           delay={i * 110}
-                          className="flex flex-col items-start gap-3 border-t border-white/15 pt-5"
+                          className="flex flex-col items-center gap-3 border-t border-white/15 pt-5 text-center"
                         >
                           <Icon
                             className="size-8 text-[var(--site-yellow)]"
@@ -550,8 +546,8 @@ function DigitalWorkspacePage() {
 
       {/* DOBRA 6 — Por que a Allied IT */}
       <section className="bg-gradient-to-b from-[#08131A] to-[#0B1B23] py-20 sm:py-24">
-        <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.1fr]">
-          <Reveal variant="fade-up" className="max-w-[46ch]">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+          <Reveal variant="fade-up" className="mx-auto max-w-[52ch] text-center">
             <h2 className="font-chillax text-[1.6rem] font-bold leading-tight tracking-tight text-white/90 sm:text-[1.95rem]">
               Por que Digital Workspace com a Allied IT
             </h2>
@@ -561,7 +557,7 @@ function DigitalWorkspacePage() {
             </p>
           </Reveal>
 
-          <div className="grid gap-5 sm:grid-cols-2">
+          <div className="mt-12 grid gap-5 sm:grid-cols-2">
             {WHY.map((item, i) => {
               const Icon = item.icon;
               return (
@@ -575,7 +571,7 @@ function DigitalWorkspacePage() {
                     <span className="font-chillax text-sm font-bold tracking-[0.18em] text-[var(--site-yellow)]">
                       {item.num}
                     </span>
-                    <Icon className="size-7 text-[var(--site-blue)]" strokeWidth={1.3} />
+                    <Icon className="size-7 text-[var(--site-yellow)]" strokeWidth={1.3} />
                   </div>
                   <p className="font-chillax mt-5 text-lg font-semibold text-white">
                     {item.title}
