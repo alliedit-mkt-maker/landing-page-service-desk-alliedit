@@ -33,6 +33,7 @@ type Variant =
 const HOST_VARIANT_MAP: Record<string, Variant> = {
   "service-desk.alliedit.com.br": "service-desk",
   "cabeamento.alliedit.com.br": "cabeamento",
+  localhost: "cabeamento",
   "headset-callcenter.alliedit.com.br": "headset-callcenter",
   "rally-bar.alliedit.com.br": "rally-bar",
   "headsets-poly.alliedit.com.br": "headsets-poly",
