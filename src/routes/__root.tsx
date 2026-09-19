@@ -9,29 +9,28 @@ import {
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
-import ogImage from "@/assets/og-image.png.asset.json";
 import favicon from "@/assets/favicon.svg.asset.json";
+import { ogImageUrl } from "@/lib/seo";
 
 const GTM_ID = import.meta.env.VITE_GTM_ID as string | undefined;
-const SITE_URL = "https://service-desk.alliedit.com.br";
-const OG_IMAGE_URL = `${SITE_URL}${ogImage.url}`;
 
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
+      <title>Página não encontrada | Allied IT</title>
       <meta name="robots" content="noindex, nofollow" />
       <div className="max-w-md text-center">
         <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
+        <h2 className="mt-4 text-xl font-semibold text-foreground">Página não encontrada</h2>
         <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
+          A página que você procura não existe ou foi movida.
         </p>
         <div className="mt-6">
           <Link
             to="/"
             className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Go home
+            Voltar ao início
           </Link>
         </div>
       </div>
@@ -79,16 +78,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { name: "author", content: "AlliedIT" },
+      { name: "author", content: "Allied IT" },
+      { name: "theme-color", content: "#026E8C" },
       { property: "og:type", content: "website" },
-      { property: "og:site_name", content: "AlliedIT" },
+      { property: "og:site_name", content: "Allied IT" },
       { name: "twitter:card", content: "summary_large_image" },
-      { property: "og:image:alt", content: "AlliedIT" },
+      { property: "og:image", content: ogImageUrl() },
+      { name: "twitter:image", content: ogImageUrl() },
+      { property: "og:image:alt", content: "Allied IT" },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
     ],
     links: [
       { rel: "icon", type: "image/svg+xml", href: favicon.url },
+      { rel: "icon", type: "image/png", sizes: "132x132", href: "/icone-site.png" },
+      { rel: "apple-touch-icon", href: "/icone-site.png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
