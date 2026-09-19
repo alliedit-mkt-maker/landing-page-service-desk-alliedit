@@ -7,8 +7,7 @@ export const assinaturasMeta = {
     "Ferramenta interna AlliedIT: preencha seus dados, monte sua assinatura de e-mail padronizada e copie direto para o Outlook ou Gmail.",
 };
 
-export const Route = createFileRoute("/assinaturas")({
-  head: () => ({
+export const assinaturasHead = () => ({
     meta: [
       { title: assinaturasMeta.title },
       { name: "description", content: assinaturasMeta.description },
@@ -18,7 +17,10 @@ export const Route = createFileRoute("/assinaturas")({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-  }),
+});
+
+export const Route = createFileRoute("/assinaturas")({
+  head: assinaturasHead,
   component: AssinaturasPage,
 });
 

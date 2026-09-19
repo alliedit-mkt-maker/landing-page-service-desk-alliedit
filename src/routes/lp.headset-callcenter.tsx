@@ -29,8 +29,7 @@ const title = "AlliedIT | Headsets corporativos Yealink, Logitech e Poly";
 const description =
   "O headset certo para cada tipo de chamada: do uso diário ao call center de alto volume. Cotação rápida, entrega e suporte com quem entende de TI corporativa.";
 
-export const Route = createFileRoute("/lp/headset-callcenter")({
-  head: () => ({
+export const headsetCallcenterHead = () => ({
     meta: [
       { title },
       { name: "description", content: description },
@@ -61,7 +60,10 @@ export const Route = createFileRoute("/lp/headset-callcenter")({
         }),
       },
     ],
-  }),
+});
+
+export const Route = createFileRoute("/lp/headset-callcenter")({
+  head: headsetCallcenterHead,
   component: HeadsetPage,
 });
 

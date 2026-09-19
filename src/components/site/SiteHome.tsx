@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import { HeroParticles } from "@/components/site/HeroParticles";
 import { SiteClients } from "@/components/site/SiteClients";
 import { SiteServices } from "@/components/site/SiteServices";
@@ -10,26 +10,6 @@ import { SiteCta } from "@/components/site/SiteCta";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import heroBg from "@/assets/site/site-cta-banner.jpg.asset.json";
 
-export const Route = createFileRoute("/_site/")({
-  head: () => ({
-    meta: [
-      { title: "Allied IT | Tecnologia que sustenta a sua operação" },
-      {
-        name: "description",
-        content:
-          "Allied IT: serviços gerenciados, infraestrutura e produtos de TI para empresas que precisam de operação estável e previsível.",
-      },
-      { property: "og:title", content: "Allied IT | Tecnologia que sustenta a sua operação" },
-      {
-        property: "og:description",
-        content: "Serviços gerenciados, infraestrutura e produtos de TI para empresas.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
-  component: SiteHome,
-});
 
 // Palavras em arco à esquerda do ícone. Todas compartilham o mesmo ciclo de
 // animação; o delay é apenas uma defasagem curta e progressiva (onda coesa).
@@ -45,7 +25,7 @@ const WORDS: { label: string; style: string }[] = [
 ];
 
 
-function SiteHome() {
+export function SiteHome() {
   const btnBase =
     "font-inter inline-flex h-11 items-center justify-center whitespace-nowrap px-7 text-[11px] font-semibold uppercase tracking-[0.16em] text-white transition-colors duration-200";
 

@@ -37,8 +37,7 @@ const title = "AlliedIT | Headsets Logitech: Zone Wired e Zone Wireless";
 const description =
   "Com fio ou sem fio? A AlliedIT ajuda sua empresa a escolher, comparar e padronizar headsets Logitech Zone para atendimento, reunião e trabalho híbrido, com produto genuíno e nota fiscal.";
 
-export const Route = createFileRoute("/lp/headset-logitech")({
-  head: () => ({
+export const headsetLogitechHead = () => ({
     meta: [
       { title },
       { name: "description", content: description },
@@ -69,7 +68,10 @@ export const Route = createFileRoute("/lp/headset-logitech")({
         }),
       },
     ],
-  }),
+});
+
+export const Route = createFileRoute("/lp/headset-logitech")({
+  head: headsetLogitechHead,
   component: LogitechPage,
 });
 

@@ -36,8 +36,7 @@ const title = "AlliedIT | Headsets Yealink: BH70, WH64 e UH34 para empresas";
 const description =
   "Custo-benefício sem abrir mão de qualidade de áudio. A AlliedIT ajuda sua empresa a escolher e padronizar headsets Yealink para atendimento, operação e trabalho híbrido, com produto genuíno e nota fiscal.";
 
-export const Route = createFileRoute("/lp/headset-yealink")({
-  head: () => ({
+export const headsetYealinkHead = () => ({
     meta: [
       { title },
       { name: "description", content: description },
@@ -68,7 +67,10 @@ export const Route = createFileRoute("/lp/headset-yealink")({
         }),
       },
     ],
-  }),
+});
+
+export const Route = createFileRoute("/lp/headset-yealink")({
+  head: headsetYealinkHead,
   component: YealinkPage,
 });
 

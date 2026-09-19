@@ -13,7 +13,7 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ObrigadoRouteImport } from './routes/obrigado'
 import { Route as AssinaturasRouteImport } from './routes/assinaturas'
 import { Route as SiteRouteImport } from './routes/_site'
-import { Route as SiteIndexRouteImport } from './routes/_site.index'
+import { Route as IndexRouteImport } from './routes/index'
 import { Route as LpYealinkVideoconferenciaRouteImport } from './routes/lp.yealink-videoconferencia'
 import { Route as LpVideoconferenciaRouteImport } from './routes/lp.videoconferencia'
 import { Route as LpServiceDeskRouteImport } from './routes/lp.service-desk'
@@ -52,10 +52,10 @@ const SiteRoute = SiteRouteImport.update({
   id: '/_site',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SiteIndexRoute = SiteIndexRouteImport.update({
+const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => SiteRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
 const LpYealinkVideoconferenciaRoute =
   LpYealinkVideoconferenciaRouteImport.update({
@@ -151,7 +151,7 @@ const SiteBlogSlugRoute = SiteBlogSlugRouteImport.update({
 } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof SiteIndexRoute
+  '/': typeof IndexRoute
   '/assinaturas': typeof AssinaturasRoute
   '/obrigado': typeof ObrigadoRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -175,6 +175,7 @@ export interface FileRoutesByFullPath {
   '/servicos/': typeof SiteServicosIndexRoute
 }
 export interface FileRoutesByTo {
+  '/': typeof IndexRoute
   '/assinaturas': typeof AssinaturasRoute
   '/obrigado': typeof ObrigadoRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -192,7 +193,6 @@ export interface FileRoutesByTo {
   '/lp/service-desk': typeof LpServiceDeskRoute
   '/lp/videoconferencia': typeof LpVideoconferenciaRoute
   '/lp/yealink-videoconferencia': typeof LpYealinkVideoconferenciaRoute
-  '/': typeof SiteIndexRoute
   '/blog/$slug': typeof SiteBlogSlugRoute
   '/servicos/digital-workspace': typeof SiteServicosDigitalWorkspaceRoute
   '/blog': typeof SiteBlogIndexRoute
@@ -200,6 +200,7 @@ export interface FileRoutesByTo {
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
+  '/': typeof IndexRoute
   '/_site': typeof SiteRouteWithChildren
   '/assinaturas': typeof AssinaturasRoute
   '/obrigado': typeof ObrigadoRoute
@@ -218,7 +219,6 @@ export interface FileRoutesById {
   '/lp/service-desk': typeof LpServiceDeskRoute
   '/lp/videoconferencia': typeof LpVideoconferenciaRoute
   '/lp/yealink-videoconferencia': typeof LpYealinkVideoconferenciaRoute
-  '/_site/': typeof SiteIndexRoute
   '/_site/blog/$slug': typeof SiteBlogSlugRoute
   '/_site/servicos/digital-workspace': typeof SiteServicosDigitalWorkspaceRoute
   '/_site/blog/': typeof SiteBlogIndexRoute
@@ -251,6 +251,7 @@ export interface FileRouteTypes {
     | '/servicos/'
   fileRoutesByTo: FileRoutesByTo
   to:
+    | '/'
     | '/assinaturas'
     | '/obrigado'
     | '/sitemap.xml'
@@ -268,13 +269,13 @@ export interface FileRouteTypes {
     | '/lp/service-desk'
     | '/lp/videoconferencia'
     | '/lp/yealink-videoconferencia'
-    | '/'
     | '/blog/$slug'
     | '/servicos/digital-workspace'
     | '/blog'
     | '/servicos'
   id:
     | '__root__'
+    | '/'
     | '/_site'
     | '/assinaturas'
     | '/obrigado'
@@ -293,7 +294,6 @@ export interface FileRouteTypes {
     | '/lp/service-desk'
     | '/lp/videoconferencia'
     | '/lp/yealink-videoconferencia'
-    | '/_site/'
     | '/_site/blog/$slug'
     | '/_site/servicos/digital-workspace'
     | '/_site/blog/'
@@ -301,6 +301,7 @@ export interface FileRouteTypes {
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
+  IndexRoute: typeof IndexRoute
   SiteRoute: typeof SiteRouteWithChildren
   AssinaturasRoute: typeof AssinaturasRoute
   ObrigadoRoute: typeof ObrigadoRoute
@@ -348,12 +349,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SiteRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_site/': {
-      id: '/_site/'
+    '/': {
+      id: '/'
       path: '/'
       fullPath: '/'
-      preLoaderRoute: typeof SiteIndexRouteImport
-      parentRoute: typeof SiteRoute
+      preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/lp/yealink-videoconferencia': {
       id: '/lp/yealink-videoconferencia'
@@ -488,7 +489,6 @@ interface SiteRouteChildren {
   SiteContatoRoute: typeof SiteContatoRoute
   SiteProdutosRoute: typeof SiteProdutosRoute
   SiteSobreRoute: typeof SiteSobreRoute
-  SiteIndexRoute: typeof SiteIndexRoute
   SiteBlogSlugRoute: typeof SiteBlogSlugRoute
   SiteServicosDigitalWorkspaceRoute: typeof SiteServicosDigitalWorkspaceRoute
   SiteBlogIndexRoute: typeof SiteBlogIndexRoute
@@ -499,7 +499,6 @@ const SiteRouteChildren: SiteRouteChildren = {
   SiteContatoRoute: SiteContatoRoute,
   SiteProdutosRoute: SiteProdutosRoute,
   SiteSobreRoute: SiteSobreRoute,
-  SiteIndexRoute: SiteIndexRoute,
   SiteBlogSlugRoute: SiteBlogSlugRoute,
   SiteServicosDigitalWorkspaceRoute: SiteServicosDigitalWorkspaceRoute,
   SiteBlogIndexRoute: SiteBlogIndexRoute,
@@ -509,6 +508,7 @@ const SiteRouteChildren: SiteRouteChildren = {
 const SiteRouteWithChildren = SiteRoute._addFileChildren(SiteRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
+  IndexRoute: IndexRoute,
   SiteRoute: SiteRouteWithChildren,
   AssinaturasRoute: AssinaturasRoute,
   ObrigadoRoute: ObrigadoRoute,

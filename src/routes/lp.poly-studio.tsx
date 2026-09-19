@@ -47,8 +47,7 @@ const title = "AlliedIT | Poly Studio V12, X32, V52 e X52 para salas de reunião
 const description =
   "Videoconferência Poly (HP) por tipo de sala: V12 e X32 para huddle rooms, V52 e X52 para salas médias. Modo USB (BYOD) ou independente com o tablet TC10. Revenda, instalação e suporte AlliedIT.";
 
-export const Route = createFileRoute("/lp/poly-studio")({
-  head: () => ({
+export const polyStudioHead = () => ({
     meta: [
       { title },
       { name: "description", content: description },
@@ -79,7 +78,10 @@ export const Route = createFileRoute("/lp/poly-studio")({
         }),
       },
     ],
-  }),
+});
+
+export const Route = createFileRoute("/lp/poly-studio")({
+  head: polyStudioHead,
   component: PolyStudioPage,
 });
 
