@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { lpCanonical } from "@/lib/site";
+import { lpCanonical, PUBLIC_ORIGIN } from "@/lib/site";
+import { ogImageUrl } from "@/lib/seo";
 import { Handshake, Compass, ShieldCheck, Headset, Bluetooth, FileCheck2, RefreshCw, Sparkles, Gauge, MonitorCog, ChevronLeft, ChevronRight } from "lucide-react";
 
-import ogImage from "@/assets/og-image.png.asset.json";
 import heroImage from "@/assets/headsets/hero-headset.jpg";
 import polyLogo from "@/assets/headsets/poly-hp-logo.png.asset.json";
 import bwPrimary from "@/assets/headsets/poly-bw-main.webp.asset.json";
@@ -22,9 +22,9 @@ import { SiteFooter } from "@/components/lp/SiteFooter";
 import { Clients } from "@/components/lp/Clients";
 import { Reveal } from "@/components/lp/Reveal";
 
-const title = "AlliedIT | Headsets Poly: Blackwire 3220 e Voyager Focus 2";
+const title = "Headsets Poly: Blackwire 3220 e Voyager Focus 2 | Allied IT";
 const description =
-  "Áudio limpo em cada chamada da sua empresa. A AlliedIT indica, entrega e padroniza headsets Poly (HP) para operação, call center e times executivos, com produto genuíno e nota fiscal.";
+  "Headsets Poly (HP) para operação, call center e times executivos, com produto genuíno, nota fiscal e padronização.";
 
 export const headsetsPolyHead = () => ({
     meta: [
@@ -34,14 +34,14 @@ export const headsetsPolyHead = () => ({
       { property: "og:description", content: description },
       { property: "og:url", content: lpCanonical("headsets-poly", "headsets-poly.alliedit.com.br") },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: `https://service-desk.alliedit.com.br${ogImage.url}` },
+      { property: "og:image", content: ogImageUrl() },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
-      { property: "og:image:alt", content: "AlliedIT" },
+      { property: "og:image:alt", content: "Allied IT" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
-      { name: "twitter:image", content: `https://service-desk.alliedit.com.br${ogImage.url}` },
+      { name: "twitter:image", content: ogImageUrl() },
     ],
     links: [{ rel: "canonical", href: lpCanonical("headsets-poly", "headsets-poly.alliedit.com.br") }],
     scripts: [
@@ -51,7 +51,7 @@ export const headsetsPolyHead = () => ({
           "@context": "https://schema.org",
           "@type": "Service",
           serviceType: "Revenda de headsets corporativos Poly (HP)",
-          provider: { "@type": "Organization", name: "AlliedIT", url: "https://www.alliedit.com.br" },
+          provider: { "@type": "Organization", name: "Allied IT", url: PUBLIC_ORIGIN },
           areaServed: "BR",
           description,
         }),

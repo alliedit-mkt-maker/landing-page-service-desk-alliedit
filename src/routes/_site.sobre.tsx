@@ -1,3 +1,4 @@
+import { pageHead } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
@@ -22,23 +23,13 @@ import { SiteBrazilMap } from "@/components/site/SiteBrazilMap";
 import officeHall from "@/assets/sobre/hero-office.jpg.asset.json";
 import ceo from "@/assets/sobre/ceo-jimmy.jpg.asset.json";
 
-const TITLE = "Sobre a Allied IT | Quem somos e como operamos TI corporativa";
-const DESCRIPTION =
-  "Empresa brasileira de tecnologia fundada em 2018, com atuação nacional em Service Desk, nuvem, segurança e infraestrutura para empresas de médio e grande porte.";
-
 export const Route = createFileRoute("/_site/sobre")({
-  head: () => ({
-    meta: [
-      { title: TITLE },
-      { name: "description", content: DESCRIPTION },
-      { property: "og:title", content: TITLE },
-      { property: "og:description", content: DESCRIPTION },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: TITLE },
-      { name: "twitter:description", content: DESCRIPTION },
-    ],
-  }),
+  head: () =>
+    pageHead({
+      title: "Sobre a Allied IT | Quem somos e como operamos TI",
+      description: "Tecnologia brasileira desde 2018: Service Desk, nuvem, segurança e infraestrutura para médias e grandes empresas.",
+      path: "/sobre",
+    }),
   component: SobrePage,
 });
 

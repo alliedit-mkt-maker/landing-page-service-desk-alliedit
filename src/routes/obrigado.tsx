@@ -1,3 +1,4 @@
+import { pageHead } from "@/lib/seo";
 import { useEffect, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/lp/SiteHeader";
@@ -5,14 +6,14 @@ import { SiteFooter } from "@/components/lp/SiteFooter";
 import { LpProvider, pushEvent } from "@/components/lp/LpProvider";
 
 export const Route = createFileRoute("/obrigado")({
-  head: () => ({
-    meta: [
-      { title: "Obrigado | AlliedIT" },
-      { name: "description", content: "Recebemos seu contato. Em até 4 horas úteis um especialista da AlliedIT retorna." },
-      { name: "robots", content: "noindex" },
-    ],
-    links: [{ rel: "canonical", href: "/obrigado" }],
-  }),
+  head: () =>
+    pageHead({
+      title: "Recebemos seu contato | Allied IT",
+      description:
+        "Recebemos seu contato. Em até 4 horas úteis um especialista da Allied IT retorna para entender a sua operação de TI.",
+      path: "/obrigado",
+      noindex: true,
+    }),
   component: ObrigadoPage,
 });
 

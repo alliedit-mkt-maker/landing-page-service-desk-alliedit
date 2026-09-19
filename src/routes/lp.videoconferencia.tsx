@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { lpCanonical } from "@/lib/site";
+import { lpCanonical, PUBLIC_ORIGIN } from "@/lib/site";
+import { ogImageUrl } from "@/lib/seo";
 import { Handshake, Compass, ShieldCheck, Users, Expand, Mic, type LucideIcon } from "lucide-react";
 
-import ogImage from "@/assets/og-image.png.asset.json";
 import logoAlliedIt from "@/assets/logo-alliedit.png";
 
 import yealinkLogo from "@/assets/headsets/yealink-logo.png.asset.json";
@@ -36,9 +36,9 @@ import { Reveal } from "@/components/lp/Reveal";
 // Formulário HubSpot dedicado desta LP, preencher quando o ID for criado.
 const VC_FORM_ID = "aaf63ed6-edf2-45ed-8434-54c3d6d4df0d";
 
-const title = "AlliedIT | Videoconferência Logitech, Poly e Yealink para salas de reunião";
+const title = "Videoconferência Logitech, Poly e Yealink | Allied IT";
 const description =
-  "Barras de videoconferência Yealink, Logitech e Poly escolhidas pelo tamanho real da sua sala: huddle rooms e salas médias e grandes. Revenda autorizada, dimensionamento, instalação e suporte AlliedIT.";
+  "Barras de videoconferência Yealink, Logitech e Poly pelo tamanho da sua sala. Revenda autorizada, instalação e suporte.";
 
 export const videoconferenciaHead = () => ({
     meta: [
@@ -48,14 +48,14 @@ export const videoconferenciaHead = () => ({
       { property: "og:description", content: description },
       { property: "og:url", content: lpCanonical("videoconferencia", "videoconferencia.alliedit.com.br") },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: `https://service-desk.alliedit.com.br${ogImage.url}` },
+      { property: "og:image", content: ogImageUrl() },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
-      { property: "og:image:alt", content: "AlliedIT" },
+      { property: "og:image:alt", content: "Allied IT" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
-      { name: "twitter:image", content: `https://service-desk.alliedit.com.br${ogImage.url}` },
+      { name: "twitter:image", content: ogImageUrl() },
     ],
     links: [{ rel: "canonical", href: lpCanonical("videoconferencia", "videoconferencia.alliedit.com.br") }],
     scripts: [
@@ -65,7 +65,7 @@ export const videoconferenciaHead = () => ({
           "@context": "https://schema.org",
           "@type": "Service",
           serviceType: "Revenda e instalação de videoconferência Logitech, Poly e Yealink",
-          provider: { "@type": "Organization", name: "AlliedIT", url: "https://www.alliedit.com.br" },
+          provider: { "@type": "Organization", name: "Allied IT", url: PUBLIC_ORIGIN },
           areaServed: "BR",
           description,
         }),

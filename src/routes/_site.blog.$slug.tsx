@@ -2,10 +2,9 @@ import { useEffect, useMemo, useState } from "react";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { ArrowLeft } from "lucide-react";
-import { createServerFn } from "@tanstack/react-start";
-import { getRequestUrl } from "@tanstack/react-start/server";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import ogImageAsset from "@/assets/og-image.png.asset.json";
+import { ASSET_ORIGIN, siteCanonical } from "@/lib/site";
 import {
   authorName,
   fetchPostBySlug,
@@ -15,6 +14,7 @@ import {
   lightSanitize,
   normalizeInternalLinks,
   primaryCategory,
+  seoDescription,
   seoTitle,
   socialDescription,
   stripHtml,
@@ -23,50 +23,35 @@ import {
   type WpPostSeo,
 } from "@/lib/wp";
 
-// Lê a origem da requisição no servidor.
-const getArticleOrigin = createServerFn({ method: "GET" }).handler(async () => {
-  try {
-    const url = new URL(String(getRequestUrl()));
-    return `${url.protocol}//${url.host}`;
-  } catch {
-    return "https://service-desk.alliedit.com.br";
-  }
-});
-
 export const Route = createFileRoute("/_site/blog/$slug")({
   headers: () => ({
     "cache-control": "public, s-maxage=600, stale-while-revalidate=86400",
   }),
   loader: async ({ params }) => {
-    const origin =
-      typeof document !== "undefined" ? window.location.origin : await getArticleOrigin();
-
-
     const [post, seo] = await Promise.all([fetchPostBySlug(params.slug), fetchPostSeo(params.slug)]);
     if (!post) throw notFound();
 
     return {
       post,
       seo,
-      canonical: `${origin}/blog/${params.slug}`,
-      origin,
+      canonical: siteCanonical(`/blog/${params.slug}`),
     };
   },
   head: ({ loaderData }) => {
     if (!loaderData) return {};
-    const { post, seo, canonical, origin } = loaderData as {
+    const { post, seo, canonical } = loaderData as {
       post: WpPost;
       seo: WpPostSeo;
       canonical: string;
-      origin: string;
     };
 
     const plainTitle = stripHtml(post.title.rendered);
     const title = seo.rank_math_title || seoTitle(plainTitle);
     const description =
-      seo.rank_math_description || truncateAtWord(stripHtml(post.excerpt.rendered), 120);
+      seo.rank_math_description ||
+      seoDescription(post.excerpt.rendered, post.content?.rendered ?? "");
     const social = seo.rank_math_facebook_description || socialDescription(description);
-    const image = featuredImage(post) || `${origin}${ogImageAsset.url}`;
+    const image = featuredImage(post) || `${ASSET_ORIGIN}${ogImageAsset.url}`;
     const published = post.date;
     const modified = post.modified || post.date;
     const category = primaryCategory(post);
@@ -84,7 +69,7 @@ export const Route = createFileRoute("/_site/blog/$slug")({
       publisher: {
         "@type": "Organization",
         name: "Allied IT",
-        logo: { "@type": "ImageObject", url: `${origin}/logo-allied-it.png` },
+        logo: { "@type": "ImageObject", url: `${ASSET_ORIGIN}/logo-allied-it.png` },
       },
       mainEntityOfPage: { "@type": "WebPage", "@id": canonical },
       ...(category ? { articleSection: stripHtml(category) } : {}),

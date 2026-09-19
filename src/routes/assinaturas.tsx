@@ -1,23 +1,20 @@
+import { pageHead } from "@/lib/seo";
 import { createFileRoute } from "@tanstack/react-router";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 export const assinaturasMeta = {
-  title: "Gerador de Assinatura de E-mail | AlliedIT",
+  title: "Gerador de assinatura de e-mail | Allied IT",
   description:
-    "Ferramenta interna AlliedIT: preencha seus dados, monte sua assinatura de e-mail padronizada e copie direto para o Outlook ou Gmail.",
+    "Ferramenta interna da Allied IT: preencha seus dados, monte a assinatura padronizada e copie para o Outlook ou Gmail.",
 };
 
-export const assinaturasHead = () => ({
-    meta: [
-      { title: assinaturasMeta.title },
-      { name: "description", content: assinaturasMeta.description },
-      { name: "robots", content: "noindex, nofollow" },
-      { property: "og:title", content: assinaturasMeta.title },
-      { property: "og:description", content: assinaturasMeta.description },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-});
+export const assinaturasHead = () =>
+  pageHead({
+    title: assinaturasMeta.title,
+    description: assinaturasMeta.description,
+    path: "/assinaturas",
+    noindex: true,
+  });
 
 export const Route = createFileRoute("/assinaturas")({
   head: assinaturasHead,

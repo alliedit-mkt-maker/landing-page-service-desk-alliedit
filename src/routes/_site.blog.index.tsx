@@ -2,9 +2,9 @@ import { useEffect, useMemo, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { ArrowRight } from "lucide-react";
-import { createServerFn } from "@tanstack/react-start";
-import { getRequestUrl } from "@tanstack/react-start/server";
 import { SiteFooter } from "@/components/site/SiteFooter";
+import { pageHead } from "@/lib/seo";
+import { siteCanonical } from "@/lib/site";
 import {
   authorName,
   dedupeByTitle,
@@ -22,26 +22,13 @@ import {
 
 const TITLE = "Blog Allied IT | Tecnologia e operação de TI para empresas";
 const DESC =
-  "Como diagnosticamos operações de TI, o raciocínio por trás das soluções, e o que a tecnologia aplicada realmente muda.";
-
-// Origem da requisição, lida no servidor.
-const getBlogOrigin = createServerFn({ method: "GET" }).handler(async () => {
-  try {
-    const url = new URL(String(getRequestUrl()));
-    return `${url.protocol}//${url.host}`;
-  } catch {
-    return "https://service-desk.alliedit.com.br";
-  }
-});
+  "Como diagnosticamos operações de TI, o raciocínio por trás das soluções e o que a tecnologia aplicada muda de verdade.";
 
 export const Route = createFileRoute("/_site/blog/")({
   headers: () => ({
     "cache-control": "public, s-maxage=300, stale-while-revalidate=86400",
   }),
   loader: async () => {
-    const origin =
-      typeof document !== "undefined" ? window.location.origin : await getBlogOrigin();
-
     const [first, cats] = await Promise.all([
       fetchPosts({ page: 1, categoryId: null }),
       fetchCategories(),
@@ -51,22 +38,14 @@ export const Route = createFileRoute("/_site/blog/")({
       posts: dedupeByTitle(first.posts).map(slimPost),
       totalPages: first.totalPages,
       categories: cats,
-      canonical: `${origin}/blog`,
     };
   },
-  head: ({ loaderData }) => {
-    const canonical = loaderData?.canonical ?? "https://service-desk.alliedit.com.br/blog";
+  head: () => {
+    const canonical = siteCanonical("/blog");
+    const base = pageHead({ title: TITLE, description: DESC, path: "/blog" });
     return {
-      meta: [
-        { title: TITLE },
-        { name: "description", content: DESC },
-        { property: "og:title", content: TITLE },
-        { property: "og:description", content: DESC },
-        { property: "og:type", content: "website" },
-        { property: "og:url", content: canonical },
-        { name: "twitter:card", content: "summary_large_image" },
-      ],
-      links: [{ rel: "canonical", href: canonical }],
+      meta: base.meta,
+      links: base.links,
       scripts: [
         {
           type: "application/ld+json",

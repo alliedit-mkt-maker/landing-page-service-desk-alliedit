@@ -1,16 +1,13 @@
+import { pageHead } from "@/lib/seo";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/_site/contato")({
-  head: () => ({
-    meta: [
-      { title: "Contato | Allied IT" },
-      { name: "description", content: "Fale com um especialista da Allied IT." },
-      { property: "og:title", content: "Contato | Allied IT" },
-      { property: "og:description", content: "Fale com um especialista da Allied IT." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: () =>
+    pageHead({
+      title: "Fale com um especialista | Allied IT",
+      description: "Conte o que a sua operação de TI precisa. Um especialista da Allied IT retorna em até 4 horas úteis.",
+      path: "/contato",
+    }),
   component: () => <SitePage title="Contato" />,
 });
 

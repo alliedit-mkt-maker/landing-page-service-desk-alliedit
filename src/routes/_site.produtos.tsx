@@ -1,16 +1,13 @@
+import { pageHead } from "@/lib/seo";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/_site/produtos")({
-  head: () => ({
-    meta: [
-      { title: "Produtos | Allied IT" },
-      { name: "description", content: "Produtos e equipamentos de TI revendidos pela Allied IT." },
-      { property: "og:title", content: "Produtos | Allied IT" },
-      { property: "og:description", content: "Produtos e equipamentos de TI revendidos pela Allied IT." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: () =>
+    pageHead({
+      title: "Headsets, videoconferência e equipamentos de TI | Allied IT",
+      description: "Headsets Poly, Yealink e Logitech, videoconferência, Microsoft 365, AWS e firewall com consultoria e suporte.",
+      path: "/produtos",
+    }),
   component: () => <SitePage title="Produtos" />,
 });
 

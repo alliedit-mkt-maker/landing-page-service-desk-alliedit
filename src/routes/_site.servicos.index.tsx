@@ -1,16 +1,13 @@
+import { pageHead } from "@/lib/seo";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/_site/servicos/")({
-  head: () => ({
-    meta: [
-      { title: "Serviços | Allied IT" },
-      { name: "description", content: "Serviços de TI da Allied IT para operações corporativas." },
-      { property: "og:title", content: "Serviços | Allied IT" },
-      { property: "og:description", content: "Serviços de TI da Allied IT para operações corporativas." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: () =>
+    pageHead({
+      title: "Serviços gerenciados de TI para empresas | Allied IT",
+      description: "Digital Workspace, Smart Cloud Ops, Cyber Shield 360 e Infra Core: operação de TI com SLA e cobertura nacional.",
+      path: "/servicos",
+    }),
   component: () => <SitePage title="Serviços" />,
 });
 
