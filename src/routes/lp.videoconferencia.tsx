@@ -40,8 +40,7 @@ const title = "AlliedIT | Videoconferência Logitech, Poly e Yealink para salas 
 const description =
   "Barras de videoconferência Yealink, Logitech e Poly escolhidas pelo tamanho real da sua sala: huddle rooms e salas médias e grandes. Revenda autorizada, dimensionamento, instalação e suporte AlliedIT.";
 
-export const Route = createFileRoute("/lp/videoconferencia")({
-  head: () => ({
+export const videoconferenciaHead = () => ({
     meta: [
       { title },
       { name: "description", content: description },
@@ -72,7 +71,10 @@ export const Route = createFileRoute("/lp/videoconferencia")({
         }),
       },
     ],
-  }),
+});
+
+export const Route = createFileRoute("/lp/videoconferencia")({
+  head: videoconferenciaHead,
   component: VideoconferenciaPage,
 });
 

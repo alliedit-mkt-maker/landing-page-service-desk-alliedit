@@ -21,8 +21,7 @@ const SD_DESCRIPTION =
 const canonical = lpCanonical("service-desk", "service-desk.alliedit.com.br");
 const ogImageUrl = `https://service-desk.alliedit.com.br${ogImage.url}`;
 
-export const Route = createFileRoute("/lp/service-desk")({
-  head: () => ({
+export const serviceDeskHead = () => ({
     meta: [
       { title: SD_TITLE },
       { name: "description", content: SD_DESCRIPTION },
@@ -57,7 +56,10 @@ export const Route = createFileRoute("/lp/service-desk")({
         }),
       },
     ],
-  }),
+});
+
+export const Route = createFileRoute("/lp/service-desk")({
+  head: serviceDeskHead,
   component: ServiceDeskPage,
 });
 

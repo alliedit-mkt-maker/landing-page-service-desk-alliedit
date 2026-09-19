@@ -26,8 +26,7 @@ const title = "AlliedIT | Headsets Poly: Blackwire 3220 e Voyager Focus 2";
 const description =
   "Áudio limpo em cada chamada da sua empresa. A AlliedIT indica, entrega e padroniza headsets Poly (HP) para operação, call center e times executivos, com produto genuíno e nota fiscal.";
 
-export const Route = createFileRoute("/lp/headsets-poly")({
-  head: () => ({
+export const headsetsPolyHead = () => ({
     meta: [
       { title },
       { name: "description", content: description },
@@ -58,7 +57,10 @@ export const Route = createFileRoute("/lp/headsets-poly")({
         }),
       },
     ],
-  }),
+});
+
+export const Route = createFileRoute("/lp/headsets-poly")({
+  head: headsetsPolyHead,
   component: PolyPage,
 });
 

@@ -47,8 +47,7 @@ const title = "AlliedIT | Videoconferência Yealink: MeetingBar A40, A50 e kits 
 const description =
   "Videoconferência Yealink por tamanho de sala: MeetingBar A40 e A50 em modo USB/BYOD, ou kits completos MVC (Teams Rooms) e ZVC (Zoom Rooms). Revenda autorizada, dimensionamento e suporte AlliedIT.";
 
-export const Route = createFileRoute("/lp/yealink-videoconferencia")({
-  head: () => ({
+export const yealinkVideoconferenciaHead = () => ({
     meta: [
       { title },
       { name: "description", content: description },
@@ -79,7 +78,10 @@ export const Route = createFileRoute("/lp/yealink-videoconferencia")({
         }),
       },
     ],
-  }),
+});
+
+export const Route = createFileRoute("/lp/yealink-videoconferencia")({
+  head: yealinkVideoconferenciaHead,
   component: YealinkVcPage,
 });
 
