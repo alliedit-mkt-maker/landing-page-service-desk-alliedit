@@ -13,7 +13,6 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ObrigadoRouteImport } from './routes/obrigado'
 import { Route as AssinaturasRouteImport } from './routes/assinaturas'
 import { Route as SiteRouteImport } from './routes/_site'
-import { Route as SiteIndexRouteImport } from './routes/_site.index'
 import { Route as LpYealinkVideoconferenciaRouteImport } from './routes/lp.yealink-videoconferencia'
 import { Route as LpVideoconferenciaRouteImport } from './routes/lp.videoconferencia'
 import { Route as LpServiceDeskRouteImport } from './routes/lp.service-desk'
@@ -51,11 +50,6 @@ const AssinaturasRoute = AssinaturasRouteImport.update({
 const SiteRoute = SiteRouteImport.update({
   id: '/_site',
   getParentRoute: () => rootRouteImport,
-} as any)
-const SiteIndexRoute = SiteIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => SiteRoute,
 } as any)
 const LpYealinkVideoconferenciaRoute =
   LpYealinkVideoconferenciaRouteImport.update({
@@ -151,7 +145,7 @@ const SiteBlogSlugRoute = SiteBlogSlugRouteImport.update({
 } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof SiteIndexRoute
+  '/': typeof SiteRouteWithChildren
   '/assinaturas': typeof AssinaturasRoute
   '/obrigado': typeof ObrigadoRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -175,6 +169,7 @@ export interface FileRoutesByFullPath {
   '/servicos/': typeof SiteServicosIndexRoute
 }
 export interface FileRoutesByTo {
+  '/': typeof SiteRouteWithChildren
   '/assinaturas': typeof AssinaturasRoute
   '/obrigado': typeof ObrigadoRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -192,7 +187,6 @@ export interface FileRoutesByTo {
   '/lp/service-desk': typeof LpServiceDeskRoute
   '/lp/videoconferencia': typeof LpVideoconferenciaRoute
   '/lp/yealink-videoconferencia': typeof LpYealinkVideoconferenciaRoute
-  '/': typeof SiteIndexRoute
   '/blog/$slug': typeof SiteBlogSlugRoute
   '/servicos/digital-workspace': typeof SiteServicosDigitalWorkspaceRoute
   '/blog': typeof SiteBlogIndexRoute
@@ -218,7 +212,6 @@ export interface FileRoutesById {
   '/lp/service-desk': typeof LpServiceDeskRoute
   '/lp/videoconferencia': typeof LpVideoconferenciaRoute
   '/lp/yealink-videoconferencia': typeof LpYealinkVideoconferenciaRoute
-  '/_site/': typeof SiteIndexRoute
   '/_site/blog/$slug': typeof SiteBlogSlugRoute
   '/_site/servicos/digital-workspace': typeof SiteServicosDigitalWorkspaceRoute
   '/_site/blog/': typeof SiteBlogIndexRoute
@@ -251,6 +244,7 @@ export interface FileRouteTypes {
     | '/servicos/'
   fileRoutesByTo: FileRoutesByTo
   to:
+    | '/'
     | '/assinaturas'
     | '/obrigado'
     | '/sitemap.xml'
@@ -268,7 +262,6 @@ export interface FileRouteTypes {
     | '/lp/service-desk'
     | '/lp/videoconferencia'
     | '/lp/yealink-videoconferencia'
-    | '/'
     | '/blog/$slug'
     | '/servicos/digital-workspace'
     | '/blog'
@@ -293,7 +286,6 @@ export interface FileRouteTypes {
     | '/lp/service-desk'
     | '/lp/videoconferencia'
     | '/lp/yealink-videoconferencia'
-    | '/_site/'
     | '/_site/blog/$slug'
     | '/_site/servicos/digital-workspace'
     | '/_site/blog/'
@@ -347,13 +339,6 @@ declare module '@tanstack/react-router' {
       fullPath: '/'
       preLoaderRoute: typeof SiteRouteImport
       parentRoute: typeof rootRouteImport
-    }
-    '/_site/': {
-      id: '/_site/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof SiteIndexRouteImport
-      parentRoute: typeof SiteRoute
     }
     '/lp/yealink-videoconferencia': {
       id: '/lp/yealink-videoconferencia'
@@ -488,7 +473,6 @@ interface SiteRouteChildren {
   SiteContatoRoute: typeof SiteContatoRoute
   SiteProdutosRoute: typeof SiteProdutosRoute
   SiteSobreRoute: typeof SiteSobreRoute
-  SiteIndexRoute: typeof SiteIndexRoute
   SiteBlogSlugRoute: typeof SiteBlogSlugRoute
   SiteServicosDigitalWorkspaceRoute: typeof SiteServicosDigitalWorkspaceRoute
   SiteBlogIndexRoute: typeof SiteBlogIndexRoute
@@ -499,7 +483,6 @@ const SiteRouteChildren: SiteRouteChildren = {
   SiteContatoRoute: SiteContatoRoute,
   SiteProdutosRoute: SiteProdutosRoute,
   SiteSobreRoute: SiteSobreRoute,
-  SiteIndexRoute: SiteIndexRoute,
   SiteBlogSlugRoute: SiteBlogSlugRoute,
   SiteServicosDigitalWorkspaceRoute: SiteServicosDigitalWorkspaceRoute,
   SiteBlogIndexRoute: SiteBlogIndexRoute,
