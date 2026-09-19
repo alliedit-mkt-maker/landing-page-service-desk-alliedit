@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { createServerFn } from "@tanstack/react-start";
+import { pageHead } from "@/lib/seo";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { SiteHome } from "@/components/site/SiteHome";
 import { assinaturasHead, AssinaturasPage } from "./assinaturas";
@@ -61,31 +62,26 @@ const LP_HEADS: Partial<Record<Variant, () => any>> = {
   assinaturas: assinaturasHead,
 };
 
-const SITE_TITLE = "Allied IT | Tecnologia que sustenta a sua operação";
-const SITE_DESCRIPTION =
-  "Allied IT: serviços gerenciados, infraestrutura e produtos de TI para empresas que precisam de operação estável e previsível.";
-
-const siteHead = () => ({
-  meta: [
-    { title: SITE_TITLE },
-    { name: "description", content: SITE_DESCRIPTION },
-    { name: "robots", content: "noindex, nofollow" },
-    { property: "og:title", content: SITE_TITLE },
-    {
-      property: "og:description",
-      content: "Serviços gerenciados, infraestrutura e produtos de TI para empresas.",
-    },
-    { property: "og:type", content: "website" },
-    { name: "twitter:card", content: "summary_large_image" },
-  ],
-  links: [
-    { rel: "preconnect", href: "https://api.fontshare.com" },
-    {
-      rel: "stylesheet",
-      href: "https://api.fontshare.com/v2/css?f[]=chillax@400,500,600,700&display=swap",
-    },
-  ],
-});
+const siteHead = () => {
+  const base = pageHead({
+    title: "Allied IT | Tecnologia que sustenta a sua operação",
+    description:
+      "Serviços gerenciados, infraestrutura, nuvem e segurança de TI para empresas que precisam de operação estável.",
+    path: "/",
+    noindex: true,
+  });
+  return {
+    meta: base.meta,
+    links: [
+      ...base.links,
+      { rel: "preconnect", href: "https://api.fontshare.com" },
+      {
+        rel: "stylesheet",
+        href: "https://api.fontshare.com/v2/css?f[]=chillax@400,500,600,700&display=swap",
+      },
+    ],
+  };
+};
 
 const getRootVariant = createServerFn({ method: "GET" }).handler(async (): Promise<Variant> => {
   const { getRequestHost } = await import("@tanstack/react-start/server");
