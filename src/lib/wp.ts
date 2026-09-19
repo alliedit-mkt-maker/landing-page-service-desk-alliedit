@@ -150,8 +150,24 @@ export function socialDescription(text: string, max = 80): string {
   return dropDanglingConnector(truncateAtWord(window, max).replace(/…$/, ""));
 }
 
-export function seoTitle(title: string): string {
-  return `${title} | Allied IT`;
+export function seoTitle(plainTitle: string): string {
+  const withBrand = `${plainTitle} | Allied IT`;
+  if (withBrand.length <= 60) return withBrand;
+  if (plainTitle.length <= 60) return plainTitle;
+  return truncateAtWord(plainTitle, 57);
+}
+
+export function seoDescription(excerptHtml: string, contentHtml: string): string {
+  let text = stripHtml(excerptHtml)
+    .replace(/^(?:(?:Índice|Sumário|Introdução|Conteúdo)\s*[:.-]?\s*)+/i, "")
+    .trim();
+  if (text.length < 90) {
+    const paragraphs = (contentHtml.match(/<p\b[^>]*>[\s\S]*?<\/p>/gi) ?? [])
+      .map((p) => stripHtml(p))
+      .filter((p) => p.length >= 40);
+    if (paragraphs[0]) text = paragraphs[0];
+  }
+  return truncateAtWord(text, 120);
 }
 
 function normalizeTitleKey(title: string): string {

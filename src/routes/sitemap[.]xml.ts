@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { dedupeByTitle, fetchAllPosts } from "@/lib/wp";
+import { SITE_ORIGIN } from "@/lib/site";
 
 const STATIC_PATHS = [
   "/",
@@ -36,9 +37,8 @@ function xmlEscape(value: string): string {
 export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
-      GET: async ({ request }) => {
-        const url = new URL(request.url);
-        const origin = `${url.protocol}//${url.host}`;
+      GET: async () => {
+        const origin = SITE_ORIGIN;
 
         let posts;
         try {
