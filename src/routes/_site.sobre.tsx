@@ -23,10 +23,6 @@ import { SiteBrazilMap } from "@/components/site/SiteBrazilMap";
 import officeHall from "@/assets/sobre/hero-office.jpg.asset.json";
 import ceo from "@/assets/sobre/ceo-jimmy.jpg.asset.json";
 
-const TITLE = "Sobre a Allied IT | Quem somos e como operamos TI corporativa";
-const DESCRIPTION =
-  "Empresa brasileira de tecnologia fundada em 2018, com atuação nacional em Service Desk, nuvem, segurança e infraestrutura para empresas de médio e grande porte.";
-
 export const Route = createFileRoute("/_site/sobre")({
   head: () =>
     pageHead({

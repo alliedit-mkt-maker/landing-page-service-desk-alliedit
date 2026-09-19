@@ -51,10 +51,6 @@ import nocPhoto from "@/assets/dw/noc.jpg.asset.json";
 import fieldPhoto from "@/assets/dw/field.jpg.asset.json";
 import deskPhoto from "@/assets/dw/desk.jpg.asset.json";
 
-const TITLE = "Digital Workspace | Service Desk e Field Service | Allied IT";
-const DESCRIPTION =
-  "Service Desk e Field Service em uma só operação: atendimento remoto e presencial, com SLA garantido, gestão centralizada e cobertura nacional.";
-
 export const Route = createFileRoute("/_site/servicos/digital-workspace")({
   head: () =>
     pageHead({
