@@ -1,3 +1,4 @@
+import { pageHead } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import {
@@ -55,18 +56,12 @@ const DESCRIPTION =
   "Service Desk e Field Service em uma só operação: atendimento remoto e presencial, com SLA garantido, gestão centralizada e cobertura nacional.";
 
 export const Route = createFileRoute("/_site/servicos/digital-workspace")({
-  head: () => ({
-    meta: [
-      { title: TITLE },
-      { name: "description", content: DESCRIPTION },
-      { property: "og:title", content: TITLE },
-      { property: "og:description", content: DESCRIPTION },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: TITLE },
-      { name: "twitter:description", content: DESCRIPTION },
-    ],
-  }),
+  head: () =>
+    pageHead({
+      title: "Digital Workspace: Service Desk e Field Service | Allied IT",
+      description: "Service Desk e Field Service em uma só operação: atendimento remoto e presencial com SLA e cobertura nacional.",
+      path: "/servicos/digital-workspace",
+    }),
   component: DigitalWorkspacePage,
 });
 
