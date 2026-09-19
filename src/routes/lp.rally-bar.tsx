@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { lpCanonical } from "@/lib/site";
+import { lpCanonical, PUBLIC_ORIGIN } from "@/lib/site";
+import { ogImageUrl } from "@/lib/seo";
 import { ChevronDown, Handshake, Compass, ShieldCheck, type LucideIcon } from "lucide-react";
 
-import ogImage from "@/assets/og-image.png.asset.json";
 import logoAlliedIt from "@/assets/logo-alliedit.png";
 import heroRoom from "@/assets/rally/hero-room.jpg";
 
@@ -32,9 +32,9 @@ import { Reveal } from "@/components/lp/Reveal";
 // Formulário HubSpot dedicado desta LP — preencher quando o ID for criado.
 const RALLY_FORM_ID = "b8f8c9e7-cdd4-4ef4-904f-3bb5c3e9c812";
 
-const title = "AlliedIT | Logitech Rally Bar e Rally Bar Mini para salas de reunião";
+const title = "Logitech Rally Bar e Rally Bar Mini | Allied IT";
 const description =
-  "Videoconferência all-in-one Logitech: Rally Bar para salas médias e grandes, Rally Bar Mini para salas pequenas. Revenda oficial, instalação e suporte com a AlliedIT.";
+  "Logitech Rally Bar para salas médias e grandes, Rally Bar Mini para salas pequenas. Revenda oficial e instalação.";
 
 export const rallyBarHead = () => ({
     meta: [
@@ -44,14 +44,14 @@ export const rallyBarHead = () => ({
       { property: "og:description", content: description },
       { property: "og:url", content: lpCanonical("rally-bar", "rally-bar.alliedit.com.br") },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: `https://service-desk.alliedit.com.br${ogImage.url}` },
+      { property: "og:image", content: ogImageUrl() },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
-      { property: "og:image:alt", content: "AlliedIT" },
+      { property: "og:image:alt", content: "Allied IT" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
-      { name: "twitter:image", content: `https://service-desk.alliedit.com.br${ogImage.url}` },
+      { name: "twitter:image", content: ogImageUrl() },
     ],
     links: [{ rel: "canonical", href: lpCanonical("rally-bar", "rally-bar.alliedit.com.br") }],
     scripts: [
@@ -61,7 +61,7 @@ export const rallyBarHead = () => ({
           "@context": "https://schema.org",
           "@type": "Service",
           serviceType: "Revenda e instalação de barras de videoconferência Logitech Rally Bar",
-          provider: { "@type": "Organization", name: "AlliedIT", url: "https://www.alliedit.com.br" },
+          provider: { "@type": "Organization", name: "Allied IT", url: PUBLIC_ORIGIN },
           areaServed: "BR",
           description,
         }),

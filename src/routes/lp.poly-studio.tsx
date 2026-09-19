@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { lpCanonical } from "@/lib/site";
+import { lpCanonical, PUBLIC_ORIGIN } from "@/lib/site";
+import { ogImageUrl } from "@/lib/seo";
 import {
   ChevronDown,
   Handshake,
@@ -18,7 +19,6 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
-import ogImage from "@/assets/og-image.png.asset.json";
 import logoAlliedIt from "@/assets/logo-alliedit.png";
 
 import polyLogo from "@/assets/headsets/poly-hp-logo.png.asset.json";
@@ -43,9 +43,9 @@ import { Reveal } from "@/components/lp/Reveal";
 // Formulário HubSpot dedicado desta LP — preencher quando o ID for criado.
 const POLY_STUDIO_FORM_ID = "8f281409-2949-45fc-a83f-b7d643b42f54";
 
-const title = "AlliedIT | Poly Studio V12, X32, V52 e X52 para salas de reunião";
+const title = "Poly Studio V12, X32, V52 e X52 para salas | Allied IT";
 const description =
-  "Videoconferência Poly (HP) por tipo de sala: V12 e X32 para huddle rooms, V52 e X52 para salas médias. Modo USB (BYOD) ou independente com o tablet TC10. Revenda, instalação e suporte AlliedIT.";
+  "Videoconferência Poly (HP) por tipo de sala: V12 e X32 para huddle rooms, V52 e X52 para salas médias. Revenda oficial.";
 
 export const polyStudioHead = () => ({
     meta: [
@@ -55,14 +55,14 @@ export const polyStudioHead = () => ({
       { property: "og:description", content: description },
       { property: "og:url", content: lpCanonical("poly-studio", "poly-studio.alliedit.com.br") },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: `https://service-desk.alliedit.com.br${ogImage.url}` },
+      { property: "og:image", content: ogImageUrl() },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
-      { property: "og:image:alt", content: "AlliedIT" },
+      { property: "og:image:alt", content: "Allied IT" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
-      { name: "twitter:image", content: `https://service-desk.alliedit.com.br${ogImage.url}` },
+      { name: "twitter:image", content: ogImageUrl() },
     ],
     links: [{ rel: "canonical", href: lpCanonical("poly-studio", "poly-studio.alliedit.com.br") }],
     scripts: [
@@ -72,7 +72,7 @@ export const polyStudioHead = () => ({
           "@context": "https://schema.org",
           "@type": "Service",
           serviceType: "Revenda e instalação de barras de videoconferência Poly Studio (HP)",
-          provider: { "@type": "Organization", name: "AlliedIT", url: "https://www.alliedit.com.br" },
+          provider: { "@type": "Organization", name: "Allied IT", url: PUBLIC_ORIGIN },
           areaServed: "BR",
           description,
         }),

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { lpCanonical } from "@/lib/site";
-import ogImage from "@/assets/og-image.png.asset.json";
+import { lpCanonical, PUBLIC_ORIGIN } from "@/lib/site";
+import { ogImageUrl } from "@/lib/seo";
 import { LpProvider, useLp } from "@/components/lp/LpProvider";
 import { SiteHeader } from "@/components/lp/SiteHeader";
 import { SiteFooter } from "@/components/lp/SiteFooter";
@@ -12,9 +12,9 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { ArrowRight } from "lucide-react";
 
 
-const title = "AlliedIT | Alocação de profissionais de TI sob demanda";
+const title = "Alocação de profissionais de TI sob demanda | Allied IT";
 const description =
-  "Desenvolvedores, POs, product managers, scrum masters e gerentes de projeto alocados sob demanda. Vira OpEx: sem abrir vaga CLT, sem trava de headcount.";
+  "Desenvolvedores, POs, scrum masters e gerentes de projeto sob demanda, sem abrir vaga CLT nem trava de headcount.";
 
 export const alocacaoTiHead = () => ({
     meta: [
@@ -24,14 +24,14 @@ export const alocacaoTiHead = () => ({
       { property: "og:description", content: description },
       { property: "og:url", content: lpCanonical("alocacao-ti", "alocacao-ti.alliedit.com.br") },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: `https://service-desk.alliedit.com.br${ogImage.url}` },
+      { property: "og:image", content: ogImageUrl() },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
-      { property: "og:image:alt", content: "AlliedIT" },
+      { property: "og:image:alt", content: "Allied IT" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
-      { name: "twitter:image", content: `https://service-desk.alliedit.com.br${ogImage.url}` },
+      { name: "twitter:image", content: ogImageUrl() },
     ],
     links: [{ rel: "canonical", href: lpCanonical("alocacao-ti", "alocacao-ti.alliedit.com.br") }],
     scripts: [
@@ -41,7 +41,7 @@ export const alocacaoTiHead = () => ({
           "@context": "https://schema.org",
           "@type": "Service",
           serviceType: "Alocação de profissionais de TI",
-          provider: { "@type": "Organization", name: "AlliedIT", url: "https://www.alliedit.com.br" },
+          provider: { "@type": "Organization", name: "Allied IT", url: PUBLIC_ORIGIN },
           areaServed: "BR",
           description,
         }),

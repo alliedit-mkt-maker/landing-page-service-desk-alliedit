@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { lpCanonical } from "@/lib/site";
+import { lpCanonical, PUBLIC_ORIGIN } from "@/lib/site";
+import { ogImageUrl } from "@/lib/seo";
 import {
   ChevronDown,
   Handshake,
@@ -18,7 +19,6 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
-import ogImage from "@/assets/og-image.png.asset.json";
 import logoAlliedIt from "@/assets/logo-alliedit.png";
 
 import yealinkLogo from "@/assets/headsets/yealink-logo.png.asset.json";
@@ -43,9 +43,9 @@ import { Reveal } from "@/components/lp/Reveal";
 // Formulário HubSpot dedicado desta LP, preencher quando o ID for criado.
 const YEALINK_VC_FORM_ID = "854dbac0-c313-4ef4-8f50-8935b4e76bb8";
 
-const title = "AlliedIT | Videoconferência Yealink: MeetingBar A40, A50 e kits MVC/ZVC";
+const title = "Yealink MeetingBar A40, A50 e kits MVC/ZVC | Allied IT";
 const description =
-  "Videoconferência Yealink por tamanho de sala: MeetingBar A40 e A50 em modo USB/BYOD, ou kits completos MVC (Teams Rooms) e ZVC (Zoom Rooms). Revenda autorizada, dimensionamento e suporte AlliedIT.";
+  "Yealink MeetingBar A40 e A50 em modo USB, ou kits MVC (Teams Rooms) e ZVC (Zoom Rooms). Revenda e dimensionamento.";
 
 export const yealinkVideoconferenciaHead = () => ({
     meta: [
@@ -55,14 +55,14 @@ export const yealinkVideoconferenciaHead = () => ({
       { property: "og:description", content: description },
       { property: "og:url", content: lpCanonical("yealink-videoconferencia", "yealink-videoconferencia.alliedit.com.br") },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: `https://service-desk.alliedit.com.br${ogImage.url}` },
+      { property: "og:image", content: ogImageUrl() },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
-      { property: "og:image:alt", content: "AlliedIT" },
+      { property: "og:image:alt", content: "Allied IT" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
-      { name: "twitter:image", content: `https://service-desk.alliedit.com.br${ogImage.url}` },
+      { name: "twitter:image", content: ogImageUrl() },
     ],
     links: [{ rel: "canonical", href: lpCanonical("yealink-videoconferencia", "yealink-videoconferencia.alliedit.com.br") }],
     scripts: [
@@ -72,7 +72,7 @@ export const yealinkVideoconferenciaHead = () => ({
           "@context": "https://schema.org",
           "@type": "Service",
           serviceType: "Revenda e instalação de videoconferência Yealink (MeetingBar, MVC e ZVC)",
-          provider: { "@type": "Organization", name: "AlliedIT", url: "https://www.alliedit.com.br" },
+          provider: { "@type": "Organization", name: "Allied IT", url: PUBLIC_ORIGIN },
           areaServed: "BR",
           description,
         }),

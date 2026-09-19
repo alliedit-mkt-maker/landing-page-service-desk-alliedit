@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { lpCanonical } from "@/lib/site";
+import { lpCanonical, PUBLIC_ORIGIN } from "@/lib/site";
+import { ogImageUrl } from "@/lib/seo";
 import {
   Handshake,
   Compass,
@@ -17,7 +18,6 @@ import {
   ChevronRight,
 } from "lucide-react";
 
-import ogImage from "@/assets/og-image.png.asset.json";
 import heroImage from "@/assets/headsets/yl-hero-2.jpg.asset.json";
 import bh70Banner from "@/assets/headsets/yl-bh70-banner.webp.asset.json";
 import whyImage from "@/assets/headsets/yealink-lifestyle.png.asset.json";
@@ -32,9 +32,9 @@ import { SiteFooter } from "@/components/lp/SiteFooter";
 import { Clients } from "@/components/lp/Clients";
 import { Reveal } from "@/components/lp/Reveal";
 
-const title = "AlliedIT | Headsets Yealink: BH70, WH64 e UH34 para empresas";
+const title = "Headsets Yealink BH70, WH64 e UH34 para empresas | Allied IT";
 const description =
-  "Custo-benefício sem abrir mão de qualidade de áudio. A AlliedIT ajuda sua empresa a escolher e padronizar headsets Yealink para atendimento, operação e trabalho híbrido, com produto genuíno e nota fiscal.";
+  "Headsets Yealink BH70, WH64 e UH34 para atendimento, operação e trabalho híbrido. Custo-benefício com produto genuíno.";
 
 export const headsetYealinkHead = () => ({
     meta: [
@@ -44,14 +44,14 @@ export const headsetYealinkHead = () => ({
       { property: "og:description", content: description },
       { property: "og:url", content: lpCanonical("headset-yealink", "headset-yealink.alliedit.com.br") },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: `https://service-desk.alliedit.com.br${ogImage.url}` },
+      { property: "og:image", content: ogImageUrl() },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
-      { property: "og:image:alt", content: "AlliedIT" },
+      { property: "og:image:alt", content: "Allied IT" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
-      { name: "twitter:image", content: `https://service-desk.alliedit.com.br${ogImage.url}` },
+      { name: "twitter:image", content: ogImageUrl() },
     ],
     links: [{ rel: "canonical", href: lpCanonical("headset-yealink", "headset-yealink.alliedit.com.br") }],
     scripts: [
@@ -61,7 +61,7 @@ export const headsetYealinkHead = () => ({
           "@context": "https://schema.org",
           "@type": "Service",
           serviceType: "Revenda de headsets corporativos Yealink",
-          provider: { "@type": "Organization", name: "AlliedIT", url: "https://www.alliedit.com.br" },
+          provider: { "@type": "Organization", name: "Allied IT", url: PUBLIC_ORIGIN },
           areaServed: "BR",
           description,
         }),

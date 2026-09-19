@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { lpCanonical } from "@/lib/site";
+import { lpCanonical, PUBLIC_ORIGIN } from "@/lib/site";
+import { ogImageUrl } from "@/lib/seo";
 import {
   Handshake,
   Compass,
@@ -16,7 +17,6 @@ import {
   ChevronRight,
 } from "lucide-react";
 
-import ogImage from "@/assets/og-image.png.asset.json";
 import heroImage from "@/assets/headsets/logitech-hero.webp.asset.json";
 import whyImage from "@/assets/headsets/logitech-why.webp.asset.json";
 import logitechLogo from "@/assets/headsets/logitech-logo.png.asset.json";
@@ -33,9 +33,9 @@ import { SiteFooter } from "@/components/lp/SiteFooter";
 import { Clients } from "@/components/lp/Clients";
 import { Reveal } from "@/components/lp/Reveal";
 
-const title = "AlliedIT | Headsets Logitech: Zone Wired e Zone Wireless";
+const title = "Headsets Logitech: Zone Wired e Zone Wireless | Allied IT";
 const description =
-  "Com fio ou sem fio? A AlliedIT ajuda sua empresa a escolher, comparar e padronizar headsets Logitech Zone para atendimento, reunião e trabalho híbrido, com produto genuíno e nota fiscal.";
+  "Headsets Logitech Zone com e sem fio para atendimento, reunião e trabalho híbrido, com produto genuíno e nota fiscal.";
 
 export const headsetLogitechHead = () => ({
     meta: [
@@ -45,14 +45,14 @@ export const headsetLogitechHead = () => ({
       { property: "og:description", content: description },
       { property: "og:url", content: lpCanonical("headset-logitech", "headset-logitech.alliedit.com.br") },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: `https://service-desk.alliedit.com.br${ogImage.url}` },
+      { property: "og:image", content: ogImageUrl() },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
-      { property: "og:image:alt", content: "AlliedIT" },
+      { property: "og:image:alt", content: "Allied IT" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
-      { name: "twitter:image", content: `https://service-desk.alliedit.com.br${ogImage.url}` },
+      { name: "twitter:image", content: ogImageUrl() },
     ],
     links: [{ rel: "canonical", href: lpCanonical("headset-logitech", "headset-logitech.alliedit.com.br") }],
     scripts: [
@@ -62,7 +62,7 @@ export const headsetLogitechHead = () => ({
           "@context": "https://schema.org",
           "@type": "Service",
           serviceType: "Revenda de headsets corporativos Logitech",
-          provider: { "@type": "Organization", name: "AlliedIT", url: "https://www.alliedit.com.br" },
+          provider: { "@type": "Organization", name: "Allied IT", url: PUBLIC_ORIGIN },
           areaServed: "BR",
           description,
         }),
