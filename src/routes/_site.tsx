@@ -1,5 +1,5 @@
 import { createFileRoute, Outlet } from "@tanstack/react-router";
-import { SiteNavbar } from "@/components/site/SiteNavbar";
+import { SiteLayout } from "@/components/site/SiteLayout";
 
 export const Route = createFileRoute("/_site")({
   head: () => ({
@@ -12,16 +12,13 @@ export const Route = createFileRoute("/_site")({
       },
     ],
   }),
-  component: SiteLayout,
+  component: SiteRouteLayout,
 });
 
-function SiteLayout() {
+function SiteRouteLayout() {
   return (
-    <div className="site-scope min-h-screen bg-white text-[var(--site-ink)]">
-      <SiteNavbar />
-      <main className="pt-[72px]">
-        <Outlet />
-      </main>
-    </div>
+    <SiteLayout>
+      <Outlet />
+    </SiteLayout>
   );
 }
