@@ -13,6 +13,7 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ObrigadoRouteImport } from './routes/obrigado'
 import { Route as AssinaturasRouteImport } from './routes/assinaturas'
 import { Route as SiteRouteImport } from './routes/_site'
+import { Route as IndexRouteImport } from './routes/index'
 import { Route as LpYealinkVideoconferenciaRouteImport } from './routes/lp.yealink-videoconferencia'
 import { Route as LpVideoconferenciaRouteImport } from './routes/lp.videoconferencia'
 import { Route as LpServiceDeskRouteImport } from './routes/lp.service-desk'
@@ -49,6 +50,11 @@ const AssinaturasRoute = AssinaturasRouteImport.update({
 } as any)
 const SiteRoute = SiteRouteImport.update({
   id: '/_site',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LpYealinkVideoconferenciaRoute =
@@ -145,7 +151,7 @@ const SiteBlogSlugRoute = SiteBlogSlugRouteImport.update({
 } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof SiteRouteWithChildren
+  '/': typeof IndexRoute
   '/assinaturas': typeof AssinaturasRoute
   '/obrigado': typeof ObrigadoRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -169,7 +175,7 @@ export interface FileRoutesByFullPath {
   '/servicos/': typeof SiteServicosIndexRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof SiteRouteWithChildren
+  '/': typeof IndexRoute
   '/assinaturas': typeof AssinaturasRoute
   '/obrigado': typeof ObrigadoRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -194,6 +200,7 @@ export interface FileRoutesByTo {
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
+  '/': typeof IndexRoute
   '/_site': typeof SiteRouteWithChildren
   '/assinaturas': typeof AssinaturasRoute
   '/obrigado': typeof ObrigadoRoute
@@ -268,6 +275,7 @@ export interface FileRouteTypes {
     | '/servicos'
   id:
     | '__root__'
+    | '/'
     | '/_site'
     | '/assinaturas'
     | '/obrigado'
@@ -293,6 +301,7 @@ export interface FileRouteTypes {
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
+  IndexRoute: typeof IndexRoute
   SiteRoute: typeof SiteRouteWithChildren
   AssinaturasRoute: typeof AssinaturasRoute
   ObrigadoRoute: typeof ObrigadoRoute
@@ -338,6 +347,13 @@ declare module '@tanstack/react-router' {
       path: ''
       fullPath: '/'
       preLoaderRoute: typeof SiteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lp/yealink-videoconferencia': {
@@ -492,6 +508,7 @@ const SiteRouteChildren: SiteRouteChildren = {
 const SiteRouteWithChildren = SiteRoute._addFileChildren(SiteRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
+  IndexRoute: IndexRoute,
   SiteRoute: SiteRouteWithChildren,
   AssinaturasRoute: AssinaturasRoute,
   ObrigadoRoute: ObrigadoRoute,

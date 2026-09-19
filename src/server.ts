@@ -67,23 +67,8 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
   return brandedErrorResponse();
 }
 
-// Host-based rewrites: each LP subdomain serves its /lp/<nome> route at "/".
-// e.g. cabeamento.alliedit.com.br/ -> internally renders /lp/cabeamento
-const HOST_REWRITES: Record<string, string> = {
-  "service-desk.alliedit.com.br": "/lp/service-desk",
-  "cabeamento.alliedit.com.br": "/lp/cabeamento",
-  "headset-callcenter.alliedit.com.br": "/lp/headset-callcenter",
-  "rally-bar.alliedit.com.br": "/lp/rally-bar",
-  "headsets-poly.alliedit.com.br": "/lp/headsets-poly",
-  "headset-poly.alliedit.com.br": "/lp/headsets-poly",
-  "headset-logitech.alliedit.com.br": "/lp/headset-logitech",
-  "headset-yealink.alliedit.com.br": "/lp/headset-yealink",
-  "poly-studio.alliedit.com.br": "/lp/poly-studio",
-  "yealink-videoconferencia.alliedit.com.br": "/lp/yealink-videoconferencia",
-  "alocacao-ti.alliedit.com.br": "/lp/alocacao-ti",
-  "videoconferencia.alliedit.com.br": "/lp/videoconferencia",
-  "assinaturas.alliedit.com.br": "/assinaturas",
-};
+// A raiz "/" resolve o host sozinha (src/routes/index.tsx), sem reescrita de caminho.
+const HOST_REWRITES: Record<string, string> = {};
 
 // Subdomínio de LP -> caminho da LP no domínio raiz.
 const LP_SUBDOMAINS: Record<string, string> = {
