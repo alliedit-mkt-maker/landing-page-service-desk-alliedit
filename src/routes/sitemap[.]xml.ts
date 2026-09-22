@@ -15,6 +15,7 @@ const STATIC_PATHS = [
 const LP_PATHS = [
   "/lp/service-desk",
   "/lp/cabeamento",
+  "/lp/cabeamento-estruturado",
   "/lp/headset-callcenter",
   "/lp/headset-logitech",
   "/lp/headset-yealink",

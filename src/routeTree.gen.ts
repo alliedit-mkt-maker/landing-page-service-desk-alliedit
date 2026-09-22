@@ -23,6 +23,7 @@ import { Route as LpHeadsetsPolyRouteImport } from './routes/lp.headsets-poly'
 import { Route as LpHeadsetYealinkRouteImport } from './routes/lp.headset-yealink'
 import { Route as LpHeadsetLogitechRouteImport } from './routes/lp.headset-logitech'
 import { Route as LpHeadsetCallcenterRouteImport } from './routes/lp.headset-callcenter'
+import { Route as LpCabeamentoEstruturadoRouteImport } from './routes/lp.cabeamento-estruturado'
 import { Route as LpCabeamentoRouteImport } from './routes/lp.cabeamento'
 import { Route as LpAlocacaoTiRouteImport } from './routes/lp.alocacao-ti'
 import { Route as SiteSobreRouteImport } from './routes/_site.sobre'
@@ -103,6 +104,11 @@ const LpHeadsetCallcenterRoute = LpHeadsetCallcenterRouteImport.update({
   path: '/lp/headset-callcenter',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LpCabeamentoEstruturadoRoute = LpCabeamentoEstruturadoRouteImport.update({
+  id: '/lp/cabeamento-estruturado',
+  path: '/lp/cabeamento-estruturado',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LpCabeamentoRoute = LpCabeamentoRouteImport.update({
   id: '/lp/cabeamento',
   path: '/lp/cabeamento',
@@ -160,6 +166,7 @@ export interface FileRoutesByFullPath {
   '/sobre': typeof SiteSobreRoute
   '/lp/alocacao-ti': typeof LpAlocacaoTiRoute
   '/lp/cabeamento': typeof LpCabeamentoRoute
+  '/lp/cabeamento-estruturado': typeof LpCabeamentoEstruturadoRoute
   '/lp/headset-callcenter': typeof LpHeadsetCallcenterRoute
   '/lp/headset-logitech': typeof LpHeadsetLogitechRoute
   '/lp/headset-yealink': typeof LpHeadsetYealinkRoute
@@ -184,6 +191,7 @@ export interface FileRoutesByTo {
   '/sobre': typeof SiteSobreRoute
   '/lp/alocacao-ti': typeof LpAlocacaoTiRoute
   '/lp/cabeamento': typeof LpCabeamentoRoute
+  '/lp/cabeamento-estruturado': typeof LpCabeamentoEstruturadoRoute
   '/lp/headset-callcenter': typeof LpHeadsetCallcenterRoute
   '/lp/headset-logitech': typeof LpHeadsetLogitechRoute
   '/lp/headset-yealink': typeof LpHeadsetYealinkRoute
@@ -210,6 +218,7 @@ export interface FileRoutesById {
   '/_site/sobre': typeof SiteSobreRoute
   '/lp/alocacao-ti': typeof LpAlocacaoTiRoute
   '/lp/cabeamento': typeof LpCabeamentoRoute
+  '/lp/cabeamento-estruturado': typeof LpCabeamentoEstruturadoRoute
   '/lp/headset-callcenter': typeof LpHeadsetCallcenterRoute
   '/lp/headset-logitech': typeof LpHeadsetLogitechRoute
   '/lp/headset-yealink': typeof LpHeadsetYealinkRoute
@@ -236,6 +245,7 @@ export interface FileRouteTypes {
     | '/sobre'
     | '/lp/alocacao-ti'
     | '/lp/cabeamento'
+    | '/lp/cabeamento-estruturado'
     | '/lp/headset-callcenter'
     | '/lp/headset-logitech'
     | '/lp/headset-yealink'
@@ -260,6 +270,7 @@ export interface FileRouteTypes {
     | '/sobre'
     | '/lp/alocacao-ti'
     | '/lp/cabeamento'
+    | '/lp/cabeamento-estruturado'
     | '/lp/headset-callcenter'
     | '/lp/headset-logitech'
     | '/lp/headset-yealink'
@@ -285,6 +296,7 @@ export interface FileRouteTypes {
     | '/_site/sobre'
     | '/lp/alocacao-ti'
     | '/lp/cabeamento'
+    | '/lp/cabeamento-estruturado'
     | '/lp/headset-callcenter'
     | '/lp/headset-logitech'
     | '/lp/headset-yealink'
@@ -308,6 +320,7 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   LpAlocacaoTiRoute: typeof LpAlocacaoTiRoute
   LpCabeamentoRoute: typeof LpCabeamentoRoute
+  LpCabeamentoEstruturadoRoute: typeof LpCabeamentoEstruturadoRoute
   LpHeadsetCallcenterRoute: typeof LpHeadsetCallcenterRoute
   LpHeadsetLogitechRoute: typeof LpHeadsetLogitechRoute
   LpHeadsetYealinkRoute: typeof LpHeadsetYealinkRoute
@@ -419,6 +432,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LpHeadsetCallcenterRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/lp/cabeamento-estruturado': {
+      id: '/lp/cabeamento-estruturado'
+      path: '/lp/cabeamento-estruturado'
+      fullPath: '/lp/cabeamento-estruturado'
+      preLoaderRoute: typeof LpCabeamentoEstruturadoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/lp/cabeamento': {
       id: '/lp/cabeamento'
       path: '/lp/cabeamento'
@@ -515,6 +535,7 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   LpAlocacaoTiRoute: LpAlocacaoTiRoute,
   LpCabeamentoRoute: LpCabeamentoRoute,
+  LpCabeamentoEstruturadoRoute: LpCabeamentoEstruturadoRoute,
   LpHeadsetCallcenterRoute: LpHeadsetCallcenterRoute,
   LpHeadsetLogitechRoute: LpHeadsetLogitechRoute,
   LpHeadsetYealinkRoute: LpHeadsetYealinkRoute,
