@@ -195,6 +195,14 @@
 .reveal-slide-left { animation-name: reveal-slide-left; }
 .reveal-slide-right { animation-name: reveal-slide-right; }
 
+/* Primeira dobra visível sem esperar o JavaScript (LCP) */
+main > section:first-child .reveal,
+main > section:first-child .reveal-in {
+  opacity: 1 !important;
+  animation: none !important;
+  transform: none !important;
+}
+
 /* Hover lift utility */
 .hover-lift { transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease; }
 .hover-lift:hover { transform: translateY(-4px); box-shadow: 0 18px 40px -22px color-mix(in oklch, var(--petrol) 40%, transparent); }
