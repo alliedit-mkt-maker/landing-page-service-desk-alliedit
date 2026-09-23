@@ -114,12 +114,12 @@ export function SiteFooter() {
         <div className="font-inter flex flex-col items-center justify-between gap-3 text-[12px] text-white/45 sm:flex-row">
           <p>&copy; 2026 AlliedIT. Todos os direitos reservados.</p>
           <div className="flex gap-6">
-            <a href="https://www.alliedit.com.br/politica-de-privacidade" className="transition-colors hover:text-white">
+            <Link to="/politica-de-privacidade" className="transition-colors hover:text-white">
               Política de Privacidade
-            </a>
-            <a href="https://www.alliedit.com.br/termos-e-condicoes" className="transition-colors hover:text-white">
+            </Link>
+            <Link to="/termos-de-uso" className="transition-colors hover:text-white">
               Termos e Condições
-            </a>
+            </Link>
           </div>
         </div>
       </div>
