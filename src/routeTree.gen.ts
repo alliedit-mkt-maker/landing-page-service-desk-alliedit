@@ -26,8 +26,10 @@ import { Route as LpHeadsetCallcenterRouteImport } from './routes/lp.headset-cal
 import { Route as LpCabeamentoEstruturadoRouteImport } from './routes/lp.cabeamento-estruturado'
 import { Route as LpCabeamentoRouteImport } from './routes/lp.cabeamento'
 import { Route as LpAlocacaoTiRouteImport } from './routes/lp.alocacao-ti'
+import { Route as SiteTermosDeUsoRouteImport } from './routes/_site.termos-de-uso'
 import { Route as SiteSobreRouteImport } from './routes/_site.sobre'
 import { Route as SiteProdutosRouteImport } from './routes/_site.produtos'
+import { Route as SitePoliticaDePrivacidadeRouteImport } from './routes/_site.politica-de-privacidade'
 import { Route as SiteContatoRouteImport } from './routes/_site.contato'
 import { Route as SiteServicosIndexRouteImport } from './routes/_site.servicos.index'
 import { Route as SiteBlogIndexRouteImport } from './routes/_site.blog.index'
@@ -119,6 +121,11 @@ const LpAlocacaoTiRoute = LpAlocacaoTiRouteImport.update({
   path: '/lp/alocacao-ti',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SiteTermosDeUsoRoute = SiteTermosDeUsoRouteImport.update({
+  id: '/termos-de-uso',
+  path: '/termos-de-uso',
+  getParentRoute: () => SiteRoute,
+} as any)
 const SiteSobreRoute = SiteSobreRouteImport.update({
   id: '/sobre',
   path: '/sobre',
@@ -129,6 +136,12 @@ const SiteProdutosRoute = SiteProdutosRouteImport.update({
   path: '/produtos',
   getParentRoute: () => SiteRoute,
 } as any)
+const SitePoliticaDePrivacidadeRoute =
+  SitePoliticaDePrivacidadeRouteImport.update({
+    id: '/politica-de-privacidade',
+    path: '/politica-de-privacidade',
+    getParentRoute: () => SiteRoute,
+  } as any)
 const SiteContatoRoute = SiteContatoRouteImport.update({
   id: '/contato',
   path: '/contato',
@@ -162,8 +175,10 @@ export interface FileRoutesByFullPath {
   '/obrigado': typeof ObrigadoRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/contato': typeof SiteContatoRoute
+  '/politica-de-privacidade': typeof SitePoliticaDePrivacidadeRoute
   '/produtos': typeof SiteProdutosRoute
   '/sobre': typeof SiteSobreRoute
+  '/termos-de-uso': typeof SiteTermosDeUsoRoute
   '/lp/alocacao-ti': typeof LpAlocacaoTiRoute
   '/lp/cabeamento': typeof LpCabeamentoRoute
   '/lp/cabeamento-estruturado': typeof LpCabeamentoEstruturadoRoute
@@ -187,8 +202,10 @@ export interface FileRoutesByTo {
   '/obrigado': typeof ObrigadoRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/contato': typeof SiteContatoRoute
+  '/politica-de-privacidade': typeof SitePoliticaDePrivacidadeRoute
   '/produtos': typeof SiteProdutosRoute
   '/sobre': typeof SiteSobreRoute
+  '/termos-de-uso': typeof SiteTermosDeUsoRoute
   '/lp/alocacao-ti': typeof LpAlocacaoTiRoute
   '/lp/cabeamento': typeof LpCabeamentoRoute
   '/lp/cabeamento-estruturado': typeof LpCabeamentoEstruturadoRoute
@@ -214,8 +231,10 @@ export interface FileRoutesById {
   '/obrigado': typeof ObrigadoRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/_site/contato': typeof SiteContatoRoute
+  '/_site/politica-de-privacidade': typeof SitePoliticaDePrivacidadeRoute
   '/_site/produtos': typeof SiteProdutosRoute
   '/_site/sobre': typeof SiteSobreRoute
+  '/_site/termos-de-uso': typeof SiteTermosDeUsoRoute
   '/lp/alocacao-ti': typeof LpAlocacaoTiRoute
   '/lp/cabeamento': typeof LpCabeamentoRoute
   '/lp/cabeamento-estruturado': typeof LpCabeamentoEstruturadoRoute
@@ -241,8 +260,10 @@ export interface FileRouteTypes {
     | '/obrigado'
     | '/sitemap.xml'
     | '/contato'
+    | '/politica-de-privacidade'
     | '/produtos'
     | '/sobre'
+    | '/termos-de-uso'
     | '/lp/alocacao-ti'
     | '/lp/cabeamento'
     | '/lp/cabeamento-estruturado'
@@ -266,8 +287,10 @@ export interface FileRouteTypes {
     | '/obrigado'
     | '/sitemap.xml'
     | '/contato'
+    | '/politica-de-privacidade'
     | '/produtos'
     | '/sobre'
+    | '/termos-de-uso'
     | '/lp/alocacao-ti'
     | '/lp/cabeamento'
     | '/lp/cabeamento-estruturado'
@@ -292,8 +315,10 @@ export interface FileRouteTypes {
     | '/obrigado'
     | '/sitemap.xml'
     | '/_site/contato'
+    | '/_site/politica-de-privacidade'
     | '/_site/produtos'
     | '/_site/sobre'
+    | '/_site/termos-de-uso'
     | '/lp/alocacao-ti'
     | '/lp/cabeamento'
     | '/lp/cabeamento-estruturado'
@@ -453,6 +478,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LpAlocacaoTiRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_site/termos-de-uso': {
+      id: '/_site/termos-de-uso'
+      path: '/termos-de-uso'
+      fullPath: '/termos-de-uso'
+      preLoaderRoute: typeof SiteTermosDeUsoRouteImport
+      parentRoute: typeof SiteRoute
+    }
     '/_site/sobre': {
       id: '/_site/sobre'
       path: '/sobre'
@@ -465,6 +497,13 @@ declare module '@tanstack/react-router' {
       path: '/produtos'
       fullPath: '/produtos'
       preLoaderRoute: typeof SiteProdutosRouteImport
+      parentRoute: typeof SiteRoute
+    }
+    '/_site/politica-de-privacidade': {
+      id: '/_site/politica-de-privacidade'
+      path: '/politica-de-privacidade'
+      fullPath: '/politica-de-privacidade'
+      preLoaderRoute: typeof SitePoliticaDePrivacidadeRouteImport
       parentRoute: typeof SiteRoute
     }
     '/_site/contato': {
@@ -507,8 +546,10 @@ declare module '@tanstack/react-router' {
 
 interface SiteRouteChildren {
   SiteContatoRoute: typeof SiteContatoRoute
+  SitePoliticaDePrivacidadeRoute: typeof SitePoliticaDePrivacidadeRoute
   SiteProdutosRoute: typeof SiteProdutosRoute
   SiteSobreRoute: typeof SiteSobreRoute
+  SiteTermosDeUsoRoute: typeof SiteTermosDeUsoRoute
   SiteBlogSlugRoute: typeof SiteBlogSlugRoute
   SiteServicosDigitalWorkspaceRoute: typeof SiteServicosDigitalWorkspaceRoute
   SiteBlogIndexRoute: typeof SiteBlogIndexRoute
@@ -517,8 +558,10 @@ interface SiteRouteChildren {
 
 const SiteRouteChildren: SiteRouteChildren = {
   SiteContatoRoute: SiteContatoRoute,
+  SitePoliticaDePrivacidadeRoute: SitePoliticaDePrivacidadeRoute,
   SiteProdutosRoute: SiteProdutosRoute,
   SiteSobreRoute: SiteSobreRoute,
+  SiteTermosDeUsoRoute: SiteTermosDeUsoRoute,
   SiteBlogSlugRoute: SiteBlogSlugRoute,
   SiteServicosDigitalWorkspaceRoute: SiteServicosDigitalWorkspaceRoute,
   SiteBlogIndexRoute: SiteBlogIndexRoute,
