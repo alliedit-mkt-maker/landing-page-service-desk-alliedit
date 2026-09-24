@@ -15,6 +15,7 @@ import { Route as AssinaturasRouteImport } from './routes/assinaturas'
 import { Route as SiteRouteImport } from './routes/_site'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as LpYealinkVideoconferenciaRouteImport } from './routes/lp.yealink-videoconferencia'
+import { Route as LpVideoconferenciaPagoRouteImport } from './routes/lp.videoconferencia-pago'
 import { Route as LpVideoconferenciaRouteImport } from './routes/lp.videoconferencia'
 import { Route as LpServiceDeskRouteImport } from './routes/lp.service-desk'
 import { Route as LpRallyBarRouteImport } from './routes/lp.rally-bar'
@@ -22,6 +23,7 @@ import { Route as LpPolyStudioRouteImport } from './routes/lp.poly-studio'
 import { Route as LpHeadsetsPolyRouteImport } from './routes/lp.headsets-poly'
 import { Route as LpHeadsetYealinkRouteImport } from './routes/lp.headset-yealink'
 import { Route as LpHeadsetLogitechRouteImport } from './routes/lp.headset-logitech'
+import { Route as LpHeadsetCallcenterPagoRouteImport } from './routes/lp.headset-callcenter-pago'
 import { Route as LpHeadsetCallcenterRouteImport } from './routes/lp.headset-callcenter'
 import { Route as LpCabeamentoEstruturadoRouteImport } from './routes/lp.cabeamento-estruturado'
 import { Route as LpCabeamentoRouteImport } from './routes/lp.cabeamento'
@@ -66,6 +68,11 @@ const LpYealinkVideoconferenciaRoute =
     path: '/lp/yealink-videoconferencia',
     getParentRoute: () => rootRouteImport,
   } as any)
+const LpVideoconferenciaPagoRoute = LpVideoconferenciaPagoRouteImport.update({
+  id: '/lp/videoconferencia-pago',
+  path: '/lp/videoconferencia-pago',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LpVideoconferenciaRoute = LpVideoconferenciaRouteImport.update({
   id: '/lp/videoconferencia',
   path: '/lp/videoconferencia',
@@ -99,6 +106,11 @@ const LpHeadsetYealinkRoute = LpHeadsetYealinkRouteImport.update({
 const LpHeadsetLogitechRoute = LpHeadsetLogitechRouteImport.update({
   id: '/lp/headset-logitech',
   path: '/lp/headset-logitech',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LpHeadsetCallcenterPagoRoute = LpHeadsetCallcenterPagoRouteImport.update({
+  id: '/lp/headset-callcenter-pago',
+  path: '/lp/headset-callcenter-pago',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LpHeadsetCallcenterRoute = LpHeadsetCallcenterRouteImport.update({
@@ -183,6 +195,7 @@ export interface FileRoutesByFullPath {
   '/lp/cabeamento': typeof LpCabeamentoRoute
   '/lp/cabeamento-estruturado': typeof LpCabeamentoEstruturadoRoute
   '/lp/headset-callcenter': typeof LpHeadsetCallcenterRoute
+  '/lp/headset-callcenter-pago': typeof LpHeadsetCallcenterPagoRoute
   '/lp/headset-logitech': typeof LpHeadsetLogitechRoute
   '/lp/headset-yealink': typeof LpHeadsetYealinkRoute
   '/lp/headsets-poly': typeof LpHeadsetsPolyRoute
@@ -190,6 +203,7 @@ export interface FileRoutesByFullPath {
   '/lp/rally-bar': typeof LpRallyBarRoute
   '/lp/service-desk': typeof LpServiceDeskRoute
   '/lp/videoconferencia': typeof LpVideoconferenciaRoute
+  '/lp/videoconferencia-pago': typeof LpVideoconferenciaPagoRoute
   '/lp/yealink-videoconferencia': typeof LpYealinkVideoconferenciaRoute
   '/blog/$slug': typeof SiteBlogSlugRoute
   '/servicos/digital-workspace': typeof SiteServicosDigitalWorkspaceRoute
@@ -210,6 +224,7 @@ export interface FileRoutesByTo {
   '/lp/cabeamento': typeof LpCabeamentoRoute
   '/lp/cabeamento-estruturado': typeof LpCabeamentoEstruturadoRoute
   '/lp/headset-callcenter': typeof LpHeadsetCallcenterRoute
+  '/lp/headset-callcenter-pago': typeof LpHeadsetCallcenterPagoRoute
   '/lp/headset-logitech': typeof LpHeadsetLogitechRoute
   '/lp/headset-yealink': typeof LpHeadsetYealinkRoute
   '/lp/headsets-poly': typeof LpHeadsetsPolyRoute
@@ -217,6 +232,7 @@ export interface FileRoutesByTo {
   '/lp/rally-bar': typeof LpRallyBarRoute
   '/lp/service-desk': typeof LpServiceDeskRoute
   '/lp/videoconferencia': typeof LpVideoconferenciaRoute
+  '/lp/videoconferencia-pago': typeof LpVideoconferenciaPagoRoute
   '/lp/yealink-videoconferencia': typeof LpYealinkVideoconferenciaRoute
   '/blog/$slug': typeof SiteBlogSlugRoute
   '/servicos/digital-workspace': typeof SiteServicosDigitalWorkspaceRoute
@@ -239,6 +255,7 @@ export interface FileRoutesById {
   '/lp/cabeamento': typeof LpCabeamentoRoute
   '/lp/cabeamento-estruturado': typeof LpCabeamentoEstruturadoRoute
   '/lp/headset-callcenter': typeof LpHeadsetCallcenterRoute
+  '/lp/headset-callcenter-pago': typeof LpHeadsetCallcenterPagoRoute
   '/lp/headset-logitech': typeof LpHeadsetLogitechRoute
   '/lp/headset-yealink': typeof LpHeadsetYealinkRoute
   '/lp/headsets-poly': typeof LpHeadsetsPolyRoute
@@ -246,6 +263,7 @@ export interface FileRoutesById {
   '/lp/rally-bar': typeof LpRallyBarRoute
   '/lp/service-desk': typeof LpServiceDeskRoute
   '/lp/videoconferencia': typeof LpVideoconferenciaRoute
+  '/lp/videoconferencia-pago': typeof LpVideoconferenciaPagoRoute
   '/lp/yealink-videoconferencia': typeof LpYealinkVideoconferenciaRoute
   '/_site/blog/$slug': typeof SiteBlogSlugRoute
   '/_site/servicos/digital-workspace': typeof SiteServicosDigitalWorkspaceRoute
@@ -268,6 +286,7 @@ export interface FileRouteTypes {
     | '/lp/cabeamento'
     | '/lp/cabeamento-estruturado'
     | '/lp/headset-callcenter'
+    | '/lp/headset-callcenter-pago'
     | '/lp/headset-logitech'
     | '/lp/headset-yealink'
     | '/lp/headsets-poly'
@@ -275,6 +294,7 @@ export interface FileRouteTypes {
     | '/lp/rally-bar'
     | '/lp/service-desk'
     | '/lp/videoconferencia'
+    | '/lp/videoconferencia-pago'
     | '/lp/yealink-videoconferencia'
     | '/blog/$slug'
     | '/servicos/digital-workspace'
@@ -295,6 +315,7 @@ export interface FileRouteTypes {
     | '/lp/cabeamento'
     | '/lp/cabeamento-estruturado'
     | '/lp/headset-callcenter'
+    | '/lp/headset-callcenter-pago'
     | '/lp/headset-logitech'
     | '/lp/headset-yealink'
     | '/lp/headsets-poly'
@@ -302,6 +323,7 @@ export interface FileRouteTypes {
     | '/lp/rally-bar'
     | '/lp/service-desk'
     | '/lp/videoconferencia'
+    | '/lp/videoconferencia-pago'
     | '/lp/yealink-videoconferencia'
     | '/blog/$slug'
     | '/servicos/digital-workspace'
@@ -323,6 +345,7 @@ export interface FileRouteTypes {
     | '/lp/cabeamento'
     | '/lp/cabeamento-estruturado'
     | '/lp/headset-callcenter'
+    | '/lp/headset-callcenter-pago'
     | '/lp/headset-logitech'
     | '/lp/headset-yealink'
     | '/lp/headsets-poly'
@@ -330,6 +353,7 @@ export interface FileRouteTypes {
     | '/lp/rally-bar'
     | '/lp/service-desk'
     | '/lp/videoconferencia'
+    | '/lp/videoconferencia-pago'
     | '/lp/yealink-videoconferencia'
     | '/_site/blog/$slug'
     | '/_site/servicos/digital-workspace'
@@ -347,6 +371,7 @@ export interface RootRouteChildren {
   LpCabeamentoRoute: typeof LpCabeamentoRoute
   LpCabeamentoEstruturadoRoute: typeof LpCabeamentoEstruturadoRoute
   LpHeadsetCallcenterRoute: typeof LpHeadsetCallcenterRoute
+  LpHeadsetCallcenterPagoRoute: typeof LpHeadsetCallcenterPagoRoute
   LpHeadsetLogitechRoute: typeof LpHeadsetLogitechRoute
   LpHeadsetYealinkRoute: typeof LpHeadsetYealinkRoute
   LpHeadsetsPolyRoute: typeof LpHeadsetsPolyRoute
@@ -354,6 +379,7 @@ export interface RootRouteChildren {
   LpRallyBarRoute: typeof LpRallyBarRoute
   LpServiceDeskRoute: typeof LpServiceDeskRoute
   LpVideoconferenciaRoute: typeof LpVideoconferenciaRoute
+  LpVideoconferenciaPagoRoute: typeof LpVideoconferenciaPagoRoute
   LpYealinkVideoconferenciaRoute: typeof LpYealinkVideoconferenciaRoute
 }
 
@@ -399,6 +425,13 @@ declare module '@tanstack/react-router' {
       path: '/lp/yealink-videoconferencia'
       fullPath: '/lp/yealink-videoconferencia'
       preLoaderRoute: typeof LpYealinkVideoconferenciaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lp/videoconferencia-pago': {
+      id: '/lp/videoconferencia-pago'
+      path: '/lp/videoconferencia-pago'
+      fullPath: '/lp/videoconferencia-pago'
+      preLoaderRoute: typeof LpVideoconferenciaPagoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lp/videoconferencia': {
@@ -448,6 +481,13 @@ declare module '@tanstack/react-router' {
       path: '/lp/headset-logitech'
       fullPath: '/lp/headset-logitech'
       preLoaderRoute: typeof LpHeadsetLogitechRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lp/headset-callcenter-pago': {
+      id: '/lp/headset-callcenter-pago'
+      path: '/lp/headset-callcenter-pago'
+      fullPath: '/lp/headset-callcenter-pago'
+      preLoaderRoute: typeof LpHeadsetCallcenterPagoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lp/headset-callcenter': {
@@ -580,6 +620,7 @@ const rootRouteChildren: RootRouteChildren = {
   LpCabeamentoRoute: LpCabeamentoRoute,
   LpCabeamentoEstruturadoRoute: LpCabeamentoEstruturadoRoute,
   LpHeadsetCallcenterRoute: LpHeadsetCallcenterRoute,
+  LpHeadsetCallcenterPagoRoute: LpHeadsetCallcenterPagoRoute,
   LpHeadsetLogitechRoute: LpHeadsetLogitechRoute,
   LpHeadsetYealinkRoute: LpHeadsetYealinkRoute,
   LpHeadsetsPolyRoute: LpHeadsetsPolyRoute,
@@ -587,6 +628,7 @@ const rootRouteChildren: RootRouteChildren = {
   LpRallyBarRoute: LpRallyBarRoute,
   LpServiceDeskRoute: LpServiceDeskRoute,
   LpVideoconferenciaRoute: LpVideoconferenciaRoute,
+  LpVideoconferenciaPagoRoute: LpVideoconferenciaPagoRoute,
   LpYealinkVideoconferenciaRoute: LpYealinkVideoconferenciaRoute,
 }
 export const routeTree = rootRouteImport
