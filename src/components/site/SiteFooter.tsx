@@ -110,7 +110,7 @@ export function SiteFooter() {
         </div>
       </div>
 
-      <div className="mx-auto mt-14 max-w-7xl border-t border-white/10 px-5 py-6 sm:px-8">
+      <div className="mx-auto mt-14 max-w-7xl border-t border-white/10 px-5 pt-6 pb-24 sm:px-8">
         <div className="font-inter flex flex-col items-center justify-between gap-3 text-[12px] text-white/45 sm:flex-row">
           <p>&copy; 2026 AlliedIT. Todos os direitos reservados.</p>
           <div className="flex gap-6">
