@@ -244,6 +244,7 @@ export const POST_REDIRECTS: Record<string, string> = {
 // "fortinet-ngfw" é ao mesmo tempo página e post no WordPress; a busca que chega ("o que é ngfw") é informacional, então vai pro post.
 export const PAGE_REDIRECTS: Record<string, string> = {
   "elementor-222294": "/termos-de-uso",
+  "termos-e-condicoes": "/termos-de-uso",
   "servicos-gerenciados": "/servicos",
   "transforme-a-infraestrutura-de-ti": "/servicos",
   "service-desk-sao-paulo": "/servicos/digital-workspace",
