@@ -10,6 +10,8 @@ const STATIC_PATHS = [
   "/produtos",
   "/contato",
   "/blog",
+  "/politica-de-privacidade",
+  "/termos-de-uso",
 ];
 
 const LP_PATHS = [
