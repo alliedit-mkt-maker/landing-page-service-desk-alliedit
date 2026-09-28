@@ -29,6 +29,7 @@ const LP_PATHS = [
   "/lp/videoconferencia",
   "/lp/yealink-videoconferencia",
   "/lp/alocacao-ti",
+  "/lp/microsoft-365",
 ];
 
 function xmlEscape(value: string): string {

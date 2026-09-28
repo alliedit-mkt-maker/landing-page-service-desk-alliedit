@@ -31,7 +31,7 @@ const SERVICES = [
 const PRODUCTS = [
   { icon: Video, title: "Videoconferência" },
   { icon: Headset, title: "Headsets" },
-  { icon: Monitor, title: "Microsoft 365" },
+  { icon: Monitor, title: "Microsoft 365", to: "/lp/microsoft-365" },
   { icon: Cloud, title: "AWS" },
   { icon: ShieldCheck, title: "Firewall" },
 ] as const;
@@ -235,7 +235,7 @@ export function SiteNavbar() {
                     return (
                       <Link
                         key={p.title}
-                        to="/produtos"
+                        to={"to" in p ? p.to : "/produtos"}
                         onClick={() => setMenu(null)}
                         className="flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors hover:bg-[#046E8B]/[0.06]"
                       >
@@ -353,7 +353,7 @@ export function SiteNavbar() {
                   return (
                     <Link
                       key={p.title}
-                      to="/produtos"
+                      to={"to" in p ? p.to : "/produtos"}
                       onClick={() => setOpen(false)}
                       className="flex items-center gap-3 py-2.5"
                     >

@@ -20,6 +20,7 @@ import { Route as LpVideoconferenciaRouteImport } from './routes/lp.videoconfere
 import { Route as LpServiceDeskRouteImport } from './routes/lp.service-desk'
 import { Route as LpRallyBarRouteImport } from './routes/lp.rally-bar'
 import { Route as LpPolyStudioRouteImport } from './routes/lp.poly-studio'
+import { Route as LpMicrosoft365RouteImport } from './routes/lp.microsoft-365'
 import { Route as LpHeadsetsPolyRouteImport } from './routes/lp.headsets-poly'
 import { Route as LpHeadsetYealinkRouteImport } from './routes/lp.headset-yealink'
 import { Route as LpHeadsetLogitechRouteImport } from './routes/lp.headset-logitech'
@@ -93,6 +94,11 @@ const LpRallyBarRoute = LpRallyBarRouteImport.update({
 const LpPolyStudioRoute = LpPolyStudioRouteImport.update({
   id: '/lp/poly-studio',
   path: '/lp/poly-studio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LpMicrosoft365Route = LpMicrosoft365RouteImport.update({
+  id: '/lp/microsoft-365',
+  path: '/lp/microsoft-365',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LpHeadsetsPolyRoute = LpHeadsetsPolyRouteImport.update({
@@ -213,6 +219,7 @@ export interface FileRoutesByFullPath {
   '/lp/headset-logitech': typeof LpHeadsetLogitechRoute
   '/lp/headset-yealink': typeof LpHeadsetYealinkRoute
   '/lp/headsets-poly': typeof LpHeadsetsPolyRoute
+  '/lp/microsoft-365': typeof LpMicrosoft365Route
   '/lp/poly-studio': typeof LpPolyStudioRoute
   '/lp/rally-bar': typeof LpRallyBarRoute
   '/lp/service-desk': typeof LpServiceDeskRoute
@@ -244,6 +251,7 @@ export interface FileRoutesByTo {
   '/lp/headset-logitech': typeof LpHeadsetLogitechRoute
   '/lp/headset-yealink': typeof LpHeadsetYealinkRoute
   '/lp/headsets-poly': typeof LpHeadsetsPolyRoute
+  '/lp/microsoft-365': typeof LpMicrosoft365Route
   '/lp/poly-studio': typeof LpPolyStudioRoute
   '/lp/rally-bar': typeof LpRallyBarRoute
   '/lp/service-desk': typeof LpServiceDeskRoute
@@ -277,6 +285,7 @@ export interface FileRoutesById {
   '/lp/headset-logitech': typeof LpHeadsetLogitechRoute
   '/lp/headset-yealink': typeof LpHeadsetYealinkRoute
   '/lp/headsets-poly': typeof LpHeadsetsPolyRoute
+  '/lp/microsoft-365': typeof LpMicrosoft365Route
   '/lp/poly-studio': typeof LpPolyStudioRoute
   '/lp/rally-bar': typeof LpRallyBarRoute
   '/lp/service-desk': typeof LpServiceDeskRoute
@@ -310,6 +319,7 @@ export interface FileRouteTypes {
     | '/lp/headset-logitech'
     | '/lp/headset-yealink'
     | '/lp/headsets-poly'
+    | '/lp/microsoft-365'
     | '/lp/poly-studio'
     | '/lp/rally-bar'
     | '/lp/service-desk'
@@ -341,6 +351,7 @@ export interface FileRouteTypes {
     | '/lp/headset-logitech'
     | '/lp/headset-yealink'
     | '/lp/headsets-poly'
+    | '/lp/microsoft-365'
     | '/lp/poly-studio'
     | '/lp/rally-bar'
     | '/lp/service-desk'
@@ -373,6 +384,7 @@ export interface FileRouteTypes {
     | '/lp/headset-logitech'
     | '/lp/headset-yealink'
     | '/lp/headsets-poly'
+    | '/lp/microsoft-365'
     | '/lp/poly-studio'
     | '/lp/rally-bar'
     | '/lp/service-desk'
@@ -401,6 +413,7 @@ export interface RootRouteChildren {
   LpHeadsetLogitechRoute: typeof LpHeadsetLogitechRoute
   LpHeadsetYealinkRoute: typeof LpHeadsetYealinkRoute
   LpHeadsetsPolyRoute: typeof LpHeadsetsPolyRoute
+  LpMicrosoft365Route: typeof LpMicrosoft365Route
   LpPolyStudioRoute: typeof LpPolyStudioRoute
   LpRallyBarRoute: typeof LpRallyBarRoute
   LpServiceDeskRoute: typeof LpServiceDeskRoute
@@ -486,6 +499,13 @@ declare module '@tanstack/react-router' {
       path: '/lp/poly-studio'
       fullPath: '/lp/poly-studio'
       preLoaderRoute: typeof LpPolyStudioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lp/microsoft-365': {
+      id: '/lp/microsoft-365'
+      path: '/lp/microsoft-365'
+      fullPath: '/lp/microsoft-365'
+      preLoaderRoute: typeof LpMicrosoft365RouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lp/headsets-poly': {
@@ -668,6 +688,7 @@ const rootRouteChildren: RootRouteChildren = {
   LpHeadsetLogitechRoute: LpHeadsetLogitechRoute,
   LpHeadsetYealinkRoute: LpHeadsetYealinkRoute,
   LpHeadsetsPolyRoute: LpHeadsetsPolyRoute,
+  LpMicrosoft365Route: LpMicrosoft365Route,
   LpPolyStudioRoute: LpPolyStudioRoute,
   LpRallyBarRoute: LpRallyBarRoute,
   LpServiceDeskRoute: LpServiceDeskRoute,
