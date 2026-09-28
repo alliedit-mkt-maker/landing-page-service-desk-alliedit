@@ -17,11 +17,18 @@ import {
   ShieldHalf,
   BrickWall,
   Smartphone,
-  CheckCircle2,
+  Clock,
+  Layers,
+  Users,
+  Scale,
+  ShieldCheck,
 } from "lucide-react";
 import { Reveal } from "@/components/lp/Reveal";
 import { SiteCta } from "@/components/site/SiteCta";
 import { SiteFooter } from "@/components/site/SiteFooter";
+import heroPhoto from "@/assets/csh/hero.jpg.asset.json";
+import socPhoto from "@/assets/csh/soc.jpg.asset.json";
+import consolePhoto from "@/assets/csh/console.jpg.asset.json";
 
 export const Route = createFileRoute("/_site/servicos/cyber-shield-360")({
   head: () =>
@@ -34,32 +41,51 @@ export const Route = createFileRoute("/_site/servicos/cyber-shield-360")({
   component: CyberShieldPage,
 });
 
-const BLUE = "#046E8B";
+type Item = { icon: React.ElementType; title: string; text: string };
+type GroupProps = { eyebrow: string; title: string; items: Item[] };
 
-const G1 = [
-  { icon: Radar, title: "SOCaaS", text: "Centro de operações 24x7 com atuação N1 a CSIRT. Resposta imediata e visão unificada contra ameaças." },
-  { icon: Activity, title: "NOCaaS", text: "Monitoramento contínuo de redes e servidores. Alta disponibilidade e recuperação rápida." },
-  { icon: ScanEye, title: "EDR & XDR", text: "Proteção do endpoint à nuvem com resposta automatizada e mínima interferência ao usuário." },
-];
-const G2 = [
-  { icon: Crosshair, title: "Pentest & Red Team", text: "Simulações realistas para diagnóstico profundo e correção de vulnerabilidades críticas." },
-  { icon: MailWarning, title: "Phishing Test", text: "Campanhas simuladas com treinamento. Evolução mensurável da cultura de segurança." },
-];
-const G3 = [
-  { icon: GraduationCap, title: "Conscientização", text: "Treinamentos interativos e alinhamento à LGPD. Redução de riscos humanos." },
-  { icon: ClipboardCheck, title: "Consultoria", text: "Análise do ambiente com plano de ação estratégico para aumentar a resiliência." },
-];
-const G4 = [
-  { icon: ShieldHalf, title: "Hardening", text: "Blindagem técnica de sistemas e dispositivos com base em frameworks seguros." },
-  { icon: BrickWall, title: "Firewalls", text: "Criação e gestão de regras com foco em Zero Trust e controle de tráfego preciso." },
-  { icon: Smartphone, title: "Intune", text: "Governança de dispositivos com segurança centralizada e compliance garantido." },
-];
+const G1: GroupProps = {
+  eyebrow: "Grupo 1",
+  title: "Monitoramento & Resposta",
+  items: [
+    { icon: Radar, title: "SOCaaS", text: "Centro de operações 24x7 com atuação N1 a CSIRT. Resposta imediata e visão unificada contra ameaças." },
+    { icon: Activity, title: "NOCaaS", text: "Monitoramento contínuo de redes e servidores. Alta disponibilidade e recuperação rápida." },
+    { icon: ScanEye, title: "EDR & XDR", text: "Proteção do endpoint à nuvem com resposta automatizada e mínima interferência ao usuário." },
+  ],
+};
+const G2: GroupProps = {
+  eyebrow: "Grupo 2",
+  title: "Testes & Simulação",
+  items: [
+    { icon: Crosshair, title: "Pentest & Red Team", text: "Simulações realistas para diagnóstico profundo e correção de vulnerabilidades críticas." },
+    { icon: MailWarning, title: "Phishing Test", text: "Campanhas simuladas com treinamento. Evolução mensurável da cultura de segurança." },
+  ],
+};
+const G3: GroupProps = {
+  eyebrow: "Grupo 3",
+  title: "Cultura & Consultoria",
+  items: [
+    { icon: GraduationCap, title: "Conscientização", text: "Treinamentos interativos e alinhamento à LGPD. Redução de riscos humanos." },
+    { icon: ClipboardCheck, title: "Consultoria", text: "Análise do ambiente com plano de ação estratégico para aumentar a resiliência." },
+  ],
+};
+const G4: GroupProps = {
+  eyebrow: "Grupo 4",
+  title: "Blindagem Técnica",
+  items: [
+    { icon: ShieldHalf, title: "Hardening", text: "Blindagem técnica de sistemas e dispositivos com base em frameworks seguros." },
+    { icon: BrickWall, title: "Firewalls", text: "Criação e gestão de regras com foco em Zero Trust e controle de tráfego preciso." },
+    { icon: Smartphone, title: "Intune", text: "Governança de dispositivos com segurança centralizada e compliance garantido." },
+  ],
+};
+
 const WHY = [
-  ["Operação 24x7x365.", "Monitoramento e resposta a incidentes o tempo todo, não só em horário comercial."],
-  ["Cobertura completa.", "Do endpoint à rede, da simulação de ataque à blindagem técnica."],
-  ["Cultura de segurança.", "Treinamento e conscientização para reduzir o erro humano, a maior porta de entrada de ataques."],
-  ["Compliance facilitado.", "Alinhamento com LGPD e frameworks de segurança reconhecidos."],
+  { icon: Clock, num: "01", title: "Operação 24x7x365", text: "Monitoramento e resposta a incidentes o tempo todo, não só em horário comercial." },
+  { icon: Layers, num: "02", title: "Cobertura completa", text: "Do endpoint à rede, da simulação de ataque à blindagem técnica." },
+  { icon: Users, num: "03", title: "Cultura de segurança", text: "Treinamento e conscientização para reduzir o erro humano, a maior porta de entrada de ataques." },
+  { icon: Scale, num: "04", title: "Compliance facilitado", text: "Alinhamento com LGPD e frameworks de segurança reconhecidos." },
 ];
+
 const FAQ = [
   ["Com que frequência devemos fazer um pentest?", "O recomendado é pelo menos uma vez por ano, ou sempre que houver mudança relevante na infraestrutura ou nas aplicações."],
   ["O SOCaaS substitui a equipe de TI interna?", "Não. Ele atua em conjunto com o time interno, cuidando do monitoramento e resposta a incidentes de forma contínua, algo difícil de manter só com equipe própria."],
@@ -67,251 +93,259 @@ const FAQ = [
   ["Como funciona o alinhamento com a LGPD?", "Avaliamos os processos e sistemas atuais, identificamos os pontos de risco e ajudamos a implementar as adequações necessárias."],
 ];
 
-function GroupHead({ n, title, light = false }: { n: string; title: string; light?: boolean }) {
+const GRID_TEXTURE =
+  "linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)";
+const DOT_TEXTURE = "radial-gradient(rgba(255,255,255,0.16) 1.1px, transparent 1.1px)";
+
+const BTN =
+  "font-inter inline-flex h-11 items-center justify-center whitespace-nowrap px-8 text-[11px] font-semibold uppercase tracking-[0.16em] transition-colors duration-200";
+
+function SectionCta({ label, dark }: { label: string; dark?: boolean }) {
   return (
-    <div className="mb-12">
-      <span className={`font-inter text-[11px] font-semibold uppercase tracking-[0.2em] ${light ? "text-[#F3C400]" : "text-[#046E8B]"}`}>
-        Grupo {n}
-      </span>
-      <h2 className={`font-chillax mt-3 text-[1.9rem] font-bold leading-tight sm:text-[2.4rem] ${light ? "text-white" : "text-[var(--site-ink)]"}`}>
-        {title}
-      </h2>
-    </div>
+    <Reveal variant="fade-up" className="mt-12">
+      <Link
+        to="/contato"
+        className={`${BTN} ${dark ? "bg-[var(--site-yellow)] text-[#0B1418] hover:bg-white" : "bg-[var(--site-blue)] text-white hover:bg-[#035a72]"}`}
+      >
+        {label}
+      </Link>
+    </Reveal>
   );
 }
 
-function ShieldArt() {
+function GroupHeader({ eyebrow, title, dark }: { eyebrow: string; title: string; dark?: boolean }) {
   return (
-    <svg viewBox="0 0 400 440" className="h-auto w-full max-w-[420px]" aria-hidden="true">
-      <defs>
-        <linearGradient id="cs-g" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor={BLUE} stopOpacity="0.14" />
-          <stop offset="1" stopColor={BLUE} stopOpacity="0.02" />
-        </linearGradient>
-      </defs>
-      <g stroke={BLUE} strokeOpacity="0.28" strokeWidth="1.5" fill="none">
-        <path d="M20 120 H110 V170" />
-        <path d="M20 300 H90 V260" />
-        <path d="M380 110 H300 V160" />
-        <path d="M380 320 H310 V280" />
-        <path d="M200 20 V60" />
-      </g>
-      <g fill={BLUE} fillOpacity="0.4">
-        <circle cx="20" cy="120" r="5" /><circle cx="20" cy="300" r="5" />
-        <circle cx="380" cy="110" r="5" /><circle cx="380" cy="320" r="5" />
-        <circle cx="200" cy="20" r="5" />
-      </g>
-      <path d="M200 60 L320 105 V220 C320 310 265 370 200 400 C135 370 80 310 80 220 V105 Z" fill="url(#cs-g)" stroke={BLUE} strokeWidth="3" />
-      <path d="M200 100 L285 132 V222 C285 288 247 333 200 356 C153 333 115 288 115 222 V132 Z" fill="none" stroke={BLUE} strokeOpacity="0.35" strokeWidth="1.5" strokeDasharray="6 6" />
-      <path d="M160 225 L190 255 L245 195" fill="none" stroke="#F3C400" strokeWidth="10" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
+    <Reveal variant="fade-up" className="max-w-[46ch]">
+      <p className="font-inter text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--site-yellow)]">{eyebrow}</p>
+      <h2 className={`font-chillax mt-3 text-balance text-[1.7rem] font-bold leading-tight tracking-tight sm:text-[2.1rem] ${dark ? "text-white" : "text-[var(--site-ink)]"}`}>
+        {title}
+      </h2>
+    </Reveal>
+  );
+}
+
+/* 3 itens: grid de cards sem sobra */
+function GridGroup({ eyebrow, title, items }: GroupProps) {
+  return (
+    <section className="bg-white py-20 sm:py-24">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <GroupHeader eyebrow={eyebrow} title={title} />
+        <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-[var(--site-line)] bg-[var(--site-line)] md:grid-cols-3">
+          {items.map((item, i) => {
+            const Icon = item.icon;
+            return (
+              <Reveal key={item.title} variant="fade-up" delay={i * 60} className="group flex flex-col gap-4 bg-white px-7 py-8 transition-colors duration-200 hover:bg-[#F2F7F9]">
+                <Icon className="size-9 shrink-0 text-[var(--site-blue)] transition-colors duration-200 group-hover:text-[var(--site-yellow)]" strokeWidth={1.3} />
+                <p className="font-chillax text-lg font-semibold text-[var(--site-ink)]">{item.title}</p>
+                <p className="font-inter text-[14px] leading-relaxed text-[var(--site-muted)]">{item.text}</p>
+              </Reveal>
+            );
+          })}
+        </div>
+        <SectionCta label="Quero monitoramento 24x7" />
+      </div>
+    </section>
+  );
+}
+
+/* 2 itens: split horizontal (azul ou claro) */
+function SplitGroup({ eyebrow, title, items, variant, cta }: GroupProps & { variant: "blue" | "light"; cta: string }) {
+  const blue = variant === "blue";
+  return (
+    <section className={`relative overflow-hidden py-20 sm:py-24 ${blue ? "bg-[#046E8B]" : "bg-[#F4F8F9]"}`}>
+      {blue && (
+        <>
+          <div aria-hidden className="pointer-events-none absolute inset-0" style={{ backgroundImage: GRID_TEXTURE, backgroundSize: "48px 48px" }} />
+          <div aria-hidden className="pointer-events-none absolute -right-24 -top-24 size-[380px] rounded-full border border-white/15" />
+        </>
+      )}
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
+        <GroupHeader eyebrow={eyebrow} title={title} dark={blue} />
+        <div className={`mt-14 grid gap-12 md:grid-cols-2 md:gap-0 md:divide-x ${blue ? "md:divide-white/20" : "md:divide-[var(--site-blue)]/20"}`}>
+          {items.map((item, i) => {
+            const Icon = item.icon;
+            return (
+              <Reveal key={item.title} variant="fade-up" delay={i * 100} className={`flex items-start gap-6 ${i === 0 ? "md:pr-12" : "md:pl-12"}`}>
+                <Icon className={`size-16 shrink-0 sm:size-20 ${blue ? "text-[var(--site-yellow)]" : "text-[var(--site-blue)]"}`} strokeWidth={1} />
+                <div>
+                  <p className={`font-chillax text-xl font-semibold sm:text-2xl ${blue ? "text-white" : "text-[var(--site-ink)]"}`}>{item.title}</p>
+                  <p className={`font-inter mt-3 max-w-[42ch] text-[15px] leading-relaxed ${blue ? "text-white/75" : "text-[var(--site-muted)]"}`}>{item.text}</p>
+                </div>
+              </Reveal>
+            );
+          })}
+        </div>
+        <SectionCta label={cta} dark={blue} />
+      </div>
+    </section>
+  );
+}
+
+/* 3 itens: lista numerada sobre fundo escuro */
+function NumberedGroup({ eyebrow, title, items }: GroupProps) {
+  return (
+    <section className="relative overflow-hidden bg-[#08131A] py-20 sm:py-24">
+      <div aria-hidden className="pointer-events-none absolute inset-0 opacity-70" style={{ backgroundImage: GRID_TEXTURE, backgroundSize: "48px 48px" }} />
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
+        <GroupHeader eyebrow={eyebrow} title={title} dark />
+        <ol className="mt-14 grid gap-12 md:grid-cols-3 md:gap-10">
+          {items.map((item, i) => {
+            const Icon = item.icon;
+            return (
+              <Reveal key={item.title} variant="fade-up" delay={i * 100} className="relative">
+                <div className="flex items-end justify-between border-b border-white/15 pb-4">
+                  <span className="font-chillax text-[3.5rem] font-bold leading-none tracking-tight text-white tabular-nums sm:text-[4.25rem]">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <Icon className="mb-2 size-7 text-[var(--site-yellow)]" strokeWidth={1.3} />
+                </div>
+                <p className="font-chillax mt-6 text-lg font-semibold text-white">{item.title}</p>
+                <p className="font-inter mt-2 text-[14px] leading-relaxed text-white/65">{item.text}</p>
+              </Reveal>
+            );
+          })}
+        </ol>
+        <SectionCta label="Blindar minha infraestrutura" dark />
+      </div>
+    </section>
   );
 }
 
 function CyberShieldPage() {
   return (
-    <main>
-      {/* 1. Hero claro */}
-      <section className="relative overflow-hidden bg-[#F5F8FA] pb-20 pt-32 sm:pb-28 sm:pt-40">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 opacity-60"
-          style={{
-            backgroundImage: `radial-gradient(${BLUE}22 1px, transparent 1px)`,
-            backgroundSize: "22px 22px",
-          }}
+    <>
+      {/* 1: Hero */}
+      <section className="relative -mt-[72px] overflow-hidden bg-[#050D12] pt-[72px]">
+        <img
+          src={heroPhoto.url}
+          alt="Cadeado digital protegendo servidores em um data center"
+          className="absolute inset-0 size-full object-cover object-[70%_center]"
         />
-        <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 sm:px-8 lg:grid-cols-[1.2fr_1fr]">
-          <div>
-            <span className="font-inter text-[11px] font-semibold uppercase tracking-[0.2em] text-[#046E8B]">Serviços</span>
-            <h1 className="font-chillax mt-4 text-[2.8rem] font-bold leading-[1.02] tracking-tight text-[#046E8B] sm:text-[4.2rem]">
+        <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-black/92 via-black/60 to-transparent" />
+        <div className="relative mx-auto max-w-7xl px-5 py-28 sm:px-8 sm:py-36">
+          <div className="max-w-[58ch]">
+            <p className="font-inter text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--site-yellow)]">Serviços</p>
+            <h1 className="font-chillax mt-4 max-w-[24ch] text-balance text-[2.2rem] font-bold leading-[1.06] tracking-tight text-white sm:text-[3.2rem]">
               Cyber Shield 360°
             </h1>
-            <p className="font-inter mt-6 max-w-[52ch] text-[17px] leading-relaxed text-[var(--site-ink)]/75">
+            <p className="font-inter mt-6 max-w-[46ch] text-pretty text-[16px] leading-relaxed text-white/75">
               Segurança cibernética em todas as camadas: monitoramento, testes, blindagem técnica e cultura, com operação 24x7x365.
             </p>
-            <Link
-              to="/contato"
-              className="font-inter mt-9 inline-flex h-12 items-center justify-center bg-[#046E8B] px-8 text-[11.5px] font-semibold uppercase tracking-[0.16em] text-white transition-colors hover:bg-[#035a72]"
-            >
+            <Link to="/contato" className={`${BTN} mt-9 bg-[var(--site-yellow)] text-[#0B1418] hover:bg-white`}>
               Falar com um especialista em Segurança
             </Link>
-          </div>
-          <div className="flex justify-center lg:justify-end">
-            <ShieldArt />
           </div>
         </div>
       </section>
 
-      {/* 2. Visão geral + número */}
-      <section className="bg-white py-20 sm:py-28">
-        <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-2">
-          <Reveal>
-            <p className="font-inter text-[18px] leading-relaxed text-[var(--site-ink)]/80 sm:text-[20px]">
-              Oferecemos uma estrutura completa de segurança cibernética, com serviços sob demanda e operação 24x7x365. Atuamos desde o monitoramento e defesa até a conscientização e blindagem da infraestrutura.
-            </p>
-          </Reveal>
-          <Reveal>
-            <div className="lg:text-right">
-              <span className="font-chillax block text-[4.5rem] font-bold leading-none tracking-tight text-[#F3C400] sm:text-[7rem]">
-                24x7x365
-              </span>
-              <span className="font-inter mt-3 block text-[11px] font-semibold uppercase tracking-[0.2em] text-[#046E8B]">
-                Operação contínua
-              </span>
+      {/* 2: Visão geral */}
+      <section className="relative bg-[#F4F8F9] py-20 sm:py-28">
+        <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
+          <Reveal variant="fade-up">
+            <div className="relative grid overflow-hidden rounded-[28px] border border-white/10 bg-[#08131A] shadow-[0_30px_80px_-40px_rgba(0,0,0,0.55)] lg:grid-cols-2">
+              <div className="relative min-h-[300px] lg:min-h-[480px]">
+                <img src={socPhoto.url} alt="Analista monitorando painéis de segurança" className="absolute inset-0 size-full object-cover" />
+                <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-[#08131A] via-[#08131A]/55 to-[#08131A]/20 lg:bg-gradient-to-r lg:from-[#08131A]/30 lg:via-[#08131A]/55 lg:to-[#08131A]" />
+              </div>
+              <div className="relative flex flex-col justify-center p-8 sm:p-12 lg:p-14">
+                <span aria-hidden className="pointer-events-none absolute inset-0 opacity-50" style={{ backgroundImage: DOT_TEXTURE, backgroundSize: "22px 22px" }} />
+                <div className="relative">
+                  <p className="font-chillax text-[3rem] font-bold leading-none tracking-tight text-[var(--site-yellow)] sm:text-[4rem]">24x7x365</p>
+                  <p className="font-inter mt-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/60">Operação contínua</p>
+                  <h2 className="font-chillax mt-8 text-balance text-[1.7rem] font-bold leading-tight tracking-tight text-white sm:text-[2.1rem]">
+                    O que é Cyber Shield 360°
+                  </h2>
+                  <p className="font-inter mt-5 max-w-[46ch] text-pretty text-[15px] leading-relaxed text-white/70">
+                    Oferecemos uma estrutura completa de segurança cibernética, com serviços sob demanda e operação 24x7x365. Atuamos desde o monitoramento e defesa até a conscientização e blindagem da infraestrutura.
+                  </p>
+                  <Link to="/contato" className={`${BTN} mt-8 bg-[var(--site-yellow)] text-[#0B1418] hover:bg-white`}>
+                    Avaliar minha segurança
+                  </Link>
+                </div>
+              </div>
             </div>
           </Reveal>
         </div>
       </section>
 
-      {/* 3. Grupo 1: grid de cards */}
-      <section className="bg-[#F2F4F5] py-20 sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <GroupHead n="1" title="Monitoramento & Resposta" />
-          <div className="grid gap-5 md:grid-cols-3">
-            {G1.map(({ icon: Icon, title, text }) => (
-              <Reveal key={title}>
-                <div className="h-full border border-black/5 bg-white p-8 transition-shadow hover:shadow-[0_18px_40px_-24px_rgba(4,110,139,0.5)]">
-                  <Icon className="h-8 w-8 stroke-[1.3] text-[#046E8B]" />
-                  <h3 className="font-chillax mt-6 text-[1.3rem] font-semibold text-[var(--site-ink)]">{title}</h3>
-                  <p className="font-inter mt-3 text-[14.5px] leading-relaxed text-[var(--site-muted)]">{text}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* 3 a 6: Grupos */}
+      <GridGroup {...G1} />
+      <SplitGroup {...G2} variant="blue" cta="Agendar um pentest" />
+      <SplitGroup {...G3} variant="light" cta="Falar com um consultor" />
+      <NumberedGroup {...G4} />
 
-      {/* 4. Grupo 2: split azul */}
-      <section className="bg-[#046E8B] py-20 sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <GroupHead n="2" title="Testes & Simulação" light />
-          <div className="grid gap-12 md:grid-cols-2 md:divide-x md:divide-white/15">
-            {G2.map(({ icon: Icon, title, text }, i) => (
-              <Reveal key={title}>
-                <div className={`flex items-start gap-6 ${i === 1 ? "md:pl-12" : ""}`}>
-                  <Icon className="h-14 w-14 shrink-0 stroke-[1.1] text-[#F3C400]" />
-                  <div>
-                    <h3 className="font-chillax text-[1.5rem] font-semibold text-white">{title}</h3>
-                    <p className="font-inter mt-3 text-[15px] leading-relaxed text-white/75">{text}</p>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 5. Grupo 3: tiles arredondados */}
-      <section className="bg-white py-20 sm:py-28">
-        <div className="mx-auto max-w-5xl px-5 sm:px-8">
-          <div className="text-center [&>div]:mb-12">
-            <GroupHead n="3" title="Cultura & Consultoria" />
-          </div>
-          <div className="grid gap-6 md:grid-cols-2">
-            {G3.map(({ icon: Icon, title, text }) => (
-              <Reveal key={title}>
-                <div className="flex h-full flex-col items-center rounded-3xl bg-[#046E8B]/[0.07] px-8 py-12 text-center">
-                  <span className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white shadow-sm">
-                    <Icon className="h-8 w-8 stroke-[1.3] text-[#046E8B]" />
-                  </span>
-                  <h3 className="font-chillax mt-6 text-[1.35rem] font-semibold text-[var(--site-ink)]">{title}</h3>
-                  <p className="font-inter mt-3 max-w-[36ch] text-[14.5px] leading-relaxed text-[var(--site-muted)]">{text}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 6. Grupo 4: faixa amarela */}
-      <section className="bg-[#F3C400] py-20 sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <div className="text-center">
-            <span className="font-inter text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--site-ink)]/60">Grupo 4</span>
-            <h2 className="font-chillax mt-3 text-[1.9rem] font-bold leading-tight text-[var(--site-ink)] sm:text-[2.4rem]">
-              Blindagem Técnica
+      {/* 7: Integração */}
+      <section className="relative overflow-hidden bg-[#050D12] py-24 text-white sm:py-32">
+        <img src={consolePhoto.url} alt="" aria-hidden className="absolute inset-0 size-full object-cover opacity-40" />
+        <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-[#050D12] via-[#050D12]/80 to-[#050D12]/40" />
+        <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
+          <Reveal variant="fade-up" className="max-w-[60ch]">
+            <ShieldCheck className="size-10 text-[var(--site-yellow)]" strokeWidth={1.2} />
+            <h2 className="font-chillax mt-5 text-balance text-[1.9rem] font-bold leading-tight tracking-tight sm:text-[2.6rem]">
+              Segurança não é um projeto. É uma operação contínua.
             </h2>
-          </div>
-          <div className="mt-14 grid gap-10 md:grid-cols-3 md:gap-0 md:divide-x md:divide-[var(--site-ink)]/20">
-            {G4.map(({ icon: Icon, title, text }) => (
-              <Reveal key={title}>
-                <div className="flex flex-col items-center px-8 text-center">
-                  <Icon className="h-12 w-12 stroke-[1.2] text-[var(--site-ink)]" />
-                  <h3 className="font-chillax mt-5 text-[1.35rem] font-semibold text-[var(--site-ink)]">{title}</h3>
-                  <p className="font-inter mt-3 max-w-[30ch] text-[14.5px] leading-relaxed text-[var(--site-ink)]/75">{text}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 7. Stat de impacto */}
-      <section className="relative overflow-hidden bg-[#046E8B] py-24 sm:py-32">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 opacity-20"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px)",
-            backgroundSize: "48px 48px",
-          }}
-        />
-        <div className="relative mx-auto max-w-4xl px-5 text-center sm:px-8">
-          <Reveal>
-            <h2 className="font-chillax text-[2.2rem] font-bold leading-[1.1] text-white sm:text-[3.4rem]">
-              Segurança não é um projeto. <span className="text-[#F3C400]">É uma operação contínua.</span>
-            </h2>
-            <p className="font-inter mx-auto mt-7 max-w-[60ch] text-[16px] leading-relaxed text-white/75">
+            <p className="font-inter mt-5 text-pretty text-[15px] leading-relaxed text-white/70">
               Do primeiro diagnóstico à resposta a incidentes, o Cyber Shield 360° acompanha sua operação todos os dias, não só quando algo acontece.
             </p>
           </Reveal>
+          <SectionCta label="Falar com um especialista" dark />
         </div>
       </section>
 
-      {/* 8. Por que */}
-      <section className="bg-white py-20 sm:py-28">
-        <div className="mx-auto max-w-3xl px-5 sm:px-8">
-          <h2 className="font-chillax text-[1.9rem] font-bold leading-tight text-[var(--site-ink)] sm:text-[2.4rem]">
-            Por que Cyber Shield 360° da Allied
-          </h2>
-          <ul className="mt-10 divide-y divide-black/5">
-            {WHY.map(([t, d]) => (
-              <li key={t} className="flex items-start gap-4 py-6">
-                <CheckCircle2 className="mt-0.5 h-6 w-6 shrink-0 text-[#046E8B]" />
-                <p className="font-inter text-[15.5px] leading-relaxed text-[var(--site-muted)]">
-                  <strong className="font-chillax font-semibold text-[var(--site-ink)]">{t}</strong> {d}
-                </p>
-              </li>
-            ))}
-          </ul>
+      {/* 8: Por que */}
+      <section className="bg-white py-20 sm:py-24">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+          <Reveal variant="fade-up" className="mx-auto max-w-[46ch] text-center">
+            <h2 className="font-chillax text-balance text-[1.6rem] font-bold leading-tight tracking-tight text-[var(--site-ink)] sm:text-[1.95rem]">
+              Por que Cyber Shield 360° da Allied
+            </h2>
+          </Reveal>
+          <div className="mt-12 grid gap-5 sm:grid-cols-2">
+            {WHY.map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <Reveal key={item.title} variant="fade-up" delay={i * 110} className="rounded-2xl border border-[var(--site-line)] bg-white p-7 transition-colors duration-200 hover:border-[var(--site-yellow)]">
+                  <div className="flex items-center gap-4">
+                    <span className="font-chillax text-sm font-bold tracking-[0.18em] text-[var(--site-yellow)]">{item.num}</span>
+                    <Icon className="size-7 text-[var(--site-yellow)]" strokeWidth={1.3} />
+                  </div>
+                  <p className="font-chillax mt-5 text-lg font-semibold text-[var(--site-ink)]">{item.title}</p>
+                  <p className="font-inter mt-2 text-[14px] leading-relaxed text-[var(--site-muted)]">{item.text}</p>
+                </Reveal>
+              );
+            })}
+          </div>
+          <div className="flex justify-center">
+            <SectionCta label="Proteger minha empresa" />
+          </div>
         </div>
       </section>
 
-      {/* 9. FAQ */}
-      <section className="bg-[#F2F4F5] py-20 sm:py-28">
-        <div className="mx-auto max-w-3xl px-5 sm:px-8">
-          <h2 className="font-chillax text-[1.9rem] font-bold leading-tight text-[var(--site-ink)] sm:text-[2.4rem]">
-            Perguntas frequentes
-          </h2>
-          <Accordion type="single" collapsible className="mt-10 w-full border-t border-black/10">
-            {FAQ.map(([q, a], i) => (
-              <AccordionItem key={i} value={`q-${i}`} className="border-b border-black/10">
-                <AccordionTrigger className="font-chillax py-5 text-left text-[16px] font-semibold text-[var(--site-ink)] hover:text-[#046E8B] hover:no-underline sm:py-6 sm:text-[17px]">
-                  {q}
-                </AccordionTrigger>
-                <AccordionContent className="font-inter pb-6 text-[14px] leading-relaxed text-[var(--site-muted)]">
-                  {a}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+      {/* 9: FAQ */}
+      <section className="bg-gradient-to-b from-[#0B1B23] to-[#08131A] py-20 sm:py-28">
+        <div className="mx-auto max-w-4xl px-5 sm:px-8">
+          <Reveal variant="fade-up">
+            <h2 className="font-chillax text-balance text-[1.7rem] font-bold leading-tight tracking-tight text-white sm:text-[2.1rem]">
+              Perguntas frequentes
+            </h2>
+          </Reveal>
+          <Reveal variant="fade-up" delay={120} className="mt-10">
+            <Accordion type="single" collapsible className="w-full border-t border-white/12">
+              {FAQ.map(([q, a], i) => (
+                <AccordionItem key={i} value={`q-${i}`} className="border-b border-white/12">
+                  <AccordionTrigger className="font-chillax py-5 text-left text-[16px] font-semibold text-white hover:text-[var(--site-yellow)] hover:no-underline sm:py-6 sm:text-[17px]">
+                    {q}
+                  </AccordionTrigger>
+                  <AccordionContent className="font-inter pb-6 text-[14px] leading-relaxed text-white/60">{a}</AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </Reveal>
         </div>
       </section>
 
       <SiteCta />
       <SiteFooter />
-    </main>
+    </>
   );
 }
