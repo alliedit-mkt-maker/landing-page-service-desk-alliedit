@@ -197,7 +197,7 @@ function SmartCloudOpsPage() {
 
   return (
     <>
-      {/* 1 — Hero */}
+      {/* 1: Hero */}
       <section className="relative -mt-[72px] overflow-hidden bg-[#050D12] pt-[72px]">
         <img
           src={heroPhoto.url}
@@ -224,7 +224,7 @@ function SmartCloudOpsPage() {
         </div>
       </section>
 
-      {/* 2 — Visão geral */}
+      {/* 2: Visão geral */}
       <section className="relative bg-[#F4F8F9] py-20 sm:py-28">
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
           <Reveal variant="fade-up">
@@ -263,12 +263,12 @@ function SmartCloudOpsPage() {
         </div>
       </section>
 
-      {/* 3, 4, 5 — Grupos de serviços */}
+      {/* 3, 4, 5: Grupos de serviços */}
       <GridGroup {...GROUPS[0]} />
       <SplitGroup {...GROUPS[1]} />
       <NumberedGroup {...GROUPS[2]} />
 
-      {/* 6 — Integração */}
+      {/* 6: Integração */}
       <section className="relative overflow-hidden bg-[#08131A] py-20 text-white sm:py-28">
         <div
           aria-hidden
@@ -301,7 +301,7 @@ function SmartCloudOpsPage() {
         </div>
       </section>
 
-      {/* 7 — Por que */}
+      {/* 7: Por que */}
       <section className="bg-white py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <Reveal variant="fade-up" className="mx-auto max-w-[46ch] text-center">
@@ -334,7 +334,7 @@ function SmartCloudOpsPage() {
         </div>
       </section>
 
-      {/* 8 — FAQ */}
+      {/* 8: FAQ */}
       <section className="bg-gradient-to-b from-[#0B1B23] to-[#08131A] py-20 sm:py-28">
         <div className="mx-auto max-w-4xl px-5 sm:px-8">
           <Reveal variant="fade-up">
