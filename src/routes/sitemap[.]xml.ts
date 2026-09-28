@@ -10,6 +10,7 @@ const STATIC_PATHS = [
   "/servicos/smart-cloud-ops",
   "/servicos/cyber-shield-360",
   "/produtos",
+  "/produtos/microsoft-365",
   "/contato",
   "/blog",
   "/politica-de-privacidade",
@@ -29,7 +30,6 @@ const LP_PATHS = [
   "/lp/videoconferencia",
   "/lp/yealink-videoconferencia",
   "/lp/alocacao-ti",
-  "/lp/microsoft-365",
 ];
 
 function xmlEscape(value: string): string {
