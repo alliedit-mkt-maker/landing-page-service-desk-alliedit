@@ -21,7 +21,7 @@ const SERVICES = [
     text: "Suporte ao usuário, remoto e presencial",
     to: "/servicos/digital-workspace",
   },
-  { icon: Cloud, title: "Smart Cloud Ops", text: "Gestão de nuvem e bancos de dados" },
+  { icon: Cloud, title: "Smart Cloud Ops", text: "Gestão de nuvem e bancos de dados", to: "/servicos/smart-cloud-ops" },
   { icon: ShieldCheck, title: "Cyber Shield 360°", text: "SOC, NOC e cibersegurança 24x7" },
   { icon: Server, title: "Infra Core", text: "Redes, cabeamento e data center" },
   { icon: Cpu, title: "Product Engineering", text: "Automação e desenvolvimento sob medida" },
