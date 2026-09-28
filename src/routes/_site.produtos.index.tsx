@@ -1,7 +1,7 @@
 import { pageHead } from "@/lib/seo";
 import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute("/_site/produtos")({
+export const Route = createFileRoute("/_site/produtos/")({
   head: () =>
     pageHead({
       title: "Headsets, videoconferência e equipamentos de TI | Allied IT",

@@ -20,7 +20,6 @@ import { Route as LpVideoconferenciaRouteImport } from './routes/lp.videoconfere
 import { Route as LpServiceDeskRouteImport } from './routes/lp.service-desk'
 import { Route as LpRallyBarRouteImport } from './routes/lp.rally-bar'
 import { Route as LpPolyStudioRouteImport } from './routes/lp.poly-studio'
-import { Route as LpMicrosoft365RouteImport } from './routes/lp.microsoft-365'
 import { Route as LpHeadsetsPolyRouteImport } from './routes/lp.headsets-poly'
 import { Route as LpHeadsetYealinkRouteImport } from './routes/lp.headset-yealink'
 import { Route as LpHeadsetLogitechRouteImport } from './routes/lp.headset-logitech'
@@ -31,14 +30,15 @@ import { Route as LpCabeamentoRouteImport } from './routes/lp.cabeamento'
 import { Route as LpAlocacaoTiRouteImport } from './routes/lp.alocacao-ti'
 import { Route as SiteTermosDeUsoRouteImport } from './routes/_site.termos-de-uso'
 import { Route as SiteSobreRouteImport } from './routes/_site.sobre'
-import { Route as SiteProdutosRouteImport } from './routes/_site.produtos'
 import { Route as SitePoliticaDePrivacidadeRouteImport } from './routes/_site.politica-de-privacidade'
 import { Route as SiteContatoRouteImport } from './routes/_site.contato'
 import { Route as SiteServicosIndexRouteImport } from './routes/_site.servicos.index'
+import { Route as SiteProdutosIndexRouteImport } from './routes/_site.produtos.index'
 import { Route as SiteBlogIndexRouteImport } from './routes/_site.blog.index'
 import { Route as SiteServicosSmartCloudOpsRouteImport } from './routes/_site.servicos.smart-cloud-ops'
 import { Route as SiteServicosDigitalWorkspaceRouteImport } from './routes/_site.servicos.digital-workspace'
 import { Route as SiteServicosCyberShield360RouteImport } from './routes/_site.servicos.cyber-shield-360'
+import { Route as SiteProdutosMicrosoft365RouteImport } from './routes/_site.produtos.microsoft-365'
 import { Route as SiteBlogSlugRouteImport } from './routes/_site.blog.$slug'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -96,11 +96,6 @@ const LpPolyStudioRoute = LpPolyStudioRouteImport.update({
   path: '/lp/poly-studio',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LpMicrosoft365Route = LpMicrosoft365RouteImport.update({
-  id: '/lp/microsoft-365',
-  path: '/lp/microsoft-365',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const LpHeadsetsPolyRoute = LpHeadsetsPolyRouteImport.update({
   id: '/lp/headsets-poly',
   path: '/lp/headsets-poly',
@@ -151,11 +146,6 @@ const SiteSobreRoute = SiteSobreRouteImport.update({
   path: '/sobre',
   getParentRoute: () => SiteRoute,
 } as any)
-const SiteProdutosRoute = SiteProdutosRouteImport.update({
-  id: '/produtos',
-  path: '/produtos',
-  getParentRoute: () => SiteRoute,
-} as any)
 const SitePoliticaDePrivacidadeRoute =
   SitePoliticaDePrivacidadeRouteImport.update({
     id: '/politica-de-privacidade',
@@ -170,6 +160,11 @@ const SiteContatoRoute = SiteContatoRouteImport.update({
 const SiteServicosIndexRoute = SiteServicosIndexRouteImport.update({
   id: '/servicos/',
   path: '/servicos/',
+  getParentRoute: () => SiteRoute,
+} as any)
+const SiteProdutosIndexRoute = SiteProdutosIndexRouteImport.update({
+  id: '/produtos/',
+  path: '/produtos/',
   getParentRoute: () => SiteRoute,
 } as any)
 const SiteBlogIndexRoute = SiteBlogIndexRouteImport.update({
@@ -195,6 +190,12 @@ const SiteServicosCyberShield360Route =
     path: '/servicos/cyber-shield-360',
     getParentRoute: () => SiteRoute,
   } as any)
+const SiteProdutosMicrosoft365Route =
+  SiteProdutosMicrosoft365RouteImport.update({
+    id: '/produtos/microsoft-365',
+    path: '/produtos/microsoft-365',
+    getParentRoute: () => SiteRoute,
+  } as any)
 const SiteBlogSlugRoute = SiteBlogSlugRouteImport.update({
   id: '/blog/$slug',
   path: '/blog/$slug',
@@ -208,7 +209,6 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/contato': typeof SiteContatoRoute
   '/politica-de-privacidade': typeof SitePoliticaDePrivacidadeRoute
-  '/produtos': typeof SiteProdutosRoute
   '/sobre': typeof SiteSobreRoute
   '/termos-de-uso': typeof SiteTermosDeUsoRoute
   '/lp/alocacao-ti': typeof LpAlocacaoTiRoute
@@ -219,7 +219,6 @@ export interface FileRoutesByFullPath {
   '/lp/headset-logitech': typeof LpHeadsetLogitechRoute
   '/lp/headset-yealink': typeof LpHeadsetYealinkRoute
   '/lp/headsets-poly': typeof LpHeadsetsPolyRoute
-  '/lp/microsoft-365': typeof LpMicrosoft365Route
   '/lp/poly-studio': typeof LpPolyStudioRoute
   '/lp/rally-bar': typeof LpRallyBarRoute
   '/lp/service-desk': typeof LpServiceDeskRoute
@@ -227,10 +226,12 @@ export interface FileRoutesByFullPath {
   '/lp/videoconferencia-pago': typeof LpVideoconferenciaPagoRoute
   '/lp/yealink-videoconferencia': typeof LpYealinkVideoconferenciaRoute
   '/blog/$slug': typeof SiteBlogSlugRoute
+  '/produtos/microsoft-365': typeof SiteProdutosMicrosoft365Route
   '/servicos/cyber-shield-360': typeof SiteServicosCyberShield360Route
   '/servicos/digital-workspace': typeof SiteServicosDigitalWorkspaceRoute
   '/servicos/smart-cloud-ops': typeof SiteServicosSmartCloudOpsRoute
   '/blog/': typeof SiteBlogIndexRoute
+  '/produtos/': typeof SiteProdutosIndexRoute
   '/servicos/': typeof SiteServicosIndexRoute
 }
 export interface FileRoutesByTo {
@@ -240,7 +241,6 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/contato': typeof SiteContatoRoute
   '/politica-de-privacidade': typeof SitePoliticaDePrivacidadeRoute
-  '/produtos': typeof SiteProdutosRoute
   '/sobre': typeof SiteSobreRoute
   '/termos-de-uso': typeof SiteTermosDeUsoRoute
   '/lp/alocacao-ti': typeof LpAlocacaoTiRoute
@@ -251,7 +251,6 @@ export interface FileRoutesByTo {
   '/lp/headset-logitech': typeof LpHeadsetLogitechRoute
   '/lp/headset-yealink': typeof LpHeadsetYealinkRoute
   '/lp/headsets-poly': typeof LpHeadsetsPolyRoute
-  '/lp/microsoft-365': typeof LpMicrosoft365Route
   '/lp/poly-studio': typeof LpPolyStudioRoute
   '/lp/rally-bar': typeof LpRallyBarRoute
   '/lp/service-desk': typeof LpServiceDeskRoute
@@ -259,10 +258,12 @@ export interface FileRoutesByTo {
   '/lp/videoconferencia-pago': typeof LpVideoconferenciaPagoRoute
   '/lp/yealink-videoconferencia': typeof LpYealinkVideoconferenciaRoute
   '/blog/$slug': typeof SiteBlogSlugRoute
+  '/produtos/microsoft-365': typeof SiteProdutosMicrosoft365Route
   '/servicos/cyber-shield-360': typeof SiteServicosCyberShield360Route
   '/servicos/digital-workspace': typeof SiteServicosDigitalWorkspaceRoute
   '/servicos/smart-cloud-ops': typeof SiteServicosSmartCloudOpsRoute
   '/blog': typeof SiteBlogIndexRoute
+  '/produtos': typeof SiteProdutosIndexRoute
   '/servicos': typeof SiteServicosIndexRoute
 }
 export interface FileRoutesById {
@@ -274,7 +275,6 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/_site/contato': typeof SiteContatoRoute
   '/_site/politica-de-privacidade': typeof SitePoliticaDePrivacidadeRoute
-  '/_site/produtos': typeof SiteProdutosRoute
   '/_site/sobre': typeof SiteSobreRoute
   '/_site/termos-de-uso': typeof SiteTermosDeUsoRoute
   '/lp/alocacao-ti': typeof LpAlocacaoTiRoute
@@ -285,7 +285,6 @@ export interface FileRoutesById {
   '/lp/headset-logitech': typeof LpHeadsetLogitechRoute
   '/lp/headset-yealink': typeof LpHeadsetYealinkRoute
   '/lp/headsets-poly': typeof LpHeadsetsPolyRoute
-  '/lp/microsoft-365': typeof LpMicrosoft365Route
   '/lp/poly-studio': typeof LpPolyStudioRoute
   '/lp/rally-bar': typeof LpRallyBarRoute
   '/lp/service-desk': typeof LpServiceDeskRoute
@@ -293,10 +292,12 @@ export interface FileRoutesById {
   '/lp/videoconferencia-pago': typeof LpVideoconferenciaPagoRoute
   '/lp/yealink-videoconferencia': typeof LpYealinkVideoconferenciaRoute
   '/_site/blog/$slug': typeof SiteBlogSlugRoute
+  '/_site/produtos/microsoft-365': typeof SiteProdutosMicrosoft365Route
   '/_site/servicos/cyber-shield-360': typeof SiteServicosCyberShield360Route
   '/_site/servicos/digital-workspace': typeof SiteServicosDigitalWorkspaceRoute
   '/_site/servicos/smart-cloud-ops': typeof SiteServicosSmartCloudOpsRoute
   '/_site/blog/': typeof SiteBlogIndexRoute
+  '/_site/produtos/': typeof SiteProdutosIndexRoute
   '/_site/servicos/': typeof SiteServicosIndexRoute
 }
 export interface FileRouteTypes {
@@ -308,7 +309,6 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/contato'
     | '/politica-de-privacidade'
-    | '/produtos'
     | '/sobre'
     | '/termos-de-uso'
     | '/lp/alocacao-ti'
@@ -319,7 +319,6 @@ export interface FileRouteTypes {
     | '/lp/headset-logitech'
     | '/lp/headset-yealink'
     | '/lp/headsets-poly'
-    | '/lp/microsoft-365'
     | '/lp/poly-studio'
     | '/lp/rally-bar'
     | '/lp/service-desk'
@@ -327,10 +326,12 @@ export interface FileRouteTypes {
     | '/lp/videoconferencia-pago'
     | '/lp/yealink-videoconferencia'
     | '/blog/$slug'
+    | '/produtos/microsoft-365'
     | '/servicos/cyber-shield-360'
     | '/servicos/digital-workspace'
     | '/servicos/smart-cloud-ops'
     | '/blog/'
+    | '/produtos/'
     | '/servicos/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -340,7 +341,6 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/contato'
     | '/politica-de-privacidade'
-    | '/produtos'
     | '/sobre'
     | '/termos-de-uso'
     | '/lp/alocacao-ti'
@@ -351,7 +351,6 @@ export interface FileRouteTypes {
     | '/lp/headset-logitech'
     | '/lp/headset-yealink'
     | '/lp/headsets-poly'
-    | '/lp/microsoft-365'
     | '/lp/poly-studio'
     | '/lp/rally-bar'
     | '/lp/service-desk'
@@ -359,10 +358,12 @@ export interface FileRouteTypes {
     | '/lp/videoconferencia-pago'
     | '/lp/yealink-videoconferencia'
     | '/blog/$slug'
+    | '/produtos/microsoft-365'
     | '/servicos/cyber-shield-360'
     | '/servicos/digital-workspace'
     | '/servicos/smart-cloud-ops'
     | '/blog'
+    | '/produtos'
     | '/servicos'
   id:
     | '__root__'
@@ -373,7 +374,6 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/_site/contato'
     | '/_site/politica-de-privacidade'
-    | '/_site/produtos'
     | '/_site/sobre'
     | '/_site/termos-de-uso'
     | '/lp/alocacao-ti'
@@ -384,7 +384,6 @@ export interface FileRouteTypes {
     | '/lp/headset-logitech'
     | '/lp/headset-yealink'
     | '/lp/headsets-poly'
-    | '/lp/microsoft-365'
     | '/lp/poly-studio'
     | '/lp/rally-bar'
     | '/lp/service-desk'
@@ -392,10 +391,12 @@ export interface FileRouteTypes {
     | '/lp/videoconferencia-pago'
     | '/lp/yealink-videoconferencia'
     | '/_site/blog/$slug'
+    | '/_site/produtos/microsoft-365'
     | '/_site/servicos/cyber-shield-360'
     | '/_site/servicos/digital-workspace'
     | '/_site/servicos/smart-cloud-ops'
     | '/_site/blog/'
+    | '/_site/produtos/'
     | '/_site/servicos/'
   fileRoutesById: FileRoutesById
 }
@@ -413,7 +414,6 @@ export interface RootRouteChildren {
   LpHeadsetLogitechRoute: typeof LpHeadsetLogitechRoute
   LpHeadsetYealinkRoute: typeof LpHeadsetYealinkRoute
   LpHeadsetsPolyRoute: typeof LpHeadsetsPolyRoute
-  LpMicrosoft365Route: typeof LpMicrosoft365Route
   LpPolyStudioRoute: typeof LpPolyStudioRoute
   LpRallyBarRoute: typeof LpRallyBarRoute
   LpServiceDeskRoute: typeof LpServiceDeskRoute
@@ -501,13 +501,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LpPolyStudioRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/lp/microsoft-365': {
-      id: '/lp/microsoft-365'
-      path: '/lp/microsoft-365'
-      fullPath: '/lp/microsoft-365'
-      preLoaderRoute: typeof LpMicrosoft365RouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/lp/headsets-poly': {
       id: '/lp/headsets-poly'
       path: '/lp/headsets-poly'
@@ -578,13 +571,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SiteSobreRouteImport
       parentRoute: typeof SiteRoute
     }
-    '/_site/produtos': {
-      id: '/_site/produtos'
-      path: '/produtos'
-      fullPath: '/produtos'
-      preLoaderRoute: typeof SiteProdutosRouteImport
-      parentRoute: typeof SiteRoute
-    }
     '/_site/politica-de-privacidade': {
       id: '/_site/politica-de-privacidade'
       path: '/politica-de-privacidade'
@@ -604,6 +590,13 @@ declare module '@tanstack/react-router' {
       path: '/servicos'
       fullPath: '/servicos/'
       preLoaderRoute: typeof SiteServicosIndexRouteImport
+      parentRoute: typeof SiteRoute
+    }
+    '/_site/produtos/': {
+      id: '/_site/produtos/'
+      path: '/produtos'
+      fullPath: '/produtos/'
+      preLoaderRoute: typeof SiteProdutosIndexRouteImport
       parentRoute: typeof SiteRoute
     }
     '/_site/blog/': {
@@ -634,6 +627,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SiteServicosCyberShield360RouteImport
       parentRoute: typeof SiteRoute
     }
+    '/_site/produtos/microsoft-365': {
+      id: '/_site/produtos/microsoft-365'
+      path: '/produtos/microsoft-365'
+      fullPath: '/produtos/microsoft-365'
+      preLoaderRoute: typeof SiteProdutosMicrosoft365RouteImport
+      parentRoute: typeof SiteRoute
+    }
     '/_site/blog/$slug': {
       id: '/_site/blog/$slug'
       path: '/blog/$slug'
@@ -647,28 +647,30 @@ declare module '@tanstack/react-router' {
 interface SiteRouteChildren {
   SiteContatoRoute: typeof SiteContatoRoute
   SitePoliticaDePrivacidadeRoute: typeof SitePoliticaDePrivacidadeRoute
-  SiteProdutosRoute: typeof SiteProdutosRoute
   SiteSobreRoute: typeof SiteSobreRoute
   SiteTermosDeUsoRoute: typeof SiteTermosDeUsoRoute
   SiteBlogSlugRoute: typeof SiteBlogSlugRoute
+  SiteProdutosMicrosoft365Route: typeof SiteProdutosMicrosoft365Route
   SiteServicosCyberShield360Route: typeof SiteServicosCyberShield360Route
   SiteServicosDigitalWorkspaceRoute: typeof SiteServicosDigitalWorkspaceRoute
   SiteServicosSmartCloudOpsRoute: typeof SiteServicosSmartCloudOpsRoute
   SiteBlogIndexRoute: typeof SiteBlogIndexRoute
+  SiteProdutosIndexRoute: typeof SiteProdutosIndexRoute
   SiteServicosIndexRoute: typeof SiteServicosIndexRoute
 }
 
 const SiteRouteChildren: SiteRouteChildren = {
   SiteContatoRoute: SiteContatoRoute,
   SitePoliticaDePrivacidadeRoute: SitePoliticaDePrivacidadeRoute,
-  SiteProdutosRoute: SiteProdutosRoute,
   SiteSobreRoute: SiteSobreRoute,
   SiteTermosDeUsoRoute: SiteTermosDeUsoRoute,
   SiteBlogSlugRoute: SiteBlogSlugRoute,
+  SiteProdutosMicrosoft365Route: SiteProdutosMicrosoft365Route,
   SiteServicosCyberShield360Route: SiteServicosCyberShield360Route,
   SiteServicosDigitalWorkspaceRoute: SiteServicosDigitalWorkspaceRoute,
   SiteServicosSmartCloudOpsRoute: SiteServicosSmartCloudOpsRoute,
   SiteBlogIndexRoute: SiteBlogIndexRoute,
+  SiteProdutosIndexRoute: SiteProdutosIndexRoute,
   SiteServicosIndexRoute: SiteServicosIndexRoute,
 }
 
@@ -688,7 +690,6 @@ const rootRouteChildren: RootRouteChildren = {
   LpHeadsetLogitechRoute: LpHeadsetLogitechRoute,
   LpHeadsetYealinkRoute: LpHeadsetYealinkRoute,
   LpHeadsetsPolyRoute: LpHeadsetsPolyRoute,
-  LpMicrosoft365Route: LpMicrosoft365Route,
   LpPolyStudioRoute: LpPolyStudioRoute,
   LpRallyBarRoute: LpRallyBarRoute,
   LpServiceDeskRoute: LpServiceDeskRoute,
