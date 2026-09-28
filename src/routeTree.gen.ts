@@ -35,6 +35,7 @@ import { Route as SitePoliticaDePrivacidadeRouteImport } from './routes/_site.po
 import { Route as SiteContatoRouteImport } from './routes/_site.contato'
 import { Route as SiteServicosIndexRouteImport } from './routes/_site.servicos.index'
 import { Route as SiteBlogIndexRouteImport } from './routes/_site.blog.index'
+import { Route as SiteServicosSmartCloudOpsRouteImport } from './routes/_site.servicos.smart-cloud-ops'
 import { Route as SiteServicosDigitalWorkspaceRouteImport } from './routes/_site.servicos.digital-workspace'
 import { Route as SiteBlogSlugRouteImport } from './routes/_site.blog.$slug'
 
@@ -169,6 +170,12 @@ const SiteBlogIndexRoute = SiteBlogIndexRouteImport.update({
   path: '/blog/',
   getParentRoute: () => SiteRoute,
 } as any)
+const SiteServicosSmartCloudOpsRoute =
+  SiteServicosSmartCloudOpsRouteImport.update({
+    id: '/servicos/smart-cloud-ops',
+    path: '/servicos/smart-cloud-ops',
+    getParentRoute: () => SiteRoute,
+  } as any)
 const SiteServicosDigitalWorkspaceRoute =
   SiteServicosDigitalWorkspaceRouteImport.update({
     id: '/servicos/digital-workspace',
@@ -207,6 +214,7 @@ export interface FileRoutesByFullPath {
   '/lp/yealink-videoconferencia': typeof LpYealinkVideoconferenciaRoute
   '/blog/$slug': typeof SiteBlogSlugRoute
   '/servicos/digital-workspace': typeof SiteServicosDigitalWorkspaceRoute
+  '/servicos/smart-cloud-ops': typeof SiteServicosSmartCloudOpsRoute
   '/blog/': typeof SiteBlogIndexRoute
   '/servicos/': typeof SiteServicosIndexRoute
 }
@@ -236,6 +244,7 @@ export interface FileRoutesByTo {
   '/lp/yealink-videoconferencia': typeof LpYealinkVideoconferenciaRoute
   '/blog/$slug': typeof SiteBlogSlugRoute
   '/servicos/digital-workspace': typeof SiteServicosDigitalWorkspaceRoute
+  '/servicos/smart-cloud-ops': typeof SiteServicosSmartCloudOpsRoute
   '/blog': typeof SiteBlogIndexRoute
   '/servicos': typeof SiteServicosIndexRoute
 }
@@ -267,6 +276,7 @@ export interface FileRoutesById {
   '/lp/yealink-videoconferencia': typeof LpYealinkVideoconferenciaRoute
   '/_site/blog/$slug': typeof SiteBlogSlugRoute
   '/_site/servicos/digital-workspace': typeof SiteServicosDigitalWorkspaceRoute
+  '/_site/servicos/smart-cloud-ops': typeof SiteServicosSmartCloudOpsRoute
   '/_site/blog/': typeof SiteBlogIndexRoute
   '/_site/servicos/': typeof SiteServicosIndexRoute
 }
@@ -298,6 +308,7 @@ export interface FileRouteTypes {
     | '/lp/yealink-videoconferencia'
     | '/blog/$slug'
     | '/servicos/digital-workspace'
+    | '/servicos/smart-cloud-ops'
     | '/blog/'
     | '/servicos/'
   fileRoutesByTo: FileRoutesByTo
@@ -327,6 +338,7 @@ export interface FileRouteTypes {
     | '/lp/yealink-videoconferencia'
     | '/blog/$slug'
     | '/servicos/digital-workspace'
+    | '/servicos/smart-cloud-ops'
     | '/blog'
     | '/servicos'
   id:
@@ -357,6 +369,7 @@ export interface FileRouteTypes {
     | '/lp/yealink-videoconferencia'
     | '/_site/blog/$slug'
     | '/_site/servicos/digital-workspace'
+    | '/_site/servicos/smart-cloud-ops'
     | '/_site/blog/'
     | '/_site/servicos/'
   fileRoutesById: FileRoutesById
@@ -567,6 +580,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SiteBlogIndexRouteImport
       parentRoute: typeof SiteRoute
     }
+    '/_site/servicos/smart-cloud-ops': {
+      id: '/_site/servicos/smart-cloud-ops'
+      path: '/servicos/smart-cloud-ops'
+      fullPath: '/servicos/smart-cloud-ops'
+      preLoaderRoute: typeof SiteServicosSmartCloudOpsRouteImport
+      parentRoute: typeof SiteRoute
+    }
     '/_site/servicos/digital-workspace': {
       id: '/_site/servicos/digital-workspace'
       path: '/servicos/digital-workspace'
@@ -592,6 +612,7 @@ interface SiteRouteChildren {
   SiteTermosDeUsoRoute: typeof SiteTermosDeUsoRoute
   SiteBlogSlugRoute: typeof SiteBlogSlugRoute
   SiteServicosDigitalWorkspaceRoute: typeof SiteServicosDigitalWorkspaceRoute
+  SiteServicosSmartCloudOpsRoute: typeof SiteServicosSmartCloudOpsRoute
   SiteBlogIndexRoute: typeof SiteBlogIndexRoute
   SiteServicosIndexRoute: typeof SiteServicosIndexRoute
 }
@@ -604,6 +625,7 @@ const SiteRouteChildren: SiteRouteChildren = {
   SiteTermosDeUsoRoute: SiteTermosDeUsoRoute,
   SiteBlogSlugRoute: SiteBlogSlugRoute,
   SiteServicosDigitalWorkspaceRoute: SiteServicosDigitalWorkspaceRoute,
+  SiteServicosSmartCloudOpsRoute: SiteServicosSmartCloudOpsRoute,
   SiteBlogIndexRoute: SiteBlogIndexRoute,
   SiteServicosIndexRoute: SiteServicosIndexRoute,
 }
