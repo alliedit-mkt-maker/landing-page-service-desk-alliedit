@@ -1,4 +1,5 @@
 import { pageHead } from "@/lib/seo";
+import { SiteCtaButton } from "@/components/site/SiteCtaButton";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -66,7 +67,7 @@ function IAPage() {
           <p className="font-inter mt-6 max-w-2xl text-[17px] leading-relaxed text-white/85">
             Construímos soluções de IA que aumentam a produtividade dos times, melhoram a experiência dos usuários e geram resultado real no negócio.
           </p>
-          <Link to="/contato" className={`${btnSolid} mt-10`}>Falar sobre IA para o meu negócio</Link>
+          <SiteCtaButton  className={`${btnSolid} mt-10`}>Falar sobre IA para o meu negócio</SiteCtaButton>
         </div>
       </section>
 
@@ -110,7 +111,7 @@ function IAPage() {
                 <p className="font-inter mt-4 max-w-md text-[16px] leading-relaxed text-white/85">
                   Arquitetura, planejamento e construção de soluções proprietárias de ponta a ponta, feitas sob medida para a operação da sua empresa.
                 </p>
-                <Link to="/contato" className={`${btnSolid} mt-10 w-fit`}>Quero uma solução completa</Link>
+                <SiteCtaButton  className={`${btnSolid} mt-10 w-fit`}>Quero uma solução completa</SiteCtaButton>
               </div>
             </div>
             {SMALL.map((s, i) => (
@@ -150,7 +151,7 @@ function IAPage() {
         </div>
       </section>
 
-      <SiteCta />
+      <SiteCta modal />
       <SiteFooter />
     </>
   );

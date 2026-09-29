@@ -1,4 +1,5 @@
 import { pageHead } from "@/lib/seo";
+import { SiteCtaButton } from "@/components/site/SiteCtaButton";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Compass, Headset, PackageCheck, Zap, Layers, Activity, Server, Settings, Monitor, Check } from "lucide-react";
@@ -63,7 +64,7 @@ function FirewallPage() {
           <p className="font-inter mt-6 max-w-xl text-[17px] leading-relaxed text-white/80">
             Equipamento, configuração e monitoramento contínuo para proteger a rede da sua empresa.
           </p>
-          <Link to="/contato" className={`${btnSolid} mt-10`}>Solicite um orçamento</Link>
+          <SiteCtaButton  className={`${btnSolid} mt-10`}>Solicite um orçamento</SiteCtaButton>
         </div>
       </section>
 
@@ -143,7 +144,7 @@ function FirewallPage() {
               </Reveal>
             ))}
           </div>
-          <Link to="/contato" className={`${btnSolid} mt-12`}>Solicite um orçamento</Link>
+          <SiteCtaButton  className={`${btnSolid} mt-12`}>Solicite um orçamento</SiteCtaButton>
         </div>
       </section>
 
@@ -167,7 +168,7 @@ function FirewallPage() {
           <p className="font-inter mx-auto mt-5 max-w-[60ch] text-[15px] leading-relaxed text-white/70">
             A gente avalia seu cenário atual e mostra onde vale reforçar a proteção.
           </p>
-          <Link to="/contato" className={`${btnSolid} mt-9`}>Solicite um orçamento</Link>
+          <SiteCtaButton  className={`${btnSolid} mt-9`}>Solicite um orçamento</SiteCtaButton>
         </div>
       </section>
 

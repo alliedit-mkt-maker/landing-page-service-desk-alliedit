@@ -1,4 +1,5 @@
 import { pageHead } from "@/lib/seo";
+import { SiteCtaButton } from "@/components/site/SiteCtaButton";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import {
@@ -311,12 +312,12 @@ function DigitalWorkspacePage() {
               Service Desk e Field Service em uma só operação, atendimento remoto e presencial,
               com SLA garantido e gestão centralizada.
             </p>
-            <Link
-              to="/contato"
+            <SiteCtaButton
+              
               className={`${btn} mt-9 bg-[var(--site-yellow)] text-[#0B1418] hover:bg-white`}
             >
               Falar com especialista
-            </Link>
+            </SiteCtaButton>
           </Reveal>
         </div>
       </section>
@@ -623,7 +624,7 @@ function DigitalWorkspacePage() {
       </section>
 
       {/* DOBRA 8 — CTA + Rodapé */}
-      <SiteCta />
+      <SiteCta modal />
       <SiteFooter />
     </>
   );
