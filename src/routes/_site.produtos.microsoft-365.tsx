@@ -48,7 +48,7 @@ export const Route = createFileRoute("/_site/produtos/microsoft-365")({
 });
 
 const VALUE = [
-  { icon: Compass, title: "Visão consultiva", text: "Não vendemos só a licença: ajudamos a entender o que sua empresa realmente precisa." },
+  { icon: Compass, title: "Visão consultiva", text: "Não vendemos só a licença, ajudamos a entender o que sua empresa realmente precisa." },
   { icon: LifeBuoy, title: "Melhor custo-benefício", text: "Ajudamos a escolher o plano certo, sem pagar por licença que sua empresa não vai usar." },
   { icon: BadgeCheck, title: "Parceiro oficial Microsoft", text: "Licenciamento direto, com procedência garantida." },
   { icon: Settings2, title: "Gestão simplificada", text: "Cuidamos da ativação, renovação e gestão das licenças pra você." },
@@ -123,28 +123,6 @@ function Microsoft365Page() {
         </div>
       </section>
 
-      {/* Proposta de valor */}
-      <section className="bg-white py-20 sm:py-24">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <Reveal>
-            <span className={eyebrow}>Diferenciais</span>
-            <h2 className={`${h2} mt-3`}>Por que contar com a Allied IT</h2>
-          </Reveal>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {VALUE.map((v, i) => (
-              <Reveal key={v.title} delay={i * 90}>
-                <div className="h-full border-t-2 border-[var(--site-blue)] bg-[#F4F7F9] p-7">
-                  <span className="grid size-14 place-items-center rounded-full bg-[var(--site-blue)]/10">
-                    <v.icon className="size-6 text-[var(--site-blue)]" strokeWidth={1.8} />
-                  </span>
-                  <h3 className="font-chillax mt-5 text-lg font-semibold">{v.title}</h3>
-                  <p className="font-inter mt-3 text-[14px] leading-relaxed text-[var(--site-muted)]">{v.text}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* O que é — carrossel */}
       <section className="bg-[#F4F7F9] py-20 sm:py-24">
@@ -220,21 +198,24 @@ function Microsoft365Page() {
         </div>
       </section>
 
-      {/* Por que */}
+      {/* Diferenciais */}
       <section className="bg-[var(--site-ink)] py-20 text-white sm:py-24">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <Reveal>
-            <h2 className={`${h2} max-w-3xl`}>Por que licenciar Microsoft 365 com a Allied IT</h2>
+            <span className="font-inter text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--site-yellow)]">Diferenciais</span>
+            <h2 className={`${h2} mt-3`}>Por que contar com a Allied IT</h2>
           </Reveal>
-          <div className="mt-12 grid gap-6 md:grid-cols-2">
-            {WHY.map((w) => (
-              <div key={w.title} className="flex gap-6 border border-white/12 bg-white/5 p-8">
-                <w.icon className="size-9 shrink-0 text-[var(--site-yellow)]" />
-                <div>
-                  <h3 className="font-chillax text-xl font-semibold">{w.title}</h3>
-                  <p className="font-inter mt-3 text-[15px] leading-relaxed text-white/65">{w.text}</p>
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {[...VALUE, ...WHY].map((v, i) => (
+              <Reveal key={v.title} delay={(i % 3) * 90}>
+                <div className="h-full rounded-3xl border border-white/12 bg-white/5 p-7">
+                  <span className="grid size-14 place-items-center rounded-full bg-[var(--site-yellow)]/15">
+                    <v.icon className="size-6 text-[var(--site-yellow)]" strokeWidth={1.8} />
+                  </span>
+                  <h3 className="font-chillax mt-5 text-lg font-semibold">{v.title}</h3>
+                  <p className="font-inter mt-3 text-[14px] leading-relaxed text-white/65">{v.text}</p>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
           <SiteCtaButton  className={`${btnSolid} mt-12`}>Solicite um orçamento</SiteCtaButton>
