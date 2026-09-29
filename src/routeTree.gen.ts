@@ -37,6 +37,7 @@ import { Route as SiteServicosIndexRouteImport } from './routes/_site.servicos.i
 import { Route as SiteProdutosIndexRouteImport } from './routes/_site.produtos.index'
 import { Route as SiteBlogIndexRouteImport } from './routes/_site.blog.index'
 import { Route as SiteServicosSmartCloudOpsRouteImport } from './routes/_site.servicos.smart-cloud-ops'
+import { Route as SiteServicosProductEngineeringRouteImport } from './routes/_site.servicos.product-engineering'
 import { Route as SiteServicosInfraCoreRouteImport } from './routes/_site.servicos.infra-core'
 import { Route as SiteServicosDigitalWorkspaceRouteImport } from './routes/_site.servicos.digital-workspace'
 import { Route as SiteServicosCyberShield360RouteImport } from './routes/_site.servicos.cyber-shield-360'
@@ -186,6 +187,12 @@ const SiteServicosSmartCloudOpsRoute =
     path: '/servicos/smart-cloud-ops',
     getParentRoute: () => SiteRoute,
   } as any)
+const SiteServicosProductEngineeringRoute =
+  SiteServicosProductEngineeringRouteImport.update({
+    id: '/servicos/product-engineering',
+    path: '/servicos/product-engineering',
+    getParentRoute: () => SiteRoute,
+  } as any)
 const SiteServicosInfraCoreRoute = SiteServicosInfraCoreRouteImport.update({
   id: '/servicos/infra-core',
   path: '/servicos/infra-core',
@@ -250,6 +257,7 @@ export interface FileRoutesByFullPath {
   '/servicos/cyber-shield-360': typeof SiteServicosCyberShield360Route
   '/servicos/digital-workspace': typeof SiteServicosDigitalWorkspaceRoute
   '/servicos/infra-core': typeof SiteServicosInfraCoreRoute
+  '/servicos/product-engineering': typeof SiteServicosProductEngineeringRoute
   '/servicos/smart-cloud-ops': typeof SiteServicosSmartCloudOpsRoute
   '/blog/': typeof SiteBlogIndexRoute
   '/produtos/': typeof SiteProdutosIndexRoute
@@ -285,6 +293,7 @@ export interface FileRoutesByTo {
   '/servicos/cyber-shield-360': typeof SiteServicosCyberShield360Route
   '/servicos/digital-workspace': typeof SiteServicosDigitalWorkspaceRoute
   '/servicos/infra-core': typeof SiteServicosInfraCoreRoute
+  '/servicos/product-engineering': typeof SiteServicosProductEngineeringRoute
   '/servicos/smart-cloud-ops': typeof SiteServicosSmartCloudOpsRoute
   '/blog': typeof SiteBlogIndexRoute
   '/produtos': typeof SiteProdutosIndexRoute
@@ -322,6 +331,7 @@ export interface FileRoutesById {
   '/_site/servicos/cyber-shield-360': typeof SiteServicosCyberShield360Route
   '/_site/servicos/digital-workspace': typeof SiteServicosDigitalWorkspaceRoute
   '/_site/servicos/infra-core': typeof SiteServicosInfraCoreRoute
+  '/_site/servicos/product-engineering': typeof SiteServicosProductEngineeringRoute
   '/_site/servicos/smart-cloud-ops': typeof SiteServicosSmartCloudOpsRoute
   '/_site/blog/': typeof SiteBlogIndexRoute
   '/_site/produtos/': typeof SiteProdutosIndexRoute
@@ -359,6 +369,7 @@ export interface FileRouteTypes {
     | '/servicos/cyber-shield-360'
     | '/servicos/digital-workspace'
     | '/servicos/infra-core'
+    | '/servicos/product-engineering'
     | '/servicos/smart-cloud-ops'
     | '/blog/'
     | '/produtos/'
@@ -394,6 +405,7 @@ export interface FileRouteTypes {
     | '/servicos/cyber-shield-360'
     | '/servicos/digital-workspace'
     | '/servicos/infra-core'
+    | '/servicos/product-engineering'
     | '/servicos/smart-cloud-ops'
     | '/blog'
     | '/produtos'
@@ -430,6 +442,7 @@ export interface FileRouteTypes {
     | '/_site/servicos/cyber-shield-360'
     | '/_site/servicos/digital-workspace'
     | '/_site/servicos/infra-core'
+    | '/_site/servicos/product-engineering'
     | '/_site/servicos/smart-cloud-ops'
     | '/_site/blog/'
     | '/_site/produtos/'
@@ -657,6 +670,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SiteServicosSmartCloudOpsRouteImport
       parentRoute: typeof SiteRoute
     }
+    '/_site/servicos/product-engineering': {
+      id: '/_site/servicos/product-engineering'
+      path: '/servicos/product-engineering'
+      fullPath: '/servicos/product-engineering'
+      preLoaderRoute: typeof SiteServicosProductEngineeringRouteImport
+      parentRoute: typeof SiteRoute
+    }
     '/_site/servicos/infra-core': {
       id: '/_site/servicos/infra-core'
       path: '/servicos/infra-core'
@@ -713,6 +733,7 @@ interface SiteRouteChildren {
   SiteServicosCyberShield360Route: typeof SiteServicosCyberShield360Route
   SiteServicosDigitalWorkspaceRoute: typeof SiteServicosDigitalWorkspaceRoute
   SiteServicosInfraCoreRoute: typeof SiteServicosInfraCoreRoute
+  SiteServicosProductEngineeringRoute: typeof SiteServicosProductEngineeringRoute
   SiteServicosSmartCloudOpsRoute: typeof SiteServicosSmartCloudOpsRoute
   SiteBlogIndexRoute: typeof SiteBlogIndexRoute
   SiteProdutosIndexRoute: typeof SiteProdutosIndexRoute
@@ -730,6 +751,7 @@ const SiteRouteChildren: SiteRouteChildren = {
   SiteServicosCyberShield360Route: SiteServicosCyberShield360Route,
   SiteServicosDigitalWorkspaceRoute: SiteServicosDigitalWorkspaceRoute,
   SiteServicosInfraCoreRoute: SiteServicosInfraCoreRoute,
+  SiteServicosProductEngineeringRoute: SiteServicosProductEngineeringRoute,
   SiteServicosSmartCloudOpsRoute: SiteServicosSmartCloudOpsRoute,
   SiteBlogIndexRoute: SiteBlogIndexRoute,
   SiteProdutosIndexRoute: SiteProdutosIndexRoute,
