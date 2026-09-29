@@ -67,7 +67,7 @@ export function SiteServices() {
             <div key={s.label} className="relative">
               <span
                 aria-hidden="true"
-                className="absolute -top-[41px] left-0 h-[7px] w-[7px] bg-[var(--site-blue)]"
+                className="absolute -top-[41px] left-0 hidden h-[7px] w-[7px] bg-[var(--site-blue)] md:block"
               />
               <p className="font-inter text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--site-ink)]">
                 {String(i + 1).padStart(2, "0")} — {s.label}
