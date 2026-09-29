@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { headsetYealinkHead, title, description } from "@/lib/lp-heads/headset-yealink";
 import { createFileRoute } from "@tanstack/react-router";
 import { lpCanonical, PUBLIC_ORIGIN } from "@/lib/site";
 import { ogImageUrl } from "@/lib/seo";
@@ -32,42 +33,7 @@ import { SiteFooter } from "@/components/lp/SiteFooter";
 import { Clients } from "@/components/lp/Clients";
 import { Reveal } from "@/components/lp/Reveal";
 
-const title = "Headsets Yealink BH70, WH64 e UH34 para empresas | Allied IT";
-const description =
-  "Headsets Yealink BH70, WH64 e UH34 para atendimento, operação e trabalho híbrido. Custo-benefício com produto genuíno.";
 
-export const headsetYealinkHead = () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:url", content: lpCanonical("headset-yealink", "headset-yealink.alliedit.com.br") },
-      { property: "og:type", content: "website" },
-      { property: "og:image", content: ogImageUrl() },
-      { property: "og:image:width", content: "1200" },
-      { property: "og:image:height", content: "630" },
-      { property: "og:image:alt", content: "Allied IT" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-      { name: "twitter:image", content: ogImageUrl() },
-    ],
-    links: [{ rel: "canonical", href: lpCanonical("headset-yealink", "headset-yealink.alliedit.com.br") }],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Service",
-          serviceType: "Revenda de headsets corporativos Yealink",
-          provider: { "@type": "Organization", name: "Allied IT", url: PUBLIC_ORIGIN },
-          areaServed: "BR",
-          description,
-        }),
-      },
-    ],
-});
 
 export const Route = createFileRoute("/lp/headset-yealink")({
   head: headsetYealinkHead,

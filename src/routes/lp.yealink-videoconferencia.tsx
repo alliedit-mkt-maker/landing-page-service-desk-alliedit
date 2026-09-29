@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { yealinkVideoconferenciaHead, title, description } from "@/lib/lp-heads/yealink-videoconferencia";
 import { createFileRoute } from "@tanstack/react-router";
 import { lpCanonical, PUBLIC_ORIGIN } from "@/lib/site";
 import { ogImageUrl } from "@/lib/seo";
@@ -43,42 +44,7 @@ import { Reveal } from "@/components/lp/Reveal";
 // Formulário HubSpot dedicado desta LP, preencher quando o ID for criado.
 const YEALINK_VC_FORM_ID = "854dbac0-c313-4ef4-8f50-8935b4e76bb8";
 
-const title = "Yealink MeetingBar A40, A50 e kits MVC/ZVC | Allied IT";
-const description =
-  "Yealink MeetingBar A40 e A50 em modo USB, ou kits MVC (Teams Rooms) e ZVC (Zoom Rooms). Revenda e dimensionamento.";
 
-export const yealinkVideoconferenciaHead = () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:url", content: lpCanonical("yealink-videoconferencia", "yealink-videoconferencia.alliedit.com.br") },
-      { property: "og:type", content: "website" },
-      { property: "og:image", content: ogImageUrl() },
-      { property: "og:image:width", content: "1200" },
-      { property: "og:image:height", content: "630" },
-      { property: "og:image:alt", content: "Allied IT" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
-      { name: "twitter:image", content: ogImageUrl() },
-    ],
-    links: [{ rel: "canonical", href: lpCanonical("yealink-videoconferencia", "yealink-videoconferencia.alliedit.com.br") }],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Service",
-          serviceType: "Revenda e instalação de videoconferência Yealink (MeetingBar, MVC e ZVC)",
-          provider: { "@type": "Organization", name: "Allied IT", url: PUBLIC_ORIGIN },
-          areaServed: "BR",
-          description,
-        }),
-      },
-    ],
-});
 
 export const Route = createFileRoute("/lp/yealink-videoconferencia")({
   head: yealinkVideoconferenciaHead,
