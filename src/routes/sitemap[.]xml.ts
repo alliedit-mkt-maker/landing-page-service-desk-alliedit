@@ -15,6 +15,7 @@ const STATIC_PATHS = [
   "/produtos",
   "/produtos/microsoft-365",
   "/produtos/aws",
+  "/produtos/firewall",
   "/contato",
   "/blog",
   "/politica-de-privacidade",

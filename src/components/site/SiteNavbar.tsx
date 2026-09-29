@@ -33,7 +33,7 @@ const PRODUCTS = [
   { icon: Headset, title: "Headsets" },
   { icon: Monitor, title: "Microsoft 365", to: "/produtos/microsoft-365" },
   { icon: Cloud, title: "AWS", to: "/produtos/aws" },
-  { icon: ShieldCheck, title: "Firewall" },
+  { icon: ShieldCheck, title: "Firewall", to: "/produtos/firewall" },
 ] as const;
 
 const SIMPLE_ITEMS = [
