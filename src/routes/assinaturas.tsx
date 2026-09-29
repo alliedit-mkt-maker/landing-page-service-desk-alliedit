@@ -1,20 +1,7 @@
 import { pageHead } from "@/lib/seo";
 import { createFileRoute } from "@tanstack/react-router";
+import { assinaturasHead, assinaturasMeta } from "@/lib/lp-heads/assinaturas";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-
-export const assinaturasMeta = {
-  title: "Gerador de assinatura de e-mail | Allied IT",
-  description:
-    "Ferramenta interna da Allied IT: preencha seus dados, monte a assinatura padronizada e copie para o Outlook ou Gmail.",
-};
-
-export const assinaturasHead = () =>
-  pageHead({
-    title: assinaturasMeta.title,
-    description: assinaturasMeta.description,
-    path: "/assinaturas",
-    noindex: true,
-  });
 
 export const Route = createFileRoute("/assinaturas")({
   head: assinaturasHead,
