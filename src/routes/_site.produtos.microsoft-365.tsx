@@ -223,12 +223,12 @@ function Microsoft365Page() {
       </section>
 
       {/* FAQ */}
-      <section className="bg-[#F4F7F9] py-20 sm:py-24">
+      <section className="bg-white py-20 sm:py-24">
         <div className="mx-auto max-w-4xl px-5 sm:px-8">
           <h2 className={h2}>Perguntas frequentes</h2>
-          <Accordion type="single" collapsible className="mt-10 w-full border-t border-black/10">
+          <Accordion type="single" collapsible className="mt-10 w-full space-y-3">
             {FAQ.map((f, i) => (
-              <AccordionItem key={i} value={`q-${i}`} className="border-b border-black/10">
+              <AccordionItem key={i} value={`q-${i}`} className="rounded-2xl border border-black/10 bg-[#F4F7F9] px-6">
                 <AccordionTrigger className="font-chillax py-5 text-left text-[16px] font-semibold hover:text-[var(--site-blue)] hover:no-underline">
                   {f.q}
                 </AccordionTrigger>
