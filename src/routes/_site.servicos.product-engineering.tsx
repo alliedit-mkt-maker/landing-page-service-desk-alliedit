@@ -90,17 +90,25 @@ function ProductEngineeringPage() {
             <span className={`${eyebrow} text-[var(--site-blue)]`}>Método</span>
             <h2 className={`${h2} mt-3`}>Como funciona</h2>
           </Reveal>
-          <div className="mt-10 grid gap-6 md:grid-cols-2">
-            {COMO.map((c) => (
-              <div key={c.title} className="rounded-2xl border border-black/5 bg-white p-8 shadow-[0_12px_32px_-24px_rgba(0,0,0,0.3)]">
-                <span className="grid size-14 place-items-center rounded-full bg-[var(--site-blue)] text-white">
-                  <c.icon className="size-6" strokeWidth={1.6} />
+          <ol className="relative mt-12 grid gap-10 md:grid-cols-4 md:gap-6">
+            {COMO.map((c, i) => (
+              <li key={c.title} className="relative pl-16 md:pl-0">
+                {i < COMO.length - 1 && (
+                  <>
+                    <span aria-hidden className="absolute left-[23px] top-12 h-[calc(100%+2.5rem-3rem)] w-px bg-[var(--site-blue)]/30 md:hidden" />
+                    <span aria-hidden className="absolute left-[60px] right-[-1.5rem] top-6 hidden h-px bg-[var(--site-blue)]/30 md:block" />
+                    <span aria-hidden className="absolute right-[-1.5rem] top-[19px] hidden size-0 border-y-[5px] border-l-[8px] border-y-transparent border-l-[var(--site-blue)]/50 md:block" />
+                  </>
+                )}
+                <span className="absolute left-0 top-0 grid size-12 place-items-center rounded-full bg-[var(--site-blue)] text-white md:relative">
+                  <c.icon className="size-5" strokeWidth={1.7} />
                 </span>
-                <h3 className="font-chillax mt-6 text-xl font-semibold">{c.title}</h3>
-                <p className="font-inter mt-3 text-[15px] leading-relaxed text-[var(--site-muted)]">{c.text}</p>
-              </div>
+                <span className="font-inter mt-0 block text-[11px] font-semibold tracking-[0.2em] text-[var(--site-blue)] md:mt-5">{String(i + 1).padStart(2, "0")}</span>
+                <h3 className="font-chillax mt-1.5 text-lg font-semibold leading-snug">{c.title}</h3>
+                <p className="font-inter mt-2 text-[14px] leading-relaxed text-[var(--site-muted)]">{c.text}</p>
+              </li>
             ))}
-          </div>
+          </ol>
           <Link to="/contato" className={`${btnOutline} mt-10 border-[var(--site-blue)] text-[var(--site-blue)] hover:bg-[var(--site-blue)] hover:text-white`}>Solicitar diagnóstico</Link>
         </div>
       </section>
