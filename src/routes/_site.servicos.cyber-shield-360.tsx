@@ -1,4 +1,5 @@
 import { pageHead } from "@/lib/seo";
+import { SiteCtaButton } from "@/components/site/SiteCtaButton";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   Accordion,
@@ -103,12 +104,12 @@ const BTN =
 function SectionCta({ label, dark }: { label: string; dark?: boolean }) {
   return (
     <Reveal variant="fade-up" className="mt-12">
-      <Link
-        to="/contato"
+      <SiteCtaButton
+        
         className={`${BTN} ${dark ? "bg-[var(--site-yellow)] text-[#0B1418] hover:bg-white" : "bg-[var(--site-blue)] text-white hover:bg-[#035a72]"}`}
       >
         {label}
-      </Link>
+      </SiteCtaButton>
     </Reveal>
   );
 }
@@ -231,9 +232,9 @@ function CyberShieldPage() {
             <p className="font-inter mt-6 max-w-[46ch] text-pretty text-[16px] leading-relaxed text-white/75">
               Segurança cibernética em todas as camadas: monitoramento, testes, blindagem técnica e cultura, com operação 24x7x365.
             </p>
-            <Link to="/contato" className={`${BTN} mt-9 bg-[var(--site-yellow)] text-[#0B1418] hover:bg-white`}>
+            <SiteCtaButton  className={`${BTN} mt-9 bg-[var(--site-yellow)] text-[#0B1418] hover:bg-white`}>
               Falar com um especialista em Segurança
-            </Link>
+            </SiteCtaButton>
           </div>
         </div>
       </section>
@@ -258,9 +259,9 @@ function CyberShieldPage() {
                   <p className="font-inter mt-5 max-w-[46ch] text-pretty text-[15px] leading-relaxed text-white/70">
                     Oferecemos uma estrutura completa de segurança cibernética, com serviços sob demanda e operação 24x7x365. Atuamos desde o monitoramento e defesa até a conscientização e blindagem da infraestrutura.
                   </p>
-                  <Link to="/contato" className={`${BTN} mt-8 bg-[var(--site-yellow)] text-[#0B1418] hover:bg-white`}>
+                  <SiteCtaButton  className={`${BTN} mt-8 bg-[var(--site-yellow)] text-[#0B1418] hover:bg-white`}>
                     Avaliar minha segurança
-                  </Link>
+                  </SiteCtaButton>
                 </div>
               </div>
             </div>
@@ -344,7 +345,7 @@ function CyberShieldPage() {
         </div>
       </section>
 
-      <SiteCta />
+      <SiteCta modal />
       <SiteFooter />
     </>
   );

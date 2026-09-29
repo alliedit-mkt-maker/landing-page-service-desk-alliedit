@@ -1,4 +1,5 @@
 import { pageHead } from "@/lib/seo";
+import { SiteCtaButton } from "@/components/site/SiteCtaButton";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useRef } from "react";
 import {
@@ -118,7 +119,7 @@ function Microsoft365Page() {
           <p className="font-inter mt-6 max-w-xl text-[17px] leading-relaxed text-white/80">
             Tudo o que sua empresa precisa em uma única solução, com licenciamento feito por quem entende de TI.
           </p>
-          <Link to="/contato" className={`${btnSolid} mt-10`}>Solicite um orçamento</Link>
+          <SiteCtaButton  className={`${btnSolid} mt-10`}>Solicite um orçamento</SiteCtaButton>
         </div>
       </section>
 
@@ -236,7 +237,7 @@ function Microsoft365Page() {
               </div>
             ))}
           </div>
-          <Link to="/contato" className={`${btnSolid} mt-12`}>Solicite um orçamento</Link>
+          <SiteCtaButton  className={`${btnSolid} mt-12`}>Solicite um orçamento</SiteCtaButton>
         </div>
       </section>
 
@@ -264,12 +265,12 @@ function Microsoft365Page() {
           <p className="font-inter mx-auto mt-5 max-w-[60ch] text-[15px] leading-relaxed text-[var(--site-muted)]">
             A gente entende o cenário atual da sua equipe e mostra o plano de licenciamento que faz mais sentido.
           </p>
-          <Link
-            to="/contato"
+          <SiteCtaButton
+            
             className="font-inter mt-9 inline-flex h-11 items-center justify-center whitespace-nowrap border border-[var(--site-blue)] px-8 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--site-blue)] transition-colors hover:bg-[var(--site-blue)] hover:text-white"
           >
             Solicite um orçamento
-          </Link>
+          </SiteCtaButton>
         </div>
       </section>
 

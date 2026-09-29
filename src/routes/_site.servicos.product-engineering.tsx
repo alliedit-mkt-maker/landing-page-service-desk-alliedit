@@ -1,4 +1,5 @@
 import { pageHead } from "@/lib/seo";
+import { SiteCtaButton } from "@/components/site/SiteCtaButton";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   Accordion,
@@ -57,7 +58,7 @@ function ProductEngineeringPage() {
           <p className="font-inter mt-6 max-w-2xl text-[17px] leading-relaxed text-white/85">
             Desenvolvimento sob medida para transformar gargalos em soluções digitais personalizadas.
           </p>
-          <Link to="/contato" className={`${btnSolid} mt-10`}>Falar sobre o meu projeto</Link>
+          <SiteCtaButton  className={`${btnSolid} mt-10`}>Falar sobre o meu projeto</SiteCtaButton>
         </div>
       </section>
 
@@ -109,7 +110,7 @@ function ProductEngineeringPage() {
               </li>
             ))}
           </ol>
-          <Link to="/contato" className={`${btnOutline} mt-10 border-[var(--site-blue)] text-[var(--site-blue)] hover:bg-[var(--site-blue)] hover:text-white`}>Solicitar diagnóstico</Link>
+          <SiteCtaButton  className={`${btnOutline} mt-10 border-[var(--site-blue)] text-[var(--site-blue)] hover:bg-[var(--site-blue)] hover:text-white`}>Solicitar diagnóstico</SiteCtaButton>
         </div>
       </section>
 
@@ -124,7 +125,7 @@ function ProductEngineeringPage() {
             <p className="font-inter mx-auto mt-5 max-w-[58ch] text-[16px] leading-relaxed text-white/80">
               Desenvolvemos e implementamos soluções personalizadas de Inteligência Artificial integradas ao seu negócio, com foco no aumento da eficiência operacional e da competitividade das organizações.
             </p>
-            <Link to="/contato" className={`${btnSolid} mt-10`}>Falar sobre IA na minha operação</Link>
+            <SiteCtaButton  className={`${btnSolid} mt-10`}>Falar sobre IA na minha operação</SiteCtaButton>
           </Reveal>
         </div>
       </section>
@@ -145,7 +146,7 @@ function ProductEngineeringPage() {
         </div>
       </section>
 
-      <SiteCta />
+      <SiteCta modal />
       <SiteFooter />
     </>
   );

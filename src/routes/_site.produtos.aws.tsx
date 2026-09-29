@@ -1,4 +1,5 @@
 import { pageHead } from "@/lib/seo";
+import { SiteCtaButton } from "@/components/site/SiteCtaButton";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   Accordion,
@@ -100,7 +101,7 @@ function AwsPage() {
           <p className="font-inter mt-6 max-w-xl text-[17px] leading-relaxed text-white/80">
             Gerenciamento de nuvem contínuo para garantir um ambiente cloud de alta performance.
           </p>
-          <Link to="/contato" className={`${btnSolid} mt-10`}>Solicite um orçamento</Link>
+          <SiteCtaButton  className={`${btnSolid} mt-10`}>Solicite um orçamento</SiteCtaButton>
         </div>
       </section>
 
@@ -225,7 +226,7 @@ function AwsPage() {
               </Reveal>
             ))}
           </div>
-          <Link to="/contato" className={`${btnSolid} mt-12`}>Solicite um orçamento</Link>
+          <SiteCtaButton  className={`${btnSolid} mt-12`}>Solicite um orçamento</SiteCtaButton>
         </div>
       </section>
 
@@ -253,7 +254,7 @@ function AwsPage() {
           <p className="font-inter mx-auto mt-5 max-w-[60ch] text-[15px] leading-relaxed text-white/70">
             A gente avalia sua infraestrutura atual e mostra onde a nuvem pode ajudar.
           </p>
-          <Link to="/contato" className={`${btnSolid} mt-9`}>Solicite um orçamento</Link>
+          <SiteCtaButton  className={`${btnSolid} mt-9`}>Solicite um orçamento</SiteCtaButton>
         </div>
       </section>
 

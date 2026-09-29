@@ -1,4 +1,5 @@
 import { pageHead } from "@/lib/seo";
+import { SiteCtaButton } from "@/components/site/SiteCtaButton";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   Accordion,
@@ -66,7 +67,7 @@ function InfraCorePage() {
           <p className="font-inter mt-6 max-w-2xl text-[17px] leading-relaxed text-white/85">
             Infraestrutura de TI que sustenta a operação: redes, cabeamento estruturado e data center, projetados e executados de ponta a ponta.
           </p>
-          <Link to="/contato" className={`${btnSolid} mt-10`}>Solicitar diagnóstico técnico</Link>
+          <SiteCtaButton  className={`${btnSolid} mt-10`}>Solicitar diagnóstico técnico</SiteCtaButton>
         </div>
       </section>
 
@@ -120,7 +121,7 @@ function InfraCorePage() {
               </div>
             ))}
           </div>
-          <Link to="/contato" className={`${btnOutline} mt-10 border-[var(--site-blue)] text-[var(--site-blue)] hover:bg-[var(--site-blue)] hover:text-white`}>Falar sobre minha rede</Link>
+          <SiteCtaButton  className={`${btnOutline} mt-10 border-[var(--site-blue)] text-[var(--site-blue)] hover:bg-[var(--site-blue)] hover:text-white`}>Falar sobre minha rede</SiteCtaButton>
         </div>
       </section>
 
@@ -144,7 +145,7 @@ function InfraCorePage() {
               </div>
             ))}
           </div>
-          <Link to="/contato" className={`${btnSolid} mt-12`}>Agendar visita diagnóstica</Link>
+          <SiteCtaButton  className={`${btnSolid} mt-12`}>Agendar visita diagnóstica</SiteCtaButton>
         </div>
       </section>
 
@@ -194,7 +195,7 @@ function InfraCorePage() {
               <p className="font-inter border-l-2 border-[var(--site-blue)] pl-5 text-[15px] leading-relaxed text-[var(--site-muted)]">Suporte de técnicos de segurança do trabalho em todas as execuções.</p>
               <p className="font-inter border-l-2 border-[var(--site-blue)] pl-5 text-[15px] leading-relaxed text-[var(--site-muted)]">Atuação alinhada às NRs referentes a trabalho em altura e energia.</p>
             </div>
-            <Link to="/contato" className={`${btnOutline} mt-10 border-[var(--site-blue)] text-[var(--site-blue)] hover:bg-[var(--site-blue)] hover:text-white`}>Falar com um especialista</Link>
+            <SiteCtaButton  className={`${btnOutline} mt-10 border-[var(--site-blue)] text-[var(--site-blue)] hover:bg-[var(--site-blue)] hover:text-white`}>Falar com um especialista</SiteCtaButton>
           </div>
         </div>
       </section>
@@ -216,7 +217,7 @@ function InfraCorePage() {
         </div>
       </section>
 
-      <SiteCta />
+      <SiteCta modal />
       <SiteFooter />
     </>
   );

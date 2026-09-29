@@ -1,6 +1,10 @@
 import { Link } from "@tanstack/react-router";
+import { SiteCtaButton } from "./SiteCtaButton";
 
-export function SiteCta() {
+const BTN =
+  "font-inter mt-9 inline-flex h-11 items-center justify-center whitespace-nowrap border border-[var(--site-blue)] px-8 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--site-blue)] transition-colors duration-200 hover:bg-[var(--site-blue)] hover:text-white";
+
+export function SiteCta({ modal = false }: { modal?: boolean }) {
   return (
     <section aria-labelledby="site-cta" className="relative z-10 bg-white py-20 sm:py-28">
       <div className="mx-auto max-w-3xl px-5 text-center sm:px-8">
@@ -14,12 +18,13 @@ export function SiteCta() {
           Em uma conversa de 30 minutos, a gente entende sua operação atual e mostra onde dá pra
           ganhar eficiência, segurança e previsibilidade. Sem compromisso.
         </p>
-        <Link
-          to="/contato"
-          className="font-inter mt-9 inline-flex h-11 items-center justify-center whitespace-nowrap border border-[var(--site-blue)] px-8 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--site-blue)] transition-colors duration-200 hover:bg-[var(--site-blue)] hover:text-white"
-        >
-          Falar com especialista
-        </Link>
+        {modal ? (
+          <SiteCtaButton className={BTN}>Falar com especialista</SiteCtaButton>
+        ) : (
+          <Link to="/contato" className={BTN}>
+            Falar com especialista
+          </Link>
+        )}
       </div>
     </section>
   );

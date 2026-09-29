@@ -1,4 +1,5 @@
 import { pageHead } from "@/lib/seo";
+import { SiteCtaButton } from "@/components/site/SiteCtaButton";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   Accordion,
@@ -217,9 +218,9 @@ function SmartCloudOpsPage() {
               Nuvem operada com inteligência: performance, segurança e custo sob controle. Do Azure
               ao Microsoft 365, com governança de ponta a ponta.
             </p>
-            <Link to="/contato" className={`${btn} mt-9 bg-[var(--site-yellow)] text-[#0B1418] hover:bg-white`}>
+            <SiteCtaButton  className={`${btn} mt-9 bg-[var(--site-yellow)] text-[#0B1418] hover:bg-white`}>
               Falar com um especialista em Cloud
-            </Link>
+            </SiteCtaButton>
           </div>
         </div>
       </section>
@@ -359,7 +360,7 @@ function SmartCloudOpsPage() {
         </div>
       </section>
 
-      <SiteCta />
+      <SiteCta modal />
       <SiteFooter />
     </>
   );
