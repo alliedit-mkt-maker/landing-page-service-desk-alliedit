@@ -58,7 +58,15 @@ const MVV = [
   {
     icon: Network,
     title: "Valores",
-    text: "Prover soluções e serviços com o foco do cliente, prezando sempre pelo respeito e integridade em todo ecossistema envolvido.",
+    text: (
+      <>
+        Prover soluções e serviços com o foco{" "}
+        <span className="rounded-[4px] bg-[#F3C400] px-1.5 py-0.5 font-semibold text-[#046E8B] [box-decoration-break:clone]">
+          do
+        </span>{" "}
+        cliente, prezando sempre pelo respeito e integridade em todo ecossistema envolvido.
+      </>
+    ),
   },
 ];
 
