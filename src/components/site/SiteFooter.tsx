@@ -66,7 +66,7 @@ export function SiteFooter() {
           <ul className="space-y-3">
             {PRODUTOS.map((p) => (
               <li key={p}>
-                <Link to={p === "Microsoft 365" ? "/produtos/microsoft-365" : p === "AWS" ? "/produtos/aws" : "/produtos"} className={item}>
+                <Link to={p === "Microsoft 365" ? "/produtos/microsoft-365" : p === "AWS" ? "/produtos/aws" : p === "Firewall" ? "/produtos/firewall" : "/produtos"} className={item}>
                   {p}
                 </Link>
               </li>

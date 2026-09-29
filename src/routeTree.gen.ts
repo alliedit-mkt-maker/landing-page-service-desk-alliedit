@@ -43,6 +43,7 @@ import { Route as SiteServicosInfraCoreRouteImport } from './routes/_site.servic
 import { Route as SiteServicosDigitalWorkspaceRouteImport } from './routes/_site.servicos.digital-workspace'
 import { Route as SiteServicosCyberShield360RouteImport } from './routes/_site.servicos.cyber-shield-360'
 import { Route as SiteProdutosMicrosoft365RouteImport } from './routes/_site.produtos.microsoft-365'
+import { Route as SiteProdutosFirewallRouteImport } from './routes/_site.produtos.firewall'
 import { Route as SiteProdutosAwsRouteImport } from './routes/_site.produtos.aws'
 import { Route as SiteBlogSlugRouteImport } from './routes/_site.blog.$slug'
 
@@ -223,6 +224,11 @@ const SiteProdutosMicrosoft365Route =
     path: '/produtos/microsoft-365',
     getParentRoute: () => SiteRoute,
   } as any)
+const SiteProdutosFirewallRoute = SiteProdutosFirewallRouteImport.update({
+  id: '/produtos/firewall',
+  path: '/produtos/firewall',
+  getParentRoute: () => SiteRoute,
+} as any)
 const SiteProdutosAwsRoute = SiteProdutosAwsRouteImport.update({
   id: '/produtos/aws',
   path: '/produtos/aws',
@@ -260,6 +266,7 @@ export interface FileRoutesByFullPath {
   '/lp/yealink-videoconferencia': typeof LpYealinkVideoconferenciaRoute
   '/blog/$slug': typeof SiteBlogSlugRoute
   '/produtos/aws': typeof SiteProdutosAwsRoute
+  '/produtos/firewall': typeof SiteProdutosFirewallRoute
   '/produtos/microsoft-365': typeof SiteProdutosMicrosoft365Route
   '/servicos/cyber-shield-360': typeof SiteServicosCyberShield360Route
   '/servicos/digital-workspace': typeof SiteServicosDigitalWorkspaceRoute
@@ -297,6 +304,7 @@ export interface FileRoutesByTo {
   '/lp/yealink-videoconferencia': typeof LpYealinkVideoconferenciaRoute
   '/blog/$slug': typeof SiteBlogSlugRoute
   '/produtos/aws': typeof SiteProdutosAwsRoute
+  '/produtos/firewall': typeof SiteProdutosFirewallRoute
   '/produtos/microsoft-365': typeof SiteProdutosMicrosoft365Route
   '/servicos/cyber-shield-360': typeof SiteServicosCyberShield360Route
   '/servicos/digital-workspace': typeof SiteServicosDigitalWorkspaceRoute
@@ -336,6 +344,7 @@ export interface FileRoutesById {
   '/lp/yealink-videoconferencia': typeof LpYealinkVideoconferenciaRoute
   '/_site/blog/$slug': typeof SiteBlogSlugRoute
   '/_site/produtos/aws': typeof SiteProdutosAwsRoute
+  '/_site/produtos/firewall': typeof SiteProdutosFirewallRoute
   '/_site/produtos/microsoft-365': typeof SiteProdutosMicrosoft365Route
   '/_site/servicos/cyber-shield-360': typeof SiteServicosCyberShield360Route
   '/_site/servicos/digital-workspace': typeof SiteServicosDigitalWorkspaceRoute
@@ -375,6 +384,7 @@ export interface FileRouteTypes {
     | '/lp/yealink-videoconferencia'
     | '/blog/$slug'
     | '/produtos/aws'
+    | '/produtos/firewall'
     | '/produtos/microsoft-365'
     | '/servicos/cyber-shield-360'
     | '/servicos/digital-workspace'
@@ -412,6 +422,7 @@ export interface FileRouteTypes {
     | '/lp/yealink-videoconferencia'
     | '/blog/$slug'
     | '/produtos/aws'
+    | '/produtos/firewall'
     | '/produtos/microsoft-365'
     | '/servicos/cyber-shield-360'
     | '/servicos/digital-workspace'
@@ -450,6 +461,7 @@ export interface FileRouteTypes {
     | '/lp/yealink-videoconferencia'
     | '/_site/blog/$slug'
     | '/_site/produtos/aws'
+    | '/_site/produtos/firewall'
     | '/_site/produtos/microsoft-365'
     | '/_site/servicos/cyber-shield-360'
     | '/_site/servicos/digital-workspace'
@@ -725,6 +737,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SiteProdutosMicrosoft365RouteImport
       parentRoute: typeof SiteRoute
     }
+    '/_site/produtos/firewall': {
+      id: '/_site/produtos/firewall'
+      path: '/produtos/firewall'
+      fullPath: '/produtos/firewall'
+      preLoaderRoute: typeof SiteProdutosFirewallRouteImport
+      parentRoute: typeof SiteRoute
+    }
     '/_site/produtos/aws': {
       id: '/_site/produtos/aws'
       path: '/produtos/aws'
@@ -749,6 +768,7 @@ interface SiteRouteChildren {
   SiteTermosDeUsoRoute: typeof SiteTermosDeUsoRoute
   SiteBlogSlugRoute: typeof SiteBlogSlugRoute
   SiteProdutosAwsRoute: typeof SiteProdutosAwsRoute
+  SiteProdutosFirewallRoute: typeof SiteProdutosFirewallRoute
   SiteProdutosMicrosoft365Route: typeof SiteProdutosMicrosoft365Route
   SiteServicosCyberShield360Route: typeof SiteServicosCyberShield360Route
   SiteServicosDigitalWorkspaceRoute: typeof SiteServicosDigitalWorkspaceRoute
@@ -768,6 +788,7 @@ const SiteRouteChildren: SiteRouteChildren = {
   SiteTermosDeUsoRoute: SiteTermosDeUsoRoute,
   SiteBlogSlugRoute: SiteBlogSlugRoute,
   SiteProdutosAwsRoute: SiteProdutosAwsRoute,
+  SiteProdutosFirewallRoute: SiteProdutosFirewallRoute,
   SiteProdutosMicrosoft365Route: SiteProdutosMicrosoft365Route,
   SiteServicosCyberShield360Route: SiteServicosCyberShield360Route,
   SiteServicosDigitalWorkspaceRoute: SiteServicosDigitalWorkspaceRoute,

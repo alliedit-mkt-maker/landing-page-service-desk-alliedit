@@ -21,7 +21,7 @@ const PRODUCTS = [
   { icon: Headset, title: "Headsets", text: "Headsets profissionais para chamadas e reuniões com qualidade.", to: "/lp/headset-callcenter" },
   { icon: Monitor, title: "Microsoft 365", text: "Licenciamento e gestão completa do ambiente Microsoft 365.", to: "/produtos/microsoft-365" },
   { icon: Cloud, title: "AWS", text: "Provisionamento e gestão de ambientes AWS.", to: "/produtos/aws" },
-  { icon: ShieldCheck, title: "Firewall", text: "Firewalls e segurança de rede sob medida.", to: "/contato" },
+  { icon: ShieldCheck, title: "Firewall", text: "Firewalls e segurança de rede sob medida.", to: "/produtos/firewall" },
 ] as const;
 
 const eyebrow = "font-inter text-[11px] font-semibold uppercase tracking-[0.22em]";
