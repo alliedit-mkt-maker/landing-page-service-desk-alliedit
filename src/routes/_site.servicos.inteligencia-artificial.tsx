@@ -109,7 +109,7 @@ function IAPage() {
                 <p className="font-inter mt-4 max-w-md text-[16px] leading-relaxed text-white/85">
                   Arquitetura, planejamento e construção de soluções proprietárias de ponta a ponta, feitas sob medida para a operação da sua empresa.
                 </p>
-                <Link to="/contato" className={`${btnSolid} mt-auto w-fit pt-0`} style={{ marginTop: "2.5rem" }}>Quero uma solução completa</Link>
+                <Link to="/contato" className={`${btnSolid} mt-10 w-fit`}>Quero uma solução completa</Link>
               </div>
             </div>
             {SMALL.map((s, i) => (
