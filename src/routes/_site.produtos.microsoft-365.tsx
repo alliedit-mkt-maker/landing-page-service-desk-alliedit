@@ -107,7 +107,7 @@ function Microsoft365Page() {
   return (
     <>
       {/* Hero */}
-      <section className="relative flex min-h-[78vh] items-center overflow-hidden bg-[var(--site-ink)] text-white">
+      <section className="relative -mt-[72px] flex min-h-[78vh] items-center overflow-hidden pt-[72px] bg-[var(--site-ink)] text-white">
         <img src={hero.url} alt="" aria-hidden className="absolute inset-0 h-full w-full object-cover object-right" />
         <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/20" />
         <div className="relative mx-auto w-full max-w-7xl px-5 py-24 sm:px-8">
