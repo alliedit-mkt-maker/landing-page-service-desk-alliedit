@@ -32,7 +32,7 @@ const PRODUCTS = [
   { icon: Video, title: "Videoconferência" },
   { icon: Headset, title: "Headsets" },
   { icon: Monitor, title: "Microsoft 365", to: "/produtos/microsoft-365" },
-  { icon: Cloud, title: "AWS" },
+  { icon: Cloud, title: "AWS", to: "/produtos/aws" },
   { icon: ShieldCheck, title: "Firewall" },
 ] as const;
 
