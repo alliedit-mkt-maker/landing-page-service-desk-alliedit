@@ -48,7 +48,7 @@ export const Route = createFileRoute("/_site/produtos/microsoft-365")({
 
 const VALUE = [
   { icon: Compass, title: "Visão consultiva", text: "Não vendemos só a licença: ajudamos a entender o que sua empresa realmente precisa." },
-  { icon: LifeBuoy, title: "Suporte especializado", text: "Time técnico disponível pra dúvidas e problemas do dia a dia, não só na venda." },
+  { icon: LifeBuoy, title: "Melhor custo-benefício", text: "Ajudamos a escolher o plano certo, sem pagar por licença que sua empresa não vai usar." },
   { icon: BadgeCheck, title: "Parceiro oficial Microsoft", text: "Licenciamento direto, com procedência garantida." },
   { icon: Settings2, title: "Gestão simplificada", text: "Cuidamos da ativação, renovação e gestão das licenças pra você." },
 ];
@@ -82,7 +82,7 @@ const SOLUTIONS = [
 
 const WHY = [
   { icon: KeyRound, title: "Licenciamento sem complicação", text: "Cuidamos da contratação, ativação e renovação das licenças certas pro tamanho da sua empresa." },
-  { icon: Headset, title: "Suporte que resolve", text: "Se travou, você liga pra gente. Suporte técnico incluso pra dúvidas e problemas do dia a dia." },
+  { icon: Headset, title: "Renovação sem susto", text: "Avisamos com antecedência sobre vencimentos e ajustamos as licenças conforme sua empresa cresce." },
 ];
 
 const FAQ = [
@@ -116,7 +116,7 @@ function Microsoft365Page() {
           </span>
           <h1 className="font-chillax mt-5 text-5xl font-bold tracking-tight sm:text-6xl">Microsoft 365</h1>
           <p className="font-inter mt-6 max-w-xl text-[17px] leading-relaxed text-white/80">
-            Tudo o que sua empresa precisa em uma única solução, com licenciamento e suporte de quem entende de TI.
+            Tudo o que sua empresa precisa em uma única solução, com licenciamento feito por quem entende de TI.
           </p>
           <Link to="/contato" className={`${btnSolid} mt-10`}>Solicite um orçamento</Link>
         </div>
@@ -124,16 +124,24 @@ function Microsoft365Page() {
 
       {/* Proposta de valor */}
       <section className="bg-white py-20 sm:py-24">
-        <div className="mx-auto grid max-w-7xl gap-6 px-5 sm:grid-cols-2 sm:px-8 lg:grid-cols-4">
-          {VALUE.map((v, i) => (
-            <Reveal key={v.title} delay={i * 90}>
-              <div className="h-full border-t-2 border-[var(--site-blue)] bg-[#F4F7F9] p-7">
-                <v.icon className="size-7 text-[var(--site-blue)]" />
-                <h3 className="font-chillax mt-5 text-lg font-semibold">{v.title}</h3>
-                <p className="font-inter mt-3 text-[14px] leading-relaxed text-[var(--site-muted)]">{v.text}</p>
-              </div>
-            </Reveal>
-          ))}
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+          <Reveal>
+            <span className={eyebrow}>Diferenciais</span>
+            <h2 className={`${h2} mt-3`}>Por que contar com a Allied IT</h2>
+          </Reveal>
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {VALUE.map((v, i) => (
+              <Reveal key={v.title} delay={i * 90}>
+                <div className="h-full border-t-2 border-[var(--site-blue)] bg-[#F4F7F9] p-7">
+                  <span className="grid size-14 place-items-center rounded-full bg-[var(--site-blue)]/10">
+                    <v.icon className="size-6 text-[var(--site-blue)]" strokeWidth={1.8} />
+                  </span>
+                  <h3 className="font-chillax mt-5 text-lg font-semibold">{v.title}</h3>
+                  <p className="font-inter mt-3 text-[14px] leading-relaxed text-[var(--site-muted)]">{v.text}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -170,18 +178,19 @@ function Microsoft365Page() {
       </section>
 
       {/* O que vem incluso */}
-      <section className="bg-[var(--site-blue)] py-20 text-white sm:py-24">
+      <section className="bg-[var(--site-ink)] py-20 text-white sm:py-24">
         <div className="mx-auto grid max-w-7xl gap-10 px-5 sm:px-8 lg:grid-cols-[1fr_1.4fr] lg:items-center">
           <Reveal>
             <h2 className={h2}>O que vem incluso</h2>
           </Reveal>
-          <ul className="grid gap-4 sm:grid-cols-2">
-            {INCLUDED.map((item) => (
-              <li key={item} className="font-inter flex items-center gap-3 text-[16px]">
-                <span className="grid size-7 shrink-0 place-items-center bg-[var(--site-yellow)] text-[var(--site-ink)]">
-                  <Check className="size-4" strokeWidth={3} />
+          <ul className="border-t border-white/15">
+            {INCLUDED.map((item, i) => (
+              <li key={item} className="font-inter flex items-center justify-between gap-6 border-b border-white/15 py-5 text-[16px]">
+                <span className="flex items-center gap-5">
+                  <span className="font-chillax w-8 text-[13px] font-semibold text-[var(--site-yellow)]">{String(i + 1).padStart(2, "0")}</span>
+                  {item}
                 </span>
-                {item}
+                <Check className="size-5 shrink-0 text-[var(--site-yellow)]" strokeWidth={2.5} />
               </li>
             ))}
           </ul>
