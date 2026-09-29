@@ -194,6 +194,7 @@
 .reveal-scale-in { animation-name: reveal-scale-in; }
 .reveal-slide-left { animation-name: reveal-slide-left; }
 .reveal-slide-right { animation-name: reveal-slide-right; }
+main > section:first-of-type .reveal { opacity: 1 !important; animation: none !important; }
 
 /* Primeira dobra visível sem esperar o JavaScript (LCP) */
 main > section:first-child .reveal,
