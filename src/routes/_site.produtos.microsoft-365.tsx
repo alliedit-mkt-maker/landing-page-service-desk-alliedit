@@ -147,7 +147,9 @@ function Microsoft365Page() {
           <div ref={track} className="mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 [scrollbar-width:none]">
             {APPS.map((a) => (
               <div key={a.name} className="w-[260px] shrink-0 snap-start bg-white p-7 shadow-sm">
-                <img src={a.logo} alt={`Logo ${a.name}`} loading="lazy" className="h-16 w-auto object-contain" />
+                <div className="grid size-16 place-items-center">
+                  <img src={a.logo} alt={`Logo ${a.name}`} loading="lazy" className="max-h-full max-w-full object-contain" />
+                </div>
                 <h3 className="font-chillax mt-6 text-lg font-semibold">{a.name}</h3>
                 <p className="font-inter mt-2 text-[14px] leading-relaxed text-[var(--site-muted)]">{a.text}</p>
               </div>
