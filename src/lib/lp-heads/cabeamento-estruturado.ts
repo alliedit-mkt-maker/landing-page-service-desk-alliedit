@@ -1,6 +1,7 @@
 import { PUBLIC_ORIGIN, LP_ON_ROOT_DOMAIN } from "@/lib/site";
 import { ogImageUrl } from "@/lib/seo";
 
+export const socialDescription = "Cada ponto testado, documentado e entregue. Peça o levantamento.";
 export const title = "Empresa de cabeamento estruturado com laudo | Allied IT";
 export const description =
   "Cabeamento estruturado para empresas: projeto, instalação e certificação ponto a ponto, com laudo e as-built.";

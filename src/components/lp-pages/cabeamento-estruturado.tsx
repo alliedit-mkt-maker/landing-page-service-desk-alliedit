@@ -10,7 +10,6 @@ import { Clients } from "@/components/lp/Clients";
 import { Reveal } from "@/components/lp/Reveal";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
-const socialDescription = "Cada ponto testado, documentado e entregue. Peça o levantamento.";
 
 
 

@@ -122,7 +122,7 @@ const VARIANT_LOADERS: Record<Variant, () => Promise<PageModule>> = {
 
 const LAZY_PAGES = Object.fromEntries(
   Object.entries(VARIANT_LOADERS).map(([k, load]) => [k, lazy(load)]),
-) as Record<Variant, ComponentType>;
+) as unknown as Record<Variant, ComponentType>;
 
 export const Route = createFileRoute("/")({
   loader: async () => {
