@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as ObrigadoRouteImport } from './routes/obrigado'
 import { Route as AssinaturasRouteImport } from './routes/assinaturas'
 import { Route as SiteRouteImport } from './routes/_site'
@@ -44,6 +45,11 @@ import { Route as SiteBlogSlugRouteImport } from './routes/_site.blog.$slug'
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RobotsDottxtRoute = RobotsDottxtRouteImport.update({
+  id: '/robots.txt',
+  path: '/robots.txt',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ObrigadoRoute = ObrigadoRouteImport.update({
@@ -206,6 +212,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/assinaturas': typeof AssinaturasRoute
   '/obrigado': typeof ObrigadoRoute
+  '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/contato': typeof SiteContatoRoute
   '/politica-de-privacidade': typeof SitePoliticaDePrivacidadeRoute
@@ -238,6 +245,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/assinaturas': typeof AssinaturasRoute
   '/obrigado': typeof ObrigadoRoute
+  '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/contato': typeof SiteContatoRoute
   '/politica-de-privacidade': typeof SitePoliticaDePrivacidadeRoute
@@ -272,6 +280,7 @@ export interface FileRoutesById {
   '/_site': typeof SiteRouteWithChildren
   '/assinaturas': typeof AssinaturasRoute
   '/obrigado': typeof ObrigadoRoute
+  '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/_site/contato': typeof SiteContatoRoute
   '/_site/politica-de-privacidade': typeof SitePoliticaDePrivacidadeRoute
@@ -306,6 +315,7 @@ export interface FileRouteTypes {
     | '/'
     | '/assinaturas'
     | '/obrigado'
+    | '/robots.txt'
     | '/sitemap.xml'
     | '/contato'
     | '/politica-de-privacidade'
@@ -338,6 +348,7 @@ export interface FileRouteTypes {
     | '/'
     | '/assinaturas'
     | '/obrigado'
+    | '/robots.txt'
     | '/sitemap.xml'
     | '/contato'
     | '/politica-de-privacidade'
@@ -371,6 +382,7 @@ export interface FileRouteTypes {
     | '/_site'
     | '/assinaturas'
     | '/obrigado'
+    | '/robots.txt'
     | '/sitemap.xml'
     | '/_site/contato'
     | '/_site/politica-de-privacidade'
@@ -405,6 +417,7 @@ export interface RootRouteChildren {
   SiteRoute: typeof SiteRouteWithChildren
   AssinaturasRoute: typeof AssinaturasRoute
   ObrigadoRoute: typeof ObrigadoRoute
+  RobotsDottxtRoute: typeof RobotsDottxtRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   LpAlocacaoTiRoute: typeof LpAlocacaoTiRoute
   LpCabeamentoRoute: typeof LpCabeamentoRoute
@@ -429,6 +442,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/robots.txt': {
+      id: '/robots.txt'
+      path: '/robots.txt'
+      fullPath: '/robots.txt'
+      preLoaderRoute: typeof RobotsDottxtRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/obrigado': {
@@ -681,6 +701,7 @@ const rootRouteChildren: RootRouteChildren = {
   SiteRoute: SiteRouteWithChildren,
   AssinaturasRoute: AssinaturasRoute,
   ObrigadoRoute: ObrigadoRoute,
+  RobotsDottxtRoute: RobotsDottxtRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   LpAlocacaoTiRoute: LpAlocacaoTiRoute,
   LpCabeamentoRoute: LpCabeamentoRoute,
