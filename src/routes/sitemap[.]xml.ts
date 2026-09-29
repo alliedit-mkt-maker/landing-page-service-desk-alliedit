@@ -11,6 +11,7 @@ const STATIC_PATHS = [
   "/servicos/cyber-shield-360",
   "/servicos/infra-core",
   "/servicos/product-engineering",
+  "/servicos/inteligencia-artificial",
   "/produtos",
   "/produtos/microsoft-365",
   "/produtos/aws",

@@ -25,7 +25,7 @@ const SERVICES = [
   { icon: ShieldCheck, title: "Cyber Shield 360°", text: "SOC, NOC e cibersegurança 24x7", to: "/servicos/cyber-shield-360" },
   { icon: Server, title: "Infra Core", text: "Redes, cabeamento e data center", to: "/servicos/infra-core" },
   { icon: Cpu, title: "Product Engineering", text: "Automação e desenvolvimento sob medida", to: "/servicos/product-engineering" },
-  { icon: Sparkles, title: "Inteligência Artificial", text: "Soluções de IA aplicadas à operação" },
+  { icon: Sparkles, title: "Inteligência Artificial", text: "Soluções de IA aplicadas à operação", to: "/servicos/inteligencia-artificial" },
 ] as const;
 
 const PRODUCTS = [
