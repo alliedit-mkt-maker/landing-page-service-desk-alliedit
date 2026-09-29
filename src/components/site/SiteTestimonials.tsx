@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import apsenLogo from "@/assets/clients/apsen.webp";
 import ipanemaLogo from "@/assets/clients/ipanema.webp";
-import puravidaLogo from "@/assets/cases/nestle-puravida-logo.png.asset.json";
+import puravidaLogo from "@/assets/testimonials/puravida.png.asset.json";
+import naturalLogo from "@/assets/testimonials/natural-da-terra.webp.asset.json";
 
 const ITEMS = [
   {
@@ -15,7 +16,7 @@ const ITEMS = [
   {
     name: "Gerente de TI",
     role: "HortiFruti Natural da Terra",
-    logo: undefined as string | undefined,
+    logo: naturalLogo.url as string | undefined,
     quote:
       "A operação melhorou significativamente com constante aumento de chamados atendidos aos usuários e elevação no nível de satisfação. Tem sido uma empresa que não mede esforços em atender com agilidade e qualidade.",
   },
