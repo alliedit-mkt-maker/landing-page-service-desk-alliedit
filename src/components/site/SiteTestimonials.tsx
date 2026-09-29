@@ -1,36 +1,35 @@
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import apsenPhoto from "@/assets/testimonials/apsen.jpg.asset.json";
-import hortifrutiPhoto from "@/assets/testimonials/hortifruti.jpeg.asset.json";
-import ipanemaPhoto from "@/assets/testimonials/ipanema.jpg.asset.json";
-import leandroPhoto from "@/assets/testimonials/leandro-souza.png.asset.json";
+import apsenLogo from "@/assets/clients/apsen.webp";
+import ipanemaLogo from "@/assets/clients/ipanema.webp";
+import puravidaLogo from "@/assets/cases/nestle-puravida-logo.png.asset.json";
 
 const ITEMS = [
   {
     name: "CIO",
     role: "Apsen Farmacêutica",
-    photo: apsenPhoto.url,
+    logo: apsenLogo as string | undefined,
     quote:
       "Notamos uma economia de mais de 30% e um aumento de 50% na qualidade percebida dos nossos serviços. Essas mudanças foram fundamentais para o crescimento e sucesso da nossa empresa.",
   },
   {
     name: "Gerente de TI",
     role: "HortiFruti Natural da Terra",
-    photo: hortifrutiPhoto.url,
+    logo: undefined as string | undefined,
     quote:
       "A operação melhorou significativamente com constante aumento de chamados atendidos aos usuários e elevação no nível de satisfação. Tem sido uma empresa que não mede esforços em atender com agilidade e qualidade.",
   },
   {
     name: "Gerente de TI",
     role: "Queijos Ipanema",
-    photo: ipanemaPhoto.url,
+    logo: ipanemaLogo as string | undefined,
     quote:
       "Sempre fui atendido com muita rapidez e comprometimento com o resultado. Hoje, posso afirmar que essa parceria foi de grande sucesso para nós. Profissionais gabaritados, que nos atendem com muita dedicação.",
   },
   {
     name: "Especialista em Redes e Infraestrutura Cloud",
     role: "Puravida",
-    photo: leandroPhoto.url,
+    logo: puravidaLogo.url as string | undefined,
     quote:
       "Desde o início do projeto, eles demonstraram um alto nível de comprometimento, dedicação e profissionalismo.",
   },
@@ -107,12 +106,13 @@ export function SiteTestimonials() {
                 “{item.quote}”
               </blockquote>
               <figcaption className="mt-8 flex items-center gap-4">
-                <img
-                  src={item.photo}
-                  alt={`${item.name} — ${item.role}`}
-                  loading="lazy"
-                  className="h-12 w-12 rounded-full border border-white/20 object-cover"
-                />
+                <span className="grid h-12 w-20 shrink-0 place-items-center rounded-md bg-white px-2">
+                  {item.logo ? (
+                    <img src={item.logo} alt={item.role} loading="lazy" className="max-h-8 w-auto max-w-full object-contain" />
+                  ) : (
+                    <span className="font-chillax text-[10px] font-bold leading-tight text-center text-[var(--site-ink)]">{item.role}</span>
+                  )}
+                </span>
                 <span>
                   <span className="font-inter block text-[14px] font-semibold text-white">
                     {item.name}

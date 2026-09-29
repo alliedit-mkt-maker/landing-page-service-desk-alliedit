@@ -450,3 +450,9 @@ main > section:first-child .reveal-in {
   text-align: left;
 }
 .site-article iframe { width: 100%; aspect-ratio: 16 / 9; height: auto; }
+
+/* Site institucional: títulos com quebra equilibrada (evita palavra sozinha na última linha) */
+.site-scope h1,
+.site-scope h2 {
+  text-wrap: balance;
+}
