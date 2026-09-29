@@ -1,20 +1,19 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { createServerFn } from "@tanstack/react-start";
 import { pageHead } from "@/lib/seo";
-import { SiteLayout } from "@/components/site/SiteLayout";
-import { SiteHome } from "@/components/site/SiteHome";
-import { assinaturasHead, AssinaturasPage } from "./assinaturas";
-import { serviceDeskHead, ServiceDeskPage } from "./lp.service-desk";
-import { cabeamentoHead, CabeamentoPage } from "./lp.cabeamento";
-import { headsetCallcenterHead, HeadsetPage } from "./lp.headset-callcenter";
-import { rallyBarHead, RallyBarPage } from "./lp.rally-bar";
-import { headsetsPolyHead, PolyPage } from "./lp.headsets-poly";
-import { headsetLogitechHead, LogitechPage } from "./lp.headset-logitech";
-import { headsetYealinkHead, YealinkPage } from "./lp.headset-yealink";
-import { polyStudioHead, PolyStudioPage } from "./lp.poly-studio";
-import { yealinkVideoconferenciaHead, YealinkVcPage } from "./lp.yealink-videoconferencia";
-import { alocacaoTiHead, AlocacaoPage } from "./lp.alocacao-ti";
-import { videoconferenciaHead, VideoconferenciaPage } from "./lp.videoconferencia";
+import { lazy, Suspense, type ComponentType } from "react";
+import { assinaturasHead } from "@/lib/lp-heads/assinaturas";
+import { serviceDeskHead } from "@/lib/lp-heads/service-desk";
+import { cabeamentoHead } from "@/lib/lp-heads/cabeamento";
+import { headsetCallcenterHead } from "@/lib/lp-heads/headset-callcenter";
+import { rallyBarHead } from "@/lib/lp-heads/rally-bar";
+import { headsetsPolyHead } from "@/lib/lp-heads/headsets-poly";
+import { headsetLogitechHead } from "@/lib/lp-heads/headset-logitech";
+import { headsetYealinkHead } from "@/lib/lp-heads/headset-yealink";
+import { polyStudioHead } from "@/lib/lp-heads/poly-studio";
+import { yealinkVideoconferenciaHead } from "@/lib/lp-heads/yealink-videoconferencia";
+import { alocacaoTiHead } from "@/lib/lp-heads/alocacao-ti";
+import { videoconferenciaHead } from "@/lib/lp-heads/videoconferencia";
 
 type Variant =
   | "site"
@@ -89,8 +88,49 @@ const getRootVariant = createServerFn({ method: "GET" }).handler(async (): Promi
   return HOST_VARIANT_MAP[host] ?? "site";
 });
 
+type PageModule = { default: ComponentType };
+const pick = <M,>(p: Promise<M>, k: keyof M): Promise<PageModule> =>
+  p.then((m) => ({ default: m[k] as unknown as ComponentType }));
+
+// Um import dinâmico por variante: cada host baixa só o código da própria página.
+const VARIANT_LOADERS: Record<Variant, () => Promise<PageModule>> = {
+  site: () =>
+    Promise.all([import("@/components/site/SiteLayout"), import("@/components/site/SiteHome")]).then(
+      ([l, h]) => ({
+        default: function SiteRoot() {
+          return (
+            <l.SiteLayout>
+              <h.SiteHome />
+            </l.SiteLayout>
+          );
+        },
+      }),
+    ),
+  assinaturas: () => pick(import("@/components/lp-pages/assinaturas"), "AssinaturasPage"),
+  "service-desk": () => pick(import("@/components/lp-pages/service-desk"), "ServiceDeskPage"),
+  cabeamento: () => pick(import("@/components/lp-pages/cabeamento"), "CabeamentoPage"),
+  "headset-callcenter": () => pick(import("@/components/lp-pages/headset-callcenter"), "HeadsetPage"),
+  "rally-bar": () => pick(import("@/components/lp-pages/rally-bar"), "RallyBarPage"),
+  "headsets-poly": () => pick(import("@/components/lp-pages/headsets-poly"), "PolyPage"),
+  "headset-logitech": () => pick(import("@/components/lp-pages/headset-logitech"), "LogitechPage"),
+  "headset-yealink": () => pick(import("@/components/lp-pages/headset-yealink"), "YealinkPage"),
+  "poly-studio": () => pick(import("@/components/lp-pages/poly-studio"), "PolyStudioPage"),
+  "yealink-videoconferencia": () => pick(import("@/components/lp-pages/yealink-videoconferencia"), "YealinkVcPage"),
+  "alocacao-ti": () => pick(import("@/components/lp-pages/alocacao-ti"), "AlocacaoPage"),
+  videoconferencia: () => pick(import("@/components/lp-pages/videoconferencia"), "VideoconferenciaPage"),
+};
+
+const LAZY_PAGES = Object.fromEntries(
+  Object.entries(VARIANT_LOADERS).map(([k, load]) => [k, lazy(load)]),
+) as unknown as Record<Variant, ComponentType>;
+
 export const Route = createFileRoute("/")({
-  loader: async () => ({ variant: await getRootVariant() }),
+  loader: async () => {
+    const variant = await getRootVariant();
+    // Pré-carrega o módulo da variante (não devolve componente no loaderData).
+    await VARIANT_LOADERS[variant]();
+    return { variant };
+  },
   head: ({ loaderData }) => {
     const variant = loaderData?.variant ?? "site";
     const lpHead = LP_HEADS[variant];
@@ -101,36 +141,11 @@ export const Route = createFileRoute("/")({
 
 function RootIndex() {
   const { variant } = Route.useLoaderData();
-  switch (variant) {
-    case "service-desk":
-      return <ServiceDeskPage />;
-    case "cabeamento":
-      return <CabeamentoPage />;
-    case "headset-callcenter":
-      return <HeadsetPage />;
-    case "rally-bar":
-      return <RallyBarPage />;
-    case "headsets-poly":
-      return <PolyPage />;
-    case "headset-logitech":
-      return <LogitechPage />;
-    case "headset-yealink":
-      return <YealinkPage />;
-    case "poly-studio":
-      return <PolyStudioPage />;
-    case "yealink-videoconferencia":
-      return <YealinkVcPage />;
-    case "alocacao-ti":
-      return <AlocacaoPage />;
-    case "videoconferencia":
-      return <VideoconferenciaPage />;
-    case "assinaturas":
-      return <AssinaturasPage />;
-    default:
-      return (
-        <SiteLayout>
-          <SiteHome />
-        </SiteLayout>
-      );
-  }
+  const Page = LAZY_PAGES[variant] ?? LAZY_PAGES.site;
+  // fallback null: durante a hidratação o React mantém o HTML do servidor até o módulo chegar.
+  return (
+    <Suspense fallback={null}>
+      <Page />
+    </Suspense>
+  );
 }
