@@ -81,7 +81,7 @@ function AwsPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative flex min-h-[78vh] items-center overflow-hidden bg-[var(--site-ink)] text-white">
+      <section className="relative -mt-[72px] flex min-h-[78vh] items-center pt-[72px] overflow-hidden bg-[var(--site-ink)] text-white">
         <img
           src={hero.url}
           alt=""
@@ -108,7 +108,7 @@ function AwsPage() {
       <section className="bg-white py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <Reveal>
-            <div className="grid overflow-hidden bg-[var(--site-ink)] text-white lg:grid-cols-2">
+            <div className="grid overflow-hidden rounded-3xl bg-[var(--site-ink)] text-white lg:grid-cols-2">
               <img src={oqueE.url} alt="Mão segurando uma nuvem com o logo da AWS" loading="lazy" className="h-full min-h-[280px] w-full object-cover" />
               <div className="flex flex-col justify-center p-8 sm:p-12">
                 <h2 className={h2}>O que é a AWS e quais vantagens oferece?</h2>
@@ -132,7 +132,7 @@ function AwsPage() {
             </p>
           </Reveal>
           <div className="mt-12 grid gap-6 md:grid-cols-2">
-            <div className="border border-black/10 bg-white p-8">
+            <div className="rounded-3xl border border-black/10 bg-white p-8">
               <h3 className="font-chillax text-xl font-semibold">Infraestrutura própria</h3>
               <ul className="mt-6 space-y-4">
                 {BEFORE.map((b) => (
@@ -143,7 +143,7 @@ function AwsPage() {
                 ))}
               </ul>
             </div>
-            <div className="bg-[var(--site-ink)] p-8 text-white">
+            <div className="rounded-3xl bg-[var(--site-ink)] p-8 text-white">
               <h3 className="font-chillax text-xl font-semibold">Nuvem AWS</h3>
               <ul className="mt-6 space-y-4">
                 {AFTER.map((a) => (
@@ -215,7 +215,7 @@ function AwsPage() {
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {VALUE.map((v, i) => (
               <Reveal key={v.title} delay={(i % 3) * 90}>
-                <div className="h-full border-t-2 border-[var(--site-blue)] bg-white p-7">
+                <div className="h-full rounded-3xl border-t-2 border-[var(--site-blue)] bg-white p-7">
                   <span className="grid size-14 place-items-center rounded-full bg-[var(--site-blue)]/10">
                     <v.icon className="size-6 text-[var(--site-blue)]" strokeWidth={1.8} />
                   </span>
@@ -233,9 +233,9 @@ function AwsPage() {
       <section className="bg-white py-20 sm:py-24">
         <div className="mx-auto max-w-4xl px-5 sm:px-8">
           <h2 className={h2}>Perguntas frequentes</h2>
-          <Accordion type="single" collapsible className="mt-10 w-full border-t border-black/10">
+          <Accordion type="single" collapsible className="mt-10 w-full space-y-3">
             {FAQ.map((f, i) => (
-              <AccordionItem key={i} value={`q-${i}`} className="border-b border-black/10">
+              <AccordionItem key={i} value={`q-${i}`} className="rounded-2xl border border-black/10 bg-[#F4F7F9] px-6">
                 <AccordionTrigger className="font-chillax py-5 text-left text-[16px] font-semibold hover:text-[var(--site-blue)] hover:no-underline">
                   {f.q}
                 </AccordionTrigger>
