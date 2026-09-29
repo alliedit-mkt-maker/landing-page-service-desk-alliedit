@@ -1,17 +1,8 @@
-import { StrictMode, startTransition } from "react";
-import { hydrateRoot } from "react-dom/client";
-import { StartClient } from "@tanstack/react-start/client";
+// Entrada mínima: carrega React/StartClient só depois do primeiro quadro pintado (LCP).
+requestAnimationFrame(() =>
+  setTimeout(() => {
+    import("./client-app");
+  }, 0),
+);
 
-// Hidrata só depois do primeiro quadro pintado (LCP).
-function hydrate() {
-  startTransition(() => {
-    hydrateRoot(
-      document,
-      <StrictMode>
-        <StartClient />
-      </StrictMode>,
-    );
-  });
-}
-
-requestAnimationFrame(() => setTimeout(hydrate, 0));
+export {};
