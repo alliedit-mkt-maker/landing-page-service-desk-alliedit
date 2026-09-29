@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/accordion";
 import { Wifi, Radar, Cctv, Gem } from "lucide-react";
 import { Reveal } from "@/components/lp/Reveal";
+import { SiteCta } from "@/components/site/SiteCta";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import hero from "@/assets/infra/hero.jpg.asset.json";
 import rack from "@/assets/infra/rack.jpg.asset.json";
@@ -45,9 +46,9 @@ const FAQ = [
 ];
 
 const btnSolid =
-  "font-inter inline-flex h-12 items-center justify-center whitespace-nowrap rounded-full bg-[var(--site-yellow)] px-8 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--site-ink)] transition hover:brightness-105";
+  "font-inter inline-flex h-12 items-center justify-center whitespace-nowrap bg-[var(--site-yellow)] px-8 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#0B1418] transition-colors hover:bg-white";
 const btnOutline =
-  "font-inter inline-flex h-11 items-center justify-center whitespace-nowrap rounded-full border px-7 text-[11px] font-semibold uppercase tracking-[0.16em] transition-colors";
+  "font-inter inline-flex h-11 items-center justify-center whitespace-nowrap border px-7 text-[11px] font-semibold uppercase tracking-[0.16em] transition-colors";
 const eyebrow = "font-inter text-[11px] font-semibold uppercase tracking-[0.22em]";
 const h2 = "font-chillax text-[1.8rem] font-bold leading-tight tracking-tight sm:text-[2.4rem]";
 
@@ -57,7 +58,7 @@ function InfraCorePage() {
       {/* Hero */}
       <section className="relative -mt-[72px] flex min-h-[80vh] items-center overflow-hidden bg-[var(--site-ink)] pt-[72px] text-white">
         <img src={hero.url} alt="" aria-hidden fetchPriority="high" loading="eager" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
-        <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-[#046E8B]/90 via-[#046E8B]/55 to-transparent" />
+        <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/55 to-transparent" />
         <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
         <div className="relative mx-auto w-full max-w-7xl px-5 py-24 sm:px-8">
           <span className={`${eyebrow} text-[var(--site-yellow)]`}>Serviços · Infraestrutura</span>
@@ -70,19 +71,30 @@ function InfraCorePage() {
       </section>
 
       {/* Visão geral */}
-      <section className="bg-white py-20 sm:py-28">
-        <div className="mx-auto max-w-4xl px-5 text-center sm:px-8">
-          <Reveal>
-            <span className={`${eyebrow} text-[var(--site-blue)]`}>Visão geral</span>
-            <p className="font-chillax mt-6 text-[1.35rem] font-medium leading-snug text-[var(--site-ink)] sm:text-[1.7rem]">
-              Soluções completas em infraestrutura de TI para garantir conectividade, desempenho e escalabilidade a soluções corporativas. Nossos serviços abrangem desde o projeto até a execução e certificação de redes estruturadas, elétricas e ambientes de TI.
-            </p>
-            <div className="mt-10 flex flex-wrap justify-center gap-3">
-              {["Redes", "Cabeamento Estruturado", "Data Center"].map((p) => (
-                <span key={p} className="font-inter rounded-full border border-[var(--site-blue)]/30 bg-[var(--site-blue)]/[0.06] px-5 py-2 text-[13px] font-semibold text-[var(--site-blue)]">
-                  {p}
-                </span>
-              ))}
+      <section className="bg-[#F4F8F9] py-20 sm:py-28">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+          <Reveal variant="fade-up">
+            <div className="grid overflow-hidden rounded-[28px] border border-white/10 bg-[#08131A] shadow-[0_30px_80px_-40px_rgba(0,0,0,0.55)] lg:grid-cols-2">
+              <div className="relative min-h-[300px] lg:min-h-[480px]">
+                <img src={rack.url} alt="Racks de servidores em data center" loading="lazy" className="absolute inset-0 size-full object-cover" />
+                <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-[#08131A] via-[#08131A]/55 to-[#08131A]/20 lg:bg-gradient-to-r lg:from-[#08131A]/30 lg:via-[#08131A]/55 lg:to-[#08131A]" />
+              </div>
+              <div className="relative flex flex-col justify-center p-8 sm:p-12 lg:p-14">
+                <span aria-hidden className="pointer-events-none absolute inset-0 opacity-50 [background-image:radial-gradient(rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:22px_22px]" />
+                <div className="relative">
+                  <h2 className="font-chillax text-balance text-[1.7rem] font-bold leading-tight tracking-tight text-white sm:text-[2.1rem]">Visão geral</h2>
+                  <p className="font-inter mt-5 max-w-[46ch] text-pretty text-[15px] leading-relaxed text-white/70">
+                    Soluções completas em infraestrutura de TI para garantir conectividade, desempenho e escalabilidade a soluções corporativas. Nossos serviços abrangem desde o projeto até a execução e certificação de redes estruturadas, elétricas e ambientes de TI.
+                  </p>
+                  <div className="mt-10 grid w-full gap-6 sm:grid-cols-3">
+                    {["Redes", "Cabeamento Estruturado", "Data Center"].map((p) => (
+                      <div key={p} className="border-t border-white/15 pt-5">
+                        <p className="font-chillax text-base font-semibold text-white">{p}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
           </Reveal>
         </div>
@@ -188,31 +200,23 @@ function InfraCorePage() {
       </section>
 
       {/* FAQ */}
-      <section className="bg-[#F4F7F9] py-20 sm:py-24">
+      <section className="bg-gradient-to-b from-[#0B1B23] to-[#08131A] py-20 sm:py-28">
         <div className="mx-auto max-w-4xl px-5 sm:px-8">
-          <h2 className={h2}>Perguntas frequentes</h2>
-          <Accordion type="single" collapsible className="mt-10 w-full space-y-3">
-            {FAQ.map((f, i) => (
-              <AccordionItem key={i} value={`q-${i}`} className="rounded-2xl border border-black/10 bg-white px-6">
-                <AccordionTrigger className="font-chillax py-5 text-left text-[16px] font-semibold hover:text-[var(--site-blue)] hover:no-underline">{f.q}</AccordionTrigger>
-                <AccordionContent className="font-inter pb-6 text-[14px] leading-relaxed text-[var(--site-muted)]">{f.a}</AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+          <h2 className={`${h2} text-white`}>Perguntas frequentes</h2>
+          <Reveal variant="fade-up" delay={120} className="mt-10">
+            <Accordion type="single" collapsible className="w-full border-t border-white/12">
+              {FAQ.map((item, i) => (
+                <AccordionItem key={i} value={`q-${i}`} className="border-b border-white/12">
+                  <AccordionTrigger className="font-chillax py-5 text-left text-[16px] font-semibold text-white hover:text-[var(--site-yellow)] hover:no-underline sm:py-6 sm:text-[17px]">{item.q}</AccordionTrigger>
+                  <AccordionContent className="font-inter pb-6 text-[14px] leading-relaxed text-white/60">{item.a}</AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </Reveal>
         </div>
       </section>
 
-      {/* CTA final */}
-      <section className="bg-[#046E8B] py-20 text-white sm:py-24">
-        <div className="mx-auto max-w-3xl px-5 text-center sm:px-8">
-          <h2 className={h2}>Pronto para fortalecer a infraestrutura da sua operação?</h2>
-          <p className="font-inter mx-auto mt-5 max-w-[60ch] text-[15px] leading-relaxed text-white/75">
-            Fazemos uma visita diagnóstica e mostramos o caminho do projeto à certificação.
-          </p>
-          <Link to="/contato" className={`${btnSolid} mt-9`}>Solicitar diagnóstico técnico</Link>
-        </div>
-      </section>
-
+      <SiteCta />
       <SiteFooter />
     </>
   );
