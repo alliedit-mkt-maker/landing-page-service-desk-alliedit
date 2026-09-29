@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { dedupeByTitle, fetchAllPosts } from "@/lib/wp";
-import { SITE_ORIGIN } from "@/lib/site";
+import { LP_ON_ROOT_DOMAIN, SITE_ORIGIN } from "@/lib/site";
 
 const STATIC_PATHS = [
   "/",
@@ -43,8 +43,22 @@ function xmlEscape(value: string): string {
 export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
-      GET: async () => {
+      GET: async ({ request }) => {
+        const host = new URL(request.url).hostname.toLowerCase();
+        const headers = {
+          "content-type": "application/xml; charset=utf-8",
+          "cache-control": "public, s-maxage=3600",
+        };
+        if (!LP_ON_ROOT_DOMAIN) {
+          const body = host.endsWith(".alliedit.com.br")
+            ? `  <url><loc>${xmlEscape(`https://${host}/`)}</loc></url>\n`
+            : "";
+          const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${body}</urlset>\n`;
+          return new Response(xml, { headers });
+        }
+
         const origin = SITE_ORIGIN;
+
 
         let posts;
         try {
