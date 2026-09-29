@@ -10,8 +10,8 @@ import { Compass, FlaskConical, Rocket, Plug, Layers } from "lucide-react";
 import { Reveal } from "@/components/lp/Reveal";
 import { SiteCta } from "@/components/site/SiteCta";
 import { SiteFooter } from "@/components/site/SiteFooter";
-import hero from "@/assets/ia/hero.jpg";
-import overview from "@/assets/ia/overview.jpg";
+import hero from "@/assets/ia/hero.jpg.asset.json";
+import overview from "@/assets/ia/overview.jpg.asset.json";
 
 export const Route = createFileRoute("/_site/servicos/inteligencia-artificial")({
   head: () =>
@@ -56,7 +56,7 @@ function IAPage() {
   return (
     <>
       <section className="relative -mt-[72px] flex min-h-[80vh] items-center overflow-hidden bg-[var(--site-ink)] pt-[72px] text-white">
-        <img src={hero} alt="" aria-hidden width={1920} height={1088} fetchPriority="high" loading="eager" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
+        <img src={hero.url} alt="" aria-hidden fetchPriority="high" loading="eager" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
         <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-black/20" />
         <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
         <div className="relative mx-auto w-full max-w-7xl px-5 py-24 sm:px-8">
@@ -84,7 +84,7 @@ function IAPage() {
                 </div>
               </div>
               <div className="relative min-h-[300px] lg:min-h-[480px]">
-                <img src={overview} alt="Equipe analisando painéis de inteligência artificial" width={1200} height={1008} loading="lazy" className="absolute inset-0 size-full object-cover" />
+                <img src={overview.url} alt="Robô humanoide observando uma parede de código" loading="lazy" className="absolute inset-0 size-full object-cover object-top" />
                 <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-[#08131A] via-[#08131A]/30 to-transparent lg:bg-gradient-to-l lg:from-transparent lg:via-[#08131A]/30 lg:to-[#08131A]" />
               </div>
             </div>
