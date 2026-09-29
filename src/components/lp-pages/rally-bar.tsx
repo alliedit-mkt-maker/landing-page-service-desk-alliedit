@@ -1,0 +1,600 @@
+import { useState } from "react";
+import { rallyBarHead, title, description } from "@/lib/lp-heads/rally-bar";
+import { lpCanonical, PUBLIC_ORIGIN } from "@/lib/site";
+import { ogImageUrl } from "@/lib/seo";
+import { ChevronDown, Handshake, Compass, ShieldCheck, type LucideIcon } from "lucide-react";
+
+import logoAlliedIt from "@/assets/logo-alliedit.png";
+import heroRoom from "@/assets/rally/hero-room.jpg";
+
+import rallyBar01 from "@/assets/rally/rally-bar-graphite-01.webp.asset.json";
+import rallyBar02 from "@/assets/rally/rally-bar-graphite-02.webp.asset.json";
+import rallyBar04 from "@/assets/rally/rally-bar-graphite-04.webp.asset.json";
+import rallyBanner from "@/assets/rally/rally-banner.webp.asset.json";
+import miniBanner from "@/assets/rally/rally-mini-banner.webp.asset.json";
+import rbHero from "@/assets/rally/rb-hero.webp.asset.json";
+import miniHero from "@/assets/rally/mini-hero.webp.asset.json";
+import mini02 from "@/assets/rally/rally-bar-mini-graphite-02.webp.asset.json";
+import mini03 from "@/assets/rally/rally-bar-mini-graphite-03.webp.asset.json";
+import mini04 from "@/assets/rally/rally-bar-mini-graphite-04.webp.asset.json";
+
+
+import logitechLogo from "@/assets/rally/logitech-logo.png.asset.json";
+import teamsLogo from "@/assets/rally/teams-logo.png.asset.json";
+import zoomLogo from "@/assets/rally/zoom-logo.png.asset.json";
+import meetLogo from "@/assets/rally/google-meet-logo.webp.asset.json";
+
+import { LpProvider, useLp } from "@/components/lp/LpProvider";
+import { SiteFooter } from "@/components/lp/SiteFooter";
+import { Clients } from "@/components/lp/Clients";
+import { Reveal } from "@/components/lp/Reveal";
+
+// Formulário HubSpot dedicado desta LP — preencher quando o ID for criado.
+const RALLY_FORM_ID = "b8f8c9e7-cdd4-4ef4-904f-3bb5c3e9c812";
+
+
+
+
+export const rallyBarMeta = { title, description };
+
+export function RallyBarPage() {
+  return (
+    <LpProvider modalTitle="Pedir cotação Rally Bar." formId={RALLY_FORM_ID || undefined}>
+      <div className="min-h-screen bg-surface text-petrol font-sans">
+        <main>
+          <Hero />
+          <Clients centered />
+          <RallyBarSection />
+          <RallyBarMiniSection />
+          <Compare />
+          <Certifications />
+          <WhyAllied />
+          <FinalCta />
+        </main>
+        <SiteFooter />
+      </div>
+    </LpProvider>
+  );
+}
+
+/* ---------- shared styles ---------- */
+
+const pillLight =
+  "inline-flex items-center justify-center border-2 border-white text-white px-8 py-4 text-[11px] font-bold uppercase tracking-[0.18em] hover:bg-white hover:text-petrol transition-colors";
+const pillDarkGhost =
+  "inline-flex items-center justify-center border border-petrol/30 text-petrol px-7 py-4 text-[11px] font-bold uppercase tracking-[0.18em] hover:border-gold hover:text-gold transition-colors";
+const pillDark =
+  "inline-flex items-center justify-center border border-petrol bg-petrol text-white px-7 py-3.5 text-[11px] font-bold uppercase tracking-[0.18em] hover:bg-petrol-light transition-colors";
+
+const outlineLight: React.CSSProperties = {
+  color: "transparent",
+  WebkitTextStroke: "2px rgba(255,255,255,0.9)",
+  paintOrder: "stroke fill",
+};
+
+/* ---------- 1. Hero ---------- */
+
+function Hero() {
+  const { openModal } = useLp();
+  return (
+    <section
+      id="hero"
+      className="relative overflow-hidden py-14 sm:py-20 px-4 sm:px-6"
+      style={{
+        backgroundImage:
+          "radial-gradient(70% 60% at 50% 8%, color-mix(in oklch, var(--gold) 12%, transparent), transparent 70%), linear-gradient(180deg, #ffffff 0%, color-mix(in oklch, var(--petrol) 4%, #ffffff) 60%, #ffffff 100%)",
+      }}
+    >
+      <div className="max-w-5xl mx-auto relative w-full text-center flex flex-col items-center">
+        <img src={logoAlliedIt} alt="AlliedIT" className="h-9 sm:h-11 w-auto mb-7 sm:mb-9" />
+        <Reveal variant="fade-up">
+          <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-gold font-semibold mb-4 block">
+            Logitech Rally Family
+          </span>
+        </Reveal>
+        <Reveal variant="fade-up" delay={120}>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-balance leading-[1.02] text-ink-mid max-w-4xl">
+            Videoconferência all-in-one para qualquer sala
+          </h1>
+        </Reveal>
+
+        <Reveal variant="fade-up" delay={220} className="w-full mt-8 mb-8 sm:mt-10 sm:mb-10">
+          <img
+            src={rbHero.url}
+            alt="Logitech Rally Bar grafite vista de frente"
+            width={1400}
+            height={254}
+            className="w-full max-w-2xl mx-auto object-contain"
+          />
+        </Reveal>
+
+
+        <Reveal variant="fade-up" delay={300}>
+          <p className="text-petrol/70 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+            Da sala pequena à sala de diretoria. Conheça a Rally Bar e a Rally Bar Mini e deixe a AlliedIT cuidar da
+            escolha certa, da instalação ao suporte.
+          </p>
+        </Reveal>
+        <Reveal variant="fade-up" delay={380} className="flex flex-wrap gap-4 justify-center mt-7 sm:mt-8">
+          <button onClick={() => openModal("hero")} className={pillDark}>
+            Pedir cotação
+          </button>
+          <a href="#rally-bar" className={pillDarkGhost}>
+            Ver as duas opções ↓
+          </a>
+        </Reveal>
+        <Reveal variant="fade-in" delay={460} className="mt-8 sm:mt-10">
+          <img src={logitechLogo.url} alt="Logitech" className="h-6 sm:h-7 w-auto opacity-80" loading="lazy" />
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+
+/* ---------- product sections ---------- */
+
+type Highlight = { n: string; title: string; body: string };
+type SpecRow = [string, string];
+
+function ProductSection({
+  id,
+  solidWord,
+  outlineWord,
+  tagline,
+  subtitle,
+  cta,
+  bannerSrc,
+  heroImages,
+  gallery,
+  highlights,
+  specs,
+  tone,
+}: {
+  id: string;
+  solidWord: string;
+  outlineWord: string;
+  tagline: string;
+  subtitle: string;
+  cta: string;
+  bannerSrc: string;
+  heroImages: { src: string; alt: string }[];
+  gallery: { src: string; alt: string }[];
+  highlights: Highlight[];
+  specs: SpecRow[];
+  tone: "white" | "light";
+}) {
+  const { openModal } = useLp();
+  const [openSpecs, setOpenSpecs] = useState(false);
+  return (
+    <section
+      id={id}
+      className="text-petrol relative overflow-hidden border-t border-petrol/10"
+      style={{ backgroundColor: tone === "white" ? "#ffffff" : "#eaeef1" }}
+    >
+      {/* Sub-hero: ambiente com degradê e nome do produto */}
+      <div className="relative h-[38vh] min-h-[260px] sm:h-[46vh] max-h-[520px] w-full overflow-hidden">
+        <img src={bannerSrc} alt="" aria-hidden loading="lazy" className="absolute inset-0 size-full object-cover" />
+        <div
+          aria-hidden
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(0deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.55) 45%, rgba(0,0,0,0.38) 75%, rgba(0,0,0,0.25) 100%)",
+          }}
+        />
+        <div className="relative h-full flex items-center justify-center px-4">
+          <h2 className="text-5xl sm:text-7xl md:text-8xl font-extrabold tracking-tighter leading-[0.95] text-white text-center">
+            <Reveal as="span" variant="fade-up" className="inline-block">
+              {solidWord}
+            </Reveal>{" "}
+            <Reveal as="span" variant="fade-up" delay={180} className="inline-block">
+              <span style={outlineLight}>{outlineWord}</span>
+            </Reveal>
+          </h2>
+        </div>
+      </div>
+
+      <div className="max-w-6xl mx-auto relative px-4 sm:px-6 pt-12 sm:pt-16 pb-20 sm:pb-24">
+        <Reveal variant="fade-up" delay={80} className="relative">
+          <div className="flex justify-center items-center max-w-3xl mx-auto">
+            {heroImages.map((img) => (
+              <img
+                key={img.src}
+                src={img.src}
+                alt={img.alt}
+                loading="lazy"
+                className="w-full max-h-64 object-contain"
+              />
+            ))}
+          </div>
+        </Reveal>
+
+
+        <div className="max-w-3xl mx-auto text-center mt-2 sm:mt-4">
+          <Reveal variant="fade-up">
+            <p className="text-2xl sm:text-3xl font-extrabold tracking-tight text-balance mb-4 text-ink-mid">
+              {tagline}
+            </p>
+          </Reveal>
+          <Reveal variant="fade-up" delay={120}>
+            <p className="text-petrol/70 text-base leading-relaxed mb-7">{subtitle}</p>
+          </Reveal>
+          <Reveal variant="scale-in" delay={220}>
+            <button onClick={() => openModal(id)} data-product={solidWord + " " + outlineWord} className={pillDark}>
+              {cta}
+            </button>
+          </Reveal>
+        </div>
+
+        {/* Destaques numerados */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
+          {highlights.map((h, i) => (
+            <Reveal as="article" key={h.n} variant="fade-up" delay={i * 140} className="border-t-2 border-gold/60 pt-6">
+              <span className="font-mono text-gold text-sm tracking-[0.2em] block mb-4">{h.n}</span>
+              <h3 className="font-extrabold text-base sm:text-lg leading-tight text-balance mb-2 text-ink-mid">
+                {h.title}
+              </h3>
+              <p className="text-petrol/65 text-sm leading-relaxed">{h.body}</p>
+            </Reveal>
+          ))}
+        </div>
+
+        {/* Galeria */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-16">
+          {gallery.map((g, i) => (
+            <Reveal
+              key={g.src}
+              variant="fade-up"
+              delay={i * 110}
+              className={`ring-1 ring-petrol/10 p-4 ${tone === "white" ? "bg-[#f2f5f7]" : "bg-white"}`}
+            >
+              <img src={g.src} alt={g.alt} loading="lazy" className="w-full h-40 sm:h-48 object-contain" />
+            </Reveal>
+
+          ))}
+        </div>
+
+        {/* Ficha técnica (expansível) */}
+        <div className="mt-16 max-w-3xl mx-auto">
+          <button
+            type="button"
+            onClick={() => setOpenSpecs((v: boolean) => !v)}
+            aria-expanded={openSpecs}
+            aria-controls={`${id}-specs`}
+            className="w-full flex items-center justify-between gap-4 border-y border-petrol/15 py-5 text-left group"
+          >
+            <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-gold font-bold">Ficha técnica</span>
+            <span className="flex items-center gap-3 text-petrol text-[11px] uppercase tracking-[0.15em] font-bold">
+              {openSpecs ? "Fechar" : "Ver detalhes"}
+              <ChevronDown
+                className={`size-4 transition-transform duration-300 ${openSpecs ? "rotate-180" : ""}`}
+                aria-hidden
+              />
+            </span>
+          </button>
+          <div
+            id={`${id}-specs`}
+            hidden={!openSpecs}
+            className={`px-5 sm:px-6 ring-1 ring-petrol/10 ${tone === "white" ? "bg-[#f2f5f7]" : "bg-white"}`}
+          >
+            <dl className="divide-y divide-petrol/10">
+              {specs.map(([k, v]) => (
+                <div key={k} className="grid sm:grid-cols-[200px_1fr] gap-1 sm:gap-6 py-4">
+                  <dt className="text-petrol/70 text-xs uppercase tracking-[0.12em] font-bold">{k}</dt>
+                  <dd className="text-petrol text-sm leading-relaxed">{v}</dd>
+                </div>
+              ))}
+
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function RallyBarSection() {
+  return (
+    <ProductSection
+      id="rally-bar"
+      solidWord="Rally"
+      outlineWord="Bar"
+      tone="white"
+      bannerSrc={rallyBanner.url}
+      tagline="A barra de vídeo para salas que não perdoam ruído nem falha."
+      subtitle="Salas médias e grandes, até 15x de zoom HD e microfones com alcance de 7 metros."
+      cta="Quero a Rally Bar →"
+      heroImages={[
+        { src: rbHero.url, alt: "Logitech Rally Bar grafite vista de frente" },
+      ]}
+
+      gallery={[
+        { src: rallyBar02.url, alt: "Rally Bar em ângulo lateral" },
+        { src: rallyBar04.url, alt: "Rally Bar com controle remoto" },
+        { src: rallyBar01.url, alt: "Rally Bar de frente" },
+      ]}
+      highlights={[
+        { n: "01", title: "Câmera PTZ com zoom HD de 15x", body: "5x óptico + 3x digital, campo de visão de 90°." },
+        {
+          n: "02",
+          title: "Áudio com IA",
+          body: "6 microfones MEMS com alcance de até 7 m, cancelamento de eco e supressão de ruído.",
+        },
+        {
+          n: "03",
+          title: "Gestão remota com Logitech Sync",
+          body: "Monitore e atualize os equipamentos sem sair da mesa.",
+        },
+        {
+          n: "04",
+          title: "Compatível com Teams, Zoom e Google Meet",
+          body: "Certificada nativamente para as três plataformas.",
+        },
+      ]}
+      specs={[
+        ["Dimensões", "910 x 164 x 130,5 mm — peso 7,08 kg"],
+        ["Câmera", "4K, zoom HD 15x (5x óptico + 3x digital), campo de visão 90°"],
+        ["Áudio", "2 alto-falantes de 70 mm, 6 microfones, captação até 7 m"],
+        ["Conectividade", "HDMI in/out, USB-A/C, Ethernet 10/100/1G, Wi-Fi 802.11a/b/g/n/ac"],
+        ["Mic Pods adicionais", "Compatível com até 4 Rally Mic Pods"],
+        ["Garantia", "2 anos padrão (extensões de 1 e 3 anos disponíveis)"],
+      ]}
+    />
+  );
+}
+
+function RallyBarMiniSection() {
+  return (
+    <ProductSection
+      id="rally-bar-mini"
+      solidWord="Rally Bar"
+      outlineWord="Mini"
+      tone="white"
+      bannerSrc={miniBanner.url}
+      tagline="Toda a potência da Rally, no tamanho certo pra sala pequena."
+      subtitle="Salas pequenas e médias, plug-and-play, com a mesma qualidade de áudio e vídeo da linha Rally."
+      cta="Quero a Rally Bar Mini →"
+      heroImages={[
+        { src: miniHero.url, alt: "Logitech Rally Bar Mini grafite vista de frente" },
+      ]}
+
+      gallery={[
+        { src: mini02.url, alt: "Rally Bar Mini em ângulo" },
+        { src: mini03.url, alt: "Rally Bar Mini com controle remoto" },
+        { src: mini04.url, alt: "Rally Bar Mini vista traseira" },
+      ]}
+      highlights={[
+        { n: "01", title: "Câmera PTZ com zoom digital HD de 4x", body: "Campo de visão de 120°." },
+        { n: "02", title: "Áudio com IA", body: "6 microfones MEMS, alcance de até 7 metros." },
+        { n: "03", title: "Plug-and-play", body: "Funciona com qualquer PC/laptop ou no modo appliance." },
+        {
+          n: "04",
+          title: "Compatível com Teams, Zoom e Google Meet",
+          body: "Pronta para a plataforma que sua empresa já usa.",
+        },
+      ]}
+      specs={[
+        ["Dimensões", "719 x 91,4 x 101 mm — peso 4,03 kg"],
+        ["Câmera", "4K, zoom digital HD 4x, campo de visão 120°"],
+        ["Áudio", "1 woofer de 70 mm + 2 médios de 43 mm, 6 microfones, alcance até 7 m"],
+        ["Conectividade", "HDMI in/out, USB-A/C, Ethernet 10/100/1G, Wi-Fi 802.11a/b/g/n/ac"],
+        ["Mic Pods adicionais", "Compatível com até 3 Rally Mic Pods"],
+        ["Garantia", "2 anos padrão (extensões de 1 e 3 anos disponíveis)"],
+      ]}
+    />
+  );
+}
+
+/* ---------- 4. Comparativo ---------- */
+
+const compareRows: [string, string, string][] = [
+  ["Tamanho de sala", "Média e grande", "Pequena e média"],
+  ["Zoom de câmera", "15x (5x óptico + 3x digital)", "4x digital"],
+  ["Campo de visão", "90°", "120°"],
+  ["Mic Pods adicionais", "Até 4", "Até 3"],
+  ["Peso", "7,08 kg", "4,03 kg"],
+];
+
+function Compare() {
+  const { openModal } = useLp();
+  return (
+    <section id="comparativo" className="py-20 sm:py-28 px-4 sm:px-6 bg-[#f8fafb] border-t border-petrol/10">
+      <div className="max-w-5xl mx-auto">
+        <Reveal variant="fade-up" className="text-center mb-12">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-balance text-ink-mid">
+            Qual a melhor para o meu cenário?
+          </h2>
+        </Reveal>
+
+        <div className="overflow-x-auto">
+          <div className="min-w-[560px] rounded-2xl ring-1 ring-petrol/10 shadow-[0_18px_50px_-30px_rgba(0,0,0,0.45)] overflow-hidden bg-white">
+            <div className="grid grid-cols-[1.1fr_1fr_1fr] bg-[#eaeef1]">
+              <span />
+              <span className="px-5 py-5 font-extrabold text-base sm:text-lg text-ink-mid border-l border-petrol/10">
+                Rally Bar
+              </span>
+              <span className="px-5 py-5 font-extrabold text-base sm:text-lg text-ink-mid border-l border-petrol/10">
+                Rally Bar Mini
+              </span>
+            </div>
+            {compareRows.map(([label, a, b], i) => (
+              <Reveal
+                key={label}
+                variant="fade-up"
+                delay={i * 80}
+                className={`grid grid-cols-[1.1fr_1fr_1fr] border-t border-petrol/10 ${
+                  i % 2 === 1 ? "bg-[#f4f7f8]" : "bg-white"
+                }`}
+              >
+                <span className="px-5 py-4 text-[11px] uppercase tracking-[0.12em] font-semibold text-petrol/50 self-center">
+                  {label}
+                </span>
+                <span className="px-5 py-4 text-sm text-petrol/85 border-l border-petrol/10 self-center">{a}</span>
+                <span className="px-5 py-4 text-sm text-petrol/85 border-l border-petrol/10 self-center">{b}</span>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+
+
+        <Reveal variant="fade-up" delay={200} className="flex flex-wrap gap-4 justify-center mt-12">
+          <button onClick={() => openModal("compare_rally_bar")} data-product="Rally Bar" className={pillDark}>
+            Quero a Rally Bar →
+          </button>
+          <button
+            onClick={() => openModal("compare_rally_bar_mini")}
+            data-product="Rally Bar Mini"
+            className="inline-flex items-center justify-center border border-petrol/30 text-petrol px-7 py-3.5 text-[11px] font-bold uppercase tracking-[0.18em] hover:border-gold hover:text-gold transition-colors"
+          >
+            Quero a Rally Bar Mini →
+          </button>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- 5. Certificações ---------- */
+
+const certs = [
+  { src: teamsLogo.url, alt: "Microsoft Teams" },
+  { src: zoomLogo.url, alt: "Zoom" },
+  { src: meetLogo.url, alt: "Google Meet" },
+];
+
+function Certifications() {
+  return (
+    <section className="py-16 sm:py-24 px-4 sm:px-6 bg-white border-t border-petrol/10">
+      <div className="max-w-4xl mx-auto text-center">
+        <Reveal variant="fade-up">
+          <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight mb-3">Certificada para empresas</h2>
+        </Reveal>
+        <Reveal variant="fade-up" delay={100}>
+          <p className="text-petrol/60 text-sm sm:text-base mb-12">
+            Compatível com as plataformas de videoconferência que sua empresa já usa.
+          </p>
+        </Reveal>
+        <div className="flex flex-wrap items-center justify-center gap-x-14 gap-y-8">
+          {certs.map((c, i) => (
+            <Reveal key={c.alt} variant="fade-up" delay={i * 120}>
+              <img src={c.src} alt={c.alt} loading="lazy" className="h-8 sm:h-10 w-auto object-contain" />
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- 6. Por que AlliedIT ---------- */
+
+const whyItems: { icon: LucideIcon; title: string; body: string }[] = [
+  {
+    icon: Handshake,
+    title: "Revendedores autorizados Logitech",
+    body: "Produto genuíno, com nota fiscal e procedência garantida.",
+  },
+  {
+    icon: Compass,
+    title: "Atendimento consultivo",
+    body: "A gente ajuda a dimensionar a sala certa, Rally Bar ou Mini, antes de fechar a cotação.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Garantia de fábrica",
+    body: "Todo produto sai com garantia oficial Logitech, com opção de extensão.",
+  },
+];
+
+function WhyAllied() {
+  const { openModal } = useLp();
+  return (
+    <section className="relative overflow-hidden py-20 sm:py-28 px-4 sm:px-6" id="por-que-allied">
+      <img
+        src={heroRoom}
+        alt=""
+        aria-hidden
+        loading="lazy"
+        width={1600}
+        height={900}
+        className="absolute inset-0 size-full object-cover"
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(0deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.74) 45%, rgba(0,0,0,0.58) 78%, rgba(0,0,0,0.42) 100%)",
+        }}
+      />
+      <div className="max-w-6xl mx-auto relative">
+        <Reveal variant="fade-up" className="mb-10 sm:mb-14 max-w-3xl">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-balance text-white">
+            Por que comprar sua Rally Bar com a AlliedIT
+          </h2>
+        </Reveal>
+        <div className="grid md:grid-cols-3 gap-6 items-stretch">
+          {whyItems.map((it, i) => (
+            <Reveal
+              as="article"
+              key={it.title}
+              variant="fade-up"
+              delay={i * 90}
+              className="h-full flex flex-col border-t-[3px] border-t-gold bg-white/10 backdrop-blur-md ring-1 ring-white/10 p-8 sm:p-10"
+            >
+              <it.icon className="size-7 text-gold mb-5" strokeWidth={1.75} aria-hidden />
+              <h3 className="font-extrabold text-lg sm:text-xl mb-3 leading-tight text-balance text-white">
+                {it.title}
+              </h3>
+              <p className="text-white/75 text-sm leading-relaxed">{it.body}</p>
+            </Reveal>
+          ))}
+        </div>
+        <Reveal variant="fade-up" delay={280} className="mt-10">
+          <button onClick={() => openModal("why_allied")} className={pillLight}>
+            Pedir cotação
+          </button>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- 7. CTA final ---------- */
+
+function FinalCta() {
+  const { openModal } = useLp();
+  return (
+    <section className="py-20 sm:py-32 px-4 sm:px-6 bg-petrol text-white text-center relative overflow-hidden" id="contato">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 size-[520px] rounded-full bg-gold/10 blur-3xl animate-float-slow"
+      />
+      <div className="max-w-4xl mx-auto relative">
+        <Reveal variant="fade-up">
+          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold mb-6 block">Próximo passo</span>
+        </Reveal>
+        <Reveal variant="fade-up" delay={120}>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tighter mb-8 text-balance">
+            Vamos montar a sua cotação?
+          </h2>
+        </Reveal>
+        <Reveal variant="fade-up" delay={220}>
+          <p className="text-white/60 text-base sm:text-lg max-w-2xl mx-auto mb-10 sm:mb-12 leading-relaxed">
+            Conta o tamanho da sala e a plataforma que vocês usam. A gente volta com o modelo certo, o preço fechado e a
+            instalação inclusa.
+          </p>
+        </Reveal>
+        <Reveal variant="scale-in" delay={340}>
+          <button
+            onClick={() => openModal("final_cta")}
+            className="inline-flex items-center justify-center bg-white text-petrol px-10 sm:px-12 py-5 text-[12px] font-bold uppercase tracking-[0.18em] hover:bg-gold transition-colors"
+          >
+            Solicitar cotação
+          </button>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
