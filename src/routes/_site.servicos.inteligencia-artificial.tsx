@@ -1,5 +1,6 @@
 import { pageHead } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect, useRef, useState } from "react";
 import {
   Accordion,
   AccordionContent,
@@ -129,23 +130,7 @@ function IAPage() {
             <span className={`${eyebrow} text-[var(--site-blue)]`}>Metodologia</span>
             <h2 className={`${h2} mt-3`}>Como atuamos</h2>
           </Reveal>
-          <ol className="relative mt-14">
-            <span aria-hidden className="absolute bottom-0 left-5 top-0 w-px bg-[var(--site-blue)]/30 md:left-1/2" />
-            {STEPS.map((s, i) => {
-              const left = i % 2 === 0;
-              return (
-                <li key={s.title} className="relative grid pb-12 pl-16 last:pb-0 md:grid-cols-2 md:gap-16 md:pl-0">
-                  <span className="font-chillax absolute left-0 top-0 grid size-10 place-items-center rounded-full bg-[var(--site-blue)] text-sm font-bold text-white ring-8 ring-[#F4F7F9] md:left-1/2 md:-translate-x-1/2">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <div className={left ? "md:pr-4 md:text-right" : "md:col-start-2 md:pl-4"}>
-                    <h3 className="font-chillax text-xl font-semibold">{s.title}</h3>
-                    <p className="font-inter mt-2 text-[15px] leading-relaxed text-[var(--site-muted)]">{s.text}</p>
-                  </div>
-                </li>
-              );
-            })}
-          </ol>
+          <Timeline />
         </div>
       </section>
 
@@ -168,5 +153,66 @@ function IAPage() {
       <SiteCta />
       <SiteFooter />
     </>
+  );
+}
+
+function Timeline() {
+  const ref = useRef<HTMLOListElement>(null);
+  const dots = useRef<(HTMLSpanElement | null)[]>([]);
+  const [fill, setFill] = useState(0);
+  const [active, setActive] = useState(-1);
+
+  useEffect(() => {
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const el = ref.current;
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      const trigger = window.innerHeight * 0.6;
+      const px = Math.max(0, Math.min(r.height, trigger - r.top));
+      setFill(px);
+      let a = -1;
+      dots.current.forEach((d, i) => {
+        if (d && d.offsetTop + d.offsetHeight / 2 <= px) a = i;
+      });
+      setActive(a);
+    };
+    const onScroll = () => { if (!raf) raf = requestAnimationFrame(update); };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
+
+  return (
+    <ol ref={ref} className="relative mt-16 sm:mt-20">
+      <span aria-hidden className="absolute bottom-0 left-7 top-0 w-[3px] -translate-x-1/2 rounded-full bg-[var(--site-blue)]/12 md:left-1/2" />
+      <span aria-hidden className="absolute left-7 top-0 w-[3px] -translate-x-1/2 rounded-full bg-[var(--site-blue)] md:left-1/2" style={{ height: fill }} />
+      {STEPS.map((s, i) => {
+        const left = i % 2 === 0;
+        const on = i <= active;
+        return (
+          <li key={s.title} className="relative grid pb-24 pl-20 last:pb-0 sm:pb-32 md:grid-cols-2 md:gap-24 md:pl-0">
+            <span
+              ref={(n) => { dots.current[i] = n; }}
+              className={`font-chillax absolute left-7 top-0 grid size-14 -translate-x-1/2 place-items-center rounded-full text-lg font-bold ring-8 ring-[#F4F7F9] transition-all duration-500 sm:size-16 sm:text-xl md:left-1/2 ${on ? "scale-110 bg-[var(--site-blue)] text-white shadow-[0_0_0_6px_rgba(4,110,139,0.15),0_10px_30px_-8px_rgba(4,110,139,0.6)]" : "bg-[#DDE4E8] text-[#9AA7AE]"}`}
+            >
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <div
+              className={`pt-2 transition-all duration-700 ease-out ${left ? "md:pr-6 md:text-right" : "md:col-start-2 md:pl-6"} ${on ? "translate-x-0 translate-y-0 opacity-100" : `translate-y-6 opacity-0 ${left ? "md:-translate-x-8 md:translate-y-0" : "md:translate-x-8 md:translate-y-0"}`}`}
+            >
+              <h3 className="font-chillax text-2xl font-semibold sm:text-3xl">{s.title}</h3>
+              <p className="font-inter mt-3 text-[16px] leading-relaxed text-[var(--site-muted)] sm:text-[17px]">{s.text}</p>
+            </div>
+          </li>
+        );
+      })}
+    </ol>
   );
 }
