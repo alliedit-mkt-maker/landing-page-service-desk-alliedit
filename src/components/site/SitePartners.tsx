@@ -83,7 +83,7 @@ export function SitePartners() {
                     alt=""
                     loading="lazy"
                     style={{ mixBlendMode: "multiply" }}
-                    className="h-10 w-auto object-contain opacity-55 grayscale"
+                    className="h-auto max-h-10 w-auto max-w-[150px] object-contain opacity-55 grayscale"
                   />
                 ) : (
                   <span className="font-chillax text-[22px] font-semibold tracking-tight text-[var(--site-ink)]/35">

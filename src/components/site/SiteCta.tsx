@@ -12,7 +12,7 @@ export function SiteCta({ modal = false }: { modal?: boolean }) {
           id="site-cta"
           className="font-chillax text-[1.7rem] font-bold leading-tight tracking-tight text-[var(--site-ink)] sm:text-[2.1rem]"
         >
-          Vamos conversar sobre a TI da sua empresa?
+          Vamos conversar sobre a TI da sua{"\u00A0"}empresa?
         </h2>
         <p className="font-inter mx-auto mt-5 max-w-[60ch] text-[15px] leading-relaxed text-[var(--site-muted)]">
           Em uma conversa de 30 minutos, a gente entende sua operação atual e mostra onde dá pra
