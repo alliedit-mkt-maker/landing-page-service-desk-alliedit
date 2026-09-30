@@ -330,12 +330,12 @@ export async function fetchRankMathHead(
 }
 
 export async function fetchPostSeo(slug: string): Promise<WpPostSeo> {
-  const rm = await fetchRankMathHead(slug);
-  const legacy = rm.description && rm.social ? null : await fetchPostSeoV11(slug);
+  // Título segue vindo da v1.1 (lógica de hoje); descrições priorizam o getHead.
+  const [rm, legacy] = await Promise.all([fetchRankMathHead(slug), fetchPostSeoV11(slug)]);
   return {
-    rank_math_title: legacy?.rank_math_title ?? (await (async () => undefined)()),
-    rank_math_description: rm.description || legacy?.rank_math_description,
-    rank_math_facebook_description: rm.social || legacy?.rank_math_facebook_description,
+    rank_math_title: legacy.rank_math_title,
+    rank_math_description: rm.description || legacy.rank_math_description,
+    rank_math_facebook_description: rm.social || legacy.rank_math_facebook_description,
   };
 }
 
