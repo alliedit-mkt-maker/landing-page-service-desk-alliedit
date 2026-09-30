@@ -29,8 +29,8 @@ const SERVICES = [
 ] as const;
 
 const PRODUCTS = [
-  { icon: Video, title: "Videoconferência" },
-  { icon: Headset, title: "Headsets" },
+  { icon: Video, title: "Videoconferência", to: "/videoconferencia" },
+  { icon: Headset, title: "Headsets", to: "/headsets" },
   { icon: Monitor, title: "Microsoft 365", to: "/produtos/microsoft-365" },
   { icon: Cloud, title: "AWS", to: "/produtos/aws" },
   { icon: ShieldCheck, title: "Firewall", to: "/produtos/firewall" },

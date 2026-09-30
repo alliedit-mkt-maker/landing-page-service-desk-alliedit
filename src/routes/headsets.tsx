@@ -1,0 +1,11 @@
+import { headsetCallcenterHead } from "@/lib/lp-heads/headset-callcenter";
+import { createFileRoute } from "@tanstack/react-router";
+import { HeadsetPage } from "@/components/lp-pages/headset-callcenter";
+
+export const Route = createFileRoute("/headsets")({
+  head: () => {
+    const h = headsetCallcenterHead();
+    return { ...h, meta: [...h.meta, { name: "robots", content: "noindex, nofollow" }] };
+  },
+  component: HeadsetPage,
+});
