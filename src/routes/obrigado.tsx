@@ -54,7 +54,7 @@ function ObrigadoPage() {
   const waHref = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(waMsg)}`;
 
   return (
-    <LpProvider>
+    <LpProvider trackView={false}>
       <div className="min-h-screen bg-surface text-petrol flex flex-col">
         <SiteHeader />
         <main className="flex-1 px-6 py-20 sm:py-24">
