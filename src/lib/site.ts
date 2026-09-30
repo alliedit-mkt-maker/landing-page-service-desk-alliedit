@@ -3,7 +3,7 @@
 // Ele governa também a origem do site institucional (SITE_ORIGIN) e a origem dos assets
 // absolutos usados em og:image (ASSET_ORIGIN), então a virada continua sendo trocar UMA constante.
 export const PUBLIC_ORIGIN = "https://alliedit.com.br";
-export const LP_ON_ROOT_DOMAIN = false;
+export const LP_ON_ROOT_DOMAIN = true;
 
 export const SITE_ORIGIN = LP_ON_ROOT_DOMAIN ? PUBLIC_ORIGIN : "https://lp-sd-alliedit.lovable.app";
 export const ASSET_ORIGIN = LP_ON_ROOT_DOMAIN
