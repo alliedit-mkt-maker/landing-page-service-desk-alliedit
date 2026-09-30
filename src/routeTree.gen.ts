@@ -28,6 +28,7 @@ import { Route as LpHeadsetYealinkRouteImport } from './routes/lp.headset-yealin
 import { Route as LpHeadsetLogitechRouteImport } from './routes/lp.headset-logitech'
 import { Route as LpHeadsetCallcenterPagoRouteImport } from './routes/lp.headset-callcenter-pago'
 import { Route as LpHeadsetCallcenterRouteImport } from './routes/lp.headset-callcenter'
+import { Route as LpFieldServiceRouteImport } from './routes/lp.field-service'
 import { Route as LpCabeamentoEstruturadoRouteImport } from './routes/lp.cabeamento-estruturado'
 import { Route as LpCabeamentoRouteImport } from './routes/lp.cabeamento'
 import { Route as LpAlocacaoTiRouteImport } from './routes/lp.alocacao-ti'
@@ -145,6 +146,11 @@ const LpHeadsetCallcenterRoute = LpHeadsetCallcenterRouteImport.update({
   path: '/lp/headset-callcenter',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LpFieldServiceRoute = LpFieldServiceRouteImport.update({
+  id: '/lp/field-service',
+  path: '/lp/field-service',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LpCabeamentoEstruturadoRoute = LpCabeamentoEstruturadoRouteImport.update({
   id: '/lp/cabeamento-estruturado',
   path: '/lp/cabeamento-estruturado',
@@ -197,9 +203,9 @@ const SiteBlogIndexRoute = SiteBlogIndexRouteImport.update({
   getParentRoute: () => SiteRoute,
 } as any)
 const LpFieldServiceObrigadoRoute = LpFieldServiceObrigadoRouteImport.update({
-  id: '/lp/field-service/obrigado',
-  path: '/lp/field-service/obrigado',
-  getParentRoute: () => rootRouteImport,
+  id: '/obrigado',
+  path: '/obrigado',
+  getParentRoute: () => LpFieldServiceRoute,
 } as any)
 const SiteServicosSmartCloudOpsRoute =
   SiteServicosSmartCloudOpsRouteImport.update({
@@ -273,6 +279,7 @@ export interface FileRoutesByFullPath {
   '/lp/alocacao-ti': typeof LpAlocacaoTiRoute
   '/lp/cabeamento': typeof LpCabeamentoRoute
   '/lp/cabeamento-estruturado': typeof LpCabeamentoEstruturadoRoute
+  '/lp/field-service': typeof LpFieldServiceRouteWithChildren
   '/lp/headset-callcenter': typeof LpHeadsetCallcenterRoute
   '/lp/headset-callcenter-pago': typeof LpHeadsetCallcenterPagoRoute
   '/lp/headset-logitech': typeof LpHeadsetLogitechRoute
@@ -314,6 +321,7 @@ export interface FileRoutesByTo {
   '/lp/alocacao-ti': typeof LpAlocacaoTiRoute
   '/lp/cabeamento': typeof LpCabeamentoRoute
   '/lp/cabeamento-estruturado': typeof LpCabeamentoEstruturadoRoute
+  '/lp/field-service': typeof LpFieldServiceRouteWithChildren
   '/lp/headset-callcenter': typeof LpHeadsetCallcenterRoute
   '/lp/headset-callcenter-pago': typeof LpHeadsetCallcenterPagoRoute
   '/lp/headset-logitech': typeof LpHeadsetLogitechRoute
@@ -357,6 +365,7 @@ export interface FileRoutesById {
   '/lp/alocacao-ti': typeof LpAlocacaoTiRoute
   '/lp/cabeamento': typeof LpCabeamentoRoute
   '/lp/cabeamento-estruturado': typeof LpCabeamentoEstruturadoRoute
+  '/lp/field-service': typeof LpFieldServiceRouteWithChildren
   '/lp/headset-callcenter': typeof LpHeadsetCallcenterRoute
   '/lp/headset-callcenter-pago': typeof LpHeadsetCallcenterPagoRoute
   '/lp/headset-logitech': typeof LpHeadsetLogitechRoute
@@ -400,6 +409,7 @@ export interface FileRouteTypes {
     | '/lp/alocacao-ti'
     | '/lp/cabeamento'
     | '/lp/cabeamento-estruturado'
+    | '/lp/field-service'
     | '/lp/headset-callcenter'
     | '/lp/headset-callcenter-pago'
     | '/lp/headset-logitech'
@@ -441,6 +451,7 @@ export interface FileRouteTypes {
     | '/lp/alocacao-ti'
     | '/lp/cabeamento'
     | '/lp/cabeamento-estruturado'
+    | '/lp/field-service'
     | '/lp/headset-callcenter'
     | '/lp/headset-callcenter-pago'
     | '/lp/headset-logitech'
@@ -483,6 +494,7 @@ export interface FileRouteTypes {
     | '/lp/alocacao-ti'
     | '/lp/cabeamento'
     | '/lp/cabeamento-estruturado'
+    | '/lp/field-service'
     | '/lp/headset-callcenter'
     | '/lp/headset-callcenter-pago'
     | '/lp/headset-logitech'
@@ -522,6 +534,7 @@ export interface RootRouteChildren {
   LpAlocacaoTiRoute: typeof LpAlocacaoTiRoute
   LpCabeamentoRoute: typeof LpCabeamentoRoute
   LpCabeamentoEstruturadoRoute: typeof LpCabeamentoEstruturadoRoute
+  LpFieldServiceRoute: typeof LpFieldServiceRouteWithChildren
   LpHeadsetCallcenterRoute: typeof LpHeadsetCallcenterRoute
   LpHeadsetCallcenterPagoRoute: typeof LpHeadsetCallcenterPagoRoute
   LpHeadsetLogitechRoute: typeof LpHeadsetLogitechRoute
@@ -533,7 +546,6 @@ export interface RootRouteChildren {
   LpVideoconferenciaRoute: typeof LpVideoconferenciaRoute
   LpVideoconferenciaPagoRoute: typeof LpVideoconferenciaPagoRoute
   LpYealinkVideoconferenciaRoute: typeof LpYealinkVideoconferenciaRoute
-  LpFieldServiceObrigadoRoute: typeof LpFieldServiceObrigadoRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -671,6 +683,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LpHeadsetCallcenterRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/lp/field-service': {
+      id: '/lp/field-service'
+      path: '/lp/field-service'
+      fullPath: '/lp/field-service'
+      preLoaderRoute: typeof LpFieldServiceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/lp/cabeamento-estruturado': {
       id: '/lp/cabeamento-estruturado'
       path: '/lp/cabeamento-estruturado'
@@ -743,10 +762,10 @@ declare module '@tanstack/react-router' {
     }
     '/lp/field-service/obrigado': {
       id: '/lp/field-service/obrigado'
-      path: '/lp/field-service/obrigado'
+      path: '/obrigado'
       fullPath: '/lp/field-service/obrigado'
       preLoaderRoute: typeof LpFieldServiceObrigadoRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof LpFieldServiceRoute
     }
     '/_site/servicos/smart-cloud-ops': {
       id: '/_site/servicos/smart-cloud-ops'
@@ -864,6 +883,18 @@ const SiteRouteChildren: SiteRouteChildren = {
 
 const SiteRouteWithChildren = SiteRoute._addFileChildren(SiteRouteChildren)
 
+interface LpFieldServiceRouteChildren {
+  LpFieldServiceObrigadoRoute: typeof LpFieldServiceObrigadoRoute
+}
+
+const LpFieldServiceRouteChildren: LpFieldServiceRouteChildren = {
+  LpFieldServiceObrigadoRoute: LpFieldServiceObrigadoRoute,
+}
+
+const LpFieldServiceRouteWithChildren = LpFieldServiceRoute._addFileChildren(
+  LpFieldServiceRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   SiteRoute: SiteRouteWithChildren,
@@ -876,6 +907,7 @@ const rootRouteChildren: RootRouteChildren = {
   LpAlocacaoTiRoute: LpAlocacaoTiRoute,
   LpCabeamentoRoute: LpCabeamentoRoute,
   LpCabeamentoEstruturadoRoute: LpCabeamentoEstruturadoRoute,
+  LpFieldServiceRoute: LpFieldServiceRouteWithChildren,
   LpHeadsetCallcenterRoute: LpHeadsetCallcenterRoute,
   LpHeadsetCallcenterPagoRoute: LpHeadsetCallcenterPagoRoute,
   LpHeadsetLogitechRoute: LpHeadsetLogitechRoute,
@@ -887,7 +919,6 @@ const rootRouteChildren: RootRouteChildren = {
   LpVideoconferenciaRoute: LpVideoconferenciaRoute,
   LpVideoconferenciaPagoRoute: LpVideoconferenciaPagoRoute,
   LpYealinkVideoconferenciaRoute: LpYealinkVideoconferenciaRoute,
-  LpFieldServiceObrigadoRoute: LpFieldServiceObrigadoRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
