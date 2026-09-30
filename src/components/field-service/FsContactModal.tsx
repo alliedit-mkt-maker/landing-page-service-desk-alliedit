@@ -7,10 +7,10 @@ import { setupWhatsappMask } from "@/lib/whatsapp-mask";
 type Props = { open: boolean; onClose: () => void };
 
 const HUBSPOT_SCRIPT_SRC = "https://js.hsforms.net/forms/embed/v2.js";
-const PORTAL_ID = import.meta.env.VITE_HUBSPOT_PORTAL_ID || "47388409";
+const PORTAL_ID = "47388409";
 const FORM_ID =
-  import.meta.env.VITE_HUBSPOT_FORM_ID || "850c4f3f-e264-4cad-920d-26f30bf93cf6";
-const REGION = import.meta.env.VITE_HUBSPOT_REGION || "na1";
+  "850c4f3f-e264-4cad-920d-26f30bf93cf6";
+const REGION = "na1";
 
 function loadHubspotScript(): Promise<void> {
   if (typeof window === "undefined") return Promise.resolve();

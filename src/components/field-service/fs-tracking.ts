@@ -1,16 +1,5 @@
 // Client-only tracking helpers: GTM dataLayer + UTM capture.
 
-declare global {
-  interface Window {
-    dataLayer?: Record<string, unknown>[];
-    hbspt?: {
-      forms: {
-        create: (opts: Record<string, unknown>) => void;
-      };
-    };
-  }
-}
-
 export const UTM_KEYS = [
   "utm_source",
   "utm_medium",
