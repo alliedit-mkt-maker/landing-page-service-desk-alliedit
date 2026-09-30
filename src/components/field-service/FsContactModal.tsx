@@ -128,6 +128,7 @@ export function ContactModal({ open, onClose }: Props) {
             className="fade-up relative w-full max-w-xl bg-white p-8 md:p-10 max-h-[90vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
+            <button
               type="button"
               onClick={onClose}
               aria-label="Fechar"
