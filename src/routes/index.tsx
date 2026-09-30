@@ -62,7 +62,7 @@ const LP_HEADS: Partial<Record<Variant, () => any>> = {
 };
 
 const siteHead = () => {
-  const base = pageHead({
+  const base = pageHead({ social: "Suporte, rede, nuvem e segurança para quem não pode parar.",
     title: "Allied IT | Tecnologia que sustenta a sua operação",
     description:
       "Serviços gerenciados, infraestrutura, nuvem e segurança de TI para empresas que precisam de operação estável.",

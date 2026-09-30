@@ -13,7 +13,9 @@ export function pageHead(opts: {
   path: string;
   type?: "website" | "article";
   noindex?: boolean;
+  social?: string;
 }) {
+  const social = opts.social || opts.description;
   const url = siteCanonical(opts.path);
   const image = ogImageUrl();
 
@@ -23,7 +25,7 @@ export function pageHead(opts: {
       { name: "description", content: opts.description },
       ...(opts.noindex ? [{ name: "robots", content: "noindex, nofollow" }] : []),
       { property: "og:title", content: opts.title },
-      { property: "og:description", content: opts.description },
+      { property: "og:description", content: social },
       { property: "og:type", content: opts.type ?? "website" },
       { property: "og:url", content: url },
       { property: "og:image", content: image },
@@ -32,7 +34,7 @@ export function pageHead(opts: {
       { property: "og:image:alt", content: BRAND },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: opts.title },
-      { name: "twitter:description", content: opts.description },
+      { name: "twitter:description", content: social },
       { name: "twitter:image", content: image },
     ],
     links: [{ rel: "canonical", href: url }],

@@ -8,7 +8,7 @@ import hero from "@/assets/infra/rack.jpg.asset.json";
 
 export const Route = createFileRoute("/_site/produtos/")({
   head: () =>
-    pageHead({
+    pageHead({ social: "Hardware, licença e nuvem com consultoria inclusa.",
       title: "Headsets, videoconferência e equipamentos de TI | Allied IT",
       description: "Headsets Poly, Yealink e Logitech, videoconferência, Microsoft 365, AWS e firewall com consultoria e suporte.",
       path: "/produtos",

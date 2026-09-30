@@ -1,3 +1,4 @@
+import { PAGE_REDIRECTS, POST_REDIRECTS } from "@/lib/redirects";
 // Endpoint único do WordPress headless. O domínio próprio devolve desafio
 // anti-bot (403) para requisições feitas do servidor; o proxy oficial do
 // WordPress.com responde normalmente.
@@ -239,10 +240,31 @@ export function slimPost(post: WpPost): WpPost {
   };
 }
 
+const SITE_PATHS = new Set([
+  "contato",
+  "sobre",
+  "blog",
+  "produtos",
+  "politica-de-privacidade",
+  "termos-de-uso",
+]);
+
+function resolveInternalPath(path: string): string {
+  if (!path) return "/";
+  if (Object.prototype.hasOwnProperty.call(POST_REDIRECTS, path)) return `/blog/${POST_REDIRECTS[path]}`;
+  if (Object.prototype.hasOwnProperty.call(PAGE_REDIRECTS, path)) return PAGE_REDIRECTS[path];
+  if (SITE_PATHS.has(path)) return `/${path}`;
+  return `/blog/${path}`;
+}
+
 export function normalizeInternalLinks(html: string): string {
   return html.replace(
-    /href=("|')https?:\/\/(?:www\.)?alliedit\.com\.br\/([a-z0-9-]+)\/?\1/gi,
-    (_m, q: string, slug: string) => `href=${q}/blog/${slug}${q}`,
+    /href=("|')https?:\/\/(?:www\.|cms\.)?alliedit\.com\.br(\/[^"'?#]*)?([?#][^"']*)?\1/gi,
+    (m, q: string, rawPath: string | undefined, suffix: string | undefined) => {
+      const path = (rawPath ?? "").replace(/^\/+|\/+$/g, "");
+      if (/^wp-(content|includes)(\/|$)/i.test(path)) return m;
+      return `href=${q}${resolveInternalPath(path)}${suffix ?? ""}${q}`;
+    },
   );
 }
 

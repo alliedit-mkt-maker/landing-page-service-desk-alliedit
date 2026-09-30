@@ -1,5 +1,6 @@
 import { lpCanonical, PUBLIC_ORIGIN } from "@/lib/site";
 import { ogImageUrl } from "@/lib/seo";
+export const social = "N1 a N3 na mesma equipe, custo previsível e SLA de verdade.";
 
 export const SD_TITLE = "Service Desk terceirizado 24x7 com NOC e SOC | Allied IT";
 export const SD_DESCRIPTION =
@@ -11,7 +12,7 @@ export const serviceDeskHead = () => ({
       { title: SD_TITLE },
       { name: "description", content: SD_DESCRIPTION },
       { property: "og:title", content: SD_TITLE },
-      { property: "og:description", content: SD_DESCRIPTION },
+      { property: "og:description", content: social },
       { property: "og:url", content: canonical },
       { property: "og:type", content: "website" },
       { property: "og:image", content: ogImageUrl() },
@@ -20,7 +21,7 @@ export const serviceDeskHead = () => ({
       { property: "og:image:alt", content: "Allied IT" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: SD_TITLE },
-      { name: "twitter:description", content: SD_DESCRIPTION },
+      { name: "twitter:description", content: social },
       { name: "twitter:image", content: ogImageUrl() },
     ],
     links: [{ rel: "canonical", href: canonical }],

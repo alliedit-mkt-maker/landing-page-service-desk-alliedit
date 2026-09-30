@@ -7,7 +7,7 @@ import { LpProvider, pushEvent } from "@/components/lp/LpProvider";
 
 export const Route = createFileRoute("/obrigado")({
   head: () =>
-    pageHead({
+    pageHead({ social: "Em até 4 horas úteis um especialista retorna.",
       title: "Recebemos seu contato | Allied IT",
       description:
         "Recebemos seu contato. Em até 4 horas úteis um especialista da Allied IT retorna para entender a sua operação de TI.",

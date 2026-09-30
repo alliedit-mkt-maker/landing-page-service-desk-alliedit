@@ -4,7 +4,7 @@ import { LegalPage } from "@/components/site/LegalPage";
 
 export const Route = createFileRoute("/_site/politica-de-privacidade")({
   head: () =>
-    pageHead({
+    pageHead({ social: "Que dados coletamos, para quê, e quais são os seus direitos.",
       title: "Política de Privacidade | Allied IT",
       description: "Como a Allied IT coleta, usa e protege suas informações pessoais e como utilizamos cookies neste site.",
       path: "/politica-de-privacidade",
