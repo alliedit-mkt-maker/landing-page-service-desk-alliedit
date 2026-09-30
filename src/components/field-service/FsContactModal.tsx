@@ -120,22 +120,14 @@ export function ContactModal({ open, onClose }: Props) {
   return (
     <>
       {open && (
-        <motion.div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-brand-deep/70 backdrop-blur-sm p-4"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
+        <div
+          className="fade-up fixed inset-0 z-[100] flex items-center justify-center bg-brand-deep/70 backdrop-blur-sm p-4"
           onClick={onClose}
         >
-          <motion.div
-            className="relative w-full max-w-xl bg-white p-8 md:p-10 max-h-[90vh] overflow-y-auto"
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: 30, opacity: 0 }}
-            transition={{ duration: 0.25 }}
+          <div
+            className="fade-up relative w-full max-w-xl bg-white p-8 md:p-10 max-h-[90vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
-            <button
               type="button"
               onClick={onClose}
               aria-label="Fechar"
