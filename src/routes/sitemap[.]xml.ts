@@ -26,6 +26,7 @@ const LP_PATHS = [
   "/lp/service-desk",
   "/lp/cabeamento",
   "/lp/cabeamento-estruturado",
+  "/lp/field-service",
   "/lp/headset-callcenter",
   "/lp/headset-logitech",
   "/lp/headset-yealink",
