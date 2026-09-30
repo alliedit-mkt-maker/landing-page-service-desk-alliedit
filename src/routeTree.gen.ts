@@ -38,6 +38,7 @@ import { Route as SiteContatoRouteImport } from './routes/_site.contato'
 import { Route as SiteServicosIndexRouteImport } from './routes/_site.servicos.index'
 import { Route as SiteProdutosIndexRouteImport } from './routes/_site.produtos.index'
 import { Route as SiteBlogIndexRouteImport } from './routes/_site.blog.index'
+import { Route as LpFieldServiceObrigadoRouteImport } from './routes/lp.field-service.obrigado'
 import { Route as SiteServicosSmartCloudOpsRouteImport } from './routes/_site.servicos.smart-cloud-ops'
 import { Route as SiteServicosProductEngineeringRouteImport } from './routes/_site.servicos.product-engineering'
 import { Route as SiteServicosInteligenciaArtificialRouteImport } from './routes/_site.servicos.inteligencia-artificial'
@@ -195,6 +196,11 @@ const SiteBlogIndexRoute = SiteBlogIndexRouteImport.update({
   path: '/blog/',
   getParentRoute: () => SiteRoute,
 } as any)
+const LpFieldServiceObrigadoRoute = LpFieldServiceObrigadoRouteImport.update({
+  id: '/lp/field-service/obrigado',
+  path: '/lp/field-service/obrigado',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SiteServicosSmartCloudOpsRoute =
   SiteServicosSmartCloudOpsRouteImport.update({
     id: '/servicos/smart-cloud-ops',
@@ -288,6 +294,7 @@ export interface FileRoutesByFullPath {
   '/servicos/inteligencia-artificial': typeof SiteServicosInteligenciaArtificialRoute
   '/servicos/product-engineering': typeof SiteServicosProductEngineeringRoute
   '/servicos/smart-cloud-ops': typeof SiteServicosSmartCloudOpsRoute
+  '/lp/field-service/obrigado': typeof LpFieldServiceObrigadoRoute
   '/blog/': typeof SiteBlogIndexRoute
   '/produtos/': typeof SiteProdutosIndexRoute
   '/servicos/': typeof SiteServicosIndexRoute
@@ -328,6 +335,7 @@ export interface FileRoutesByTo {
   '/servicos/inteligencia-artificial': typeof SiteServicosInteligenciaArtificialRoute
   '/servicos/product-engineering': typeof SiteServicosProductEngineeringRoute
   '/servicos/smart-cloud-ops': typeof SiteServicosSmartCloudOpsRoute
+  '/lp/field-service/obrigado': typeof LpFieldServiceObrigadoRoute
   '/blog': typeof SiteBlogIndexRoute
   '/produtos': typeof SiteProdutosIndexRoute
   '/servicos': typeof SiteServicosIndexRoute
@@ -370,6 +378,7 @@ export interface FileRoutesById {
   '/_site/servicos/inteligencia-artificial': typeof SiteServicosInteligenciaArtificialRoute
   '/_site/servicos/product-engineering': typeof SiteServicosProductEngineeringRoute
   '/_site/servicos/smart-cloud-ops': typeof SiteServicosSmartCloudOpsRoute
+  '/lp/field-service/obrigado': typeof LpFieldServiceObrigadoRoute
   '/_site/blog/': typeof SiteBlogIndexRoute
   '/_site/produtos/': typeof SiteProdutosIndexRoute
   '/_site/servicos/': typeof SiteServicosIndexRoute
@@ -412,6 +421,7 @@ export interface FileRouteTypes {
     | '/servicos/inteligencia-artificial'
     | '/servicos/product-engineering'
     | '/servicos/smart-cloud-ops'
+    | '/lp/field-service/obrigado'
     | '/blog/'
     | '/produtos/'
     | '/servicos/'
@@ -452,6 +462,7 @@ export interface FileRouteTypes {
     | '/servicos/inteligencia-artificial'
     | '/servicos/product-engineering'
     | '/servicos/smart-cloud-ops'
+    | '/lp/field-service/obrigado'
     | '/blog'
     | '/produtos'
     | '/servicos'
@@ -493,6 +504,7 @@ export interface FileRouteTypes {
     | '/_site/servicos/inteligencia-artificial'
     | '/_site/servicos/product-engineering'
     | '/_site/servicos/smart-cloud-ops'
+    | '/lp/field-service/obrigado'
     | '/_site/blog/'
     | '/_site/produtos/'
     | '/_site/servicos/'
@@ -521,6 +533,7 @@ export interface RootRouteChildren {
   LpVideoconferenciaRoute: typeof LpVideoconferenciaRoute
   LpVideoconferenciaPagoRoute: typeof LpVideoconferenciaPagoRoute
   LpYealinkVideoconferenciaRoute: typeof LpYealinkVideoconferenciaRoute
+  LpFieldServiceObrigadoRoute: typeof LpFieldServiceObrigadoRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -728,6 +741,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SiteBlogIndexRouteImport
       parentRoute: typeof SiteRoute
     }
+    '/lp/field-service/obrigado': {
+      id: '/lp/field-service/obrigado'
+      path: '/lp/field-service/obrigado'
+      fullPath: '/lp/field-service/obrigado'
+      preLoaderRoute: typeof LpFieldServiceObrigadoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_site/servicos/smart-cloud-ops': {
       id: '/_site/servicos/smart-cloud-ops'
       path: '/servicos/smart-cloud-ops'
@@ -867,6 +887,7 @@ const rootRouteChildren: RootRouteChildren = {
   LpVideoconferenciaRoute: LpVideoconferenciaRoute,
   LpVideoconferenciaPagoRoute: LpVideoconferenciaPagoRoute,
   LpYealinkVideoconferenciaRoute: LpYealinkVideoconferenciaRoute,
+  LpFieldServiceObrigadoRoute: LpFieldServiceObrigadoRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
