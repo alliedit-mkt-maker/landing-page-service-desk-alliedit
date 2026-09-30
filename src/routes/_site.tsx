@@ -3,7 +3,6 @@ import { SiteLayout } from "@/components/site/SiteLayout";
 
 export const Route = createFileRoute("/_site")({
   head: () => ({
-    meta: [{ name: "robots", content: "noindex, nofollow" }],
     links: [
       { rel: "preconnect", href: "https://api.fontshare.com" },
       {

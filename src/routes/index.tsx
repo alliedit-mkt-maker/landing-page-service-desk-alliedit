@@ -67,7 +67,6 @@ const siteHead = () => {
     description:
       "Serviços gerenciados, infraestrutura, nuvem e segurança de TI para empresas que precisam de operação estável.",
     path: "/",
-    noindex: true,
   });
   return {
     meta: base.meta,
