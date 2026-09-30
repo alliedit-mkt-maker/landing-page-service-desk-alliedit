@@ -1,5 +1,6 @@
 import { lpCanonical, PUBLIC_ORIGIN } from "@/lib/site";
 import { ogImageUrl } from "@/lib/seo";
+export const social = "Padronize o atendimento com produto genuíno e nota fiscal.";
 
 export const title = "Headsets Poly: Blackwire 3220 e Voyager Focus 2 | Allied IT";
 export const description =
@@ -10,7 +11,7 @@ export const headsetsPolyHead = () => ({
       { title },
       { name: "description", content: description },
       { property: "og:title", content: title },
-      { property: "og:description", content: description },
+      { property: "og:description", content: social },
       { property: "og:url", content: lpCanonical("headsets-poly", "headsets-poly.alliedit.com.br") },
       { property: "og:type", content: "website" },
       { property: "og:image", content: ogImageUrl() },
@@ -19,7 +20,7 @@ export const headsetsPolyHead = () => ({
       { property: "og:image:alt", content: "Allied IT" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
+      { name: "twitter:description", content: social },
       { name: "twitter:image", content: ogImageUrl() },
     ],
     links: [{ rel: "canonical", href: lpCanonical("headsets-poly", "headsets-poly.alliedit.com.br") }],

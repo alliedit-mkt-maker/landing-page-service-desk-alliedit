@@ -1,4 +1,5 @@
 import { pageHead } from "@/lib/seo";
+export const social = "Ferramenta interna da equipe Allied IT.";
 
 export const assinaturasMeta = {
   title: "Gerador de assinatura de e-mail | Allied IT",

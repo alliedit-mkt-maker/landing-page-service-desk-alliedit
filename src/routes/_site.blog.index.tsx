@@ -42,7 +42,7 @@ export const Route = createFileRoute("/_site/blog/")({
   },
   head: () => {
     const canonical = siteCanonical("/blog");
-    const base = pageHead({ title: TITLE, description: DESC, path: "/blog" });
+    const base = pageHead({ social: "Diagnóstico, raciocínio e prática de quem cuida de TI todo dia.", title: TITLE, description: DESC, path: "/blog" });
     return {
       meta: base.meta,
       links: base.links,

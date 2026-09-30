@@ -1,5 +1,6 @@
 import { lpCanonical, PUBLIC_ORIGIN } from "@/lib/site";
 import { ogImageUrl } from "@/lib/seo";
+export const social = "Uma barra para cada tamanho de sala, com revenda oficial.";
 
 export const title = "Poly Studio V12, X32, V52 e X52 para salas | Allied IT";
 export const description =
@@ -10,7 +11,7 @@ export const polyStudioHead = () => ({
       { title },
       { name: "description", content: description },
       { property: "og:title", content: title },
-      { property: "og:description", content: description },
+      { property: "og:description", content: social },
       { property: "og:url", content: lpCanonical("poly-studio", "poly-studio.alliedit.com.br") },
       { property: "og:type", content: "website" },
       { property: "og:image", content: ogImageUrl() },
@@ -19,7 +20,7 @@ export const polyStudioHead = () => ({
       { property: "og:image:alt", content: "Allied IT" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
+      { name: "twitter:description", content: social },
       { name: "twitter:image", content: ogImageUrl() },
     ],
     links: [{ rel: "canonical", href: lpCanonical("poly-studio", "poly-studio.alliedit.com.br") }],

@@ -33,7 +33,7 @@ import consolePhoto from "@/assets/csh/console.jpg.asset.json";
 
 export const Route = createFileRoute("/_site/servicos/cyber-shield-360")({
   head: () =>
-    pageHead({
+    pageHead({ social: "Monitoramento 24x7, testes de invasão e resposta a ataque.",
       title: "Cyber Shield 360°: SOC, pentest e segurança | Allied IT",
       description:
         "Segurança cibernética 24x7x365: SOCaaS, NOCaaS, EDR e XDR, pentest, phishing test, hardening, firewall e LGPD.",

@@ -16,10 +16,9 @@ import overview from "@/assets/pe/overview.jpg.asset.json";
 
 export const Route = createFileRoute("/_site/servicos/product-engineering")({
   head: () =>
-    pageHead({
+    pageHead({ social: "Gargalo da operação virando sistema que funciona.",
       title: "Product Engineering: desenvolvimento sob medida | Allied IT",
-      description:
-        "Sistemas, aplicativos, dashboards, automações e IA sob medida para transformar gargalos da sua operação em soluções digitais.",
+      description: "Sistemas, aplicativos, dashboards e automações sob medida para tirar gargalos da sua operação.",
       path: "/servicos/product-engineering",
     }),
   component: ProductEngineeringPage,

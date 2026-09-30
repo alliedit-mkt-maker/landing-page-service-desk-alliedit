@@ -38,7 +38,7 @@ import sharepoint from "@/assets/m365/sharepoint.png.asset.json";
 
 export const Route = createFileRoute("/_site/produtos/microsoft-365")({
   head: () =>
-    pageHead({
+    pageHead({ social: "O plano certo para cada usuário, ativado e acompanhado.",
       title: "Microsoft 365 para empresas: licenciamento e suporte | Allied IT",
       description:
         "Licenciamento Microsoft 365 com visão consultiva, ativação, migração, gestão de licenças e suporte técnico da Allied IT.",

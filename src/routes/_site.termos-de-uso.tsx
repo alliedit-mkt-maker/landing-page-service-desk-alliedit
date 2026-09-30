@@ -4,7 +4,7 @@ import { LegalPage } from "@/components/site/LegalPage";
 
 export const Route = createFileRoute("/_site/termos-de-uso")({
   head: () =>
-    pageHead({
+    pageHead({ social: "Regras de acesso, propriedade intelectual e responsabilidades.",
       title: "Termos de Uso | Allied IT",
       description: "Termos e condições para acessar e utilizar os sites da Allied IT: uso, propriedade intelectual e responsabilidades.",
       path: "/termos-de-uso",

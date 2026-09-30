@@ -1,5 +1,6 @@
 import { lpCanonical, PUBLIC_ORIGIN } from "@/lib/site";
 import { ogImageUrl } from "@/lib/seo";
+export const social = "O modelo certo para cada tipo de chamada, com cotação rápida.";
 
 export const title = "Headsets corporativos Yealink, Logitech e Poly | Allied IT";
 export const description =
@@ -10,7 +11,7 @@ export const headsetCallcenterHead = () => ({
       { title },
       { name: "description", content: description },
       { property: "og:title", content: title },
-      { property: "og:description", content: description },
+      { property: "og:description", content: social },
       { property: "og:url", content: lpCanonical("headset-callcenter", "headset-callcenter.alliedit.com.br") },
       { property: "og:type", content: "website" },
       { property: "og:image", content: ogImageUrl() },
@@ -19,7 +20,7 @@ export const headsetCallcenterHead = () => ({
       { property: "og:image:alt", content: "Allied IT" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
+      { name: "twitter:description", content: social },
       { name: "twitter:image", content: ogImageUrl() },
     ],
     links: [{ rel: "canonical", href: lpCanonical("headset-callcenter", "headset-callcenter.alliedit.com.br") }],

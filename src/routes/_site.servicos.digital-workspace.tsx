@@ -54,7 +54,7 @@ import deskPhoto from "@/assets/dw/desk.jpg.asset.json";
 
 export const Route = createFileRoute("/_site/servicos/digital-workspace")({
   head: () =>
-    pageHead({
+    pageHead({ social: "Atendimento remoto e técnico no local, com SLA e cobertura nacional.",
       title: "Digital Workspace: Service Desk e Field Service | Allied IT",
       description: "Service Desk e Field Service em uma só operação: atendimento remoto e presencial com SLA e cobertura nacional.",
       path: "/servicos/digital-workspace",

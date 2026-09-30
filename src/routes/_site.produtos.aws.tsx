@@ -24,10 +24,9 @@ import oqueE from "@/assets/aws/oque-e.png.asset.json";
 
 export const Route = createFileRoute("/_site/produtos/aws")({
   head: () => {
-    const h = pageHead({
+    const h = pageHead({ social: "Seu ambiente na Amazon Web Services, instalado e vigiado de perto.",
       title: "AWS para empresas: migração e gestão de nuvem | Allied IT",
-      description:
-        "Migração, implantação e monitoramento contínuo de ambientes AWS com a Allied IT, seguindo as melhores práticas de mercado.",
+      description: "Migração, implantação e monitoramento contínuo de ambientes AWS, seguindo as boas práticas do mercado.",
       path: "/produtos/aws",
     });
     return { ...h, meta: [...h.meta, { name: "robots", content: "index, follow" }] };

@@ -1,5 +1,6 @@
 import { lpCanonical, PUBLIC_ORIGIN } from "@/lib/site";
 import { ogImageUrl } from "@/lib/seo";
+export const social = "Modo USB ou kit Teams Rooms e Zoom Rooms, dimensionado para sua sala.";
 
 export const title = "Yealink MeetingBar A40, A50 e kits MVC/ZVC | Allied IT";
 export const description =
@@ -10,7 +11,7 @@ export const yealinkVideoconferenciaHead = () => ({
       { title },
       { name: "description", content: description },
       { property: "og:title", content: title },
-      { property: "og:description", content: description },
+      { property: "og:description", content: social },
       { property: "og:url", content: lpCanonical("yealink-videoconferencia", "yealink-videoconferencia.alliedit.com.br") },
       { property: "og:type", content: "website" },
       { property: "og:image", content: ogImageUrl() },
@@ -19,7 +20,7 @@ export const yealinkVideoconferenciaHead = () => ({
       { property: "og:image:alt", content: "Allied IT" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
+      { name: "twitter:description", content: social },
       { name: "twitter:image", content: ogImageUrl() },
     ],
     links: [{ rel: "canonical", href: lpCanonical("yealink-videoconferencia", "yealink-videoconferencia.alliedit.com.br") }],

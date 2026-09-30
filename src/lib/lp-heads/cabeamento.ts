@@ -1,5 +1,6 @@
 import { lpCanonical, PUBLIC_ORIGIN } from "@/lib/site";
 import { ogImageUrl } from "@/lib/seo";
+export const social = "Rede física entregue com laudo e as-built, pronta para auditoria.";
 
 export const title = "Cabeamento estruturado certificado e documentado | Allied IT";
 export const description =
@@ -10,7 +11,7 @@ export const cabeamentoHead = () => ({
       { title },
       { name: "description", content: description },
       { property: "og:title", content: title },
-      { property: "og:description", content: description },
+      { property: "og:description", content: social },
       { property: "og:url", content: lpCanonical("cabeamento", "cabeamento.alliedit.com.br") },
       { property: "og:type", content: "website" },
       { property: "og:image", content: ogImageUrl() },
@@ -19,7 +20,7 @@ export const cabeamentoHead = () => ({
       { property: "og:image:alt", content: "Allied IT" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: title },
-      { name: "twitter:description", content: description },
+      { name: "twitter:description", content: social },
       { name: "twitter:image", content: ogImageUrl() },
     ],
     links: [{ rel: "canonical", href: lpCanonical("cabeamento", "cabeamento.alliedit.com.br") }],

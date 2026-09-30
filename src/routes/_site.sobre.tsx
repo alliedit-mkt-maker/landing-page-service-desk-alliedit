@@ -25,7 +25,7 @@ import ceo from "@/assets/sobre/ceo-jimmy.jpg.asset.json";
 
 export const Route = createFileRoute("/_site/sobre")({
   head: () =>
-    pageHead({
+    pageHead({ social: "Desde 2018 cuidando de TI crítica de médias e grandes empresas.",
       title: "Sobre a Allied IT | Quem somos e como operamos TI",
       description: "Tecnologia brasileira desde 2018: Service Desk, nuvem, segurança e infraestrutura para médias e grandes empresas.",
       path: "/sobre",

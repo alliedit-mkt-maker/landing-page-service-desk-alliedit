@@ -17,10 +17,9 @@ import team from "@/assets/infra/team.jpg.asset.json";
 
 export const Route = createFileRoute("/_site/servicos/infra-core")({
   head: () =>
-    pageHead({
+    pageHead({ social: "Do projeto ao laudo, tudo pronto para a empresa crescer.",
       title: "Infra Core: redes, cabeamento estruturado e data center | Allied IT",
-      description:
-        "Infraestrutura de TI de ponta a ponta: redes Wi-Fi, heatmap, cabeamento estruturado, CFTV e data center, do projeto à certificação.",
+      description: "Redes Wi-Fi, cabeamento estruturado, CFTV e data center, do projeto à certificação com laudo.",
       path: "/servicos/infra-core",
     }),
   component: InfraCorePage,

@@ -31,7 +31,7 @@ import serverPhoto from "@/assets/sco/server.jpg.asset.json";
 
 export const Route = createFileRoute("/_site/servicos/smart-cloud-ops")({
   head: () =>
-    pageHead({
+    pageHead({ social: "Ambiente em nuvem migrado, protegido e com a conta sob controle.",
       title: "Smart Cloud Ops: Azure, M365 e FinOps | Allied IT",
       description: "Nuvem operada com governança: Azure, Microsoft 365, migração, backup, Disaster Recovery, FinOps e SecOps.",
       path: "/servicos/smart-cloud-ops",

@@ -17,10 +17,9 @@ import overview from "@/assets/ia/overview.jpg.asset.json";
 
 export const Route = createFileRoute("/_site/servicos/inteligencia-artificial")({
   head: () =>
-    pageHead({
+    pageHead({ social: "Da prova de conceito ao uso diário na operação.",
       title: "Inteligência Artificial para empresas | Allied IT",
-      description:
-        "Consultoria, POC, MVP, integrações e soluções completas de IA que aumentam a produtividade e geram resultado real no negócio.",
+      description: "Consultoria, POC, MVP e integrações de IA que aumentam a produtividade e geram resultado no negócio.",
       path: "/servicos/inteligencia-artificial",
     }),
   component: IAPage,

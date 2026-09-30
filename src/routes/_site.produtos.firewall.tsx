@@ -10,9 +10,9 @@ import oqueE from "@/assets/firewall/oque-e.png.asset.json";
 
 export const Route = createFileRoute("/_site/produtos/firewall")({
   head: () => {
-    const h = pageHead({
+    const h = pageHead({ social: "Rede protegida e vigiada dia e noite, com suporte incluso.",
       title: "Firewall para empresas com monitoramento 24h | Allied IT",
-      description: "Equipamento de firewall, instalação, configuração, monitoramento 24 horas e suporte técnico incluso para proteger a rede da sua empresa.",
+      description: "Equipamento, instalação, configuração, monitoramento 24 horas e suporte incluídos para proteger sua rede.",
       path: "/produtos/firewall",
     });
     return { ...h, meta: [...h.meta, { name: "robots", content: "index, follow" }] };

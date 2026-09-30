@@ -8,7 +8,7 @@ import hero from "@/assets/sobre/hero-office.jpg.asset.json";
 
 export const Route = createFileRoute("/_site/contato")({
   head: () =>
-    pageHead({
+    pageHead({ social: "Conte o que precisa. Retornamos em até 4 horas úteis.",
       title: "Fale com um especialista | Allied IT",
       description: "Conte o que a sua operação de TI precisa. Um especialista da Allied IT retorna em até 4 horas úteis.",
       path: "/contato",
