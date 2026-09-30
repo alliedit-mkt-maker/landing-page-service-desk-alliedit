@@ -276,7 +276,70 @@ export type WpPostSeo = {
   rank_math_facebook_description?: string;
 };
 
+export const RANKMATH_HEAD_URL = "https://cms.alliedit.com.br/wp-json/rankmath/v1/getHead";
+
+function decodeEntities(s: string): string {
+  return s
+    .replace(/&#x([0-9a-f]+);/gi, (_, h: string) => String.fromCodePoint(parseInt(h, 16)))
+    .replace(/&#(\d+);/g, (_, d: string) => String.fromCodePoint(Number(d)))
+    .replace(/&quot;/g, '"')
+    .replace(/&apos;/g, "'")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .trim();
+}
+
+function readMeta(head: string, attr: "name" | "property", key: string): string | undefined {
+  const tags = head.match(/<meta\b[^>]*>/gi) ?? [];
+  for (const tag of tags) {
+    const k = new RegExp(`\\s${attr}\\s*=\\s*("|')${key.replace(/[.:]/g, "\\$&")}\\1`, "i");
+    if (!k.test(tag)) continue;
+    const c = /\scontent\s*=\s*(?:"([^"]*)"|'([^']*)')/i.exec(tag);
+    const v = c ? decodeEntities(c[1] ?? c[2] ?? "") : "";
+    if (v) return v;
+  }
+  return undefined;
+}
+
+export async function fetchRankMathHead(
+  slug: string,
+): Promise<{ status: number | null; description?: string; social?: string }> {
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), 3000);
+  try {
+    const target = `https://cms.alliedit.com.br/${encodeURIComponent(slug)}/`;
+    const res = await fetch(
+      `${RANKMATH_HEAD_URL}?url=${encodeURIComponent(target)}&_cb=${cacheBuster()}`,
+      { headers: { Accept: "application/json" }, signal: ctrl.signal },
+    );
+    if (res.status !== 200) return { status: res.status };
+    const data = (await res.json().catch(() => null)) as { success?: boolean; head?: string } | null;
+    if (!data?.success || typeof data.head !== "string") return { status: res.status };
+    return {
+      status: res.status,
+      description: readMeta(data.head, "name", "description"),
+      social: readMeta(data.head, "property", "og:description"),
+    };
+  } catch {
+    return { status: null };
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 export async function fetchPostSeo(slug: string): Promise<WpPostSeo> {
+  const rm = await fetchRankMathHead(slug);
+  const legacy = rm.description && rm.social ? null : await fetchPostSeoV11(slug);
+  return {
+    rank_math_title: legacy?.rank_math_title ?? (await (async () => undefined)()),
+    rank_math_description: rm.description || legacy?.rank_math_description,
+    rank_math_facebook_description: rm.social || legacy?.rank_math_facebook_description,
+  };
+}
+
+async function fetchPostSeoV11(slug: string): Promise<WpPostSeo> {
   try {
     const res = await fetch(
       `${WP_REST_V1_URL}/posts/slug:${encodeURIComponent(slug)}?fields=ID,metadata&_cb=${cacheBuster()}`,
