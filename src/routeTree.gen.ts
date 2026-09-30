@@ -9,9 +9,11 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VideoconferenciaRouteImport } from './routes/videoconferencia'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as ObrigadoRouteImport } from './routes/obrigado'
+import { Route as HeadsetsRouteImport } from './routes/headsets'
 import { Route as AssinaturasRouteImport } from './routes/assinaturas'
 import { Route as SiteRouteImport } from './routes/_site'
 import { Route as IndexRouteImport } from './routes/index'
@@ -47,6 +49,11 @@ import { Route as SiteProdutosFirewallRouteImport } from './routes/_site.produto
 import { Route as SiteProdutosAwsRouteImport } from './routes/_site.produtos.aws'
 import { Route as SiteBlogSlugRouteImport } from './routes/_site.blog.$slug'
 
+const VideoconferenciaRoute = VideoconferenciaRouteImport.update({
+  id: '/videoconferencia',
+  path: '/videoconferencia',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
@@ -60,6 +67,11 @@ const RobotsDottxtRoute = RobotsDottxtRouteImport.update({
 const ObrigadoRoute = ObrigadoRouteImport.update({
   id: '/obrigado',
   path: '/obrigado',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HeadsetsRoute = HeadsetsRouteImport.update({
+  id: '/headsets',
+  path: '/headsets',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AssinaturasRoute = AssinaturasRouteImport.update({
@@ -243,9 +255,11 @@ const SiteBlogSlugRoute = SiteBlogSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/assinaturas': typeof AssinaturasRoute
+  '/headsets': typeof HeadsetsRoute
   '/obrigado': typeof ObrigadoRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/videoconferencia': typeof VideoconferenciaRoute
   '/contato': typeof SiteContatoRoute
   '/politica-de-privacidade': typeof SitePoliticaDePrivacidadeRoute
   '/sobre': typeof SiteSobreRoute
@@ -281,9 +295,11 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/assinaturas': typeof AssinaturasRoute
+  '/headsets': typeof HeadsetsRoute
   '/obrigado': typeof ObrigadoRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/videoconferencia': typeof VideoconferenciaRoute
   '/contato': typeof SiteContatoRoute
   '/politica-de-privacidade': typeof SitePoliticaDePrivacidadeRoute
   '/sobre': typeof SiteSobreRoute
@@ -321,9 +337,11 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_site': typeof SiteRouteWithChildren
   '/assinaturas': typeof AssinaturasRoute
+  '/headsets': typeof HeadsetsRoute
   '/obrigado': typeof ObrigadoRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/videoconferencia': typeof VideoconferenciaRoute
   '/_site/contato': typeof SiteContatoRoute
   '/_site/politica-de-privacidade': typeof SitePoliticaDePrivacidadeRoute
   '/_site/sobre': typeof SiteSobreRoute
@@ -361,9 +379,11 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/assinaturas'
+    | '/headsets'
     | '/obrigado'
     | '/robots.txt'
     | '/sitemap.xml'
+    | '/videoconferencia'
     | '/contato'
     | '/politica-de-privacidade'
     | '/sobre'
@@ -399,9 +419,11 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/assinaturas'
+    | '/headsets'
     | '/obrigado'
     | '/robots.txt'
     | '/sitemap.xml'
+    | '/videoconferencia'
     | '/contato'
     | '/politica-de-privacidade'
     | '/sobre'
@@ -438,9 +460,11 @@ export interface FileRouteTypes {
     | '/'
     | '/_site'
     | '/assinaturas'
+    | '/headsets'
     | '/obrigado'
     | '/robots.txt'
     | '/sitemap.xml'
+    | '/videoconferencia'
     | '/_site/contato'
     | '/_site/politica-de-privacidade'
     | '/_site/sobre'
@@ -478,9 +502,11 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   SiteRoute: typeof SiteRouteWithChildren
   AssinaturasRoute: typeof AssinaturasRoute
+  HeadsetsRoute: typeof HeadsetsRoute
   ObrigadoRoute: typeof ObrigadoRoute
   RobotsDottxtRoute: typeof RobotsDottxtRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  VideoconferenciaRoute: typeof VideoconferenciaRoute
   LpAlocacaoTiRoute: typeof LpAlocacaoTiRoute
   LpCabeamentoRoute: typeof LpCabeamentoRoute
   LpCabeamentoEstruturadoRoute: typeof LpCabeamentoEstruturadoRoute
@@ -499,6 +525,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/videoconferencia': {
+      id: '/videoconferencia'
+      path: '/videoconferencia'
+      fullPath: '/videoconferencia'
+      preLoaderRoute: typeof VideoconferenciaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
@@ -518,6 +551,13 @@ declare module '@tanstack/react-router' {
       path: '/obrigado'
       fullPath: '/obrigado'
       preLoaderRoute: typeof ObrigadoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/headsets': {
+      id: '/headsets'
+      path: '/headsets'
+      fullPath: '/headsets'
+      preLoaderRoute: typeof HeadsetsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/assinaturas': {
@@ -808,9 +848,11 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   SiteRoute: SiteRouteWithChildren,
   AssinaturasRoute: AssinaturasRoute,
+  HeadsetsRoute: HeadsetsRoute,
   ObrigadoRoute: ObrigadoRoute,
   RobotsDottxtRoute: RobotsDottxtRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  VideoconferenciaRoute: VideoconferenciaRoute,
   LpAlocacaoTiRoute: LpAlocacaoTiRoute,
   LpCabeamentoRoute: LpCabeamentoRoute,
   LpCabeamentoEstruturadoRoute: LpCabeamentoEstruturadoRoute,

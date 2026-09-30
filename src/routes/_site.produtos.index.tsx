@@ -17,8 +17,8 @@ export const Route = createFileRoute("/_site/produtos/")({
 });
 
 const PRODUCTS = [
-  { icon: Video, title: "Videoconferência", text: "Equipamentos de videoconferência para salas de qualquer tamanho.", to: "/lp/videoconferencia" },
-  { icon: Headset, title: "Headsets", text: "Headsets profissionais para chamadas e reuniões com qualidade.", to: "/lp/headset-callcenter" },
+  { icon: Video, title: "Videoconferência", text: "Equipamentos de videoconferência para salas de qualquer tamanho.", to: "/videoconferencia" },
+  { icon: Headset, title: "Headsets", text: "Headsets profissionais para chamadas e reuniões com qualidade.", to: "/headsets" },
   { icon: Monitor, title: "Microsoft 365", text: "Licenciamento e gestão completa do ambiente Microsoft 365.", to: "/produtos/microsoft-365" },
   { icon: Cloud, title: "AWS", text: "Provisionamento e gestão de ambientes AWS.", to: "/produtos/aws" },
   { icon: ShieldCheck, title: "Firewall", text: "Firewalls e segurança de rede sob medida.", to: "/produtos/firewall" },

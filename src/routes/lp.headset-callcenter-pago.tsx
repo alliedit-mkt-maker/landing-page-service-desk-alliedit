@@ -1,11 +1,7 @@
-import { headsetCallcenterHead } from "@/lib/lp-heads/headset-callcenter";
-import { createFileRoute } from "@tanstack/react-router";
-import { HeadsetPage } from "@/components/lp-pages/headset-callcenter";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/lp/headset-callcenter-pago")({
-  head: () => {
-    const h = headsetCallcenterHead();
-    return { ...h, meta: [...h.meta, { name: "robots", content: "noindex, nofollow" }] };
+  beforeLoad: ({ location }) => {
+    throw redirect({ href: "/headsets" + (location.searchStr ?? ""), statusCode: 301 });
   },
-  component: HeadsetPage,
 });
