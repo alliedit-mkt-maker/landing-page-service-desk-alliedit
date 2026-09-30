@@ -12,5 +12,6 @@ export const assinaturasHead = () =>
     title: assinaturasMeta.title,
     description: assinaturasMeta.description,
     path: "/assinaturas",
+    social,
     noindex: true,
   });

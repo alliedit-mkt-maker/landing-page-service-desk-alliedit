@@ -243,6 +243,7 @@ export const POST_REDIRECTS: Record<string, string> = {
 // Página do WordPress: caminho antigo -> caminho novo no site. Caminhos que já são iguais no site novo (sobre, contato, blog, produtos, politica-de-privacidade) NÃO entram: redirecionar pra si mesmo é loop.
 // "fortinet-ngfw" é ao mesmo tempo página e post no WordPress; a busca que chega ("o que é ngfw") é informacional, então vai pro post.
 export const PAGE_REDIRECTS: Record<string, string> = {
+  "suporte-tecnico": "/servicos/digital-workspace",
   "elementor-222294": "/termos-de-uso",
   "termos-e-condicoes": "/termos-de-uso",
   "servicos-gerenciados": "/servicos",
