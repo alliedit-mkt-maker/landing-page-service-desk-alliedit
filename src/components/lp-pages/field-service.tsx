@@ -386,7 +386,7 @@ function ResidenteVolante({ onCTA }: { onCTA: () => void }) {
     },
   ];
   return (
-    <section className="bg-brand py-24 text-brand-foreground">
+    <section id="modelos" className="bg-brand py-24 text-brand-foreground">
       <div className="mx-auto max-w-7xl px-6">
         <Reveal>
           <div className="mb-16 max-w-3xl">
@@ -466,7 +466,7 @@ function Escopo() {
     },
   ];
   return (
-    <section className="bg-white py-24">
+    <section id="servicos" className="bg-white py-24">
       <div className="mx-auto max-w-7xl px-6">
         <Reveal>
           <div className="mb-16 max-w-5xl text-left">
