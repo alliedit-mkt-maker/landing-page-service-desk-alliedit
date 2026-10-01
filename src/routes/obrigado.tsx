@@ -18,27 +18,31 @@ export const Route = createFileRoute("/obrigado")({
 });
 
 const WA_NUMBER = "5511943319875";
-const WA_MSG_DEFAULT =
-  "Olá! Me interessei pelo Service Desk da AlliedIT e gostaria de falar com um especialista.";
+const waMessage = (service: string) =>
+  `Olá! Me interessei pelo ${service} da AlliedIT e gostaria de falar com um especialista.`;
+const WA_MSG_DEFAULT = waMessage("Service Desk");
 
-// Chave (host/param "lp") -> mensagem pré-preenchida do WhatsApp.
-const WA_MESSAGES: Array<{ match: string; msg: string }> = [
-  { match: "yealink-videoconferencia", msg: "Olá! Me interessei pelos produtos de videoconferência da marca Yealink e gostaria de falar com um especialista." },
-  { match: "poly-studio", msg: "Olá! Me interessei pelos produtos de videoconferência Poly Studio e gostaria de falar com um especialista." },
-  { match: "rally-bar", msg: "Olá! Me interessei pelos produtos de videoconferência Logitech Rally Bar e gostaria de falar com um especialista." },
-  { match: "videoconferencia", msg: "Olá! Me interessei pelos produtos de videoconferência da AlliedIT e gostaria de falar com um especialista." },
-  { match: "headset-callcenter", msg: "Olá! Me interessei pelos headsets para call center e gostaria de falar com um especialista." },
-  { match: "headsets-poly", msg: "Olá! Me interessei pelos Headsets da marca Poly e gostaria de falar com um especialista." },
-  { match: "headset-poly", msg: "Olá! Me interessei pelos Headsets da marca Poly e gostaria de falar com um especialista." },
-  { match: "headset-logitech", msg: "Olá! Me interessei pelos Headsets da marca Logitech e gostaria de falar com um especialista." },
-  { match: "headset-yealink", msg: "Olá! Me interessei pelos Headsets da marca Yealink e gostaria de falar com um especialista." },
-  { match: "alocacao-ti", msg: "Olá! Me interessei pela alocação de profissionais de TI da AlliedIT e gostaria de falar com um especialista." },
-  { match: "cabeamento", msg: "Olá! Me interessei pelos serviços de cabeamento e redes da AlliedIT e gostaria de falar com um especialista." },
+// Chave (caminho/host/param "lp") -> nome do serviço. Ordem importa: mais específico primeiro.
+const WA_SERVICES: Array<{ match: string; name: string }> = [
+  { match: "yealink-videoconferencia", name: "Videoconferência Yealink" },
+  { match: "poly-studio", name: "Poly Studio" },
+  { match: "rally-bar", name: "Rally Bar" },
+  { match: "videoconferencia", name: "Videoconferência" },
+  { match: "headset-callcenter", name: "Headset para Call Center" },
+  { match: "/headsets", name: "Headset para Call Center" },
+  { match: "headsets-poly", name: "Headsets Poly" },
+  { match: "headset-poly", name: "Headsets Poly" },
+  { match: "headset-logitech", name: "Headset Logitech" },
+  { match: "headset-yealink", name: "Headset Yealink" },
+  { match: "alocacao-ti", name: "Alocação de TI" },
+  { match: "cabeamento", name: "Cabeamento Estruturado" },
+  { match: "field-service", name: "Field Service" },
+  { match: "service-desk", name: "Service Desk" },
 ];
 
 function resolveMessage(source: string) {
-  const found = WA_MESSAGES.find((m) => source.includes(m.match));
-  return found ? found.msg : WA_MSG_DEFAULT;
+  const found = WA_SERVICES.find((m) => source.includes(m.match));
+  return found ? waMessage(found.name) : WA_MSG_DEFAULT;
 }
 
 function ObrigadoPage() {
@@ -48,7 +52,9 @@ function ObrigadoPage() {
     const host = window.location.hostname.toLowerCase();
     const param = (new URLSearchParams(window.location.search).get("lp") || "").toLowerCase();
     const ref = typeof document !== "undefined" ? document.referrer.toLowerCase() : "";
-    setWaMsg(resolveMessage(`${param} ${host} ${ref}`));
+    let origin = "";
+    try { origin = (sessionStorage.getItem("lp_origin_path") || "").toLowerCase(); } catch { /* noop */ }
+    setWaMsg(resolveMessage(`${param} ${origin} ${host} ${ref}`));
   }, []);
 
   const waHref = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(waMsg)}`;

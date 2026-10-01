@@ -99,6 +99,7 @@ export function ContactModal({ open, onOpenChange, source, title = "Vamos falar 
               source: source ?? "unknown",
               page_location: typeof window !== "undefined" ? window.location.href : "",
             });
+            try { sessionStorage.setItem("lp_origin_path", `${window.location.hostname}${window.location.pathname}`); } catch { /* noop */ }
             setTimeout(() => {
               onOpenChange(false);
               navigate({ to: "/obrigado" });
