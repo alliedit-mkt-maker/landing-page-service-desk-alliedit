@@ -2,7 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { createServerFn } from "@tanstack/react-start";
 import { pageHead } from "@/lib/seo";
 import { lazy, Suspense, type ComponentType } from "react";
-import { assinaturasHead } from "@/lib/lp-heads/assinaturas";
 import { serviceDeskHead } from "@/lib/lp-heads/service-desk";
 import { cabeamentoHead } from "@/lib/lp-heads/cabeamento";
 import { headsetCallcenterHead } from "@/lib/lp-heads/headset-callcenter";
@@ -17,7 +16,6 @@ import { videoconferenciaHead } from "@/lib/lp-heads/videoconferencia";
 
 type Variant =
   | "site"
-  | "assinaturas"
   | "service-desk"
   | "cabeamento"
   | "headset-callcenter"
@@ -43,7 +41,6 @@ const HOST_VARIANT_MAP: Record<string, Variant> = {
   "yealink-videoconferencia.alliedit.com.br": "yealink-videoconferencia",
   "alocacao-ti.alliedit.com.br": "alocacao-ti",
   "videoconferencia.alliedit.com.br": "videoconferencia",
-  "assinaturas.alliedit.com.br": "assinaturas",
 };
 
 const LP_HEADS: Partial<Record<Variant, () => any>> = {
@@ -58,7 +55,6 @@ const LP_HEADS: Partial<Record<Variant, () => any>> = {
   "yealink-videoconferencia": yealinkVideoconferenciaHead,
   "alocacao-ti": alocacaoTiHead,
   videoconferencia: videoconferenciaHead,
-  assinaturas: assinaturasHead,
 };
 
 const siteHead = () => {
@@ -105,7 +101,6 @@ const VARIANT_LOADERS: Record<Variant, () => Promise<PageModule>> = {
         },
       }),
     ),
-  assinaturas: () => pick(import("@/components/lp-pages/assinaturas"), "AssinaturasPage"),
   "service-desk": () => pick(import("@/components/lp-pages/service-desk"), "ServiceDeskPage"),
   cabeamento: () => pick(import("@/components/lp-pages/cabeamento"), "CabeamentoPage"),
   "headset-callcenter": () => pick(import("@/components/lp-pages/headset-callcenter"), "HeadsetPage"),
