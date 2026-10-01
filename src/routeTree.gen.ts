@@ -14,7 +14,6 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as ObrigadoRouteImport } from './routes/obrigado'
 import { Route as HeadsetsRouteImport } from './routes/headsets'
-import { Route as AssinaturasRouteImport } from './routes/assinaturas'
 import { Route as SiteRouteImport } from './routes/_site'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as LpYealinkVideoconferenciaRouteImport } from './routes/lp.yealink-videoconferencia'
@@ -74,11 +73,6 @@ const ObrigadoRoute = ObrigadoRouteImport.update({
 const HeadsetsRoute = HeadsetsRouteImport.update({
   id: '/headsets',
   path: '/headsets',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AssinaturasRoute = AssinaturasRouteImport.update({
-  id: '/assinaturas',
-  path: '/assinaturas',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SiteRoute = SiteRouteImport.update({
@@ -266,7 +260,6 @@ const SiteBlogSlugRoute = SiteBlogSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/assinaturas': typeof AssinaturasRoute
   '/headsets': typeof HeadsetsRoute
   '/obrigado': typeof ObrigadoRoute
   '/robots.txt': typeof RobotsDottxtRoute
@@ -308,7 +301,6 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/assinaturas': typeof AssinaturasRoute
   '/headsets': typeof HeadsetsRoute
   '/obrigado': typeof ObrigadoRoute
   '/robots.txt': typeof RobotsDottxtRoute
@@ -352,7 +344,6 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_site': typeof SiteRouteWithChildren
-  '/assinaturas': typeof AssinaturasRoute
   '/headsets': typeof HeadsetsRoute
   '/obrigado': typeof ObrigadoRoute
   '/robots.txt': typeof RobotsDottxtRoute
@@ -396,7 +387,6 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/assinaturas'
     | '/headsets'
     | '/obrigado'
     | '/robots.txt'
@@ -438,7 +428,6 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/assinaturas'
     | '/headsets'
     | '/obrigado'
     | '/robots.txt'
@@ -481,7 +470,6 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/_site'
-    | '/assinaturas'
     | '/headsets'
     | '/obrigado'
     | '/robots.txt'
@@ -525,7 +513,6 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   SiteRoute: typeof SiteRouteWithChildren
-  AssinaturasRoute: typeof AssinaturasRoute
   HeadsetsRoute: typeof HeadsetsRoute
   ObrigadoRoute: typeof ObrigadoRoute
   RobotsDottxtRoute: typeof RobotsDottxtRoute
@@ -583,13 +570,6 @@ declare module '@tanstack/react-router' {
       path: '/headsets'
       fullPath: '/headsets'
       preLoaderRoute: typeof HeadsetsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/assinaturas': {
-      id: '/assinaturas'
-      path: '/assinaturas'
-      fullPath: '/assinaturas'
-      preLoaderRoute: typeof AssinaturasRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_site': {
@@ -898,7 +878,6 @@ const LpFieldServiceRouteWithChildren = LpFieldServiceRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   SiteRoute: SiteRouteWithChildren,
-  AssinaturasRoute: AssinaturasRoute,
   HeadsetsRoute: HeadsetsRoute,
   ObrigadoRoute: ObrigadoRoute,
   RobotsDottxtRoute: RobotsDottxtRoute,
