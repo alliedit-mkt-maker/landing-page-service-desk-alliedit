@@ -135,6 +135,9 @@ function ContatoPage() {
                 <button type="submit" className="font-inter inline-flex h-12 w-full items-center justify-center bg-[var(--site-yellow)] px-8 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#0B1418] transition-colors hover:bg-[var(--site-blue)] hover:text-white sm:w-auto">
                   Enviar mensagem
                 </button>
+                <p className="text-center text-[11px] text-[var(--site-ink)]/50">
+                  Seus dados são tratados conforme a LGPD. Sem SPAM.
+                </p>
               </form>
             )}
           </div>
