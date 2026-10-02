@@ -258,7 +258,7 @@ function resolveInternalPath(path: string): string {
 }
 
 export function normalizeInternalLinks(html: string): string {
-  return html.replace(
+  return fixArticleMarkup(html).replace(
     /href=("|')https?:\/\/(?:www\.|cms\.)?alliedit\.com\.br(\/[^"'?#]*)?([?#][^"']*)?\1/gi,
     (m, q: string, rawPath: string | undefined, suffix: string | undefined) => {
       const path = (rawPath ?? "").replace(/^\/+|\/+$/g, "");
@@ -406,4 +406,16 @@ export async function fetchPostBySlug(slug: string): Promise<WpPost | null> {
   const res = await wpFetch(`/posts?slug=${encodeURIComponent(slug)}&_embed=1`);
   const posts = (await res.json()) as WpPost[];
   return posts[0] ?? null;
+}
+
+// Sumário apontando para ferramentas de redação externas -> âncora interna;
+// tabelas envoltas em contêiner com rolagem horizontal própria.
+function fixArticleMarkup(html: string): string {
+  return html
+    .replace(
+      /href=("|')https?:\/\/(?:redacao\.labmidia\.com\.br|[a-z0-9-]+\.vercel\.app)[^"'#]*(#[^"']+)\1/gi,
+      (_m, q: string, hash: string) => `href=${q}${hash}${q}`,
+    )
+    .replace(/<table\b/gi, '<div class="site-table-wrap"><table')
+    .replace(/<\/table>/gi, "</table></div>");
 }

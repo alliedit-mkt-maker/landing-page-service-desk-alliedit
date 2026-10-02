@@ -460,6 +460,11 @@ main > section:first-child .reveal-in {
   padding: 0.6rem 0.8rem;
   text-align: left;
 }
+.site-article .site-table-wrap {
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
 .site-article iframe { width: 100%; aspect-ratio: 16 / 9; height: auto; }
 
 /* Site institucional: títulos com quebra equilibrada (evita palavra sozinha na última linha) */

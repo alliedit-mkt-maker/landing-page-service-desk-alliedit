@@ -128,17 +128,21 @@ export function SiteTestimonials() {
 
 
         {pages > 1 && (
-          <div className="mt-8 flex justify-center gap-2">
+          <div className="mt-5 flex justify-center">
             {Array.from({ length: pages }).map((_, i) => (
               <button
                 key={i}
                 type="button"
                 aria-label={`Ir para a página ${i + 1} de depoimentos`}
                 onClick={() => setPage(i)}
-                className={`h-1.5 rounded-full transition-all ${
-                  i === page ? "w-6 bg-[var(--site-yellow)]" : "w-1.5 bg-white/25"
-                }`}
-              />
+                className="group/dot grid h-11 min-w-11 place-items-center"
+              >
+                <span
+                  className={`block h-1.5 rounded-full transition-all ${
+                    i === page ? "w-6 bg-[var(--site-yellow)]" : "w-1.5 bg-white/25"
+                  }`}
+                />
+              </button>
             ))}
           </div>
         )}
