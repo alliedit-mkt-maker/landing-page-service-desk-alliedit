@@ -9,69 +9,50 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
-import { Route as SiteRouteImport } from './routes/_site'
-import { Route as HeadsetsRouteImport } from './routes/headsets'
-import { Route as ObrigadoRouteImport } from './routes/obrigado'
-import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as VideoconferenciaRouteImport } from './routes/videoconferencia'
-import { Route as SiteContatoRouteImport } from './routes/_site.contato'
-import { Route as SitePoliticaDePrivacidadeRouteImport } from './routes/_site.politica-de-privacidade'
-import { Route as SiteSobreRouteImport } from './routes/_site.sobre'
-import { Route as SiteTermosDeUsoRouteImport } from './routes/_site.termos-de-uso'
-import { Route as LpAlocacaoTiRouteImport } from './routes/lp.alocacao-ti'
-import { Route as LpCabeamentoRouteImport } from './routes/lp.cabeamento'
-import { Route as LpCabeamentoEstruturadoRouteImport } from './routes/lp.cabeamento-estruturado'
-import { Route as LpFieldServiceRouteImport } from './routes/lp.field-service'
-import { Route as LpHeadsetCallcenterRouteImport } from './routes/lp.headset-callcenter'
-import { Route as LpHeadsetCallcenterPagoRouteImport } from './routes/lp.headset-callcenter-pago'
-import { Route as LpHeadsetLogitechRouteImport } from './routes/lp.headset-logitech'
-import { Route as LpHeadsetYealinkRouteImport } from './routes/lp.headset-yealink'
-import { Route as LpHeadsetsPolyRouteImport } from './routes/lp.headsets-poly'
-import { Route as LpPolyStudioRouteImport } from './routes/lp.poly-studio'
-import { Route as LpRallyBarRouteImport } from './routes/lp.rally-bar'
-import { Route as LpServiceDeskRouteImport } from './routes/lp.service-desk'
-import { Route as LpVideoconferenciaRouteImport } from './routes/lp.videoconferencia'
-import { Route as LpVideoconferenciaPagoRouteImport } from './routes/lp.videoconferencia-pago'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
+import { Route as ObrigadoRouteImport } from './routes/obrigado'
+import { Route as HeadsetsRouteImport } from './routes/headsets'
+import { Route as SiteRouteImport } from './routes/_site'
+import { Route as IndexRouteImport } from './routes/index'
 import { Route as LpYealinkVideoconferenciaRouteImport } from './routes/lp.yealink-videoconferencia'
-import { Route as SiteBlogIndexRouteImport } from './routes/_site.blog.index'
-import { Route as SiteBlogSlugRouteImport } from './routes/_site.blog.$slug'
-import { Route as SiteProdutosIndexRouteImport } from './routes/_site.produtos.index'
-import { Route as SiteProdutosAwsRouteImport } from './routes/_site.produtos.aws'
-import { Route as SiteProdutosFirewallRouteImport } from './routes/_site.produtos.firewall'
-import { Route as SiteProdutosMicrosoft365RouteImport } from './routes/_site.produtos.microsoft-365'
+import { Route as LpVideoconferenciaPagoRouteImport } from './routes/lp.videoconferencia-pago'
+import { Route as LpVideoconferenciaRouteImport } from './routes/lp.videoconferencia'
+import { Route as LpServiceDeskRouteImport } from './routes/lp.service-desk'
+import { Route as LpRallyBarRouteImport } from './routes/lp.rally-bar'
+import { Route as LpPolyStudioRouteImport } from './routes/lp.poly-studio'
+import { Route as LpHeadsetsPolyRouteImport } from './routes/lp.headsets-poly'
+import { Route as LpHeadsetYealinkRouteImport } from './routes/lp.headset-yealink'
+import { Route as LpHeadsetLogitechRouteImport } from './routes/lp.headset-logitech'
+import { Route as LpHeadsetCallcenterPagoRouteImport } from './routes/lp.headset-callcenter-pago'
+import { Route as LpHeadsetCallcenterRouteImport } from './routes/lp.headset-callcenter'
+import { Route as LpFieldServiceRouteImport } from './routes/lp.field-service'
+import { Route as LpCabeamentoEstruturadoRouteImport } from './routes/lp.cabeamento-estruturado'
+import { Route as LpCabeamentoRouteImport } from './routes/lp.cabeamento'
+import { Route as LpAlocacaoTiRouteImport } from './routes/lp.alocacao-ti'
+import { Route as SiteTermosDeUsoRouteImport } from './routes/_site.termos-de-uso'
+import { Route as SiteSobreRouteImport } from './routes/_site.sobre'
+import { Route as SitePoliticaDePrivacidadeRouteImport } from './routes/_site.politica-de-privacidade'
+import { Route as SiteContatoRouteImport } from './routes/_site.contato'
 import { Route as SiteServicosIndexRouteImport } from './routes/_site.servicos.index'
-import { Route as SiteServicosCyberShield360RouteImport } from './routes/_site.servicos.cyber-shield-360'
-import { Route as SiteServicosDigitalWorkspaceRouteImport } from './routes/_site.servicos.digital-workspace'
-import { Route as SiteServicosInfraCoreRouteImport } from './routes/_site.servicos.infra-core'
-import { Route as SiteServicosInteligenciaArtificialRouteImport } from './routes/_site.servicos.inteligencia-artificial'
-import { Route as SiteServicosProductEngineeringRouteImport } from './routes/_site.servicos.product-engineering'
-import { Route as SiteServicosSmartCloudOpsRouteImport } from './routes/_site.servicos.smart-cloud-ops'
+import { Route as SiteProdutosIndexRouteImport } from './routes/_site.produtos.index'
+import { Route as SiteBlogIndexRouteImport } from './routes/_site.blog.index'
 import { Route as LpFieldServiceObrigadoRouteImport } from './routes/lp.field-service.obrigado'
+import { Route as SiteServicosSmartCloudOpsRouteImport } from './routes/_site.servicos.smart-cloud-ops'
+import { Route as SiteServicosProductEngineeringRouteImport } from './routes/_site.servicos.product-engineering'
+import { Route as SiteServicosInteligenciaArtificialRouteImport } from './routes/_site.servicos.inteligencia-artificial'
+import { Route as SiteServicosInfraCoreRouteImport } from './routes/_site.servicos.infra-core'
+import { Route as SiteServicosDigitalWorkspaceRouteImport } from './routes/_site.servicos.digital-workspace'
+import { Route as SiteServicosCyberShield360RouteImport } from './routes/_site.servicos.cyber-shield-360'
+import { Route as SiteProdutosMicrosoft365RouteImport } from './routes/_site.produtos.microsoft-365'
+import { Route as SiteProdutosFirewallRouteImport } from './routes/_site.produtos.firewall'
+import { Route as SiteProdutosAwsRouteImport } from './routes/_site.produtos.aws'
+import { Route as SiteBlogSlugRouteImport } from './routes/_site.blog.$slug'
 
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SiteRoute = SiteRouteImport.update({
-  id: '/_site',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const HeadsetsRoute = HeadsetsRouteImport.update({
-  id: '/headsets',
-  path: '/headsets',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ObrigadoRoute = ObrigadoRouteImport.update({
-  id: '/obrigado',
-  path: '/obrigado',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const RobotsDottxtRoute = RobotsDottxtRouteImport.update({
-  id: '/robots.txt',
-  path: '/robots.txt',
+const VideoconferenciaRoute = VideoconferenciaRouteImport.update({
+  id: '/videoconferencia',
+  path: '/videoconferencia',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -79,100 +60,28 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
-const VideoconferenciaRoute = VideoconferenciaRouteImport.update({
-  id: '/videoconferencia',
-  path: '/videoconferencia',
+const RobotsDottxtRoute = RobotsDottxtRouteImport.update({
+  id: '/robots.txt',
+  path: '/robots.txt',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SiteContatoRoute = SiteContatoRouteImport.update({
-  id: '/contato',
-  path: '/contato',
-  getParentRoute: () => SiteRoute,
-} as any)
-const SitePoliticaDePrivacidadeRoute =
-  SitePoliticaDePrivacidadeRouteImport.update({
-    id: '/politica-de-privacidade',
-    path: '/politica-de-privacidade',
-    getParentRoute: () => SiteRoute,
-  } as any)
-const SiteSobreRoute = SiteSobreRouteImport.update({
-  id: '/sobre',
-  path: '/sobre',
-  getParentRoute: () => SiteRoute,
-} as any)
-const SiteTermosDeUsoRoute = SiteTermosDeUsoRouteImport.update({
-  id: '/termos-de-uso',
-  path: '/termos-de-uso',
-  getParentRoute: () => SiteRoute,
-} as any)
-const LpAlocacaoTiRoute = LpAlocacaoTiRouteImport.update({
-  id: '/lp/alocacao-ti',
-  path: '/lp/alocacao-ti',
+const ObrigadoRoute = ObrigadoRouteImport.update({
+  id: '/obrigado',
+  path: '/obrigado',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LpCabeamentoRoute = LpCabeamentoRouteImport.update({
-  id: '/lp/cabeamento',
-  path: '/lp/cabeamento',
+const HeadsetsRoute = HeadsetsRouteImport.update({
+  id: '/headsets',
+  path: '/headsets',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LpCabeamentoEstruturadoRoute = LpCabeamentoEstruturadoRouteImport.update({
-  id: '/lp/cabeamento-estruturado',
-  path: '/lp/cabeamento-estruturado',
+const SiteRoute = SiteRouteImport.update({
+  id: '/_site',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LpFieldServiceRoute = LpFieldServiceRouteImport.update({
-  id: '/lp/field-service',
-  path: '/lp/field-service',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LpHeadsetCallcenterRoute = LpHeadsetCallcenterRouteImport.update({
-  id: '/lp/headset-callcenter',
-  path: '/lp/headset-callcenter',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LpHeadsetCallcenterPagoRoute = LpHeadsetCallcenterPagoRouteImport.update({
-  id: '/lp/headset-callcenter-pago',
-  path: '/lp/headset-callcenter-pago',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LpHeadsetLogitechRoute = LpHeadsetLogitechRouteImport.update({
-  id: '/lp/headset-logitech',
-  path: '/lp/headset-logitech',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LpHeadsetYealinkRoute = LpHeadsetYealinkRouteImport.update({
-  id: '/lp/headset-yealink',
-  path: '/lp/headset-yealink',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LpHeadsetsPolyRoute = LpHeadsetsPolyRouteImport.update({
-  id: '/lp/headsets-poly',
-  path: '/lp/headsets-poly',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LpPolyStudioRoute = LpPolyStudioRouteImport.update({
-  id: '/lp/poly-studio',
-  path: '/lp/poly-studio',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LpRallyBarRoute = LpRallyBarRouteImport.update({
-  id: '/lp/rally-bar',
-  path: '/lp/rally-bar',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LpServiceDeskRoute = LpServiceDeskRouteImport.update({
-  id: '/lp/service-desk',
-  path: '/lp/service-desk',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LpVideoconferenciaRoute = LpVideoconferenciaRouteImport.update({
-  id: '/lp/videoconferencia',
-  path: '/lp/videoconferencia',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LpVideoconferenciaPagoRoute = LpVideoconferenciaPagoRouteImport.update({
-  id: '/lp/videoconferencia-pago',
-  path: '/lp/videoconferencia-pago',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LpYealinkVideoconferenciaRoute =
@@ -181,14 +90,100 @@ const LpYealinkVideoconferenciaRoute =
     path: '/lp/yealink-videoconferencia',
     getParentRoute: () => rootRouteImport,
   } as any)
-const SiteBlogIndexRoute = SiteBlogIndexRouteImport.update({
-  id: '/blog/',
-  path: '/blog/',
+const LpVideoconferenciaPagoRoute = LpVideoconferenciaPagoRouteImport.update({
+  id: '/lp/videoconferencia-pago',
+  path: '/lp/videoconferencia-pago',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LpVideoconferenciaRoute = LpVideoconferenciaRouteImport.update({
+  id: '/lp/videoconferencia',
+  path: '/lp/videoconferencia',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LpServiceDeskRoute = LpServiceDeskRouteImport.update({
+  id: '/lp/service-desk',
+  path: '/lp/service-desk',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LpRallyBarRoute = LpRallyBarRouteImport.update({
+  id: '/lp/rally-bar',
+  path: '/lp/rally-bar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LpPolyStudioRoute = LpPolyStudioRouteImport.update({
+  id: '/lp/poly-studio',
+  path: '/lp/poly-studio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LpHeadsetsPolyRoute = LpHeadsetsPolyRouteImport.update({
+  id: '/lp/headsets-poly',
+  path: '/lp/headsets-poly',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LpHeadsetYealinkRoute = LpHeadsetYealinkRouteImport.update({
+  id: '/lp/headset-yealink',
+  path: '/lp/headset-yealink',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LpHeadsetLogitechRoute = LpHeadsetLogitechRouteImport.update({
+  id: '/lp/headset-logitech',
+  path: '/lp/headset-logitech',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LpHeadsetCallcenterPagoRoute = LpHeadsetCallcenterPagoRouteImport.update({
+  id: '/lp/headset-callcenter-pago',
+  path: '/lp/headset-callcenter-pago',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LpHeadsetCallcenterRoute = LpHeadsetCallcenterRouteImport.update({
+  id: '/lp/headset-callcenter',
+  path: '/lp/headset-callcenter',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LpFieldServiceRoute = LpFieldServiceRouteImport.update({
+  id: '/lp/field-service',
+  path: '/lp/field-service',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LpCabeamentoEstruturadoRoute = LpCabeamentoEstruturadoRouteImport.update({
+  id: '/lp/cabeamento-estruturado',
+  path: '/lp/cabeamento-estruturado',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LpCabeamentoRoute = LpCabeamentoRouteImport.update({
+  id: '/lp/cabeamento',
+  path: '/lp/cabeamento',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LpAlocacaoTiRoute = LpAlocacaoTiRouteImport.update({
+  id: '/lp/alocacao-ti',
+  path: '/lp/alocacao-ti',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SiteTermosDeUsoRoute = SiteTermosDeUsoRouteImport.update({
+  id: '/termos-de-uso',
+  path: '/termos-de-uso',
   getParentRoute: () => SiteRoute,
 } as any)
-const SiteBlogSlugRoute = SiteBlogSlugRouteImport.update({
-  id: '/blog/$slug',
-  path: '/blog/$slug',
+const SiteSobreRoute = SiteSobreRouteImport.update({
+  id: '/sobre',
+  path: '/sobre',
+  getParentRoute: () => SiteRoute,
+} as any)
+const SitePoliticaDePrivacidadeRoute =
+  SitePoliticaDePrivacidadeRouteImport.update({
+    id: '/politica-de-privacidade',
+    path: '/politica-de-privacidade',
+    getParentRoute: () => SiteRoute,
+  } as any)
+const SiteContatoRoute = SiteContatoRouteImport.update({
+  id: '/contato',
+  path: '/contato',
+  getParentRoute: () => SiteRoute,
+} as any)
+const SiteServicosIndexRoute = SiteServicosIndexRouteImport.update({
+  id: '/servicos/',
+  path: '/servicos/',
   getParentRoute: () => SiteRoute,
 } as any)
 const SiteProdutosIndexRoute = SiteProdutosIndexRouteImport.update({
@@ -196,48 +191,20 @@ const SiteProdutosIndexRoute = SiteProdutosIndexRouteImport.update({
   path: '/produtos/',
   getParentRoute: () => SiteRoute,
 } as any)
-const SiteProdutosAwsRoute = SiteProdutosAwsRouteImport.update({
-  id: '/produtos/aws',
-  path: '/produtos/aws',
+const SiteBlogIndexRoute = SiteBlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
   getParentRoute: () => SiteRoute,
 } as any)
-const SiteProdutosFirewallRoute = SiteProdutosFirewallRouteImport.update({
-  id: '/produtos/firewall',
-  path: '/produtos/firewall',
-  getParentRoute: () => SiteRoute,
+const LpFieldServiceObrigadoRoute = LpFieldServiceObrigadoRouteImport.update({
+  id: '/obrigado',
+  path: '/obrigado',
+  getParentRoute: () => LpFieldServiceRoute,
 } as any)
-const SiteProdutosMicrosoft365Route =
-  SiteProdutosMicrosoft365RouteImport.update({
-    id: '/produtos/microsoft-365',
-    path: '/produtos/microsoft-365',
-    getParentRoute: () => SiteRoute,
-  } as any)
-const SiteServicosIndexRoute = SiteServicosIndexRouteImport.update({
-  id: '/servicos/',
-  path: '/servicos/',
-  getParentRoute: () => SiteRoute,
-} as any)
-const SiteServicosCyberShield360Route =
-  SiteServicosCyberShield360RouteImport.update({
-    id: '/servicos/cyber-shield-360',
-    path: '/servicos/cyber-shield-360',
-    getParentRoute: () => SiteRoute,
-  } as any)
-const SiteServicosDigitalWorkspaceRoute =
-  SiteServicosDigitalWorkspaceRouteImport.update({
-    id: '/servicos/digital-workspace',
-    path: '/servicos/digital-workspace',
-    getParentRoute: () => SiteRoute,
-  } as any)
-const SiteServicosInfraCoreRoute = SiteServicosInfraCoreRouteImport.update({
-  id: '/servicos/infra-core',
-  path: '/servicos/infra-core',
-  getParentRoute: () => SiteRoute,
-} as any)
-const SiteServicosInteligenciaArtificialRoute =
-  SiteServicosInteligenciaArtificialRouteImport.update({
-    id: '/servicos/inteligencia-artificial',
-    path: '/servicos/inteligencia-artificial',
+const SiteServicosSmartCloudOpsRoute =
+  SiteServicosSmartCloudOpsRouteImport.update({
+    id: '/servicos/smart-cloud-ops',
+    path: '/servicos/smart-cloud-ops',
     getParentRoute: () => SiteRoute,
   } as any)
 const SiteServicosProductEngineeringRoute =
@@ -246,16 +213,49 @@ const SiteServicosProductEngineeringRoute =
     path: '/servicos/product-engineering',
     getParentRoute: () => SiteRoute,
   } as any)
-const SiteServicosSmartCloudOpsRoute =
-  SiteServicosSmartCloudOpsRouteImport.update({
-    id: '/servicos/smart-cloud-ops',
-    path: '/servicos/smart-cloud-ops',
+const SiteServicosInteligenciaArtificialRoute =
+  SiteServicosInteligenciaArtificialRouteImport.update({
+    id: '/servicos/inteligencia-artificial',
+    path: '/servicos/inteligencia-artificial',
     getParentRoute: () => SiteRoute,
   } as any)
-const LpFieldServiceObrigadoRoute = LpFieldServiceObrigadoRouteImport.update({
-  id: '/obrigado',
-  path: '/obrigado',
-  getParentRoute: () => LpFieldServiceRoute,
+const SiteServicosInfraCoreRoute = SiteServicosInfraCoreRouteImport.update({
+  id: '/servicos/infra-core',
+  path: '/servicos/infra-core',
+  getParentRoute: () => SiteRoute,
+} as any)
+const SiteServicosDigitalWorkspaceRoute =
+  SiteServicosDigitalWorkspaceRouteImport.update({
+    id: '/servicos/digital-workspace',
+    path: '/servicos/digital-workspace',
+    getParentRoute: () => SiteRoute,
+  } as any)
+const SiteServicosCyberShield360Route =
+  SiteServicosCyberShield360RouteImport.update({
+    id: '/servicos/cyber-shield-360',
+    path: '/servicos/cyber-shield-360',
+    getParentRoute: () => SiteRoute,
+  } as any)
+const SiteProdutosMicrosoft365Route =
+  SiteProdutosMicrosoft365RouteImport.update({
+    id: '/produtos/microsoft-365',
+    path: '/produtos/microsoft-365',
+    getParentRoute: () => SiteRoute,
+  } as any)
+const SiteProdutosFirewallRoute = SiteProdutosFirewallRouteImport.update({
+  id: '/produtos/firewall',
+  path: '/produtos/firewall',
+  getParentRoute: () => SiteRoute,
+} as any)
+const SiteProdutosAwsRoute = SiteProdutosAwsRouteImport.update({
+  id: '/produtos/aws',
+  path: '/produtos/aws',
+  getParentRoute: () => SiteRoute,
+} as any)
+const SiteBlogSlugRoute = SiteBlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
+  getParentRoute: () => SiteRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -537,39 +537,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_site': {
-      id: '/_site'
-      path: ''
-      fullPath: '/'
-      preLoaderRoute: typeof SiteRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/headsets': {
-      id: '/headsets'
-      path: '/headsets'
-      fullPath: '/headsets'
-      preLoaderRoute: typeof HeadsetsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/obrigado': {
-      id: '/obrigado'
-      path: '/obrigado'
-      fullPath: '/obrigado'
-      preLoaderRoute: typeof ObrigadoRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/robots.txt': {
-      id: '/robots.txt'
-      path: '/robots.txt'
-      fullPath: '/robots.txt'
-      preLoaderRoute: typeof RobotsDottxtRouteImport
+    '/videoconferencia': {
+      id: '/videoconferencia'
+      path: '/videoconferencia'
+      fullPath: '/videoconferencia'
+      preLoaderRoute: typeof VideoconferenciaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sitemap.xml': {
@@ -579,137 +551,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/videoconferencia': {
-      id: '/videoconferencia'
-      path: '/videoconferencia'
-      fullPath: '/videoconferencia'
-      preLoaderRoute: typeof VideoconferenciaRouteImport
+    '/robots.txt': {
+      id: '/robots.txt'
+      path: '/robots.txt'
+      fullPath: '/robots.txt'
+      preLoaderRoute: typeof RobotsDottxtRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_site/contato': {
-      id: '/_site/contato'
-      path: '/contato'
-      fullPath: '/contato'
-      preLoaderRoute: typeof SiteContatoRouteImport
-      parentRoute: typeof SiteRoute
-    }
-    '/_site/politica-de-privacidade': {
-      id: '/_site/politica-de-privacidade'
-      path: '/politica-de-privacidade'
-      fullPath: '/politica-de-privacidade'
-      preLoaderRoute: typeof SitePoliticaDePrivacidadeRouteImport
-      parentRoute: typeof SiteRoute
-    }
-    '/_site/sobre': {
-      id: '/_site/sobre'
-      path: '/sobre'
-      fullPath: '/sobre'
-      preLoaderRoute: typeof SiteSobreRouteImport
-      parentRoute: typeof SiteRoute
-    }
-    '/_site/termos-de-uso': {
-      id: '/_site/termos-de-uso'
-      path: '/termos-de-uso'
-      fullPath: '/termos-de-uso'
-      preLoaderRoute: typeof SiteTermosDeUsoRouteImport
-      parentRoute: typeof SiteRoute
-    }
-    '/lp/alocacao-ti': {
-      id: '/lp/alocacao-ti'
-      path: '/lp/alocacao-ti'
-      fullPath: '/lp/alocacao-ti'
-      preLoaderRoute: typeof LpAlocacaoTiRouteImport
+    '/obrigado': {
+      id: '/obrigado'
+      path: '/obrigado'
+      fullPath: '/obrigado'
+      preLoaderRoute: typeof ObrigadoRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/lp/cabeamento': {
-      id: '/lp/cabeamento'
-      path: '/lp/cabeamento'
-      fullPath: '/lp/cabeamento'
-      preLoaderRoute: typeof LpCabeamentoRouteImport
+    '/headsets': {
+      id: '/headsets'
+      path: '/headsets'
+      fullPath: '/headsets'
+      preLoaderRoute: typeof HeadsetsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/lp/cabeamento-estruturado': {
-      id: '/lp/cabeamento-estruturado'
-      path: '/lp/cabeamento-estruturado'
-      fullPath: '/lp/cabeamento-estruturado'
-      preLoaderRoute: typeof LpCabeamentoEstruturadoRouteImport
+    '/_site': {
+      id: '/_site'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof SiteRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/lp/field-service': {
-      id: '/lp/field-service'
-      path: '/lp/field-service'
-      fullPath: '/lp/field-service'
-      preLoaderRoute: typeof LpFieldServiceRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/lp/headset-callcenter': {
-      id: '/lp/headset-callcenter'
-      path: '/lp/headset-callcenter'
-      fullPath: '/lp/headset-callcenter'
-      preLoaderRoute: typeof LpHeadsetCallcenterRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/lp/headset-callcenter-pago': {
-      id: '/lp/headset-callcenter-pago'
-      path: '/lp/headset-callcenter-pago'
-      fullPath: '/lp/headset-callcenter-pago'
-      preLoaderRoute: typeof LpHeadsetCallcenterPagoRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/lp/headset-logitech': {
-      id: '/lp/headset-logitech'
-      path: '/lp/headset-logitech'
-      fullPath: '/lp/headset-logitech'
-      preLoaderRoute: typeof LpHeadsetLogitechRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/lp/headset-yealink': {
-      id: '/lp/headset-yealink'
-      path: '/lp/headset-yealink'
-      fullPath: '/lp/headset-yealink'
-      preLoaderRoute: typeof LpHeadsetYealinkRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/lp/headsets-poly': {
-      id: '/lp/headsets-poly'
-      path: '/lp/headsets-poly'
-      fullPath: '/lp/headsets-poly'
-      preLoaderRoute: typeof LpHeadsetsPolyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/lp/poly-studio': {
-      id: '/lp/poly-studio'
-      path: '/lp/poly-studio'
-      fullPath: '/lp/poly-studio'
-      preLoaderRoute: typeof LpPolyStudioRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/lp/rally-bar': {
-      id: '/lp/rally-bar'
-      path: '/lp/rally-bar'
-      fullPath: '/lp/rally-bar'
-      preLoaderRoute: typeof LpRallyBarRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/lp/service-desk': {
-      id: '/lp/service-desk'
-      path: '/lp/service-desk'
-      fullPath: '/lp/service-desk'
-      preLoaderRoute: typeof LpServiceDeskRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/lp/videoconferencia': {
-      id: '/lp/videoconferencia'
-      path: '/lp/videoconferencia'
-      fullPath: '/lp/videoconferencia'
-      preLoaderRoute: typeof LpVideoconferenciaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/lp/videoconferencia-pago': {
-      id: '/lp/videoconferencia-pago'
-      path: '/lp/videoconferencia-pago'
-      fullPath: '/lp/videoconferencia-pago'
-      preLoaderRoute: typeof LpVideoconferenciaPagoRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lp/yealink-videoconferencia': {
@@ -719,46 +593,130 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LpYealinkVideoconferenciaRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_site/blog/': {
-      id: '/_site/blog/'
-      path: '/blog'
-      fullPath: '/blog/'
-      preLoaderRoute: typeof SiteBlogIndexRouteImport
+    '/lp/videoconferencia-pago': {
+      id: '/lp/videoconferencia-pago'
+      path: '/lp/videoconferencia-pago'
+      fullPath: '/lp/videoconferencia-pago'
+      preLoaderRoute: typeof LpVideoconferenciaPagoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lp/videoconferencia': {
+      id: '/lp/videoconferencia'
+      path: '/lp/videoconferencia'
+      fullPath: '/lp/videoconferencia'
+      preLoaderRoute: typeof LpVideoconferenciaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lp/service-desk': {
+      id: '/lp/service-desk'
+      path: '/lp/service-desk'
+      fullPath: '/lp/service-desk'
+      preLoaderRoute: typeof LpServiceDeskRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lp/rally-bar': {
+      id: '/lp/rally-bar'
+      path: '/lp/rally-bar'
+      fullPath: '/lp/rally-bar'
+      preLoaderRoute: typeof LpRallyBarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lp/poly-studio': {
+      id: '/lp/poly-studio'
+      path: '/lp/poly-studio'
+      fullPath: '/lp/poly-studio'
+      preLoaderRoute: typeof LpPolyStudioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lp/headsets-poly': {
+      id: '/lp/headsets-poly'
+      path: '/lp/headsets-poly'
+      fullPath: '/lp/headsets-poly'
+      preLoaderRoute: typeof LpHeadsetsPolyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lp/headset-yealink': {
+      id: '/lp/headset-yealink'
+      path: '/lp/headset-yealink'
+      fullPath: '/lp/headset-yealink'
+      preLoaderRoute: typeof LpHeadsetYealinkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lp/headset-logitech': {
+      id: '/lp/headset-logitech'
+      path: '/lp/headset-logitech'
+      fullPath: '/lp/headset-logitech'
+      preLoaderRoute: typeof LpHeadsetLogitechRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lp/headset-callcenter-pago': {
+      id: '/lp/headset-callcenter-pago'
+      path: '/lp/headset-callcenter-pago'
+      fullPath: '/lp/headset-callcenter-pago'
+      preLoaderRoute: typeof LpHeadsetCallcenterPagoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lp/headset-callcenter': {
+      id: '/lp/headset-callcenter'
+      path: '/lp/headset-callcenter'
+      fullPath: '/lp/headset-callcenter'
+      preLoaderRoute: typeof LpHeadsetCallcenterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lp/field-service': {
+      id: '/lp/field-service'
+      path: '/lp/field-service'
+      fullPath: '/lp/field-service'
+      preLoaderRoute: typeof LpFieldServiceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lp/cabeamento-estruturado': {
+      id: '/lp/cabeamento-estruturado'
+      path: '/lp/cabeamento-estruturado'
+      fullPath: '/lp/cabeamento-estruturado'
+      preLoaderRoute: typeof LpCabeamentoEstruturadoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lp/cabeamento': {
+      id: '/lp/cabeamento'
+      path: '/lp/cabeamento'
+      fullPath: '/lp/cabeamento'
+      preLoaderRoute: typeof LpCabeamentoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lp/alocacao-ti': {
+      id: '/lp/alocacao-ti'
+      path: '/lp/alocacao-ti'
+      fullPath: '/lp/alocacao-ti'
+      preLoaderRoute: typeof LpAlocacaoTiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_site/termos-de-uso': {
+      id: '/_site/termos-de-uso'
+      path: '/termos-de-uso'
+      fullPath: '/termos-de-uso'
+      preLoaderRoute: typeof SiteTermosDeUsoRouteImport
       parentRoute: typeof SiteRoute
     }
-    '/_site/blog/$slug': {
-      id: '/_site/blog/$slug'
-      path: '/blog/$slug'
-      fullPath: '/blog/$slug'
-      preLoaderRoute: typeof SiteBlogSlugRouteImport
+    '/_site/sobre': {
+      id: '/_site/sobre'
+      path: '/sobre'
+      fullPath: '/sobre'
+      preLoaderRoute: typeof SiteSobreRouteImport
       parentRoute: typeof SiteRoute
     }
-    '/_site/produtos/': {
-      id: '/_site/produtos/'
-      path: '/produtos'
-      fullPath: '/produtos/'
-      preLoaderRoute: typeof SiteProdutosIndexRouteImport
+    '/_site/politica-de-privacidade': {
+      id: '/_site/politica-de-privacidade'
+      path: '/politica-de-privacidade'
+      fullPath: '/politica-de-privacidade'
+      preLoaderRoute: typeof SitePoliticaDePrivacidadeRouteImport
       parentRoute: typeof SiteRoute
     }
-    '/_site/produtos/aws': {
-      id: '/_site/produtos/aws'
-      path: '/produtos/aws'
-      fullPath: '/produtos/aws'
-      preLoaderRoute: typeof SiteProdutosAwsRouteImport
-      parentRoute: typeof SiteRoute
-    }
-    '/_site/produtos/firewall': {
-      id: '/_site/produtos/firewall'
-      path: '/produtos/firewall'
-      fullPath: '/produtos/firewall'
-      preLoaderRoute: typeof SiteProdutosFirewallRouteImport
-      parentRoute: typeof SiteRoute
-    }
-    '/_site/produtos/microsoft-365': {
-      id: '/_site/produtos/microsoft-365'
-      path: '/produtos/microsoft-365'
-      fullPath: '/produtos/microsoft-365'
-      preLoaderRoute: typeof SiteProdutosMicrosoft365RouteImport
+    '/_site/contato': {
+      id: '/_site/contato'
+      path: '/contato'
+      fullPath: '/contato'
+      preLoaderRoute: typeof SiteContatoRouteImport
       parentRoute: typeof SiteRoute
     }
     '/_site/servicos/': {
@@ -768,32 +726,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SiteServicosIndexRouteImport
       parentRoute: typeof SiteRoute
     }
-    '/_site/servicos/cyber-shield-360': {
-      id: '/_site/servicos/cyber-shield-360'
-      path: '/servicos/cyber-shield-360'
-      fullPath: '/servicos/cyber-shield-360'
-      preLoaderRoute: typeof SiteServicosCyberShield360RouteImport
+    '/_site/produtos/': {
+      id: '/_site/produtos/'
+      path: '/produtos'
+      fullPath: '/produtos/'
+      preLoaderRoute: typeof SiteProdutosIndexRouteImport
       parentRoute: typeof SiteRoute
     }
-    '/_site/servicos/digital-workspace': {
-      id: '/_site/servicos/digital-workspace'
-      path: '/servicos/digital-workspace'
-      fullPath: '/servicos/digital-workspace'
-      preLoaderRoute: typeof SiteServicosDigitalWorkspaceRouteImport
+    '/_site/blog/': {
+      id: '/_site/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof SiteBlogIndexRouteImport
       parentRoute: typeof SiteRoute
     }
-    '/_site/servicos/infra-core': {
-      id: '/_site/servicos/infra-core'
-      path: '/servicos/infra-core'
-      fullPath: '/servicos/infra-core'
-      preLoaderRoute: typeof SiteServicosInfraCoreRouteImport
-      parentRoute: typeof SiteRoute
+    '/lp/field-service/obrigado': {
+      id: '/lp/field-service/obrigado'
+      path: '/obrigado'
+      fullPath: '/lp/field-service/obrigado'
+      preLoaderRoute: typeof LpFieldServiceObrigadoRouteImport
+      parentRoute: typeof LpFieldServiceRoute
     }
-    '/_site/servicos/inteligencia-artificial': {
-      id: '/_site/servicos/inteligencia-artificial'
-      path: '/servicos/inteligencia-artificial'
-      fullPath: '/servicos/inteligencia-artificial'
-      preLoaderRoute: typeof SiteServicosInteligenciaArtificialRouteImport
+    '/_site/servicos/smart-cloud-ops': {
+      id: '/_site/servicos/smart-cloud-ops'
+      path: '/servicos/smart-cloud-ops'
+      fullPath: '/servicos/smart-cloud-ops'
+      preLoaderRoute: typeof SiteServicosSmartCloudOpsRouteImport
       parentRoute: typeof SiteRoute
     }
     '/_site/servicos/product-engineering': {
@@ -803,19 +761,61 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SiteServicosProductEngineeringRouteImport
       parentRoute: typeof SiteRoute
     }
-    '/_site/servicos/smart-cloud-ops': {
-      id: '/_site/servicos/smart-cloud-ops'
-      path: '/servicos/smart-cloud-ops'
-      fullPath: '/servicos/smart-cloud-ops'
-      preLoaderRoute: typeof SiteServicosSmartCloudOpsRouteImport
+    '/_site/servicos/inteligencia-artificial': {
+      id: '/_site/servicos/inteligencia-artificial'
+      path: '/servicos/inteligencia-artificial'
+      fullPath: '/servicos/inteligencia-artificial'
+      preLoaderRoute: typeof SiteServicosInteligenciaArtificialRouteImport
       parentRoute: typeof SiteRoute
     }
-    '/lp/field-service/obrigado': {
-      id: '/lp/field-service/obrigado'
-      path: '/obrigado'
-      fullPath: '/lp/field-service/obrigado'
-      preLoaderRoute: typeof LpFieldServiceObrigadoRouteImport
-      parentRoute: typeof LpFieldServiceRoute
+    '/_site/servicos/infra-core': {
+      id: '/_site/servicos/infra-core'
+      path: '/servicos/infra-core'
+      fullPath: '/servicos/infra-core'
+      preLoaderRoute: typeof SiteServicosInfraCoreRouteImport
+      parentRoute: typeof SiteRoute
+    }
+    '/_site/servicos/digital-workspace': {
+      id: '/_site/servicos/digital-workspace'
+      path: '/servicos/digital-workspace'
+      fullPath: '/servicos/digital-workspace'
+      preLoaderRoute: typeof SiteServicosDigitalWorkspaceRouteImport
+      parentRoute: typeof SiteRoute
+    }
+    '/_site/servicos/cyber-shield-360': {
+      id: '/_site/servicos/cyber-shield-360'
+      path: '/servicos/cyber-shield-360'
+      fullPath: '/servicos/cyber-shield-360'
+      preLoaderRoute: typeof SiteServicosCyberShield360RouteImport
+      parentRoute: typeof SiteRoute
+    }
+    '/_site/produtos/microsoft-365': {
+      id: '/_site/produtos/microsoft-365'
+      path: '/produtos/microsoft-365'
+      fullPath: '/produtos/microsoft-365'
+      preLoaderRoute: typeof SiteProdutosMicrosoft365RouteImport
+      parentRoute: typeof SiteRoute
+    }
+    '/_site/produtos/firewall': {
+      id: '/_site/produtos/firewall'
+      path: '/produtos/firewall'
+      fullPath: '/produtos/firewall'
+      preLoaderRoute: typeof SiteProdutosFirewallRouteImport
+      parentRoute: typeof SiteRoute
+    }
+    '/_site/produtos/aws': {
+      id: '/_site/produtos/aws'
+      path: '/produtos/aws'
+      fullPath: '/produtos/aws'
+      preLoaderRoute: typeof SiteProdutosAwsRouteImport
+      parentRoute: typeof SiteRoute
+    }
+    '/_site/blog/$slug': {
+      id: '/_site/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof SiteBlogSlugRouteImport
+      parentRoute: typeof SiteRoute
     }
   }
 }
