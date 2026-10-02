@@ -3,7 +3,7 @@ import polyLogo from "@/assets/headsets/poly-hp-logo.png.asset.json";
 import logitechLogo from "@/assets/headsets/logitech-logo.png.asset.json";
 import yealinkLogo from "@/assets/headsets/yealink-logo.png.asset.json";
 import fortinetLogo from "@/assets/partners/fortinet.png.asset.json";
-import microsoftLogo from "@/assets/partners/microsoft.png.asset.json";
+import microsoftLogo from "@/assets/partners/microsoft-dark.png.asset.json";
 import ciscoLogo from "@/assets/partners/cisco.png.asset.json";
 import dellLogo from "@/assets/partners/dell.png.asset.json";
 import awsLogo from "@/assets/partners/aws.png.asset.json";
@@ -83,7 +83,7 @@ export function SitePartners() {
                     alt=""
                     loading="lazy"
                     style={{ mixBlendMode: "multiply" }}
-                    className={`h-auto max-h-10 w-auto max-w-[150px] object-contain grayscale ${p.name === "Microsoft" ? "opacity-90 brightness-[0.35] contrast-200" : "opacity-55"}`}
+                    className={`h-auto max-h-10 w-auto max-w-[150px] object-contain grayscale ${p.name === "Microsoft" ? "opacity-80" : "opacity-55"}`}
                   />
                 ) : (
                   <span className="font-chillax text-[22px] font-semibold tracking-tight text-[var(--site-ink)]/35">
