@@ -61,8 +61,8 @@ function ObrigadoPage() {
         <div className="mx-auto max-w-7xl px-6 flex flex-col md:flex-row items-center justify-between gap-2 text-xs text-foreground/60">
           <p>© 2026 AlliedIT. Todos os direitos reservados.</p>
           <p className="flex gap-4">
-            <a href="https://alliedit.com.br/politica-de-privacidade/" target="_blank" rel="noreferrer" className="hover:text-brand">Política de Privacidade</a>
-            <a href="https://alliedit.com.br/termos-de-uso/" target="_blank" rel="noreferrer" className="hover:text-brand">Termos e Condições</a>
+            <a href="/politica-de-privacidade" target="_blank" rel="noreferrer" className="hover:text-brand">Política de Privacidade</a>
+            <a href="/termos-de-uso" target="_blank" rel="noreferrer" className="hover:text-brand">Termos e Condições</a>
           </p>
         </div>
       </footer>

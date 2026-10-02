@@ -797,8 +797,8 @@ function Footer() {
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-6 text-xs text-foreground/60 md:flex-row">
         <p>© 2026 AlliedIT. Todos os direitos reservados.</p>
         <p className="flex gap-4">
-          <a href="https://alliedit.com.br/politica-de-privacidade/" target="_blank" rel="noreferrer" className="hover:text-brand transition">Política de Privacidade</a>
-          <a href="https://alliedit.com.br/termos-de-uso/" target="_blank" rel="noreferrer" className="hover:text-brand transition">Termos e Condições</a>
+          <a href="/politica-de-privacidade" target="_blank" rel="noreferrer" className="hover:text-brand transition">Política de Privacidade</a>
+          <a href="/termos-de-uso" target="_blank" rel="noreferrer" className="hover:text-brand transition">Termos e Condições</a>
         </p>
       </div>
     </footer>
