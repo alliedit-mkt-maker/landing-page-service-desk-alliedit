@@ -465,7 +465,6 @@ main > section:first-child .reveal-in {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
-.site-article .site-table-wrap table { min-width: 100%; width: max-content; max-width: none; }
 .site-article iframe { width: 100%; aspect-ratio: 16 / 9; height: auto; }
 
 /* Site institucional: títulos com quebra equilibrada (evita palavra sozinha na última linha) */
