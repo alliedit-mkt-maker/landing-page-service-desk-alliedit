@@ -92,6 +92,13 @@ const LP_REDIRECT_TO_ROOT_DOMAIN = false;
 const ROOT_DOMAIN = "alliedit.com.br";
 const ROOT_ORIGIN = "https://alliedit.com.br";
 
+// Só chaves próprias: evita que /constructor, /__proto__ etc. devolvam membros do Object.
+function lookup(table: Record<string, string>, key: string): string | undefined {
+  if (!Object.prototype.hasOwnProperty.call(table, key)) return undefined;
+  const v = table[key];
+  return typeof v === "string" ? v : undefined;
+}
+
 function normalizePath(pathname: string): string {
   return pathname.replace(/\/+$/, "") || "/";
 }
@@ -130,17 +137,17 @@ function hostRedirect(request: Request): Response | undefined {
 
   // Raiz de subdomínio de LP -> domínio raiz (só depois da virada).
   if (LP_REDIRECT_TO_ROOT_DOMAIN && path === "/") {
-    const lpPath = LP_SUBDOMAINS[host];
+    const lpPath = lookup(LP_SUBDOMAINS, host);
     if (lpPath) return redirectTo(url, `${ROOT_ORIGIN}${lpPath}`);
   }
 
   // Tabela de 301 do WordPress: só no domínio raiz.
   if (host === ROOT_DOMAIN) {
     const slug = path.slice(1);
-    const page = PAGE_REDIRECTS[slug];
+    const page = lookup(PAGE_REDIRECTS, slug);
     if (page && normalizePath(page) !== path) return redirectTo(url, page);
     if (slug && !slug.includes("/")) {
-      const post = POST_REDIRECTS[slug];
+      const post = lookup(POST_REDIRECTS, slug);
       if (post && `/blog/${post}` !== path) return redirectTo(url, `/blog/${post}`);
     }
   }
@@ -155,16 +162,16 @@ const HOST_PATH_REWRITES: Record<string, Record<string, string>> = {};
 function rewriteRequestForHost(request: Request): Request {
   const url = new URL(request.url);
   const host = url.hostname.toLowerCase();
-  const pathAliases = HOST_PATH_REWRITES[host];
+  const pathAliases = (Object.prototype.hasOwnProperty.call(HOST_PATH_REWRITES, host) ? HOST_PATH_REWRITES[host] : undefined);
   if (pathAliases) {
     const path = url.pathname.replace(/\/+$/, "") || "/";
-    const aliased = pathAliases[path];
+    const aliased = lookup(pathAliases, path);
     if (aliased) {
       url.pathname = aliased;
       return new Request(url.toString(), request);
     }
   }
-  const target = HOST_REWRITES[host];
+  const target = lookup(HOST_REWRITES, host);
   if (!target) return request;
   // Only rewrite the root path; deep links keep their original path.
   if (url.pathname !== "/" && url.pathname !== "") return request;
