@@ -36,7 +36,7 @@ export function SiteFooter() {
             operação estável e previsível.
           </p>
           <div className="mt-6 flex gap-3">
-            <a href="https://www.linkedin.com/company/allied-it" target="_blank" rel="noreferrer" aria-label="LinkedIn da Allied IT">
+            <a href="https://www.linkedin.com/company/20112643" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn da Allied IT">
               <img src="/icone-linkedin.png" alt="" className="h-8 w-8 opacity-70 transition-opacity hover:opacity-100" />
             </a>
             <a href="https://www.instagram.com/alliedit_solutions/" target="_blank" rel="noopener noreferrer" aria-label="Instagram da Allied IT">
