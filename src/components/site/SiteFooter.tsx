@@ -39,7 +39,7 @@ export function SiteFooter() {
             <a href="https://www.linkedin.com/company/allied-it" target="_blank" rel="noreferrer" aria-label="LinkedIn da Allied IT">
               <img src="/icone-linkedin.png" alt="" className="h-8 w-8 opacity-70 transition-opacity hover:opacity-100" />
             </a>
-            <a href="https://www.instagram.com/alliedit.br" target="_blank" rel="noreferrer" aria-label="Instagram da Allied IT">
+            <a href="https://www.instagram.com/alliedit_solutions/" target="_blank" rel="noopener noreferrer" aria-label="Instagram da Allied IT">
               <img src="/icone-instagram.png" alt="" className="h-8 w-8 opacity-70 transition-opacity hover:opacity-100" />
             </a>
             <a href="https://www.alliedit.com.br" target="_blank" rel="noreferrer" aria-label="Site da Allied IT">
