@@ -180,18 +180,49 @@ function rewriteRequestForHost(request: Request): Request {
 }
 
 
+const PERMISSIONS_POLICY = "camera=(), microphone=(), geolocation=(), payment=(), usb=()";
+
+// Só relatório: o navegador registra no console o que seria bloqueado, sem bloquear nada.
+const CSP_REPORT_ONLY = [
+  "default-src 'self'",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.googletagmanager.com https://*.google-analytics.com https://*.googleadservices.com https://*.doubleclick.net https://www.google.com https://connect.facebook.net https://snap.licdn.com https://*.clarity.ms https://maps.googleapis.com https://js.hsforms.net https://*.hsforms.net https://*.hsforms.com https://*.hubspot.com https://*.hs-scripts.com https://*.hs-analytics.net https://*.hs-banner.com https://*.hscollectedforms.net https://*.usemessages.com",
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://api.fontshare.com https://*.hsforms.net https://*.hubspot.com",
+  "font-src 'self' data: https://fonts.gstatic.com https://cdn.fontshare.com https://api.fontshare.com",
+  "img-src 'self' data: blob: https:",
+  "media-src 'self' blob: https:",
+  "frame-src 'self' https://www.google.com https://www.google.com.br https://maps.google.com https://*.googletagmanager.com https://*.doubleclick.net https://www.facebook.com https://*.hsforms.net https://*.hsforms.com https://*.hubspot.com",
+  "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.googleadservices.com https://*.doubleclick.net https://www.google.com https://www.google.com.br https://*.facebook.com https://connect.facebook.net https://px.ads.linkedin.com https://*.linkedin.com https://*.clarity.ms https://maps.googleapis.com https://*.hsforms.net https://*.hsforms.com https://*.hubspot.com https://*.hubapi.com https://*.hscollectedforms.net https://public-api.wordpress.com https://cms.alliedit.com.br",
+  "form-action 'self' https://*.hsforms.com https://*.hubspot.com https://wa.me",
+  "object-src 'none'",
+  "base-uri 'self'",
+].join("; ");
+
+function withSecurityHeaders(response: Response): Response {
+  try {
+    response.headers.set("Permissions-Policy", PERMISSIONS_POLICY);
+    response.headers.set("Content-Security-Policy-Report-Only", CSP_REPORT_ONLY);
+    return response;
+  } catch {
+    // Cabeçalhos imutáveis: copia a resposta.
+    const copy = new Response(response.body, response);
+    copy.headers.set("Permissions-Policy", PERMISSIONS_POLICY);
+    copy.headers.set("Content-Security-Policy-Report-Only", CSP_REPORT_ONLY);
+    return copy;
+  }
+}
+
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
       const redirect = hostRedirect(request);
-      if (redirect) return redirect;
+      if (redirect) return withSecurityHeaders(redirect);
       const handler = await getServerEntry();
       const rewritten = rewriteRequestForHost(request);
       const response = await handler.fetch(rewritten, env, ctx);
-      return await normalizeCatastrophicSsrResponse(response);
+      return withSecurityHeaders(await normalizeCatastrophicSsrResponse(response));
     } catch (error) {
       console.error(error);
-      return brandedErrorResponse();
+      return withSecurityHeaders(brandedErrorResponse());
     }
   },
 };
