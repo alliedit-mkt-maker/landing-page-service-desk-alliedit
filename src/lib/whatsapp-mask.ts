@@ -162,6 +162,20 @@ export function enhanceInput(input: HTMLInputElement) {
         input.dispatchEvent(new Event("input", { bubbles: true }));
         input.dispatchEvent(new Event("change", { bubbles: true }));
         suppressMask = false;
+        // Se o HubSpot recusar o envio (outro campo com erro), volta a mostrar a máscara.
+        setTimeout(() => {
+          const cur = findInput(form) ?? input;
+          if (!cur.isConnected) return;
+          const blocked = form.querySelector(`.hs-error-msgs:not(.${ERROR_CLASS})`);
+          if (!blocked) return;
+          const masked = formatBrPhone(cur.value);
+          if (masked && masked !== cur.value) {
+            const setter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value")?.set;
+            if (setter) setter.call(cur, masked);
+            else cur.value = masked;
+            cur.dispatchEvent(new Event("input", { bubbles: true }));
+          }
+        }, 300);
       },
       true,
     );
