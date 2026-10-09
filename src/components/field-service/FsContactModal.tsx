@@ -3,6 +3,7 @@ import { useNavigate } from "@tanstack/react-router";
 import { X } from "lucide-react";
 import { pushDataLayer, readUtms, UTM_KEYS } from "@/components/field-service/fs-tracking";
 import { setupWhatsappMask } from "@/lib/whatsapp-mask";
+import { keepWhatsappMask } from "@/components/lp/ContactModal";
 
 type Props = { open: boolean; onClose: () => void };
 
@@ -104,8 +105,8 @@ export function ContactModal({ open, onClose }: Props) {
           },
         });
 
-        // Fallback: observa o container caso o onFormReady não dispare
-        stopMask = setupWhatsappMask(targetRef.current);
+        // Observa o container (e iframe) e reaplica a máscara se o HubSpot recriar o campo
+        stopMask = keepWhatsappMask(targetRef.current);
       })
       .catch((err) => {
         console.error(err);

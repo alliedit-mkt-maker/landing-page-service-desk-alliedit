@@ -40,6 +40,66 @@ function loadHubspotScript(): Promise<void> {
   });
 }
 
+/**
+ * Observa o container e o corpo de iframes do embed enquanto o modal estiver aberto.
+ * Quando o HubSpot recria o campo de WhatsApp (ex.: após erro de validação), reaplica a máscara.
+ * Inputs já mascarados são marcados (data-allied-wa-mask) e ignorados; só observa childList,
+ * então alterar o valor do campo não dispara o observador (sem loop).
+ */
+export function keepWhatsappMask(container: HTMLElement | null): () => void {
+  if (typeof window === "undefined" || !container) return () => {};
+  const SEL = 'input[name="hs_whatsapp_phone_number"]';
+  const observers: MutationObserver[] = [];
+  const watchedDocs = new WeakSet<Document>();
+  let stopInner: (() => void) | undefined;
+  let scheduled = false;
+
+  const check = () => {
+    scheduled = false;
+    const docs: ParentNode[] = [container];
+    container.querySelectorAll("iframe").forEach((f) => {
+      try {
+        const d = (f as HTMLIFrameElement).contentDocument;
+        if (d?.body) {
+          docs.push(d);
+          if (!watchedDocs.has(d)) {
+            watchedDocs.add(d);
+            const mo = new MutationObserver(schedule);
+            mo.observe(d.body, { childList: true, subtree: true });
+            observers.push(mo);
+          }
+        }
+      } catch { /* cross-origin */ }
+    });
+    const needs = docs.some((root) => {
+      const input = root.querySelector<HTMLInputElement>(SEL);
+      return !!input && input.dataset["alliedWaMask"] !== "1";
+    });
+    if (needs) {
+      stopInner?.();
+      stopInner = setupWhatsappMask(container);
+    }
+  };
+  function schedule() {
+    if (scheduled) return;
+    scheduled = true;
+    requestAnimationFrame(check);
+  }
+
+  const mo = new MutationObserver(schedule);
+  mo.observe(container, { childList: true, subtree: true });
+  observers.push(mo);
+  container.addEventListener("load", schedule, true);
+  schedule();
+
+  return () => {
+    observers.forEach((o) => o.disconnect());
+    observers.length = 0;
+    container.removeEventListener("load", schedule, true);
+    stopInner?.();
+  };
+}
+
 export function ContactModal({ open, onOpenChange, source, title = "Vamos falar de Service Desk.", formId }: { open: boolean; onOpenChange: (v: boolean) => void; source?: string; title?: string; formId?: string }) {
   const navigate = useNavigate();
   const targetId = useId().replace(/:/g, "_");
@@ -62,6 +122,7 @@ export function ContactModal({ open, onOpenChange, source, title = "Vamos falar 
 
     let cancelled = false;
     let stopMask: (() => void) | undefined = setupWhatsappMask(containerRef.current);
+    const stopKeep = keepWhatsappMask(containerRef.current);
     loadHubspotScript()
       .then(() => {
         if (cancelled || !window.hbspt) return;
@@ -112,6 +173,7 @@ export function ContactModal({ open, onOpenChange, source, title = "Vamos falar 
     return () => {
       cancelled = true;
       stopMask?.();
+      stopKeep();
     };
   }, [open, navigate, onOpenChange, source, targetId, activeFormId]);
 
