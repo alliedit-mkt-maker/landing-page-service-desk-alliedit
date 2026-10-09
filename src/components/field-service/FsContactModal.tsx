@@ -98,9 +98,10 @@ export function ContactModal({ open, onClose }: Props) {
               page_location:
                 typeof window !== "undefined" ? window.location.href : "",
             });
+            try { sessionStorage.setItem("lp_origin_path", `${window.location.hostname}${window.location.pathname}`); } catch { /* noop */ }
             setTimeout(() => {
               onClose();
-              navigate({ to: "/lp/field-service/obrigado" });
+              navigate({ to: "/obrigado" });
             }, 400);
           },
         });

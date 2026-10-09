@@ -36,7 +36,7 @@ const WA_SERVICES: Array<{ match: string; name: string }> = [
   { match: "headset-yealink", name: "Headset Yealink" },
   { match: "alocacao-ti", name: "Alocação de TI" },
   { match: "cabeamento", name: "Cabeamento Estruturado" },
-  { match: "field-service", name: "Field Service" },
+  { match: "field-service", name: "Field Services" },
   { match: "service-desk", name: "Service Desk" },
 ];
 
