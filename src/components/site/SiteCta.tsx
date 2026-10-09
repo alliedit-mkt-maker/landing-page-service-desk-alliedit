@@ -4,7 +4,7 @@ import { SiteCtaButton } from "./SiteCtaButton";
 const BTN =
   "font-inter mt-9 inline-flex h-11 items-center justify-center whitespace-nowrap border border-[var(--site-blue)] px-8 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--site-blue)] transition-colors duration-200 hover:bg-[var(--site-blue)] hover:text-white";
 
-export function SiteCta({ modal = false }: { modal?: boolean }) {
+export function SiteCta({ modal = false, formId }: { modal?: boolean; formId?: string }) {
   return (
     <section aria-labelledby="site-cta" className="relative z-10 bg-white py-20 sm:py-28">
       <div className="mx-auto max-w-3xl px-5 text-center sm:px-8">
@@ -19,7 +19,7 @@ export function SiteCta({ modal = false }: { modal?: boolean }) {
           ganhar eficiência, segurança e previsibilidade. Sem compromisso.
         </p>
         {modal ? (
-          <SiteCtaButton className={BTN}>Falar com especialista</SiteCtaButton>
+          <SiteCtaButton className={BTN} formId={formId}>Falar com especialista</SiteCtaButton>
         ) : (
           <Link to="/contato" className={BTN}>
             Falar com especialista
