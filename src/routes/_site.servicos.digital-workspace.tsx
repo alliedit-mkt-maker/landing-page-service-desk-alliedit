@@ -46,6 +46,7 @@ import {
 } from "lucide-react";
 import { Reveal } from "@/components/lp/Reveal";
 import { SiteCta } from "@/components/site/SiteCta";
+const DW_FORM_ID = "aaf63884-47ee-489c-b70f-103f806e0c60";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import heroPhoto from "@/assets/dw/hero.jpg.asset.json";
 import nocPhoto from "@/assets/dw/noc.jpg.asset.json";
@@ -313,7 +314,7 @@ function DigitalWorkspacePage() {
               com SLA garantido e gestão centralizada.
             </p>
             <SiteCtaButton
-              
+              formId={DW_FORM_ID}
               className={`${btn} mt-9 bg-[var(--site-yellow)] text-[#0B1418] hover:bg-white`}
             >
               Falar com especialista
@@ -624,7 +625,7 @@ function DigitalWorkspacePage() {
       </section>
 
       {/* DOBRA 8 — CTA + Rodapé */}
-      <SiteCta modal />
+      <SiteCta modal formId={DW_FORM_ID} />
       <SiteFooter />
     </>
   );
