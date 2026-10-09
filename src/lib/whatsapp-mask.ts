@@ -82,7 +82,7 @@ function clearError(input: HTMLInputElement) {
   parent?.querySelector(`.${ERROR_CLASS}`)?.remove();
 }
 
-function enhanceInput(input: HTMLInputElement) {
+export function enhanceInput(input: HTMLInputElement) {
   if (input.dataset["alliedWaMask"] === "1") return;
   input.dataset["alliedWaMask"] = "1";
 
@@ -93,6 +93,17 @@ function enhanceInput(input: HTMLInputElement) {
 
   let suppressMask = false;
 
+  const setNative = (v: string) => {
+    const setter = Object.getOwnPropertyDescriptor(
+      window.HTMLInputElement.prototype,
+      "value",
+    )?.set;
+    if (setter) setter.call(input, v);
+    else input.value = v;
+  };
+
+  // Reage só à ação do usuário. Escreve o valor formatado pelo setter nativo e
+  // dispara "input" uma vez para o HubSpot ler o valor já mascarado (sem loop).
   const apply = () => {
     if (suppressMask) return;
     const before = input.value;
@@ -100,12 +111,18 @@ function enhanceInput(input: HTMLInputElement) {
     const digitsBefore = countDigitsBefore(before, caret);
     const masked = formatBrPhone(before);
     if (masked !== before) {
-      input.value = masked;
+      suppressMask = true;
       try {
-        const next = positionAfterDigits(masked, digitsBefore);
-        input.setSelectionRange(next, next);
-      } catch {
-        /* noop */
+        setNative(masked);
+        try {
+          const next = positionAfterDigits(masked, digitsBefore);
+          input.setSelectionRange(next, next);
+        } catch {
+          /* noop */
+        }
+        input.dispatchEvent(new Event("input", { bubbles: true }));
+      } finally {
+        suppressMask = false;
       }
     }
     if (isValidBrPhone(input.value)) clearError(input);
@@ -117,8 +134,6 @@ function enhanceInput(input: HTMLInputElement) {
     apply();
     if (input.value && !isValidBrPhone(input.value)) showError(input);
   });
-
-  apply();
 
   const form = input.form;
   if (form && form.dataset["alliedWaGuard"] !== "1") {

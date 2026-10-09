@@ -3,7 +3,7 @@ import { useNavigate } from "@tanstack/react-router";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { pushEvent } from "./LpProvider";
 import { getUtms, UTM_KEYS } from "@/lib/utm";
-import { setupWhatsappMask } from "@/lib/whatsapp-mask";
+import { setupWhatsappMask, enhanceInput } from "@/lib/whatsapp-mask";
 
 const HS_PORTAL_ID = (import.meta.env.VITE_HUBSPOT_PORTAL_ID as string) || "47388409";
 const HS_FORM_ID = (import.meta.env.VITE_HUBSPOT_FORM_ID as string) || "087109f4-f093-404c-aec9-b4a3f6d763a4";
@@ -51,7 +51,6 @@ export function keepWhatsappMask(container: HTMLElement | null): () => void {
   const SEL = 'input[name="hs_whatsapp_phone_number"]';
   const observers: MutationObserver[] = [];
   const watchedDocs = new WeakSet<Document>();
-  let stopInner: (() => void) | undefined;
   let scheduled = false;
 
   const check = () => {
@@ -71,14 +70,13 @@ export function keepWhatsappMask(container: HTMLElement | null): () => void {
         }
       } catch { /* cross-origin */ }
     });
-    const needs = docs.some((root) => {
+    // Só anexa a máscara a inputs novos; não altera valor nem dispara eventos.
+    docs.forEach((root) => {
       const input = root.querySelector<HTMLInputElement>(SEL);
-      return !!input && input.dataset["alliedWaMask"] !== "1";
+      if (input && input.dataset["alliedWaMask"] !== "1") {
+        try { enhanceInput(input); } catch { /* noop */ }
+      }
     });
-    if (needs) {
-      stopInner?.();
-      stopInner = setupWhatsappMask(container);
-    }
   };
   function schedule() {
     if (scheduled) return;
@@ -96,7 +94,6 @@ export function keepWhatsappMask(container: HTMLElement | null): () => void {
     observers.forEach((o) => o.disconnect());
     observers.length = 0;
     container.removeEventListener("load", schedule, true);
-    stopInner?.();
   };
 }
 
