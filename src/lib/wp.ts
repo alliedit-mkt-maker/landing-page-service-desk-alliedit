@@ -410,8 +410,22 @@ export async function fetchPostBySlug(slug: string): Promise<WpPost | null> {
 
 // Sumário apontando para ferramentas de redação externas -> âncora interna;
 // tabelas envoltas em contêiner com rolagem horizontal própria.
+// Imagens migradas: o src aponta para o caminho antigo (404), mas o arquivo
+// real está em data-orig-file, no mesmo CMS. Usa o arquivo real quando existir.
+function fixImageSources(html: string): string {
+  return html.replace(/<img\b[^>]*>/gi, (tag) => {
+    const orig = /\sdata-orig-file\s*=\s*("|')(https:\/\/(?:i[0-3]\.wp\.com\/)?cms\.alliedit\.com\.br\/wp-content\/[^"']+)\1/i.exec(tag);
+    if (!orig) return tag;
+    const url = orig[2];
+    const withSrc = /\ssrc\s*=\s*("|')[^"']*\1/i.test(tag)
+      ? tag.replace(/\ssrc\s*=\s*("|')[^"']*\1/i, ` src="${url}"`)
+      : tag.replace(/^<img\b/i, `<img src="${url}"`);
+    return withSrc.replace(/\s(?:srcset|sizes)\s*=\s*("|')[^"']*\1/gi, "");
+  });
+}
+
 function fixArticleMarkup(html: string): string {
-  return html
+  return fixImageSources(html)
     .replace(
       /href=("|')https?:\/\/(?:redacao\.labmidia\.com\.br|[a-z0-9-]+\.vercel\.app)[^"'#]*(#[^"']+)\1/gi,
       (_m, q: string, hash: string) => `href=${q}${hash}${q}`,
