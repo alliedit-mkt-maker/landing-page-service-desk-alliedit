@@ -460,6 +460,7 @@ function fixImageSources(html: string): string {
 
 function fixArticleMarkup(html: string): string {
   return fixImageSources(html)
+    .replace(/<h([12])\b[^>]*>(?:\s|&nbsp;|&#160;|\u00a0)*<\/h\1\s*>/gi, "")
     .replace(
       /href=("|')https?:\/\/(?:redacao\.labmidia\.com\.br|[a-z0-9-]+\.vercel\.app)[^"'#]*(#[^"']+)\1/gi,
       (_m, q: string, hash: string) => `href=${q}${hash}${q}`,
