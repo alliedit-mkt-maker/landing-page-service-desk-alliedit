@@ -337,7 +337,7 @@ function CyberShieldPage() {
                   <AccordionTrigger className="font-chillax py-5 text-left text-[16px] font-semibold text-white hover:text-[var(--site-yellow)] hover:no-underline sm:py-6 sm:text-[17px]">
                     {q}
                   </AccordionTrigger>
-                  <AccordionContent className="font-inter pb-6 text-[14px] leading-relaxed text-white/60">{a}</AccordionContent>
+                  <AccordionContent seoForceMount className="font-inter pb-6 text-[14px] leading-relaxed text-white/60">{a}</AccordionContent>
                 </AccordionItem>
               ))}
             </Accordion>

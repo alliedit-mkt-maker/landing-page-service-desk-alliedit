@@ -234,7 +234,7 @@ function Microsoft365Page() {
                 <AccordionTrigger className="font-chillax py-5 text-left text-[16px] font-semibold hover:text-[var(--site-blue)] hover:no-underline">
                   {f.q}
                 </AccordionTrigger>
-                <AccordionContent className="font-inter pb-6 text-[14px] leading-relaxed text-[var(--site-muted)]">{f.a}</AccordionContent>
+                <AccordionContent seoForceMount className="font-inter pb-6 text-[14px] leading-relaxed text-[var(--site-muted)]">{f.a}</AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>

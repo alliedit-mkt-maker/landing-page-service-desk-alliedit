@@ -614,7 +614,7 @@ function DigitalWorkspacePage() {
                   <AccordionTrigger className="font-chillax py-5 text-left text-[16px] font-semibold text-white hover:text-[var(--site-yellow)] hover:no-underline sm:py-6 sm:text-[17px]">
                     {item.q}
                   </AccordionTrigger>
-                  <AccordionContent className="font-inter pb-6 text-[14px] leading-relaxed text-white/60">
+                  <AccordionContent seoForceMount className="font-inter pb-6 text-[14px] leading-relaxed text-white/60">
                     {item.a}
                   </AccordionContent>
                 </AccordionItem>
