@@ -71,8 +71,12 @@ export function authorName(post: WpPost): string {
 // ~200 palavras por minuto, mínimo de 1 minuto.
 export function readingTime(post: WpPost): number {
   if (post.readingTimeMinutes) return post.readingTimeMinutes;
-  const text = stripHtml(post.content?.rendered || post.excerpt.rendered);
-  const words = text ? text.split(/\s+/).length : 0;
+  const html = post.content?.rendered || post.excerpt.rendered;
+  const visibleHtml = html
+    .replace(/<!--[^]*?-->/g, " ")
+    .replace(/<(script|style|template|noscript)\b[^>]*>[^]*?<\/\1\s*>/gi, " ");
+  const text = stripHtml(visibleHtml).replace(/(?:https?:\/\/|www\.)\S+/gi, " ");
+  const words = text.match(/[\p{L}\p{N}]+(?:['’\-][\p{L}\p{N}]+)*/gu)?.length ?? 0;
   return Math.max(1, Math.ceil(words / 200));
 }
 
