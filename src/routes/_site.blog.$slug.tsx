@@ -7,6 +7,7 @@ import ogImageAsset from "@/assets/og-image.png.asset.json";
 import { ASSET_ORIGIN, siteCanonical } from "@/lib/site";
 import {
   authorName,
+  effectiveModifiedDate,
   fetchPostBySlug,
   fetchPostSeo,
   featuredImage,
@@ -53,7 +54,7 @@ export const Route = createFileRoute("/_site/blog/$slug")({
     const social = seo.rank_math_facebook_description || socialDescription(description);
     const image = featuredImage(post) || `${ASSET_ORIGIN}${ogImageAsset.url}`;
     const published = post.date;
-    const modified = post.modified || post.date;
+    const modified = effectiveModifiedDate(post);
     const category = primaryCategory(post);
     const words = stripHtml(post.content?.rendered ?? "").split(/\s+/).filter(Boolean).length;
 
