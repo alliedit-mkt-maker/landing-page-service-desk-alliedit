@@ -81,7 +81,7 @@ function AwsPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative -mt-[72px] flex min-h-[78vh] items-center pt-[72px] overflow-hidden bg-[var(--site-ink)] text-white">
+      <section className="relative -mt-[72px] min-h-[78vh] overflow-hidden bg-[var(--site-ink)] pt-[72px] text-white sm:flex sm:items-center">
         <img
           src={hero.url}
           alt=""
@@ -89,20 +89,37 @@ function AwsPage() {
           fetchPriority="high"
           loading="eager"
           decoding="async"
-          className="absolute inset-0 h-full w-full object-cover object-[65%_30%]"
+          className="absolute inset-0 hidden h-full w-full object-cover object-[65%_30%] sm:block"
         />
-        <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/30" />
-        <div className="relative mx-auto w-full max-w-7xl px-5 py-24 sm:px-8">
+        <div aria-hidden className="absolute inset-0 hidden bg-gradient-to-r from-black/85 via-black/60 to-black/30 sm:block" />
+        <div className="relative mx-auto w-full max-w-7xl px-5 pt-14 pb-8 sm:px-8 sm:pt-24 sm:pb-24">
+
           <span className="font-inter text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--site-yellow)]">
             Produtos · Cloud
           </span>
-          <h1 className="font-chillax mt-5 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">Consultoria AWS para empresas: migração, gestão e FinOps</h1>
-          <p className="font-inter mt-6 max-w-xl text-[17px] leading-relaxed text-white/80">
-            A consultoria AWS da Allied IT avalia o seu ambiente, planeja e executa a migração e cuida da operação da nuvem depois dela: monitoramento, segurança, backup e controle de custos (FinOps).
+          <h1 className="font-chillax mt-5 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">Consultoria AWS</h1>
+          <p className="font-chillax mt-3 max-w-xl text-balance text-[1.35rem] font-semibold leading-snug text-white sm:text-[1.6rem]">
+            Migração, gestão e otimização de custos na nuvem
           </p>
+          <p className="font-inter mt-6 max-w-xl text-[17px] leading-relaxed text-white/80">
+            A consultoria AWS da Allied IT avalia o seu ambiente, planeja e executa a migração e cuida da operação da nuvem depois dela: monitoramento, segurança e otimização de custos.
+          </p>
+
           <SiteCtaButton  className={`${btnSolid} mt-10`}>Solicite um orçamento</SiteCtaButton>
         </div>
+        {/* No celular, a foto vira uma faixa abaixo do texto, para o texto nunca ficar sobre a nuvem */}
+        <div aria-hidden className="relative sm:hidden">
+          <img
+            src={hero.url}
+            alt=""
+            loading="eager"
+            decoding="async"
+            className="block h-[30vh] max-h-[320px] w-full object-cover object-[64%_50%]"
+          />
+          <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-[var(--site-ink)] to-transparent" />
+        </div>
       </section>
+
 
       {/* O que é */}
       <section className="bg-white py-20 sm:py-24">
