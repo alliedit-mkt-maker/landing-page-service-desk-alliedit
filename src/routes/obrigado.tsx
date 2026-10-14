@@ -19,7 +19,7 @@ export const Route = createFileRoute("/obrigado")({
 
 const WA_NUMBER = "5511943319875";
 const waMessage = (service: string) =>
-  `Olá! Me interessei pelo ${service} da AlliedIT e gostaria de falar com um especialista.`;
+  `Olá! Me interessei pelo ${service} da Allied IT e gostaria de falar com um especialista.`;
 const WA_MSG_DEFAULT = waMessage("Service Desk");
 
 // Chave (caminho/host/param "lp") -> nome do serviço. Ordem importa: mais específico primeiro.

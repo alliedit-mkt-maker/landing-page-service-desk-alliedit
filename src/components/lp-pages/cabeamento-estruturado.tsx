@@ -391,7 +391,7 @@ const faq = [
   { q: "Conseguem trabalhar com a operação rodando?", a: "Sim. Boa parte das obras acontece em ambiente que não pode parar. A gente planeja janelas, faz por etapas e identifica a equipe pra interferir o mínimo possível no dia a dia." },
   { q: "O que entra na certificação?", a: "Cada ponto é testado com equipamento certificador, e você recebe o laudo de todos eles. Em fibra, medimos com OTDR e power meter. A documentação as-built acompanha a entrega." },
   { q: "Como é feito o orçamento?", a: "Começa com um levantamento no local pra entender o ambiente e o que a rede precisa suportar. A partir daí entregamos projeto e orçamento fechado, você aprova antes de qualquer execução." },
-  { q: "Fazem só cabeamento ou também a operação depois?", a: "Os dois. A AlliedIT opera Service Desk, NOC e SOC. Dá pra contratar só a infraestrutura física ou já deixar a operação de TI no mesmo time que conhece a sua rede de ponta a ponta." },
+  { q: "Fazem só cabeamento ou também a operação depois?", a: "Os dois. A Allied IT opera Service Desk, NOC e SOC. Dá pra contratar só a infraestrutura física ou já deixar a operação de TI no mesmo time que conhece a sua rede de ponta a ponta." },
   { q: "Trabalham com fibra monomodo e multimodo?", a: "Sim, os dois tipos, com fusão, conectorização e medição. Backbone entre prédios, interligação de data centers ou lançamento interno, avaliamos qual solução faz sentido no projeto." },
 ];
 

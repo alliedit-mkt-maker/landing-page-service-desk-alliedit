@@ -4,7 +4,7 @@ import alliedLogo from "@/assets/field-service/allied-it-branco.png.asset.json";
 export const Route = createFileRoute("/lp/field-service/obrigado")({
   head: () => ({
     meta: [
-      { title: "Obrigado | AlliedIT Field Services" },
+      { title: "Obrigado | Allied IT Field Services" },
       { name: "description", content: "Recebemos seus detalhes. Em breve entraremos em contato." },
       { name: "robots", content: "noindex, nofollow" },
     ],
@@ -18,7 +18,7 @@ function ObrigadoPage() {
       <header className="w-full bg-brand py-5">
         <div className="mx-auto max-w-7xl px-6 flex justify-center">
           <Link to="/">
-            <img src={alliedLogo.url} alt="AlliedIT" className="h-9 w-auto" />
+            <img src={alliedLogo.url} alt="Allied IT" className="h-9 w-auto" />
           </Link>
         </div>
       </header>
@@ -37,7 +37,7 @@ function ObrigadoPage() {
               Precisa falar agora?
             </h2>
             <a
-              href={`https://wa.me/5511943319875?text=${encodeURIComponent("Olá, me interessei pelo Field Services da AlliedIT")}`}
+              href={`https://wa.me/5511943319875?text=${encodeURIComponent("Olá, me interessei pelo Field Services da Allied IT")}`}
               target="_blank"
               rel="noreferrer"
               className="mt-6 inline-block bg-brand px-8 py-4 text-sm font-bold uppercase tracking-wider text-brand-foreground transition hover:bg-brand-deep"
@@ -59,7 +59,7 @@ function ObrigadoPage() {
 
       <footer className="border-t border-foreground/10 py-6">
         <div className="mx-auto max-w-7xl px-6 flex flex-col md:flex-row items-center justify-between gap-2 text-xs text-foreground/60">
-          <p>© 2026 AlliedIT. Todos os direitos reservados.</p>
+          <p>© 2026 Allied IT. Todos os direitos reservados.</p>
           <p className="flex gap-4">
             <a href="/politica-de-privacidade" target="_blank" rel="noreferrer" className="hover:text-brand">Política de Privacidade</a>
             <a href="/termos-de-uso" target="_blank" rel="noreferrer" className="hover:text-brand">Termos e Condições</a>

@@ -16,7 +16,7 @@ export function WhyAllied() {
       <div className="max-w-7xl mx-auto">
         <Reveal variant="fade-up" className="mb-12 sm:mb-16 max-w-3xl">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-balance text-ink-mid">
-            Por que empresas que não podem errar escolhem a AlliedIT
+            Por que empresas que não podem errar escolhem a Allied IT
           </h2>
           <p className="text-petrol/60 text-base sm:text-lg">
             Operação madura, especialização vertical e relação de longo prazo.

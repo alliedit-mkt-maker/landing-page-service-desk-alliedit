@@ -69,8 +69,8 @@ function Header() {
   return (
     <header className="sticky top-0 z-50 w-full bg-brand text-brand-foreground">
       <div className="mx-auto flex h-[3.85rem] max-w-7xl items-center justify-center px-6">
-        <a href="#top" aria-label="AlliedIT" className="flex items-center">
-          <img src={alliedLogo.url} alt="AlliedIT" className="h-[2.625rem] w-auto" />
+        <a href="#top" aria-label="Allied IT" className="flex items-center">
+          <img src={alliedLogo.url} alt="Allied IT" className="h-[2.625rem] w-auto" />
         </a>
       </div>
     </header>
@@ -92,7 +92,7 @@ function Hero({ onCTA }: { onCTA: () => void }) {
           Manutenção e suporte de TI presencial onde você estiver
         </h1>
         <p className="mt-6 max-w-2xl text-lg text-foreground/70">
-          Quem opera 5, 20 ou 100 endereços não resolve TI com técnico avulso. A AlliedIT coloca o técnico certo, no lugar certo, com SLA medido por unidade.
+          Quem opera 5, 20 ou 100 endereços não resolve TI com técnico avulso. A Allied IT coloca o técnico certo, no lugar certo, com SLA medido por unidade.
         </p>
         <ul className="mt-10 grid max-w-3xl gap-3 text-left text-base text-brand-deep sm:grid-cols-1">
           {[
@@ -285,7 +285,7 @@ function Pillars({ onCTA, selected }: { onCTA: () => void; selected: SelectedPat
     {
       n: "02",
       title: "Rollout sem depender de headcount",
-      text: "Novas unidades entram no ar com TI pronta. A AlliedIT absorve o pico de expansão sem você precisar contratar.",
+      text: "Novas unidades entram no ar com TI pronta. A Allied IT absorve o pico de expansão sem você precisar contratar.",
     },
     {
       n: "03",
@@ -312,14 +312,14 @@ function Pillars({ onCTA, selected }: { onCTA: () => void; selected: SelectedPat
         ? {
             key: "fornecedor",
             eyebrow: "Pra quem já tem um fornecedor",
-            headline: "O que muda quando você troca seu fornecedor pela AlliedIT",
+            headline: "O que muda quando você troca seu fornecedor pela Allied IT",
             sub: "SLA que chega na ponta, rastreabilidade real e cobertura sem pingue-pongue de responsabilidade.",
             pillars: defaultPillars,
           }
         : {
             key: "default",
             eyebrow: null as string | null,
-            headline: "O que muda quando o Field Service é da AlliedIT",
+            headline: "O que muda quando o Field Service é da Allied IT",
             sub: "Quatro coisas que mudam de patamar quando a operação é nossa.",
             pillars: defaultPillars,
           };
@@ -447,7 +447,7 @@ function Escopo() {
     {
       icon: Gauge,
       title: "Troca e instalação de equipamentos",
-      text: "Hardware do cliente ou fornecido pela AlliedIT.",
+      text: "Hardware do cliente ou fornecido pela Allied IT.",
     },
     {
       icon: Building2,
@@ -462,7 +462,7 @@ function Escopo() {
     {
       icon: Users,
       title: "Smart hands",
-      text: "Braço presencial pro seu time remoto, NOC ou Service Desk, seja da AlliedIT ou não.",
+      text: "Braço presencial pro seu time remoto, NOC ou Service Desk, seja da Allied IT ou não.",
     },
   ];
   return (
@@ -510,7 +510,7 @@ function WhyUs({ onCTA }: { onCTA: () => void }) {
         <Reveal>
           <div className="mb-16 max-w-5xl">
             <h2 className="text-3xl font-black tracking-tight text-brand-deep md:text-4xl lg:text-5xl">
-              Empresas que não podem<br /> errar escolhem a AlliedIT
+              Empresas que não podem<br /> errar escolhem a Allied IT
             </h2>
             <p className="mt-5 text-lg text-foreground/70">
               Operação madura, especialização vertical e relação de longo prazo.
@@ -692,14 +692,14 @@ function FAQ({ onCTA }: { onCTA: () => void }) {
     },
     {
       q: "Vocês levam peças de reposição ou o cliente fornece?",
-      a: "Os dois modelos existem: equipamento do seu inventário ou fornecido pela AlliedIT. Muda só o modelo financeiro.",
+      a: "Os dois modelos existem: equipamento do seu inventário ou fornecido pela Allied IT. Muda só o modelo financeiro.",
     },
     {
       q: "Preciso começar com todas as unidades ou posso testar em uma?",
       a: "Pode começar com um piloto em uma unidade ou uma região e expandir por degraus. A maioria dos clientes multi-unidade começou assim.",
     },
     {
-      q: "Qual a diferença de custo entre técnico próprio e Field da AlliedIT?",
+      q: "Qual a diferença de custo entre técnico próprio e Field da Allied IT?",
       a: "Técnico próprio é custo fixo: salário, encargos, deslocamento e ociosidade. Field é proporcional ao uso. Em redes como a Lojas Mel a troca reduziu 40% do custo de suporte em campo.",
     },
     {
@@ -795,7 +795,7 @@ function Footer() {
   return (
     <footer className="border-t border-foreground/10 bg-white py-6">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-6 text-xs text-foreground/60 md:flex-row">
-        <p>© 2026 AlliedIT. Todos os direitos reservados.</p>
+        <p>© 2026 Allied IT. Todos os direitos reservados.</p>
         <p className="flex gap-4">
           <a href="/politica-de-privacidade" target="_blank" rel="noreferrer" className="hover:text-brand transition">Política de Privacidade</a>
           <a href="/termos-de-uso" target="_blank" rel="noreferrer" className="hover:text-brand transition">Termos e Condições</a>

@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { FieldServicePage } from "@/components/lp-pages/field-service";
 import { PUBLIC_ORIGIN } from "@/lib/site";
 
-const title = "Field Service e manutenção de TI multi-unidade | AlliedIT";
+const title = "Field Service e manutenção de TI multi-unidade | Allied IT";
 const description =
   "Manutenção e suporte de TI presencial em todas as suas unidades. Técnicos por região, SLA por unidade, custo proporcional ao uso. Fale com especialista.";
 const social = "Manutenção e suporte de TI presencial nas suas unidades. SLA medido, custo pelo uso.";

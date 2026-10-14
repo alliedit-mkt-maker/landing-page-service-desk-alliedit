@@ -21,8 +21,8 @@ export function PathToggle() {
   const active = selectedPath;
   const pains = active === "external" ? painsExternal : painsInternal;
   const bridge = active === "internal"
-    ? "A AlliedIT assume o suporte e a sua TI interna fica livre pra focar no estratégico."
-    : "A AlliedIT é o fornecedor que entrega o que você espera. Especialização vertical, governança real, SLA cumprido.";
+    ? "A Allied IT assume o suporte e a sua TI interna fica livre pra focar no estratégico."
+    : "A Allied IT é o fornecedor que entrega o que você espera. Especialização vertical, governança real, SLA cumprido.";
 
   return (
     <section className="py-16 sm:py-24 px-4 sm:px-6" id="caminho">
@@ -65,7 +65,7 @@ export function PathToggle() {
                 onClick={() => openModal("path_toggle")}
                 className="btn-sheen bg-petrol text-white px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-petrol-light transition-colors"
               >
-                Quero ver como a AlliedIT resolve isso
+                Quero ver como a Allied IT resolve isso
               </button>
             </div>
           </div>

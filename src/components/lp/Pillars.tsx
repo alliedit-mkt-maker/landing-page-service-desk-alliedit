@@ -45,17 +45,17 @@ export function Pillars() {
 
   const subhead =
     selectedPath === "internal"
-      ? "Você já tem time interno. A AlliedIT entra como extensão da operação, sem competir com quem já está dentro."
+      ? "Você já tem time interno. A Allied IT entra como extensão da operação, sem competir com quem já está dentro."
       : selectedPath === "external"
-        ? "Você já terceiriza. A AlliedIT entra com governança madura e fim do retrabalho entre fornecedores."
-        : "Não importa se você está terceirizando pela primeira vez ou trocando de fornecedor. A AlliedIT entrega quatro coisas em comum.";
+        ? "Você já terceiriza. A Allied IT entra com governança madura e fim do retrabalho entre fornecedores."
+        : "Não importa se você está terceirizando pela primeira vez ou trocando de fornecedor. A Allied IT entrega quatro coisas em comum.";
 
   return (
     <section className="py-16 sm:py-24 px-4 sm:px-6 bg-petrol/[0.02]" id="pilares">
       <div className="max-w-7xl mx-auto">
         <Reveal variant="fade-up" className="mb-12 sm:mb-16 max-w-3xl">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-balance text-ink-mid">
-            O que muda quando o Service Desk é da AlliedIT
+            O que muda quando o Service Desk é da Allied IT
           </h2>
           <p className="text-petrol/60 text-base sm:text-lg">{subhead}</p>
         </Reveal>

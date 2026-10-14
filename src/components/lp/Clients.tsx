@@ -40,7 +40,7 @@ export function Clients({ centered = false }: { centered?: boolean }) {
           {loop.map((logo, i) => (
             <div
               key={`${logo.name}-${i}`}
-              aria-label={`Cliente AlliedIT: ${logo.name}`}
+              aria-label={`Cliente Allied IT: ${logo.name}`}
               className="shrink-0 px-10 md:px-14 flex items-center justify-center"
             >
               <img
