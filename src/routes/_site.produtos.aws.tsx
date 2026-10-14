@@ -98,7 +98,7 @@ function AwsPage() {
             Produtos · Cloud
           </span>
           <h1 className="font-chillax mt-5 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">Consultoria AWS</h1>
-          <p className="font-chillax mt-3 max-w-xl text-[1.35rem] font-semibold leading-snug text-white sm:text-[1.6rem]">
+          <p className="font-chillax mt-3 max-w-xl text-balance text-[1.35rem] font-semibold leading-snug text-white sm:text-[1.6rem]">
             Migração, gestão e otimização de custos na nuvem
           </p>
           <p className="font-inter mt-6 max-w-xl text-[17px] leading-relaxed text-white/80">
