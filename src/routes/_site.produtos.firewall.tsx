@@ -1,4 +1,5 @@
 import { pageHead } from "@/lib/seo";
+import { serviceSchema } from "@/lib/service-schema";
 import { SiteCtaButton } from "@/components/site/SiteCtaButton";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -15,7 +16,7 @@ export const Route = createFileRoute("/_site/produtos/firewall")({
       description: "Equipamento, instalação, configuração, monitoramento 24 horas e suporte incluídos para proteger sua rede.",
       path: "/produtos/firewall",
     });
-    return { ...h, meta: [...h.meta, { name: "robots", content: "index, follow" }] };
+    return { ...h, meta: [...h.meta, { name: "robots", content: "index, follow" }], scripts: [serviceSchema({ path: "/produtos/firewall", name: "Firewall para empresas com monitoramento 24h", serviceType: "Firewall gerenciado", description: "Equipamento, instalação, configuração, monitoramento 24 horas e suporte incluídos para proteger sua rede.", sectionName: "Produtos", sectionPath: "/produtos", faq: FAQ })] };
   },
   component: FirewallPage,
 });

@@ -1,4 +1,5 @@
 import { pageHead } from "@/lib/seo";
+import { serviceSchema } from "@/lib/service-schema";
 import { SiteCtaButton } from "@/components/site/SiteCtaButton";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
@@ -29,7 +30,7 @@ export const Route = createFileRoute("/_site/produtos/aws")({
       description: "Migração, implantação e monitoramento contínuo de ambientes AWS, seguindo as boas práticas do mercado.",
       path: "/produtos/aws",
     });
-    return { ...h, meta: [...h.meta, { name: "robots", content: "index, follow" }] };
+    return { ...h, meta: [...h.meta, { name: "robots", content: "index, follow" }], scripts: [serviceSchema({ path: "/produtos/aws", name: "Consultoria AWS: migração e gestão de nuvem", serviceType: "Consultoria AWS", description: "Migração, implantação e monitoramento contínuo de ambientes AWS, seguindo as boas práticas do mercado.", sectionName: "Produtos", sectionPath: "/produtos", faq: FAQ })] };
   },
   component: AwsPage,
 });

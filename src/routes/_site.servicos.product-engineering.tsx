@@ -1,4 +1,5 @@
 import { pageHead } from "@/lib/seo";
+import { serviceSchema } from "@/lib/service-schema";
 import { SiteCtaButton } from "@/components/site/SiteCtaButton";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
@@ -15,12 +16,14 @@ import hero from "@/assets/pe/hero.jpg.asset.json";
 import overview from "@/assets/pe/overview.jpg.asset.json";
 
 export const Route = createFileRoute("/_site/servicos/product-engineering")({
-  head: () =>
-    pageHead({ social: "Gargalo da operação virando sistema que funciona.",
+  head: () => {
+    const h = pageHead({ social: "Gargalo da operação virando sistema que funciona.",
       title: "Product Engineering: desenvolvimento sob medida | Allied IT",
       description: "Sistemas, aplicativos, dashboards e automações sob medida para tirar gargalos da sua operação.",
       path: "/servicos/product-engineering",
-    }),
+    });
+    return { ...h, scripts: [serviceSchema({ path: "/servicos/product-engineering", name: "Product Engineering: desenvolvimento sob medida", serviceType: "Desenvolvimento de software sob medida", description: "Sistemas, aplicativos, dashboards e automações sob medida para tirar gargalos da sua operação.", sectionName: "Serviços", sectionPath: "/servicos", faq: FAQ })] };
+  },
   component: ProductEngineeringPage,
 });
 

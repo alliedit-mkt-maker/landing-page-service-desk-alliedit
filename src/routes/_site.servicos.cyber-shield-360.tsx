@@ -1,4 +1,5 @@
 import { pageHead } from "@/lib/seo";
+import { serviceSchema } from "@/lib/service-schema";
 import { SiteCtaButton } from "@/components/site/SiteCtaButton";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
@@ -32,13 +33,15 @@ import socPhoto from "@/assets/csh/soc.jpg.asset.json";
 import consolePhoto from "@/assets/csh/console.jpg.asset.json";
 
 export const Route = createFileRoute("/_site/servicos/cyber-shield-360")({
-  head: () =>
-    pageHead({ social: "Monitoramento 24x7, testes de invasão e resposta a ataque.",
+  head: () => {
+    const h = pageHead({ social: "Monitoramento 24x7, testes de invasão e resposta a ataque.",
       title: "Cyber Shield 360°: SOC, pentest e segurança | Allied IT",
       description:
         "Segurança cibernética 24x7x365: SOCaaS, NOCaaS, EDR e XDR, pentest, phishing test, hardening, firewall e LGPD.",
       path: "/servicos/cyber-shield-360",
-    }),
+    });
+    return { ...h, scripts: [serviceSchema({ path: "/servicos/cyber-shield-360", name: "Cyber Shield 360°: SOC, pentest e segurança", serviceType: "Segurança da informação gerenciada (SOC e pentest)", description: "Segurança cibernética 24x7x365: SOCaaS, NOCaaS, EDR e XDR, pentest, phishing test, hardening, firewall e LGPD.", sectionName: "Serviços", sectionPath: "/servicos", faq: FAQ.map(([q, a]) => ({ q, a })) })] };
+  },
   component: CyberShieldPage,
 });
 
