@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { dedupeByTitle, fetchAllPosts } from "@/lib/wp";
 import { LP_ON_ROOT_DOMAIN, SITE_ORIGIN } from "@/lib/site";
+import { BLOG_CATEGORY_SLUGS } from "@/lib/blog-listing";
 
 const STATIC_PATHS = [
   "/",
@@ -84,6 +85,12 @@ export const Route = createFileRoute("/sitemap.xml")({
         const entries: string[] = [...STATIC_PATHS, ...LP_PATHS].map(
           (path) => `  <url><loc>${xmlEscape(origin + path)}</loc></url>`,
         );
+
+        for (const slug of BLOG_CATEGORY_SLUGS) {
+          entries.push(
+            `  <url><loc>${xmlEscape(`${origin}/blog/categoria/${slug}`)}</loc></url>`,
+          );
+        }
 
         for (const post of posts) {
           const dates = [post.date, post.modified].filter(Boolean) as string[];
