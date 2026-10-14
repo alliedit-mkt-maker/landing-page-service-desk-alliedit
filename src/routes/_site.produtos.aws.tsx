@@ -92,13 +92,13 @@ function AwsPage() {
           className="absolute inset-0 hidden h-full w-full object-cover object-[65%_30%] sm:block"
         />
         <div aria-hidden className="absolute inset-0 hidden bg-gradient-to-r from-black/85 via-black/60 to-black/30 sm:block" />
-        <div className="relative mx-auto w-full max-w-7xl px-5 pt-24 pb-16 sm:px-8 sm:py-24">
+        <div className="relative mx-auto w-full max-w-7xl px-5 pt-14 pb-8 sm:px-8 sm:pt-24 sm:pb-24">
 
           <span className="font-inter text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--site-yellow)]">
             Produtos · Cloud
           </span>
           <h1 className="font-chillax mt-5 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">Consultoria AWS</h1>
-          <p className="font-chillax mt-3 text-[1.35rem] font-semibold leading-snug text-white sm:text-[1.6rem]">
+          <p className="font-chillax mt-3 max-w-xl text-[1.35rem] font-semibold leading-snug text-white sm:text-[1.6rem]">
             Migração, gestão e otimização de custos na nuvem
           </p>
           <p className="font-inter mt-6 max-w-xl text-[17px] leading-relaxed text-white/80">
@@ -114,7 +114,7 @@ function AwsPage() {
             alt=""
             loading="eager"
             decoding="async"
-            className="block h-[40vh] max-h-[380px] w-full object-cover object-[64%_50%]"
+            className="block h-[30vh] max-h-[320px] w-full object-cover object-[64%_50%]"
           />
           <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-[var(--site-ink)] to-transparent" />
         </div>
