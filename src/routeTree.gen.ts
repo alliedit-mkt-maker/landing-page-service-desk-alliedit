@@ -49,6 +49,9 @@ import { Route as SiteServicosInteligenciaArtificialRouteImport } from './routes
 import { Route as SiteServicosProductEngineeringRouteImport } from './routes/_site.servicos.product-engineering'
 import { Route as SiteServicosSmartCloudOpsRouteImport } from './routes/_site.servicos.smart-cloud-ops'
 import { Route as LpFieldServiceObrigadoRouteImport } from './routes/lp.field-service.obrigado'
+import { Route as SiteBlogPagePageRouteImport } from './routes/_site.blog.page.$page'
+import { Route as SiteBlogCategoriaCategoryIndexRouteImport } from './routes/_site.blog.categoria.$category.index'
+import { Route as SiteBlogCategoriaCategoryPagePageRouteImport } from './routes/_site.blog.categoria.$category.page.$page'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -257,6 +260,23 @@ const LpFieldServiceObrigadoRoute = LpFieldServiceObrigadoRouteImport.update({
   path: '/obrigado',
   getParentRoute: () => LpFieldServiceRoute,
 } as any)
+const SiteBlogPagePageRoute = SiteBlogPagePageRouteImport.update({
+  id: '/blog/page/$page',
+  path: '/blog/page/$page',
+  getParentRoute: () => SiteRoute,
+} as any)
+const SiteBlogCategoriaCategoryIndexRoute =
+  SiteBlogCategoriaCategoryIndexRouteImport.update({
+    id: '/blog/categoria/$category/',
+    path: '/blog/categoria/$category/',
+    getParentRoute: () => SiteRoute,
+  } as any)
+const SiteBlogCategoriaCategoryPagePageRoute =
+  SiteBlogCategoriaCategoryPagePageRouteImport.update({
+    id: '/blog/categoria/$category/page/$page',
+    path: '/blog/categoria/$category/page/$page',
+    getParentRoute: () => SiteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -298,6 +318,9 @@ export interface FileRoutesByFullPath {
   '/blog/': typeof SiteBlogIndexRoute
   '/produtos/': typeof SiteProdutosIndexRoute
   '/servicos/': typeof SiteServicosIndexRoute
+  '/blog/page/$page': typeof SiteBlogPagePageRoute
+  '/blog/categoria/$category/': typeof SiteBlogCategoriaCategoryIndexRoute
+  '/blog/categoria/$category/page/$page': typeof SiteBlogCategoriaCategoryPagePageRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -339,6 +362,9 @@ export interface FileRoutesByTo {
   '/blog': typeof SiteBlogIndexRoute
   '/produtos': typeof SiteProdutosIndexRoute
   '/servicos': typeof SiteServicosIndexRoute
+  '/blog/page/$page': typeof SiteBlogPagePageRoute
+  '/blog/categoria/$category': typeof SiteBlogCategoriaCategoryIndexRoute
+  '/blog/categoria/$category/page/$page': typeof SiteBlogCategoriaCategoryPagePageRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -382,6 +408,9 @@ export interface FileRoutesById {
   '/_site/blog/': typeof SiteBlogIndexRoute
   '/_site/produtos/': typeof SiteProdutosIndexRoute
   '/_site/servicos/': typeof SiteServicosIndexRoute
+  '/_site/blog/page/$page': typeof SiteBlogPagePageRoute
+  '/_site/blog/categoria/$category/': typeof SiteBlogCategoriaCategoryIndexRoute
+  '/_site/blog/categoria/$category/page/$page': typeof SiteBlogCategoriaCategoryPagePageRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -425,6 +454,9 @@ export interface FileRouteTypes {
     | '/blog/'
     | '/produtos/'
     | '/servicos/'
+    | '/blog/page/$page'
+    | '/blog/categoria/$category/'
+    | '/blog/categoria/$category/page/$page'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -466,6 +498,9 @@ export interface FileRouteTypes {
     | '/blog'
     | '/produtos'
     | '/servicos'
+    | '/blog/page/$page'
+    | '/blog/categoria/$category'
+    | '/blog/categoria/$category/page/$page'
   id:
     | '__root__'
     | '/'
@@ -508,6 +543,9 @@ export interface FileRouteTypes {
     | '/_site/blog/'
     | '/_site/produtos/'
     | '/_site/servicos/'
+    | '/_site/blog/page/$page'
+    | '/_site/blog/categoria/$category/'
+    | '/_site/blog/categoria/$category/page/$page'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -817,6 +855,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LpFieldServiceObrigadoRouteImport
       parentRoute: typeof LpFieldServiceRoute
     }
+    '/_site/blog/page/$page': {
+      id: '/_site/blog/page/$page'
+      path: '/blog/page/$page'
+      fullPath: '/blog/page/$page'
+      preLoaderRoute: typeof SiteBlogPagePageRouteImport
+      parentRoute: typeof SiteRoute
+    }
+    '/_site/blog/categoria/$category/': {
+      id: '/_site/blog/categoria/$category/'
+      path: '/blog/categoria/$category'
+      fullPath: '/blog/categoria/$category/'
+      preLoaderRoute: typeof SiteBlogCategoriaCategoryIndexRouteImport
+      parentRoute: typeof SiteRoute
+    }
+    '/_site/blog/categoria/$category/page/$page': {
+      id: '/_site/blog/categoria/$category/page/$page'
+      path: '/blog/categoria/$category/page/$page'
+      fullPath: '/blog/categoria/$category/page/$page'
+      preLoaderRoute: typeof SiteBlogCategoriaCategoryPagePageRouteImport
+      parentRoute: typeof SiteRoute
+    }
   }
 }
 
@@ -838,6 +897,9 @@ interface SiteRouteChildren {
   SiteBlogIndexRoute: typeof SiteBlogIndexRoute
   SiteProdutosIndexRoute: typeof SiteProdutosIndexRoute
   SiteServicosIndexRoute: typeof SiteServicosIndexRoute
+  SiteBlogPagePageRoute: typeof SiteBlogPagePageRoute
+  SiteBlogCategoriaCategoryIndexRoute: typeof SiteBlogCategoriaCategoryIndexRoute
+  SiteBlogCategoriaCategoryPagePageRoute: typeof SiteBlogCategoriaCategoryPagePageRoute
 }
 
 const SiteRouteChildren: SiteRouteChildren = {
@@ -859,6 +921,10 @@ const SiteRouteChildren: SiteRouteChildren = {
   SiteBlogIndexRoute: SiteBlogIndexRoute,
   SiteProdutosIndexRoute: SiteProdutosIndexRoute,
   SiteServicosIndexRoute: SiteServicosIndexRoute,
+  SiteBlogPagePageRoute: SiteBlogPagePageRoute,
+  SiteBlogCategoriaCategoryIndexRoute: SiteBlogCategoriaCategoryIndexRoute,
+  SiteBlogCategoriaCategoryPagePageRoute:
+    SiteBlogCategoriaCategoryPagePageRoute,
 }
 
 const SiteRouteWithChildren = SiteRoute._addFileChildren(SiteRouteChildren)
