@@ -25,7 +25,7 @@ import oqueE from "@/assets/aws/oque-e.png.asset.json";
 export const Route = createFileRoute("/_site/produtos/aws")({
   head: () => {
     const h = pageHead({ social: "Seu ambiente na Amazon Web Services, instalado e vigiado de perto.",
-      title: "AWS para empresas: migração e gestão de nuvem | Allied IT",
+      title: "Consultoria AWS: migração e gestão de nuvem | Allied IT",
       description: "Migração, implantação e monitoramento contínuo de ambientes AWS, seguindo as boas práticas do mercado.",
       path: "/produtos/aws",
     });
@@ -96,9 +96,9 @@ function AwsPage() {
           <span className="font-inter text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--site-yellow)]">
             Produtos · Cloud
           </span>
-          <h1 className="font-chillax mt-5 text-5xl font-bold tracking-tight sm:text-6xl">AWS</h1>
+          <h1 className="font-chillax mt-5 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">Consultoria AWS para empresas: migração, gestão e FinOps</h1>
           <p className="font-inter mt-6 max-w-xl text-[17px] leading-relaxed text-white/80">
-            Gerenciamento de nuvem contínuo para garantir um ambiente cloud de alta performance.
+            A consultoria AWS da Allied IT avalia o seu ambiente, planeja e executa a migração e cuida da operação da nuvem depois dela: monitoramento, segurança, backup e controle de custos (FinOps).
           </p>
           <SiteCtaButton  className={`${btnSolid} mt-10`}>Solicite um orçamento</SiteCtaButton>
         </div>
