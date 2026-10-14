@@ -81,7 +81,7 @@ function AwsPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative -mt-[72px] flex min-h-[78vh] items-center pt-[72px] overflow-hidden bg-[var(--site-ink)] text-white">
+      <section className="relative -mt-[72px] min-h-[78vh] overflow-hidden bg-[var(--site-ink)] pt-[72px] text-white sm:flex sm:items-center">
         <img
           src={hero.url}
           alt=""
@@ -89,10 +89,11 @@ function AwsPage() {
           fetchPriority="high"
           loading="eager"
           decoding="async"
-          className="absolute inset-0 h-full w-full object-cover object-[65%_30%]"
+          className="absolute inset-0 hidden h-full w-full object-cover object-[65%_30%] sm:block"
         />
-        <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/30" />
-        <div className="relative mx-auto w-full max-w-7xl px-5 py-24 sm:px-8">
+        <div aria-hidden className="absolute inset-0 hidden bg-gradient-to-r from-black/85 via-black/60 to-black/30 sm:block" />
+        <div className="relative mx-auto w-full max-w-7xl px-5 pt-24 pb-16 sm:px-8 sm:py-24">
+
           <span className="font-inter text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--site-yellow)]">
             Produtos · Cloud
           </span>
