@@ -1,5 +1,5 @@
 import { notFound } from "@tanstack/react-router";
-import { dedupeByTitle, fetchCategories, fetchPosts, slimPost } from "@/lib/wp";
+import { fetchArchivePage, fetchCategories, slimPost } from "@/lib/wp";
 
 export const BLOG_CATEGORY_SLUGS = [
   "ti",
@@ -28,10 +28,10 @@ export async function loadBlogListing(page: number, categorySlug?: string) {
   if (categorySlug && !category) throw notFound();
 
   try {
-    const result = await fetchPosts({ page, categoryId: category?.id ?? null });
+    const result = await fetchArchivePage({ page, categoryId: category?.id ?? null });
     if (page > result.totalPages) throw notFound();
     return {
-      posts: dedupeByTitle(result.posts).map(slimPost),
+      posts: result.posts.map(slimPost),
       totalPages: result.totalPages,
       categories: visibleCategories,
       category: category ?? null,

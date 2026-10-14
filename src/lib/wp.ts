@@ -396,6 +396,33 @@ export async function fetchPosts(params: { page: number; categoryId: number | nu
   return { posts, totalPages };
 }
 
+export async function fetchArchivePage(params: {
+  page: number;
+  categoryId: number | null;
+}): Promise<{ posts: WpPost[]; totalPages: number }> {
+  const perRequest = 100;
+  const all: WpPost[] = [];
+
+  for (let apiPage = 1; apiPage <= 100; apiPage += 1) {
+    const query = new URLSearchParams({
+      _embed: "1",
+      per_page: String(perRequest),
+      page: String(apiPage),
+    });
+    if (params.categoryId) query.set("categories", String(params.categoryId));
+
+    const res = await wpFetch(`/posts?${query.toString()}`);
+    const chunk = (await res.json()) as WpPost[];
+    all.push(...chunk);
+    if (chunk.length < perRequest) break;
+  }
+
+  const unique = dedupeByTitle(all);
+  const totalPages = Math.max(1, Math.ceil(unique.length / POSTS_PER_PAGE));
+  const start = (params.page - 1) * POSTS_PER_PAGE;
+  return { posts: unique.slice(start, start + POSTS_PER_PAGE), totalPages };
+}
+
 export async function fetchCategories(): Promise<WpCategory[]> {
   const res = await wpFetch("/categories?per_page=100&orderby=count&order=desc");
   const cats = (await res.json()) as WpCategory[];
