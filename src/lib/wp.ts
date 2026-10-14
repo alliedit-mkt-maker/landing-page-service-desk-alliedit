@@ -63,6 +63,13 @@ export function featuredImage(post: WpPost): string | null {
   return post._embedded?.["wp:featuredmedia"]?.[0]?.source_url ?? null;
 }
 
+const MIGRATION_MODIFIED_DATES = new Set(["2026-09-29", "2026-09-30"]);
+
+export function effectiveModifiedDate(post: Pick<WpPost, "date" | "modified">): string {
+  const modified = post.modified || post.date;
+  return MIGRATION_MODIFIED_DATES.has(modified.slice(0, 10)) ? post.date : modified;
+}
+
 export function authorName(post: WpPost): string {
   const name = post._embedded?.author?.[0]?.name;
   return name ? stripHtml(name) : "Allied IT";

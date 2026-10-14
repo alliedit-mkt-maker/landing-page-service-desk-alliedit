@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { dedupeByTitle, fetchAllPosts } from "@/lib/wp";
+import { dedupeByTitle, effectiveModifiedDate, fetchAllPosts } from "@/lib/wp";
 import { LP_ON_ROOT_DOMAIN, SITE_ORIGIN } from "@/lib/site";
 import { BLOG_CATEGORY_SLUGS } from "@/lib/blog-listing";
 
@@ -93,14 +93,11 @@ export const Route = createFileRoute("/sitemap.xml")({
         }
 
         for (const post of posts) {
-          const dates = [post.date, post.modified].filter(Boolean) as string[];
-          const lastmod = dates
-            .map((d) => new Date(d))
-            .filter((d) => !Number.isNaN(d.getTime()))
-            .sort((a, b) => b.getTime() - a.getTime())[0];
+          const effectiveModified = effectiveModifiedDate(post);
+          const lastmod = new Date(effectiveModified);
           const loc = xmlEscape(`${origin}/blog/${post.slug}`);
           entries.push(
-            lastmod
+            !Number.isNaN(lastmod.getTime())
               ? `  <url><loc>${loc}</loc><lastmod>${lastmod.toISOString()}</lastmod></url>`
               : `  <url><loc>${loc}</loc></url>`,
           );
