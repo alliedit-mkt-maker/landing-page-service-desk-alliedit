@@ -132,7 +132,7 @@ export function SiteNavbar() {
           >
             <img
               src="/logo-allied-wordmark.png"
-              alt=""
+              alt="Allied IT"
               className={`site-logo-mustard w-auto max-w-none transition-all duration-500 ease-in-out ${
                 hero ? "h-[38px]" : "h-8"
               } ${scrolled ? "-translate-x-full" : "translate-x-0"}`}

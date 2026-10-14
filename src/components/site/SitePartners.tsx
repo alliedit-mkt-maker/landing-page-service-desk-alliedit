@@ -10,19 +10,19 @@ import awsLogo from "@/assets/partners/aws.png.asset.json";
 import lenovoLogo from "@/assets/partners/lenovo.png.asset.json";
 import sensrLogo from "@/assets/partners/sensr.png.asset.json";
 
-type Partner = { name: string; src?: string };
+type Partner = { name: string; alt: string; src?: string };
 
 const PARTNERS: Partner[] = [
-  { name: "Poly", src: polyLogo.url },
-  { name: "Logitech", src: logitechLogo.url },
-  { name: "Yealink", src: yealinkLogo.url },
-  { name: "Fortinet", src: fortinetLogo.url },
-  { name: "Microsoft", src: microsoftLogo.url },
-  { name: "Cisco", src: ciscoLogo.url },
-  { name: "Dell", src: dellLogo.url },
-  { name: "AWS", src: awsLogo.url },
-  { name: "Lenovo", src: lenovoLogo.url },
-  { name: "Sensr.IT", src: sensrLogo.url },
+  { name: "Poly", alt: "Logo Poly | HP", src: polyLogo.url },
+  { name: "Logitech", alt: "Logo Logitech", src: logitechLogo.url },
+  { name: "Yealink", alt: "Logo Yealink", src: yealinkLogo.url },
+  { name: "Fortinet", alt: "Logo Fortinet", src: fortinetLogo.url },
+  { name: "Microsoft", alt: "Logo Microsoft", src: microsoftLogo.url },
+  { name: "Cisco", alt: "Logo Cisco", src: ciscoLogo.url },
+  { name: "Dell", alt: "Logo Dell", src: dellLogo.url },
+  { name: "AWS", alt: "Logo AWS", src: awsLogo.url },
+  { name: "Lenovo", alt: "Logo Lenovo", src: lenovoLogo.url },
+  { name: "Sensr.IT", alt: "Logo Sensr", src: sensrLogo.url },
 ];
 
 export function SitePartners() {
@@ -69,18 +69,17 @@ export function SitePartners() {
             WebkitMaskImage:
               "linear-gradient(to bottom, transparent, black 12%, black 88%, transparent)",
           }}
-          aria-hidden="true"
         >
           <div
             className="site-marquee-y flex flex-col items-center"
             style={{ animationPlayState: running ? "running" : "paused" }}
           >
-            {[...PARTNERS, ...PARTNERS].map((p, i) => (
+            {PARTNERS.map((p, i) => (
               <div key={`${p.name}-${i}`} className="flex h-24 w-full items-center justify-center">
                 {p.src ? (
                   <img
                     src={p.src}
-                    alt=""
+                    alt={p.alt}
                     loading="lazy"
                     style={{ mixBlendMode: "multiply" }}
                     className={`h-auto max-h-10 w-auto max-w-[150px] object-contain grayscale ${p.name === "Microsoft" ? "opacity-80" : "opacity-55"}`}
@@ -92,6 +91,25 @@ export function SitePartners() {
                 )}
               </div>
             ))}
+            <div aria-hidden="true">
+              {PARTNERS.map((p, i) => (
+                <div key={`${p.name}-dup-${i}`} className="flex h-24 w-full items-center justify-center">
+                  {p.src ? (
+                    <img
+                      src={p.src}
+                      alt=""
+                      loading="lazy"
+                      style={{ mixBlendMode: "multiply" }}
+                      className={`h-auto max-h-10 w-auto max-w-[150px] object-contain grayscale ${p.name === "Microsoft" ? "opacity-80" : "opacity-55"}`}
+                    />
+                  ) : (
+                    <span className="font-chillax text-[22px] font-semibold tracking-tight text-[var(--site-ink)]/35">
+                      {p.name}
+                    </span>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
