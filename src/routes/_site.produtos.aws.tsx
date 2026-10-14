@@ -107,7 +107,19 @@ function AwsPage() {
 
           <SiteCtaButton  className={`${btnSolid} mt-10`}>Solicite um orçamento</SiteCtaButton>
         </div>
+        {/* No celular, a foto vira uma faixa abaixo do texto, para o texto nunca ficar sobre a nuvem */}
+        <div aria-hidden className="relative sm:hidden">
+          <img
+            src={hero.url}
+            alt=""
+            loading="eager"
+            decoding="async"
+            className="block h-[40vh] max-h-[380px] w-full object-cover object-[64%_50%]"
+          />
+          <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-[var(--site-ink)] to-transparent" />
+        </div>
       </section>
+
 
       {/* O que é */}
       <section className="bg-white py-20 sm:py-24">
