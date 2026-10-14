@@ -98,7 +98,7 @@ export function SiteHome() {
       <div className="relative z-20 mx-auto grid min-h-[86vh] max-w-7xl grid-cols-1 items-center gap-14 px-5 py-20 sm:px-8 lg:min-h-[88vh] lg:grid-cols-[1.05fr_1fr] lg:gap-8 lg:py-24">
         <div className="text-center lg:text-left">
           <h1 className="font-chillax mx-auto max-w-[24ch] text-[1.9rem] font-bold leading-[1.15] tracking-tight text-white sm:text-[2.5rem] lg:mx-0 lg:text-[2.9rem]">
-            Nós cuidamos da sua TI
+            Nós cuidamos da sua TI{" "}
             <br />
             Você cuida do seu Negócio
           </h1>

@@ -20,6 +20,8 @@ export async function loadBlogListing(page: number, categorySlug?: string) {
   const categories = await fetchCategories();
   const visibleCategories = categories.filter((category) =>
     BLOG_CATEGORY_SLUGS.includes(category.slug as (typeof BLOG_CATEGORY_SLUGS)[number]),
+  ).map((category) =>
+    category.slug === "cloud" ? { ...category, name: "Cloud" } : category,
   );
   const category = categorySlug
     ? visibleCategories.find((item) => item.slug === categorySlug)

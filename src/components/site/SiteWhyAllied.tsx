@@ -41,7 +41,7 @@ export function SiteWhyAllied() {
           id="site-why"
           className="font-chillax text-[1.9rem] font-bold leading-[1.12] tracking-tight text-white sm:text-[2.6rem]"
         >
-          Mais que um fornecedor de TI.
+          Mais que um fornecedor de TI.{" "}
           <br />
           Um parceiro de operação.
         </h2>

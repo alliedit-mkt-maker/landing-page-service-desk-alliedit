@@ -51,7 +51,7 @@ export function SitePartners() {
             id="site-parceiros"
             className="font-chillax text-[1.7rem] font-bold leading-[1.15] tracking-tight text-[var(--site-ink)] sm:text-[2.1rem]"
           >
-            Parceiros oficiais das principais
+            Parceiros oficiais das principais{" "}
             <br />
             marcas de tecnologia
           </h2>

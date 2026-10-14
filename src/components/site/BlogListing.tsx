@@ -75,7 +75,7 @@ export function BlogListing({
               categoryName
             ) : (
               <>
-                Conteúdo direto ao ponto
+                Conteúdo direto ao ponto{" "}
                 <br />
                 sobre TI e operação.
               </>
