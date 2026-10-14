@@ -68,7 +68,7 @@ export function BlogListing({
         />
         <div className="relative mx-auto max-w-4xl px-5 pb-16 pt-16 text-center sm:px-8 sm:pt-24">
           <p className="font-inter text-[11px] font-semibold uppercase tracking-[0.2em] text-[#D4A017]">
-            Allied Blog IT
+            Blog Allied IT
           </p>
           <h1 className="font-chillax mx-auto mt-4 max-w-[26ch] text-[2rem] font-bold leading-[1.12] tracking-tight text-white sm:text-[2.75rem]">
             {categoryName ? (

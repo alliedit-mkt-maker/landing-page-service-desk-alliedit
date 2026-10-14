@@ -15,6 +15,7 @@ export type WpPost = {
   title: { rendered: string };
   excerpt: { rendered: string };
   content: { rendered: string };
+  readingTimeMinutes?: number;
   categories: number[];
   _embedded?: {
     "wp:featuredmedia"?: { source_url?: string; alt_text?: string }[];
@@ -69,6 +70,7 @@ export function authorName(post: WpPost): string {
 
 // ~200 palavras por minuto, mínimo de 1 minuto.
 export function readingTime(post: WpPost): number {
+  if (post.readingTimeMinutes) return post.readingTimeMinutes;
   const text = stripHtml(post.content?.rendered || post.excerpt.rendered);
   const words = text ? text.split(/\s+/).length : 0;
   return Math.max(1, Math.ceil(words / 200));
@@ -229,6 +231,7 @@ export function slimPost(post: WpPost): WpPost {
     title: { rendered: post.title.rendered },
     excerpt: { rendered: post.excerpt.rendered },
     content: { rendered: "" },
+    readingTimeMinutes: readingTime(post),
     categories: post.categories,
     _embedded: {
       ...(media
