@@ -96,10 +96,14 @@ function AwsPage() {
           <span className="font-inter text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--site-yellow)]">
             Produtos · Cloud
           </span>
-          <h1 className="font-chillax mt-5 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">Consultoria AWS para empresas: migração, gestão e FinOps</h1>
-          <p className="font-inter mt-6 max-w-xl text-[17px] leading-relaxed text-white/80">
-            A consultoria AWS da Allied IT avalia o seu ambiente, planeja e executa a migração e cuida da operação da nuvem depois dela: monitoramento, segurança, backup e controle de custos (FinOps).
+          <h1 className="font-chillax mt-5 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">Consultoria AWS</h1>
+          <p className="font-chillax mt-3 text-[1.35rem] font-semibold leading-snug text-white sm:text-[1.6rem]">
+            Migração, gestão e otimização de custos na nuvem
           </p>
+          <p className="font-inter mt-6 max-w-xl text-[17px] leading-relaxed text-white/80">
+            A consultoria AWS da Allied IT avalia o seu ambiente, planeja e executa a migração e cuida da operação da nuvem depois dela: monitoramento, segurança e otimização de custos.
+          </p>
+
           <SiteCtaButton  className={`${btnSolid} mt-10`}>Solicite um orçamento</SiteCtaButton>
         </div>
       </section>
