@@ -1,4 +1,5 @@
 import { pageHead } from "@/lib/seo";
+import { serviceSchema } from "@/lib/service-schema";
 import { SiteCtaButton } from "@/components/site/SiteCtaButton";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
@@ -30,12 +31,14 @@ import heroPhoto from "@/assets/sco/hero.jpg.asset.json";
 import serverPhoto from "@/assets/sco/server.jpg.asset.json";
 
 export const Route = createFileRoute("/_site/servicos/smart-cloud-ops")({
-  head: () =>
-    pageHead({ social: "Ambiente em nuvem migrado, protegido e com a conta sob controle.",
+  head: () => {
+    const h = pageHead({ social: "Ambiente em nuvem migrado, protegido e com a conta sob controle.",
       title: "Smart Cloud Ops: Azure, M365 e FinOps | Allied IT",
       description: "Nuvem operada com governança: Azure, Microsoft 365, migração, backup, Disaster Recovery, FinOps e SecOps.",
       path: "/servicos/smart-cloud-ops",
-    }),
+    });
+    return { ...h, scripts: [serviceSchema({ path: "/servicos/smart-cloud-ops", name: "Smart Cloud Ops: Azure, M365 e FinOps", serviceType: "Operação de nuvem (Azure, Microsoft 365 e FinOps)", description: "Nuvem operada com governança: Azure, Microsoft 365, migração, backup, Disaster Recovery, FinOps e SecOps.", sectionName: "Serviços", sectionPath: "/servicos", faq: FAQ })] };
+  },
   component: SmartCloudOpsPage,
 });
 

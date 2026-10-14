@@ -1,4 +1,5 @@
 import { pageHead } from "@/lib/seo";
+import { serviceSchema } from "@/lib/service-schema";
 import { SiteCtaButton } from "@/components/site/SiteCtaButton";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
@@ -16,12 +17,14 @@ import hero from "@/assets/ia/hero.jpg.asset.json";
 import overview from "@/assets/ia/overview.jpg.asset.json";
 
 export const Route = createFileRoute("/_site/servicos/inteligencia-artificial")({
-  head: () =>
-    pageHead({ social: "Da prova de conceito ao uso diário na operação.",
+  head: () => {
+    const h = pageHead({ social: "Da prova de conceito ao uso diário na operação.",
       title: "Inteligência Artificial para empresas | Allied IT",
       description: "Consultoria, POC, MVP e integrações de IA que aumentam a produtividade e geram resultado no negócio.",
       path: "/servicos/inteligencia-artificial",
-    }),
+    });
+    return { ...h, scripts: [serviceSchema({ path: "/servicos/inteligencia-artificial", name: "Inteligência Artificial para empresas", serviceType: "Inteligência artificial para empresas", description: "Consultoria, POC, MVP e integrações de IA que aumentam a produtividade e geram resultado no negócio.", sectionName: "Serviços", sectionPath: "/servicos", faq: FAQ })] };
+  },
   component: IAPage,
 });
 

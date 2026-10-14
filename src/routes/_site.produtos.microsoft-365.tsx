@@ -1,4 +1,5 @@
 import { pageHead } from "@/lib/seo";
+import { serviceSchema } from "@/lib/service-schema";
 import { SiteCtaButton } from "@/components/site/SiteCtaButton";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useRef } from "react";
@@ -37,13 +38,15 @@ import onedrive from "@/assets/m365/onedrive.png.asset.json";
 import sharepoint from "@/assets/m365/sharepoint.png.asset.json";
 
 export const Route = createFileRoute("/_site/produtos/microsoft-365")({
-  head: () =>
-    pageHead({ social: "O plano certo para cada usuário, ativado e acompanhado.",
+  head: () => {
+    const h = pageHead({ social: "O plano certo para cada usuário, ativado e acompanhado.",
       title: "Microsoft 365 para empresas: licenciamento e suporte | Allied IT",
       description:
         "Licenciamento Microsoft 365 com visão consultiva, ativação, migração, gestão de licenças e suporte técnico da Allied IT.",
       path: "/produtos/microsoft-365",
-    }),
+    });
+    return { ...h, scripts: [serviceSchema({ path: "/produtos/microsoft-365", name: "Microsoft 365 para empresas: licenciamento e suporte", serviceType: "Licenciamento e suporte Microsoft 365", description: "Licenciamento Microsoft 365 com visão consultiva, ativação, migração, gestão de licenças e suporte técnico da Allied IT.", sectionName: "Produtos", sectionPath: "/produtos", faq: FAQ })] };
+  },
   component: Microsoft365Page,
 });
 

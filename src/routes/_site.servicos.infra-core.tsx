@@ -1,4 +1,5 @@
 import { pageHead } from "@/lib/seo";
+import { serviceSchema } from "@/lib/service-schema";
 import { SiteCtaButton } from "@/components/site/SiteCtaButton";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
@@ -16,12 +17,14 @@ import rack from "@/assets/infra/rack.jpg.asset.json";
 import team from "@/assets/infra/team.jpg.asset.json";
 
 export const Route = createFileRoute("/_site/servicos/infra-core")({
-  head: () =>
-    pageHead({ social: "Do projeto ao laudo, tudo pronto para a empresa crescer.",
+  head: () => {
+    const h = pageHead({ social: "Do projeto ao laudo, tudo pronto para a empresa crescer.",
       title: "Infra Core: redes, cabeamento estruturado e data center | Allied IT",
       description: "Redes Wi-Fi, cabeamento estruturado, CFTV e data center, do projeto à certificação com laudo.",
       path: "/servicos/infra-core",
-    }),
+    });
+    return { ...h, scripts: [serviceSchema({ path: "/servicos/infra-core", name: "Infra Core: redes, cabeamento estruturado e data center", serviceType: "Infraestrutura de TI: redes, cabeamento e data center", description: "Redes Wi-Fi, cabeamento estruturado, CFTV e data center, do projeto à certificação com laudo.", sectionName: "Serviços", sectionPath: "/servicos", faq: FAQ })] };
+  },
   component: InfraCorePage,
 });
 
