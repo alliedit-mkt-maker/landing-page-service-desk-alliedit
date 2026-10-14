@@ -4,13 +4,13 @@ import { Reveal } from "./Reveal";
 
 const items = [
   { q: "Já tenho time de TI interno. Por que terceirizar?", a: "Time interno é estratégico. Mantenha-o focado em projeto, integração de sistema, análise de dado. Service Desk é operação repetitiva que tira o seu time do que importa. Terceirizar é direcionar inteligência interna para o que gera valor." },
-  { q: "Já tenho fornecedor. Por que trocar pra AlliedIT?", a: "Se o seu fornecedor atual cumpre SLA, faz análise de causa raiz, entende o seu setor e cresce com você, não troque. Se algum desses pontos falha, vale uma conversa. Migração de fornecedor é processo previsível quando bem desenhada." },
+  { q: "Já tenho fornecedor. Por que trocar pra Allied IT?", a: "Se o seu fornecedor atual cumpre SLA, faz análise de causa raiz, entende o seu setor e cresce com você, não troque. Se algum desses pontos falha, vale uma conversa. Migração de fornecedor é processo previsível quando bem desenhada." },
   { q: "O custo é maior ou menor do que manter time interno?", a: "Quase sempre menor, considerando salário, encargos, treinamento, turnover, ferramenta e cobertura 24x7. Empresas similares à sua tipicamente reduzem entre 20% e 40% do custo total." },
-  { q: "Como é a transição? Vou ficar sem suporte?", a: "Não. Implantamos em até 30 dias com overlap. A operação anterior (interna ou de fornecedor anterior) continua até a AlliedIT estar 100% rodando. Usuários internos da sua empresa não sentem ruptura." },
+  { q: "Como é a transição? Vou ficar sem suporte?", a: "Não. Implantamos em até 30 dias com overlap. A operação anterior (interna ou de fornecedor anterior) continua até a Allied IT estar 100% rodando. Usuários internos da sua empresa não sentem ruptura." },
   { q: "Vocês atendem em quantas cidades?", a: "Em todo o território nacional. Suporte remoto cobre qualquer ponto com internet. Field Service cobre as principais regiões metropolitanas." },
-  { q: "Qual o SLA garantido?", a: "Parametrizado por categoria de incidente. Padrão para incidente crítico: resposta em até 15 minutos. A AlliedIT entrega abaixo desse padrão." },
+  { q: "Qual o SLA garantido?", a: "Parametrizado por categoria de incidente. Padrão para incidente crítico: resposta em até 15 minutos. A Allied IT entrega abaixo desse padrão." },
   { q: "Posso começar com piloto antes do contrato anual?", a: "Em casos específicos sim, com escopo reduzido por 90 dias para avaliação mútua. Pergunte ao especialista no contato." },
-  { q: "E se eu precisar também de NOC, SOC ou Field Service?", a: "A AlliedIT entrega todos. Mais econômico contratar integrado do que via fornecedores separados." },
+  { q: "E se eu precisar também de NOC, SOC ou Field Service?", a: "A Allied IT entrega todos. Mais econômico contratar integrado do que via fornecedores separados." },
 ];
 
 export function Faq() {

@@ -99,7 +99,7 @@ function Hero() {
       }}
     >
       <div className="max-w-5xl mx-auto relative w-full text-center flex flex-col items-center">
-        <img src={logoAlliedIt} alt="AlliedIT" className="h-9 sm:h-11 w-auto mb-7 sm:mb-9" />
+        <img src={logoAlliedIt} alt="Allied IT" className="h-9 sm:h-11 w-auto mb-7 sm:mb-9" />
         <Reveal variant="fade-up">
           <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-gold font-semibold mb-4 block">
             Poly Studio | HP
@@ -125,7 +125,7 @@ function Hero() {
           <p className="text-petrol/70 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
             Chega de reunião que atrasa 10 minutos por causa do cabo, de quem está no fundo da sala aparecendo pequeno e
             de voz abafada do outro lado da chamada. O Poly Studio resolve imagem, áudio e início de reunião em um
-            equipamento só — e a AlliedIT dimensiona a sala certa para você não comprar barra demais nem de menos.
+            equipamento só — e a Allied IT dimensiona a sala certa para você não comprar barra demais nem de menos.
           </p>
         </Reveal>
         <Reveal variant="fade-up" delay={380} className="flex flex-wrap gap-4 justify-center mt-7 sm:mt-8">
@@ -710,7 +710,7 @@ function Certifications() {
   );
 }
 
-/* ---------- Por que AlliedIT ---------- */
+/* ---------- Por que Allied IT ---------- */
 
 const whyItems: { icon: LucideIcon; title: string; body: string }[] = [
   {
@@ -752,7 +752,7 @@ function WhyAllied() {
       <div className="max-w-6xl mx-auto relative">
         <Reveal variant="fade-up" className="mb-10 sm:mb-14 max-w-3xl">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-balance text-white">
-            Por que comprar seu Poly Studio com a AlliedIT
+            Por que comprar seu Poly Studio com a Allied IT
           </h2>
         </Reveal>
         <div className="grid md:grid-cols-3 gap-6 items-stretch">

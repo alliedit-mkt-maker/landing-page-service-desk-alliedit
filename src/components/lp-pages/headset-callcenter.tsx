@@ -84,7 +84,7 @@ function Hero() {
       <div className="max-w-4xl mx-auto relative w-full text-center flex flex-col items-center">
         <img
           src={logoAlliedIt}
-          alt="AlliedIT"
+          alt="Allied IT"
           className="h-12 sm:h-16 w-auto brightness-0 invert mb-10 sm:mb-12 drop-shadow-lg"
         />
 
@@ -471,7 +471,7 @@ function WhyAllied() {
       <div className="max-w-6xl mx-auto relative px-0">
         <Reveal variant="fade-up" className="mb-10 sm:mb-14 max-w-3xl">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-balance text-white">
-            Por que comprar seu headset com a AlliedIT
+            Por que comprar seu headset com a Allied IT
           </h2>
         </Reveal>
         <div className="grid md:grid-cols-3 gap-6 items-stretch">

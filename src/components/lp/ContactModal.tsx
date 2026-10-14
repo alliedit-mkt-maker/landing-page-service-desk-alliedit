@@ -180,7 +180,7 @@ export function ContactModal({ open, onOpenChange, source, title = "Vamos falar 
         <DialogHeader>
           <DialogTitle className="text-2xl font-extrabold tracking-tight text-petrol">{title}</DialogTitle>
           <DialogDescription className="sr-only">
-            Formulário de contato AlliedIT Service Desk
+            Formulário de contato Allied IT Service Desk
           </DialogDescription>
         </DialogHeader>
         <div className="pt-2 hubspot-form-wrapper">

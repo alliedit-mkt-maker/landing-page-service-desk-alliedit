@@ -98,7 +98,7 @@ const scenarios = [
   {
     key: "headcount",
     label: "Preciso de gente, mas não consigo abrir vaga",
-    bridge: "A AlliedIT entra como serviço. O profissional chega sem passar pela fila de headcount.",
+    bridge: "A Allied IT entra como serviço. O profissional chega sem passar pela fila de headcount.",
     pains: [
       { title: "Headcount congelado", body: "A necessidade existe, a verba de contratação não. A vaga simplesmente não é aberta." },
       { title: "Aprovação de CLT que não sai", body: "Pedido parado entre RH, financeiro e diretoria. O tempo passa e o projeto não anda." },
@@ -109,7 +109,7 @@ const scenarios = [
   {
     key: "recrutamento",
     label: "Contratei, mas demora demais pra achar o perfil certo",
-    bridge: "A AlliedIT já tem a rede pronta. Você valida o perfil em vez de conduzir um processo seletivo inteiro.",
+    bridge: "A Allied IT já tem a rede pronta. Você valida o perfil em vez de conduzir um processo seletivo inteiro.",
     pains: [
       { title: "Recrutamento técnico lento", body: "Triagem, entrevistas, testes, contraproposta. Semanas até a primeira pessoa qualificada aparecer." },
       { title: "Perfil sênior é escasso", body: "Quanto mais específica a stack, menor o funil. E quem é bom já está empregado." },
@@ -120,7 +120,7 @@ const scenarios = [
   {
     key: "projeto",
     label: "Preciso de um especialista só pra um projeto",
-    bridge: "A AlliedIT aloca a senioridade pelo tempo do projeto. Sem vínculo permanente para uma demanda temporária.",
+    bridge: "A Allied IT aloca a senioridade pelo tempo do projeto. Sem vínculo permanente para uma demanda temporária.",
     pains: [
       { title: "Demanda temporária, custo permanente", body: "Não faz sentido contratar CLT para uma frente que dura alguns meses." },
       { title: "O projeto precisa de senioridade agora", body: "É um perfil específico, com experiência, e a necessidade é imediata." },
@@ -188,7 +188,7 @@ function ScenarioSelector() {
                 onClick={() => openModal("scenario_selector")}
                 className="btn-sheen bg-petrol text-white px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-petrol-light transition-colors"
               >
-                Quero ver como a AlliedIT resolve isso
+                Quero ver como a Allied IT resolve isso
               </button>
             </div>
           </div>
@@ -202,7 +202,7 @@ const pillars = [
   { title: "Vira OpEx, não CapEx", body: "Sem abrir vaga, sem headcount, sem encargos. O profissional entra como serviço, na verba que você já tem." },
   { title: "Perfil certo, rápido", body: "A gente já tem a rede de profissionais de TI. Você não espera meses por um processo seletivo." },
   { title: "Escala conforme o projeto", body: "Precisa de mais gente numa fase crítica? Menos depois? Você ajusta sem demitir nem recontratar." },
-  { title: "Gestão da AlliedIT", body: "Operação madura, +7 anos em TI corporativa. A gente cuida do profissional alocado, você foca na entrega." },
+  { title: "Gestão da Allied IT", body: "Operação madura, +7 anos em TI corporativa. A gente cuida do profissional alocado, você foca na entrega." },
 ];
 
 function Pillars() {
@@ -212,7 +212,7 @@ function Pillars() {
       <div className="max-w-7xl mx-auto">
         <Reveal variant="fade-up" className="mb-12 sm:mb-16 max-w-3xl">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-balance text-ink-mid">
-            O que muda quando a alocação é da AlliedIT
+            O que muda quando a alocação é da Allied IT
           </h2>
           <p className="text-petrol/60 text-base sm:text-lg">
             Você contrata capacidade técnica como serviço, no ritmo do projeto e dentro da verba que já existe.
@@ -303,7 +303,7 @@ const steps = [
   { title: "Levantamento do perfil", body: "Entendemos a senioridade, stack e prazo que o seu projeto precisa." },
   { title: "Seleção", body: "Apresentamos os profissionais que batem com o perfil, você valida." },
   { title: "Alocação", body: "O profissional entra na sua operação: remoto, presencial ou híbrido." },
-  { title: "Gestão contínua", body: "A AlliedIT acompanha e ajusta conforme o projeto evolui." },
+  { title: "Gestão contínua", body: "A Allied IT acompanha e ajusta conforme o projeto evolui." },
 ];
 
 function HowItWorks() {
@@ -351,7 +351,7 @@ function Credibility() {
       <div className="max-w-7xl mx-auto">
         <Reveal variant="fade-up" className="mb-12 sm:mb-16 max-w-3xl">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-balance text-ink-mid">
-            Por que empresas que não podem errar escolhem a AlliedIT
+            Por que empresas que não podem errar escolhem a Allied IT
           </h2>
           <p className="text-petrol/60 text-base sm:text-lg">
             Operação madura, especialização vertical e relação de longo prazo.
@@ -372,11 +372,11 @@ function Credibility() {
 }
 
 const faqItems = [
-  { q: "Qual a diferença entre alocação e contratação CLT?", a: "Na CLT o profissional entra no seu quadro, ocupa headcount e carrega encargos de longo prazo. Na alocação ele entra como serviço prestado pela AlliedIT: o vínculo é conosco, a entrega é na sua operação, e o custo é OpEx." },
-  { q: "O profissional alocado trabalha na minha empresa ou na AlliedIT?", a: "Ele trabalha na sua operação, no seu dia a dia e nas suas prioridades. O vínculo, a gestão administrativa e o acompanhamento ficam com a AlliedIT." },
+  { q: "Qual a diferença entre alocação e contratação CLT?", a: "Na CLT o profissional entra no seu quadro, ocupa headcount e carrega encargos de longo prazo. Na alocação ele entra como serviço prestado pela Allied IT: o vínculo é conosco, a entrega é na sua operação, e o custo é OpEx." },
+  { q: "O profissional alocado trabalha na minha empresa ou na Allied IT?", a: "Ele trabalha na sua operação, no seu dia a dia e nas suas prioridades. O vínculo, a gestão administrativa e o acompanhamento ficam com a Allied IT." },
   { q: "Consigo alocar por quanto tempo? Tem prazo mínimo?", a: "Trabalhamos com contratos por período do projeto. O prazo mínimo é acordado no início e depende do perfil e da senioridade. Fale com o especialista para desenhar o formato." },
   { q: "Como funciona a cobrança?", a: "Mensalidade por profissional alocado, dentro do escopo acordado. Entra como serviço na sua verba de OpEx, sem investimento em contratação nem encargos trabalhistas do seu lado." },
-  { q: "E se o profissional não der certo? Consigo trocar?", a: "Sim. Se o perfil não atender, a AlliedIT conduz a substituição sem que você passe por um novo processo seletivo." },
+  { q: "E se o profissional não der certo? Consigo trocar?", a: "Sim. Se o perfil não atender, a Allied IT conduz a substituição sem que você passe por um novo processo seletivo." },
   { q: "Vocês alocam remoto, presencial ou híbrido?", a: "Os três formatos. O modelo é definido conforme a necessidade da sua operação e o perfil do profissional." },
   { q: "Quais perfis e stacks vocês cobrem?", a: "Desenvolvedores back-end, front-end, full-stack e mobile, além de gerente de projeto, Product Owner, Product Manager e Scrum Master. Se a sua demanda for de outro perfil de TI, vale conversar." },
   { q: "Quanto tempo leva pra ter o profissional alocado?", a: "Depende da senioridade e da stack, mas o caminho é bem mais curto que um processo seletivo interno: apresentamos candidatos da nossa rede e você valida." },

@@ -86,7 +86,7 @@ function Hero() {
       }}
     >
       <div className="max-w-5xl mx-auto relative w-full text-center flex flex-col items-center">
-        <img src={logoAlliedIt} alt="AlliedIT" className="h-9 sm:h-11 w-auto mb-7 sm:mb-9" />
+        <img src={logoAlliedIt} alt="Allied IT" className="h-9 sm:h-11 w-auto mb-7 sm:mb-9" />
         <Reveal variant="fade-up">
           <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-gold font-semibold mb-4 block">
             Logitech Rally Family
@@ -111,7 +111,7 @@ function Hero() {
 
         <Reveal variant="fade-up" delay={300}>
           <p className="text-petrol/70 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            Da sala pequena à sala de diretoria. Conheça a Rally Bar e a Rally Bar Mini e deixe a AlliedIT cuidar da
+            Da sala pequena à sala de diretoria. Conheça a Rally Bar e a Rally Bar Mini e deixe a Allied IT cuidar da
             escolha certa, da instalação ao suporte.
           </p>
         </Reveal>
@@ -487,7 +487,7 @@ function Certifications() {
   );
 }
 
-/* ---------- 6. Por que AlliedIT ---------- */
+/* ---------- 6. Por que Allied IT ---------- */
 
 const whyItems: { icon: LucideIcon; title: string; body: string }[] = [
   {
@@ -531,7 +531,7 @@ function WhyAllied() {
       <div className="max-w-6xl mx-auto relative">
         <Reveal variant="fade-up" className="mb-10 sm:mb-14 max-w-3xl">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-balance text-white">
-            Por que comprar sua Rally Bar com a AlliedIT
+            Por que comprar sua Rally Bar com a Allied IT
           </h2>
         </Reveal>
         <div className="grid md:grid-cols-3 gap-6 items-stretch">

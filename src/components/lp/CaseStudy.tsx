@@ -50,7 +50,7 @@ export function CaseStudy() {
                 Operação integrada de Service Support com governança ITIL
               </h3>
               <p className="text-petrol/70 mb-8 leading-relaxed">
-                A Ipanema Queijos, indústria de alimentos altamente dependente de TI, enfrentava incidentes recorrentes, custos elevados com equipe própria e SLA abaixo do esperado. A AlliedIT implantou uma operação integrada de Service Support, orientada por indicadores e baseada em ITIL, com célula dedicada, customização cultural e gestão centralizada.
+                A Ipanema Queijos, indústria de alimentos altamente dependente de TI, enfrentava incidentes recorrentes, custos elevados com equipe própria e SLA abaixo do esperado. A Allied IT implantou uma operação integrada de Service Support, orientada por indicadores e baseada em ITIL, com célula dedicada, customização cultural e gestão centralizada.
               </p>
               <div className="grid grid-cols-3 gap-6 mb-8 py-6 border-y border-border">
                 <Stat n="-40%" label="custo da equipe" />

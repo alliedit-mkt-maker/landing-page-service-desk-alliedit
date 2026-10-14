@@ -98,7 +98,7 @@ function Hero() {
       />
 
       <div className="max-w-5xl mx-auto relative w-full text-center flex flex-col items-center">
-        <img src={logoAlliedIt} alt="AlliedIT" className="h-9 sm:h-11 w-auto mb-7 sm:mb-9 brightness-0 invert" />
+        <img src={logoAlliedIt} alt="Allied IT" className="h-9 sm:h-11 w-auto mb-7 sm:mb-9 brightness-0 invert" />
         <Reveal variant="fade-up">
           <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-gold font-semibold mb-4 block">
             Videoconferência Logitech · Poly · Yealink
@@ -477,7 +477,7 @@ function Certifications() {
   );
 }
 
-/* ---------- 6. Por que AlliedIT ---------- */
+/* ---------- 6. Por que Allied IT ---------- */
 
 const whyItems: { icon: LucideIcon; title: string; body: string }[] = [
   {

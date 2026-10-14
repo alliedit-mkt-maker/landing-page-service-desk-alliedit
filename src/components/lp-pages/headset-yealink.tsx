@@ -84,7 +84,7 @@ function Hero() {
         }}
       />
       <div className="max-w-5xl mx-auto relative w-full text-center flex flex-col items-center">
-        <img src={logoAlliedIt} alt="AlliedIT" className="h-12 sm:h-16 w-auto brightness-0 invert mb-10 sm:mb-12 drop-shadow-lg" />
+        <img src={logoAlliedIt} alt="Allied IT" className="h-12 sm:h-16 w-auto brightness-0 invert mb-10 sm:mb-12 drop-shadow-lg" />
 
         <Reveal variant="fade-up">
           <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-gold font-semibold mb-5 block">
@@ -101,7 +101,7 @@ function Hero() {
         <Reveal variant="fade-up" delay={200}>
           <p className="text-white/80 text-base sm:text-lg max-w-2xl mx-auto mb-9 leading-relaxed drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)]">
             Áudio profissional, conforto para o expediente inteiro e um parque padronizado que a TI consegue manter. A
-            AlliedIT ajuda a escolher o modelo certo para cada posição, com produto genuíno, nota fiscal e garantia.
+            Allied IT ajuda a escolher o modelo certo para cada posição, com produto genuíno, nota fiscal e garantia.
           </p>
         </Reveal>
 
@@ -541,7 +541,7 @@ function WhyAllied() {
       <div className="max-w-6xl mx-auto relative">
         <Reveal variant="fade-up" className="mb-10 sm:mb-14 max-w-3xl">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-balance text-white">
-            Por que comprar seu headset Yealink com a AlliedIT
+            Por que comprar seu headset Yealink com a Allied IT
           </h2>
         </Reveal>
         <div className="grid md:grid-cols-3 gap-6 items-stretch">

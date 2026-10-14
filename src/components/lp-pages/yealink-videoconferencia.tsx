@@ -113,7 +113,7 @@ function Hero() {
       />
 
       <div className="max-w-5xl mx-auto relative w-full text-center flex flex-col items-center">
-        <img src={logoAlliedIt} alt="AlliedIT" className="h-9 sm:h-11 w-auto mb-7 sm:mb-9 brightness-0 invert" />
+        <img src={logoAlliedIt} alt="Allied IT" className="h-9 sm:h-11 w-auto mb-7 sm:mb-9 brightness-0 invert" />
         <Reveal variant="fade-up">
           <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-gold font-semibold mb-4 block">
             Videoconferência Yealink
@@ -129,7 +129,7 @@ function Hero() {
           <p className="text-white/75 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
             Chega de reunião que começa atrasada porque ninguém acha o cabo certo, de quem fica de fora do enquadramento
             da câmera e de áudio abafado que faz todo mundo perguntar "pode repetir?". A Yealink resolve câmera, áudio e
-            início de reunião em um equipamento só, e a AlliedIT dimensiona a sala certa pra você.
+            início de reunião em um equipamento só, e a Allied IT dimensiona a sala certa pra você.
           </p>
         </Reveal>
         <Reveal variant="fade-up" delay={380} className="flex flex-wrap gap-4 justify-center mt-8 sm:mt-10">
@@ -732,7 +732,7 @@ function Certifications() {
   );
 }
 
-/* ---------- Por que AlliedIT ---------- */
+/* ---------- Por que Allied IT ---------- */
 
 const whyItems: { icon: LucideIcon; title: string; body: string }[] = [
   {
@@ -768,7 +768,7 @@ function WhyAllied() {
       <div className="max-w-6xl mx-auto relative">
         <Reveal variant="fade-up" className="mb-10 sm:mb-14 max-w-3xl">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-balance text-white">
-            Por que comprar sua videoconferência Yealink com a AlliedIT
+            Por que comprar sua videoconferência Yealink com a Allied IT
           </h2>
         </Reveal>
         <div className="grid md:grid-cols-3 gap-6 items-stretch">
