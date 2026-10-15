@@ -97,7 +97,7 @@ export function keepWhatsappMask(container: HTMLElement | null): () => void {
   };
 }
 
-export function ContactModal({ open, onOpenChange, source, title = "Vamos falar de Service Desk.", formId }: { open: boolean; onOpenChange: (v: boolean) => void; source?: string; title?: string; formId?: string }) {
+export function ContactModal({ open, onOpenChange, source, title = "Vamos falar de Service Desk.", formId, description = "Formulário de contato Allied IT Service Desk" }: { open: boolean; onOpenChange: (v: boolean) => void; source?: string; title?: string; formId?: string; description?: string }) {
   const navigate = useNavigate();
   const targetId = useId().replace(/:/g, "_");
   const containerRef = useRef<HTMLDivElement>(null);
@@ -180,7 +180,7 @@ export function ContactModal({ open, onOpenChange, source, title = "Vamos falar 
         <DialogHeader>
           <DialogTitle className="text-2xl font-extrabold tracking-tight text-petrol">{title}</DialogTitle>
           <DialogDescription className="sr-only">
-            Formulário de contato Allied IT Service Desk
+            {description}
           </DialogDescription>
         </DialogHeader>
         <div className="pt-2 hubspot-form-wrapper">

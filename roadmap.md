@@ -1,0 +1,3 @@
+- [ ] Configure the five service-page forms and descriptions without changing shared defaults.
+- [ ] Inspect hosted hidden fields and verify every service CTA, UTM filling and WhatsApp masking.
+- [ ] Report findings and any unverified submission results; do not publish.
