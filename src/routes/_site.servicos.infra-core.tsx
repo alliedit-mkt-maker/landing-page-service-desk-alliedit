@@ -16,7 +16,7 @@ import hero from "@/assets/infra/hero.jpg.asset.json";
 import rack from "@/assets/infra/rack.jpg.asset.json";
 import team from "@/assets/infra/team.jpg.asset.json";
 
-const CONTACT_FORM = { formId: "e7c97bc8-1dbd-44a7-ba36-2bcec71e97a3", description: "Formulário de contato Allied IT Infra Core" };
+const CONTACT_FORM = { formId: "e7c97bc8-1dbd-44a7-ba36-2bcec71e97a3", description: "Formulário de contato Allied IT Infra Core", product: "Infra Core" };
 
 export const Route = createFileRoute("/_site/servicos/infra-core")({
   head: () => {

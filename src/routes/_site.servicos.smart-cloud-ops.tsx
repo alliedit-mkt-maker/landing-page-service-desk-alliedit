@@ -30,7 +30,7 @@ import { SiteFooter } from "@/components/site/SiteFooter";
 import heroPhoto from "@/assets/sco/hero.jpg.asset.json";
 import serverPhoto from "@/assets/sco/server.jpg.asset.json";
 
-const CONTACT_FORM = { formId: "237e8c94-dc21-4348-bc2f-f60efff214d6", description: "Formulário de contato Allied IT Smart Cloud Ops" };
+const CONTACT_FORM = { formId: "237e8c94-dc21-4348-bc2f-f60efff214d6", description: "Formulário de contato Allied IT Smart Cloud Ops", product: "Smart Cloud Ops" };
 
 export const Route = createFileRoute("/_site/servicos/smart-cloud-ops")({
   head: () => {

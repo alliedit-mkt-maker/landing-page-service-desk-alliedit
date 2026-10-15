@@ -16,7 +16,7 @@ import { SiteFooter } from "@/components/site/SiteFooter";
 import hero from "@/assets/ia/hero.jpg.asset.json";
 import overview from "@/assets/ia/overview.jpg.asset.json";
 
-const CONTACT_FORM = { formId: "eac0f8f3-946d-4477-8e30-c77fbefd3a26", description: "Formulário de contato Allied IT Inteligência Artificial" };
+const CONTACT_FORM = { formId: "eac0f8f3-946d-4477-8e30-c77fbefd3a26", description: "Formulário de contato Allied IT Inteligência Artificial", product: "Inteligência Artificial" };
 
 export const Route = createFileRoute("/_site/servicos/inteligencia-artificial")({
   head: () => {

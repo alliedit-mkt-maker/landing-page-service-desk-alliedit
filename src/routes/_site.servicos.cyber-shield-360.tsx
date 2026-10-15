@@ -32,7 +32,7 @@ import heroPhoto from "@/assets/csh/hero.jpg.asset.json";
 import socPhoto from "@/assets/csh/soc.jpg.asset.json";
 import consolePhoto from "@/assets/csh/console.jpg.asset.json";
 
-const CONTACT_FORM = { formId: "3b4b53a7-de50-4fdf-8aa4-06c859a28c87", description: "Formulário de contato Allied IT Cyber Shield 360°" };
+const CONTACT_FORM = { formId: "3b4b53a7-de50-4fdf-8aa4-06c859a28c87", description: "Formulário de contato Allied IT Cyber Shield 360°", product: "Cyber Shield 360°" };
 
 export const Route = createFileRoute("/_site/servicos/cyber-shield-360")({
   head: () => {
