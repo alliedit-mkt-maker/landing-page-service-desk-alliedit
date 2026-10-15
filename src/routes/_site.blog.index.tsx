@@ -44,5 +44,5 @@ export const Route = createFileRoute("/_site/blog/")({
 
 function BlogIndex() {
   const data = Route.useLoaderData();
-  return <BlogListing {...data} />;
+  return <BlogListing {...data} searchEnabled />;
 }

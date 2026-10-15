@@ -332,6 +332,17 @@ main > section:first-child .reveal-in {
   font-family: 'Inter', system-ui, sans-serif;
 }
 
+.blog-search {
+  --blog-search-accent: #046E8B;
+  --blog-search-line: color-mix(in srgb, var(--brand-foreground) 35%, transparent);
+  --blog-search-surface: color-mix(in srgb, var(--brand-foreground) 5%, transparent);
+}
+.blog-search-field {
+  border-color: var(--blog-search-line);
+  background: var(--blog-search-surface);
+}
+.blog-search input::-webkit-search-cancel-button { display: none; }
+
 /* deixa o amarelo do logo no mesmo tom mostarda dos demais elementos (branco nao e afetado) */
 .site-logo-mustard {
   filter: hue-rotate(-9deg) saturate(1.35);
