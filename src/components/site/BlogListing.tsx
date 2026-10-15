@@ -152,7 +152,7 @@ export function BlogListing({
         />
         <div className="relative mx-auto max-w-7xl px-5 pb-24 sm:px-8">
           {searchEnabled ? (
-            <p role="status" aria-live="polite" aria-atomic="true" className="font-inter mb-6 text-base text-brand-foreground">
+            <p role="status" aria-live="polite" aria-atomic="true" className={`font-inter text-base text-brand-foreground${search ? " mb-6" : ""}`}>
               {search ? search.loading ? "Buscando artigos…" : search.error
                 ? "Não foi possível buscar os artigos. Tente novamente em instantes."
                 : search.posts.length > 0
