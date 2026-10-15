@@ -15,6 +15,8 @@ import { SiteFooter } from "@/components/site/SiteFooter";
 import hero from "@/assets/pe/hero.jpg.asset.json";
 import overview from "@/assets/pe/overview.jpg.asset.json";
 
+const CONTACT_FORM = { formId: "c7fd2956-e583-4353-b345-9fbdb13feafd", description: "Formulário de contato Allied IT Product Engineering", product: "Product Engineering" };
+
 export const Route = createFileRoute("/_site/servicos/product-engineering")({
   head: () => {
     const h = pageHead({ social: "Gargalo da operação virando sistema que funciona.",
@@ -60,7 +62,7 @@ function ProductEngineeringPage() {
           <p className="font-inter mt-6 max-w-2xl text-[17px] leading-relaxed text-white/85">
             Desenvolvimento sob medida para transformar gargalos em soluções digitais personalizadas.
           </p>
-          <SiteCtaButton  className={`${btnSolid} mt-10`}>Falar sobre o meu projeto</SiteCtaButton>
+          <SiteCtaButton {...CONTACT_FORM}  className={`${btnSolid} mt-10`}>Falar sobre o meu projeto</SiteCtaButton>
         </div>
       </section>
 
@@ -112,7 +114,7 @@ function ProductEngineeringPage() {
               </li>
             ))}
           </ol>
-          <SiteCtaButton  className={`${btnOutline} mt-10 border-[var(--site-blue)] text-[var(--site-blue)] hover:bg-[var(--site-blue)] hover:text-white`}>Solicitar diagnóstico</SiteCtaButton>
+          <SiteCtaButton {...CONTACT_FORM}  className={`${btnOutline} mt-10 border-[var(--site-blue)] text-[var(--site-blue)] hover:bg-[var(--site-blue)] hover:text-white`}>Solicitar diagnóstico</SiteCtaButton>
         </div>
       </section>
 
@@ -127,7 +129,7 @@ function ProductEngineeringPage() {
             <p className="font-inter mx-auto mt-5 max-w-[58ch] text-[16px] leading-relaxed text-white/80">
               Desenvolvemos e implementamos soluções personalizadas de Inteligência Artificial integradas ao seu negócio, com foco no aumento da eficiência operacional e da competitividade das organizações.
             </p>
-            <SiteCtaButton  className={`${btnSolid} mt-10`}>Falar sobre IA na minha operação</SiteCtaButton>
+            <SiteCtaButton {...CONTACT_FORM}  className={`${btnSolid} mt-10`}>Falar sobre IA na minha operação</SiteCtaButton>
           </Reveal>
         </div>
       </section>
@@ -148,7 +150,7 @@ function ProductEngineeringPage() {
         </div>
       </section>
 
-      <SiteCta modal />
+      <SiteCta modal {...CONTACT_FORM} />
       <SiteFooter />
     </>
   );

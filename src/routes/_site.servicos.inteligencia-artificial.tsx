@@ -16,6 +16,8 @@ import { SiteFooter } from "@/components/site/SiteFooter";
 import hero from "@/assets/ia/hero.jpg.asset.json";
 import overview from "@/assets/ia/overview.jpg.asset.json";
 
+const CONTACT_FORM = { formId: "eac0f8f3-946d-4477-8e30-c77fbefd3a26", description: "Formulário de contato Allied IT Inteligência Artificial", product: "Inteligência Artificial" };
+
 export const Route = createFileRoute("/_site/servicos/inteligencia-artificial")({
   head: () => {
     const h = pageHead({ social: "Da prova de conceito ao uso diário na operação.",
@@ -69,7 +71,7 @@ function IAPage() {
           <p className="font-inter mt-6 max-w-2xl text-[17px] leading-relaxed text-white/85">
             Construímos soluções de IA que aumentam a produtividade dos times, melhoram a experiência dos usuários e geram resultado real no negócio.
           </p>
-          <SiteCtaButton  className={`${btnSolid} mt-10`}>Falar sobre IA para o meu negócio</SiteCtaButton>
+          <SiteCtaButton {...CONTACT_FORM}  className={`${btnSolid} mt-10`}>Falar sobre IA para o meu negócio</SiteCtaButton>
         </div>
       </section>
 
@@ -113,7 +115,7 @@ function IAPage() {
                 <p className="font-inter mt-4 max-w-md text-[16px] leading-relaxed text-white/85">
                   Arquitetura, planejamento e construção de soluções proprietárias de ponta a ponta, feitas sob medida para a operação da sua empresa.
                 </p>
-                <SiteCtaButton  className={`${btnSolid} mt-10 w-fit`}>Quero uma solução completa</SiteCtaButton>
+                <SiteCtaButton {...CONTACT_FORM}  className={`${btnSolid} mt-10 w-fit`}>Quero uma solução completa</SiteCtaButton>
               </div>
             </div>
             {SMALL.map((s, i) => (
@@ -153,7 +155,7 @@ function IAPage() {
         </div>
       </section>
 
-      <SiteCta modal />
+      <SiteCta modal {...CONTACT_FORM} />
       <SiteFooter />
     </>
   );

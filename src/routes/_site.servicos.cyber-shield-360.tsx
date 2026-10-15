@@ -32,6 +32,8 @@ import heroPhoto from "@/assets/csh/hero.jpg.asset.json";
 import socPhoto from "@/assets/csh/soc.jpg.asset.json";
 import consolePhoto from "@/assets/csh/console.jpg.asset.json";
 
+const CONTACT_FORM = { formId: "3b4b53a7-de50-4fdf-8aa4-06c859a28c87", description: "Formulário de contato Allied IT Cyber Shield 360°", product: "Cyber Shield 360°" };
+
 export const Route = createFileRoute("/_site/servicos/cyber-shield-360")({
   head: () => {
     const h = pageHead({ social: "Monitoramento 24x7, testes de invasão e resposta a ataque.",
@@ -107,7 +109,7 @@ const BTN =
 function SectionCta({ label, dark }: { label: string; dark?: boolean }) {
   return (
     <Reveal variant="fade-up" className="mt-12">
-      <SiteCtaButton
+      <SiteCtaButton {...CONTACT_FORM}
         
         className={`${BTN} ${dark ? "bg-[var(--site-yellow)] text-[#0B1418] hover:bg-white" : "bg-[var(--site-blue)] text-white hover:bg-[#035a72]"}`}
       >
@@ -235,7 +237,7 @@ function CyberShieldPage() {
             <p className="font-inter mt-6 max-w-[46ch] text-pretty text-[16px] leading-relaxed text-white/75">
               Segurança cibernética em todas as camadas: monitoramento, testes, blindagem técnica e cultura, com operação 24x7x365.
             </p>
-            <SiteCtaButton  className={`${BTN} mt-9 bg-[var(--site-yellow)] text-[#0B1418] hover:bg-white`}>
+            <SiteCtaButton {...CONTACT_FORM}  className={`${BTN} mt-9 bg-[var(--site-yellow)] text-[#0B1418] hover:bg-white`}>
               Falar com um especialista em Segurança
             </SiteCtaButton>
           </div>
@@ -262,7 +264,7 @@ function CyberShieldPage() {
                   <p className="font-inter mt-5 max-w-[46ch] text-pretty text-[15px] leading-relaxed text-white/70">
                     Oferecemos uma estrutura completa de segurança cibernética, com serviços sob demanda e operação 24x7x365. Atuamos desde o monitoramento e defesa até a conscientização e blindagem da infraestrutura.
                   </p>
-                  <SiteCtaButton  className={`${BTN} mt-8 bg-[var(--site-yellow)] text-[#0B1418] hover:bg-white`}>
+                  <SiteCtaButton {...CONTACT_FORM}  className={`${BTN} mt-8 bg-[var(--site-yellow)] text-[#0B1418] hover:bg-white`}>
                     Avaliar minha segurança
                   </SiteCtaButton>
                 </div>
@@ -348,7 +350,7 @@ function CyberShieldPage() {
         </div>
       </section>
 
-      <SiteCta modal />
+      <SiteCta modal {...CONTACT_FORM} />
       <SiteFooter />
     </>
   );

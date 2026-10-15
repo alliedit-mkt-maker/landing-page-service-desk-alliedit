@@ -97,7 +97,7 @@ export function keepWhatsappMask(container: HTMLElement | null): () => void {
   };
 }
 
-export function ContactModal({ open, onOpenChange, source, title = "Vamos falar de Service Desk.", formId }: { open: boolean; onOpenChange: (v: boolean) => void; source?: string; title?: string; formId?: string }) {
+export function ContactModal({ open, onOpenChange, source, title = "Vamos falar de Service Desk.", formId, description = "Formulário de contato Allied IT Service Desk", product }: { open: boolean; onOpenChange: (v: boolean) => void; source?: string; title?: string; formId?: string; description?: string; product?: string }) {
   const navigate = useNavigate();
   const targetId = useId().replace(/:/g, "_");
   const containerRef = useRef<HTMLDivElement>(null);
@@ -134,6 +134,23 @@ export function ContactModal({ open, onOpenChange, source, title = "Vamos falar 
               const utms = getUtms();
               const root = containerRef.current;
               if (!root) return;
+              if (product) {
+                const roots: ParentNode[] = [root];
+                root.querySelectorAll("iframe").forEach((frame) => {
+                  try {
+                    if (frame.contentDocument) roots.push(frame.contentDocument);
+                  } catch { /* cross-origin */ }
+                });
+                const input = roots.map((node) => node.querySelector<HTMLInputElement>('input[name="produto"]')).find(Boolean);
+                if (input) {
+                  const view = input.ownerDocument.defaultView;
+                  const setter = view && Object.getOwnPropertyDescriptor(view.HTMLInputElement.prototype, "value")?.set;
+                  if (setter) setter.call(input, product);
+                  else input.value = product;
+                  input.dispatchEvent(new Event("input", { bubbles: true }));
+                  input.dispatchEvent(new Event("change", { bubbles: true }));
+                }
+              }
               UTM_KEYS.forEach((k) => {
                 const v = utms[k];
                 if (!v) return;
@@ -172,7 +189,7 @@ export function ContactModal({ open, onOpenChange, source, title = "Vamos falar 
       stopMask?.();
       stopKeep();
     };
-  }, [open, navigate, onOpenChange, source, targetId, activeFormId]);
+  }, [open, navigate, onOpenChange, source, targetId, activeFormId, product]);
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -180,7 +197,7 @@ export function ContactModal({ open, onOpenChange, source, title = "Vamos falar 
         <DialogHeader>
           <DialogTitle className="text-2xl font-extrabold tracking-tight text-petrol">{title}</DialogTitle>
           <DialogDescription className="sr-only">
-            Formulário de contato Allied IT Service Desk
+            {description}
           </DialogDescription>
         </DialogHeader>
         <div className="pt-2 hubspot-form-wrapper">

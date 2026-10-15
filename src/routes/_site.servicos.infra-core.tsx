@@ -16,6 +16,8 @@ import hero from "@/assets/infra/hero.jpg.asset.json";
 import rack from "@/assets/infra/rack.jpg.asset.json";
 import team from "@/assets/infra/team.jpg.asset.json";
 
+const CONTACT_FORM = { formId: "e7c97bc8-1dbd-44a7-ba36-2bcec71e97a3", description: "Formulário de contato Allied IT Infra Core", product: "Infra Core" };
+
 export const Route = createFileRoute("/_site/servicos/infra-core")({
   head: () => {
     const h = pageHead({ social: "Do projeto ao laudo, tudo pronto para a empresa crescer.",
@@ -69,7 +71,7 @@ function InfraCorePage() {
           <p className="font-inter mt-6 max-w-2xl text-[17px] leading-relaxed text-white/85">
             Infraestrutura de TI que sustenta a operação: redes, cabeamento estruturado e data center, projetados e executados de ponta a ponta.
           </p>
-          <SiteCtaButton  className={`${btnSolid} mt-10`}>Solicitar diagnóstico técnico</SiteCtaButton>
+          <SiteCtaButton {...CONTACT_FORM}  className={`${btnSolid} mt-10`}>Solicitar diagnóstico técnico</SiteCtaButton>
         </div>
       </section>
 
@@ -123,7 +125,7 @@ function InfraCorePage() {
               </div>
             ))}
           </div>
-          <SiteCtaButton  className={`${btnOutline} mt-10 border-[var(--site-blue)] text-[var(--site-blue)] hover:bg-[var(--site-blue)] hover:text-white`}>Falar sobre minha rede</SiteCtaButton>
+          <SiteCtaButton {...CONTACT_FORM}  className={`${btnOutline} mt-10 border-[var(--site-blue)] text-[var(--site-blue)] hover:bg-[var(--site-blue)] hover:text-white`}>Falar sobre minha rede</SiteCtaButton>
         </div>
       </section>
 
@@ -147,7 +149,7 @@ function InfraCorePage() {
               </div>
             ))}
           </div>
-          <SiteCtaButton  className={`${btnSolid} mt-12`}>Agendar visita diagnóstica</SiteCtaButton>
+          <SiteCtaButton {...CONTACT_FORM}  className={`${btnSolid} mt-12`}>Agendar visita diagnóstica</SiteCtaButton>
         </div>
       </section>
 
@@ -197,7 +199,7 @@ function InfraCorePage() {
               <p className="font-inter border-l-2 border-[var(--site-blue)] pl-5 text-[15px] leading-relaxed text-[var(--site-muted)]">Suporte de técnicos de segurança do trabalho em todas as execuções.</p>
               <p className="font-inter border-l-2 border-[var(--site-blue)] pl-5 text-[15px] leading-relaxed text-[var(--site-muted)]">Atuação alinhada às NRs referentes a trabalho em altura e energia.</p>
             </div>
-            <SiteCtaButton  className={`${btnOutline} mt-10 border-[var(--site-blue)] text-[var(--site-blue)] hover:bg-[var(--site-blue)] hover:text-white`}>Falar com um especialista</SiteCtaButton>
+            <SiteCtaButton {...CONTACT_FORM}  className={`${btnOutline} mt-10 border-[var(--site-blue)] text-[var(--site-blue)] hover:bg-[var(--site-blue)] hover:text-white`}>Falar com um especialista</SiteCtaButton>
           </div>
         </div>
       </section>
@@ -219,7 +221,7 @@ function InfraCorePage() {
         </div>
       </section>
 
-      <SiteCta modal />
+      <SiteCta modal {...CONTACT_FORM} />
       <SiteFooter />
     </>
   );

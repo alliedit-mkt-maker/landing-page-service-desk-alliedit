@@ -1,0 +1,4 @@
+- [x] Configure the five service-page forms and descriptions without changing shared defaults.
+- [x] Inspect hosted hidden fields and verify every service CTA, UTM filling and WhatsApp masking.
+- [x] Report findings and submission limitations; do not publish.
+- [ ] Confirm a real test submission is received in HubSpot with the expected fields; awaiting the user's preview test and HubSpot confirmation.

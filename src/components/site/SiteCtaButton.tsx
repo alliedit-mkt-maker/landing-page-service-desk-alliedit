@@ -10,12 +10,16 @@ export function SiteCtaButton({
   children,
   className,
   formId,
+  description,
+  product,
   title = "Vamos conversar sobre a TI da sua empresa?",
   source,
 }: {
   children: ReactNode;
   className?: string;
   formId?: string;
+  description?: string;
+  product?: string;
   title?: string;
   source?: string;
 }) {
@@ -30,6 +34,8 @@ export function SiteCtaButton({
         onOpenChange={setOpen}
         title={title}
         formId={formId}
+        description={description}
+        product={product}
         source={source ?? (typeof window !== "undefined" ? window.location.pathname : "site")}
       />
     </>
