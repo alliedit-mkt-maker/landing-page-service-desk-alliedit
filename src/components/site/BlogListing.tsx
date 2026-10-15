@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { Link } from "@tanstack/react-router";
+import { BlogSearch, type BlogSearchResult } from "@/components/site/BlogSearch";
 import { ArrowRight } from "lucide-react";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import {
@@ -40,6 +42,7 @@ export function BlogListing({
   totalPages,
   categorySlug = null,
   categoryName,
+  searchEnabled = false,
 }: {
   posts: WpPost[];
   categories: WpCategory[];
@@ -47,8 +50,11 @@ export function BlogListing({
   totalPages: number;
   categorySlug?: string | null;
   categoryName?: string;
+  searchEnabled?: boolean;
 }) {
   const pages = visiblePages(page, totalPages);
+  const [search, setSearch] = useState<BlogSearchResult | null>(null);
+  const displayedPosts = search?.posts ?? posts;
 
   return (
     <div className="-mt-[72px] bg-[#0A0E12]">
@@ -88,6 +94,8 @@ export function BlogListing({
           </p>
         </div>
       </section>
+
+      {searchEnabled ? <BlogSearch onResults={setSearch} /> : null}
 
       <section className="relative border-t border-white/10">
         <div
@@ -143,9 +151,19 @@ export function BlogListing({
           style={{ backgroundImage: DOTS, backgroundSize: "22px 22px", opacity: 0.22 }}
         />
         <div className="relative mx-auto max-w-7xl px-5 pb-24 sm:px-8">
-          {posts.length > 0 ? (
+          {searchEnabled ? (
+            <p role="status" aria-live="polite" aria-atomic="true" className="font-inter mb-6 text-base text-brand-foreground">
+              {search ? search.loading ? "Buscando artigos…" : search.error
+                ? "Não foi possível buscar os artigos. Tente novamente em instantes."
+                : search.posts.length > 0
+                  ? `${search.posts.length} ${search.posts.length === 1 ? "artigo encontrado" : "artigos encontrados"} para '${search.term}'`
+                  : `Nenhum artigo encontrado para '${search.term}'. Tente outras palavras ou escolha um tema abaixo.`
+                : null}
+            </p>
+          ) : null}
+          {displayedPosts.length > 0 ? (
             <div className="grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3">
-              {posts.map((post) => {
+              {displayedPosts.map((post) => {
                 const img = featuredImage(post);
                 const category = primaryCategory(post);
                 return (
@@ -201,13 +219,13 @@ export function BlogListing({
                 );
               })}
             </div>
-          ) : (
+          ) : !search ? (
             <p className="font-inter text-[15px] text-white/60">
               Nenhum artigo encontrado nesta categoria.
             </p>
-          )}
+          ) : null}
 
-          {totalPages > 1 ? (
+          {!search && totalPages > 1 ? (
             <nav aria-label="Paginação do blog" className="mt-12 flex flex-wrap justify-center gap-2">
               {page > 1 ? (
                 <a href={pageHref(categorySlug, page - 1)} className={`${PILL} border-white/30 text-white hover:border-white`}>
