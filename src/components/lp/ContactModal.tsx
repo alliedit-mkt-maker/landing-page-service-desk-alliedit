@@ -97,7 +97,7 @@ export function keepWhatsappMask(container: HTMLElement | null): () => void {
   };
 }
 
-export function ContactModal({ open, onOpenChange, source, title = "Vamos falar de Service Desk.", formId, description = "Formulário de contato Allied IT Service Desk" }: { open: boolean; onOpenChange: (v: boolean) => void; source?: string; title?: string; formId?: string; description?: string }) {
+export function ContactModal({ open, onOpenChange, source, title = "Vamos falar de Service Desk.", formId, description = "Formulário de contato Allied IT Service Desk", product }: { open: boolean; onOpenChange: (v: boolean) => void; source?: string; title?: string; formId?: string; description?: string; product?: string }) {
   const navigate = useNavigate();
   const targetId = useId().replace(/:/g, "_");
   const containerRef = useRef<HTMLDivElement>(null);
@@ -134,6 +134,14 @@ export function ContactModal({ open, onOpenChange, source, title = "Vamos falar 
               const utms = getUtms();
               const root = containerRef.current;
               if (!root) return;
+              if (product) {
+                const input = root.querySelector<HTMLInputElement>('input[name="produto"]');
+                if (input) {
+                  input.value = product;
+                  input.dispatchEvent(new Event("input", { bubbles: true }));
+                  input.dispatchEvent(new Event("change", { bubbles: true }));
+                }
+              }
               UTM_KEYS.forEach((k) => {
                 const v = utms[k];
                 if (!v) return;
@@ -172,7 +180,7 @@ export function ContactModal({ open, onOpenChange, source, title = "Vamos falar 
       stopMask?.();
       stopKeep();
     };
-  }, [open, navigate, onOpenChange, source, targetId, activeFormId]);
+  }, [open, navigate, onOpenChange, source, targetId, activeFormId, product]);
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
