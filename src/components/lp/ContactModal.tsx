@@ -135,9 +135,18 @@ export function ContactModal({ open, onOpenChange, source, title = "Vamos falar 
               const root = containerRef.current;
               if (!root) return;
               if (product) {
-                const input = root.querySelector<HTMLInputElement>('input[name="produto"]');
+                const roots: ParentNode[] = [root];
+                root.querySelectorAll("iframe").forEach((frame) => {
+                  try {
+                    if (frame.contentDocument) roots.push(frame.contentDocument);
+                  } catch { /* cross-origin */ }
+                });
+                const input = roots.map((node) => node.querySelector<HTMLInputElement>('input[name="produto"]')).find(Boolean);
                 if (input) {
-                  input.value = product;
+                  const view = input.ownerDocument.defaultView;
+                  const setter = view && Object.getOwnPropertyDescriptor(view.HTMLInputElement.prototype, "value")?.set;
+                  if (setter) setter.call(input, product);
+                  else input.value = product;
                   input.dispatchEvent(new Event("input", { bubbles: true }));
                   input.dispatchEvent(new Event("change", { bubbles: true }));
                 }
