@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "@tanstack/react-router";
+import { ThankYouDialog } from "@/components/lp/ThankYouDialog";
 import { X } from "lucide-react";
 import { pushDataLayer, readUtms, UTM_KEYS } from "@/components/field-service/fs-tracking";
 import { setupWhatsappMask } from "@/lib/whatsapp-mask";
@@ -36,7 +36,7 @@ function loadHubspotScript(): Promise<void> {
 }
 
 export function ContactModal({ open, onClose }: Props) {
-  const navigate = useNavigate();
+  const [thanks, setThanks] = useState(false);
   const targetRef = useRef<HTMLDivElement | null>(null);
   const [ready, setReady] = useState(false);
   const targetId = "hubspot-form-target";
@@ -101,8 +101,8 @@ export function ContactModal({ open, onClose }: Props) {
             try { sessionStorage.setItem("lp_origin_path", `${window.location.hostname}${window.location.pathname}`); } catch { /* noop */ }
             setTimeout(() => {
               onClose();
-              navigate({ to: "/obrigado" });
-            }, 400);
+              setThanks(true);
+            }, 300);
           },
         });
 
@@ -117,10 +117,11 @@ export function ContactModal({ open, onClose }: Props) {
       cancelled = true;
       stopMask?.();
     };
-  }, [open, navigate, onClose]);
+  }, [open, onClose]);
 
   return (
     <>
+      <ThankYouDialog open={thanks} onOpenChange={setThanks} />
       {open && (
         <div
           className="fade-up fixed inset-0 z-[100] flex items-center justify-center bg-brand-deep/70 backdrop-blur-sm p-4"
