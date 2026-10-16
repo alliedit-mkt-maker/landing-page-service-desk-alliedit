@@ -29,7 +29,8 @@ import zoomLogo from "@/assets/rally/zoom-logo.png.asset.json";
 import meetLogo from "@/assets/rally/google-meet-logo.webp.asset.json";
 
 import { LpProvider, useLp } from "@/components/lp/LpProvider";
-import { SiteFooter } from "@/components/lp/SiteFooter";
+import { SiteNavbar } from "@/components/site/SiteNavbar";
+import { SiteFooter } from "@/components/site/SiteFooter";
 import { Clients } from "@/components/lp/Clients";
 import { Reveal } from "@/components/lp/Reveal";
 

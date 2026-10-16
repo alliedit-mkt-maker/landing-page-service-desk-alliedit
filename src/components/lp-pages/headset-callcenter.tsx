@@ -21,7 +21,8 @@ import logitechLifestyle from "@/assets/headsets/logitech-lifestyle.jpg.asset.js
 import polyLifestyle from "@/assets/headsets/poly-lifestyle.jpg.asset.json";
 import { LpProvider, useLp, pushEvent } from "@/components/lp/LpProvider";
 import logoAlliedIt from "@/assets/logo-alliedit.png";
-import { SiteFooter } from "@/components/lp/SiteFooter";
+import { SiteNavbar } from "@/components/site/SiteNavbar";
+import { SiteFooter } from "@/components/site/SiteFooter";
 import { Clients } from "@/components/lp/Clients";
 import { Reveal } from "@/components/lp/Reveal";
 
