@@ -1,5 +1,5 @@
 import { useEffect, useId, useRef, useState } from "react";
-import { useNavigate } from "@tanstack/react-router";
+import { ThankYouDialog } from "./ThankYouDialog";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { pushEvent } from "./LpProvider";
 import { getUtms, UTM_KEYS } from "@/lib/utm";
@@ -98,7 +98,7 @@ export function keepWhatsappMask(container: HTMLElement | null): () => void {
 }
 
 export function ContactModal({ open, onOpenChange, source, title = "Vamos falar de Service Desk.", formId, description = "Formulário de contato Allied IT Service Desk", product }: { open: boolean; onOpenChange: (v: boolean) => void; source?: string; title?: string; formId?: string; description?: string; product?: string }) {
-  const navigate = useNavigate();
+  const [thanks, setThanks] = useState(false);
   const targetId = useId().replace(/:/g, "_");
   const containerRef = useRef<HTMLDivElement>(null);
   const renderedRef = useRef(false);
@@ -177,8 +177,8 @@ export function ContactModal({ open, onOpenChange, source, title = "Vamos falar 
             try { sessionStorage.setItem("lp_origin_path", `${window.location.hostname}${window.location.pathname}`); } catch { /* noop */ }
             setTimeout(() => {
               onOpenChange(false);
-              navigate({ to: "/obrigado" });
-            }, 600);
+              setThanks(true);
+            }, 300);
           },
         });
       })
@@ -189,9 +189,11 @@ export function ContactModal({ open, onOpenChange, source, title = "Vamos falar 
       stopMask?.();
       stopKeep();
     };
-  }, [open, navigate, onOpenChange, source, targetId, activeFormId, product]);
+  }, [open, onOpenChange, source, targetId, activeFormId, product]);
 
   return (
+    <>
+    <ThankYouDialog open={thanks} onOpenChange={setThanks} />
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-lg max-h-[90vh] overflow-y-auto">
         <DialogHeader>
@@ -212,5 +214,6 @@ export function ContactModal({ open, onOpenChange, source, title = "Vamos falar 
         </div>
       </DialogContent>
     </Dialog>
+    </>
   );
 }
