@@ -46,6 +46,7 @@ export function VideoconferenciaPage() {
   return (
     <LpProvider modalTitle="Pedir cotação de videoconferência." formId={VC_FORM_ID || undefined}>
       <div className="min-h-screen bg-surface text-petrol font-sans">
+        <SiteNavbar />
         <main>
           <Hero />
           <Clients centered />

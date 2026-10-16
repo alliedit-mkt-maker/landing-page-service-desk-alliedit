@@ -36,6 +36,7 @@ export function HeadsetPage() {
     <LpProvider modalTitle="Pedir cotação de headsets." formId="5e99da13-3800-4581-b2ea-0ea2fe2de8f4">
 
       <div className="min-h-screen bg-surface text-petrol font-sans">
+        <SiteNavbar />
         <main>
           <Hero />
           <Clients centered />
