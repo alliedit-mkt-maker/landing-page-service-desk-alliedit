@@ -21,7 +21,8 @@ import logitechLifestyle from "@/assets/headsets/logitech-lifestyle.jpg.asset.js
 import polyLifestyle from "@/assets/headsets/poly-lifestyle.jpg.asset.json";
 import { LpProvider, useLp, pushEvent } from "@/components/lp/LpProvider";
 import logoAlliedIt from "@/assets/logo-alliedit.png";
-import { SiteFooter } from "@/components/lp/SiteFooter";
+import { SiteNavbar } from "@/components/site/SiteNavbar";
+import { SiteFooter } from "@/components/site/SiteFooter";
 import { Clients } from "@/components/lp/Clients";
 import { Reveal } from "@/components/lp/Reveal";
 
@@ -35,6 +36,7 @@ export function HeadsetPage() {
     <LpProvider modalTitle="Pedir cotação de headsets." formId="5e99da13-3800-4581-b2ea-0ea2fe2de8f4">
 
       <div className="min-h-screen bg-surface text-petrol font-sans">
+        <SiteNavbar />
         <main>
           <Hero />
           <Clients centered />
