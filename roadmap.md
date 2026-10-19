@@ -2,5 +2,6 @@
 - [x] Inspect hosted hidden fields and verify every service CTA, UTM filling and WhatsApp masking.
 - [x] Report findings and submission limitations; do not publish.
 - [ ] Confirm a real test submission is received in HubSpot with the expected fields; awaiting the user's preview test and HubSpot confirmation.
-- [ ] Configure all five institutional product-page forms without changing campaign or service forms.
-- [ ] Verify product CTAs, hosted fields, attribution, WhatsApp and thank-you behavior; report without publishing.
+- [x] Configure all five institutional product-page forms without changing campaign or service forms.
+- [x] Verify product CTAs, hosted fields, attribution, WhatsApp and thank-you behavior; report without publishing.
+- [ ] Confirm real product-form submissions in HubSpot; awaiting the user's test contact details and receipt confirmation.
