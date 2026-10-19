@@ -1,6 +1,7 @@
 import { pageHead } from "@/lib/seo";
 import { serviceSchema } from "@/lib/service-schema";
 import { SiteCtaButton } from "@/components/site/SiteCtaButton";
+import { PRODUCT_FORMS } from "@/lib/product-forms";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   Accordion,
@@ -106,7 +107,7 @@ function AwsPage() {
             A consultoria AWS da Allied IT avalia o seu ambiente, planeja e executa a migração e cuida da operação da nuvem depois dela: monitoramento, segurança e otimização de custos.
           </p>
 
-          <SiteCtaButton  className={`${btnSolid} mt-10`}>Solicite um orçamento</SiteCtaButton>
+          <SiteCtaButton {...PRODUCT_FORMS.aws} className={`${btnSolid} mt-10`}>Solicite um orçamento</SiteCtaButton>
         </div>
         {/* No celular, a foto vira uma faixa abaixo do texto, para o texto nunca ficar sobre a nuvem */}
         <div aria-hidden className="relative sm:hidden">
@@ -243,7 +244,7 @@ function AwsPage() {
               </Reveal>
             ))}
           </div>
-          <SiteCtaButton  className={`${btnSolid} mt-12`}>Solicite um orçamento</SiteCtaButton>
+          <SiteCtaButton {...PRODUCT_FORMS.aws} className={`${btnSolid} mt-12`}>Solicite um orçamento</SiteCtaButton>
         </div>
       </section>
 
@@ -271,7 +272,7 @@ function AwsPage() {
           <p className="font-inter mx-auto mt-5 max-w-[60ch] text-[15px] leading-relaxed text-white/70">
             A gente avalia sua infraestrutura atual e mostra onde a nuvem pode ajudar.
           </p>
-          <SiteCtaButton  className={`${btnSolid} mt-9`}>Solicite um orçamento</SiteCtaButton>
+          <SiteCtaButton {...PRODUCT_FORMS.aws} className={`${btnSolid} mt-9`}>Solicite um orçamento</SiteCtaButton>
         </div>
       </section>
 

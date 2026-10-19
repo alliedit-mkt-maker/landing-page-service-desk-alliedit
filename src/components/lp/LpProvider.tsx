@@ -24,7 +24,7 @@ export function pushEvent(event: string, data: Record<string, unknown> = {}) {
   window.dataLayer.push({ event, ...data });
 }
 
-export function LpProvider({ children, modalTitle, formId, trackView = true }: { children: ReactNode; modalTitle?: string; formId?: string; trackView?: boolean }) {
+export function LpProvider({ children, modalTitle, formId, description, product, trackView = true }: { children: ReactNode; modalTitle?: string; formId?: string; description?: string; product?: string; trackView?: boolean }) {
   const [selectedPath, setSelectedPath] = useState<Path>(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalSource, setModalSource] = useState<string | undefined>();
@@ -58,7 +58,7 @@ export function LpProvider({ children, modalTitle, formId, trackView = true }: {
   return (
     <Ctx.Provider value={{ selectedPath, setPath, openModal }}>
       {children}
-      <ContactModal open={modalOpen} onOpenChange={setModalOpen} source={modalSource} title={modalTitle} formId={formId} />
+      <ContactModal open={modalOpen} onOpenChange={setModalOpen} source={modalSource} title={modalTitle} formId={formId} description={description} product={product} />
     </Ctx.Provider>
   );
 }

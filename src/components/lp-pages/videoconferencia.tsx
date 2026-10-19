@@ -29,6 +29,7 @@ import zoomLogo from "@/assets/rally/zoom-logo.png.asset.json";
 import meetLogo from "@/assets/rally/google-meet-logo.webp.asset.json";
 
 import { LpProvider, useLp } from "@/components/lp/LpProvider";
+import type { ProductFormOverrides } from "@/lib/product-forms";
 import { SiteNavbar } from "@/components/site/SiteNavbar";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { Clients } from "@/components/lp/Clients";
@@ -42,9 +43,9 @@ const VC_FORM_ID = "aaf63ed6-edf2-45ed-8434-54c3d6d4df0d";
 
 export const videoconferenciaMeta = { title, description };
 
-export function VideoconferenciaPage() {
+export function VideoconferenciaPage({ formId = VC_FORM_ID, description: formDescription, product }: ProductFormOverrides = {}) {
   return (
-    <LpProvider modalTitle="Pedir cotação de videoconferência." formId={VC_FORM_ID || undefined}>
+    <LpProvider modalTitle="Pedir cotação de videoconferência." formId={formId || undefined} description={formDescription} product={product}>
       <div className="min-h-screen bg-surface text-petrol font-sans">
         <SiteNavbar />
         <main>
