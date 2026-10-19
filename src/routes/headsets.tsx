@@ -1,6 +1,7 @@
 import { headsetCallcenterHead } from "@/lib/lp-heads/headset-callcenter";
 import { createFileRoute } from "@tanstack/react-router";
 import { HeadsetPage } from "@/components/lp-pages/headset-callcenter";
+import { PRODUCT_FORMS } from "@/lib/product-forms";
 
 export const Route = createFileRoute("/headsets")({
   head: () => {
@@ -18,5 +19,5 @@ export const Route = createFileRoute("/headsets")({
       ],
     };
   },
-  component: HeadsetPage,
+  component: () => <HeadsetPage {...PRODUCT_FORMS.headsets} />,
 });

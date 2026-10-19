@@ -20,6 +20,7 @@ import yealinkLifestyle from "@/assets/headsets/yealink-lifestyle.png.asset.json
 import logitechLifestyle from "@/assets/headsets/logitech-lifestyle.jpg.asset.json";
 import polyLifestyle from "@/assets/headsets/poly-lifestyle.jpg.asset.json";
 import { LpProvider, useLp, pushEvent } from "@/components/lp/LpProvider";
+import type { ProductFormOverrides } from "@/lib/product-forms";
 import logoAlliedIt from "@/assets/logo-alliedit.png";
 import { SiteNavbar } from "@/components/site/SiteNavbar";
 import { SiteFooter } from "@/components/site/SiteFooter";
@@ -31,9 +32,9 @@ import { Reveal } from "@/components/lp/Reveal";
 
 export const headsetMeta = { title, description };
 
-export function HeadsetPage() {
+export function HeadsetPage({ formId = "5e99da13-3800-4581-b2ea-0ea2fe2de8f4", description: formDescription, product }: ProductFormOverrides = {}) {
   return (
-    <LpProvider modalTitle="Pedir cotação de headsets." formId="5e99da13-3800-4581-b2ea-0ea2fe2de8f4">
+    <LpProvider modalTitle="Pedir cotação de headsets." formId={formId} description={formDescription} product={product}>
 
       <div className="min-h-screen bg-surface text-petrol font-sans">
         <SiteNavbar />

@@ -1,6 +1,7 @@
 import { videoconferenciaHead } from "@/lib/lp-heads/videoconferencia";
 import { createFileRoute } from "@tanstack/react-router";
 import { VideoconferenciaPage } from "@/components/lp-pages/videoconferencia";
+import { PRODUCT_FORMS } from "@/lib/product-forms";
 
 export const Route = createFileRoute("/videoconferencia")({
   head: () => {
@@ -18,5 +19,5 @@ export const Route = createFileRoute("/videoconferencia")({
       ],
     };
   },
-  component: VideoconferenciaPage,
+  component: () => <VideoconferenciaPage {...PRODUCT_FORMS.videoconferencia} />,
 });
