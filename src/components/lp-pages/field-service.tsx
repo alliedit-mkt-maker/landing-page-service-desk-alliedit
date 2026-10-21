@@ -89,7 +89,7 @@ function Hero({ onCTA }: { onCTA: () => void }) {
           Operação terceirizada de Field Service
         </p>
         <h1 className="max-w-4xl text-balance text-4xl font-black leading-[1.1] tracking-tight text-brand-deep md:text-6xl">
-          Manutenção e suporte de TI presencial onde você estiver
+          Suporte técnico onde quer que suas unidades estejam!
         </h1>
         <p className="mt-6 max-w-2xl text-lg text-foreground/70">
           Quem opera 5, 20 ou 100 endereços não resolve TI com técnico avulso. A Allied IT coloca o técnico certo, no lugar certo, com SLA medido por unidade.
