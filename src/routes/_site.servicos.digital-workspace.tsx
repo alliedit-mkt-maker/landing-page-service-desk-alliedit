@@ -56,12 +56,12 @@ import deskPhoto from "@/assets/dw/desk.jpg.asset.json";
 
 export const Route = createFileRoute("/_site/servicos/digital-workspace")({
   head: () => {
-    const h = pageHead({ social: "Atendimento remoto e técnico no local, com SLA e cobertura nacional.",
+    const h = pageHead({ social: "Service desk e field service em São Paulo e em todo o Brasil: atendimento remoto e presencial com SLA em uma só operação.",
       title: "Digital Workspace: Service Desk e Field Service | Allied IT",
-      description: "Service Desk e Field Service em uma só operação: atendimento remoto e presencial com SLA e cobertura nacional.",
+      description: "Service desk e field service em São Paulo e em todo o Brasil: atendimento remoto e presencial com SLA em uma só operação.",
       path: "/servicos/digital-workspace",
     });
-    return { ...h, scripts: [serviceSchema({ path: "/servicos/digital-workspace", name: "Digital Workspace: Service Desk e Field Service", serviceType: "Service desk e field service", description: "Service Desk e Field Service em uma só operação: atendimento remoto e presencial com SLA e cobertura nacional.", sectionName: "Serviços", sectionPath: "/servicos", faq: FAQ })] };
+    return { ...h, scripts: [serviceSchema({ path: "/servicos/digital-workspace", name: "Digital Workspace: Service Desk e Field Service", serviceType: "Service desk e field service", description: "Service desk e field service em São Paulo e em todo o Brasil: atendimento remoto e presencial com SLA em uma só operação.", sectionName: "Serviços", sectionPath: "/servicos", faq: FAQ })] };
   },
   component: DigitalWorkspacePage,
 });
@@ -154,6 +154,10 @@ const WHY = [
 ];
 
 const FAQ = [
+  {
+    q: "A Allied IT atende empresas em São Paulo?",
+    a: "Sim. Atendemos empresas em São Paulo e na Grande SP a partir da nossa sede em Alphaville, Barueri, com service desk, field service e outsourcing de TI. E atendemos o Brasil inteiro: o suporte remoto cobre qualquer unidade e o atendimento presencial é feito em todo o território nacional.",
+  },
   {
     q: "Qual a diferença entre Service Desk e Field Service?",
     a: "Service Desk é o atendimento remoto ao usuário, por telefone, portal, WhatsApp, Teams ou e-mail, com registro e gestão de chamados. Field Service é a equipe técnica presencial, para o que só se resolve no local, como troca de hardware, instalação e manutenção. Na Allied IT as duas frentes operam juntas, com o mesmo chamado do início ao fim.",
@@ -599,6 +603,19 @@ function DigitalWorkspacePage() {
               );
             })}
           </div>
+        </div>
+      </section>
+
+      <section className="bg-white py-20 sm:py-24">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+          <Reveal variant="fade-up" className="mx-auto max-w-[60ch] text-center">
+            <h2 className="font-chillax text-balance text-[1.6rem] font-bold leading-tight tracking-tight text-[var(--site-ink)] sm:text-[1.95rem]">
+              Service desk e field service em São Paulo
+            </h2>
+            <p className="font-inter mt-5 text-pretty text-[15px] leading-relaxed text-[var(--site-muted)]">
+              Com sede em Alphaville, Barueri, a Allied IT atende empresas em São Paulo e na Grande SP com service desk terceirizado, field service com técnicos presenciais e outsourcing de suporte de TI. A mesma operação cobre filiais em todo o Brasil: suporte remoto para qualquer unidade e atendimento presencial em todo o território nacional.
+            </p>
+          </Reveal>
         </div>
       </section>
 
