@@ -115,7 +115,7 @@ function redirectTo(url: URL, target: string): Response {
   return new Response(null, { status: 301, headers: { location: location.toString() } });
 }
 
-function hostRedirect(request: Request): Response | undefined {
+export function hostRedirect(request: Request): Response | undefined {
   const url = new URL(request.url);
   const host = url.hostname.toLowerCase();
   const path = normalizePath(url.pathname);
@@ -125,8 +125,6 @@ function hostRedirect(request: Request): Response | undefined {
     const rest = path.slice("/site".length) || "/";
     if (rest !== path) return redirectTo(url, rest);
   }
-
-  if (!host.endsWith(ROOT_DOMAIN)) return undefined;
 
   // www -> domínio raiz, mesmo caminho.
   if (host === `www.${ROOT_DOMAIN}`) {
@@ -143,14 +141,32 @@ function hostRedirect(request: Request): Response | undefined {
 
   // Tabela de 301 do WordPress: só no domínio raiz.
   if (host === ROOT_DOMAIN) {
+    // Conteúdo removido e spam da instalação antiga: não redirecionar para páginas válidas.
+    if (path === "/uncategorized/hello-world" || path === "/e663ca46594d0641" || path.startsWith("/shop/")) {
+      return new Response(null, { status: 410 });
+    }
+
     const slug = path.slice(1);
     const page = lookup(PAGE_REDIRECTS, slug);
     if (page && normalizePath(page) !== path) return redirectTo(url, page);
+
+    if (path.startsWith("/category/") || path.startsWith("/tag/")) return redirectTo(url, "/blog");
+    if (path.startsWith("/author/")) return redirectTo(url, "/sobre");
+    const categoryPage = path.match(/^\/categoria-produto\/([^/]+)\/page\/[^/]+$/);
+    if (categoryPage) return redirectTo(url, `/categoria-produto/${categoryPage[1]}`);
+    if (path.startsWith("/solucoes-de-colaboracao/")) return redirectTo(url, "/produtos");
+    if (path.startsWith("/wp-content/uploads/")) {
+      return redirectTo(url, `https://cms.alliedit.com.br${url.pathname}`);
+    }
+
     if (slug && !slug.includes("/")) {
       const post = lookup(POST_REDIRECTS, slug);
       if (post && `/blog/${post}` !== path) return redirectTo(url, `/blog/${post}`);
     }
   }
+
+  // Intercepta antes do roteador para que a normalização seja permanente (301, não 307).
+  if (url.pathname !== path) return redirectTo(url, path);
 
   return undefined;
 }
