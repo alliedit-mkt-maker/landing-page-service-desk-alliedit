@@ -20,12 +20,12 @@ const CONTACT_FORM = { formId: "e7c97bc8-1dbd-44a7-ba36-2bcec71e97a3", descripti
 
 export const Route = createFileRoute("/_site/servicos/infra-core")({
   head: () => {
-    const h = pageHead({ social: "Do projeto ao laudo, tudo pronto para a empresa crescer.",
+    const h = pageHead({ social: "Redes Wi-Fi, cabeamento estruturado, CFTV e data center em São Paulo e em todo o Brasil, do projeto à certificação com laudo.",
       title: "Infra Core: redes, cabeamento estruturado e data center | Allied IT",
-      description: "Redes Wi-Fi, cabeamento estruturado, CFTV e data center, do projeto à certificação com laudo.",
+      description: "Redes Wi-Fi, cabeamento estruturado, CFTV e data center em São Paulo e em todo o Brasil, do projeto à certificação com laudo.",
       path: "/servicos/infra-core",
     });
-    return { ...h, scripts: [serviceSchema({ path: "/servicos/infra-core", name: "Infra Core: redes, cabeamento estruturado e data center", serviceType: "Infraestrutura de TI: redes, cabeamento e data center", description: "Redes Wi-Fi, cabeamento estruturado, CFTV e data center, do projeto à certificação com laudo.", sectionName: "Serviços", sectionPath: "/servicos", faq: FAQ })] };
+    return { ...h, scripts: [serviceSchema({ path: "/servicos/infra-core", name: "Infra Core: redes, cabeamento estruturado e data center", serviceType: "Infraestrutura de TI: redes, cabeamento e data center", description: "Redes Wi-Fi, cabeamento estruturado, CFTV e data center em São Paulo e em todo o Brasil, do projeto à certificação com laudo.", sectionName: "Serviços", sectionPath: "/servicos", faq: FAQ })] };
   },
   component: InfraCorePage,
 });
@@ -44,6 +44,7 @@ const DC = [
 ];
 const SEGMENTOS = ["Hotéis", "Centros corporativos", "Varejo", "Operações de alta densidade"];
 const FAQ = [
+  { q: "Vocês atendem empresas em São Paulo e em outras cidades?", a: "Sim. Atendemos empresas em São Paulo e na Grande SP a partir da nossa sede em Alphaville, Barueri, e também executamos projetos de redes, cabeamento e data center em todo o Brasil." },
   { q: "Vocês fazem só o projeto ou também a execução?", a: "Fazemos o ciclo completo: projeto, execução e certificação da infraestrutura, com visita diagnóstica antes de começar." },
   { q: "O mapeamento de calor (heatmap) é feito em qualquer ambiente?", a: "Sim. É recomendado principalmente em ambientes grandes ou de alta densidade, onde a cobertura de Wi-Fi precisa ser otimizada com precisão." },
   { q: "Vocês atendem ambientes já em operação, sem parar o funcionamento?", a: "Sim. Planejamos a execução para minimizar impacto na operação, especialmente em hotéis, varejo e centros corporativos." },
@@ -201,6 +202,15 @@ function InfraCorePage() {
             </div>
             <SiteCtaButton {...CONTACT_FORM}  className={`${btnOutline} mt-10 border-[var(--site-blue)] text-[var(--site-blue)] hover:bg-[var(--site-blue)] hover:text-white`}>Falar com um especialista</SiteCtaButton>
           </div>
+        </div>
+      </section>
+
+      <section className="bg-[#F4F8F9] py-20 sm:py-24">
+        <div className="mx-auto max-w-4xl px-5 sm:px-8">
+          <Reveal>
+            <h2 className={h2}>Infraestrutura de TI em São Paulo</h2>
+            <p className="font-inter mt-5 text-pretty text-[15px] leading-relaxed text-[var(--site-muted)]">Com sede em Alphaville, Barueri, a Allied IT projeta, implanta e mantém redes, cabeamento estruturado e data center para empresas em São Paulo e na Grande SP. Também executamos projetos de infraestrutura em outras cidades, para empresas com unidades em todo o Brasil.</p>
+          </Reveal>
         </div>
       </section>
 

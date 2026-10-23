@@ -12,12 +12,12 @@ import oqueE from "@/assets/firewall/oque-e.png.asset.json";
 
 export const Route = createFileRoute("/_site/produtos/firewall")({
   head: () => {
-    const h = pageHead({ social: "Rede protegida e vigiada dia e noite, com suporte incluso.",
+    const h = pageHead({ social: "Firewall de rede para empresas em São Paulo e em todo o Brasil: equipamento, instalação, configuração, monitoramento 24 horas e suporte incluídos.",
       title: "Firewall para empresas com monitoramento 24h | Allied IT",
-      description: "Equipamento, instalação, configuração, monitoramento 24 horas e suporte incluídos para proteger sua rede.",
+      description: "Firewall de rede para empresas em São Paulo e em todo o Brasil: equipamento, instalação, configuração, monitoramento 24 horas e suporte incluídos.",
       path: "/produtos/firewall",
     });
-    return { ...h, meta: [...h.meta, { name: "robots", content: "index, follow" }], scripts: [serviceSchema({ path: "/produtos/firewall", name: "Firewall para empresas com monitoramento 24h", serviceType: "Firewall gerenciado", description: "Equipamento, instalação, configuração, monitoramento 24 horas e suporte incluídos para proteger sua rede.", sectionName: "Produtos", sectionPath: "/produtos", faq: FAQ })] };
+    return { ...h, meta: [...h.meta, { name: "robots", content: "index, follow" }], scripts: [serviceSchema({ path: "/produtos/firewall", name: "Firewall para empresas com monitoramento 24h", serviceType: "Firewall gerenciado", description: "Firewall de rede para empresas em São Paulo e em todo o Brasil: equipamento, instalação, configuração, monitoramento 24 horas e suporte incluídos.", sectionName: "Produtos", sectionPath: "/produtos", faq: FAQ })] };
   },
   component: FirewallPage,
 });
@@ -44,6 +44,7 @@ const VALUE = [
   { icon: Activity, title: "Monitoramento constante", text: "Acompanhamos a rede pra identificar e agir diante de ameaças, com relatórios periódicos de segurança." },
 ];
 const FAQ = [
+  { q: "Vocês atendem empresas em São Paulo e em outros estados?", a: "Sim. Instalamos e monitoramos firewall em empresas de São Paulo e da Grande SP, e atendemos o Brasil inteiro: o monitoramento 24 horas e o suporte são feitos remotamente." },
   { q: "Preciso comprar o equipamento ou a Allied IT fornece?", a: "A Allied IT fornece o equipamento como parte do serviço." },
   { q: "O que está incluso no monitoramento?", a: "Acompanhamento contínuo da rede, identificação de tentativas de acesso indevido e relatórios periódicos de segurança." },
   { q: "O suporte técnico tem limite de chamados?", a: "Não, o suporte ao equipamento está incluso no serviço, sem limite de acionamentos." },
@@ -147,6 +148,15 @@ function FirewallPage() {
             ))}
           </div>
           <SiteCtaButton {...PRODUCT_FORMS.firewall} className={`${btnSolid} mt-12`}>Solicite um orçamento</SiteCtaButton>
+        </div>
+      </section>
+
+      <section className="bg-white py-20 sm:py-24">
+        <div className="mx-auto max-w-4xl px-5 sm:px-8">
+          <Reveal>
+            <h2 className={h2}>Firewall para empresas em São Paulo</h2>
+            <p className="font-inter mt-5 text-pretty text-[15px] leading-relaxed text-[var(--site-muted)]">A Allied IT fornece, instala e monitora firewall de rede para empresas em São Paulo e na Grande SP, a partir da nossa sede em Alphaville, Barueri. O monitoramento 24 horas é remoto, então também atendemos empresas em todo o Brasil.</p>
+          </Reveal>
         </div>
       </section>
 
