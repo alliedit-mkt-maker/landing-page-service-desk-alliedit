@@ -32,11 +32,7 @@ export const serviceDeskHead = () => ({
           "@context": "https://schema.org",
           "@type": "Service",
           serviceType: "Service Desk terceirizado",
-          provider: {
-            "@type": "Organization",
-            name: "Allied IT",
-            url: PUBLIC_ORIGIN,
-          },
+          provider: { "@id": "https://alliedit.com.br/#organization" },
           areaServed: "BR",
           description: SD_DESCRIPTION,
         }),

@@ -1,3 +1,4 @@
+import { ORG_SCHEMA } from "@/lib/org-schema";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
@@ -105,13 +106,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: appCss,
       },
     ],
-    scripts: GTM_ID
+    scripts: [
+      { type: "application/ld+json", children: JSON.stringify(ORG_SCHEMA) },
+      ...(GTM_ID
       ? [
           {
             children: `(function(w,d,s,l,i){if(w.__gtmBooted)return;w.__gtmBooted=true;w[l]=w[l]||[];var done=false;function run(){if(done)return;done=true;w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);}function schedule(){if('requestIdleCallback' in w){w.requestIdleCallback(run,{timeout:2000});}else{setTimeout(run,1500);}}if(d.readyState==='complete'){schedule();}else{w.addEventListener('load',schedule,{once:true});}})(window,document,'script','dataLayer','${GTM_ID}');`,
           },
         ]
-      : [],
+      : []),
+    ],
   }),
   shellComponent: RootShell,
   component: RootComponent,

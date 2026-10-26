@@ -31,7 +31,7 @@ export const alocacaoTiHead = () => ({
           "@context": "https://schema.org",
           "@type": "Service",
           serviceType: "Alocação de profissionais de TI",
-          provider: { "@type": "Organization", name: "Allied IT", url: PUBLIC_ORIGIN },
+          provider: { "@id": "https://alliedit.com.br/#organization" },
           areaServed: "BR",
           description,
         }),

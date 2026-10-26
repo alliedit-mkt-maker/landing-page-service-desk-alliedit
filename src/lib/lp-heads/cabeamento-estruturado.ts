@@ -34,7 +34,7 @@ export const cabeamentoEstruturadoHead = () => ({
           "@context": "https://schema.org",
           "@type": "Service",
           serviceType: "Cabeamento estruturado",
-          provider: { "@type": "Organization", name: "Allied IT", url: PUBLIC_ORIGIN },
+          provider: { "@id": "https://alliedit.com.br/#organization" },
           areaServed: "BR",
           description,
         }),

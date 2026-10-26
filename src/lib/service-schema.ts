@@ -35,7 +35,7 @@ export function serviceSchema({
           serviceType,
           url,
           description,
-          provider: { "@type": "Organization", name: "Allied IT", url: SITE_URL },
+          provider: { "@id": "https://alliedit.com.br/#organization" },
           areaServed: { "@type": "Country", name: "Brasil" },
         },
         {
