@@ -37,6 +37,7 @@ function loadHubspotScript(): Promise<void> {
 
 export function ContactModal({ open, onClose }: Props) {
   const [thanks, setThanks] = useState(false);
+  const [submittedPageUrl, setSubmittedPageUrl] = useState("");
   const targetRef = useRef<HTMLDivElement | null>(null);
   const [ready, setReady] = useState(false);
   const targetId = "hubspot-form-target";
@@ -92,6 +93,7 @@ export function ContactModal({ open, onClose }: Props) {
             }
           },
           onFormSubmitted: () => {
+            setSubmittedPageUrl(window.location.href);
             pushDataLayer({
               event: "lead_form_submit",
               form_name: "landing_modal",
@@ -121,7 +123,7 @@ export function ContactModal({ open, onClose }: Props) {
 
   return (
     <>
-      <ThankYouDialog open={thanks} onOpenChange={setThanks} />
+      <ThankYouDialog open={thanks} onOpenChange={setThanks} submittedPageUrl={submittedPageUrl} />
       {open && (
         <div
           className="fade-up fixed inset-0 z-[100] flex items-center justify-center bg-brand-deep/70 backdrop-blur-sm p-4"
