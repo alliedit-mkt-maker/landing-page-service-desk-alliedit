@@ -1,5 +1,7 @@
 # Architecture rules
 
+- Resolve thank-you WhatsApp subjects through one browser-safe page map and capture the URL at successful submission in both modal wrappers; this preserves the actual filled-page origin even if the route changes before acknowledgement.
+
 - Reuse `BlogListing` for every blog archive route so the index, pagination, and category pages keep identical markup and styling.
 - Enable blog search only through the index's explicit prop; lazily cache its full published WordPress index in the browser so initial SSR and other archives remain unchanged.
 - Derive every machine-readable blog modification date through `effectiveModifiedDate` so article metadata and sitemap entries stay consistent.

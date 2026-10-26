@@ -99,6 +99,7 @@ export function keepWhatsappMask(container: HTMLElement | null): () => void {
 
 export function ContactModal({ open, onOpenChange, source, title = "Vamos falar de Service Desk.", formId, description = "Formulário de contato Allied IT Service Desk", product }: { open: boolean; onOpenChange: (v: boolean) => void; source?: string; title?: string; formId?: string; description?: string; product?: string }) {
   const [thanks, setThanks] = useState(false);
+  const [submittedPageUrl, setSubmittedPageUrl] = useState("");
   const targetId = useId().replace(/:/g, "_");
   const containerRef = useRef<HTMLDivElement>(null);
   const renderedRef = useRef(false);
@@ -169,6 +170,7 @@ export function ContactModal({ open, onOpenChange, source, title = "Vamos falar 
             void $form;
           },
           onFormSubmitted: () => {
+            setSubmittedPageUrl(window.location.href);
             pushEvent("lead_form_submit", {
               form_name: "landing_modal",
               source: source ?? "unknown",
@@ -193,7 +195,7 @@ export function ContactModal({ open, onOpenChange, source, title = "Vamos falar 
 
   return (
     <>
-    <ThankYouDialog open={thanks} onOpenChange={setThanks} />
+    <ThankYouDialog open={thanks} onOpenChange={setThanks} submittedPageUrl={submittedPageUrl} />
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-lg max-h-[90vh] overflow-y-auto">
         <DialogHeader>

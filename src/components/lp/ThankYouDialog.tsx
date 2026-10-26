@@ -1,9 +1,6 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogClose } from "@/components/ui/dialog";
 import { pushEvent } from "./LpProvider";
-
-const WA_NUMBER = "5511943319875";
-const WA_MESSAGE = "Olá! Acabei de enviar o formulário no site da Allied IT e gostaria de falar com um especialista.";
-export const THANK_YOU_WA_HREF = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(WA_MESSAGE)}`;
+import { thankYouWhatsappHref } from "@/lib/thank-you-whatsapp";
 
 function WhatsappIcon() {
   return (
@@ -14,7 +11,7 @@ function WhatsappIcon() {
 }
 
 /** Pop-up único de agradecimento exibido após envio bem-sucedido de qualquer formulário HubSpot. */
-export function ThankYouDialog({ open, onOpenChange }: { open: boolean; onOpenChange: (v: boolean) => void }) {
+export function ThankYouDialog({ open, onOpenChange, submittedPageUrl }: { open: boolean; onOpenChange: (v: boolean) => void; submittedPageUrl?: string }) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-md rounded-none font-inter sm:rounded-none">
@@ -26,7 +23,7 @@ export function ThankYouDialog({ open, onOpenChange }: { open: boolean; onOpenCh
         </DialogHeader>
         <div className="mt-4 flex flex-col gap-3">
           <a
-            href={THANK_YOU_WA_HREF}
+            href={thankYouWhatsappHref(submittedPageUrl)}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Fale com um especialista por WhatsApp (abre em nova aba)"
