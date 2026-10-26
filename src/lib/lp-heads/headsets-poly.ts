@@ -31,7 +31,7 @@ export const headsetsPolyHead = () => ({
           "@context": "https://schema.org",
           "@type": "Service",
           serviceType: "Revenda de headsets corporativos Poly (HP)",
-          provider: { "@type": "Organization", name: "Allied IT", url: PUBLIC_ORIGIN },
+          provider: { "@id": "https://alliedit.com.br/#organization" },
           areaServed: "BR",
           description,
         }),

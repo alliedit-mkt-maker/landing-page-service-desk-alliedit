@@ -31,7 +31,7 @@ export const cabeamentoHead = () => ({
           "@context": "https://schema.org",
           "@type": "Service",
           serviceType: "Cabeamento estruturado, fibra óptica e data center",
-          provider: { "@type": "Organization", name: "Allied IT", url: PUBLIC_ORIGIN },
+          provider: { "@id": "https://alliedit.com.br/#organization" },
           areaServed: "BR",
           description,
         }),

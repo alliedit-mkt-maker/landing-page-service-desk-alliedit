@@ -31,7 +31,7 @@ export const rallyBarHead = () => ({
           "@context": "https://schema.org",
           "@type": "Service",
           serviceType: "Revenda e instalação de barras de videoconferência Logitech Rally Bar",
-          provider: { "@type": "Organization", name: "Allied IT", url: PUBLIC_ORIGIN },
+          provider: { "@id": "https://alliedit.com.br/#organization" },
           areaServed: "BR",
           description,
         }),

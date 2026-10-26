@@ -33,7 +33,7 @@ export const Route = createFileRoute("/_site/blog/")({
             name: "Blog Allied IT",
             description: DESC,
             url: canonical,
-            publisher: { "@type": "Organization", name: "Allied IT" },
+            publisher: { "@id": "https://alliedit.com.br/#organization" },
           }),
         },
       ],
