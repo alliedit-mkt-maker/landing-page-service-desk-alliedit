@@ -2,7 +2,7 @@ import { useEffect, useId, useRef, useState } from "react";
 import { ThankYouDialog } from "./ThankYouDialog";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { pushEvent } from "./LpProvider";
-import { captureUtms, getUtms, UTM_KEYS } from "@/lib/utm";
+import { captureUtms, fillUtmFields } from "@/lib/utm";
 import { setupWhatsappMask, enhanceInput } from "@/lib/whatsapp-mask";
 
 const HS_PORTAL_ID = (import.meta.env.VITE_HUBSPOT_PORTAL_ID as string) || "47388409";
@@ -132,7 +132,7 @@ export function ContactModal({ open, onOpenChange, source, title = "Vamos falar 
           target: `#${targetId}`,
           onFormReady: ($form: unknown) => {
             try {
-              const utms = captureAttribution ? captureUtms() : getUtms();
+              const utms = captureUtms();
               const root = containerRef.current;
               if (!root) return;
               if (product) {
@@ -152,28 +152,17 @@ export function ContactModal({ open, onOpenChange, source, title = "Vamos falar 
                   input.dispatchEvent(new Event("change", { bubbles: true }));
                 }
               }
-              UTM_KEYS.forEach((k) => {
-                const v = utms[k];
-                if (!v) return;
-                const roots: ParentNode[] = [root];
-                if (captureAttribution) {
-                  root.querySelectorAll("iframe").forEach((frame) => {
-                    try { if (frame.contentDocument) roots.push(frame.contentDocument); } catch { /* cross-origin */ }
-                  });
-                }
-                const input = roots.map((node) => node.querySelector<HTMLInputElement>(`input[name="${k}"]`)).find(Boolean);
-                if (input) {
-                  input.value = v;
-                  input.dispatchEvent(new Event("input", { bubbles: true }));
-                  input.dispatchEvent(new Event("change", { bubbles: true }));
-                }
-              });
+              fillUtmFields(root, utms);
+              setTimeout(() => fillUtmFields(containerRef.current), 400);
             } catch {
               /* noop */
             }
             stopMask?.();
             stopMask = setupWhatsappMask(containerRef.current);
             void $form;
+          },
+          onBeforeFormSubmit: () => {
+            try { fillUtmFields(containerRef.current); } catch { /* noop */ }
           },
           onFormSubmitted: () => {
             setSubmittedPageUrl(window.location.href);
