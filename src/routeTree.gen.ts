@@ -48,6 +48,7 @@ import { Route as SiteServicosInfraCoreRouteImport } from './routes/_site.servic
 import { Route as SiteServicosInteligenciaArtificialRouteImport } from './routes/_site.servicos.inteligencia-artificial'
 import { Route as SiteServicosProductEngineeringRouteImport } from './routes/_site.servicos.product-engineering'
 import { Route as SiteServicosSmartCloudOpsRouteImport } from './routes/_site.servicos.smart-cloud-ops'
+import { Route as ApiPublicCandidaturaRouteImport } from './routes/api/public/candidatura'
 import { Route as LpFieldServiceObrigadoRouteImport } from './routes/lp.field-service.obrigado'
 import { Route as SiteBlogPagePageRouteImport } from './routes/_site.blog.page.$page'
 import { Route as SiteBlogCategoriaCategoryIndexRouteImport } from './routes/_site.blog.categoria.$category.index'
@@ -255,6 +256,11 @@ const SiteServicosSmartCloudOpsRoute =
     path: '/servicos/smart-cloud-ops',
     getParentRoute: () => SiteRoute,
   } as any)
+const ApiPublicCandidaturaRoute = ApiPublicCandidaturaRouteImport.update({
+  id: '/api/public/candidatura',
+  path: '/api/public/candidatura',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LpFieldServiceObrigadoRoute = LpFieldServiceObrigadoRouteImport.update({
   id: '/obrigado',
   path: '/obrigado',
@@ -314,6 +320,7 @@ export interface FileRoutesByFullPath {
   '/servicos/inteligencia-artificial': typeof SiteServicosInteligenciaArtificialRoute
   '/servicos/product-engineering': typeof SiteServicosProductEngineeringRoute
   '/servicos/smart-cloud-ops': typeof SiteServicosSmartCloudOpsRoute
+  '/api/public/candidatura': typeof ApiPublicCandidaturaRoute
   '/lp/field-service/obrigado': typeof LpFieldServiceObrigadoRoute
   '/blog/': typeof SiteBlogIndexRoute
   '/produtos/': typeof SiteProdutosIndexRoute
@@ -358,6 +365,7 @@ export interface FileRoutesByTo {
   '/servicos/inteligencia-artificial': typeof SiteServicosInteligenciaArtificialRoute
   '/servicos/product-engineering': typeof SiteServicosProductEngineeringRoute
   '/servicos/smart-cloud-ops': typeof SiteServicosSmartCloudOpsRoute
+  '/api/public/candidatura': typeof ApiPublicCandidaturaRoute
   '/lp/field-service/obrigado': typeof LpFieldServiceObrigadoRoute
   '/blog': typeof SiteBlogIndexRoute
   '/produtos': typeof SiteProdutosIndexRoute
@@ -404,6 +412,7 @@ export interface FileRoutesById {
   '/_site/servicos/inteligencia-artificial': typeof SiteServicosInteligenciaArtificialRoute
   '/_site/servicos/product-engineering': typeof SiteServicosProductEngineeringRoute
   '/_site/servicos/smart-cloud-ops': typeof SiteServicosSmartCloudOpsRoute
+  '/api/public/candidatura': typeof ApiPublicCandidaturaRoute
   '/lp/field-service/obrigado': typeof LpFieldServiceObrigadoRoute
   '/_site/blog/': typeof SiteBlogIndexRoute
   '/_site/produtos/': typeof SiteProdutosIndexRoute
@@ -450,6 +459,7 @@ export interface FileRouteTypes {
     | '/servicos/inteligencia-artificial'
     | '/servicos/product-engineering'
     | '/servicos/smart-cloud-ops'
+    | '/api/public/candidatura'
     | '/lp/field-service/obrigado'
     | '/blog/'
     | '/produtos/'
@@ -494,6 +504,7 @@ export interface FileRouteTypes {
     | '/servicos/inteligencia-artificial'
     | '/servicos/product-engineering'
     | '/servicos/smart-cloud-ops'
+    | '/api/public/candidatura'
     | '/lp/field-service/obrigado'
     | '/blog'
     | '/produtos'
@@ -539,6 +550,7 @@ export interface FileRouteTypes {
     | '/_site/servicos/inteligencia-artificial'
     | '/_site/servicos/product-engineering'
     | '/_site/servicos/smart-cloud-ops'
+    | '/api/public/candidatura'
     | '/lp/field-service/obrigado'
     | '/_site/blog/'
     | '/_site/produtos/'
@@ -571,6 +583,7 @@ export interface RootRouteChildren {
   LpVideoconferenciaRoute: typeof LpVideoconferenciaRoute
   LpVideoconferenciaPagoRoute: typeof LpVideoconferenciaPagoRoute
   LpYealinkVideoconferenciaRoute: typeof LpYealinkVideoconferenciaRoute
+  ApiPublicCandidaturaRoute: typeof ApiPublicCandidaturaRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -848,6 +861,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SiteServicosSmartCloudOpsRouteImport
       parentRoute: typeof SiteRoute
     }
+    '/api/public/candidatura': {
+      id: '/api/public/candidatura'
+      path: '/api/public/candidatura'
+      fullPath: '/api/public/candidatura'
+      preLoaderRoute: typeof ApiPublicCandidaturaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/lp/field-service/obrigado': {
       id: '/lp/field-service/obrigado'
       path: '/obrigado'
@@ -964,6 +984,7 @@ const rootRouteChildren: RootRouteChildren = {
   LpVideoconferenciaRoute: LpVideoconferenciaRoute,
   LpVideoconferenciaPagoRoute: LpVideoconferenciaPagoRoute,
   LpYealinkVideoconferenciaRoute: LpYealinkVideoconferenciaRoute,
+  ApiPublicCandidaturaRoute: ApiPublicCandidaturaRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
