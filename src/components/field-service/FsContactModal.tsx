@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ThankYouDialog } from "@/components/lp/ThankYouDialog";
 import { X } from "lucide-react";
-import { pushDataLayer, readUtms, UTM_KEYS } from "@/components/field-service/fs-tracking";
+import { pushDataLayer, captureUtms, fillUtmFields } from "@/components/field-service/fs-tracking";
 import { setupWhatsappMask } from "@/lib/whatsapp-mask";
 import { keepWhatsappMask } from "@/components/lp/ContactModal";
 
@@ -67,7 +67,7 @@ export function ContactModal({ open, onClose }: Props) {
         if (cancelled || !window.hbspt?.forms || !targetRef.current) return;
         // Clear any prior render
         targetRef.current.innerHTML = "";
-        const utms = readUtms();
+        const utms = captureUtms();
 
         window.hbspt.forms.create({
           portalId: PORTAL_ID,
@@ -79,18 +79,12 @@ export function ContactModal({ open, onClose }: Props) {
             // Máscara + validação do WhatsApp (utilitário compartilhado)
             setupWhatsappMask(form);
             // Prefill hidden UTM fields
-            for (const key of UTM_KEYS) {
-              const val = utms[key];
-              if (!val) continue;
-              const input = form.querySelector<HTMLInputElement>(
-                `input[name="${key}"]`,
-              );
-              if (input) {
-                input.value = val;
-                input.dispatchEvent(new Event("input", { bubbles: true }));
-                input.dispatchEvent(new Event("change", { bubbles: true }));
-              }
-            }
+            fillUtmFields(form, utms);
+            fillUtmFields(targetRef.current, utms);
+            setTimeout(() => fillUtmFields(targetRef.current), 400);
+          },
+          onBeforeFormSubmit: () => {
+            try { fillUtmFields(targetRef.current); } catch { /* noop */ }
           },
           onFormSubmitted: () => {
             setSubmittedPageUrl(window.location.href);

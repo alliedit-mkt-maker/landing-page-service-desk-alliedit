@@ -13,6 +13,8 @@ import type { ErrorComponentProps } from "@tanstack/react-router";
 import appCss from "../styles.css?url";
 import favicon from "@/assets/favicon.svg.asset.json";
 import { ogImageUrl } from "@/lib/seo";
+import { useEffect } from "react";
+import { captureUtms } from "@/lib/utm";
 
 const GTM_ID = import.meta.env.VITE_GTM_ID as string | undefined;
 
@@ -149,6 +151,13 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const router = useRouter();
+
+  // Captura de atribuição para o site inteiro: ao carregar e a cada navegação interna.
+  useEffect(() => {
+    captureUtms();
+    return router.subscribe("onResolved", () => captureUtms());
+  }, [router]);
 
   return (
     <QueryClientProvider client={queryClient}>
