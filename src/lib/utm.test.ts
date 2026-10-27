@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it } from "bun:test";
 import { captureUtms, getUtms, UTM_STORAGE_KEY, UTM_TTL_MS, __resetUtmMemory } from "./utm";
 
 function fakeStorage() {
