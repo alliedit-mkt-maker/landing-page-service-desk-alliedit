@@ -1,5 +1,5 @@
 import { pageHead } from "@/lib/seo";
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import {
   ArrowRight,
   Binoculars,
@@ -22,6 +22,8 @@ import { SiteSegments } from "@/components/site/SiteSegments";
 import { SiteBrazilMap } from "@/components/site/SiteBrazilMap";
 import officeHall from "@/assets/sobre/hero-office.jpg.asset.json";
 import ceo from "@/assets/sobre/ceo-jimmy.jpg.asset.json";
+import { SiteCtaButton } from "@/components/site/SiteCtaButton";
+import { GENERAL_CONTACT_FORM } from "@/lib/general-contact-form";
 
 export const Route = createFileRoute("/_site/sobre")({
   head: () =>
@@ -271,18 +273,18 @@ function SobrePage() {
             <MapPin className="h-5 w-5 text-[var(--site-blue)]" strokeWidth={1.5} />
             Alphaville, Barueri - SP
           </p>
-          <Link
-            to="/contato"
+          <SiteCtaButton
+            {...GENERAL_CONTACT_FORM}
             className={`${btnBase} bg-[var(--site-blue)] text-white hover:bg-[var(--site-blue-dark)]`}
           >
             Fale com a gente
             <ArrowRight className="h-3.5 w-3.5" />
-          </Link>
+          </SiteCtaButton>
         </Reveal>
       </section>
 
       {/* DOBRA 8 — CTA + Rodapé */}
-      <SiteCta />
+      <SiteCta modal {...GENERAL_CONTACT_FORM} />
       <SiteFooter />
     </>
   );

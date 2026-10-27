@@ -2,7 +2,7 @@ import { useEffect, useId, useRef, useState } from "react";
 import { ThankYouDialog } from "./ThankYouDialog";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { pushEvent } from "./LpProvider";
-import { getUtms, UTM_KEYS } from "@/lib/utm";
+import { captureUtms, getUtms, UTM_KEYS } from "@/lib/utm";
 import { setupWhatsappMask, enhanceInput } from "@/lib/whatsapp-mask";
 
 const HS_PORTAL_ID = (import.meta.env.VITE_HUBSPOT_PORTAL_ID as string) || "47388409";
@@ -97,7 +97,7 @@ export function keepWhatsappMask(container: HTMLElement | null): () => void {
   };
 }
 
-export function ContactModal({ open, onOpenChange, source, title = "Vamos falar de Service Desk.", formId, description = "Formulário de contato Allied IT Service Desk", product }: { open: boolean; onOpenChange: (v: boolean) => void; source?: string; title?: string; formId?: string; description?: string; product?: string }) {
+export function ContactModal({ open, onOpenChange, source, title = "Vamos falar de Service Desk.", formId, description = "Formulário de contato Allied IT Service Desk", product, captureAttribution = false }: { open: boolean; onOpenChange: (v: boolean) => void; source?: string; title?: string; formId?: string; description?: string; product?: string; captureAttribution?: boolean }) {
   const [thanks, setThanks] = useState(false);
   const [submittedPageUrl, setSubmittedPageUrl] = useState("");
   const targetId = useId().replace(/:/g, "_");
@@ -132,7 +132,7 @@ export function ContactModal({ open, onOpenChange, source, title = "Vamos falar 
           target: `#${targetId}`,
           onFormReady: ($form: unknown) => {
             try {
-              const utms = getUtms();
+              const utms = captureAttribution ? captureUtms() : getUtms();
               const root = containerRef.current;
               if (!root) return;
               if (product) {
@@ -155,7 +155,13 @@ export function ContactModal({ open, onOpenChange, source, title = "Vamos falar 
               UTM_KEYS.forEach((k) => {
                 const v = utms[k];
                 if (!v) return;
-                const input = root.querySelector<HTMLInputElement>(`input[name="${k}"]`);
+                const roots: ParentNode[] = [root];
+                if (captureAttribution) {
+                  root.querySelectorAll("iframe").forEach((frame) => {
+                    try { if (frame.contentDocument) roots.push(frame.contentDocument); } catch { /* cross-origin */ }
+                  });
+                }
+                const input = roots.map((node) => node.querySelector<HTMLInputElement>(`input[name="${k}"]`)).find(Boolean);
                 if (input) {
                   input.value = v;
                   input.dispatchEvent(new Event("input", { bubbles: true }));
@@ -191,7 +197,7 @@ export function ContactModal({ open, onOpenChange, source, title = "Vamos falar 
       stopMask?.();
       stopKeep();
     };
-  }, [open, onOpenChange, source, targetId, activeFormId, product]);
+  }, [open, onOpenChange, source, targetId, activeFormId, product, captureAttribution]);
 
   return (
     <>

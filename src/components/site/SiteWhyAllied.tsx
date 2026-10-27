@@ -1,4 +1,5 @@
-import { Link } from "@tanstack/react-router";
+import { SiteCtaButton } from "./SiteCtaButton";
+import { GENERAL_CONTACT_FORM } from "@/lib/general-contact-form";
 import { ArrowRight } from "lucide-react";
 
 const POINTS = [
@@ -67,8 +68,8 @@ export function SiteWhyAllied() {
             </div>
           ))}
 
-          <Link
-            to="/contato"
+          <SiteCtaButton
+            {...GENERAL_CONTACT_FORM}
             className="group flex h-full flex-col items-center justify-center gap-3 border border-white/35 bg-white/[0.14] p-7 text-center backdrop-blur-sm transition-colors hover:bg-white/[0.2]"
           >
             <span className="font-chillax text-[20px] font-bold text-white">
@@ -78,7 +79,7 @@ export function SiteWhyAllied() {
               Iniciar conversa
               <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
             </span>
-          </Link>
+          </SiteCtaButton>
         </div>
       </div>
     </section>

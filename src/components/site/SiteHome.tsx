@@ -9,6 +9,8 @@ import { SiteTestimonials } from "@/components/site/SiteTestimonials";
 import { SiteCta } from "@/components/site/SiteCta";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import heroBg from "@/assets/site/site-cta-banner.jpg.asset.json";
+import { SiteCtaButton } from "@/components/site/SiteCtaButton";
+import { GENERAL_CONTACT_FORM } from "@/lib/general-contact-form";
 
 
 // Palavras em arco à esquerda do ícone. Todas compartilham o mesmo ciclo de
@@ -108,12 +110,12 @@ export function SiteHome() {
             consultiva para a sua empresa focar no que faz de melhor.
           </p>
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:items-start lg:justify-start">
-            <Link
-              to="/contato"
+            <SiteCtaButton
+              {...GENERAL_CONTACT_FORM}
               className={`${btnBase} border border-white hover:bg-white hover:text-[#0A0E12]`}
             >
               Falar com especialista
-            </Link>
+            </SiteCtaButton>
             <Link
               to="/servicos"
               className={`${btnBase} border border-white/30 hover:border-white`}
@@ -132,7 +134,7 @@ export function SiteHome() {
       <SiteWhyAllied />
       <SitePartners />
       <SiteTestimonials />
-      <SiteCta />
+      <SiteCta modal {...GENERAL_CONTACT_FORM} />
       <SiteFooter />
     </>
   );

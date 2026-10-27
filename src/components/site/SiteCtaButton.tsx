@@ -12,6 +12,7 @@ export function SiteCtaButton({
   formId,
   description,
   product,
+  captureAttribution,
   title = "Vamos conversar sobre a TI da sua empresa?",
   source,
 }: {
@@ -20,6 +21,7 @@ export function SiteCtaButton({
   formId?: string;
   description?: string;
   product?: string;
+  captureAttribution?: boolean;
   title?: string;
   source?: string;
 }) {
@@ -36,6 +38,7 @@ export function SiteCtaButton({
         formId={formId}
         description={description}
         product={product}
+        captureAttribution={captureAttribution}
         source={source ?? (typeof window !== "undefined" ? window.location.pathname : "site")}
       />
     </>

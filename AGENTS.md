@@ -7,5 +7,6 @@
 - Derive every machine-readable blog modification date through `effectiveModifiedDate` so article metadata and sitemap entries stay consistent.
 - Build service-page JSON-LD through `serviceSchema` from each page's visible FAQ array so structured and visible content cannot diverge.
 - Pass page-specific HubSpot form IDs and accessible descriptions through CTA props; keep shared defaults unchanged so other pages retain their forms.
+- Home and About content CTAs opt in to GENERAL_CONTACT_FORM; shared navigation remains independent so other pages retain their contact behavior.
 - Institutional product forms opt in through PRODUCT_FORMS and route-level props; shared page components retain campaign defaults to isolate /lp consumers.
 - Keep legacy WordPress redirects and gone responses in the server's pre-routing handler, with exact mappings in PAGE_REDIRECTS; this preserves real blog routes and ensures permanent slash normalization.
