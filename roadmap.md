@@ -1,4 +1,7 @@
 - [x] Configure the five service-page forms and descriptions without changing shared defaults.
+- [ ] Configure only Home and About content contact buttons with the general form; audit shared navigation and hosted fields.
+- [ ] Verify general-form fields, attribution, WhatsApp and thank-you behavior without publishing.
+- [ ] Confirm real general-form receipt in HubSpot; awaiting the user's preview submission and receipt confirmation.
 - [x] Personalize shared thank-you WhatsApp messages by submitted page, including LPs and paid variants.
 - [x] Verify subjects, encoded links and preserved tracking; report page list without publishing.
 - [x] Inspect hosted hidden fields and verify every service CTA, UTM filling and WhatsApp masking.
