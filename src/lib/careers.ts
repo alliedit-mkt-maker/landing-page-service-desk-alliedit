@@ -75,3 +75,6 @@ export function validateCareer(f: CareerFields): CareerErrors {
 export function careerSubject(area: string, nome: string): string {
   return `Nova candidatura: ${area} - ${nome.trim()}`;
 }
+
+export const ACCEPT_ATTR =
+  ".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document";

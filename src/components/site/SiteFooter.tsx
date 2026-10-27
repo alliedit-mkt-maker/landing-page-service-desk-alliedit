@@ -1,4 +1,7 @@
+import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
+import { CareersModal } from "./CareersModal";
+import { CAREERS_TEST_PARAM, CAREERS_TEST_VALUE, careersPopupEnabled } from "@/lib/careers";
 
 const SERVICOS = [
   "Digital Workspace",
@@ -23,6 +26,23 @@ const WHATSAPP =
   encodeURIComponent("Olá, gostaria de falar com um especialista da Allied IT");
 
 export function SiteFooter() {
+  const [careersOpen, setCareersOpen] = useState(false);
+  const [careersTest, setCareersTest] = useState(false);
+
+  useEffect(() => {
+    const isTest = new URLSearchParams(window.location.search).get(CAREERS_TEST_PARAM) === CAREERS_TEST_VALUE;
+    if (!isTest) return;
+    setCareersTest(true);
+    setCareersOpen(true);
+    const meta = document.createElement("meta");
+    meta.name = "robots";
+    meta.content = "noindex, nofollow";
+    meta.setAttribute("data-careers-test", "");
+    document.head.appendChild(meta);
+    return () => meta.remove();
+  }, []);
+
+  const careersActive = careersPopupEnabled || careersTest;
   const head = "font-inter mb-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/45";
   const item = "font-inter text-[13.5px] text-white/65 transition-colors hover:text-white";
 
@@ -76,9 +96,15 @@ export function SiteFooter() {
           <ul className="space-y-3">
             {INSTITUCIONAL.map((i) => (
               <li key={i.label}>
-                <Link to={i.to} className={item}>
-                  {i.label}
-                </Link>
+                {i.label === "Trabalhe Conosco" && careersActive ? (
+                  <button type="button" onClick={() => setCareersOpen(true)} className={item}>
+                    {i.label}
+                  </button>
+                ) : (
+                  <Link to={i.to} className={item}>
+                    {i.label}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>
@@ -120,7 +146,7 @@ export function SiteFooter() {
           </div>
         </div>
       </div>
-
+      {careersActive && <CareersModal open={careersOpen} onOpenChange={setCareersOpen} />}
     </footer>
   );
 }

@@ -12,7 +12,7 @@ import {
   validateCareer,
   validateFile,
   type CareerErrors,
-} from "@/lib/careers-ui";
+} from "@/lib/careers";
 
 type Status = "idle" | "sending" | "fallback" | "error" | "success";
 

@@ -235,7 +235,16 @@ export default {
       const handler = await getServerEntry();
       const rewritten = rewriteRequestForHost(request);
       const response = await handler.fetch(rewritten, env, ctx);
-      return withSecurityHeaders(await normalizeCatastrophicSsrResponse(response));
+      const finalResponse = withSecurityHeaders(await normalizeCatastrophicSsrResponse(response));
+      // Variação de teste do pop-up de candidatura (?candidatura=...) nunca é indexada.
+      if (new URL(request.url).searchParams.has("candidatura")) {
+        try {
+          finalResponse.headers.set("X-Robots-Tag", "noindex, nofollow");
+        } catch {
+          /* cabeçalhos imutáveis: mantém a resposta */
+        }
+      }
+      return finalResponse;
     } catch (error) {
       console.error(error);
       return withSecurityHeaders(brandedErrorResponse());
