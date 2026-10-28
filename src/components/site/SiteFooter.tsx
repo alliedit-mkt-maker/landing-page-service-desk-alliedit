@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { CareersModal } from "./CareersModal";
+import { GeneralContactLink } from "./GeneralContact";
 import { CAREERS_TEST_PARAM, CAREERS_TEST_VALUE, careersPopupEnabled } from "@/lib/careers";
 
 const SERVICOS = [
@@ -21,9 +22,6 @@ const INSTITUCIONAL: { label: string; to: string }[] = [
   { label: "Trabalhe Conosco", to: "/contato" },
 ];
 
-const WHATSAPP =
-  "https://wa.me/5511943319875?text=" +
-  encodeURIComponent("Olá, gostaria de falar com um especialista da Allied IT");
 
 export function SiteFooter() {
   const [careersOpen, setCareersOpen] = useState(false);
@@ -100,6 +98,10 @@ export function SiteFooter() {
                   <button type="button" onClick={() => setCareersOpen(true)} className={item}>
                     {i.label}
                   </button>
+                ) : i.label === "Contato" ? (
+                  <GeneralContactLink buttonName="footer_contact" className={item}>
+                    {i.label}
+                  </GeneralContactLink>
                 ) : (
                   <Link to={i.to} className={item}>
                     {i.label}
@@ -122,11 +124,6 @@ export function SiteFooter() {
             <li>
               <a href="mailto:contato@alliedit.com.br" className={item}>
                 contato@alliedit.com.br
-              </a>
-            </li>
-            <li>
-              <a href={WHATSAPP} target="_blank" rel="noreferrer" className={item}>
-                WhatsApp (11) 94331-9875
               </a>
             </li>
           </ul>

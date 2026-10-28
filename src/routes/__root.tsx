@@ -15,6 +15,7 @@ import favicon from "@/assets/favicon.svg.asset.json";
 import { ogImageUrl } from "@/lib/seo";
 import { useEffect } from "react";
 import { captureUtms } from "@/lib/utm";
+import { GeneralContactHost } from "@/components/site/GeneralContact";
 
 const GTM_ID = import.meta.env.VITE_GTM_ID as string | undefined;
 
@@ -162,6 +163,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <Outlet />
+      <GeneralContactHost />
     </QueryClientProvider>
   );
 }
