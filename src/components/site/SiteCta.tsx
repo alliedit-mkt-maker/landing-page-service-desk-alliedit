@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { GeneralContactLink } from "./GeneralContact";
 import { SiteCtaButton } from "./SiteCtaButton";
 
 const BTN =
@@ -21,9 +21,9 @@ export function SiteCta({ modal = false, formId, description, product, captureAt
         {modal ? (
           <SiteCtaButton className={BTN} formId={formId} description={description} product={product} captureAttribution={captureAttribution}>Falar com especialista</SiteCtaButton>
         ) : (
-          <Link to="/contato" className={BTN}>
+          <GeneralContactLink buttonName="primary_cta" className={BTN}>
             Falar com especialista
-          </Link>
+          </GeneralContactLink>
         )}
       </div>
     </section>

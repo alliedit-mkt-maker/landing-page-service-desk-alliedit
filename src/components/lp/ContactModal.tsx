@@ -97,34 +97,25 @@ export function keepWhatsappMask(container: HTMLElement | null): () => void {
   };
 }
 
-export function ContactModal({ open, onOpenChange, source, title = "Vamos falar de Service Desk.", formId, description = "Formulário de contato Allied IT Service Desk", product, captureAttribution = false }: { open: boolean; onOpenChange: (v: boolean) => void; source?: string; title?: string; formId?: string; description?: string; product?: string; captureAttribution?: boolean }) {
-  const [thanks, setThanks] = useState(false);
-  const [submittedPageUrl, setSubmittedPageUrl] = useState("");
+export function HubspotFormEmbed({ formId, product, source, formName = "landing_modal", onSubmitted }: { formId?: string; product?: string; source?: string; formName?: string; onSubmitted: (pageUrl: string) => void }) {
   const targetId = useId().replace(/:/g, "_");
   const containerRef = useRef<HTMLDivElement>(null);
-  const renderedRef = useRef(false);
   const [error, setError] = useState<string | null>(null);
   const activeFormId = formId || HS_FORM_ID;
+  const submittedRef = useRef(onSubmitted);
+  submittedRef.current = onSubmitted;
 
   useEffect(() => {
-    if (!open) {
-      renderedRef.current = false;
-      if (containerRef.current) containerRef.current.innerHTML = "";
-      return;
-    }
-    if (renderedRef.current) return;
     if (!HS_PORTAL_ID || !activeFormId) {
       setError("Formulário não configurado.");
       return;
     }
-
     let cancelled = false;
     let stopMask: (() => void) | undefined = setupWhatsappMask(containerRef.current);
     const stopKeep = keepWhatsappMask(containerRef.current);
     loadHubspotScript()
       .then(() => {
         if (cancelled || !window.hbspt) return;
-        renderedRef.current = true;
         window.hbspt.forms.create({
           portalId: HS_PORTAL_ID,
           formId: activeFormId,
@@ -165,17 +156,14 @@ export function ContactModal({ open, onOpenChange, source, title = "Vamos falar 
             try { fillUtmFields(containerRef.current); } catch { /* noop */ }
           },
           onFormSubmitted: () => {
-            setSubmittedPageUrl(window.location.href);
+            const pageUrl = window.location.href;
             pushEvent("lead_form_submit", {
-              form_name: "landing_modal",
+              form_name: formName,
               source: source ?? "unknown",
-              page_location: typeof window !== "undefined" ? window.location.href : "",
+              page_location: pageUrl,
             });
             try { sessionStorage.setItem("lp_origin_path", `${window.location.hostname}${window.location.pathname}`); } catch { /* noop */ }
-            setTimeout(() => {
-              onOpenChange(false);
-              setThanks(true);
-            }, 300);
+            submittedRef.current(pageUrl);
           },
         });
       })
@@ -185,14 +173,32 @@ export function ContactModal({ open, onOpenChange, source, title = "Vamos falar 
       cancelled = true;
       stopMask?.();
       stopKeep();
+      if (containerRef.current) containerRef.current.innerHTML = "";
     };
-  }, [open, onOpenChange, source, targetId, activeFormId, product, captureAttribution]);
+  }, [source, targetId, activeFormId, product, formName]);
+
+  if (error) return <p className="text-sm text-destructive font-medium">{error}</p>;
+  return <div ref={containerRef} id={targetId} />;
+}
+
+export function ContactModal({ open, onOpenChange, source, title = "Vamos falar de Service Desk.", formId, description = "Formulário de contato Allied IT Service Desk", product, returnFocusRef }: { open: boolean; onOpenChange: (v: boolean) => void; source?: string; title?: string; formId?: string; description?: string; product?: string; captureAttribution?: boolean; returnFocusRef?: { current: HTMLElement | null } }) {
+  const [thanks, setThanks] = useState(false);
+  const [submittedPageUrl, setSubmittedPageUrl] = useState("");
 
   return (
     <>
     <ThankYouDialog open={thanks} onOpenChange={setThanks} submittedPageUrl={submittedPageUrl} />
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-lg max-h-[90vh] overflow-y-auto">
+      <DialogContent
+        className="max-w-lg max-h-[90vh] overflow-y-auto"
+        onCloseAutoFocus={(e) => {
+          const el = returnFocusRef?.current;
+          if (el && el.isConnected) {
+            e.preventDefault();
+            el.focus();
+          }
+        }}
+      >
         <DialogHeader>
           <DialogTitle className="text-2xl font-extrabold tracking-tight text-petrol">{title}</DialogTitle>
           <DialogDescription className="sr-only">
@@ -200,11 +206,18 @@ export function ContactModal({ open, onOpenChange, source, title = "Vamos falar 
           </DialogDescription>
         </DialogHeader>
         <div className="pt-2 hubspot-form-wrapper">
-          {error ? (
-            <p className="text-sm text-destructive font-medium">{error}</p>
-          ) : (
-            <div ref={containerRef} id={targetId} />
-          )}
+          <HubspotFormEmbed
+            formId={formId}
+            product={product}
+            source={source}
+            onSubmitted={(pageUrl) => {
+              setSubmittedPageUrl(pageUrl);
+              setTimeout(() => {
+                onOpenChange(false);
+                setThanks(true);
+              }, 300);
+            }}
+          />
           <p className="text-[11px] text-petrol/50 text-center font-mono mt-4">
             Seus dados são tratados conforme a LGPD. Sem SPAM.
           </p>

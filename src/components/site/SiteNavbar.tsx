@@ -1,3 +1,4 @@
+import { GeneralContactLink } from "./GeneralContact";
 import { useEffect, useRef, useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
 import {
@@ -272,12 +273,12 @@ export function SiteNavbar() {
             ))}
           </nav>
 
-          <Link
-            to="/contato"
+          <GeneralContactLink
+            buttonName="nav_contact"
             className="font-inter inline-flex h-9 items-center justify-center rounded-full border border-white/35 bg-transparent px-5 text-[11.5px] font-semibold uppercase tracking-[0.16em] text-white/85 transition-colors hover:border-white hover:text-white"
           >
             Contato
-          </Link>
+          </GeneralContactLink>
         </div>
 
         <button
@@ -384,13 +385,13 @@ export function SiteNavbar() {
                 {item.label}
               </Link>
             ))}
-            <Link
-              to="/contato"
-              onClick={() => setOpen(false)}
+            <GeneralContactLink
+              buttonName="nav_contact_mobile"
+              onActivate={() => setOpen(false)}
               className="font-inter mt-4 inline-flex h-11 items-center justify-center rounded-full border border-white/35 px-6 text-[12px] font-semibold uppercase tracking-[0.16em] text-white"
             >
               Contato
-            </Link>
+            </GeneralContactLink>
           </nav>
         </div>
       ) : null}
