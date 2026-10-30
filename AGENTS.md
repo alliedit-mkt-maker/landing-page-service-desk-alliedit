@@ -1,5 +1,6 @@
 # Architecture rules
 - Keep Cyber Shield enrichment data browser-safe and its visual overrides scoped to `.cyber-page`; shared CTA copy overrides must be opt-in so FAQ, forms and other pages remain unaffected.
+- Resolve the organization schema through a browser-safe pathname selector for page-specific exclusions; never mutate the shared company schema or change other pages.
 
 - Resolve thank-you WhatsApp subjects through one browser-safe page map and capture the URL at successful submission in both modal wrappers; this preserves the actual filled-page origin even if the route changes before acknowledgement.
 

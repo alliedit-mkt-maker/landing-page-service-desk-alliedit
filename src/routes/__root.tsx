@@ -1,4 +1,4 @@
-import { ORG_SCHEMA } from "@/lib/org-schema";
+import { organizationSchemaForPath } from "@/lib/org-schema";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
@@ -79,7 +79,7 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
-  head: () => ({
+  head: ({ matches }) => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
@@ -110,7 +110,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
     ],
     scripts: [
-      { type: "application/ld+json", children: JSON.stringify(ORG_SCHEMA) },
+      { type: "application/ld+json", children: JSON.stringify(organizationSchemaForPath(matches.at(-1)?.pathname ?? "/")) },
       ...(GTM_ID
       ? [
           {
