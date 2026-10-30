@@ -1,7 +1,9 @@
 import { pageHead } from "@/lib/seo";
 import { serviceSchema } from "@/lib/service-schema";
 import { SiteCtaButton } from "@/components/site/SiteCtaButton";
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
+import { CyberVision, CyberMethod } from "@/components/site/CyberShieldSections";
+import { CYBER_FAQ } from "@/lib/cyber-shield-content";
 import {
   Accordion,
   AccordionContent,
@@ -48,9 +50,11 @@ export const Route = createFileRoute("/_site/servicos/cyber-shield-360")({
 });
 
 type Item = { icon: React.ElementType; title: string; text: string };
-type GroupProps = { eyebrow: string; title: string; items: Item[] };
+type GroupProps = { eyebrow: string; title: string; items: Item[]; benefits: string[]; delivery: string };
 
 const G1: GroupProps = {
+  benefits: ["Reunir a visão das ameaças para orientar a resposta.", "Acompanhar redes e servidores de forma contínua.", "Conectar a proteção dos dispositivos à análise de segurança.", "Apoiar a recuperação diante de incidentes."],
+  delivery: "Com SOCaaS, NOCaaS e EDR & XDR, conectando monitoramento e atuação técnica.",
   eyebrow: "Grupo 1",
   title: "Monitoramento & Resposta",
   items: [
@@ -60,6 +64,8 @@ const G1: GroupProps = {
   ],
 };
 const G2: GroupProps = {
+  benefits: ["Identificar vulnerabilidades por meio de simulações de ataque.", "Orientar a correção das falhas encontradas.", "Reconhecer a exposição dos colaboradores a mensagens enganosas.", "Conectar os resultados dos testes ao treinamento."],
+  delivery: "Com Pentest & Red Team e Phishing Test, combinando simulação, diagnóstico e treinamento.",
   eyebrow: "Grupo 2",
   title: "Testes & Simulação",
   items: [
@@ -68,6 +74,8 @@ const G2: GroupProps = {
   ],
 };
 const G3: GroupProps = {
+  benefits: ["Ajudar as pessoas a reconhecer situações de risco.", "Fortalecer a cultura de segurança no cotidiano.", "Organizar prioridades a partir da análise do ambiente.", "Relacionar decisões de segurança à LGPD e à resiliência."],
+  delivery: "Com conscientização, treinamentos e consultoria para orientar o plano de ação.",
   eyebrow: "Grupo 3",
   title: "Cultura & Consultoria",
   items: [
@@ -76,6 +84,8 @@ const G3: GroupProps = {
   ],
 };
 const G4: GroupProps = {
+  benefits: ["Fortalecer a configuração de sistemas e dispositivos.", "Controlar o tráfego com regras de firewall.", "Centralizar a governança dos dispositivos.", "Combinar proteção técnica e práticas de segurança."],
+  delivery: "Com Hardening, Firewalls e Intune, reunindo configuração segura e gestão de dispositivos.",
   eyebrow: "Grupo 4",
   title: "Blindagem Técnica",
   items: [
@@ -97,6 +107,7 @@ const FAQ = [
   ["O SOCaaS substitui a equipe de TI interna?", "Não. Ele atua em conjunto com o time interno, cuidando do monitoramento e resposta a incidentes de forma contínua, algo difícil de manter só com equipe própria."],
   ["O que é incluído no teste de phishing?", "Envio de campanhas simuladas de phishing para os colaboradores, com relatório de quem clicou e treinamento direcionado depois."],
   ["Como funciona o alinhamento com a LGPD?", "Avaliamos os processos e sistemas atuais, identificamos os pontos de risco e ajudamos a implementar as adequações necessárias."],
+  ...CYBER_FAQ,
 ];
 
 const GRID_TEXTURE =
@@ -111,7 +122,7 @@ function SectionCta({ label, dark }: { label: string; dark?: boolean }) {
     <Reveal variant="fade-up" className="mt-12">
       <SiteCtaButton {...CONTACT_FORM}
         
-        className={`${BTN} ${dark ? "bg-[var(--site-yellow)] text-[#0B1418] hover:bg-white" : "bg-[var(--site-blue)] text-white hover:bg-[#035a72]"}`}
+        className="cyber-button"
       >
         {label}
       </SiteCtaButton>
@@ -131,7 +142,11 @@ function GroupHeader({ eyebrow, title, dark }: { eyebrow: string; title: string;
 }
 
 /* 3 itens: grid de cards sem sobra */
-function GridGroup({ eyebrow, title, items }: GroupProps) {
+function GroupBenefits({ benefits, delivery }: Pick<GroupProps, "benefits" | "delivery">) {
+  return <Reveal variant="fade-up" className="cyber-benefits mt-10 border-t border-current/20 pt-8"><h3 className="font-chillax text-lg font-semibold">O que isso resolve para a sua empresa</h3><ul className="font-inter mt-5 grid gap-4 text-[14px] leading-relaxed md:grid-cols-2">{benefits.map(text => <li key={text} className="flex gap-3"><ShieldCheck aria-hidden className="size-5 shrink-0 text-[var(--site-yellow)]"/>{text}</li>)}</ul><p className="font-inter mt-6 text-[14px] leading-relaxed"><strong>Como entregamos: </strong>{delivery}</p></Reveal>;
+}
+
+function GridGroup({ eyebrow, title, items, benefits, delivery }: GroupProps) {
   return (
     <section className="bg-white py-20 sm:py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
@@ -148,6 +163,7 @@ function GridGroup({ eyebrow, title, items }: GroupProps) {
             );
           })}
         </div>
+        <GroupBenefits benefits={benefits} delivery={delivery} />
         <SectionCta label="Quero monitoramento 24x7" />
       </div>
     </section>
@@ -155,7 +171,7 @@ function GridGroup({ eyebrow, title, items }: GroupProps) {
 }
 
 /* 2 itens: split horizontal (azul ou claro) */
-function SplitGroup({ eyebrow, title, items, variant, cta }: GroupProps & { variant: "blue" | "light"; cta: string }) {
+function SplitGroup({ eyebrow, title, items, benefits, delivery, variant, cta }: GroupProps & { variant: "blue" | "light"; cta: string }) {
   const blue = variant === "blue";
   return (
     <section className={`relative overflow-hidden py-20 sm:py-24 ${blue ? "bg-[#046E8B]" : "bg-[#F4F8F9]"}`}>
@@ -181,6 +197,7 @@ function SplitGroup({ eyebrow, title, items, variant, cta }: GroupProps & { vari
             );
           })}
         </div>
+        <GroupBenefits benefits={benefits} delivery={delivery} />
         <SectionCta label={cta} dark={blue} />
       </div>
     </section>
@@ -188,7 +205,7 @@ function SplitGroup({ eyebrow, title, items, variant, cta }: GroupProps & { vari
 }
 
 /* 3 itens: lista numerada sobre fundo escuro */
-function NumberedGroup({ eyebrow, title, items }: GroupProps) {
+function NumberedGroup({ eyebrow, title, items, benefits, delivery }: GroupProps) {
   return (
     <section className="relative overflow-hidden bg-[#08131A] py-20 sm:py-24">
       <div aria-hidden className="pointer-events-none absolute inset-0 opacity-70" style={{ backgroundImage: GRID_TEXTURE, backgroundSize: "48px 48px" }} />
@@ -211,6 +228,7 @@ function NumberedGroup({ eyebrow, title, items }: GroupProps) {
             );
           })}
         </ol>
+        <GroupBenefits benefits={benefits} delivery={delivery} />
         <SectionCta label="Blindar minha infraestrutura" dark />
       </div>
     </section>
@@ -219,7 +237,7 @@ function NumberedGroup({ eyebrow, title, items }: GroupProps) {
 
 function CyberShieldPage() {
   return (
-    <>
+    <div className="cyber-page">
       {/* 1: Hero */}
       <section className="relative -mt-[72px] overflow-hidden bg-[#050D12] pt-[72px]">
         <img
@@ -237,7 +255,7 @@ function CyberShieldPage() {
             <p className="font-inter mt-6 max-w-[46ch] text-pretty text-[16px] leading-relaxed text-white/75">
               Segurança cibernética em todas as camadas: monitoramento, testes, blindagem técnica e cultura, com operação 24x7x365.
             </p>
-            <SiteCtaButton {...CONTACT_FORM}  className={`${BTN} mt-9 bg-[var(--site-yellow)] text-[#0B1418] hover:bg-white`}>
+            <SiteCtaButton {...CONTACT_FORM} className="cyber-button mt-9">
               Falar com um especialista em Segurança
             </SiteCtaButton>
           </div>
@@ -264,7 +282,7 @@ function CyberShieldPage() {
                   <p className="font-inter mt-5 max-w-[46ch] text-pretty text-[15px] leading-relaxed text-white/70">
                     Oferecemos uma estrutura completa de segurança cibernética, com serviços sob demanda e operação 24x7x365. Atuamos desde o monitoramento e defesa até a conscientização e blindagem da infraestrutura.
                   </p>
-                  <SiteCtaButton {...CONTACT_FORM}  className={`${BTN} mt-8 bg-[var(--site-yellow)] text-[#0B1418] hover:bg-white`}>
+                  <SiteCtaButton {...CONTACT_FORM} className="cyber-button mt-8">
                     Avaliar minha segurança
                   </SiteCtaButton>
                 </div>
@@ -275,10 +293,12 @@ function CyberShieldPage() {
       </section>
 
       {/* 3 a 6: Grupos */}
+      <CyberVision />
       <GridGroup {...G1} />
       <SplitGroup {...G2} variant="blue" cta="Agendar um pentest" />
       <SplitGroup {...G3} variant="light" cta="Falar com um consultor" />
       <NumberedGroup {...G4} />
+      <CyberMethod />
 
       {/* 7: Integração */}
       <section className="relative overflow-hidden bg-[#050D12] py-24 text-white sm:py-32">
@@ -293,6 +313,7 @@ function CyberShieldPage() {
             <p className="font-inter mt-5 text-pretty text-[15px] leading-relaxed text-white/70">
               Do primeiro diagnóstico à resposta a incidentes, o Cyber Shield 360° acompanha sua operação todos os dias, não só quando algo acontece.
             </p>
+            <p className="font-inter mt-5 text-[15px] leading-relaxed text-white/70">Os testes ajudam a identificar pontos de atenção. A blindagem fortalece a infraestrutura, enquanto o monitoramento orienta a resposta e a conscientização leva esse cuidado às pessoas. Cada frente complementa as demais.</p>
           </Reveal>
           <SectionCta label="Falar com um especialista" dark />
         </div>
@@ -350,8 +371,8 @@ function CyberShieldPage() {
         </div>
       </section>
 
-      <SiteCta modal {...CONTACT_FORM} />
+      <div id="contato" className="cyber-final-cta"><SiteCta modal {...CONTACT_FORM} /></div>
       <SiteFooter />
-    </>
+    </div>
   );
 }
