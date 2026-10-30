@@ -58,9 +58,9 @@ const G1: GroupProps = {
   eyebrow: "Grupo 1",
   title: "Monitoramento & Resposta",
   items: [
-    { icon: Radar, title: "SOCaaS", text: "Centro de operações 24x7 com atuação N1 a CSIRT. Resposta imediata e visão unificada contra ameaças." },
-    { icon: Activity, title: "NOCaaS", text: "Monitoramento contínuo de redes e servidores. Alta disponibilidade e recuperação rápida." },
-    { icon: ScanEye, title: "EDR & XDR", text: "Proteção do endpoint à nuvem com resposta automatizada e mínima interferência ao usuário." },
+    { icon: Radar, title: "SOCaaS", text: "Centro de operações de segurança que reúne a análise de ameaças e a atuação técnica para orientar a resposta a incidentes." },
+    { icon: Activity, title: "NOCaaS", text: "Monitoramento contínuo de redes e servidores para acompanhar a infraestrutura e apoiar sua disponibilidade e recuperação." },
+    { icon: ScanEye, title: "EDR & XDR", text: "Proteção do dispositivo à nuvem, conectando detecção e resposta automatizada às ameaças que afetam o ambiente." },
   ],
 };
 const G2: GroupProps = {
@@ -69,8 +69,8 @@ const G2: GroupProps = {
   eyebrow: "Grupo 2",
   title: "Testes & Simulação",
   items: [
-    { icon: Crosshair, title: "Pentest & Red Team", text: "Simulações realistas para diagnóstico profundo e correção de vulnerabilidades críticas." },
-    { icon: MailWarning, title: "Phishing Test", text: "Campanhas simuladas com treinamento. Evolução mensurável da cultura de segurança." },
+    { icon: Crosshair, title: "Pentest & Red Team", text: "Simulações de ataque para entender a exposição do ambiente, identificar vulnerabilidades e orientar sua correção." },
+    { icon: MailWarning, title: "Phishing Test", text: "Campanhas simuladas para identificar situações de risco e conectar o diagnóstico ao treinamento dos colaboradores." },
   ],
 };
 const G3: GroupProps = {
@@ -79,8 +79,8 @@ const G3: GroupProps = {
   eyebrow: "Grupo 3",
   title: "Cultura & Consultoria",
   items: [
-    { icon: GraduationCap, title: "Conscientização", text: "Treinamentos interativos e alinhamento à LGPD. Redução de riscos humanos." },
-    { icon: ClipboardCheck, title: "Consultoria", text: "Análise do ambiente com plano de ação estratégico para aumentar a resiliência." },
+    { icon: GraduationCap, title: "Conscientização", text: "Treinamentos interativos que aproximam a segurança da rotina das pessoas e ajudam a reduzir riscos humanos, com alinhamento à LGPD." },
+    { icon: ClipboardCheck, title: "Consultoria", text: "Análise do ambiente para orientar um plano de ação estratégico, organizar prioridades e fortalecer a resiliência da operação." },
   ],
 };
 const G4: GroupProps = {
@@ -89,17 +89,17 @@ const G4: GroupProps = {
   eyebrow: "Grupo 4",
   title: "Blindagem Técnica",
   items: [
-    { icon: ShieldHalf, title: "Hardening", text: "Blindagem técnica de sistemas e dispositivos com base em frameworks seguros." },
-    { icon: BrickWall, title: "Firewalls", text: "Criação e gestão de regras com foco em Zero Trust e controle de tráfego preciso." },
-    { icon: Smartphone, title: "Intune", text: "Governança de dispositivos com segurança centralizada e compliance garantido." },
+    { icon: ShieldHalf, title: "Hardening", text: "Fortalecimento de sistemas e dispositivos por meio de configurações de segurança baseadas em frameworks." },
+    { icon: BrickWall, title: "Firewalls", text: "Criação e gestão de regras para controlar o tráfego de rede, com foco em Zero Trust e proteção do perímetro." },
+    { icon: Smartphone, title: "Intune", text: "Governança de dispositivos com segurança centralizada para apoiar o controle do ambiente e as práticas de conformidade." },
   ],
 };
 
 const WHY = [
   { icon: Clock, num: "01", title: "Operação 24x7x365", text: "Monitoramento e resposta a incidentes o tempo todo, não só em horário comercial." },
-  { icon: Layers, num: "02", title: "Cobertura completa", text: "Do endpoint à rede, da simulação de ataque à blindagem técnica." },
-  { icon: Users, num: "03", title: "Cultura de segurança", text: "Treinamento e conscientização para reduzir o erro humano, a maior porta de entrada de ataques." },
-  { icon: Scale, num: "04", title: "Compliance facilitado", text: "Alinhamento com LGPD e frameworks de segurança reconhecidos." },
+  { icon: Layers, num: "02", title: "Proteção conectada", text: "Do dispositivo à rede, os testes e a blindagem técnica complementam a análise de ameaças. A segurança é tratada como um conjunto, não como ferramentas isoladas." },
+  { icon: Users, num: "03", title: "Cultura de segurança", text: "Treinamento e conscientização levam o cuidado com a segurança às pessoas. As simulações ajudam a reconhecer riscos e orientar o aprendizado." },
+  { icon: Scale, num: "04", title: "Alinhamento à conformidade", text: "A análise do ambiente e a consultoria apoiam decisões alinhadas à LGPD e a frameworks de segurança, conectando cuidados técnicos e prioridades da operação." },
 ];
 
 const FAQ = [
@@ -114,10 +114,7 @@ const GRID_TEXTURE =
   "linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)";
 const DOT_TEXTURE = "radial-gradient(rgba(255,255,255,0.16) 1.1px, transparent 1.1px)";
 
-const BTN =
-  "font-inter inline-flex h-11 items-center justify-center whitespace-nowrap px-8 text-[11px] font-semibold uppercase tracking-[0.16em] transition-colors duration-200";
-
-function SectionCta({ label, dark }: { label: string; dark?: boolean }) {
+function SectionCta({ label }: { label: string; dark?: boolean }) {
   return (
     <Reveal variant="fade-up" className="mt-12">
       <SiteCtaButton {...CONTACT_FORM}
