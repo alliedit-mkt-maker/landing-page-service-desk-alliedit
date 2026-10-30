@@ -166,3 +166,14 @@ export const ORG_SCHEMA = {
     }
   ]
 } as const;
+
+// Only Ciber omits NOC; the sitewide company profile remains unchanged elsewhere.
+export function organizationSchemaForPath(pathname: string) {
+  if (pathname.replace(/\/$/, "") !== "/servicos/cyber-shield-360") return ORG_SCHEMA;
+  return {
+    ...ORG_SCHEMA,
+    "@graph": ORG_SCHEMA["@graph"].map(node => "knowsAbout" in node
+      ? { ...node, knowsAbout: node.knowsAbout.filter(topic => topic !== "NOC") }
+      : node),
+  };
+}
