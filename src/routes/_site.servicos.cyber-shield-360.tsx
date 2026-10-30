@@ -3,6 +3,7 @@ import { serviceSchema } from "@/lib/service-schema";
 import { SiteCtaButton } from "@/components/site/SiteCtaButton";
 import { createFileRoute } from "@tanstack/react-router";
 import { CyberVision, CyberMethod } from "@/components/site/CyberShieldSections";
+import { CyberChecklist, CyberComparison } from "@/components/site/CyberShieldAssessment";
 import { CYBER_FAQ } from "@/lib/cyber-shield-content";
 import {
   Accordion,
@@ -12,7 +13,6 @@ import {
 } from "@/components/ui/accordion";
 import {
   Radar,
-  Activity,
   ScanEye,
   Crosshair,
   MailWarning,
@@ -41,10 +41,10 @@ export const Route = createFileRoute("/_site/servicos/cyber-shield-360")({
     const h = pageHead({ social: "Monitoramento 24x7, testes de invasão e resposta a ataque.",
       title: "Cyber Shield 360°: SOC, pentest e segurança | Allied IT",
       description:
-        "Segurança cibernética 24x7x365: SOCaaS, NOCaaS, EDR e XDR, pentest, phishing test, hardening, firewall e LGPD.",
+        "Segurança cibernética 24x7x365: SOCaaS, EDR e XDR, pentest, phishing test, hardening, firewall e LGPD.",
       path: "/servicos/cyber-shield-360",
     });
-    return { ...h, scripts: [serviceSchema({ path: "/servicos/cyber-shield-360", name: "Cyber Shield 360°: SOC, pentest e segurança", serviceType: "Segurança da informação gerenciada (SOC e pentest)", description: "Segurança cibernética 24x7x365: SOCaaS, NOCaaS, EDR e XDR, pentest, phishing test, hardening, firewall e LGPD.", sectionName: "Serviços", sectionPath: "/servicos", faq: FAQ.map(([q, a]) => ({ q, a })) })] };
+    return { ...h, scripts: [serviceSchema({ path: "/servicos/cyber-shield-360", name: "Cyber Shield 360°: SOC, pentest e segurança", serviceType: "Segurança da informação gerenciada (SOC e pentest)", description: "Segurança cibernética 24x7x365: SOCaaS, EDR e XDR, pentest, phishing test, hardening, firewall e LGPD.", sectionName: "Serviços", sectionPath: "/servicos", faq: FAQ.map(([q, a]) => ({ q, a })) })] };
   },
   component: CyberShieldPage,
 });
@@ -53,13 +53,12 @@ type Item = { icon: React.ElementType; title: string; text: string };
 type GroupProps = { eyebrow: string; title: string; items: Item[]; benefits: string[]; delivery: string };
 
 const G1: GroupProps = {
-  benefits: ["Reunir a visão das ameaças para orientar a resposta.", "Acompanhar redes e servidores de forma contínua.", "Conectar a proteção dos dispositivos à análise de segurança.", "Apoiar a recuperação diante de incidentes."],
-  delivery: "Com SOCaaS, NOCaaS e EDR & XDR, conectando monitoramento e atuação técnica.",
+  benefits: ["Reunir a visão das ameaças para orientar a resposta.", "Acompanhar sinais de ameaça de forma contínua.", "Conectar a proteção dos dispositivos à análise de segurança.", "Apoiar a recuperação diante de incidentes."],
+  delivery: "Com SOCaaS e EDR & XDR, conectando monitoramento de segurança e atuação técnica.",
   eyebrow: "Grupo 1",
   title: "Monitoramento & Resposta",
   items: [
     { icon: Radar, title: "SOCaaS", text: "Centro de operações de segurança que reúne a análise de ameaças e a atuação técnica para orientar a resposta a incidentes." },
-    { icon: Activity, title: "NOCaaS", text: "Monitoramento contínuo de redes e servidores para acompanhar a infraestrutura e apoiar sua disponibilidade e recuperação." },
     { icon: ScanEye, title: "EDR & XDR", text: "Proteção do dispositivo à nuvem, conectando detecção e resposta automatizada às ameaças que afetam o ambiente." },
   ],
 };
@@ -148,7 +147,7 @@ function GridGroup({ eyebrow, title, items, benefits, delivery }: GroupProps) {
     <section className="bg-white py-20 sm:py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <GroupHeader eyebrow={eyebrow} title={title} />
-        <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-[var(--site-line)] bg-[var(--site-line)] md:grid-cols-3">
+        <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-[var(--site-line)] bg-[var(--site-line)] md:grid-cols-2">
           {items.map((item, i) => {
             const Icon = item.icon;
             return (
@@ -344,6 +343,9 @@ function CyberShieldPage() {
           </div>
         </div>
       </section>
+
+      <CyberChecklist />
+      <CyberComparison />
 
       {/* 9: FAQ */}
       <section className="bg-gradient-to-b from-[#0B1B23] to-[#08131A] py-20 sm:py-28">
