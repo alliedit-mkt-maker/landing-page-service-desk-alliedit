@@ -1,4 +1,4 @@
-- [ ] Audit and enrich Cyber Shield only; verify page, placeholders and preserved form, then publish.
+- [ ] Enrich Cyber Shield with existing portfolio only; omit metrics, placeholders, segments and unconfirmed evidence; verify and publish.
 - [x] Configure the five service-page forms and descriptions without changing shared defaults.
 - [x] Configure only Home and About content contact buttons with the general form; audit shared navigation and hosted fields.
 - [x] Verify general-form fields, attribution, WhatsApp and thank-you behavior without publishing.
