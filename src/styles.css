@@ -332,6 +332,60 @@ main > section:first-child .reveal-in {
   font-family: 'Inter', system-ui, sans-serif;
 }
 
+/* Cyber Shield overrides are local: other pages keep their own identity. */
+@theme inline {
+  --color-cyber-blue: var(--cyber-blue);
+  --color-cyber-yellow: var(--cyber-yellow);
+  --color-cyber-ink: var(--cyber-ink);
+  --color-cyber-muted: var(--cyber-muted);
+  --color-cyber-paper: var(--cyber-paper);
+  --color-cyber-soft: var(--cyber-soft);
+  --color-cyber-on-dark: var(--cyber-on-dark);
+  --color-cyber-line: var(--cyber-line);
+  --color-cyber-line-dark: var(--cyber-line-dark);
+}
+.cyber-page {
+  --cyber-blue: #046E8B;
+  --cyber-yellow: #F3C400;
+  --cyber-ink: var(--site-ink);
+  --cyber-muted: var(--site-muted);
+  --cyber-paper: var(--surface);
+  --cyber-soft: #F4F8F9;
+  --cyber-on-dark: var(--brand-foreground);
+  --cyber-line: var(--site-line);
+  --cyber-line-dark: color-mix(in srgb, var(--cyber-on-dark) 25%, transparent);
+  --site-blue: var(--cyber-blue);
+  --site-yellow: var(--cyber-yellow);
+  letter-spacing: 0;
+}
+.cyber-page :is(h1, h2, h3, p, button) { letter-spacing: 0; }
+.cyber-button,
+.cyber-final-cta button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  max-width: 100%;
+  padding: 0.75rem 1.5rem;
+  border: 0;
+  border-radius: 0;
+  background: var(--cyber-yellow);
+  color: var(--cyber-ink);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  white-space: normal;
+  text-align: center;
+  transition: filter 0.2s;
+}
+.cyber-button:hover,
+.cyber-final-cta button:hover { background: var(--cyber-yellow); color: var(--cyber-ink); filter: brightness(0.95); }
+.cyber-button:focus-visible { outline: 2px solid var(--cyber-blue); outline-offset: 4px; }
+.cyber-page section:has(.cyber-benefits) { color: var(--cyber-ink); }
+.cyber-page section:has(.cyber-benefits)[class*="bg-[#046E8B]"],
+.cyber-page section:has(.cyber-benefits)[class*="bg-[#08131A]"] { color: var(--cyber-on-dark); }
+
 .blog-search {
   --blog-search-accent: #046E8B;
   --blog-search-line: color-mix(in srgb, var(--brand-foreground) 35%, transparent);

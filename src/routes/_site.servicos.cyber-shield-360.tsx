@@ -1,7 +1,9 @@
 import { pageHead } from "@/lib/seo";
 import { serviceSchema } from "@/lib/service-schema";
 import { SiteCtaButton } from "@/components/site/SiteCtaButton";
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
+import { CyberVision, CyberMethod } from "@/components/site/CyberShieldSections";
+import { CYBER_FAQ } from "@/lib/cyber-shield-content";
 import {
   Accordion,
   AccordionContent,
@@ -48,70 +50,76 @@ export const Route = createFileRoute("/_site/servicos/cyber-shield-360")({
 });
 
 type Item = { icon: React.ElementType; title: string; text: string };
-type GroupProps = { eyebrow: string; title: string; items: Item[] };
+type GroupProps = { eyebrow: string; title: string; items: Item[]; benefits: string[]; delivery: string };
 
 const G1: GroupProps = {
+  benefits: ["Reunir a visão das ameaças para orientar a resposta.", "Acompanhar redes e servidores de forma contínua.", "Conectar a proteção dos dispositivos à análise de segurança.", "Apoiar a recuperação diante de incidentes."],
+  delivery: "Com SOCaaS, NOCaaS e EDR & XDR, conectando monitoramento e atuação técnica.",
   eyebrow: "Grupo 1",
   title: "Monitoramento & Resposta",
   items: [
-    { icon: Radar, title: "SOCaaS", text: "Centro de operações 24x7 com atuação N1 a CSIRT. Resposta imediata e visão unificada contra ameaças." },
-    { icon: Activity, title: "NOCaaS", text: "Monitoramento contínuo de redes e servidores. Alta disponibilidade e recuperação rápida." },
-    { icon: ScanEye, title: "EDR & XDR", text: "Proteção do endpoint à nuvem com resposta automatizada e mínima interferência ao usuário." },
+    { icon: Radar, title: "SOCaaS", text: "Centro de operações de segurança que reúne a análise de ameaças e a atuação técnica para orientar a resposta a incidentes." },
+    { icon: Activity, title: "NOCaaS", text: "Monitoramento contínuo de redes e servidores para acompanhar a infraestrutura e apoiar sua disponibilidade e recuperação." },
+    { icon: ScanEye, title: "EDR & XDR", text: "Proteção do dispositivo à nuvem, conectando detecção e resposta automatizada às ameaças que afetam o ambiente." },
   ],
 };
 const G2: GroupProps = {
+  benefits: ["Identificar vulnerabilidades por meio de simulações de ataque.", "Orientar a correção das falhas encontradas.", "Reconhecer a exposição dos colaboradores a mensagens enganosas.", "Conectar os resultados dos testes ao treinamento."],
+  delivery: "Com Pentest & Red Team e Phishing Test, combinando simulação, diagnóstico e treinamento.",
   eyebrow: "Grupo 2",
   title: "Testes & Simulação",
   items: [
-    { icon: Crosshair, title: "Pentest & Red Team", text: "Simulações realistas para diagnóstico profundo e correção de vulnerabilidades críticas." },
-    { icon: MailWarning, title: "Phishing Test", text: "Campanhas simuladas com treinamento. Evolução mensurável da cultura de segurança." },
+    { icon: Crosshair, title: "Pentest & Red Team", text: "Simulações de ataque para entender a exposição do ambiente, identificar vulnerabilidades e orientar sua correção." },
+    { icon: MailWarning, title: "Phishing Test", text: "Campanhas simuladas para identificar situações de risco e conectar o diagnóstico ao treinamento dos colaboradores." },
   ],
 };
 const G3: GroupProps = {
+  benefits: ["Ajudar as pessoas a reconhecer situações de risco.", "Fortalecer a cultura de segurança no cotidiano.", "Organizar prioridades a partir da análise do ambiente.", "Relacionar decisões de segurança à LGPD e à resiliência."],
+  delivery: "Com conscientização, treinamentos e consultoria para orientar o plano de ação.",
   eyebrow: "Grupo 3",
   title: "Cultura & Consultoria",
   items: [
-    { icon: GraduationCap, title: "Conscientização", text: "Treinamentos interativos e alinhamento à LGPD. Redução de riscos humanos." },
-    { icon: ClipboardCheck, title: "Consultoria", text: "Análise do ambiente com plano de ação estratégico para aumentar a resiliência." },
+    { icon: GraduationCap, title: "Conscientização", text: "Treinamentos interativos que aproximam a segurança da rotina das pessoas e ajudam a reduzir riscos humanos, com alinhamento à LGPD." },
+    { icon: ClipboardCheck, title: "Consultoria", text: "Análise do ambiente para orientar um plano de ação estratégico, organizar prioridades e fortalecer a resiliência da operação." },
   ],
 };
 const G4: GroupProps = {
+  benefits: ["Fortalecer a configuração de sistemas e dispositivos.", "Controlar o tráfego com regras de firewall.", "Centralizar a governança dos dispositivos.", "Combinar proteção técnica e práticas de segurança."],
+  delivery: "Com Hardening, Firewalls e Intune, reunindo configuração segura e gestão de dispositivos.",
   eyebrow: "Grupo 4",
   title: "Blindagem Técnica",
   items: [
-    { icon: ShieldHalf, title: "Hardening", text: "Blindagem técnica de sistemas e dispositivos com base em frameworks seguros." },
-    { icon: BrickWall, title: "Firewalls", text: "Criação e gestão de regras com foco em Zero Trust e controle de tráfego preciso." },
-    { icon: Smartphone, title: "Intune", text: "Governança de dispositivos com segurança centralizada e compliance garantido." },
+    { icon: ShieldHalf, title: "Hardening", text: "Fortalecimento de sistemas e dispositivos por meio de configurações de segurança baseadas em frameworks." },
+    { icon: BrickWall, title: "Firewalls", text: "Criação e gestão de regras para controlar o tráfego de rede, com foco em Zero Trust e proteção do perímetro." },
+    { icon: Smartphone, title: "Intune", text: "Governança de dispositivos com segurança centralizada para apoiar o controle do ambiente e as práticas de conformidade." },
   ],
 };
 
 const WHY = [
-  { icon: Clock, num: "01", title: "Operação 24x7x365", text: "Monitoramento e resposta a incidentes o tempo todo, não só em horário comercial." },
-  { icon: Layers, num: "02", title: "Cobertura completa", text: "Do endpoint à rede, da simulação de ataque à blindagem técnica." },
-  { icon: Users, num: "03", title: "Cultura de segurança", text: "Treinamento e conscientização para reduzir o erro humano, a maior porta de entrada de ataques." },
-  { icon: Scale, num: "04", title: "Compliance facilitado", text: "Alinhamento com LGPD e frameworks de segurança reconhecidos." },
+  { icon: Clock, num: "01", title: "Cuidado contínuo", text: "Monitoramento e resposta a incidentes conectados ao cuidado com o ambiente, da análise de ameaças à atuação técnica." },
+  { icon: Layers, num: "02", title: "Proteção conectada", text: "Do dispositivo à rede, os testes e a blindagem técnica complementam a análise de ameaças. A segurança é tratada como um conjunto, não como ferramentas isoladas." },
+  { icon: Users, num: "03", title: "Cultura de segurança", text: "Treinamento e conscientização levam o cuidado com a segurança às pessoas. As simulações ajudam a reconhecer riscos e orientar o aprendizado." },
+  { icon: Scale, num: "04", title: "Alinhamento à conformidade", text: "A análise do ambiente e a consultoria apoiam decisões alinhadas à LGPD e a frameworks de segurança, conectando cuidados técnicos e prioridades da operação." },
 ];
 
 const FAQ = [
-  ["Com que frequência devemos fazer um pentest?", "O recomendado é pelo menos uma vez por ano, ou sempre que houver mudança relevante na infraestrutura ou nas aplicações."],
+  ["Com que frequência devemos fazer um pentest?", "A frequência depende da exposição e das mudanças no ambiente. Alterações relevantes na infraestrutura ou nas aplicações são motivos para reavaliar a segurança e definir a necessidade de um novo teste."],
   ["O SOCaaS substitui a equipe de TI interna?", "Não. Ele atua em conjunto com o time interno, cuidando do monitoramento e resposta a incidentes de forma contínua, algo difícil de manter só com equipe própria."],
   ["O que é incluído no teste de phishing?", "Envio de campanhas simuladas de phishing para os colaboradores, com relatório de quem clicou e treinamento direcionado depois."],
   ["Como funciona o alinhamento com a LGPD?", "Avaliamos os processos e sistemas atuais, identificamos os pontos de risco e ajudamos a implementar as adequações necessárias."],
+  ...CYBER_FAQ,
 ];
 
 const GRID_TEXTURE =
   "linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)";
 const DOT_TEXTURE = "radial-gradient(rgba(255,255,255,0.16) 1.1px, transparent 1.1px)";
 
-const BTN =
-  "font-inter inline-flex h-11 items-center justify-center whitespace-nowrap px-8 text-[11px] font-semibold uppercase tracking-[0.16em] transition-colors duration-200";
-
-function SectionCta({ label, dark }: { label: string; dark?: boolean }) {
+function SectionCta({ label }: { label: string; dark?: boolean }) {
   return (
     <Reveal variant="fade-up" className="mt-12">
       <SiteCtaButton {...CONTACT_FORM}
         
-        className={`${BTN} ${dark ? "bg-[var(--site-yellow)] text-[#0B1418] hover:bg-white" : "bg-[var(--site-blue)] text-white hover:bg-[#035a72]"}`}
+        className="cyber-button"
       >
         {label}
       </SiteCtaButton>
@@ -131,7 +139,11 @@ function GroupHeader({ eyebrow, title, dark }: { eyebrow: string; title: string;
 }
 
 /* 3 itens: grid de cards sem sobra */
-function GridGroup({ eyebrow, title, items }: GroupProps) {
+function GroupBenefits({ benefits, delivery }: Pick<GroupProps, "benefits" | "delivery">) {
+  return <Reveal variant="fade-up" className="cyber-benefits mt-10 border-t border-current/20 pt-8"><h3 className="font-chillax text-lg font-semibold">O que isso resolve para a sua empresa</h3><ul className="font-inter mt-5 grid gap-4 text-[14px] leading-relaxed md:grid-cols-2">{benefits.map(text => <li key={text} className="flex gap-3"><ShieldCheck aria-hidden className="size-5 shrink-0 text-[var(--site-yellow)]"/>{text}</li>)}</ul><p className="font-inter mt-6 text-[14px] leading-relaxed"><strong>Como entregamos: </strong>{delivery}</p></Reveal>;
+}
+
+function GridGroup({ eyebrow, title, items, benefits, delivery }: GroupProps) {
   return (
     <section className="bg-white py-20 sm:py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
@@ -148,14 +160,15 @@ function GridGroup({ eyebrow, title, items }: GroupProps) {
             );
           })}
         </div>
-        <SectionCta label="Quero monitoramento 24x7" />
+        <GroupBenefits benefits={benefits} delivery={delivery} />
+        <SectionCta label="Quero monitoramento de segurança" />
       </div>
     </section>
   );
 }
 
 /* 2 itens: split horizontal (azul ou claro) */
-function SplitGroup({ eyebrow, title, items, variant, cta }: GroupProps & { variant: "blue" | "light"; cta: string }) {
+function SplitGroup({ eyebrow, title, items, benefits, delivery, variant, cta }: GroupProps & { variant: "blue" | "light"; cta: string }) {
   const blue = variant === "blue";
   return (
     <section className={`relative overflow-hidden py-20 sm:py-24 ${blue ? "bg-[#046E8B]" : "bg-[#F4F8F9]"}`}>
@@ -181,6 +194,7 @@ function SplitGroup({ eyebrow, title, items, variant, cta }: GroupProps & { vari
             );
           })}
         </div>
+        <GroupBenefits benefits={benefits} delivery={delivery} />
         <SectionCta label={cta} dark={blue} />
       </div>
     </section>
@@ -188,7 +202,7 @@ function SplitGroup({ eyebrow, title, items, variant, cta }: GroupProps & { vari
 }
 
 /* 3 itens: lista numerada sobre fundo escuro */
-function NumberedGroup({ eyebrow, title, items }: GroupProps) {
+function NumberedGroup({ eyebrow, title, items, benefits, delivery }: GroupProps) {
   return (
     <section className="relative overflow-hidden bg-[#08131A] py-20 sm:py-24">
       <div aria-hidden className="pointer-events-none absolute inset-0 opacity-70" style={{ backgroundImage: GRID_TEXTURE, backgroundSize: "48px 48px" }} />
@@ -211,6 +225,7 @@ function NumberedGroup({ eyebrow, title, items }: GroupProps) {
             );
           })}
         </ol>
+        <GroupBenefits benefits={benefits} delivery={delivery} />
         <SectionCta label="Blindar minha infraestrutura" dark />
       </div>
     </section>
@@ -219,7 +234,7 @@ function NumberedGroup({ eyebrow, title, items }: GroupProps) {
 
 function CyberShieldPage() {
   return (
-    <>
+    <div className="cyber-page">
       {/* 1: Hero */}
       <section className="relative -mt-[72px] overflow-hidden bg-[#050D12] pt-[72px]">
         <img
@@ -235,9 +250,9 @@ function CyberShieldPage() {
               Cyber Shield 360°
             </h1>
             <p className="font-inter mt-6 max-w-[46ch] text-pretty text-[16px] leading-relaxed text-white/75">
-              Segurança cibernética em todas as camadas: monitoramento, testes, blindagem técnica e cultura, com operação 24x7x365.
+              Segurança cibernética em todas as camadas: monitoramento, testes, blindagem técnica e cultura, com cuidado contínuo com a operação.
             </p>
-            <SiteCtaButton {...CONTACT_FORM}  className={`${BTN} mt-9 bg-[var(--site-yellow)] text-[#0B1418] hover:bg-white`}>
+            <SiteCtaButton {...CONTACT_FORM} className="cyber-button mt-9">
               Falar com um especialista em Segurança
             </SiteCtaButton>
           </div>
@@ -256,15 +271,15 @@ function CyberShieldPage() {
               <div className="relative flex flex-col justify-center p-8 sm:p-12 lg:p-14">
                 <span aria-hidden className="pointer-events-none absolute inset-0 opacity-50" style={{ backgroundImage: DOT_TEXTURE, backgroundSize: "22px 22px" }} />
                 <div className="relative">
-                  <p className="font-chillax text-[3rem] font-bold leading-none tracking-tight text-[var(--site-yellow)] sm:text-[4rem]">24x7x365</p>
+                  <ShieldCheck aria-hidden className="size-14 text-[var(--site-yellow)]" strokeWidth={1.2} />
                   <p className="font-inter mt-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/60">Operação contínua</p>
                   <h2 className="font-chillax mt-8 text-balance text-[1.7rem] font-bold leading-tight tracking-tight text-white sm:text-[2.1rem]">
                     O que é Cyber Shield 360°
                   </h2>
                   <p className="font-inter mt-5 max-w-[46ch] text-pretty text-[15px] leading-relaxed text-white/70">
-                    Oferecemos uma estrutura completa de segurança cibernética, com serviços sob demanda e operação 24x7x365. Atuamos desde o monitoramento e defesa até a conscientização e blindagem da infraestrutura.
+                    Oferecemos uma estrutura de segurança cibernética com serviços sob demanda e cuidado contínuo. Atuamos desde o monitoramento e defesa até a conscientização e blindagem da infraestrutura. Os testes ajudam a identificar a exposição, enquanto a consultoria orienta as prioridades de proteção.
                   </p>
-                  <SiteCtaButton {...CONTACT_FORM}  className={`${BTN} mt-8 bg-[var(--site-yellow)] text-[#0B1418] hover:bg-white`}>
+                  <SiteCtaButton {...CONTACT_FORM} className="cyber-button mt-8">
                     Avaliar minha segurança
                   </SiteCtaButton>
                 </div>
@@ -275,10 +290,12 @@ function CyberShieldPage() {
       </section>
 
       {/* 3 a 6: Grupos */}
+      <CyberVision />
       <GridGroup {...G1} />
       <SplitGroup {...G2} variant="blue" cta="Agendar um pentest" />
       <SplitGroup {...G3} variant="light" cta="Falar com um consultor" />
       <NumberedGroup {...G4} />
+      <CyberMethod />
 
       {/* 7: Integração */}
       <section className="relative overflow-hidden bg-[#050D12] py-24 text-white sm:py-32">
@@ -293,6 +310,7 @@ function CyberShieldPage() {
             <p className="font-inter mt-5 text-pretty text-[15px] leading-relaxed text-white/70">
               Do primeiro diagnóstico à resposta a incidentes, o Cyber Shield 360° acompanha sua operação todos os dias, não só quando algo acontece.
             </p>
+            <p className="font-inter mt-5 text-[15px] leading-relaxed text-white/70">Os testes ajudam a identificar pontos de atenção. A blindagem fortalece a infraestrutura, enquanto o monitoramento orienta a resposta e a conscientização leva esse cuidado às pessoas. Cada frente complementa as demais.</p>
           </Reveal>
           <SectionCta label="Falar com um especialista" dark />
         </div>
@@ -350,8 +368,8 @@ function CyberShieldPage() {
         </div>
       </section>
 
-      <SiteCta modal {...CONTACT_FORM} />
+      <div id="contato" className="cyber-final-cta"><SiteCta modal {...CONTACT_FORM} text="Vamos entender sua operação e suas prioridades de segurança, conectando monitoramento, testes, blindagem técnica e conscientização. Fale com um especialista para avaliar seu cenário." /></div>
       <SiteFooter />
-    </>
+    </div>
   );
 }
