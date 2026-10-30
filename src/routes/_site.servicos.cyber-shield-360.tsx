@@ -96,14 +96,14 @@ const G4: GroupProps = {
 };
 
 const WHY = [
-  { icon: Clock, num: "01", title: "Operação 24x7x365", text: "Monitoramento e resposta a incidentes o tempo todo, não só em horário comercial." },
+  { icon: Clock, num: "01", title: "Cuidado contínuo", text: "Monitoramento e resposta a incidentes conectados ao cuidado com o ambiente, da análise de ameaças à atuação técnica." },
   { icon: Layers, num: "02", title: "Proteção conectada", text: "Do dispositivo à rede, os testes e a blindagem técnica complementam a análise de ameaças. A segurança é tratada como um conjunto, não como ferramentas isoladas." },
   { icon: Users, num: "03", title: "Cultura de segurança", text: "Treinamento e conscientização levam o cuidado com a segurança às pessoas. As simulações ajudam a reconhecer riscos e orientar o aprendizado." },
   { icon: Scale, num: "04", title: "Alinhamento à conformidade", text: "A análise do ambiente e a consultoria apoiam decisões alinhadas à LGPD e a frameworks de segurança, conectando cuidados técnicos e prioridades da operação." },
 ];
 
 const FAQ = [
-  ["Com que frequência devemos fazer um pentest?", "O recomendado é pelo menos uma vez por ano, ou sempre que houver mudança relevante na infraestrutura ou nas aplicações."],
+  ["Com que frequência devemos fazer um pentest?", "A frequência depende da exposição e das mudanças no ambiente. Alterações relevantes na infraestrutura ou nas aplicações são motivos para reavaliar a segurança e definir a necessidade de um novo teste."],
   ["O SOCaaS substitui a equipe de TI interna?", "Não. Ele atua em conjunto com o time interno, cuidando do monitoramento e resposta a incidentes de forma contínua, algo difícil de manter só com equipe própria."],
   ["O que é incluído no teste de phishing?", "Envio de campanhas simuladas de phishing para os colaboradores, com relatório de quem clicou e treinamento direcionado depois."],
   ["Como funciona o alinhamento com a LGPD?", "Avaliamos os processos e sistemas atuais, identificamos os pontos de risco e ajudamos a implementar as adequações necessárias."],
@@ -161,7 +161,7 @@ function GridGroup({ eyebrow, title, items, benefits, delivery }: GroupProps) {
           })}
         </div>
         <GroupBenefits benefits={benefits} delivery={delivery} />
-        <SectionCta label="Quero monitoramento 24x7" />
+        <SectionCta label="Quero monitoramento de segurança" />
       </div>
     </section>
   );
@@ -250,7 +250,7 @@ function CyberShieldPage() {
               Cyber Shield 360°
             </h1>
             <p className="font-inter mt-6 max-w-[46ch] text-pretty text-[16px] leading-relaxed text-white/75">
-              Segurança cibernética em todas as camadas: monitoramento, testes, blindagem técnica e cultura, com operação 24x7x365.
+              Segurança cibernética em todas as camadas: monitoramento, testes, blindagem técnica e cultura, com cuidado contínuo com a operação.
             </p>
             <SiteCtaButton {...CONTACT_FORM} className="cyber-button mt-9">
               Falar com um especialista em Segurança
@@ -271,13 +271,13 @@ function CyberShieldPage() {
               <div className="relative flex flex-col justify-center p-8 sm:p-12 lg:p-14">
                 <span aria-hidden className="pointer-events-none absolute inset-0 opacity-50" style={{ backgroundImage: DOT_TEXTURE, backgroundSize: "22px 22px" }} />
                 <div className="relative">
-                  <p className="font-chillax text-[3rem] font-bold leading-none tracking-tight text-[var(--site-yellow)] sm:text-[4rem]">24x7x365</p>
+                  <ShieldCheck aria-hidden className="size-14 text-[var(--site-yellow)]" strokeWidth={1.2} />
                   <p className="font-inter mt-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/60">Operação contínua</p>
                   <h2 className="font-chillax mt-8 text-balance text-[1.7rem] font-bold leading-tight tracking-tight text-white sm:text-[2.1rem]">
                     O que é Cyber Shield 360°
                   </h2>
                   <p className="font-inter mt-5 max-w-[46ch] text-pretty text-[15px] leading-relaxed text-white/70">
-                    Oferecemos uma estrutura completa de segurança cibernética, com serviços sob demanda e operação 24x7x365. Atuamos desde o monitoramento e defesa até a conscientização e blindagem da infraestrutura.
+                    Oferecemos uma estrutura de segurança cibernética com serviços sob demanda e cuidado contínuo. Atuamos desde o monitoramento e defesa até a conscientização e blindagem da infraestrutura. Os testes ajudam a identificar a exposição, enquanto a consultoria orienta as prioridades de proteção.
                   </p>
                   <SiteCtaButton {...CONTACT_FORM} className="cyber-button mt-8">
                     Avaliar minha segurança
@@ -368,7 +368,7 @@ function CyberShieldPage() {
         </div>
       </section>
 
-      <div id="contato" className="cyber-final-cta"><SiteCta modal {...CONTACT_FORM} /></div>
+      <div id="contato" className="cyber-final-cta"><SiteCta modal {...CONTACT_FORM} text="Vamos entender sua operação e suas prioridades de segurança, conectando monitoramento, testes, blindagem técnica e conscientização. Fale com um especialista para avaliar seu cenário." /></div>
       <SiteFooter />
     </div>
   );
