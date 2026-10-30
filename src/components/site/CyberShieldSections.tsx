@@ -1,6 +1,7 @@
 import { ShieldCheck, Radar, Crosshair, GraduationCap } from "lucide-react";
 import { Reveal } from "@/components/lp/Reveal";
 import { CYBER_METHOD } from "@/lib/cyber-shield-content";
+import { useEffect, useRef, useState } from "react";
 
 const cycle = [
   { title: "Blindagem Técnica", action: "Prevenir", text: "Fortalecer sistemas, dispositivos e rede.", icon: ShieldCheck, x: 450, y: 65 },
@@ -17,5 +18,19 @@ export function CyberVision() {
   </div></section>;
 }
 export function CyberMethod() {
-  return <section id="metodologia" className="bg-cyber-blue py-20 text-cyber-on-dark sm:py-24"><div className="mx-auto max-w-7xl px-5 sm:px-8"><Reveal variant="fade-up" className="max-w-3xl"><h2 className="font-chillax text-[1.7rem] font-bold leading-tight sm:text-[2.1rem]">Como trabalhamos</h2><p className="font-inter mt-5 text-[15px] leading-relaxed opacity-85">Da análise do ambiente ao cuidado contínuo, a segurança evolui quando diagnóstico, proteção e aprendizado caminham juntos.</p></Reveal><ol className="mt-12 grid gap-10 border-l border-cyber-line-dark pl-6 lg:grid-cols-4 lg:border-l-0 lg:border-t lg:pl-0 lg:pt-8">{CYBER_METHOD.map(item => <li key={item.title}><Reveal variant="fade-up"><span aria-hidden="true" className="mb-5 block size-3 rounded-full bg-cyber-yellow"/><h3 className="font-chillax text-xl font-semibold">{item.title}</h3><p className="font-inter mt-4 text-sm leading-relaxed opacity-85">{item.text}</p></Reveal></li>)}</ol></div></section>;
+  const timelineRef = useRef<HTMLOListElement>(null);
+  const [active, setActive] = useState(false);
+  useEffect(() => {
+    const element = timelineRef.current;
+    if (!element) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry?.isIntersecting) {
+        setActive(true);
+        observer.disconnect();
+      }
+    }, { threshold: 0.25 });
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
+  return <section id="metodologia" className="bg-cyber-blue py-20 text-cyber-on-dark sm:py-24"><div className="mx-auto max-w-7xl px-5 sm:px-8"><Reveal variant="fade-up" className="max-w-3xl"><h2 className="font-chillax text-[1.7rem] font-bold leading-tight sm:text-[2.1rem]">Como trabalhamos</h2><p className="font-inter mt-5 text-[15px] leading-relaxed opacity-85">Da análise do ambiente ao cuidado contínuo, a segurança evolui quando diagnóstico, proteção e aprendizado caminham juntos.</p></Reveal><ol ref={timelineRef} className={`cyber-timeline mt-12 grid gap-10 lg:grid-cols-4 ${active ? "cyber-timeline-active" : ""}`}>{CYBER_METHOD.map(item => <li key={item.title} className="cyber-timeline-step"><span aria-hidden="true" className="cyber-timeline-dot"/><h3 className="font-chillax text-xl font-semibold">{item.title}</h3><p className="font-inter mt-4 text-sm leading-relaxed opacity-85">{item.text}</p></li>)}</ol></div></section>;
 }

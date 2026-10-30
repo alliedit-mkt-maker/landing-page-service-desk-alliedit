@@ -386,6 +386,41 @@ main > section:first-child .reveal-in {
 .cyber-page section:has(.cyber-benefits)[class*="bg-[#046E8B]"],
 .cyber-page section:has(.cyber-benefits)[class*="bg-[#08131A]"] { color: var(--cyber-on-dark); }
 
+.cyber-timeline-step { position: relative; padding-left: 32px; --timeline-delay: 0s; }
+.cyber-timeline-step:nth-child(2) { --timeline-delay: 0.8s; }
+.cyber-timeline-step:nth-child(3) { --timeline-delay: 1.6s; }
+.cyber-timeline-step:nth-child(4) { --timeline-delay: 2.4s; }
+.cyber-timeline-step:not(:last-child)::before,
+.cyber-timeline-step:not(:last-child)::after {
+  content: ""; position: absolute; left: 5px; top: 6px;
+  width: 2px; height: calc(100% + 40px);
+  background: var(--cyber-line-dark); transform-origin: top;
+}
+.cyber-timeline-step:not(:last-child)::after { background: var(--cyber-yellow); transform: scaleY(0); }
+.cyber-timeline-dot {
+  position: absolute; z-index: 1; top: 0; left: 0;
+  width: 12px; height: 12px; border-radius: 50%; background: var(--cyber-yellow);
+}
+.cyber-timeline-active .cyber-timeline-step::after { animation: cyber-line-vertical 0.8s linear var(--timeline-delay) both; }
+.cyber-timeline-active .cyber-timeline-dot { animation: cyber-dot-pulse 0.65s ease-out var(--timeline-delay) both; }
+@keyframes cyber-line-vertical { to { transform: scaleY(1); } }
+@keyframes cyber-line-horizontal { to { transform: scaleX(1); } }
+@keyframes cyber-dot-pulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 transparent; }
+  45% { transform: scale(1.5); box-shadow: 0 0 0 8px color-mix(in srgb, var(--cyber-yellow) 20%, transparent); }
+}
+@media (min-width: 1024px) {
+  .cyber-timeline-step { padding-left: 0; padding-top: 36px; }
+  .cyber-timeline-step:not(:last-child)::before,
+  .cyber-timeline-step:not(:last-child)::after { left: 6px; top: 5px; height: 2px; width: calc(100% + 40px); transform-origin: left; }
+  .cyber-timeline-step:not(:last-child)::after { transform: scaleX(0); }
+  .cyber-timeline-active .cyber-timeline-step::after { animation-name: cyber-line-horizontal; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cyber-timeline .cyber-timeline-step::after { animation: none; transform: none; }
+  .cyber-timeline .cyber-timeline-dot { animation: none; }
+}
+
 .blog-search {
   --blog-search-accent: #046E8B;
   --blog-search-line: color-mix(in srgb, var(--brand-foreground) 35%, transparent);
