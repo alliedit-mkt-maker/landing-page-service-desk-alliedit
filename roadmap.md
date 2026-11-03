@@ -1,4 +1,4 @@
-- [ ] Convert resolvable root/self-article fragment links only; audit 98 posts, verify all TOC clicks in 18 articles and report without publishing.
+- [x] Convert resolvable root/self-article fragment links only; audit 98 posts, verify all TOC clicks in 18 articles and report without publishing.
 - [x] Extend blog TOC resolution to existing ids, normalized fragments, clear word similarity and intro fallback; audit 98 posts and verify 11 articles without publishing.
 - [x] Repair blog TOC anchor targets with matching and safe fallback; verify eight articles, report unresolved/external links; do not publish.
 - [x] Enrich and verify Cyber Shield with existing portfolio only, without metrics, placeholders or unconfirmed evidence.
