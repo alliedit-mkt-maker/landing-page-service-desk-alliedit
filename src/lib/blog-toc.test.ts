@@ -59,3 +59,28 @@ test("tied word scores cannot fall back to order", () => {
   const r = resolveBlogToc('<a href="#wrong">Gestão segurança empresas</a><h2 id="a">Empresas segurança gestão digitais</h2><h3 id="b">Segurança empresas gestão globais</h3>');
   assert.equal(r.unresolved.length, 1);
 });
+const context = { slug: "example", origin: "https://alliedit.com.br" };
+test("converts root fragment only if a target can be resolved", () => {
+  const r = resolveBlogToc('<a href="/#intro">Introdução</a><a href="/#contato">Contato</a><h2 id="intro">Introdução</h2>', context);
+  assert.equal(r.html.includes('href="#intro"'), true);
+  assert.equal(r.html.includes('href="/#contato"'), true);
+  assert.equal(r.unresolved[0]?.href, "/#contato");
+});
+test("converts absolute relative and legacy self-article fragments", () => {
+  for (const prefix of ['/blog/example', 'https://alliedit.com.br/blog/example', 'https://' + 'www.alliedit.com.br/blog/example']) {
+    const r = resolveBlogToc(`<a href="${prefix}#GEST%C3%83O">Gestão</a><h3 id="gestao">Gestão</h3>`, context);
+    assert.equal(r.html.includes('href="#gestao"'), true);
+  }
+});
+test("preserves cross-article other-page and external-domain fragments", () => {
+  for (const href of ['/blog/other#intro', '/sobre#intro', 'https://external.example/blog/example#intro']) {
+    const html = `<a href="${href}">Introdução</a><h2 id="intro">Introdução</h2>`;
+    assert.equal(resolveBlogToc(html, context).html, html);
+  }
+});
+test("resolves self fragments in the body without changing other body links", () => {
+  const html = '<h2 id="security">Segurança</h2><p><a href="/blog/example#security">Segurança</a><a href="/blog/other#security">Outro</a></p>';
+  const r = resolveBlogToc(html, context);
+  assert.equal(r.html.includes('href="#security"'), true);
+  assert.equal(r.html.includes('href="/blog/other#security"'), true);
+});

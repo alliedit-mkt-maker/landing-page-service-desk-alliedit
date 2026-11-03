@@ -1,5 +1,17 @@
 type Heading = { start: number; tag: string; text: string; id?: string };
-export type TocLink = { href: string; text: string; id: string; target?: string; method?: "existing" | "normalized" | "text" | "similarity" | "introduction" | "order"; reason?: string };
+export type TocLink = { href: string; text: string; id: string; target?: string; method?: "existing" | "normalized" | "text" | "similarity" | "introduction" | "order"; reason?: string; conversion?: boolean; inToc?: boolean };
+type ArticleContext = { slug: string; origin: string };
+
+function isSelfFragment(href: string, context?: ArticleContext) {
+  if (href.startsWith("/#")) return true;
+  if (!context) return false;
+  try {
+    const current = new URL(context.origin);
+    const url = new URL(href, current);
+    const hostname = url.hostname.replace(/^www\./, "");
+    return hostname === current.hostname.replace(/^www\./, "") && url.pathname.replace(/\/$/, "") === `/blog/${context.slug}` && Boolean(url.hash);
+  } catch { return false; }
+}
 
 function decode(text: string) {
   return text.replace(/&#x([\da-f]+);/gi, (_, n: string) => String.fromCodePoint(parseInt(n, 16)))
@@ -28,7 +40,7 @@ function similarity(a: string, b: string) {
 function escapeAttribute(text: string) { return text.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;"); }
 
 /** Repairs only internal TOC targets; preserves all existing ids and body links. */
-export function resolveBlogToc(html: string) {
+export function resolveBlogToc(html: string, context?: ArticleContext) {
   const headings: Heading[] = [...html.matchAll(/<h([23])\b[^>]*>([\s\S]*?)<\/h\1\s*>/gi)].map(m => ({
     start: m.index, tag: m[0].slice(0, m[0].indexOf(">") + 1), text: plain(m[2]), id: attribute(m[0].slice(0, m[0].indexOf(">") + 1), "id"),
   }));
@@ -40,14 +52,17 @@ export function resolveBlogToc(html: string) {
   const external: { href: string; text: string }[] = [];
   const positions = new Map<TocLink, { start: number; tag: string }>();
   let lastLinkEnd = 0;
-  for (const m of opening.matchAll(/<a\b[^>]*>([\s\S]*?)<\/a\s*>/gi)) {
+  for (const m of html.matchAll(/<a\b[^>]*>([\s\S]*?)<\/a\s*>/gi)) {
     const href = attribute(m[0].slice(0, m[0].indexOf(">") + 1), "href");
     if (!href || !href.includes("#") || !fragment(href)) continue;
-    if (!href.startsWith("#")) { external.push({ href, text: plain(m[1]) }); continue; }
-    const link = { href, text: plain(m[1]), id: fragment(href) };
+    const inToc = m.index < firstHeading;
+    const conversion = !href.startsWith("#") && isSelfFragment(href, context);
+    if (!href.startsWith("#") && !conversion) { if (inToc) external.push({ href, text: plain(m[1]) }); continue; }
+    if (!inToc && !conversion) continue;
+    const link: TocLink = { href, text: plain(m[1]), id: fragment(href), conversion, inToc };
     links.push(link);
     positions.set(link, { start: m.index, tag: m[0].slice(0, m[0].indexOf(">") + 1) });
-    lastLinkEnd = m.index + m[0].length;
+    if (inToc) lastLinkEnd = m.index + m[0].length;
   }
   const h2 = headings.filter(h => /^<h2\b/i.test(h.tag));
   const additions = new Map<number, string>();
@@ -63,7 +78,7 @@ export function resolveBlogToc(html: string) {
     const best = ranked[0];
     const similar = best && best.score >= 0.7 && best.score - (ranked[1]?.score ?? 0) >= 0.12 ? best.h : undefined;
     const heading = exact.length === 1 ? exact[0] : contains.length === 1 ? contains[0] : similar;
-    const fallback = links.length === h2.length ? h2[i] : undefined;
+    const fallback = !link.conversion && links.filter(l => l.inToc).length === h2.length ? h2[i] : undefined;
     if (!heading && (normalizedId === "introducao" || text === "introducao")) {
       // First root paragraph following the opening TOC, never inside its list/container.
       let depth = 0;
@@ -95,7 +110,7 @@ export function resolveBlogToc(html: string) {
   }
   for (const link of links) {
     const position = positions.get(link);
-    if (!position || !link.target || link.target === link.id) continue;
+    if (!position || !link.target || (!link.conversion && link.target === link.id)) continue;
     const tag = position.tag.replace(/\shref\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+)/i, ` href="#${escapeAttribute(link.target)}"`);
     edits.push({ start: position.start, end: position.start + position.tag.length, value: tag });
   }
