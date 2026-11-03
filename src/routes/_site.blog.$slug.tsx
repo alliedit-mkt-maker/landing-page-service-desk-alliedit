@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { ArrowLeft } from "lucide-react";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import ogImageAsset from "@/assets/og-image.png.asset.json";
-import { ASSET_ORIGIN, siteCanonical } from "@/lib/site";
+import { ASSET_ORIGIN, SITE_ORIGIN, siteCanonical } from "@/lib/site";
 import {
   authorName,
   effectiveModifiedDate,
@@ -113,8 +113,8 @@ function BlogArticle() {
 
   // Mesmo HTML no servidor e no primeiro render do cliente (sem DOM).
   const baseHtml = useMemo(
-    () => (rawHtml ? resolveBlogToc(normalizeInternalLinks(lightSanitize(rawHtml))).html : null),
-    [rawHtml],
+    () => (rawHtml ? resolveBlogToc(normalizeInternalLinks(resolveBlogToc(lightSanitize(rawHtml), { slug, origin: SITE_ORIGIN }).html), { slug, origin: SITE_ORIGIN }).html : null),
+    [rawHtml, slug],
   );
   const [safeHtml, setSafeHtml] = useState<string | null>(baseHtml);
 
@@ -125,12 +125,12 @@ function BlogArticle() {
     // DOMPurify só no navegador, depois da hidratação.
     import("isomorphic-dompurify").then(({ default: DOMPurify }) => {
       if (cancelled) return;
-      setSafeHtml(resolveBlogToc(normalizeInternalLinks(DOMPurify.sanitize(rawHtml, { ADD_ATTR: ["target"] }))).html);
+      setSafeHtml(resolveBlogToc(normalizeInternalLinks(resolveBlogToc(DOMPurify.sanitize(rawHtml, { ADD_ATTR: ["target"] }), { slug, origin: SITE_ORIGIN }).html), { slug, origin: SITE_ORIGIN }).html);
     });
     return () => {
       cancelled = true;
     };
-  }, [rawHtml, baseHtml]);
+  }, [rawHtml, baseHtml, slug]);
 
   useEffect(() => {
     const content = articleRef.current;
@@ -143,7 +143,7 @@ function BlogArticle() {
     const scrollToHash = (hash: string, smooth: boolean) => {
       let id: string;
       try { id = decodeURIComponent(hash.slice(1)); } catch { return; }
-      const alias = rawHtml ? resolveBlogToc(normalizeInternalLinks(lightSanitize(rawHtml))).links.find(link => link.id === id)?.target : undefined;
+      const alias = rawHtml ? resolveBlogToc(lightSanitize(rawHtml), { slug, origin: SITE_ORIGIN }).links.find(link => link.id === id)?.target : undefined;
       const target = document.getElementById(alias ?? id);
       if (!target || !content.contains(target)) return;
       updateOffset();
@@ -171,7 +171,7 @@ function BlogArticle() {
       content.removeEventListener("click", click);
       window.removeEventListener("hashchange", hashChange);
     };
-  }, [safeHtml, rawHtml]);
+  }, [safeHtml, rawHtml, slug]);
 
   const back = (
     <Link
