@@ -518,6 +518,7 @@ main > section:first-child .reveal-in {
   margin-top: 2em;
 }
 .site-article h2 { font-size: 1.6rem; }
+.site-article [id] { scroll-margin-top: var(--article-anchor-offset, 84px); }
 .site-article h3 { font-size: 1.3rem; }
 .site-article h4 { font-size: 1.1rem; }
 .site-article a {
