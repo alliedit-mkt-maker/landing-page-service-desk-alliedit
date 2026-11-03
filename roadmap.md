@@ -1,3 +1,4 @@
+- [ ] Extend blog TOC resolution to existing ids, normalized fragments, clear word similarity and intro fallback; audit 98 posts and verify 11 articles without publishing.
 - [x] Repair blog TOC anchor targets with matching and safe fallback; verify eight articles, report unresolved/external links; do not publish.
 - [x] Enrich and verify Cyber Shield with existing portfolio only, without metrics, placeholders or unconfirmed evidence.
 - [x] Remove all Cyber Shield NOC references, add checklist then qualitative comparison, preserve Vision 360° and verify.
