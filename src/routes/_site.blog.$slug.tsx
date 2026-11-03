@@ -143,7 +143,8 @@ function BlogArticle() {
     const scrollToHash = (hash: string, smooth: boolean) => {
       let id: string;
       try { id = decodeURIComponent(hash.slice(1)); } catch { return; }
-      const target = document.getElementById(id);
+      const alias = rawHtml ? resolveBlogToc(normalizeInternalLinks(lightSanitize(rawHtml))).links.find(link => link.id === id)?.target : undefined;
+      const target = document.getElementById(alias ?? id);
       if (!target || !content.contains(target)) return;
       updateOffset();
       target.scrollIntoView({ behavior: smooth && !window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "smooth" : "instant", block: "start" });
@@ -170,7 +171,7 @@ function BlogArticle() {
       content.removeEventListener("click", click);
       window.removeEventListener("hashchange", hashChange);
     };
-  }, [safeHtml]);
+  }, [safeHtml, rawHtml]);
 
   const back = (
     <Link

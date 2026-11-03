@@ -30,3 +30,28 @@ test("external TOC links are reported but never rewritten", () => {
   assert.equal(result.html, html);
   assert.equal(result.external[0]?.href, "https://editor.vercel.app/post#intro");
 });
+test("rewrites a broken link to the existing heading id using clear words without connectors", () => {
+  const r = resolveBlogToc('<a href="#como-funcionam-ztna-e-vpn-na-pratica">Como funcionam ZTNA e VPN na prática</a><h2 id="keep">Como funcionam ZTNA vs VPN na prática</h2>');
+  assert.equal(r.links[0]?.target, "keep");
+  assert.equal(r.html.includes('href="#keep"'), true);
+  assert.equal(r.html.includes('id="keep"'), true);
+});
+test("normalizes encoded accents spaces and repeated fragments against existing ids", () => {
+  const r = resolveBlogToc('<a href="#wrong#GEST%C3%83O Benef%C3%ADcios">Diferente</a><h3 id="gestao-beneficios">Outro</h3>');
+  assert.equal(r.links[0]?.target, "gestao-beneficios");
+});
+test("matches h3 with another id and leaves body links unchanged", () => {
+  const r = resolveBlogToc('<a href="#wrong">Conceito e fundamentos</a><h2>Outro</h2><h3 id="concept">Conceito e fundamentos</h3><p><a href="#wrong">Corpo</a></p>');
+  assert.equal(r.links[0]?.target, "concept");
+  assert.equal(r.html.includes('<a href="#wrong">Corpo</a>'), true);
+});
+test("introduction uses first body paragraph after the TOC without adding elements", () => {
+  const r = resolveBlogToc('<div><nav><ul><li><a href="#introducao">Introdução</a></li></ul></nav></div><p>Texto inicial</p><h2 id="other">Outro</h2>');
+  assert.equal(r.html.includes('<p id="introducao">Texto inicial</p>'), true);
+  assert.equal(r.links[0]?.method, "introduction");
+});
+test("ambiguous word similarity does not choose a title even when counts match", () => {
+  const r = resolveBlogToc('<a href="#wrong">Gestão segurança empresas</a><h2 id="a">Gestão segurança empresas digitais</h2><h3 id="b">Gestão segurança empresas globais</h3>');
+  assert.equal(r.unresolved.length, 1);
+  assert.equal(r.html.includes('href="#wrong"'), true);
+});
