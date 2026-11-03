@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { resolveBlogToc } from "@/lib/blog-toc";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { ArrowLeft } from "lucide-react";
@@ -97,6 +98,7 @@ export const Route = createFileRoute("/_site/blog/$slug")({
 });
 
 function BlogArticle() {
+  const articleRef = useRef<HTMLDivElement>(null);
   const { slug } = Route.useParams();
   const loaderData = Route.useLoaderData();
 
@@ -111,7 +113,7 @@ function BlogArticle() {
 
   // Mesmo HTML no servidor e no primeiro render do cliente (sem DOM).
   const baseHtml = useMemo(
-    () => (rawHtml ? normalizeInternalLinks(lightSanitize(rawHtml)) : null),
+    () => (rawHtml ? resolveBlogToc(normalizeInternalLinks(lightSanitize(rawHtml))).html : null),
     [rawHtml],
   );
   const [safeHtml, setSafeHtml] = useState<string | null>(baseHtml);
@@ -123,12 +125,48 @@ function BlogArticle() {
     // DOMPurify só no navegador, depois da hidratação.
     import("isomorphic-dompurify").then(({ default: DOMPurify }) => {
       if (cancelled) return;
-      setSafeHtml(normalizeInternalLinks(DOMPurify.sanitize(rawHtml, { ADD_ATTR: ["target"] })));
+      setSafeHtml(resolveBlogToc(normalizeInternalLinks(DOMPurify.sanitize(rawHtml, { ADD_ATTR: ["target"] }))).html);
     });
     return () => {
       cancelled = true;
     };
   }, [rawHtml, baseHtml]);
+
+  useEffect(() => {
+    const content = articleRef.current;
+    if (!content || !safeHtml) return;
+    const header = document.querySelector(".site-scope header");
+    const updateOffset = () => content.style.setProperty("--article-anchor-offset", `${Math.ceil(header?.getBoundingClientRect().bottom ?? 84)}px`);
+    updateOffset();
+    const observer = new ResizeObserver(updateOffset);
+    if (header) observer.observe(header);
+    const scrollToHash = (hash: string, smooth: boolean) => {
+      let id: string;
+      try { id = decodeURIComponent(hash.slice(1)); } catch { return; }
+      const target = document.getElementById(id);
+      if (!target || !content.contains(target)) return;
+      updateOffset();
+      target.scrollIntoView({ behavior: smooth && !window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "smooth" : "instant", block: "start" });
+    };
+    const click = (event: MouseEvent) => {
+      if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+      const anchor = event.target instanceof Element ? event.target.closest("a") : null;
+      const href = anchor?.getAttribute("href");
+      if (!href?.startsWith("#") || !document.getElementById(decodeURIComponent(href.slice(1)))) return;
+      event.preventDefault();
+      window.history.pushState(null, "", href);
+      scrollToHash(href, true);
+    };
+    const hashChange = () => scrollToHash(window.location.hash, true);
+    content.addEventListener("click", click);
+    window.addEventListener("hashchange", hashChange);
+    const frame = requestAnimationFrame(() => scrollToHash(window.location.hash, false));
+    return () => {
+      observer.disconnect(); cancelAnimationFrame(frame);
+      content.removeEventListener("click", click);
+      window.removeEventListener("hashchange", hashChange);
+    };
+  }, [safeHtml]);
 
   const back = (
     <Link
@@ -188,7 +226,7 @@ function BlogArticle() {
         </h1>
 
         {safeHtml ? (
-          <div className="site-article mt-9" dangerouslySetInnerHTML={{ __html: safeHtml }} />
+          <div ref={articleRef} className="site-article mt-9" dangerouslySetInnerHTML={{ __html: safeHtml }} />
         ) : (
           <div className="mt-9 h-4 w-2/3 animate-pulse bg-[#EDF1F2]" />
         )}
