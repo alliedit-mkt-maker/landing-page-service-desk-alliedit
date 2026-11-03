@@ -113,7 +113,7 @@ function BlogArticle() {
 
   // Mesmo HTML no servidor e no primeiro render do cliente (sem DOM).
   const baseHtml = useMemo(
-    () => (rawHtml ? resolveBlogToc(normalizeInternalLinks(lightSanitize(rawHtml)), { slug, origin: SITE_ORIGIN }).html : null),
+    () => (rawHtml ? resolveBlogToc(normalizeInternalLinks(resolveBlogToc(lightSanitize(rawHtml), { slug, origin: SITE_ORIGIN }).html), { slug, origin: SITE_ORIGIN }).html : null),
     [rawHtml, slug],
   );
   const [safeHtml, setSafeHtml] = useState<string | null>(baseHtml);
@@ -125,7 +125,7 @@ function BlogArticle() {
     // DOMPurify só no navegador, depois da hidratação.
     import("isomorphic-dompurify").then(({ default: DOMPurify }) => {
       if (cancelled) return;
-      setSafeHtml(resolveBlogToc(normalizeInternalLinks(DOMPurify.sanitize(rawHtml, { ADD_ATTR: ["target"] })), { slug, origin: SITE_ORIGIN }).html);
+      setSafeHtml(resolveBlogToc(normalizeInternalLinks(resolveBlogToc(DOMPurify.sanitize(rawHtml, { ADD_ATTR: ["target"] }), { slug, origin: SITE_ORIGIN }).html), { slug, origin: SITE_ORIGIN }).html);
     });
     return () => {
       cancelled = true;
@@ -143,7 +143,7 @@ function BlogArticle() {
     const scrollToHash = (hash: string, smooth: boolean) => {
       let id: string;
       try { id = decodeURIComponent(hash.slice(1)); } catch { return; }
-      const alias = rawHtml ? resolveBlogToc(normalizeInternalLinks(lightSanitize(rawHtml)), { slug, origin: SITE_ORIGIN }).links.find(link => link.id === id)?.target : undefined;
+      const alias = rawHtml ? resolveBlogToc(lightSanitize(rawHtml), { slug, origin: SITE_ORIGIN }).links.find(link => link.id === id)?.target : undefined;
       const target = document.getElementById(alias ?? id);
       if (!target || !content.contains(target)) return;
       updateOffset();
