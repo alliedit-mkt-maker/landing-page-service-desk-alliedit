@@ -55,3 +55,7 @@ test("ambiguous word similarity does not choose a title even when counts match",
   assert.equal(r.unresolved.length, 1);
   assert.equal(r.html.includes('href="#wrong"'), true);
 });
+test("tied word scores cannot fall back to order", () => {
+  const r = resolveBlogToc('<a href="#wrong">Gestão segurança empresas</a><h2 id="a">Empresas segurança gestão digitais</h2><h3 id="b">Segurança empresas gestão globais</h3>');
+  assert.equal(r.unresolved.length, 1);
+});

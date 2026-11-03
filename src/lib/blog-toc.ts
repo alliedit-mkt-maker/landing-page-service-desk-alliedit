@@ -81,7 +81,7 @@ export function resolveBlogToc(html: string) {
         link.target = id; link.method = "introduction"; return;
       }
     }
-    const target = heading ?? (fallback && exact.length === 0 && contains.length === 0 ? fallback : undefined);
+    const target = heading ?? (fallback && exact.length === 0 && contains.length === 0 && (best?.score ?? 0) < 0.7 ? fallback : undefined);
     if (!target) { link.reason = exact.length > 1 || contains.length > 1 || (best && best.score >= 0.7) ? "Correspondência ambígua entre títulos" : "Sem título com semelhança clara e sem equivalência segura por ordem"; return; }
     const id = target.id ?? additions.get(target.start) ?? normalizedId;
     if (!ids.has(id)) { additions.set(target.start, id); ids.add(id); }

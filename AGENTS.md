@@ -1,5 +1,5 @@
 # Architecture rules
-- Resolve blog TOC heading ids through the same pure HTML transformer before and after browser sanitization; keep scrolling offset local to the article so SSR, hydration and other pages stay consistent.
+- Resolve blog TOC targets and original-fragment aliases through the same pure HTML transformer before and after browser sanitization; preserve existing ids, rewrite only broken TOC hrefs, and keep scrolling offset local to the article so SSR, hydration and other pages stay consistent.
 - Keep Cyber Shield enrichment data browser-safe and its visual overrides scoped to `.cyber-page`; shared CTA copy overrides must be opt-in so FAQ, forms and other pages remain unaffected.
 - Resolve the organization schema through a browser-safe pathname selector for page-specific exclusions; never mutate the shared company schema or change other pages.
 
