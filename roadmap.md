@@ -1,7 +1,7 @@
 - [x] Enrich and verify Cyber Shield with existing portfolio only, without metrics, placeholders or unconfirmed evidence.
 - [x] Remove all Cyber Shield NOC references, add checklist then qualitative comparison, preserve Vision 360° and verify.
 - [x] Align the methodology line through yellow dots and animate the line and dots sequentially on scroll.
-- [ ] Publish the verified Cyber Shield enrichment.
+- [ ] Publish the verified Cyber Shield enrichment; awaiting authorization after the publication request was declined.
 - [x] Configure the five service-page forms and descriptions without changing shared defaults.
 - [x] Configure only Home and About content contact buttons with the general form; audit shared navigation and hosted fields.
 - [x] Verify general-form fields, attribution, WhatsApp and thank-you behavior without publishing.
