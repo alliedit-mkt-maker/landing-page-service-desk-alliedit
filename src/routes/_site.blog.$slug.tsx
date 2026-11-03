@@ -152,7 +152,11 @@ function BlogArticle() {
       if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
       const anchor = event.target instanceof Element ? event.target.closest("a") : null;
       const href = anchor?.getAttribute("href");
-      if (!href?.startsWith("#") || !document.getElementById(decodeURIComponent(href.slice(1)))) return;
+      if (!href?.startsWith("#")) return;
+      let targetId: string;
+      try { targetId = decodeURIComponent(href.slice(1)); } catch { return; }
+      const target = document.getElementById(targetId);
+      if (!target || !content.contains(target)) return;
       event.preventDefault();
       window.history.pushState(null, "", href);
       scrollToHash(href, true);
