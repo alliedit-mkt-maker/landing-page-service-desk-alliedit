@@ -1,4 +1,4 @@
-- [ ] Repair blog TOC anchor targets with matching and safe fallback; verify eight articles, report unresolved/external links; do not publish.
+- [x] Repair blog TOC anchor targets with matching and safe fallback; verify eight articles, report unresolved/external links; do not publish.
 - [x] Enrich and verify Cyber Shield with existing portfolio only, without metrics, placeholders or unconfirmed evidence.
 - [x] Remove all Cyber Shield NOC references, add checklist then qualitative comparison, preserve Vision 360° and verify.
 - [x] Align the methodology line through yellow dots and animate the line and dots sequentially on scroll.
