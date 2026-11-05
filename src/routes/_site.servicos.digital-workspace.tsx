@@ -56,9 +56,9 @@ import deskPhoto from "@/assets/dw/desk.jpg.asset.json";
 
 export const Route = createFileRoute("/_site/servicos/digital-workspace")({
   head: () => {
-    const h = pageHead({ social: "Service desk e field service em São Paulo e em todo o Brasil: atendimento remoto e presencial com SLA em uma só operação.",
+    const h = pageHead({ social: "Service desk e field service em São Paulo e em todo o Brasil: atendimento remoto e presencial com SLA em uma só operação. Fale com um especialista.",
       title: "Digital Workspace: Service Desk e Field Service | Allied IT",
-      description: "Service desk e field service em São Paulo e em todo o Brasil: atendimento remoto e presencial com SLA em uma só operação.",
+      description: "Service desk e field service em São Paulo e em todo o Brasil: atendimento remoto e presencial com SLA em uma só operação. Fale com um especialista.",
       path: "/servicos/digital-workspace",
     });
     return { ...h, scripts: [serviceSchema({ path: "/servicos/digital-workspace", name: "Digital Workspace: Service Desk e Field Service", serviceType: "Service desk e field service", description: "Service desk e field service em São Paulo e em todo o Brasil: atendimento remoto e presencial com SLA em uma só operação.", sectionName: "Serviços", sectionPath: "/servicos", faq: FAQ })] };

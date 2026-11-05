@@ -6,7 +6,7 @@ import { siteCanonical } from "@/lib/site";
 
 const TITLE = "Blog Allied IT | Tecnologia e operação de TI para empresas";
 const DESC =
-  "Como diagnosticamos operações de TI, o raciocínio por trás das soluções e o que a tecnologia aplicada muda de verdade.";
+  "Artigos sobre service desk, cibersegurança, nuvem, infraestrutura e gestão de TI, escritos para gestores e times técnicos. Conteúdo direto ao ponto.";
 
 export const Route = createFileRoute("/_site/blog/")({
   headers: () => ({
@@ -16,7 +16,7 @@ export const Route = createFileRoute("/_site/blog/")({
   head: () => {
     const canonical = siteCanonical("/blog");
     const base = pageHead({
-      social: "Diagnóstico, raciocínio e prática de quem cuida de TI todo dia.",
+      social: DESC,
       title: TITLE,
       description: DESC,
       path: "/blog",

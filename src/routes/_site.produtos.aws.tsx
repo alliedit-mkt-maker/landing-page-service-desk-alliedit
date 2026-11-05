@@ -26,9 +26,9 @@ import oqueE from "@/assets/aws/oque-e.png.asset.json";
 
 export const Route = createFileRoute("/_site/produtos/aws")({
   head: () => {
-    const h = pageHead({ social: "Seu ambiente na Amazon Web Services, instalado e vigiado de perto.",
+    const h = pageHead({ social: "Consultoria AWS para empresas: avaliação do ambiente, migração, implantação e monitoramento contínuo com otimização de custos. Solicite um orçamento.",
       title: "Consultoria AWS: migração e gestão de nuvem | Allied IT",
-      description: "Migração, implantação e monitoramento contínuo de ambientes AWS, seguindo as boas práticas do mercado.",
+      description: "Consultoria AWS para empresas: avaliação do ambiente, migração, implantação e monitoramento contínuo com otimização de custos. Solicite um orçamento.",
       path: "/produtos/aws",
     });
     return { ...h, meta: [...h.meta, { name: "robots", content: "index, follow" }], scripts: [serviceSchema({ path: "/produtos/aws", name: "Consultoria AWS: migração e gestão de nuvem", serviceType: "Consultoria AWS", description: "Migração, implantação e monitoramento contínuo de ambientes AWS, seguindo as boas práticas do mercado.", sectionName: "Produtos", sectionPath: "/produtos", faq: FAQ })] };
