@@ -34,9 +34,9 @@ const CONTACT_FORM = { formId: "237e8c94-dc21-4348-bc2f-f60efff214d6", descripti
 
 export const Route = createFileRoute("/_site/servicos/smart-cloud-ops")({
   head: () => {
-    const h = pageHead({ social: "Ambiente em nuvem migrado, protegido e com a conta sob controle.",
+    const h = pageHead({ social: "Nuvem operada com governança: Azure, Microsoft 365, migração, backup, Disaster Recovery, FinOps e SecOps. Fale com a Allied IT e tenha previsibilidade.",
       title: "Smart Cloud Ops: Azure, M365 e FinOps | Allied IT",
-      description: "Nuvem operada com governança: Azure, Microsoft 365, migração, backup, Disaster Recovery, FinOps e SecOps.",
+      description: "Nuvem operada com governança: Azure, Microsoft 365, migração, backup, Disaster Recovery, FinOps e SecOps. Fale com a Allied IT e tenha previsibilidade.",
       path: "/servicos/smart-cloud-ops",
     });
     return { ...h, scripts: [serviceSchema({ path: "/servicos/smart-cloud-ops", name: "Smart Cloud Ops: Azure, M365 e FinOps", serviceType: "Operação de nuvem (Azure, Microsoft 365 e FinOps)", description: "Nuvem operada com governança: Azure, Microsoft 365, migração, backup, Disaster Recovery, FinOps e SecOps.", sectionName: "Serviços", sectionPath: "/servicos", faq: FAQ })] };

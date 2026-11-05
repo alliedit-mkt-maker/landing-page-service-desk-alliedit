@@ -19,9 +19,9 @@ const CONTACT_FORM = { formId: "c7fd2956-e583-4353-b345-9fbdb13feafd", descripti
 
 export const Route = createFileRoute("/_site/servicos/product-engineering")({
   head: () => {
-    const h = pageHead({ social: "Gargalo da operação virando sistema que funciona.",
+    const h = pageHead({ social: "Sistemas, aplicativos, dashboards e automações sob medida para tirar gargalos da sua operação. Fale com a Allied IT e tire seu projeto do papel.",
       title: "Product Engineering: desenvolvimento sob medida | Allied IT",
-      description: "Sistemas, aplicativos, dashboards e automações sob medida para tirar gargalos da sua operação.",
+      description: "Sistemas, aplicativos, dashboards e automações sob medida para tirar gargalos da sua operação. Fale com a Allied IT e tire seu projeto do papel.",
       path: "/servicos/product-engineering",
     });
     return { ...h, scripts: [serviceSchema({ path: "/servicos/product-engineering", name: "Product Engineering: desenvolvimento sob medida", serviceType: "Desenvolvimento de software sob medida", description: "Sistemas, aplicativos, dashboards e automações sob medida para tirar gargalos da sua operação.", sectionName: "Serviços", sectionPath: "/servicos", faq: FAQ })] };

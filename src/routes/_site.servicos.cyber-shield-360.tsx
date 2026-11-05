@@ -38,10 +38,9 @@ const CONTACT_FORM = { formId: "3b4b53a7-de50-4fdf-8aa4-06c859a28c87", descripti
 
 export const Route = createFileRoute("/_site/servicos/cyber-shield-360")({
   head: () => {
-    const h = pageHead({ social: "Monitoramento 24x7, testes de invasão e resposta a ataque.",
+    const h = pageHead({ social: "Segurança cibernética 24x7x365: SOC e NOC como serviço, EDR e XDR, pentest, teste de phishing, hardening, firewall e LGPD. Proteja sua empresa.",
       title: "Cyber Shield 360°: SOC, pentest e segurança | Allied IT",
-      description:
-        "Segurança cibernética 24x7x365: SOCaaS, EDR e XDR, pentest, phishing test, hardening, firewall e LGPD.",
+      description: "Segurança cibernética 24x7x365: SOC e NOC como serviço, EDR e XDR, pentest, teste de phishing, hardening, firewall e LGPD. Proteja sua empresa.",
       path: "/servicos/cyber-shield-360",
     });
     return { ...h, scripts: [serviceSchema({ path: "/servicos/cyber-shield-360", name: "Cyber Shield 360°: SOC, pentest e segurança", serviceType: "Segurança da informação gerenciada (SOC e pentest)", description: "Segurança cibernética 24x7x365: SOCaaS, EDR e XDR, pentest, phishing test, hardening, firewall e LGPD.", sectionName: "Serviços", sectionPath: "/servicos", faq: FAQ.map(([q, a]) => ({ q, a })) })] };

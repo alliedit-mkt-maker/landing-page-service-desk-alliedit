@@ -8,9 +8,9 @@ import hero from "@/assets/infra/rack.jpg.asset.json";
 
 export const Route = createFileRoute("/_site/produtos/")({
   head: () =>
-    pageHead({ social: "Hardware, licença e nuvem com consultoria inclusa.",
+    pageHead({ social: "Headsets Poly, Yealink e Logitech, videoconferência, Microsoft 365, AWS e firewall com consultoria e suporte da Allied IT. Solicite um orçamento.",
       title: "Headsets, videoconferência e equipamentos de TI | Allied IT",
-      description: "Headsets Poly, Yealink e Logitech, videoconferência, Microsoft 365, AWS e firewall com consultoria e suporte.",
+      description: "Headsets Poly, Yealink e Logitech, videoconferência, Microsoft 365, AWS e firewall com consultoria e suporte da Allied IT. Solicite um orçamento.",
       path: "/produtos",
     }),
   component: ProdutosPage,

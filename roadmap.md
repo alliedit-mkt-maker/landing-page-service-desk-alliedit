@@ -1,3 +1,4 @@
+- [x] Apply requested SEO descriptions and Home testimonial heading without visual, LP or contact changes; remove blog title truncation, add automatic FAQ/Breadcrumb schemas, test CSC redirects and assess CMS-owned typo slugs without publishing.
 - [x] Convert resolvable root/self-article fragment links only; audit 98 posts, verify all TOC clicks in 18 articles and report without publishing.
 - [x] Extend blog TOC resolution to existing ids, normalized fragments, clear word similarity and intro fallback; audit 98 posts and verify 11 articles without publishing.
 - [x] Repair blog TOC anchor targets with matching and safe fallback; verify eight articles, report unresolved/external links; do not publish.

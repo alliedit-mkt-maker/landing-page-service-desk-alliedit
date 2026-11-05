@@ -20,9 +20,9 @@ const CONTACT_FORM = { formId: "eac0f8f3-946d-4477-8e30-c77fbefd3a26", descripti
 
 export const Route = createFileRoute("/_site/servicos/inteligencia-artificial")({
   head: () => {
-    const h = pageHead({ social: "Da prova de conceito ao uso diário na operação.",
+    const h = pageHead({ social: "Consultoria, POC, MVP e integrações de inteligência artificial que aumentam a produtividade e geram resultado no negócio. Converse com a Allied IT.",
       title: "Inteligência Artificial para empresas | Allied IT",
-      description: "Consultoria, POC, MVP e integrações de IA que aumentam a produtividade e geram resultado no negócio.",
+      description: "Consultoria, POC, MVP e integrações de inteligência artificial que aumentam a produtividade e geram resultado no negócio. Converse com a Allied IT.",
       path: "/servicos/inteligencia-artificial",
     });
     return { ...h, scripts: [serviceSchema({ path: "/servicos/inteligencia-artificial", name: "Inteligência Artificial para empresas", serviceType: "Inteligência artificial para empresas", description: "Consultoria, POC, MVP e integrações de IA que aumentam a produtividade e geram resultado no negócio.", sectionName: "Serviços", sectionPath: "/servicos", faq: FAQ })] };

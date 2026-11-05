@@ -8,9 +8,9 @@ import hero from "@/assets/dw/noc.jpg.asset.json";
 
 export const Route = createFileRoute("/_site/servicos/")({
   head: () =>
-    pageHead({ social: "Seis frentes de TI com uma equipe responsável pelo resultado.",
+    pageHead({ social: "Conheça os serviços da Allied IT: service desk, field service, nuvem, cibersegurança, infraestrutura, desenvolvimento sob medida e IA para sua empresa.",
       title: "Serviços gerenciados de TI para empresas | Allied IT",
-      description: "Service Desk, nuvem, segurança, infraestrutura, desenvolvimento e IA para quem precisa de operação estável.",
+      description: "Conheça os serviços da Allied IT: service desk, field service, nuvem, cibersegurança, infraestrutura, desenvolvimento sob medida e IA para sua empresa.",
       path: "/servicos",
     }),
   component: ServicosPage,

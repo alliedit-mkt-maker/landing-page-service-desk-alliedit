@@ -58,10 +58,9 @@ const LP_HEADS: Partial<Record<Variant, () => any>> = {
 };
 
 const siteHead = () => {
-  const base = pageHead({ social: "Suporte, rede, nuvem e segurança para quem não pode parar.",
+  const base = pageHead({ social: "Serviços gerenciados de TI para empresas: service desk, field service, nuvem, segurança e infraestrutura com SLA. Atendemos São Paulo e todo o Brasil.",
     title: "Allied IT | Tecnologia que sustenta a sua operação",
-    description:
-      "Serviços gerenciados, infraestrutura, nuvem e segurança de TI para empresas que precisam de operação estável.",
+    description: "Serviços gerenciados de TI para empresas: service desk, field service, nuvem, segurança e infraestrutura com SLA. Atendemos São Paulo e todo o Brasil.",
     path: "/",
   });
   return {
