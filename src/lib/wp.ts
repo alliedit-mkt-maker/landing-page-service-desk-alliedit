@@ -72,7 +72,14 @@ export function effectiveModifiedDate(post: Pick<WpPost, "date" | "modified">): 
 
 export function authorName(post: WpPost): string {
   const name = post._embedded?.author?.[0]?.name;
-  return name ? stripHtml(name) : "Allied IT";
+  const clean = name ? stripHtml(name).trim() : "";
+  return !clean || isOrganizationAuthor(clean) ? "Allied IT" : clean;
+}
+
+/** Autores do CMS que representam a própria empresa (ex.: agência "LabMídia"). */
+export function isOrganizationAuthor(name: string): boolean {
+  const n = name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/\s+/g, "");
+  return n === "labmidia" || n === "alliedit";
 }
 
 // ~200 palavras por minuto, mínimo de 1 minuto.

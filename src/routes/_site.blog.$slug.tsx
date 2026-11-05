@@ -67,7 +67,10 @@ export const Route = createFileRoute("/_site/blog/$slug")({
       image: [image],
       datePublished: published,
       dateModified: modified,
-      author: { "@type": "Person", name: authorName(post) },
+      author:
+        authorName(post) === "Allied IT"
+          ? { "@id": "https://alliedit.com.br/#organization" }
+          : { "@type": "Person", name: authorName(post) },
       publisher: { "@id": "https://alliedit.com.br/#organization" },
       mainEntityOfPage: { "@type": "WebPage", "@id": canonical },
       ...(category ? { articleSection: stripHtml(category) } : {}),

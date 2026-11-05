@@ -1,0 +1,47 @@
+# Allied IT
+
+> A Allied IT é uma empresa brasileira de serviços gerenciados de TI, com foco em outsourcing de TI, infraestrutura, suporte técnico, cibersegurança e cloud para empresas de médio e grande porte com operação robusta, distribuída ou em expansão. Sede em Alphaville, Barueri (SP), com atendimento em todo o Brasil.
+
+A empresa atua principalmente com serviços recorrentes e contratos de médio e longo prazo: terceirização de TI, alocação de profissionais, service desk, field service, centro de serviços compartilhados, projetos de infraestrutura, segurança, cloud e redes. Também comercializa produtos de TI (headsets, videoconferência, firewall, Microsoft 365 e AWS) como apoio às soluções entregues.
+
+## Serviços
+- [Digital Workspace: Service Desk e Field Service](https://alliedit.com.br/servicos/digital-workspace): service desk terceirizado e field service com atendimento remoto e presencial, em São Paulo e em todo o Brasil.
+- [Cyber Shield 360°](https://alliedit.com.br/servicos/cyber-shield-360): SOC, pentest e consultoria em segurança.
+- [Smart Cloud Ops](https://alliedit.com.br/servicos/smart-cloud-ops): operação de nuvem com Azure, Microsoft 365 e FinOps.
+- [Infra Core](https://alliedit.com.br/servicos/infra-core): redes, cabeamento estruturado e data center.
+- [Product Engineering](https://alliedit.com.br/servicos/product-engineering): desenvolvimento de software sob medida.
+- [Inteligência Artificial](https://alliedit.com.br/servicos/inteligencia-artificial): soluções de IA aplicadas aos processos da empresa.
+
+## Produtos
+- [Produtos](https://alliedit.com.br/produtos): headsets e equipamentos de videoconferência Poly, Yealink e Logitech, com consultoria e suporte.
+- [Firewall](https://alliedit.com.br/produtos/firewall): firewall para empresas com monitoramento 24h.
+- [Microsoft 365](https://alliedit.com.br/produtos/microsoft-365): licenciamento e suporte.
+- [AWS](https://alliedit.com.br/produtos/aws): consultoria, migração e gestão de nuvem.
+
+## Páginas principais
+- [Home](https://alliedit.com.br/): visão geral da Allied IT e das suas frentes de atuação.
+- [Serviços](https://alliedit.com.br/servicos): todos os serviços da Allied IT.
+- [Sobre](https://alliedit.com.br/sobre): história, missão e segmentos atendidos.
+- [Blog](https://alliedit.com.br/blog): artigos sobre service desk, segurança, nuvem, infraestrutura e gestão de TI.
+
+## Artigos e guias
+- [Níveis de suporte técnico N1, N2 e N3](https://alliedit.com.br/blog/guia-completo-entendendo-os-niveis-de-suporte-tecnico-em-ti-n1-n2-n3): como se organizam os níveis de atendimento de um service desk.
+- [Help desk e service desk](https://alliedit.com.br/blog/qual-a-diferenca-entre-help-desk-e-service-desk): diferença entre os dois modelos de suporte.
+- [Field Service: o que é](https://alliedit.com.br/blog/field-service-o-que-e-como-funciona-e-beneficios): como funciona o suporte de TI em campo e seus benefícios.
+- [Fortinet NGFW](https://alliedit.com.br/blog/fortinet-ngfw): firewall de nova geração e seu papel na proteção de ambientes corporativos.
+- [O que é Fortinet](https://alliedit.com.br/blog/o-que-e-fortinet): guia introdutório sobre a tecnologia Fortinet.
+- [Monitoramento NOC](https://alliedit.com.br/blog/monitoramento-noc): monitoramento de infraestrutura e redes com foco em disponibilidade.
+- [Monitoramento SNOC](https://alliedit.com.br/blog/monitoramento-snoc): monitoramento integrado de segurança e operações.
+- [Gestão estratégica de TI](https://alliedit.com.br/blog/gestao-estrategica-de-ti): alinhamento entre tecnologia, operação e objetivos de negócio.
+- [Benefícios da governança de TI](https://alliedit.com.br/blog/beneficios-da-governanca-de-ti): ganhos de controle e eficiência em operações de TI.
+- [Zero Trust Micro Segmentation](https://alliedit.com.br/blog/zero-trust-micro-segmentation): segmentação de rede baseada em confiança zero.
+- [Tipos de pentest](https://alliedit.com.br/blog/tipos-de-pentest): modalidades de testes de intrusão.
+
+## Contato
+- E-mail: contato@alliedit.com.br
+
+## Optional
+- [White Box Pentest](https://alliedit.com.br/blog/white-box-pentest): testes de intrusão com conhecimento interno do ambiente.
+- [Black Box Pentest](https://alliedit.com.br/blog/black-box-pentest): testes de intrusão com visão externa.
+- [Pentest Gray Box](https://alliedit.com.br/blog/pentest-gray-box): testes com acesso parcial ao ambiente.
+- [O que é Red Team](https://alliedit.com.br/blog/o-que-e-red-team): simulações avançadas de ataque para validar a defesa.

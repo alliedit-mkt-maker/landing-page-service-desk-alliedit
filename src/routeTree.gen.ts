@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SiteRouteImport } from './routes/_site'
 import { Route as HeadsetsRouteImport } from './routes/headsets'
+import { Route as LlmsDottxtRouteImport } from './routes/llms[.]txt'
 import { Route as ObrigadoRouteImport } from './routes/obrigado'
 import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
@@ -66,6 +67,11 @@ const SiteRoute = SiteRouteImport.update({
 const HeadsetsRoute = HeadsetsRouteImport.update({
   id: '/headsets',
   path: '/headsets',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LlmsDottxtRoute = LlmsDottxtRouteImport.update({
+  id: '/llms.txt',
+  path: '/llms.txt',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ObrigadoRoute = ObrigadoRouteImport.update({
@@ -287,6 +293,7 @@ const SiteBlogCategoriaCategoryPagePageRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/headsets': typeof HeadsetsRoute
+  '/llms.txt': typeof LlmsDottxtRoute
   '/obrigado': typeof ObrigadoRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -332,6 +339,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/headsets': typeof HeadsetsRoute
+  '/llms.txt': typeof LlmsDottxtRoute
   '/obrigado': typeof ObrigadoRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -379,6 +387,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_site': typeof SiteRouteWithChildren
   '/headsets': typeof HeadsetsRoute
+  '/llms.txt': typeof LlmsDottxtRoute
   '/obrigado': typeof ObrigadoRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -426,6 +435,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/headsets'
+    | '/llms.txt'
     | '/obrigado'
     | '/robots.txt'
     | '/sitemap.xml'
@@ -471,6 +481,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/headsets'
+    | '/llms.txt'
     | '/obrigado'
     | '/robots.txt'
     | '/sitemap.xml'
@@ -517,6 +528,7 @@ export interface FileRouteTypes {
     | '/'
     | '/_site'
     | '/headsets'
+    | '/llms.txt'
     | '/obrigado'
     | '/robots.txt'
     | '/sitemap.xml'
@@ -564,6 +576,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   SiteRoute: typeof SiteRouteWithChildren
   HeadsetsRoute: typeof HeadsetsRoute
+  LlmsDottxtRoute: typeof LlmsDottxtRoute
   ObrigadoRoute: typeof ObrigadoRoute
   RobotsDottxtRoute: typeof RobotsDottxtRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
@@ -607,6 +620,13 @@ declare module '@tanstack/react-router' {
       path: '/headsets'
       fullPath: '/headsets'
       preLoaderRoute: typeof HeadsetsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/llms.txt': {
+      id: '/llms.txt'
+      path: '/llms.txt'
+      fullPath: '/llms.txt'
+      preLoaderRoute: typeof LlmsDottxtRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/obrigado': {
@@ -965,6 +985,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   SiteRoute: SiteRouteWithChildren,
   HeadsetsRoute: HeadsetsRoute,
+  LlmsDottxtRoute: LlmsDottxtRoute,
   ObrigadoRoute: ObrigadoRoute,
   RobotsDottxtRoute: RobotsDottxtRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
