@@ -166,9 +166,7 @@ export function socialDescription(text: string, max = 80): string {
 
 export function seoTitle(plainTitle: string): string {
   const withBrand = `${plainTitle} | Allied IT`;
-  if (withBrand.length <= 60) return withBrand;
-  if (plainTitle.length <= 60) return plainTitle;
-  return truncateAtWord(plainTitle, 57);
+  return withBrand.length <= 65 ? withBrand : plainTitle;
 }
 
 export function seoDescription(excerptHtml: string, contentHtml: string): string {

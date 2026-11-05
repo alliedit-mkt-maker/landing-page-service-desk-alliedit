@@ -1,4 +1,5 @@
 # Architecture rules
+- Derive blog FAQPage from visible HTML through a browser-safe parser and emit it with BlogPosting and BreadcrumbList in one article graph; ignore embedded CMS schemas to prevent duplicates.
 - Resolve blog TOC targets and original-fragment aliases through the same pure HTML transformer with explicit article slug and canonical origin before and after browser sanitization; localize root/self-article fragments only with a resolved target, preserve existing ids and unrelated links, and keep scrolling offset local to the article so SSR, hydration and other pages stay consistent.
 - Keep Cyber Shield enrichment data browser-safe and its visual overrides scoped to `.cyber-page`; shared CTA copy overrides must be opt-in so FAQ, forms and other pages remain unaffected.
 - Resolve the organization schema through a browser-safe pathname selector for page-specific exclusions; never mutate the shared company schema or change other pages.

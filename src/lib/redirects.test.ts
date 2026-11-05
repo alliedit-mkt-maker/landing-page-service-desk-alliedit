@@ -6,6 +6,9 @@ const resolve = (path: string, origin = "https://alliedit.com.br") =>
   hostRedirect(new Request(`${origin}${path}`));
 
 const mappings: [string, string][] = [
+  ["/servicos/centro-de-servicos-compartilhados", "/servicos/digital-workspace"],
+  ["/servicos/csc-centro-de-servicos-compartilhados", "/servicos/digital-workspace"],
+  ["/servicos__trashed/centro-de-servicos-compartilhados", "/servicos/digital-workspace"],
   [
     "/aws",
     "/produtos/aws"

@@ -78,7 +78,7 @@ export function SiteTestimonials() {
             id="site-depoimentos"
             className="font-chillax max-w-[20ch] text-[1.6rem] font-bold leading-tight tracking-tight text-white sm:text-[2rem]"
           >
-            O que dizem quem já confia na Allied IT
+            O que dizem os clientes que confiam na Allied IT
           </h2>
           {pages > 1 && (
             <div className="flex shrink-0 gap-3">

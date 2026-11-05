@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { resolveBlogToc } from "@/lib/blog-toc";
+import { blogBreadcrumb, blogFaqSchema } from "@/lib/blog-schema";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { ArrowLeft } from "lucide-react";
@@ -48,7 +49,7 @@ export const Route = createFileRoute("/_site/blog/$slug")({
     };
 
     const plainTitle = stripHtml(post.title.rendered);
-    const title = seo.rank_math_title || seoTitle(plainTitle);
+    const title = seoTitle(plainTitle);
     const description =
       seo.rank_math_description ||
       seoDescription(post.excerpt.rendered, post.content?.rendered ?? "");
@@ -60,7 +61,6 @@ export const Route = createFileRoute("/_site/blog/$slug")({
     const words = stripHtml(post.content?.rendered ?? "").split(/\s+/).filter(Boolean).length;
 
     const jsonLd = {
-      "@context": "https://schema.org",
       "@type": "BlogPosting",
       headline: plainTitle,
       description,
@@ -72,6 +72,11 @@ export const Route = createFileRoute("/_site/blog/$slug")({
       mainEntityOfPage: { "@type": "WebPage", "@id": canonical },
       ...(category ? { articleSection: stripHtml(category) } : {}),
       wordCount: words,
+    };
+    const faq = blogFaqSchema(lightSanitize(post.content?.rendered ?? ""), canonical);
+    const graph = {
+      "@context": "https://schema.org",
+      "@graph": [jsonLd, blogBreadcrumb(plainTitle, canonical), ...(faq ? [faq] : [])],
     };
 
     return {
@@ -91,7 +96,7 @@ export const Route = createFileRoute("/_site/blog/$slug")({
         { name: "twitter:image", content: image },
       ],
       links: [{ rel: "canonical", href: canonical }],
-      scripts: [{ type: "application/ld+json", children: JSON.stringify(jsonLd) }],
+      scripts: [{ type: "application/ld+json", children: JSON.stringify(graph) }],
     };
   },
   component: BlogArticle,
