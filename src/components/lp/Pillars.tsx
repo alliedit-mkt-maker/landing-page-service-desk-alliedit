@@ -22,7 +22,7 @@ const pillars = [
   },
   {
     title: "Governança real",
-    main: "Resolvemos a causa, não só o sintoma. Operação que reduz chamado, não vive dele.",
+    main: "Painel em Power BI com SLA, CSAT e taxa de abandono, reunião semanal e book mensal. Resolvemos a causa, não só o sintoma.",
     micro: {
       internal: "Sua equipe interna deixa de apagar incêndio e foca no estratégico.",
       external: "Análise de causa raiz no contrato, em vez de só fechar ticket.",

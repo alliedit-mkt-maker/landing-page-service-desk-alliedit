@@ -2,7 +2,7 @@ import { useLp } from "./LpProvider";
 import { Reveal } from "./Reveal";
 
 const bullets = [
-  "Service Desk medido por SLAs, processos e controle de qualidade",
+  "Service Desk terceirizado 24x7, com N1, N2 e N3 na mesma equipe, NOC e SOC integrados",
   "Presencial, remoto ou híbrido | modelo sob medida",
   "Head dedicado na sua conta com acesso à diretoria",
 ];
@@ -27,7 +27,7 @@ export function Hero() {
           </Reveal>
           <Reveal variant="fade-up" delay={120}>
             <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[5.5rem] font-extrabold tracking-tight text-balance leading-[0.95] mb-8 sm:mb-10 text-ink-mid">
-              A operação de TI por trás das marcas que você conhece.
+              Service Desk terceirizado e suporte de TI para empresas que não podem errar.
             </h1>
           </Reveal>
           <ul className="flex flex-col gap-4 sm:gap-5 mb-10 sm:mb-12">
