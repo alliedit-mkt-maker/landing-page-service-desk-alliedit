@@ -1,117 +1,26 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { ThankYouDialog } from "@/components/lp/ThankYouDialog";
 import { X } from "lucide-react";
-import { pushDataLayer, captureUtms, fillUtmFields } from "@/components/field-service/fs-tracking";
-import { setupWhatsappMask } from "@/lib/whatsapp-mask";
-import { keepWhatsappMask } from "@/components/lp/ContactModal";
+import { captureUtms } from "@/components/field-service/fs-tracking";
+import { LeadForm } from "@/components/forms/LeadForm";
 
 type Props = { open: boolean; onClose: () => void };
 
-const HUBSPOT_SCRIPT_SRC = "https://js.hsforms.net/forms/embed/v2.js";
-const PORTAL_ID = "47388409";
-const FORM_ID =
-  "850c4f3f-e264-4cad-920d-26f30bf93cf6";
-const REGION = "na1";
-
-function loadHubspotScript(): Promise<void> {
-  if (typeof window === "undefined") return Promise.resolve();
-  if (window.hbspt?.forms) return Promise.resolve();
-  const existing = document.querySelector<HTMLScriptElement>(
-    `script[src="${HUBSPOT_SCRIPT_SRC}"]`,
-  );
-  if (existing) {
-    return new Promise((resolve) => {
-      if (window.hbspt?.forms) return resolve();
-      existing.addEventListener("load", () => resolve(), { once: true });
-    });
-  }
-  return new Promise((resolve, reject) => {
-    const s = document.createElement("script");
-    s.src = HUBSPOT_SCRIPT_SRC;
-    s.async = true;
-    s.onload = () => resolve();
-    s.onerror = () => reject(new Error("HubSpot script failed to load"));
-    document.head.appendChild(s);
-  });
-}
+const FORM_ID = "850c4f3f-e264-4cad-920d-26f30bf93cf6";
 
 export function ContactModal({ open, onClose }: Props) {
   const [thanks, setThanks] = useState(false);
   const [submittedPageUrl, setSubmittedPageUrl] = useState("");
-  const targetRef = useRef<HTMLDivElement | null>(null);
-  const [ready, setReady] = useState(false);
-  const targetId = "hubspot-form-target";
 
   useEffect(() => {
     if (!open) return;
+    captureUtms();
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
     window.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
     return () => {
       window.removeEventListener("keydown", onKey);
       document.body.style.overflow = "";
-    };
-  }, [open, onClose]);
-
-  useEffect(() => {
-    if (!open) {
-      setReady(false);
-      return;
-    }
-    let cancelled = false;
-    let stopMask: (() => void) | undefined;
-    setReady(false);
-
-    loadHubspotScript()
-      .then(() => {
-        if (cancelled || !window.hbspt?.forms || !targetRef.current) return;
-        // Clear any prior render
-        targetRef.current.innerHTML = "";
-        const utms = captureUtms();
-
-        window.hbspt.forms.create({
-          portalId: PORTAL_ID,
-          formId: FORM_ID,
-          region: REGION,
-          target: `#${targetId}`,
-          onFormReady: (form: HTMLFormElement) => {
-            setReady(true);
-            // Máscara + validação do WhatsApp (utilitário compartilhado)
-            setupWhatsappMask(form);
-            // Prefill hidden UTM fields
-            fillUtmFields(form, utms);
-            fillUtmFields(targetRef.current, utms);
-            setTimeout(() => fillUtmFields(targetRef.current), 400);
-          },
-          onBeforeFormSubmit: () => {
-            try { fillUtmFields(targetRef.current); } catch { /* noop */ }
-          },
-          onFormSubmitted: () => {
-            setSubmittedPageUrl(window.location.href);
-            pushDataLayer({
-              event: "lead_form_submit",
-              form_name: "landing_modal",
-              page_location:
-                typeof window !== "undefined" ? window.location.href : "",
-            });
-            try { sessionStorage.setItem("lp_origin_path", `${window.location.hostname}${window.location.pathname}`); } catch { /* noop */ }
-            setTimeout(() => {
-              onClose();
-              setThanks(true);
-            }, 300);
-          },
-        });
-
-        // Observa o container (e iframe) e reaplica a máscara se o HubSpot recriar o campo
-        stopMask = keepWhatsappMask(targetRef.current);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-
-    return () => {
-      cancelled = true;
-      stopMask?.();
     };
   }, [open, onClose]);
 
@@ -145,16 +54,19 @@ export function ContactModal({ open, onClose }: Props) {
               Em até 24h úteis um especialista entra em contato.
             </p>
 
-            <div
-              id={targetId}
-              ref={targetRef}
-              className="hubspot-form min-h-[280px]"
-            />
-            {!ready && (
-              <p className="mt-4 text-center text-xs text-foreground/50">
-                Carregando formulário...
-              </p>
-            )}
+            <div className="hubspot-form-wrapper hubspot-form min-h-[280px]">
+              <LeadForm
+                formId={FORM_ID}
+                source="field_service"
+                onSubmitted={(pageUrl) => {
+                  setSubmittedPageUrl(pageUrl);
+                  setTimeout(() => {
+                    onClose();
+                    setThanks(true);
+                  }, 300);
+                }}
+              />
+            </div>
 
             <p className="pt-6 text-center text-[11px] text-foreground/50">
               Seus dados são tratados conforme a LGPD. Sem SPAM.

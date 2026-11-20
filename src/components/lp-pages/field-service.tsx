@@ -835,11 +835,9 @@ export function FieldServicePage() {
         <FinalCTA onCTA={openModal} />
       </main>
       <Footer />
-      {open && (
-        <Suspense fallback={null}>
-          <ContactModal open={open} onClose={() => setOpen(false)} />
-        </Suspense>
-      )}
+      <Suspense fallback={null}>
+        <ContactModal open={open} onClose={() => setOpen(false)} />
+      </Suspense>
     </div>
   );
 }

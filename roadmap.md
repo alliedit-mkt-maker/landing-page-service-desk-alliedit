@@ -18,3 +18,5 @@
 - [x] Configure all five institutional product-page forms without changing campaign or service forms.
 - [x] Verify product CTAs, hosted fields, attribution, WhatsApp and thank-you behavior; report without publishing.
 - [ ] Confirm real product-form submissions in HubSpot; awaiting the user's test contact details and receipt confirmation.
+- [x] Replace every HubSpot lead embed with the shared n8n JSON form, preserve current questions/tracking/confirmation, and verify success and failure without changing careers, authentication or cron.
+- [ ] Allow browser POSTs with JSON content type and the site origins in the n8n webhook CORS settings; its current OPTIONS response is 500 without access-control-allow-origin.

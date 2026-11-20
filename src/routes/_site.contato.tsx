@@ -2,7 +2,7 @@ import { useState } from "react";
 import { pageHead } from "@/lib/seo";
 import { createFileRoute } from "@tanstack/react-router";
 import { MapPin, Phone, Mail } from "lucide-react";
-import { HubspotFormEmbed } from "@/components/lp/ContactModal";
+import { LeadForm } from "@/components/forms/LeadForm";
 import { ThankYouDialog } from "@/components/lp/ThankYouDialog";
 import { GENERAL_CONTACT_FORM } from "@/lib/general-contact-form";
 import { SiteFooter } from "@/components/site/SiteFooter";
@@ -82,7 +82,7 @@ function ContatoPage() {
             <h2 className="font-chillax text-2xl font-bold tracking-tight sm:text-3xl">Envie sua mensagem</h2>
             <p className="font-inter mt-2 text-[15px] text-[var(--site-muted)]">Preencha os campos e um especialista retorna em breve.</p>
             <div className="mt-8 hubspot-form-wrapper">
-              <HubspotFormEmbed
+              <LeadForm
                 formId={GENERAL_CONTACT_FORM.formId}
                 product={GENERAL_CONTACT_FORM.product}
                 source="/contato"

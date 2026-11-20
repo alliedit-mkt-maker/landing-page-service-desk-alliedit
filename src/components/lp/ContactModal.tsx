@@ -1,185 +1,7 @@
-import { useEffect, useId, useRef, useState } from "react";
+import { useState } from "react";
 import { ThankYouDialog } from "./ThankYouDialog";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { pushEvent } from "./LpProvider";
-import { captureUtms, fillUtmFields } from "@/lib/utm";
-import { setupWhatsappMask, enhanceInput } from "@/lib/whatsapp-mask";
-
-const HS_PORTAL_ID = (import.meta.env.VITE_HUBSPOT_PORTAL_ID as string) || "47388409";
-const HS_FORM_ID = (import.meta.env.VITE_HUBSPOT_FORM_ID as string) || "087109f4-f093-404c-aec9-b4a3f6d763a4";
-const HS_REGION = (import.meta.env.VITE_HUBSPOT_REGION as string) || "na1";
-const HS_SCRIPT_SRC = "https://js.hsforms.net/forms/embed/v2.js";
-
-declare global {
-  interface Window {
-    hbspt?: {
-      forms: {
-        create: (opts: Record<string, unknown>) => void;
-      };
-    };
-  }
-}
-
-function loadHubspotScript(): Promise<void> {
-  return new Promise((resolve, reject) => {
-    if (typeof window === "undefined") return resolve();
-    if (window.hbspt) return resolve();
-    const existing = document.querySelector<HTMLScriptElement>(`script[src="${HS_SCRIPT_SRC}"]`);
-    if (existing) {
-      existing.addEventListener("load", () => resolve(), { once: true });
-      existing.addEventListener("error", () => reject(new Error("HubSpot script failed")), { once: true });
-      return;
-    }
-    const s = document.createElement("script");
-    s.src = HS_SCRIPT_SRC;
-    s.async = true;
-    s.defer = true;
-    s.onload = () => resolve();
-    s.onerror = () => reject(new Error("HubSpot script failed"));
-    document.head.appendChild(s);
-  });
-}
-
-/**
- * Observa o container e o corpo de iframes do embed enquanto o modal estiver aberto.
- * Quando o HubSpot recria o campo de WhatsApp (ex.: após erro de validação), reaplica a máscara.
- * Inputs já mascarados são marcados (data-allied-wa-mask) e ignorados; só observa childList,
- * então alterar o valor do campo não dispara o observador (sem loop).
- */
-export function keepWhatsappMask(container: HTMLElement | null): () => void {
-  if (typeof window === "undefined" || !container) return () => {};
-  const SEL = 'input[name="hs_whatsapp_phone_number"]';
-  const observers: MutationObserver[] = [];
-  const watchedDocs = new WeakSet<Document>();
-  let scheduled = false;
-
-  const check = () => {
-    scheduled = false;
-    const docs: ParentNode[] = [container];
-    container.querySelectorAll("iframe").forEach((f) => {
-      try {
-        const d = (f as HTMLIFrameElement).contentDocument;
-        if (d?.body) {
-          docs.push(d);
-          if (!watchedDocs.has(d)) {
-            watchedDocs.add(d);
-            const mo = new MutationObserver(schedule);
-            mo.observe(d.body, { childList: true, subtree: true });
-            observers.push(mo);
-          }
-        }
-      } catch { /* cross-origin */ }
-    });
-    // Só anexa a máscara a inputs novos; não altera valor nem dispara eventos.
-    docs.forEach((root) => {
-      const input = root.querySelector<HTMLInputElement>(SEL);
-      if (input && input.dataset["alliedWaMask"] !== "1") {
-        try { enhanceInput(input); } catch { /* noop */ }
-      }
-    });
-  };
-  function schedule() {
-    if (scheduled) return;
-    scheduled = true;
-    requestAnimationFrame(check);
-  }
-
-  const mo = new MutationObserver(schedule);
-  mo.observe(container, { childList: true, subtree: true });
-  observers.push(mo);
-  container.addEventListener("load", schedule, true);
-  schedule();
-
-  return () => {
-    observers.forEach((o) => o.disconnect());
-    observers.length = 0;
-    container.removeEventListener("load", schedule, true);
-  };
-}
-
-export function HubspotFormEmbed({ formId, product, source, formName = "landing_modal", onSubmitted }: { formId?: string; product?: string; source?: string; formName?: string; onSubmitted: (pageUrl: string) => void }) {
-  const targetId = useId().replace(/:/g, "_");
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [error, setError] = useState<string | null>(null);
-  const activeFormId = formId || HS_FORM_ID;
-  const submittedRef = useRef(onSubmitted);
-  submittedRef.current = onSubmitted;
-
-  useEffect(() => {
-    if (!HS_PORTAL_ID || !activeFormId) {
-      setError("Formulário não configurado.");
-      return;
-    }
-    let cancelled = false;
-    let stopMask: (() => void) | undefined = setupWhatsappMask(containerRef.current);
-    const stopKeep = keepWhatsappMask(containerRef.current);
-    loadHubspotScript()
-      .then(() => {
-        if (cancelled || !window.hbspt) return;
-        window.hbspt.forms.create({
-          portalId: HS_PORTAL_ID,
-          formId: activeFormId,
-          region: HS_REGION,
-          target: `#${targetId}`,
-          onFormReady: ($form: unknown) => {
-            try {
-              const utms = captureUtms();
-              const root = containerRef.current;
-              if (!root) return;
-              if (product) {
-                const roots: ParentNode[] = [root];
-                root.querySelectorAll("iframe").forEach((frame) => {
-                  try {
-                    if (frame.contentDocument) roots.push(frame.contentDocument);
-                  } catch { /* cross-origin */ }
-                });
-                const input = roots.map((node) => node.querySelector<HTMLInputElement>('input[name="produto"]')).find(Boolean);
-                if (input) {
-                  const view = input.ownerDocument.defaultView;
-                  const setter = view && Object.getOwnPropertyDescriptor(view.HTMLInputElement.prototype, "value")?.set;
-                  if (setter) setter.call(input, product);
-                  else input.value = product;
-                  input.dispatchEvent(new Event("input", { bubbles: true }));
-                  input.dispatchEvent(new Event("change", { bubbles: true }));
-                }
-              }
-              fillUtmFields(root, utms);
-              setTimeout(() => fillUtmFields(containerRef.current), 400);
-            } catch {
-              /* noop */
-            }
-            stopMask?.();
-            stopMask = setupWhatsappMask(containerRef.current);
-            void $form;
-          },
-          onBeforeFormSubmit: () => {
-            try { fillUtmFields(containerRef.current); } catch { /* noop */ }
-          },
-          onFormSubmitted: () => {
-            const pageUrl = window.location.href;
-            pushEvent("lead_form_submit", {
-              form_name: formName,
-              source: source ?? "unknown",
-              page_location: pageUrl,
-            });
-            try { sessionStorage.setItem("lp_origin_path", `${window.location.hostname}${window.location.pathname}`); } catch { /* noop */ }
-            submittedRef.current(pageUrl);
-          },
-        });
-      })
-      .catch(() => setError("Não foi possível carregar o formulário. Atualize a página."));
-
-    return () => {
-      cancelled = true;
-      stopMask?.();
-      stopKeep();
-      if (containerRef.current) containerRef.current.innerHTML = "";
-    };
-  }, [source, targetId, activeFormId, product, formName]);
-
-  if (error) return <p className="text-sm text-destructive font-medium">{error}</p>;
-  return <div ref={containerRef} id={targetId} />;
-}
+import { LeadForm } from "@/components/forms/LeadForm";
 
 export function ContactModal({ open, onOpenChange, source, title = "Vamos falar de Service Desk.", formId, description = "Formulário de contato Allied IT Service Desk", product, returnFocusRef }: { open: boolean; onOpenChange: (v: boolean) => void; source?: string; title?: string; formId?: string; description?: string; product?: string; captureAttribution?: boolean; returnFocusRef?: { current: HTMLElement | null } }) {
   const [thanks, setThanks] = useState(false);
@@ -187,43 +9,43 @@ export function ContactModal({ open, onOpenChange, source, title = "Vamos falar 
 
   return (
     <>
-    <ThankYouDialog open={thanks} onOpenChange={setThanks} submittedPageUrl={submittedPageUrl} />
-    <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent
-        className="max-w-lg max-h-[90vh] overflow-y-auto"
-        onCloseAutoFocus={(e) => {
-          const el = returnFocusRef?.current;
-          if (el && el.isConnected) {
-            e.preventDefault();
-            el.focus();
-          }
-        }}
-      >
-        <DialogHeader>
-          <DialogTitle className="text-2xl font-extrabold tracking-tight text-petrol">{title}</DialogTitle>
-          <DialogDescription className="sr-only">
-            {description}
-          </DialogDescription>
-        </DialogHeader>
-        <div className="pt-2 hubspot-form-wrapper">
-          <HubspotFormEmbed
-            formId={formId}
-            product={product}
-            source={source}
-            onSubmitted={(pageUrl) => {
-              setSubmittedPageUrl(pageUrl);
-              setTimeout(() => {
-                onOpenChange(false);
-                setThanks(true);
-              }, 300);
-            }}
-          />
-          <p className="text-[11px] text-petrol/50 text-center font-mono mt-4">
-            Seus dados são tratados conforme a LGPD. Sem SPAM.
-          </p>
-        </div>
-      </DialogContent>
-    </Dialog>
+      <ThankYouDialog open={thanks} onOpenChange={setThanks} submittedPageUrl={submittedPageUrl} />
+      <Dialog open={open} onOpenChange={onOpenChange}>
+        <DialogContent
+          className="max-w-lg max-h-[90vh] overflow-y-auto"
+          onCloseAutoFocus={(e) => {
+            const el = returnFocusRef?.current;
+            if (el && el.isConnected) {
+              e.preventDefault();
+              el.focus();
+            }
+          }}
+        >
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-extrabold tracking-tight text-petrol">{title}</DialogTitle>
+            <DialogDescription className="sr-only">
+              {description}
+            </DialogDescription>
+          </DialogHeader>
+          <div className="pt-2 hubspot-form-wrapper">
+            <LeadForm
+              formId={formId}
+              product={product}
+              source={source}
+              onSubmitted={(pageUrl) => {
+                setSubmittedPageUrl(pageUrl);
+                setTimeout(() => {
+                  onOpenChange(false);
+                  setThanks(true);
+                }, 300);
+              }}
+            />
+            <p className="text-[11px] text-petrol/50 text-center font-mono mt-4">
+              Seus dados são tratados conforme a LGPD. Sem SPAM.
+            </p>
+          </div>
+        </DialogContent>
+      </Dialog>
     </>
   );
 }
