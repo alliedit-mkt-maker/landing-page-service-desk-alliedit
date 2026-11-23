@@ -84,12 +84,12 @@ function Hero({ onCTA }: { onCTA: () => void }) {
       id="top"
       className="relative flex min-h-[calc(100vh-3.85rem)] items-center justify-center overflow-hidden bg-white"
     >
-      <div className="mx-auto w-full max-w-7xl px-6 py-20">
+      <div className="mx-auto w-full max-w-7xl px-6 py-12 md:py-20">
         <p className="mb-6 text-xs font-bold uppercase tracking-[0.2em] text-accent-amber">
           Operação terceirizada de Field Service
         </p>
         <h1 className="max-w-4xl text-balance text-4xl font-black leading-[1.1] tracking-tight text-brand-deep md:text-6xl">
-          Suporte técnico onde quer que suas unidades estejam!
+          Manutenção e suporte de TI presencial, em todas as suas unidades.
         </h1>
         <p className="mt-6 max-w-2xl text-lg text-foreground/70">
           Quem opera 5, 20 ou 100 endereços não resolve TI com técnico avulso. A Allied IT coloca o técnico certo, no lugar certo, com SLA medido por unidade.
@@ -106,7 +106,7 @@ function Hero({ onCTA }: { onCTA: () => void }) {
             </li>
           ))}
         </ul>
-        <div className="mt-10 flex flex-wrap items-center gap-4">
+        <div className="mt-8 flex flex-wrap items-center gap-4 md:mt-10">
           <button
             onClick={onCTA}
             className="btn-shine inline-flex items-center gap-2 bg-brand px-7 py-4 text-sm font-semibold uppercase tracking-wider text-brand-foreground transition hover:bg-brand-deep"
@@ -126,6 +126,33 @@ function Hero({ onCTA }: { onCTA: () => void }) {
   );
 }
 
+
+/* ---------- Lojas Mel proof strip ---------- */
+function LojasMelStrip() {
+  return (
+    <section aria-label="Case Lojas Mel" className="bg-[#f7fafb] py-5">
+      <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-6 gap-y-2 px-6 text-center">
+        <p className="text-sm font-semibold text-brand-deep md:text-base">
+          Lojas Mel: mais de 55 lojas atendidas, 40% menos custo com suporte em campo e SLA 5% acima da meta.
+        </p>
+        <a
+          href="#cases"
+          onClick={(e) => {
+            const el = document.getElementById("cases");
+            if (!el) return;
+            e.preventDefault();
+            const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+            el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+            history.replaceState(null, "", "#cases");
+          }}
+          className="text-sm font-bold uppercase tracking-wider text-brand underline-offset-4 hover:underline"
+        >
+          Ver o case
+        </a>
+      </div>
+    </section>
+  );
+}
 
 /* ---------- Clients (marquee) ---------- */
 function Clients() {
@@ -547,7 +574,7 @@ function WhyUs({ onCTA }: { onCTA: () => void }) {
 /* ---------- Featured Case ---------- */
 function FeaturedCase({ onCTA }: { onCTA: () => void }) {
   return (
-    <section id="cases" className="bg-[#f7fafb] py-24">
+    <section id="cases" className="scroll-mt-20 bg-[#f7fafb] py-24">
       <div className="mx-auto max-w-7xl px-6">
         <Reveal>
           <div className="mb-16 max-w-3xl">
@@ -823,10 +850,11 @@ export function FieldServicePage() {
       <Header />
       <main>
         <Hero onCTA={openModal} />
+        <LojasMelStrip />
         <Clients />
+        <ResidenteVolante onCTA={openModal} />
         <PainScenarios selected={selectedPath} onSelect={setSelectedPath} />
         <Pillars onCTA={openModal} selected={selectedPath} />
-        <ResidenteVolante onCTA={openModal} />
         <Escopo />
 
         <WhyUs onCTA={openModal} />
