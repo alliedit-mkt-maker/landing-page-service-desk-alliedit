@@ -8,6 +8,13 @@
       "when": 1789675030799,
       "tag": "0000_create_bio_link_clicks",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1795438077581,
+      "tag": "0001_migration",
+      "breakpoints": true
     }
   ]
 }
