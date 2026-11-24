@@ -2,7 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { pageHead } from "@/lib/seo";
 import { serviceSchema } from "@/lib/service-schema";
 import { SiteCtaButton } from "@/components/site/SiteCtaButton";
-import { SiteCta } from "@/components/site/SiteCta";
+import { useState } from "react";
+import { LeadForm } from "@/components/forms/LeadForm";
+import { ThankYouDialog } from "@/components/lp/ThankYouDialog";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { Reveal } from "@/components/lp/Reveal";
 import {
@@ -79,7 +81,7 @@ function ServiceDeskSaoPauloPage() {
             <p className="font-inter mt-6 max-w-[56ch] text-pretty text-[16px] leading-relaxed text-white/75">
               A Allied IT opera o service desk de empresas de médio e grande porte em São Paulo e na Grande SP, a partir da nossa sede em Alphaville, Barueri. Atendimento N1, N2 e N3 na mesma equipe, pelos canais que seus usuários já usam, com prazos de resposta e de solução definidos em contrato.
             </p>
-            <SiteCtaButton formId={DW_FORM_ID} className={`${btn} mt-9 min-h-11 h-auto py-3 bg-[var(--site-yellow)] text-[#0B1418] hover:bg-white`}>
+            <SiteCtaButton formId={DW_FORM_ID} title="Falar com um especialista" className={`${btn} mt-9 min-h-11 h-auto py-3 bg-[var(--site-yellow)] text-[#0B1418] hover:bg-white`}>
               Falar com um especialista em service desk
             </SiteCtaButton>
           </div>
@@ -187,13 +189,47 @@ function ServiceDeskSaoPauloPage() {
         </div>
       </section>
 
-      <SiteCta
-        modal
-        formId={DW_FORM_ID}
-        title="Vamos conversar sobre o seu service desk?"
-        text="Em 30 minutos entendemos a sua operação atual e mostramos onde dá para ganhar previsibilidade, reduzir custo e tirar peso da equipe interna. Sem compromisso."
-      />
+      <FinalCta btn={btn} />
       <SiteFooter />
     </>
+  );
+}
+
+function FinalCta({ btn }: { btn: string }) {
+  const [thanks, setThanks] = useState(false);
+  const [pageUrl, setPageUrl] = useState("");
+  return (
+    <section aria-labelledby="site-cta" className="relative z-10 bg-white py-20 sm:py-28">
+      <ThankYouDialog open={thanks} onOpenChange={setThanks} submittedPageUrl={pageUrl} />
+      <div className="mx-auto max-w-3xl px-5 text-center sm:px-8">
+        <h2 id="site-cta" className="font-chillax text-balance text-[1.7rem] font-bold leading-tight tracking-tight text-[var(--site-ink)] sm:text-[2.1rem]">
+          Vamos conversar sobre o seu service desk?
+        </h2>
+        <p className="font-inter mx-auto mt-5 max-w-[60ch] text-[15px] leading-relaxed text-[var(--site-muted)]">
+          Em 30 minutos entendemos a sua operação atual e mostramos onde dá para ganhar previsibilidade, reduzir custo e tirar peso da equipe interna. Sem compromisso.
+        </p>
+        <SiteCtaButton
+          formId={DW_FORM_ID}
+          title="Falar com um especialista"
+          className={`${btn} mt-9 border border-[var(--site-blue)] text-[var(--site-blue)] hover:bg-[var(--site-blue)] hover:text-white`}
+        >
+          Falar com especialista
+        </SiteCtaButton>
+        <div className="hubspot-form-wrapper mx-auto mt-12 max-w-lg rounded-2xl border border-[var(--site-line)] bg-[#F4F8F9] p-6 text-left sm:p-8">
+          <p className="font-chillax text-xl font-semibold text-[var(--site-ink)]">Falar com um especialista</p>
+          <div className="mt-4">
+            <LeadForm
+              formId={DW_FORM_ID}
+              source="/service-desk-sao-paulo"
+              onSubmitted={(url) => {
+                setPageUrl(url);
+                setThanks(true);
+              }}
+            />
+          </div>
+          <p className="font-inter mt-4 text-center text-[11px] text-[var(--site-muted)]">Seus dados são tratados conforme a LGPD. Sem SPAM.</p>
+        </div>
+      </div>
+    </section>
   );
 }
