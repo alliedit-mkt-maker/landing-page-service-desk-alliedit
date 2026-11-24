@@ -2,9 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { pageHead } from "@/lib/seo";
 import { serviceSchema } from "@/lib/service-schema";
 import { SiteCtaButton } from "@/components/site/SiteCtaButton";
-import { useState } from "react";
-import { LeadForm } from "@/components/forms/LeadForm";
-import { ThankYouDialog } from "@/components/lp/ThankYouDialog";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { Reveal } from "@/components/lp/Reveal";
 import {
@@ -196,11 +193,8 @@ function ServiceDeskSaoPauloPage() {
 }
 
 function FinalCta({ btn }: { btn: string }) {
-  const [thanks, setThanks] = useState(false);
-  const [pageUrl, setPageUrl] = useState("");
   return (
     <section aria-labelledby="site-cta" className="relative z-10 bg-white py-20 sm:py-28">
-      <ThankYouDialog open={thanks} onOpenChange={setThanks} submittedPageUrl={pageUrl} />
       <div className="mx-auto max-w-3xl px-5 text-center sm:px-8">
         <h2 id="site-cta" className="font-chillax text-balance text-[1.7rem] font-bold leading-tight tracking-tight text-[var(--site-ink)] sm:text-[2.1rem]">
           Vamos conversar sobre o seu service desk?
@@ -215,20 +209,6 @@ function FinalCta({ btn }: { btn: string }) {
         >
           Falar com especialista
         </SiteCtaButton>
-        <div className="hubspot-form-wrapper mx-auto mt-12 max-w-lg rounded-2xl border border-[var(--site-line)] bg-[#F4F8F9] p-6 text-left sm:p-8">
-          <p className="font-chillax text-xl font-semibold text-[var(--site-ink)]">Falar com um especialista</p>
-          <div className="mt-4">
-            <LeadForm
-              formId={DW_FORM_ID}
-              source="/service-desk-sao-paulo"
-              onSubmitted={(url) => {
-                setPageUrl(url);
-                setThanks(true);
-              }}
-            />
-          </div>
-          <p className="font-inter mt-4 text-center text-[11px] text-[var(--site-muted)]">Seus dados são tratados conforme a LGPD. Sem SPAM.</p>
-        </div>
       </div>
     </section>
   );
