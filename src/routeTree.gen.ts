@@ -19,6 +19,7 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as VideoconferenciaRouteImport } from './routes/videoconferencia'
 import { Route as SiteContatoRouteImport } from './routes/_site.contato'
 import { Route as SiteEmpresasDeInfraestruturaDeTiEmSaoPauloRouteImport } from './routes/_site.empresas-de-infraestrutura-de-ti-em-sao-paulo'
+import { Route as SiteEmpresasDeOutsourcingEmSpRouteImport } from './routes/_site.empresas-de-outsourcing-em-sp'
 import { Route as SiteFieldServiceEngineerSpRouteImport } from './routes/_site.field-service-engineer-sp'
 import { Route as SiteOutsourcingDeTiRouteImport } from './routes/_site.outsourcing-de-ti'
 import { Route as SitePoliticaDePrivacidadeRouteImport } from './routes/_site.politica-de-privacidade'
@@ -107,6 +108,12 @@ const SiteEmpresasDeInfraestruturaDeTiEmSaoPauloRoute =
   SiteEmpresasDeInfraestruturaDeTiEmSaoPauloRouteImport.update({
     id: '/empresas-de-infraestrutura-de-ti-em-sao-paulo',
     path: '/empresas-de-infraestrutura-de-ti-em-sao-paulo',
+    getParentRoute: () => SiteRoute,
+  } as any)
+const SiteEmpresasDeOutsourcingEmSpRoute =
+  SiteEmpresasDeOutsourcingEmSpRouteImport.update({
+    id: '/empresas-de-outsourcing-em-sp',
+    path: '/empresas-de-outsourcing-em-sp',
     getParentRoute: () => SiteRoute,
   } as any)
 const SiteFieldServiceEngineerSpRoute =
@@ -326,6 +333,7 @@ export interface FileRoutesByFullPath {
   '/videoconferencia': typeof VideoconferenciaRoute
   '/contato': typeof SiteContatoRoute
   '/empresas-de-infraestrutura-de-ti-em-sao-paulo': typeof SiteEmpresasDeInfraestruturaDeTiEmSaoPauloRoute
+  '/empresas-de-outsourcing-em-sp': typeof SiteEmpresasDeOutsourcingEmSpRoute
   '/field-service-engineer-sp': typeof SiteFieldServiceEngineerSpRoute
   '/outsourcing-de-ti': typeof SiteOutsourcingDeTiRoute
   '/politica-de-privacidade': typeof SitePoliticaDePrivacidadeRoute
@@ -376,6 +384,7 @@ export interface FileRoutesByTo {
   '/videoconferencia': typeof VideoconferenciaRoute
   '/contato': typeof SiteContatoRoute
   '/empresas-de-infraestrutura-de-ti-em-sao-paulo': typeof SiteEmpresasDeInfraestruturaDeTiEmSaoPauloRoute
+  '/empresas-de-outsourcing-em-sp': typeof SiteEmpresasDeOutsourcingEmSpRoute
   '/field-service-engineer-sp': typeof SiteFieldServiceEngineerSpRoute
   '/outsourcing-de-ti': typeof SiteOutsourcingDeTiRoute
   '/politica-de-privacidade': typeof SitePoliticaDePrivacidadeRoute
@@ -428,6 +437,7 @@ export interface FileRoutesById {
   '/videoconferencia': typeof VideoconferenciaRoute
   '/_site/contato': typeof SiteContatoRoute
   '/_site/empresas-de-infraestrutura-de-ti-em-sao-paulo': typeof SiteEmpresasDeInfraestruturaDeTiEmSaoPauloRoute
+  '/_site/empresas-de-outsourcing-em-sp': typeof SiteEmpresasDeOutsourcingEmSpRoute
   '/_site/field-service-engineer-sp': typeof SiteFieldServiceEngineerSpRoute
   '/_site/outsourcing-de-ti': typeof SiteOutsourcingDeTiRoute
   '/_site/politica-de-privacidade': typeof SitePoliticaDePrivacidadeRoute
@@ -480,6 +490,7 @@ export interface FileRouteTypes {
     | '/videoconferencia'
     | '/contato'
     | '/empresas-de-infraestrutura-de-ti-em-sao-paulo'
+    | '/empresas-de-outsourcing-em-sp'
     | '/field-service-engineer-sp'
     | '/outsourcing-de-ti'
     | '/politica-de-privacidade'
@@ -530,6 +541,7 @@ export interface FileRouteTypes {
     | '/videoconferencia'
     | '/contato'
     | '/empresas-de-infraestrutura-de-ti-em-sao-paulo'
+    | '/empresas-de-outsourcing-em-sp'
     | '/field-service-engineer-sp'
     | '/outsourcing-de-ti'
     | '/politica-de-privacidade'
@@ -581,6 +593,7 @@ export interface FileRouteTypes {
     | '/videoconferencia'
     | '/_site/contato'
     | '/_site/empresas-de-infraestrutura-de-ti-em-sao-paulo'
+    | '/_site/empresas-de-outsourcing-em-sp'
     | '/_site/field-service-engineer-sp'
     | '/_site/outsourcing-de-ti'
     | '/_site/politica-de-privacidade'
@@ -719,6 +732,13 @@ declare module '@tanstack/react-router' {
       path: '/empresas-de-infraestrutura-de-ti-em-sao-paulo'
       fullPath: '/empresas-de-infraestrutura-de-ti-em-sao-paulo'
       preLoaderRoute: typeof SiteEmpresasDeInfraestruturaDeTiEmSaoPauloRouteImport
+      parentRoute: typeof SiteRoute
+    }
+    '/_site/empresas-de-outsourcing-em-sp': {
+      id: '/_site/empresas-de-outsourcing-em-sp'
+      path: '/empresas-de-outsourcing-em-sp'
+      fullPath: '/empresas-de-outsourcing-em-sp'
+      preLoaderRoute: typeof SiteEmpresasDeOutsourcingEmSpRouteImport
       parentRoute: typeof SiteRoute
     }
     '/_site/field-service-engineer-sp': {
@@ -1000,6 +1020,7 @@ declare module '@tanstack/react-router' {
 interface SiteRouteChildren {
   SiteContatoRoute: typeof SiteContatoRoute
   SiteEmpresasDeInfraestruturaDeTiEmSaoPauloRoute: typeof SiteEmpresasDeInfraestruturaDeTiEmSaoPauloRoute
+  SiteEmpresasDeOutsourcingEmSpRoute: typeof SiteEmpresasDeOutsourcingEmSpRoute
   SiteFieldServiceEngineerSpRoute: typeof SiteFieldServiceEngineerSpRoute
   SiteOutsourcingDeTiRoute: typeof SiteOutsourcingDeTiRoute
   SitePoliticaDePrivacidadeRoute: typeof SitePoliticaDePrivacidadeRoute
@@ -1028,6 +1049,7 @@ const SiteRouteChildren: SiteRouteChildren = {
   SiteContatoRoute: SiteContatoRoute,
   SiteEmpresasDeInfraestruturaDeTiEmSaoPauloRoute:
     SiteEmpresasDeInfraestruturaDeTiEmSaoPauloRoute,
+  SiteEmpresasDeOutsourcingEmSpRoute: SiteEmpresasDeOutsourcingEmSpRoute,
   SiteFieldServiceEngineerSpRoute: SiteFieldServiceEngineerSpRoute,
   SiteOutsourcingDeTiRoute: SiteOutsourcingDeTiRoute,
   SitePoliticaDePrivacidadeRoute: SitePoliticaDePrivacidadeRoute,
