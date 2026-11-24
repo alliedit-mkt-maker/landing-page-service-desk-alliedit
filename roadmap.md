@@ -1,3 +1,4 @@
+- [x] Create and verify Firewall São Paulo with exact supplied content and existing Firewall modal, without changing other pages or publishing.
 - [x] Apply requested SEO descriptions and Home testimonial heading without visual, LP or contact changes; remove blog title truncation, add automatic FAQ/Breadcrumb schemas, test CSC redirects and assess CMS-owned typo slugs without publishing.
 - [x] Convert resolvable root/self-article fragment links only; audit 98 posts, verify all TOC clicks in 18 articles and report without publishing.
 - [x] Extend blog TOC resolution to existing ids, normalized fragments, clear word similarity and intro fallback; audit 98 posts and verify 11 articles without publishing.

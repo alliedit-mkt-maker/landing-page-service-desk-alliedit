@@ -14,10 +14,6 @@ const mappings: [string, string][] = [
     "/produtos/aws"
   ],
   [
-    "/firewall-de-rede-em-sao-paulo",
-    "/produtos/firewall"
-  ],
-  [
     "/transforme-a-infraestrutura-de-ti",
     "/servicos/infra-core"
   ],
@@ -169,5 +165,9 @@ describe("legacy redirect rules", () => {
       assert.equal(resolve(path), undefined);
     }
     assert.equal(resolve("/aws", "https://service-desk.alliedit.com.br"), undefined);
+  });
+  test("the new Firewall São Paulo page is no longer redirected to the product page", () => {
+    assert.equal(resolve("/firewall-de-rede-em-sao-paulo"), undefined);
+    assert.equal(resolve("/firewall-de-rede-em-sao-paulo/")?.headers.get("location"), "https://alliedit.com.br/firewall-de-rede-em-sao-paulo");
   });
 });

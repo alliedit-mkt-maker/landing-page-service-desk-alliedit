@@ -263,7 +263,6 @@ export const PAGE_REDIRECTS: Record<string, string> = {
   "microsoft-365/microsoft-365-grandes-empresas": "/produtos/microsoft-365",
   "microsoft-365/microsoft-365-pequenas-e-medias-empresas": "/produtos/microsoft-365",
   "fortinet-ngfw": "/blog/fortinet-ngfw",
-  "firewall-de-rede-em-sao-paulo": "/produtos/firewall",
   "profissionais-da-area-de-ti-sp": "/lp/alocacao-ti",
   "transforme-a-infraestrutura-de-ti/obrigado-servicos": "/obrigado",
   "suporte-tecnico-obrigado": "/obrigado",

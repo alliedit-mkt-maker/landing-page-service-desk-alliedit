@@ -13,6 +13,7 @@ const STATIC_PATHS = [
   "/empresas-de-infraestrutura-de-ti-em-sao-paulo",
   "/outsourcing-de-ti",
   "/empresas-de-outsourcing-em-sp",
+  "/firewall-de-rede-em-sao-paulo",
   "/servicos/smart-cloud-ops",
   "/servicos/cyber-shield-360",
   "/servicos/infra-core",

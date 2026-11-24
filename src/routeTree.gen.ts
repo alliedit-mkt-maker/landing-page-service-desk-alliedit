@@ -21,6 +21,7 @@ import { Route as SiteContatoRouteImport } from './routes/_site.contato'
 import { Route as SiteEmpresasDeInfraestruturaDeTiEmSaoPauloRouteImport } from './routes/_site.empresas-de-infraestrutura-de-ti-em-sao-paulo'
 import { Route as SiteEmpresasDeOutsourcingEmSpRouteImport } from './routes/_site.empresas-de-outsourcing-em-sp'
 import { Route as SiteFieldServiceEngineerSpRouteImport } from './routes/_site.field-service-engineer-sp'
+import { Route as SiteFirewallDeRedeEmSaoPauloRouteImport } from './routes/_site.firewall-de-rede-em-sao-paulo'
 import { Route as SiteOutsourcingDeTiRouteImport } from './routes/_site.outsourcing-de-ti'
 import { Route as SitePoliticaDePrivacidadeRouteImport } from './routes/_site.politica-de-privacidade'
 import { Route as SiteServiceDeskSaoPauloRouteImport } from './routes/_site.service-desk-sao-paulo'
@@ -120,6 +121,12 @@ const SiteFieldServiceEngineerSpRoute =
   SiteFieldServiceEngineerSpRouteImport.update({
     id: '/field-service-engineer-sp',
     path: '/field-service-engineer-sp',
+    getParentRoute: () => SiteRoute,
+  } as any)
+const SiteFirewallDeRedeEmSaoPauloRoute =
+  SiteFirewallDeRedeEmSaoPauloRouteImport.update({
+    id: '/firewall-de-rede-em-sao-paulo',
+    path: '/firewall-de-rede-em-sao-paulo',
     getParentRoute: () => SiteRoute,
   } as any)
 const SiteOutsourcingDeTiRoute = SiteOutsourcingDeTiRouteImport.update({
@@ -335,6 +342,7 @@ export interface FileRoutesByFullPath {
   '/empresas-de-infraestrutura-de-ti-em-sao-paulo': typeof SiteEmpresasDeInfraestruturaDeTiEmSaoPauloRoute
   '/empresas-de-outsourcing-em-sp': typeof SiteEmpresasDeOutsourcingEmSpRoute
   '/field-service-engineer-sp': typeof SiteFieldServiceEngineerSpRoute
+  '/firewall-de-rede-em-sao-paulo': typeof SiteFirewallDeRedeEmSaoPauloRoute
   '/outsourcing-de-ti': typeof SiteOutsourcingDeTiRoute
   '/politica-de-privacidade': typeof SitePoliticaDePrivacidadeRoute
   '/service-desk-sao-paulo': typeof SiteServiceDeskSaoPauloRoute
@@ -386,6 +394,7 @@ export interface FileRoutesByTo {
   '/empresas-de-infraestrutura-de-ti-em-sao-paulo': typeof SiteEmpresasDeInfraestruturaDeTiEmSaoPauloRoute
   '/empresas-de-outsourcing-em-sp': typeof SiteEmpresasDeOutsourcingEmSpRoute
   '/field-service-engineer-sp': typeof SiteFieldServiceEngineerSpRoute
+  '/firewall-de-rede-em-sao-paulo': typeof SiteFirewallDeRedeEmSaoPauloRoute
   '/outsourcing-de-ti': typeof SiteOutsourcingDeTiRoute
   '/politica-de-privacidade': typeof SitePoliticaDePrivacidadeRoute
   '/service-desk-sao-paulo': typeof SiteServiceDeskSaoPauloRoute
@@ -439,6 +448,7 @@ export interface FileRoutesById {
   '/_site/empresas-de-infraestrutura-de-ti-em-sao-paulo': typeof SiteEmpresasDeInfraestruturaDeTiEmSaoPauloRoute
   '/_site/empresas-de-outsourcing-em-sp': typeof SiteEmpresasDeOutsourcingEmSpRoute
   '/_site/field-service-engineer-sp': typeof SiteFieldServiceEngineerSpRoute
+  '/_site/firewall-de-rede-em-sao-paulo': typeof SiteFirewallDeRedeEmSaoPauloRoute
   '/_site/outsourcing-de-ti': typeof SiteOutsourcingDeTiRoute
   '/_site/politica-de-privacidade': typeof SitePoliticaDePrivacidadeRoute
   '/_site/service-desk-sao-paulo': typeof SiteServiceDeskSaoPauloRoute
@@ -492,6 +502,7 @@ export interface FileRouteTypes {
     | '/empresas-de-infraestrutura-de-ti-em-sao-paulo'
     | '/empresas-de-outsourcing-em-sp'
     | '/field-service-engineer-sp'
+    | '/firewall-de-rede-em-sao-paulo'
     | '/outsourcing-de-ti'
     | '/politica-de-privacidade'
     | '/service-desk-sao-paulo'
@@ -543,6 +554,7 @@ export interface FileRouteTypes {
     | '/empresas-de-infraestrutura-de-ti-em-sao-paulo'
     | '/empresas-de-outsourcing-em-sp'
     | '/field-service-engineer-sp'
+    | '/firewall-de-rede-em-sao-paulo'
     | '/outsourcing-de-ti'
     | '/politica-de-privacidade'
     | '/service-desk-sao-paulo'
@@ -595,6 +607,7 @@ export interface FileRouteTypes {
     | '/_site/empresas-de-infraestrutura-de-ti-em-sao-paulo'
     | '/_site/empresas-de-outsourcing-em-sp'
     | '/_site/field-service-engineer-sp'
+    | '/_site/firewall-de-rede-em-sao-paulo'
     | '/_site/outsourcing-de-ti'
     | '/_site/politica-de-privacidade'
     | '/_site/service-desk-sao-paulo'
@@ -746,6 +759,13 @@ declare module '@tanstack/react-router' {
       path: '/field-service-engineer-sp'
       fullPath: '/field-service-engineer-sp'
       preLoaderRoute: typeof SiteFieldServiceEngineerSpRouteImport
+      parentRoute: typeof SiteRoute
+    }
+    '/_site/firewall-de-rede-em-sao-paulo': {
+      id: '/_site/firewall-de-rede-em-sao-paulo'
+      path: '/firewall-de-rede-em-sao-paulo'
+      fullPath: '/firewall-de-rede-em-sao-paulo'
+      preLoaderRoute: typeof SiteFirewallDeRedeEmSaoPauloRouteImport
       parentRoute: typeof SiteRoute
     }
     '/_site/outsourcing-de-ti': {
@@ -1022,6 +1042,7 @@ interface SiteRouteChildren {
   SiteEmpresasDeInfraestruturaDeTiEmSaoPauloRoute: typeof SiteEmpresasDeInfraestruturaDeTiEmSaoPauloRoute
   SiteEmpresasDeOutsourcingEmSpRoute: typeof SiteEmpresasDeOutsourcingEmSpRoute
   SiteFieldServiceEngineerSpRoute: typeof SiteFieldServiceEngineerSpRoute
+  SiteFirewallDeRedeEmSaoPauloRoute: typeof SiteFirewallDeRedeEmSaoPauloRoute
   SiteOutsourcingDeTiRoute: typeof SiteOutsourcingDeTiRoute
   SitePoliticaDePrivacidadeRoute: typeof SitePoliticaDePrivacidadeRoute
   SiteServiceDeskSaoPauloRoute: typeof SiteServiceDeskSaoPauloRoute
@@ -1051,6 +1072,7 @@ const SiteRouteChildren: SiteRouteChildren = {
     SiteEmpresasDeInfraestruturaDeTiEmSaoPauloRoute,
   SiteEmpresasDeOutsourcingEmSpRoute: SiteEmpresasDeOutsourcingEmSpRoute,
   SiteFieldServiceEngineerSpRoute: SiteFieldServiceEngineerSpRoute,
+  SiteFirewallDeRedeEmSaoPauloRoute: SiteFirewallDeRedeEmSaoPauloRoute,
   SiteOutsourcingDeTiRoute: SiteOutsourcingDeTiRoute,
   SitePoliticaDePrivacidadeRoute: SitePoliticaDePrivacidadeRoute,
   SiteServiceDeskSaoPauloRoute: SiteServiceDeskSaoPauloRoute,
