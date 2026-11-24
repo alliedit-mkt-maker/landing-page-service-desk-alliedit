@@ -248,7 +248,6 @@ export const PAGE_REDIRECTS: Record<string, string> = {
   "termos-e-condicoes": "/termos-de-uso",
   "servicos-gerenciados": "/servicos",
   "transforme-a-infraestrutura-de-ti": "/servicos/infra-core",
-  "field-service-engineer-sp": "/servicos/digital-workspace",
   "centro-de-servicos-compartilhados": "/servicos/digital-workspace",
   "servicos/centro-de-servicos-compartilhados": "/servicos/digital-workspace",
   "servicos/csc-centro-de-servicos-compartilhados": "/servicos/digital-workspace",

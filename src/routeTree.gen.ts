@@ -18,6 +18,7 @@ import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as VideoconferenciaRouteImport } from './routes/videoconferencia'
 import { Route as SiteContatoRouteImport } from './routes/_site.contato'
+import { Route as SiteFieldServiceEngineerSpRouteImport } from './routes/_site.field-service-engineer-sp'
 import { Route as SitePoliticaDePrivacidadeRouteImport } from './routes/_site.politica-de-privacidade'
 import { Route as SiteServiceDeskSaoPauloRouteImport } from './routes/_site.service-desk-sao-paulo'
 import { Route as SiteSobreRouteImport } from './routes/_site.sobre'
@@ -100,6 +101,12 @@ const SiteContatoRoute = SiteContatoRouteImport.update({
   path: '/contato',
   getParentRoute: () => SiteRoute,
 } as any)
+const SiteFieldServiceEngineerSpRoute =
+  SiteFieldServiceEngineerSpRouteImport.update({
+    id: '/field-service-engineer-sp',
+    path: '/field-service-engineer-sp',
+    getParentRoute: () => SiteRoute,
+  } as any)
 const SitePoliticaDePrivacidadeRoute =
   SitePoliticaDePrivacidadeRouteImport.update({
     id: '/politica-de-privacidade',
@@ -305,6 +312,7 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/videoconferencia': typeof VideoconferenciaRoute
   '/contato': typeof SiteContatoRoute
+  '/field-service-engineer-sp': typeof SiteFieldServiceEngineerSpRoute
   '/politica-de-privacidade': typeof SitePoliticaDePrivacidadeRoute
   '/service-desk-sao-paulo': typeof SiteServiceDeskSaoPauloRoute
   '/sobre': typeof SiteSobreRoute
@@ -352,6 +360,7 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/videoconferencia': typeof VideoconferenciaRoute
   '/contato': typeof SiteContatoRoute
+  '/field-service-engineer-sp': typeof SiteFieldServiceEngineerSpRoute
   '/politica-de-privacidade': typeof SitePoliticaDePrivacidadeRoute
   '/service-desk-sao-paulo': typeof SiteServiceDeskSaoPauloRoute
   '/sobre': typeof SiteSobreRoute
@@ -401,6 +410,7 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/videoconferencia': typeof VideoconferenciaRoute
   '/_site/contato': typeof SiteContatoRoute
+  '/_site/field-service-engineer-sp': typeof SiteFieldServiceEngineerSpRoute
   '/_site/politica-de-privacidade': typeof SitePoliticaDePrivacidadeRoute
   '/_site/service-desk-sao-paulo': typeof SiteServiceDeskSaoPauloRoute
   '/_site/sobre': typeof SiteSobreRoute
@@ -450,6 +460,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/videoconferencia'
     | '/contato'
+    | '/field-service-engineer-sp'
     | '/politica-de-privacidade'
     | '/service-desk-sao-paulo'
     | '/sobre'
@@ -497,6 +508,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/videoconferencia'
     | '/contato'
+    | '/field-service-engineer-sp'
     | '/politica-de-privacidade'
     | '/service-desk-sao-paulo'
     | '/sobre'
@@ -545,6 +557,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/videoconferencia'
     | '/_site/contato'
+    | '/_site/field-service-engineer-sp'
     | '/_site/politica-de-privacidade'
     | '/_site/service-desk-sao-paulo'
     | '/_site/sobre'
@@ -674,6 +687,13 @@ declare module '@tanstack/react-router' {
       path: '/contato'
       fullPath: '/contato'
       preLoaderRoute: typeof SiteContatoRouteImport
+      parentRoute: typeof SiteRoute
+    }
+    '/_site/field-service-engineer-sp': {
+      id: '/_site/field-service-engineer-sp'
+      path: '/field-service-engineer-sp'
+      fullPath: '/field-service-engineer-sp'
+      preLoaderRoute: typeof SiteFieldServiceEngineerSpRouteImport
       parentRoute: typeof SiteRoute
     }
     '/_site/politica-de-privacidade': {
@@ -940,6 +960,7 @@ declare module '@tanstack/react-router' {
 
 interface SiteRouteChildren {
   SiteContatoRoute: typeof SiteContatoRoute
+  SiteFieldServiceEngineerSpRoute: typeof SiteFieldServiceEngineerSpRoute
   SitePoliticaDePrivacidadeRoute: typeof SitePoliticaDePrivacidadeRoute
   SiteServiceDeskSaoPauloRoute: typeof SiteServiceDeskSaoPauloRoute
   SiteSobreRoute: typeof SiteSobreRoute
@@ -964,6 +985,7 @@ interface SiteRouteChildren {
 
 const SiteRouteChildren: SiteRouteChildren = {
   SiteContatoRoute: SiteContatoRoute,
+  SiteFieldServiceEngineerSpRoute: SiteFieldServiceEngineerSpRoute,
   SitePoliticaDePrivacidadeRoute: SitePoliticaDePrivacidadeRoute,
   SiteServiceDeskSaoPauloRoute: SiteServiceDeskSaoPauloRoute,
   SiteSobreRoute: SiteSobreRoute,
