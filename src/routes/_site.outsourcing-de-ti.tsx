@@ -33,7 +33,11 @@ const FAQ = [
   },
   {
     q: "Qual o prazo de contrato?",
-    a: "Trabalhamos principalmente com contratos de médio e longo prazo, desenhados para cada cliente.",
+    a: "Trabalhamos principalmente com contratos de médio e longo prazo, desenhados para cada cliente. Também atendemos projetos pontuais.",
+  },
+  {
+    q: "Vocês atendem em todo o Brasil?",
+    a: "Sim. A sede fica em Alphaville, Barueri (SP), o suporte remoto cobre qualquer unidade e o atendimento presencial é feito em todo o território nacional.",
   },
 ];
 
@@ -242,18 +246,30 @@ function OutsourcingPage() {
         </div>
       </section>
 
-      <section className="relative z-10 bg-white py-20 text-center sm:py-28">
-        <div className="mx-auto max-w-3xl px-5 sm:px-8">
-          <SiteCtaButton
-            formId={DW_FORM_ID}
-            title="Falar com um especialista"
-            className={`${BTN} border border-[var(--site-blue)] text-[var(--site-blue)] hover:bg-[var(--site-blue)] hover:text-white`}
-          >
-            Falar com especialista
-          </SiteCtaButton>
-        </div>
-      </section>
+      <FinalCta />
       <SiteFooter />
     </>
+  );
+}
+
+function FinalCta() {
+  return (
+    <section aria-labelledby="site-cta" className="relative z-10 bg-white py-20 sm:py-28">
+      <div className="mx-auto max-w-3xl px-5 text-center sm:px-8">
+        <h2 id="site-cta" className="font-chillax text-balance text-[1.7rem] font-bold leading-tight tracking-tight text-[var(--site-ink)] sm:text-[2.1rem]">
+          Vamos desenhar o outsourcing de TI da sua empresa?
+        </h2>
+        <p className="font-inter mx-auto mt-5 max-w-[60ch] text-[15px] leading-relaxed text-[var(--site-muted)]">
+          Conte como funciona a sua TI hoje. Em 30 minutos mostramos o que faz sentido terceirizar e em qual modelo. Sem compromisso.
+        </p>
+        <SiteCtaButton
+          formId={DW_FORM_ID}
+          title="Falar com um especialista"
+          className={`${BTN} mt-9 border border-[var(--site-blue)] text-[var(--site-blue)] hover:bg-[var(--site-blue)] hover:text-white`}
+        >
+          Falar com especialista
+        </SiteCtaButton>
+      </div>
+    </section>
   );
 }
