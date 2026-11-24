@@ -1,3 +1,6 @@
+- [x] Add the requested Service Desk São Paulo text links and remove duplicate N1, N2 and N3 labels.
+- [x] Update Digital Workspace and Infra Core national-coverage sections, FAQs and metadata exactly as supplied.
+- [ ] Finish the Firewall national-coverage edits after receiving the instructions truncated from the uploaded file.
 - [x] Create and verify Firewall São Paulo with exact supplied content and existing Firewall modal, without changing other pages or publishing.
 - [x] Apply requested SEO descriptions and Home testimonial heading without visual, LP or contact changes; remove blog title truncation, add automatic FAQ/Breadcrumb schemas, test CSC redirects and assess CMS-owned typo slugs without publishing.
 - [x] Convert resolvable root/self-article fragment links only; audit 98 posts, verify all TOC clicks in 18 articles and report without publishing.

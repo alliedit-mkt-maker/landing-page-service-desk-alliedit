@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { pageHead } from "@/lib/seo";
 import { serviceSchema } from "@/lib/service-schema";
 import { SiteCtaButton } from "@/components/site/SiteCtaButton";
@@ -96,7 +96,14 @@ function ServiceDeskSaoPauloPage() {
               <Reveal key={l.tag} as="li" variant="fade-up" delay={i * 90} className="rounded-2xl border border-[var(--site-line)] bg-white p-7">
                 <span className="font-chillax text-sm font-bold tracking-[0.18em] text-[var(--site-yellow)]">{l.tag}</span>
                 <p className="font-inter mt-3 text-[15px] leading-relaxed text-[var(--site-ink)]">
-                  {l.tag === "Gestão" ? l.text : <><strong>{l.tag}:</strong> {l.text}</>}
+                  {l.tag === "Gestão" ? (
+                    <>
+                      <Link to="/servicos/digital-workspace" className="font-semibold text-[var(--site-blue)] underline decoration-[var(--site-blue)]/30 underline-offset-4 transition-colors hover:text-[var(--site-yellow)]">
+                        Gestão de incidentes, problemas e mudanças
+                      </Link>
+                      , com catálogo de serviços e base de conhecimento montados para a sua operação.
+                    </>
+                  ) : l.text}
                 </p>
               </Reveal>
             ))}
@@ -114,7 +121,9 @@ function ServiceDeskSaoPauloPage() {
           <Reveal variant="fade-up" delay={120}>
             <h2 className={`${H2} text-white`}>Equipe dedicada, compartilhada, na sua sede ou remota</h2>
             <p className={`${P} text-white/80`}>Cada contrato é desenhado para a operação do cliente. A equipe pode ser exclusiva da sua empresa ou compartilhada na nossa estrutura de Alphaville, trabalhar dentro da sua sede, de forma remota ou no modelo híbrido, com equipamentos seus ou nossos.</p>
-            <p className={`${P} text-white/80`}>O escopo é modular: dá para começar pelo N1 e incluir N2, N3, NOC, SOC ou field service conforme a empresa cresce, sem fechar um pacote engessado.</p>
+            <p className={`${P} text-white/80`}>
+              O escopo é modular: dá para começar pelo N1 e incluir N2, N3, <Link to="/servicos/cyber-shield-360" className="font-semibold text-white underline decoration-white/40 underline-offset-4 transition-colors hover:text-[var(--site-yellow)]">NOC, SOC</Link> ou <Link to="/field-service-engineer-sp" className="font-semibold text-white underline decoration-white/40 underline-offset-4 transition-colors hover:text-[var(--site-yellow)]">field service</Link> conforme a empresa cresce, sem fechar um pacote engessado.
+            </p>
           </Reveal>
         </div>
       </section>
