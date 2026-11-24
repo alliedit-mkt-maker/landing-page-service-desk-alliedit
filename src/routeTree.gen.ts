@@ -19,6 +19,7 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as VideoconferenciaRouteImport } from './routes/videoconferencia'
 import { Route as SiteContatoRouteImport } from './routes/_site.contato'
 import { Route as SitePoliticaDePrivacidadeRouteImport } from './routes/_site.politica-de-privacidade'
+import { Route as SiteServiceDeskSaoPauloRouteImport } from './routes/_site.service-desk-sao-paulo'
 import { Route as SiteSobreRouteImport } from './routes/_site.sobre'
 import { Route as SiteTermosDeUsoRouteImport } from './routes/_site.termos-de-uso'
 import { Route as LpAlocacaoTiRouteImport } from './routes/lp.alocacao-ti'
@@ -105,6 +106,11 @@ const SitePoliticaDePrivacidadeRoute =
     path: '/politica-de-privacidade',
     getParentRoute: () => SiteRoute,
   } as any)
+const SiteServiceDeskSaoPauloRoute = SiteServiceDeskSaoPauloRouteImport.update({
+  id: '/service-desk-sao-paulo',
+  path: '/service-desk-sao-paulo',
+  getParentRoute: () => SiteRoute,
+} as any)
 const SiteSobreRoute = SiteSobreRouteImport.update({
   id: '/sobre',
   path: '/sobre',
@@ -300,6 +306,7 @@ export interface FileRoutesByFullPath {
   '/videoconferencia': typeof VideoconferenciaRoute
   '/contato': typeof SiteContatoRoute
   '/politica-de-privacidade': typeof SitePoliticaDePrivacidadeRoute
+  '/service-desk-sao-paulo': typeof SiteServiceDeskSaoPauloRoute
   '/sobre': typeof SiteSobreRoute
   '/termos-de-uso': typeof SiteTermosDeUsoRoute
   '/lp/alocacao-ti': typeof LpAlocacaoTiRoute
@@ -346,6 +353,7 @@ export interface FileRoutesByTo {
   '/videoconferencia': typeof VideoconferenciaRoute
   '/contato': typeof SiteContatoRoute
   '/politica-de-privacidade': typeof SitePoliticaDePrivacidadeRoute
+  '/service-desk-sao-paulo': typeof SiteServiceDeskSaoPauloRoute
   '/sobre': typeof SiteSobreRoute
   '/termos-de-uso': typeof SiteTermosDeUsoRoute
   '/lp/alocacao-ti': typeof LpAlocacaoTiRoute
@@ -394,6 +402,7 @@ export interface FileRoutesById {
   '/videoconferencia': typeof VideoconferenciaRoute
   '/_site/contato': typeof SiteContatoRoute
   '/_site/politica-de-privacidade': typeof SitePoliticaDePrivacidadeRoute
+  '/_site/service-desk-sao-paulo': typeof SiteServiceDeskSaoPauloRoute
   '/_site/sobre': typeof SiteSobreRoute
   '/_site/termos-de-uso': typeof SiteTermosDeUsoRoute
   '/lp/alocacao-ti': typeof LpAlocacaoTiRoute
@@ -442,6 +451,7 @@ export interface FileRouteTypes {
     | '/videoconferencia'
     | '/contato'
     | '/politica-de-privacidade'
+    | '/service-desk-sao-paulo'
     | '/sobre'
     | '/termos-de-uso'
     | '/lp/alocacao-ti'
@@ -488,6 +498,7 @@ export interface FileRouteTypes {
     | '/videoconferencia'
     | '/contato'
     | '/politica-de-privacidade'
+    | '/service-desk-sao-paulo'
     | '/sobre'
     | '/termos-de-uso'
     | '/lp/alocacao-ti'
@@ -535,6 +546,7 @@ export interface FileRouteTypes {
     | '/videoconferencia'
     | '/_site/contato'
     | '/_site/politica-de-privacidade'
+    | '/_site/service-desk-sao-paulo'
     | '/_site/sobre'
     | '/_site/termos-de-uso'
     | '/lp/alocacao-ti'
@@ -669,6 +681,13 @@ declare module '@tanstack/react-router' {
       path: '/politica-de-privacidade'
       fullPath: '/politica-de-privacidade'
       preLoaderRoute: typeof SitePoliticaDePrivacidadeRouteImport
+      parentRoute: typeof SiteRoute
+    }
+    '/_site/service-desk-sao-paulo': {
+      id: '/_site/service-desk-sao-paulo'
+      path: '/service-desk-sao-paulo'
+      fullPath: '/service-desk-sao-paulo'
+      preLoaderRoute: typeof SiteServiceDeskSaoPauloRouteImport
       parentRoute: typeof SiteRoute
     }
     '/_site/sobre': {
@@ -922,6 +941,7 @@ declare module '@tanstack/react-router' {
 interface SiteRouteChildren {
   SiteContatoRoute: typeof SiteContatoRoute
   SitePoliticaDePrivacidadeRoute: typeof SitePoliticaDePrivacidadeRoute
+  SiteServiceDeskSaoPauloRoute: typeof SiteServiceDeskSaoPauloRoute
   SiteSobreRoute: typeof SiteSobreRoute
   SiteTermosDeUsoRoute: typeof SiteTermosDeUsoRoute
   SiteBlogSlugRoute: typeof SiteBlogSlugRoute
@@ -945,6 +965,7 @@ interface SiteRouteChildren {
 const SiteRouteChildren: SiteRouteChildren = {
   SiteContatoRoute: SiteContatoRoute,
   SitePoliticaDePrivacidadeRoute: SitePoliticaDePrivacidadeRoute,
+  SiteServiceDeskSaoPauloRoute: SiteServiceDeskSaoPauloRoute,
   SiteSobreRoute: SiteSobreRoute,
   SiteTermosDeUsoRoute: SiteTermosDeUsoRoute,
   SiteBlogSlugRoute: SiteBlogSlugRoute,

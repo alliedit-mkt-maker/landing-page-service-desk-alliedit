@@ -8,6 +8,7 @@ const STATIC_PATHS = [
   "/sobre",
   "/servicos",
   "/servicos/digital-workspace",
+  "/service-desk-sao-paulo",
   "/servicos/smart-cloud-ops",
   "/servicos/cyber-shield-360",
   "/servicos/infra-core",
