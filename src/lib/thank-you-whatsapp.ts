@@ -2,6 +2,7 @@ export const THANK_YOU_SUBJECTS: Readonly<Record<string, string>> = {
   "/empresas-de-infraestrutura-de-ti-em-sao-paulo": "Infraestrutura de TI em São Paulo",
   "/field-service-engineer-sp": "Field Service em São Paulo",
   "/service-desk-sao-paulo": "Service Desk em São Paulo",
+  "/outsourcing-de-ti": "Outsourcing de TI",
   "/servicos/digital-workspace": "Digital Workspace (Service Desk e Field Service)",
   "/servicos/smart-cloud-ops": "Smart Cloud Ops",
   "/servicos/cyber-shield-360": "Cyber Shield 360°",

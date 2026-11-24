@@ -4,6 +4,7 @@ import { thankYouWhatsappHref, thankYouWhatsappMessage } from "./thank-you-whats
 
 const prefix = "Olá! Acabei de enviar o formulário no site da Allied IT e gostaria de falar com um especialista";
 const expected: Record<string, string> = {
+  "/outsourcing-de-ti": "Outsourcing de TI",
   "/servicos/digital-workspace": "Digital Workspace (Service Desk e Field Service)",
   "/servicos/smart-cloud-ops": "Smart Cloud Ops",
   "/servicos/cyber-shield-360": "Cyber Shield 360°",

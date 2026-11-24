@@ -165,7 +165,7 @@ describe("legacy redirect rules", () => {
     }
   });
   test("real pages, LPs and inherited object names do not match legacy rules", () => {
-    for (const path of ["/blog/page/2", "/blog/categoria/cloud", "/blog/categoria/cloud/page/2", "/lp/cabeamento", "/lp/field-service", "/constructor", "/__proto__"]) {
+    for (const path of ["/blog/page/2", "/blog/categoria/cloud", "/blog/categoria/cloud/page/2", "/outsourcing-de-ti", "/lp/cabeamento", "/lp/field-service", "/constructor", "/__proto__"]) {
       assert.equal(resolve(path), undefined);
     }
     assert.equal(resolve("/aws", "https://service-desk.alliedit.com.br"), undefined);

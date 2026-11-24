@@ -252,7 +252,6 @@ export const PAGE_REDIRECTS: Record<string, string> = {
   "servicos/centro-de-servicos-compartilhados": "/servicos/digital-workspace",
   "servicos/csc-centro-de-servicos-compartilhados": "/servicos/digital-workspace",
   "servicos__trashed/centro-de-servicos-compartilhados": "/servicos/digital-workspace",
-  "outsourcing-de-ti": "/servicos/digital-workspace",
   "empresas-de-outsourcing-em-sp": "/servicos/digital-workspace",
   "cloud-msp": "/servicos/smart-cloud-ops",
   "banco-de-dados": "/servicos/smart-cloud-ops",
