@@ -20,12 +20,12 @@ const CONTACT_FORM = { formId: "e7c97bc8-1dbd-44a7-ba36-2bcec71e97a3", descripti
 
 export const Route = createFileRoute("/_site/servicos/infra-core")({
   head: () => {
-    const h = pageHead({ social: "Redes Wi-Fi, cabeamento estruturado, CFTV e data center em São Paulo e em todo o Brasil, do projeto à certificação com laudo. Peça uma avaliação.",
+    const h = pageHead({ social: "Redes Wi-Fi, cabeamento estruturado, CFTV e data center para empresas em todo o Brasil, do projeto à certificação com laudo. Peça uma avaliação.",
       title: "Infra Core: redes, cabeamento estruturado e data center | Allied IT",
       description: "Redes Wi-Fi, cabeamento estruturado, CFTV e data center para empresas em todo o Brasil, do projeto à certificação com laudo. Peça uma avaliação.",
       path: "/servicos/infra-core",
     });
-    return { ...h, scripts: [serviceSchema({ path: "/servicos/infra-core", name: "Infra Core: redes, cabeamento estruturado e data center", serviceType: "Infraestrutura de TI: redes, cabeamento e data center", description: "Redes Wi-Fi, cabeamento estruturado, CFTV e data center em São Paulo e em todo o Brasil, do projeto à certificação com laudo.", sectionName: "Serviços", sectionPath: "/servicos", faq: FAQ })] };
+    return { ...h, scripts: [serviceSchema({ path: "/servicos/infra-core", name: "Infra Core: redes, cabeamento estruturado e data center", serviceType: "Infraestrutura de TI: redes, cabeamento e data center", description: "Redes Wi-Fi, cabeamento estruturado, CFTV e data center para empresas em todo o Brasil, do projeto à certificação com laudo. Peça uma avaliação.", sectionName: "Serviços", sectionPath: "/servicos", faq: FAQ })] };
   },
   component: InfraCorePage,
 });

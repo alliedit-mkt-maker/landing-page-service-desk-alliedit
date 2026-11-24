@@ -12,12 +12,12 @@ import oqueE from "@/assets/firewall/oque-e.png.asset.json";
 
 export const Route = createFileRoute("/_site/produtos/firewall")({
   head: () => {
-    const h = pageHead({ social: "Firewall de rede para empresas em São Paulo e em todo o Brasil: equipamento, instalação, configuração, monitoramento 24 horas e suporte incluídos.",
+    const h = pageHead({ social: "Firewall de rede para empresas em todo o Brasil: equipamento, licenças, instalação, configuração, monitoramento 24 horas e suporte incluídos.",
       title: "Firewall para empresas com monitoramento 24h | Allied IT",
       description: "Firewall de rede para empresas em todo o Brasil: equipamento, licenças, instalação, configuração, monitoramento 24 horas e suporte incluídos.",
       path: "/produtos/firewall",
     });
-    return { ...h, meta: [...h.meta, { name: "robots", content: "index, follow" }], scripts: [serviceSchema({ path: "/produtos/firewall", name: "Firewall para empresas com monitoramento 24h", serviceType: "Firewall gerenciado", description: "Firewall de rede para empresas em São Paulo e em todo o Brasil: equipamento, instalação, configuração, monitoramento 24 horas e suporte incluídos.", sectionName: "Produtos", sectionPath: "/produtos", faq: FAQ })] };
+    return { ...h, meta: [...h.meta, { name: "robots", content: "index, follow" }], scripts: [serviceSchema({ path: "/produtos/firewall", name: "Firewall para empresas com monitoramento 24h", serviceType: "Firewall gerenciado", description: "Firewall de rede para empresas em todo o Brasil: equipamento, licenças, instalação, configuração, monitoramento 24 horas e suporte incluídos.", sectionName: "Produtos", sectionPath: "/produtos", faq: FAQ })] };
   },
   component: FirewallPage,
 });
