@@ -209,7 +209,7 @@ function InfraCorePage() {
         <div className="mx-auto max-w-4xl px-5 sm:px-8">
           <Reveal>
             <h2 className={h2}>Infraestrutura de TI em todo o Brasil</h2>
-            <p className="font-inter mt-5 text-pretty text-[15px] leading-relaxed text-[var(--site-muted)]">Com sede em Alphaville, Barueri, a Allied IT projeta, implanta e mantém redes, cabeamento estruturado e data center para empresas com unidades em todo o Brasil. Para projetos na capital e da Grande SP, veja a nossa página de <Link to="/empresas-de-infraestrutura-de-ti-em-sao-paulo" className="font-semibold text-[var(--site-blue)] underline decoration-[var(--site-blue)]/30 underline-offset-4 transition-colors hover:text-[var(--site-yellow)]">infraestrutura de TI em São Paulo</Link>.</p>
+            <p className="font-inter mt-5 text-pretty text-[15px] leading-relaxed text-[var(--site-muted)]">Com sede em Alphaville, Barueri, a Allied IT projeta, implanta e mantém redes, cabeamento estruturado e data center para empresas com unidades em todo o Brasil. Para projetos na capital e na Grande SP, veja a nossa página de <Link to="/empresas-de-infraestrutura-de-ti-em-sao-paulo" className="font-semibold text-[var(--site-blue)] underline decoration-[var(--site-blue)]/30 underline-offset-4 transition-colors hover:text-[var(--site-yellow)]">infraestrutura de TI em São Paulo</Link>.</p>
           </Reveal>
         </div>
       </section>
