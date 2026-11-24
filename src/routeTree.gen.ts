@@ -18,6 +18,7 @@ import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as VideoconferenciaRouteImport } from './routes/videoconferencia'
 import { Route as SiteContatoRouteImport } from './routes/_site.contato'
+import { Route as SiteEmpresasDeInfraestruturaDeTiEmSaoPauloRouteImport } from './routes/_site.empresas-de-infraestrutura-de-ti-em-sao-paulo'
 import { Route as SiteFieldServiceEngineerSpRouteImport } from './routes/_site.field-service-engineer-sp'
 import { Route as SitePoliticaDePrivacidadeRouteImport } from './routes/_site.politica-de-privacidade'
 import { Route as SiteServiceDeskSaoPauloRouteImport } from './routes/_site.service-desk-sao-paulo'
@@ -101,6 +102,12 @@ const SiteContatoRoute = SiteContatoRouteImport.update({
   path: '/contato',
   getParentRoute: () => SiteRoute,
 } as any)
+const SiteEmpresasDeInfraestruturaDeTiEmSaoPauloRoute =
+  SiteEmpresasDeInfraestruturaDeTiEmSaoPauloRouteImport.update({
+    id: '/empresas-de-infraestrutura-de-ti-em-sao-paulo',
+    path: '/empresas-de-infraestrutura-de-ti-em-sao-paulo',
+    getParentRoute: () => SiteRoute,
+  } as any)
 const SiteFieldServiceEngineerSpRoute =
   SiteFieldServiceEngineerSpRouteImport.update({
     id: '/field-service-engineer-sp',
@@ -312,6 +319,7 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/videoconferencia': typeof VideoconferenciaRoute
   '/contato': typeof SiteContatoRoute
+  '/empresas-de-infraestrutura-de-ti-em-sao-paulo': typeof SiteEmpresasDeInfraestruturaDeTiEmSaoPauloRoute
   '/field-service-engineer-sp': typeof SiteFieldServiceEngineerSpRoute
   '/politica-de-privacidade': typeof SitePoliticaDePrivacidadeRoute
   '/service-desk-sao-paulo': typeof SiteServiceDeskSaoPauloRoute
@@ -360,6 +368,7 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/videoconferencia': typeof VideoconferenciaRoute
   '/contato': typeof SiteContatoRoute
+  '/empresas-de-infraestrutura-de-ti-em-sao-paulo': typeof SiteEmpresasDeInfraestruturaDeTiEmSaoPauloRoute
   '/field-service-engineer-sp': typeof SiteFieldServiceEngineerSpRoute
   '/politica-de-privacidade': typeof SitePoliticaDePrivacidadeRoute
   '/service-desk-sao-paulo': typeof SiteServiceDeskSaoPauloRoute
@@ -410,6 +419,7 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/videoconferencia': typeof VideoconferenciaRoute
   '/_site/contato': typeof SiteContatoRoute
+  '/_site/empresas-de-infraestrutura-de-ti-em-sao-paulo': typeof SiteEmpresasDeInfraestruturaDeTiEmSaoPauloRoute
   '/_site/field-service-engineer-sp': typeof SiteFieldServiceEngineerSpRoute
   '/_site/politica-de-privacidade': typeof SitePoliticaDePrivacidadeRoute
   '/_site/service-desk-sao-paulo': typeof SiteServiceDeskSaoPauloRoute
@@ -460,6 +470,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/videoconferencia'
     | '/contato'
+    | '/empresas-de-infraestrutura-de-ti-em-sao-paulo'
     | '/field-service-engineer-sp'
     | '/politica-de-privacidade'
     | '/service-desk-sao-paulo'
@@ -508,6 +519,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/videoconferencia'
     | '/contato'
+    | '/empresas-de-infraestrutura-de-ti-em-sao-paulo'
     | '/field-service-engineer-sp'
     | '/politica-de-privacidade'
     | '/service-desk-sao-paulo'
@@ -557,6 +569,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/videoconferencia'
     | '/_site/contato'
+    | '/_site/empresas-de-infraestrutura-de-ti-em-sao-paulo'
     | '/_site/field-service-engineer-sp'
     | '/_site/politica-de-privacidade'
     | '/_site/service-desk-sao-paulo'
@@ -687,6 +700,13 @@ declare module '@tanstack/react-router' {
       path: '/contato'
       fullPath: '/contato'
       preLoaderRoute: typeof SiteContatoRouteImport
+      parentRoute: typeof SiteRoute
+    }
+    '/_site/empresas-de-infraestrutura-de-ti-em-sao-paulo': {
+      id: '/_site/empresas-de-infraestrutura-de-ti-em-sao-paulo'
+      path: '/empresas-de-infraestrutura-de-ti-em-sao-paulo'
+      fullPath: '/empresas-de-infraestrutura-de-ti-em-sao-paulo'
+      preLoaderRoute: typeof SiteEmpresasDeInfraestruturaDeTiEmSaoPauloRouteImport
       parentRoute: typeof SiteRoute
     }
     '/_site/field-service-engineer-sp': {
@@ -960,6 +980,7 @@ declare module '@tanstack/react-router' {
 
 interface SiteRouteChildren {
   SiteContatoRoute: typeof SiteContatoRoute
+  SiteEmpresasDeInfraestruturaDeTiEmSaoPauloRoute: typeof SiteEmpresasDeInfraestruturaDeTiEmSaoPauloRoute
   SiteFieldServiceEngineerSpRoute: typeof SiteFieldServiceEngineerSpRoute
   SitePoliticaDePrivacidadeRoute: typeof SitePoliticaDePrivacidadeRoute
   SiteServiceDeskSaoPauloRoute: typeof SiteServiceDeskSaoPauloRoute
@@ -985,6 +1006,8 @@ interface SiteRouteChildren {
 
 const SiteRouteChildren: SiteRouteChildren = {
   SiteContatoRoute: SiteContatoRoute,
+  SiteEmpresasDeInfraestruturaDeTiEmSaoPauloRoute:
+    SiteEmpresasDeInfraestruturaDeTiEmSaoPauloRoute,
   SiteFieldServiceEngineerSpRoute: SiteFieldServiceEngineerSpRoute,
   SitePoliticaDePrivacidadeRoute: SitePoliticaDePrivacidadeRoute,
   SiteServiceDeskSaoPauloRoute: SiteServiceDeskSaoPauloRoute,

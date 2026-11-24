@@ -261,7 +261,6 @@ export const PAGE_REDIRECTS: Record<string, string> = {
   "noc-network-operation-center": "/servicos/cyber-shield-360",
   "gerenciamento-de-infraestrutura": "/servicos/infra-core",
   "data-center": "/servicos/infra-core",
-  "empresas-de-infraestrutura-de-ti-em-sao-paulo": "/servicos/infra-core",
   "microsoft-365": "/produtos/microsoft-365",
   "microsoft-365/microsoft-365-grandes-empresas": "/produtos/microsoft-365",
   "microsoft-365/microsoft-365-pequenas-e-medias-empresas": "/produtos/microsoft-365",

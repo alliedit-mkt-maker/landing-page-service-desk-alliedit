@@ -10,6 +10,7 @@ const STATIC_PATHS = [
   "/servicos/digital-workspace",
   "/service-desk-sao-paulo",
   "/field-service-engineer-sp",
+  "/empresas-de-infraestrutura-de-ti-em-sao-paulo",
   "/servicos/smart-cloud-ops",
   "/servicos/cyber-shield-360",
   "/servicos/infra-core",
